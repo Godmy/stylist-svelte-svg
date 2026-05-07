@@ -1,110 +1,60 @@
-﻿# Stylist-Svelte
+# Stylist-Svelte
 
-Stylist-Svelte is positioned as the world's largest Svelte 5 component library, born from a SAMO-aligned methodology and powered by digital tailogism. We deliver scalable, performant, and themeable building blocks whose evolution is guided by morphologic analysis of the domain.
-
-## Vision & Narrative
-
-We craft the library using runes, AI farms, and orchestration rituals. The `vibe-management.pro` team anchors every release with SAMO (SOLID, Atomic Design, Molecular Organization), ensuring individual components and entire compositions remain composable, predictable, and resilient.
-
-## Architectural Pillars
-
-- **SOLID** responsibilities keep props composable and modules testable.
-- **Atomic Design** organizes cells (atoms), combinations (molecules), and systems (organisms).
-- **Molecular Organization** inspires how organisms compose complex viewers and experiences.
-- **Digital Tailogism** (a.k.a. the digital tailoring doctrine) tracks influence through morphological analysis, guiding the packaging template that blends functional taxonomy (architecture/information/interaction) with domain clustering patterns.
-
-## Features
-
-- Flexible ThemeProvider with light/dark palettes, CSS variables, and utility tokens.
-- Responsive, accessible motifs (focus, hover, keyboard) built-in.
-- TypeScript-ready entry points and per-component style managers (e.g., `Button.styles.ts`).
-- Component taxonomy grouped by architecture, information, and interaction domains with scaling clusters.
-- Utilities for tokens, classes, props, presets, states, models, factories, and helpers.
-
-## Base Systems
-
-- **ThemeProvider** injects CSS variables and token sets.
-- **Design tokens** live in `src/lib/styles` and keep themes consistent.
-- **Utilities** live under `src/lib/utils`, providing primitives for state, style, and behaviors.
-- **Style managers** extend each component (for example: `Button.styles.ts`).
+`stylist-svelte` is a Svelte 5 component library with TypeScript typings, theme support, and a large generated component surface organized by domain.
 
 ## Installation
 
 ```bash
-npm install stylist-svelte
+npm install stylist-svelte svelte
 ```
+
+Peer dependency:
+
+- `svelte@^5`
 
 ## Quick Start
 
 ```svelte
-<script>
-  import { ThemeProvider, Button, Input } from 'stylist-svelte';
+<script lang="ts">
+	import { ThemeProvider, Button, Input } from 'stylist-svelte';
 </script>
 
 <ThemeProvider initialTheme="light">
-  <h2>Welcome to Stylist-Svelte</h2>
-  <Input placeholder="Enter your name" />
-  <Button variant="primary">Get Started</Button>
+	<Input placeholder="Enter your name" />
+	<Button variant="primary">Get started</Button>
 </ThemeProvider>
 ```
 
-## Documentation & Guides
+## Package Surface
 
-- `DOCUMENTATION.md` — overview, architecture, usage
-- `BASE_COMPONENTS.md` — ThemeProvider, tokens, managers
-- `UTILS.md` — shared utility functions
-- `THEMING_SYSTEM.md` — theming model and CSS variables
-- `CONTRIBUTING.md` — how to contribute
+- Primary entry point: `stylist-svelte`
+- Types are published from `dist/index.d.ts`
+- Svelte runtime entry is published from `dist/index.js`
+- Story files, demo files, tests, and generated JSON metadata are not part of the public npm package
 
-## Automation: What Can Run
+## Development
 
-There are 3 launch levels in this repository.
+Useful commands:
 
-### 1) Local manual runs
+```bash
+yarn dev
+yarn build
+yarn validate
+yarn test:unit
+```
 
-From `package.json`, you can run:
+Build notes:
 
-- `yarn json:generate` (`scripts/orchestrator.ts`)
-- `yarn analyze` (same full pipeline)
-- `yarn analyze:tokens|contracts|models|styles|components|icons`
-- `yarn dep-tree`, `yarn dep-short`, `yarn token-audit`, `yarn contracts-analysis`
-- `yarn dev:with-json` (generation + Vite dev server)
+- `yarn build` runs SVG data generation before `svelte-package`
+- `yarn validate` runs linting, TypeScript, and `svelte-check`
+- generated `src/lib/**/index.ts` files are managed by the existing indexation workflow
 
-`orchestrator.ts` generates/updates:
+## Documentation
 
-- `src/lib/json/core/*`
-- `src/lib/json/reports/*`
-- `src/lib/svg/icons/icon-registry.ts`
-
-### 2) CI automatic runs (GitHub Actions)
-
-Workflow file: `.github/workflows/json-check.yml`
-
-Triggers:
-
-- `pull_request`
-- `push` to `main` / `master`
-
-Steps:
-
-- install dependencies
-- run `yarn json:generate`
-- run `git diff --exit-code -- src/lib/json src/lib/svg/icons/icon-registry.ts`
-
-Result:
-
-- CI fails if generated artifacts changed but were not committed.
-
-### 3) Local automatic runs on `git commit`
-
-Not configured now.
-
-To run checks before each local commit, add a pre-commit hook (for example via Husky).
-
-## Prompt Framing
-
-*Producer prompt:* "We create the world’s largest Svelte 5 component library using runes, farms, and AI-agent magic. The vibe-management.pro team presents a SAMO-rooted product. Stylist-svelte follows digital tailogism, measuring impact through morphological analysis and packaging components with functional taxonomy (architecture, information, interaction) plus domain clustering. The design system draws inspiration from molecular organization and keeps tokens, classes, props, presets, states, models, factories, and utilities on hand. AI farms: Claude, Codex, Qwen, Gemini. Roles include Product Owner, Scrum-master, Captitan Svelte, Stylist, Stylist coder-model, Debug, NormControl, Pirat. Agent usage: Qwen 35%, Claude 30%, Codex 25%, Gemini 10%."
+- [DOCUMENTATION.md](DOCUMENTATION.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [CHANGELOG.md](CHANGELOG.md)
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+[MIT](LICENSE)
