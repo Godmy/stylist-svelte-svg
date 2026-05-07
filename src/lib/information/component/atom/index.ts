@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { MetricBar } from './metric-bar/index';
 export { TableBody } from './table-body/index';
 export { TableCell } from './table-cell/index';
 export { TableHeader } from './table-header/index';

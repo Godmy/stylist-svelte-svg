@@ -7,3 +7,4 @@ export { NodePalette } from './node-palette/index';
 export { PredictionResult } from './prediction-result/index';
 export { PromptBuilder } from './prompt-builder/index';
 export { SentimentAnalysis } from './sentiment-analysis/index';
+export { StylistGraphWorkspace } from './stylist-graph-workspace/index';

@@ -149,7 +149,7 @@
 			<div
 				class="prezi-scene__world"
 				class:prezi-scene__world--animating={state.isAnimating}
-				style="transform: translate({state.camera.x}px, {state.camera.y}px) scale({state.camera.zoom});"
+				style="transform: translate({state.camera.x}px, {state.camera.y}px) scale({state.camera.zoom}); --prezi-animation-duration: {props.animationDurationMs ?? 600}ms;"
 			>
 				{#each state.nodes as node (node.id)}
 					<PresenterNodeShell
@@ -395,7 +395,7 @@
 
 	/* Prezi-Р°РЅРёРјР°С†РёСЏ: РїР»Р°РІРЅС‹Р№ zoom-to-node (CSS РґРµР»Р°РµС‚ РІСЃС‘ С‚СЏР¶С‘Р»РѕРµ) */
 	.prezi-scene__world--animating {
-		transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+		transition: transform var(--prezi-animation-duration, 600ms) cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.prezi-scene__grid {

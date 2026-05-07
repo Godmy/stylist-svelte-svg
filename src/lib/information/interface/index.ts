@@ -1,4 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { BehaviorMetricValue, BehaviorTrendable } from './behavior';
-export type { AccessibilityCheckboxRecipe, AtomicPrinciplesRecipe, CounterRecipe, DotRecipe, ListItemMarkerRecipe, MetricCardRecipe, MetricCardStateProps, SearchResultsRecipe, SortRecipe, SortableGridRecipe, StatCardRecipe, StatsCardRecipe, StatsCardStateProps, StatusIndicatorRecipe, TableCellRecipe, TableRecipe, TableRowRecipe, TableSectionRecipe } from './recipe';
+export type { AccessibilityCheckboxRecipe, AtomicPrinciplesRecipe, CounterRecipe, DotRecipe, ListItemMarkerRecipe, MetricBarRecipe, MetricBarsCardRecipe, MetricCardRecipe, MetricCardStateProps, SearchResultsRecipe, SortRecipe, SortableGridRecipe, StatCardRecipe, StatsCardRecipe, StatsCardStateProps, StatusIndicatorRecipe, TableCellRecipe, TableRecipe, TableRowRecipe, TableSectionRecipe } from './recipe';
 export type { HtmlAttributesBase, HtmlAttributesWithChildren, HtmlAttributesWithContent, SlotStatus } from './slot';

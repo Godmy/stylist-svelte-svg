@@ -17,6 +17,8 @@ export { createInlineCodeState } from './inline-code';
 export { createKbdState } from './kbd';
 export { createLinkState } from './link';
 export { createListItemMarkerState } from './list-item-marker';
+export { createMetricBarState } from './metric-bar';
+export { createMetricBarsCardState } from './metric-bars-card';
 export { createMetricCardState } from './metric-card';
 export { createSeparatorState } from './separator';
 export { createStatCardState } from './stat-card';

@@ -1,9 +1,10 @@
 <script lang="ts">
 	import diagnosticsIcon from '$stylist/domain/data/svg/diagnostics.svg?raw';
+	import { PresentationWorkspace } from '$stylist/architecture/component/organism';
+	import { STYLIST_GRAPH_WORKSPACE_SEED } from '$stylist/domain/const/value/stylist-graph-workspace-seed';
 	import DomainDiagnostics from '$stylist/domain/component/organism/domain-diagnostics/index.svelte';
 	import ChatWorkbench from '$stylist/chat/component/organism/chat-workbench/index.svelte';
-	import { DrawingSurface } from '$stylist/canvas/component/molecule/drawing-surface';
-	import { CanvasToolbar } from '$stylist/canvas/component/molecule/canvas-toolbar';
+	import StylistGraphWorkspace from '$stylist/science/component/organism/stylist-graph-workspace/index.svelte';
 	import { ManagerThemeContext } from '$stylist/theme/class/manager/theme-context';
 	import { ObjectManagerThemeSettings } from '$stylist/theme/class/object-manager/theme-settings';
 	import ThemeModeToggle from '$stylist/theme/component/atom/theme-mode-toggle/index.svelte';
@@ -18,7 +19,7 @@
 	let { class: className = '', isDomainVisible = true, onDomainToggle }: DomainPropertyProps =
 		$props();
 
-	type DomainPropertyPanel = 'settings' | 'diagnostics' | 'chat' | 'canvas' | null;
+	type DomainPropertyPanel = 'settings' | 'diagnostics' | 'chat' | 'presentation' | 'graph' | null;
 
 	const themeContext = ManagerThemeContext.getOptional();
 	const themeSettingsContract = $derived(
@@ -35,25 +36,6 @@
 	function togglePanel(panel: Exclude<DomainPropertyPanel, null>) {
 		activePanel = activePanel === panel ? null : panel;
 	}
-
-	type DrawingTool = 'pen' | 'eraser';
-	let selectedTool = $state<DrawingTool>('pen');
-	let lineWidth = $state(3);
-	let strokeColor = $state('#0f766e');
-	let drawingSurfaceRef: { clear: () => void } | null = null;
-
-	function handleToolChange(event: CustomEvent) {
-		const { tool, options } = event.detail;
-		selectedTool = tool;
-		if (options) {
-			lineWidth = options.lineWidth ?? lineWidth;
-			strokeColor = options.strokeColor ?? strokeColor;
-		}
-	}
-
-	function handleExposeMethods(event: CustomEvent) {
-		drawingSurfaceRef = event.detail;
-	}
 </script>
 
 {#if activePanel}
@@ -64,10 +46,12 @@
 		aria-label={activePanel === 'settings'
 			? 'Appearance settings'
 			: activePanel === 'diagnostics'
-				? 'Diagnostics'
-				: activePanel === 'chat'
-					? 'Chat'
-					: 'Canvas'}
+					? 'Diagnostics'
+					: activePanel === 'chat'
+						? 'Chat'
+						: activePanel === 'presentation'
+							? 'Presentation'
+							: 'Graph workspace'}
 	>
 		<header class="fullscreen-header">
 			<span class="fullscreen-title">{activePanel === 'settings'
@@ -76,7 +60,9 @@
 					? 'Diagnostics'
 					: activePanel === 'chat'
 						? 'Chat'
-						: 'Canvas'}</span>
+						: activePanel === 'presentation'
+							? 'Presentation'
+							: 'Graph workspace'}</span>
 			<button
 				type="button"
 				class="close-btn"
@@ -107,35 +93,14 @@
 				<DomainDiagnostics />
 			{:else if activePanel === 'chat'}
 				<ChatWorkbench mode="panel" />
-			{:else if activePanel === 'canvas'}
-				<div class="canvas-layout">
-					<div class="canvas-toolbar-wrap">
-						<CanvasToolbar
-							selectedTool={selectedTool}
-							drawingOptions={{
-								lineWidth,
-								strokeColor,
-								tool: selectedTool,
-								mode: selectedTool === 'eraser' ? 'erase' : 'draw'
-							}}
-							on:tool-change={handleToolChange}
-							on:clear-canvas={() => drawingSurfaceRef?.clear()}
-						/>
-					</div>
-					<div class="canvas-surface-wrap">
-						<DrawingSurface
-							width={800}
-							height={520}
-							tool={selectedTool}
-							strokeWidth={lineWidth}
-							{strokeColor}
-							backgroundColor="#f8fafc"
-							drawingEnabled={true}
-							on:expose-methods={handleExposeMethods}
-							on:canvas-cleared={() => {}}
-						/>
-					</div>
-				</div>
+			{:else if activePanel === 'presentation'}
+				<PresentationWorkspace />
+			{:else if activePanel === 'graph'}
+				<StylistGraphWorkspace
+					initialNodes={STYLIST_GRAPH_WORKSPACE_SEED.initialNodes}
+					initialConnections={STYLIST_GRAPH_WORKSPACE_SEED.initialConnections}
+					worldBounds={STYLIST_GRAPH_WORKSPACE_SEED.worldBounds}
+				/>
 			{/if}
 		</div>
 	</div>
@@ -255,11 +220,11 @@
 		<button
 			type="button"
 			class="gear-btn"
-			class:active={activePanel === 'canvas'}
-			onclick={() => togglePanel('canvas')}
-			title="Canvas"
-			aria-label="Canvas"
-			aria-pressed={activePanel === 'canvas'}
+			class:active={activePanel === 'presentation'}
+			onclick={() => togglePanel('presentation')}
+			title="Presentation workspace"
+			aria-label="Presentation workspace"
+			aria-pressed={activePanel === 'presentation'}
 		>
 			<svg
 				width="16"
@@ -278,6 +243,35 @@
 				<circle cx="11" cy="11" r="2" />
 			</svg>
 		</button>
+
+		<button
+			type="button"
+			class="gear-btn"
+			class:active={activePanel === 'graph'}
+			onclick={() => togglePanel('graph')}
+			title="Graph workspace"
+			aria-label="Graph workspace"
+			aria-pressed={activePanel === 'graph'}
+		>
+			<svg
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<circle cx="5" cy="6" r="2" />
+				<circle cx="19" cy="6" r="2" />
+				<circle cx="12" cy="18" r="2" />
+				<path d="M7 6h10" />
+				<path d="M6.5 7.5l4 8" />
+				<path d="M17.5 7.5l-4 8" />
+			</svg>
+		</button>
 	</div>
 </aside>
 
@@ -289,14 +283,17 @@
 
 	.property-strip {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
 		gap: 0.4rem;
-		padding: 0.5rem 0.4rem;
-		border-left: 1px solid var(--color-border-primary);
-		background: var(--color-background-primary);
+		padding: 0.4rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 12px;
+		background: color-mix(in srgb, var(--color-background-primary) 88%, transparent);
+		backdrop-filter: blur(10px);
+		box-shadow: 0 10px 30px color-mix(in srgb, var(--color-text-primary) 8%, transparent);
 		flex-shrink: 0;
-		width: 54px;
+		width: auto;
 	}
 
 	.property-strip :global(.c-theme-mode-toggle) {
@@ -417,47 +414,21 @@
 		box-shadow: none;
 	}
 
-	/* Canvas fullscreen layout */
-
-	.canvas-layout {
-		display: flex;
-		gap: 1.5rem;
-		padding: 1.5rem;
-		align-items: flex-start;
-		min-height: 100%;
-	}
-
-	.canvas-toolbar-wrap {
-		flex-shrink: 0;
-	}
-
-	.canvas-surface-wrap {
-		border: 1px solid var(--color-border-primary);
-		border-radius: 12px;
-		overflow: hidden;
-		flex-shrink: 0;
-	}
-
-	.canvas-surface-wrap :global(canvas) {
-		display: block;
-		max-width: 100%;
-	}
-
 	@media (max-width: 840px) {
 		.c-domain-property {
-			flex-direction: column-reverse;
+			flex-direction: row;
 		}
 
 		.property-strip {
 			flex-direction: row;
 			width: 100%;
-			border-left: none;
-			border-top: 1px solid var(--color-border-primary);
 			justify-content: flex-end;
-		}
-
-		.canvas-layout {
-			flex-direction: column;
+			border-radius: 0;
+			border-left: none;
+			border-right: none;
+			border-bottom: none;
+			box-shadow: none;
+			backdrop-filter: none;
 		}
 	}
 </style>

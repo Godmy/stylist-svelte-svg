@@ -52,6 +52,9 @@ export type PreziSceneContract = ArchitectureHTMLAttributes<HTMLDivElement> & {
 	/** Максимальный зум */
 	maxZoom?: number;
 
+	/** Длительность transition-анимации камеры */
+	animationDurationMs?: number;
+
 	/** Выбранный узел (controlled) */
 	selectedNodeId?: string | null;
 

@@ -24,7 +24,7 @@
 			label: 'Core map',
 			description: 'The top-level knowledge map of services, entities and flows.',
 			iconText: 'O',
-			position: { x: 16, y: 18, z: 180, space: 'world' },
+			position: { x: 160, y: 120, z: 180, space: 'world' },
 			depth: 180,
 			accent: '#0f766e'
 		},
@@ -34,7 +34,7 @@
 			label: 'Identity',
 			description: 'Profiles, access and verification are bundled into one semantic surface.',
 			iconText: 'I',
-			position: { x: 50, y: 34, z: 480, space: 'world' },
+			position: { x: 620, y: 260, z: 480, space: 'world' },
 			depth: 480,
 			accent: '#2563eb',
 			children: [
@@ -44,7 +44,7 @@
 					label: 'Profile',
 					description: 'Human-readable core identity data.',
 					iconText: 'P',
-					position: { x: 8, y: 18, z: 150, space: 'local' },
+					position: { x: 540, y: 180, z: 150, space: 'world' },
 					depth: 150,
 					accent: '#2563eb'
 				},
@@ -54,7 +54,7 @@
 					label: 'Access',
 					description: 'Roles, gates and permissions.',
 					iconText: 'A',
-					position: { x: 38, y: 40, z: 420, space: 'local' },
+					position: { x: 760, y: 320, z: 420, space: 'world' },
 					depth: 420,
 					accent: '#7c3aed'
 				},
@@ -64,7 +64,7 @@
 					label: 'Risk',
 					description: 'Signals, anomalies and fraud posture.',
 					iconText: 'R',
-					position: { x: 66, y: 24, z: 760, space: 'local' },
+					position: { x: 920, y: 210, z: 760, space: 'world' },
 					depth: 760,
 					accent: '#dc2626'
 				}
@@ -76,7 +76,7 @@
 			label: 'Billing',
 			description: 'An aggregate view of invoices, balance and payment health.',
 			iconText: 'B',
-			position: { x: 22, y: 67, z: 760, space: 'world' },
+			position: { x: 340, y: 560, z: 760, space: 'world' },
 			depth: 760,
 			accent: '#d97706'
 		},
@@ -86,7 +86,7 @@
 			label: 'Alerts',
 			description: 'High-signal monitoring surface for operators.',
 			iconText: '!',
-			position: { x: 64, y: 70, z: 920, space: 'world' },
+			position: { x: 860, y: 600, z: 920, space: 'world' },
 			depth: 920,
 			accent: '#be123c'
 		}

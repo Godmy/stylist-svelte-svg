@@ -28,6 +28,7 @@ export function usePreziState(contract: PreziSceneContract): PreziSceneState & B
 		panEnabled = true,
 		minZoom = 0.1,
 		maxZoom = 5,
+		animationDurationMs = FOCUS_DURATION_MS,
 		selectedNodeId: controlledSelectedNodeId,
 		onNodeSelect,
 		onCameraChange,
@@ -80,7 +81,7 @@ export function usePreziState(contract: PreziSceneContract): PreziSceneState & B
 		animationTimer = setTimeout(() => {
 			isAnimating = false;
 			animationTimer = null;
-		}, FOCUS_DURATION_MS);
+		}, animationDurationMs);
 	};
 
 	/**

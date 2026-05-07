@@ -1,4 +1,4 @@
-export const TOKEN_COMMUNICATION_ICON = [
+export const TOKEN_CHAT_ICON = [
 	'ai',
 	'align-center',
 	'align-left',

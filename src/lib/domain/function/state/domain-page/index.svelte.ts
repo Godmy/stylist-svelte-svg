@@ -119,7 +119,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		}
 		fileLoading = true;
 		fileError = '';
-		fetch(`/domain/content?path=${encodeURIComponent(path)}`)
+		fetch(`/content?path=${encodeURIComponent(path)}`)
 			.then(async (r) => {
 				const p = await r.json();
 				if (!r.ok) throw new Error(p.error ?? 'Preview failed');
@@ -140,7 +140,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		}
 		fileLoading = true;
 		fileError = '';
-		fetch(`/domain/content?path=${encodeURIComponent(path)}`)
+		fetch(`/content?path=${encodeURIComponent(path)}`)
 			.then(async (r) => {
 				const p = await r.json();
 				if (!r.ok) throw new Error(p.error ?? 'Preview failed');
@@ -247,7 +247,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		backlogError = '';
 		backlogLoading = true;
 		try {
-			const r = await fetch(`/domain/content?path=${encodeURIComponent(backlogPath)}`);
+			const r = await fetch(`/content?path=${encodeURIComponent(backlogPath)}`);
 			if (r.ok) {
 				const p = await r.json();
 				backlogDraft = p.content ?? '';
@@ -273,7 +273,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		backlogSaving = true;
 		backlogError = '';
 		try {
-			const r = await fetch('/domain/content', {
+			const r = await fetch('/content', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
 				body: JSON.stringify({ domain: activeDomain, family: activeFamily, content: backlogDraft })

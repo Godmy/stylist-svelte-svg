@@ -21,11 +21,11 @@ export function createPresenterNodeShellState(props: PresenterNodeShellProps) {
 	);
 	const hostStyle = $derived.by(() =>
 		PresenterNodeShellStyleManager.getHostStyle(
-			(props.node.position.x - props.camera.x) * props.camera.zoom,
-			(props.node.position.y - props.camera.y) * props.camera.zoom,
+			props.node.position.x,
+			props.node.position.y,
 			presentation.width,
 			presentation.height,
-			projectedScale,
+			presentation.scale,
 			props.node.accent,
 			props.selected ?? false
 		)

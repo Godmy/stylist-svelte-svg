@@ -4,6 +4,8 @@ export type { AtomicPrinciplesRecipe } from './atomic-principles';
 export type { CounterRecipe } from './counter';
 export type { DotRecipe } from './dot';
 export type { ListItemMarkerRecipe } from './list-item-marker';
+export type { MetricBarRecipe } from './metric-bar';
+export type { MetricBarsCardRecipe } from './metric-bars-card';
 export type { MetricCardRecipe } from './metric-card';
 export type { MetricCardStateProps } from './metric-card-metric-card-state-props';
 export type { SearchResultsRecipe } from './search-results';

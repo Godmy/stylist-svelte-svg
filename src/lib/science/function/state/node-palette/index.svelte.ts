@@ -13,7 +13,7 @@ export function createNodePaletteState(props: NodePaletteProps) {
 	);
 
 	const groupedItems = $derived(
-		ObjectManagerNodePalette.groupItems(props.items ?? [], props.viewMode ?? 'list')
+		ObjectManagerNodePalette.groupItems(filteredItems, props.viewMode ?? 'list')
 	);
 
 	const categories = $derived(ObjectManagerNodePalette.getCategories(props.categories));

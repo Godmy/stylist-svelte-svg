@@ -1,3 +1,3 @@
-import { TOKEN_COMMUNICATION_ICON } from '$stylist/chat/const/enum/icon';
+import { TOKEN_CHAT_ICON } from '$stylist/chat/const/enum/icon';
 
-export type TokenCommunicationIcon = (typeof TOKEN_COMMUNICATION_ICON)[number];
+export type TokenChatIcon = (typeof TOKEN_CHAT_ICON)[number];

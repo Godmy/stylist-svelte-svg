@@ -26,6 +26,8 @@ export type { DevelopmentErrorBoundaryErrorInfo } from './development-error-boun
 export type { DevelopmentErrorBoundaryProps } from './development-error-boundary-props';
 export type { DocumentationBlockProps } from './documentation-block-props';
 export type { DocumentationBlockVariant } from './documentation-block-variant';
+export type { ErrorLogEntry } from './error-log-entry';
+export type { ErrorLogPayload } from './error-log-payload';
 export type { MockDataSelectorDataSelection } from './mock-data-selector-data-selection';
 export type { MockDataSelectorMockDataSchema } from './mock-data-selector-mock-data-schema';
 export type { MockDataSelectorProps } from './mock-data-selector-props';
