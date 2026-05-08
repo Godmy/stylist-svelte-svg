@@ -12,6 +12,7 @@ export { ScheduledNotification } from './scheduled-notification/index';
 export { SecureForm } from './secure-form/index';
 export { SecuritySettings } from './security-settings/index';
 export { SessionManager } from './session-manager/index';
+export { StatCard } from './stat-card/index';
 export { StatusDashboard } from './status-dashboard/index';
 export { TeamMemberCard } from './team-member-card/index';
 export { UserProfileCard } from './user-profile-card/index';

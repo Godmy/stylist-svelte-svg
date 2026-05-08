@@ -27,6 +27,7 @@ export { createScrumBacklogState } from './scrum-backlog';
 export { createSecureFormState } from './secure-form';
 export { createSecuritySettingsState } from './security-settings';
 export { createSessionManagerState } from './session-manager';
+export { createStatCardState } from './stat-card';
 export { createStatusDashboardState } from './status-dashboard';
 export { createTeamMemberCardState } from './team-member-card';
 export { createUserProfileCardState } from './user-profile-card';

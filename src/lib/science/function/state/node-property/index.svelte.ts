@@ -147,9 +147,8 @@ export function createNodePropertyState(props: NodePropertyProps) {
 		handleBlur,
 		emitChange,
 		handleVectorChange
+		};
 		}
-	};
-}
 
 export default createNodePropertyState;
 

@@ -26,6 +26,7 @@ export type { ScrumBacklogStateProps } from './scrum-backlog';
 export type { SecureFormStateProps } from './secure-form';
 export type { SecuritySettingsStateProps } from './security-settings';
 export type { SessionManagerStateProps } from './session-manager';
+export type { StatCardRecipe } from './stat-card';
 export type { StatusDashboardRecipe } from './status-dashboard';
 export type { StatusDashboardStateProps } from './status-dashboard-status-dashboard-state-props';
 export type { TeamMemberCardStateProps } from './team-member-card';

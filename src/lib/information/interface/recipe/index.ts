@@ -11,7 +11,6 @@ export type { MetricCardRecipe } from './metric-card';
 export type { SearchResultsRecipe } from './search-results';
 export type { SortRecipe } from './sort';
 export type { SortableGridRecipe } from './sortable-grid';
-export type { StatCardRecipe } from './stat-card';
 export type { StatsCardRecipe } from './stats-card';
 export type { StatsCardStateProps } from './stats-card-stats-card-state-props';
 export type { StatusIndicatorRecipe } from './status-indicator';

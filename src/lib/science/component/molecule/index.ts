@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { AiResultCard } from './ai-result-card/index';
+export { GraphToolbar } from './graph-toolbar/index';
 export { GraphvizDirectedEdge } from './graphviz-directed-edge/index';
 export { IdefZeroBlackBox } from './idef-zero-black-box/index';
 export { IdefZeroInputs } from './idef-zero-inputs/index';

@@ -119,9 +119,8 @@ export function createNodeTitleState(props: NodeTitleRecipe) {
 		commitEdit,
 		cancelEdit,
 		handleKeydown
+		};
 		}
-	};
-}
 
 export default createNodeTitleState;
 

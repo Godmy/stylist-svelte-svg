@@ -15,5 +15,6 @@ export { PerformanceDashboardStyleManager } from './performance-dashboard';
 export { PerformanceMonitorStyleManager } from './performance-monitor';
 export { ProcessStepStyleManager } from './process-step';
 export { ScrumBacklogStyleManager } from './scrum-backlog';
+export { StatCardStyleManager } from './stat-card';
 export { StatusDashboardStyleManager } from './status-dashboard';
 export { TeamMemberCardStyleManager } from './team-member-card';

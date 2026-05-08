@@ -20,7 +20,6 @@ export { createListItemMarkerState } from './list-item-marker';
 export { createMetricBarState } from './metric-bar';
 export { createMetricBarsCardState } from './metric-bars-card';
 export { createSeparatorState } from './separator';
-export { createStatCardState } from './stat-card';
 export { createStatsCardState } from './stats-card';
 export { createStatusIndicatorState } from './status-indicator';
 export { createSyntaxHighlightedCodeState } from './syntax-highlighted-code';
