@@ -8,9 +8,7 @@
 </script>
 
 <svelte:head>
-	<style>
-{GradientBackgroundStyleManager.getStyleSheet()}
-	</style>
+	{@html `<style>${GradientBackgroundStyleManager.getStyleSheet()}</style>`}
 </svelte:head>
 
 <div class={state.containerClass} role="presentation" {...state.restProps}>
