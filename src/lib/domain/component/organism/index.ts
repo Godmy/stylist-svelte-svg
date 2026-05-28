@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { DomainBacklog } from './domain-backlog/index';
+export { DomainBuilder } from './domain-builder/index';
 export { DomainDashboard } from './domain-dashboard/index';
 export { DomainDiagnostics } from './domain-diagnostics/index';
 export { DomainExplorer } from './domain-explorer/index';

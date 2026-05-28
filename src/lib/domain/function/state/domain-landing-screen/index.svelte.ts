@@ -1,11 +1,18 @@
 import { DOMAIN_SCREEN_BACKLOG } from '$stylist/domain/const/value/domain-screen-backlog';
+import { DOMAIN_SCREEN_BUILDER } from '$stylist/domain/const/value/domain-screen-builder';
 import { DOMAIN_SCREEN_DIAGNOSTICS } from '$stylist/domain/const/value/domain-screen-diagnostics';
 import { DOMAIN_SCREEN_DOMAIN } from '$stylist/domain/const/value/domain-screen-domain';
 import { DOMAIN_SCREEN_LANDING } from '$stylist/domain/const/value/domain-screen-landing';
-import type { TypeDomainScreen } from '$stylist/domain/type/alias/domain-screen';
 
-export function createDomainLandingScreenState() {
-	let currentScreen = $state<TypeDomainScreen>(DOMAIN_SCREEN_LANDING);
+type DomainScreenStateValue =
+	| typeof DOMAIN_SCREEN_LANDING
+	| typeof DOMAIN_SCREEN_DOMAIN
+	| typeof DOMAIN_SCREEN_BUILDER
+	| typeof DOMAIN_SCREEN_BACKLOG
+	| typeof DOMAIN_SCREEN_DIAGNOSTICS;
+
+export function createDomainLandingScreenState(initialScreen: DomainScreenStateValue = DOMAIN_SCREEN_LANDING) {
+	let currentScreen = $state<DomainScreenStateValue>(initialScreen);
 	let isSettingsOpen = $state(false);
 
 	function handleDomainToggle() {
@@ -18,6 +25,10 @@ export function createDomainLandingScreenState() {
 
 	function handleDiagnosticsToggle() {
 		currentScreen = DOMAIN_SCREEN_DIAGNOSTICS;
+	}
+
+	function handleBuilderToggle() {
+		currentScreen = DOMAIN_SCREEN_BUILDER;
 	}
 
 	function openBacklogScreen() {
@@ -42,6 +53,7 @@ export function createDomainLandingScreenState() {
 		handleDomainToggle,
 		handleLandingToggle,
 		handleDiagnosticsToggle,
+		handleBuilderToggle,
 		openBacklogScreen,
 		handleSettingsToggle,
 		closeSettings

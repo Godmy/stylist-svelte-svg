@@ -6,6 +6,8 @@ export { DomainLandingFeatureCard } from './domain-landing-feature-card/index';
 export { DomainLandingHeroPoint } from './domain-landing-hero-point/index';
 export { DomainLandingMetricCard } from './domain-landing-metric-card/index';
 export { DomainListHeader } from './domain-list-header/index';
+export { DomainSearchField } from './domain-search-field/index';
+export { DomainSearchToggle } from './domain-search-toggle/index';
 export { OpenIcon } from './open-icon/index';
 export { OrbitBackground } from './orbit-background/index';
 export { OrbitTokenNode } from './orbit-token-node/index';

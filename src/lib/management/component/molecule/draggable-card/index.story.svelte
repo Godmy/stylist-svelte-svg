@@ -13,10 +13,11 @@
 	];
 
 	const data = {
+		id: 'card-refactor-backlog-commands',
 		title: 'Refactor backlog commands',
 		description: 'Prepare a reusable action layer for backlog file operations on disk.',
 		tags: ['backlog', 'filesystem', 'menu'],
-		dueDate: '2026-05-12T12:00:00.000Z',
+		dueDate: new Date('2026-05-12T12:00:00.000Z'),
 		assignedTo: 'Dmitrii'
 	};
 </script>

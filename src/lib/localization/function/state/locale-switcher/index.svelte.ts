@@ -1,5 +1,4 @@
 import { LocaleSwitcherStyleManager } from '$stylist/localization/class/style-manager/locale-switcher';
-import { TOKEN_LOCALIZATION_ICON } from '$stylist/localization/const/enum/icon';
 import {
 	formatDate,
 	formatTime,
@@ -60,13 +59,13 @@ export function createLocaleSwitcherState(props: LocaleSwitcherStateProps) {
 	return {
 		// Icons
 		get iconClock() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'clock') ?? 'clock';
+			return 'clock';
 		},
 		get iconGlobe() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'globe') ?? 'globe';
+			return 'globe';
 		},
 		get iconUser() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'user') ?? 'user';
+			return 'user';
 		},
 		get locales() {
 			return locales;

@@ -975,6 +975,22 @@ export const TOKEN_ICON_REGISTRY = {
   <rect x="4" y="4" width="16" height="16" rx="2"/>
   <path d="M8 8h8M8 12h8M8 16h5"/>
 </svg>`, // development,
+	'backlog-status-done': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>backlog status done</title>
+  <circle cx="12" cy="12" r="7.5"/>
+  <path d="m8.8 12.2 2.1 2.2 4.3-4.8"/>
+</svg>`, // development,
+	'backlog-status-progress': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>backlog status progress</title>
+  <circle cx="12" cy="12" r="7.5"/>
+  <path d="M12 12V8"/>
+  <path d="M12 12l3 2"/>
+</svg>`, // development,
+	'backlog-status-todo': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>backlog status todo</title>
+  <circle cx="12" cy="12" r="7.5"/>
+  <path d="M9 12h6"/>
+</svg>`, // development,
 	'chevron-right': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m9 18 6-6-6-6" />
 </svg>`, // development,

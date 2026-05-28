@@ -11,11 +11,22 @@
 	interface DomainListProps {
 		entities?: DomainListItem[];
 		activePath?: string;
+		draggable?: boolean;
 		onSelect?: (path: string) => void;
+		onAdd?: (path: string) => void;
+		onDragStart?: (entity: DomainListItem, event: DragEvent) => void;
 		class?: string;
 	}
 
-	let { entities = [], activePath, onSelect, class: className = '' }: DomainListProps = $props();
+	let {
+		entities = [],
+		activePath,
+		draggable = false,
+		onSelect,
+		onAdd,
+		onDragStart,
+		class: className = ''
+	}: DomainListProps = $props();
 </script>
 
 <div class="c-domain-list {className}">
@@ -30,7 +41,10 @@
 					path={entity.path}
 					fileCount={entity.files.length}
 					active={activePath === entity.path}
+					{draggable}
 					{onSelect}
+					{onAdd}
+					onDragStart={(event) => onDragStart?.(entity, event)}
 				/>
 			{/each}
 		{/if}

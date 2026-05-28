@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { Button } from '$lib';
 	import { createSocialShareState } from '$stylist/social/function/state/social-share';
 	import type { Props } from '$stylist/social/type/struct/social-share';
@@ -22,15 +21,9 @@
 				aria-expanded={state.showDropdown}
 			>
 				{#if state.copied}
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'check') ?? 'check'}
-						class={state.iconSizeClasses}
-					/>
+					<BaseIcon name="check" class={state.iconSizeClasses} />
 				{:else}
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'share-2') ?? 'share-2'}
-						class={state.iconSizeClasses}
-					/>
+					<BaseIcon name="share-2" class={state.iconSizeClasses} />
 				{/if}
 				<span class="sr-only">Share</span>
 			</Button>
@@ -58,10 +51,7 @@
 									<platform.icon class="mr-3 h-5 w-5" />
 									<span>{platform.label}</span>
 									{#if platform.platform === 'copy' && state.copied}
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'check') ?? 'check'}
-											class="ml-auto h-5 w-5 text-[var(--color-success-500)]"
-										/>
+										<BaseIcon name="check" class="ml-auto h-5 w-5 text-[var(--color-success-500)]" />
 									{/if}
 								</button>
 							{/if}
@@ -77,10 +67,7 @@
 				size={props.size === 'sm' ? 'sm' : props.size === 'lg' ? 'lg' : 'md'}
 				onclick={state.handleSave}
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'bookmark') ?? 'bookmark'}
-					class={state.iconSizeClasses}
-				/>
+				<BaseIcon name="bookmark" class={state.iconSizeClasses} />
 				<span class="sr-only">Save</span>
 			</Button>
 		{/if}
@@ -91,10 +78,7 @@
 				size={props.size === 'sm' ? 'sm' : props.size === 'lg' ? 'lg' : 'md'}
 				onclick={state.handleLike}
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'heart') ?? 'heart'}
-					class={state.iconSizeClasses}
-				/>
+				<BaseIcon name="heart" class={state.iconSizeClasses} />
 				<span class="sr-only">Like</span>
 			</Button>
 		{/if}
@@ -107,15 +91,9 @@
 				title={state.copied ? 'Copied!' : 'Copy link'}
 			>
 				{#if state.copied}
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'check') ?? 'check'}
-						class={state.iconSizeClasses}
-					/>
+					<BaseIcon name="check" class={state.iconSizeClasses} />
 				{:else}
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'link') ?? 'link'}
-						class={state.iconSizeClasses}
-					/>
+					<BaseIcon name="link" class={state.iconSizeClasses} />
 				{/if}
 				<span class="sr-only">{state.copied ? 'Copied!' : 'Copy link'}</span>
 			</Button>

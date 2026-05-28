@@ -66,14 +66,14 @@ export function createKanbanCardState(props: KanbanCardStateProps) {
 	function getPriorityAccentClass(priority: KanbanCardPriority | undefined): string {
 		if (!priority) return 'before:bg-[var(--color-background-tertiary)]';
 		return {
-			low: 'before:bg-emerald-400',
-			medium: 'before:bg-COLOR_AMBER-400',
-			high: 'before:bg-rose-400'
+			low: 'before:bg-[var(--color-success-400)]',
+			medium: 'before:bg-[var(--color-warning-400)]',
+			high: 'before:bg-[var(--color-danger-400)]'
 		}[priority];
 	}
 
 	const containerClasses = $derived(
-		`c-kanban-card group relative rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]/95 p-4 cursor-pointer transition-all duration-[var(--duration-200)] hover:-translate-y-[1px] hover:shadow-[0_14px_26px_-18px_color-mix(in srgb, var(--color-info-600) 55%, transparent)] before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-full ${getPriorityAccentClass(card.priority)}`
+		`c-kanban-card group relative rounded-xl border border-[--color-border-secondary]/80 bg-[--color-background-primary]/95 p-4 cursor-pointer transition-all duration-[var(--duration-200)] hover:-translate-y-[1px] hover:shadow-[0_14px_26px_-18px_color-mix(in srgb, var(--color-info-600) 55%, transparent)] before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-full ${getPriorityAccentClass(card.priority)}`
 	);
 
 	return {

@@ -1,5 +1,6 @@
 import { ScrumBacklogStyleManager } from '$stylist/management/class/style-manager/scrum-backlog';
 import type { ScrumBacklogStateProps } from '$stylist/management/interface/recipe/scrum-backlog';
+import type { SlotBacklogItem as BacklogItem } from '$stylist/management/interface/slot/backlog-item';
 
 import { createBacklogItem } from '$stylist/management/function/script/create-backlog-item';
 import { filterBacklogItems } from '$stylist/management/function/script/scrum-backlog';
@@ -20,12 +21,14 @@ export function createScrumBacklogState(props: ScrumBacklogStateProps) {
 
 	// SlotState for new item form
 	let showAddForm = $state<boolean>(false);
+	let editingItemId = $state<string | null>(null);
 	let newItemTitle = $state<string>('');
 	let newItemDescription = $state<string>('');
 	let newItemAssignee = $state<string>('');
 	let newItemPriority = $state<'low' | 'medium' | 'high'>('medium');
 	let newItemEstimatedHours = $state<number>(0);
 	let newItemEstimatedHoursStr = $state<string>('0');
+	let newItemStatus = $state<'todo' | 'in-progress' | 'done'>('todo');
 
 	// Computed
 	const filteredItems = $derived(
@@ -33,27 +36,67 @@ export function createScrumBacklogState(props: ScrumBacklogStateProps) {
 	);
 
 	// Methods
-	function handleAddNewItem(): void {
-		if (!newItemTitle.trim()) return;
-
-		const newItem = createBacklogItem(
-			newItemTitle,
-			newItemDescription,
-			newItemAssignee,
-			newItemPriority,
-			newItemEstimatedHours
-		);
-
-		if (onItemAdd) onItemAdd(newItem);
-
-		// Reset form
+	function resetForm(): void {
+		editingItemId = null;
 		newItemTitle = '';
 		newItemDescription = '';
 		newItemAssignee = '';
 		newItemPriority = 'medium';
 		newItemEstimatedHours = 0;
 		newItemEstimatedHoursStr = '0';
+		newItemStatus = 'todo';
 		showAddForm = false;
+	}
+
+	function startItemEdit(item: BacklogItem): void {
+		editingItemId = item.id;
+		newItemTitle = item.title;
+		newItemDescription = item.description ?? '';
+		newItemAssignee = item.assignee ?? '';
+		newItemPriority = item.priority;
+		newItemEstimatedHours = item.estimatedHours ?? 0;
+		newItemEstimatedHoursStr = String(item.estimatedHours ?? 0);
+		newItemStatus = item.status;
+		showAddForm = true;
+	}
+
+	function cancelForm(): void {
+		resetForm();
+	}
+
+	function handleSubmitItem(): void {
+		if (!newItemTitle.trim()) return;
+
+		if (editingItemId) {
+			const currentItem = data.items.find((item) => item.id === editingItemId);
+
+			if (currentItem && onItemUpdate) {
+				onItemUpdate({
+					...currentItem,
+					title: newItemTitle,
+					description: newItemDescription,
+					assignee: newItemAssignee || undefined,
+					priority: newItemPriority,
+					estimatedHours: newItemEstimatedHours || undefined,
+					status: newItemStatus,
+					updatedAt: new Date()
+				});
+			}
+		} else {
+			const newItem = createBacklogItem(
+				newItemTitle,
+				newItemDescription,
+				newItemAssignee,
+				newItemPriority,
+				newItemEstimatedHours
+			);
+
+			newItem.status = newItemStatus;
+
+			if (onItemAdd) onItemAdd(newItem);
+		}
+
+		resetForm();
 	}
 
 	function handleHoursInput(value: string): void {
@@ -133,6 +176,9 @@ export function createScrumBacklogState(props: ScrumBacklogStateProps) {
 		set showAddForm(value: boolean) {
 			showAddForm = value;
 		},
+		get editingItemId() {
+			return editingItemId;
+		},
 		get newItemTitle() {
 			return newItemTitle;
 		},
@@ -168,6 +214,12 @@ export function createScrumBacklogState(props: ScrumBacklogStateProps) {
 		},
 		set newItemEstimatedHoursStr(value: string) {
 			newItemEstimatedHoursStr = value;
+		},
+		get newItemStatus() {
+			return newItemStatus;
+		},
+		set newItemStatus(value: 'todo' | 'in-progress' | 'done') {
+			newItemStatus = value;
 		},
 		get filteredItems() {
 			return filteredItems;
@@ -259,8 +311,10 @@ export function createScrumBacklogState(props: ScrumBacklogStateProps) {
 		get iconClass() {
 			return iconClass;
 		},
-		handleAddNewItem,
+		handleSubmitItem,
 		handleHoursInput,
+		startItemEdit,
+		cancelForm,
 		formatDate
 	};
 }

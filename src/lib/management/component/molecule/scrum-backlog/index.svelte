@@ -14,18 +14,6 @@
 	const User = 'user';
 	const Clock = 'clock';
 
-	/**
-	 * РљРѕРјРїРѕРЅРµРЅС‚ Р±СЌРєР»РѕРіР° Р·Р°РґР°С‡
-	 *
-	 * РљРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ, С„РёР»СЊС‚СЂР°С†РёРё Рё СѓРїСЂР°РІР»РµРЅРёСЏ Р·Р°РґР°С‡Р°РјРё РІ Р±СЌРєР»РѕРіРµ.
-	 * РџРѕР·РІРѕР»СЏРµС‚ РґРѕР±Р°РІР»СЏС‚СЊ, РёР·РјРµРЅСЏС‚СЊ Рё СѓРґР°Р»СЏС‚СЊ Р·Р°РґР°С‡Рё, Р° С‚Р°РєР¶Рµ С„РёР»СЊС‚СЂРѕРІР°С‚СЊ РёС… РїРѕ СЂР°Р·Р»РёС‡РЅС‹Рј РєСЂРёС‚РµСЂРёСЏРј.
-	 *
-	 * @param {BacklogData} data - Р”Р°РЅРЅС‹Рµ Р±СЌРєР»РѕРіР°, СЃРѕРґРµСЂР¶Р°С‰РёРµ СЃРїРёСЃРѕРє Р·Р°РґР°С‡
-	 * @param {boolean} [showFilters=true] - РџРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё РїР°РЅРµР»СЊ С„РёР»СЊС‚СЂРѕРІ
-	 * @param {(item: BacklogItem) => void} [onItemAdd] - РћР±СЂР°Р±РѕС‚С‡РёРє РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ Р·Р°РґР°С‡Рё
-	 * @param {(item: BacklogItem) => void} [onItemUpdate] - РћР±СЂР°Р±РѕС‚С‡РёРє РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РґР°С‡Рё
-	 * @param {(id: string) => void} [onItemDelete] - РћР±СЂР°Р±РѕС‚С‡РёРє СѓРґР°Р»РµРЅРёСЏ Р·Р°РґР°С‡Рё
-	 */
 	let {
 		data,
 		showFilters = true,
@@ -52,14 +40,21 @@
 <div class={state.containerClass}>
 	<div class={state.headerClass}>
 		<div class={ScrumBacklogStyleManager.getHeaderFlexClass()}>
-			<h2 class={state.headerTitleClass}>Р‘СЌРєР»РѕРі</h2>
+			<h2 class={state.headerTitleClass}>Backlog</h2>
 			<Button
 				variant="primary"
 				size="md"
-				onclick={() => (state.showAddForm = !state.showAddForm)}
+				onclick={() => {
+					if (state.showAddForm) {
+						state.cancelForm();
+						return;
+					}
+					state.showAddForm = true;
+				}}
 				class={state.addButtonClass}
 			>
-				<Icon name={Plus} class={state.iconClass} /> Р”РѕР±Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ
+				<Icon name={Plus} class={state.iconClass} />
+				{state.editingItemId ? 'Edit task' : 'Add task'}
 			</Button>
 		</div>
 
@@ -69,13 +64,13 @@
 					<div class={state.formColSpanClass}>
 						<InputField
 							id="new-item-title"
-							label="РќР°Р·РІР°РЅРёРµ Р·Р°РґР°С‡Рё *"
+							label="Task title *"
 							value={state.newItemTitle}
 							oninput={(e: Event) => {
 								const target = e.target as HTMLInputElement;
 								state.newItemTitle = target.value;
 							}}
-							placeholder="Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р·Р°РґР°С‡Рё"
+							placeholder="Enter task title"
 							class={state.formInputClass}
 						/>
 					</div>
@@ -83,34 +78,43 @@
 					<div class={state.formColSpanClass}>
 						<TextArea
 							id="new-item-description"
-							label="РћРїРёСЃР°РЅРёРµ"
+							label="Description"
 							value={state.newItemDescription}
 							oninput={(e: Event) => {
 								const target = e.target as HTMLTextAreaElement;
 								state.newItemDescription = target.value;
 							}}
-							placeholder="Р’РІРµРґРёС‚Рµ РѕРїРёСЃР°РЅРёРµ Р·Р°РґР°С‡Рё"
+							placeholder="Enter task description"
 							class={state.formTextareaClass}
 						/>
 					</div>
 
 					<div>
-						<label for="new-item-priority" class={state.formLabelClass}>РџСЂРёРѕСЂРёС‚РµС‚</label>
+						<label for="new-item-priority" class={state.formLabelClass}>Priority</label>
 						<select
 							id="new-item-priority"
 							class={state.formSelectClass}
 							bind:value={state.newItemPriority}
 						>
-							<option value="low">РќРёР·РєРёР№</option>
-							<option value="medium">РЎСЂРµРґРЅРёР№</option>
-							<option value="high">Р’С‹СЃРѕРєРёР№</option>
+							<option value="low">Low</option>
+							<option value="medium">Medium</option>
+							<option value="high">High</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="new-item-status" class={state.formLabelClass}>Status</label>
+						<select id="new-item-status" class={state.formSelectClass} bind:value={state.newItemStatus}>
+							<option value="todo">To do</option>
+							<option value="in-progress">In progress</option>
+							<option value="done">Done</option>
 						</select>
 					</div>
 
 					<div>
 						<InputField
 							id="new-item-hours"
-							label="РћС†РµРЅРєР° РІСЂРµРјРµРЅРё (С‡Р°СЃС‹)"
+							label="Estimate (hours)"
 							type="number"
 							value={state.newItemEstimatedHoursStr}
 							onchange={(e: Event) => {
@@ -121,7 +125,7 @@
 								const target = e.target as HTMLInputElement;
 								state.handleHoursInput(target.value);
 							}}
-							placeholder="Р§Р°СЃС‹"
+							placeholder="Hours"
 							class={state.formInputClass}
 						/>
 					</div>
@@ -129,24 +133,24 @@
 					<div class={state.formColSpanClass}>
 						<InputField
 							id="new-item-assignee"
-							label="РќР°Р·РЅР°С‡РµРЅР°"
+							label="Assignee"
 							value={state.newItemAssignee}
 							oninput={(e: Event) => {
 								const target = e.target as HTMLInputElement;
 								state.newItemAssignee = target.value;
 							}}
-							placeholder="РРјСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЏ"
+							placeholder="Assignee name"
 							class={state.formInputClass}
 						/>
 					</div>
 				</div>
 
 				<div class={state.formButtonsContainerClass}>
-					<Button variant="secondary" size="sm" onclick={() => (state.showAddForm = false)}
-						>РћС‚РјРµРЅР°</Button
+					<Button variant="secondary" size="sm" onclick={state.cancelForm}
+						>Cancel</Button
 					>
-					<Button variant="primary" size="sm" onclick={state.handleAddNewItem}
-						>Р”РѕР±Р°РІРёС‚СЊ</Button
+					<Button variant="primary" size="sm" onclick={state.handleSubmitItem}
+						>{state.editingItemId ? 'Save' : 'Add'}</Button
 					>
 				</div>
 			</div>
@@ -158,42 +162,42 @@
 					<div>
 						<InputField
 							id="search-query"
-							label="РџРѕРёСЃРє"
+							label="Search"
 							value={state.searchQuery}
 							oninput={(e: Event) => {
 								const target = e.target as HTMLInputElement;
 								state.searchQuery = target.value;
 							}}
-							placeholder="РџРѕРёСЃРє Р·Р°РґР°С‡..."
+							placeholder="Search tasks..."
 							class={state.formInputClass}
 						/>
 					</div>
 
 					<div>
-						<label for="status-filter" class={state.filterLabelClass}>РЎС‚Р°С‚СѓСЃ</label>
+						<label for="status-filter" class={state.filterLabelClass}>Status</label>
 						<select
 							id="status-filter"
 							class={state.formSelectClass}
 							bind:value={state.statusFilter}
 						>
-							<option value="all">Р’СЃРµ СЃС‚Р°С‚СѓСЃС‹</option>
-							<option value="todo">Рљ РІС‹РїРѕР»РЅРµРЅРёСЋ</option>
-							<option value="in-progress">Р’ СЂР°Р±РѕС‚Рµ</option>
-							<option value="done">Р’С‹РїРѕР»РЅРµРЅРѕ</option>
+							<option value="all">All statuses</option>
+							<option value="todo">To do</option>
+							<option value="in-progress">In progress</option>
+							<option value="done">Done</option>
 						</select>
 					</div>
 
 					<div>
-						<label for="priority-filter" class={state.filterLabelClass}>РџСЂРёРѕСЂРёС‚РµС‚</label>
+						<label for="priority-filter" class={state.filterLabelClass}>Priority</label>
 						<select
 							id="priority-filter"
 							class={state.formSelectClass}
 							bind:value={state.priorityFilter}
 						>
-							<option value="all">Р’СЃРµ РїСЂРёРѕСЂРёС‚РµС‚С‹</option>
-							<option value="low">РќРёР·РєРёР№</option>
-							<option value="medium">РЎСЂРµРґРЅРёР№</option>
-							<option value="high">Р’С‹СЃРѕРєРёР№</option>
+							<option value="all">All priorities</option>
+							<option value="low">Low</option>
+							<option value="medium">Medium</option>
+							<option value="high">High</option>
 						</select>
 					</div>
 				</div>
@@ -204,9 +208,9 @@
 	<div class={state.itemsContainerClass}>
 		{#if state.filteredItems.length === 0}
 			<div class={state.emptyStateContainerClass}>
-				<p class={state.emptyStateTextClass}>Р‘СЌРєР»РѕРі РїСѓСЃС‚</p>
+				<p class={state.emptyStateTextClass}>Backlog is empty</p>
 				<p class={ScrumBacklogStyleManager.getEmptyStateSubtextClass()}>
-					Р”РѕР±Р°РІСЊС‚Рµ РїРµСЂРІСѓСЋ Р·Р°РґР°С‡Сѓ РёР»Рё РёР·РјРµРЅРёС‚Рµ С„РёР»СЊС‚СЂС‹
+					Add the first task or change the active filters
 				</p>
 			</div>
 		{:else}
@@ -225,11 +229,7 @@
 									size="sm"
 									class={state.itemBadgeClass}
 								>
-									{item.priority === 'high'
-										? 'Р’РђР–РќРћ'
-										: item.priority === 'medium'
-											? 'РЎР .'
-											: 'РќРћР Рњ.'}
+									{item.priority === 'high' ? 'HIGH' : item.priority === 'medium' ? 'MED' : 'LOW'}
 								</Badge>
 							{/if}
 						</div>
@@ -242,7 +242,7 @@
 							{#if item.estimatedHours}
 								<Badge variant="default" size="sm" class={state.itemBadgeClass}>
 									<Icon name={Clock} class={state.iconClass} />
-									{item.estimatedHours} С‡.
+									{item.estimatedHours} h
 								</Badge>
 							{/if}
 
@@ -255,10 +255,10 @@
 
 							<Badge variant="default" size="sm" class={state.itemBadgeClass}>
 								{item.status === 'todo'
-									? 'Рљ РІС‹РїРѕР»РЅРµРЅРёСЋ'
+									? 'To do'
 									: item.status === 'in-progress'
-										? 'Р’ СЂР°Р±РѕС‚Рµ'
-										: 'Р’С‹РїРѕР»РЅРµРЅРѕ'}
+										? 'In progress'
+										: 'Done'}
 							</Badge>
 
 							<Badge variant="default" size="sm" class={state.itemBadgeClass}>
@@ -271,12 +271,10 @@
 							<Button
 								variant="secondary"
 								size="sm"
-								onclick={() => {
-									if (onItemUpdate) onItemUpdate(item);
-								}}
+								onclick={() => state.startItemEdit(item)}
 								class={state.itemActionButtonClass}
 							>
-								РР·РјРµРЅРёС‚СЊ
+								Edit
 							</Button>
 							<Button
 								variant="danger"
@@ -286,7 +284,7 @@
 								}}
 								class={state.itemActionButtonClass}
 							>
-								РЈРґР°Р»РёС‚СЊ
+								Delete
 							</Button>
 						</div>
 					</div>

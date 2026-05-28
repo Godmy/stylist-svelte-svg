@@ -17,10 +17,13 @@
 		availableJoints?: readonly string[];
 		entities?: DomainSidebarEntity[];
 		activeEntityPath?: string;
+		draggableEntities?: boolean;
 		onDomainSelect?: (name: string) => void;
 		onClusterSelect?: (name: string) => void;
 		onJointSelect?: (name: string) => void;
 		onEntitySelect?: (path: string) => void;
+		onEntityAdd?: (path: string) => void;
+		onEntityDragStart?: (entity: DomainSidebarEntity, event: DragEvent) => void;
 		class?: string;
 	}
 
@@ -31,10 +34,13 @@
 		availableJoints,
 		entities = [],
 		activeEntityPath,
+		draggableEntities = false,
 		onDomainSelect,
 		onClusterSelect,
 		onJointSelect,
 		onEntitySelect,
+		onEntityAdd,
+		onEntityDragStart,
 		class: className = ''
 	}: DomainSidebarProps = $props();
 </script>
@@ -57,7 +63,14 @@
 			onSelect={onJointSelect}
 		/>
 
-		<DomainList {entities} activePath={activeEntityPath} onSelect={onEntitySelect} />
+		<DomainList
+			{entities}
+			activePath={activeEntityPath}
+			draggable={draggableEntities}
+			onSelect={onEntitySelect}
+			onAdd={onEntityAdd}
+			onDragStart={onEntityDragStart}
+		/>
 	</div>
 </aside>
 

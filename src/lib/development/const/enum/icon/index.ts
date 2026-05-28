@@ -1,5 +1,8 @@
 export const TOKEN_DEVELOPMENT_ICON = [
 	'atomic-principles-showcase',
+	'backlog-status-done',
+	'backlog-status-progress',
+	'backlog-status-todo',
 	'chevron-right',
 	'code',
 	'code-block',

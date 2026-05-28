@@ -5,11 +5,13 @@
 	interface DomainMenuProps {
 		landingVisible?: boolean;
 		domainVisible?: boolean;
+		builderOpen?: boolean;
 		backlogOpen?: boolean;
 		dashboardOpen?: boolean;
 		settingsOpen?: boolean;
 		onLandingToggle?: () => void;
 		onDomainToggle?: () => void;
+		onBuilderToggle?: () => void;
 		onBacklogToggle?: () => void;
 		onDashboardToggle?: () => void;
 		onSettingsToggle?: () => void;
@@ -19,11 +21,13 @@
 	let {
 		landingVisible = false,
 		domainVisible = true,
+		builderOpen = false,
 		backlogOpen = false,
 		dashboardOpen = false,
 		settingsOpen = false,
 		onLandingToggle,
 		onDomainToggle,
+		onBuilderToggle,
 		onBacklogToggle,
 		onDashboardToggle,
 		onSettingsToggle,
@@ -54,6 +58,18 @@
 		title="Show domain"
 	>
 		<Icon name="domain" size={18} />
+	</button>
+
+	<button
+		type="button"
+		class:active={builderOpen}
+		class="menu-button menu-button--icon"
+		onclick={onBuilderToggle}
+		aria-pressed={builderOpen}
+		aria-label="Constructor"
+		title="Constructor"
+	>
+		<Icon name="page-builder" size={18} />
 	</button>
 
 	<button

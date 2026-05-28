@@ -1,6 +1,6 @@
 export class BurnDownChartStyleManager {
 	static getContainerClass(): string {
-		return 'c-burn-down-chart chart-container';
+		return 'c-burn-down-chart chart-container w-full';
 	}
 
 	static getTitleClass(): string {
@@ -8,7 +8,7 @@ export class BurnDownChartStyleManager {
 	}
 
 	static getSvgClass(): string {
-		return 'rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]';
+		return 'w-full rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]';
 	}
 
 	static getGridLineClass(): string {

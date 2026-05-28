@@ -9,7 +9,6 @@
 	import { commentThreadSubmitComment } from '$stylist/social/function/script/comment-thread';
 	import { commentThreadSubmitEdit } from '$stylist/social/function/script/comment-thread-submit-edit';
 	import { commentThreadSubmitReply } from '$stylist/social/function/script/comment-thread-submit-reply';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { createCommentThreadState } from '$stylist/social/function/state/comment-thread';
 
 	let props: CommentThreadProps = $props();
@@ -19,10 +18,7 @@
 <div class={state.wrapperClass} {...props}>
 	{#if props.showTitle}
 		<div class={state.headerClass}>
-			<BaseIcon
-				name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'message-circle') ?? 'message-circle'}
-				class="mr-2 h-5 w-5 text-[--color-text-secondary]"
-			/>
+			<BaseIcon name="message-circle" class="mr-2 h-5 w-5 text-[--color-text-secondary]" />
 			<h3 class="text-lg font-medium text-[--color-text-primary]">{props.title ?? 'Comments'}</h3>
 		</div>
 	{/if}
@@ -32,10 +28,7 @@
 			<div
 				class="flex h-8 w-8 items-center justify-center rounded-full bg-[--color-background-secondary]"
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'user') ?? 'user'}
-					class="h-5 w-5 text-[--color-text-secondary]"
-				/>
+				<BaseIcon name="user" class="h-5 w-5 text-[--color-text-secondary]" />
 			</div>
 			<div class="flex-1">
 				<textarea
@@ -127,10 +120,7 @@
 												state.replyTexts[comment.id] = '';
 										}}
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'reply') ?? 'reply'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="reply" class="h-4 w-4" />
 										<span class="ml-1">Reply</span>
 									</button>
 								{/if}
@@ -140,10 +130,7 @@
 										class={state.actionButtonClass}
 										onclick={() => state.startEditing(comment.id, comment.content)}
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'edit-3') ?? 'edit-3'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="edit-3" class="h-4 w-4" />
 										<span class="ml-1">Edit</span>
 									</button>
 									<button
@@ -151,19 +138,12 @@
 										class="flex items-center text-sm text-[--color-danger-600]"
 										onclick={() => props.onDelete?.(comment.id)}
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'trash-2') ?? 'trash-2'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="trash-2" class="h-4 w-4" />
 										<span class="ml-1">Delete</span>
 									</button>
 								{/if}
 								<button type="button" class="text-[--color-text-secondary]">
-									<BaseIcon
-										name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'more-horizontal') ??
-											'more-horizontal'}
-										class="h-4 w-4"
-									/>
+									<BaseIcon name="more-horizontal" class="h-4 w-4" />
 								</button>
 							</div>
 
@@ -190,10 +170,7 @@
 										onclick={() => state.submitReply(comment.id)}
 										disabled={!state.replyTexts[comment.id]?.trim()}
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'send') ?? 'send'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="send" class="h-4 w-4" />
 									</button>
 								</div>
 							{/if}

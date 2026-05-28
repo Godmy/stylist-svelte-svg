@@ -2,7 +2,6 @@
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { Avatar } from '$lib';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { socialActivityFeedFormatTime } from '$stylist/social/function/script/social-activity-feed-format-time';
 	import { socialActivityFeedGetDescription } from '$stylist/social/function/script/social-activity-feed-get-description';
 	import { createSocialActivityFeedState } from '$stylist/social/function/state/social-activity-feed';
@@ -16,10 +15,7 @@
 	<div class={`border-b border-[var(--color-border-primary)] p-4 ${state.headerClass}`}>
 		<div class="flex items-center justify-between">
 			<div class="flex items-center">
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'activity') ?? 'activity'}
-					class="mr-2 h-5 w-5 text-[var(--color-text-secondary)]"
-				/>
+				<BaseIcon name="activity" class="mr-2 h-5 w-5 text-[var(--color-text-secondary)]" />
 				<h2 class="text-lg font-medium text-[var(--color-text-primary)]">Activity Feed</h2>
 
 				{#if props.showReadStatus && state.unreadCount > 0}
@@ -65,10 +61,7 @@
 	<div class="divide-y divide-gray-200">
 		{#if state.filteredActivities.length === 0}
 			<div class="py-8 text-center">
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'activity') ?? 'activity'}
-					class="mx-auto h-12 w-12 text-[var(--color-text-tertiary)]"
-				/>
+				<BaseIcon name="activity" class="mx-auto h-12 w-12 text-[var(--color-text-tertiary)]" />
 				<h3 class="mt-2 text-sm font-medium text-[var(--color-text-primary)]">No activities</h3>
 				<p class="mt-1 text-sm text-[var(--color-text-secondary)]">
 					When activities happen, they'll appear here.
@@ -105,21 +98,14 @@
 									{activity.actor.name}
 									{#if activity.actor.isVerified}
 										<span class="ml-1 text-[var(--color-primary-600)]">
-											<BaseIcon
-												name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'check-circle') ??
-													'check-circle'}
-												class="inline h-4 w-4"
-											/>
+											<BaseIcon name="check-circle" class="inline h-4 w-4" />
 										</span>
 									{/if}
 								</p>
 
 								{#if props.showTimestamp}
 									<div class="flex items-center">
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'clock') ?? 'clock'}
-											class="mr-1 h-4 w-4 text-[var(--color-text-tertiary)]"
-										/>
+										<BaseIcon name="clock" class="mr-1 h-4 w-4 text-[var(--color-text-tertiary)]" />
 										<span class="text-xs text-[var(--color-text-secondary)]">
 											{socialActivityFeedFormatTime(activity.timestamp, props.locale)}
 										</span>
@@ -148,10 +134,7 @@
 									}}
 								>
 									View related content
-									<BaseIcon
-										name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'arrow-right') ?? 'arrow-right'}
-										class="ml-1 h-4 w-4"
-									/>
+									<BaseIcon name="arrow-right" class="ml-1 h-4 w-4" />
 								</a>
 							{/if}
 						</div>
@@ -168,10 +151,7 @@
 										}}
 										aria-label="Mark as unread"
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'check') ?? 'check'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="check" class="h-4 w-4" />
 									</button>
 								{:else}
 									<button
@@ -183,10 +163,7 @@
 										}}
 										aria-label="Mark as read"
 									>
-										<BaseIcon
-											name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'circle') ?? 'circle'}
-											class="h-4 w-4"
-										/>
+										<BaseIcon name="circle" class="h-4 w-4" />
 									</button>
 								{/if}
 							{/if}
@@ -200,11 +177,7 @@
 								}}
 								aria-label="More options"
 							>
-								<BaseIcon
-									name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'more-horizontal') ??
-										'more-horizontal'}
-									class="h-4 w-4"
-								/>
+								<BaseIcon name="more-horizontal" class="h-4 w-4" />
 							</button>
 						</div>
 					</div>

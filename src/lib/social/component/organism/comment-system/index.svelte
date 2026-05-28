@@ -3,7 +3,6 @@
 	import { Button } from '$lib';
 	import type { SlotCommentSystem as CommentSystemProps } from '$stylist/social/interface/slot/comment-system';
 	import type { SlotCommentItem as CommentItem } from '$stylist/social/interface/slot/comment-item';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { createCommentSystemState } from '$stylist/social/function/state/comment-system';
 
 	let props: CommentSystemProps = $props();
@@ -27,10 +26,7 @@
 					<div
 						class="flex h-10 w-10 items-center justify-center rounded-full bg-[--color-background-secondary]"
 					>
-						<BaseIcon
-							name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'user') ?? 'user'}
-							class="h-5 w-5 text-[--color-text-secondary]"
-						/>
+						<BaseIcon name="user" class="h-5 w-5 text-[--color-text-secondary]" />
 					</div>
 				{/if}
 			</div>
@@ -95,10 +91,7 @@
 							class={`flex items-center space-x-1 ${comment.isLiked ? 'text-[--color-primary-600]' : ''}`}
 							onclick={() => props.onCommentLike?.(comment.id, true)}
 						>
-							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'thumbs-up') ?? 'thumbs-up'}
-								class="h-4 w-4"
-							/>
+							<BaseIcon name="thumbs-up" class="h-4 w-4" />
 							<span>{comment.likes ?? 0}</span>
 						</button>
 					{/if}
@@ -108,10 +101,7 @@
 							class={`flex items-center space-x-1 ${comment.isDisliked ? 'text-[--color-danger-600]' : ''}`}
 							onclick={() => props.onCommentLike?.(comment.id, false)}
 						>
-							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'thumbs-down') ?? 'thumbs-down'}
-								class="h-4 w-4"
-							/>
+							<BaseIcon name="thumbs-down" class="h-4 w-4" />
 							<span>{comment.dislikes ?? 0}</span>
 						</button>
 					{/if}
@@ -121,10 +111,7 @@
 							class="flex items-center space-x-1"
 							onclick={() => state.toggleReplyForm(comment.id)}
 						>
-							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'reply') ?? 'reply'}
-								class="h-4 w-4"
-							/>
+							<BaseIcon name="reply" class="h-4 w-4" />
 							<span>{state.showReplyForm[comment.id] ? 'Cancel reply' : 'Reply'}</span>
 						</button>
 					{/if}
@@ -137,10 +124,7 @@
 								state.editContent = comment.content;
 							}}
 						>
-							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'edit-3') ?? 'edit-3'}
-								class="h-4 w-4"
-							/>
+							<BaseIcon name="edit-3" class="h-4 w-4" />
 							<span>Edit</span>
 						</button>
 					{/if}
@@ -150,19 +134,12 @@
 							class="flex items-center space-x-1 text-[--color-danger-600]"
 							onclick={() => props.onCommentDelete?.(comment.id)}
 						>
-							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'trash-2') ?? 'trash-2'}
-								class="h-4 w-4"
-							/>
+							<BaseIcon name="trash-2" class="h-4 w-4" />
 							<span>Delete</span>
 						</button>
 					{/if}
 					<button type="button" class="flex items-center">
-						<BaseIcon
-							name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'more-horizontal') ??
-								'more-horizontal'}
-							class="h-4 w-4"
-						/>
+						<BaseIcon name="more-horizontal" class="h-4 w-4" />
 					</button>
 				</div>
 
@@ -190,10 +167,7 @@
 								onclick={() => state.submitReply(comment.id)}
 								disabled={!state.replyContent.trim()}
 							>
-								<BaseIcon
-									name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'send') ?? 'send'}
-									class="mr-1 h-4 w-4"
-								/>Reply
+								<BaseIcon name="send" class="mr-1 h-4 w-4" />Reply
 							</Button>
 						</div>
 					</div>
@@ -228,10 +202,7 @@
 					onclick={() => state.submitComment()}
 					disabled={!state.newComment.trim()}
 				>
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'message-circle') ?? 'message-circle'}
-						class="mr-2 h-4 w-4"
-					/>
+					<BaseIcon name="message-circle" class="mr-2 h-4 w-4" />
 					Comment
 				</button>
 			</div>

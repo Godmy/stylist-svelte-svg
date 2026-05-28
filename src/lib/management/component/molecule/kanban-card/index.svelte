@@ -24,7 +24,7 @@
 	class={state.containerClasses}
 	class:drag-handle={state.draggable}
 	class:ring-2={state.selected}
-	class:ring-cyan-500={state.selected}
+	class:ring-[var(--color-primary-500)]={state.selected}
 	draggable={state.draggable}
 	role="listitem"
 	ondragstart={props.ondragstart}
@@ -45,7 +45,7 @@
 					/>
 					<button
 						type="button"
-						class="text-emerald-600 hover:text-emerald-700"
+						class="text-[var(--color-success-600)] hover:text-[var(--color-success-700)]"
 						onclick={state.commitTitleEdit}
 						aria-label="Save title"
 					>
@@ -63,7 +63,7 @@
 			{:else}
 				<button
 					type="button"
-					class="max-w-full truncate text-left font-semibold text-[var(--color-text-primary)] transition-colors hover:text-cyan-700"
+					class="max-w-full truncate text-left font-semibold text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-primary-700)]"
 					ondblclick={state.startTitleEdit}
 					onclick={(e) => {
 						if (e.altKey) state.startTitleEdit();
@@ -119,7 +119,7 @@
 		{#if state.editable}
 			<button
 				type="button"
-				class="mr-2 text-[var(--color-text-tertiary)] transition-colors hover:text-cyan-600"
+				class="mr-2 text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-primary-600)]"
 				onclick={state.startTitleEdit}
 				aria-label="Edit card"
 			>
@@ -129,7 +129,7 @@
 		{#if state.archivable}
 			<button
 				type="button"
-				class="hover:text-COLOR_AMBER-600 mr-2 text-[var(--color-text-tertiary)] transition-colors"
+				class="mr-2 text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-warning-600)]"
 				onclick={() => props.onArchive?.()}
 				aria-label="Archive card"
 			>
@@ -139,7 +139,7 @@
 		{#if state.deletable}
 			<button
 				type="button"
-				class="mr-2 text-[var(--color-text-tertiary)] transition-colors hover:text-rose-600"
+				class="mr-2 text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-danger-600)]"
 				onclick={() => props.onDelete?.()}
 				aria-label="Delete card"
 			>

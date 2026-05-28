@@ -1,5 +1,4 @@
 import { InteractionInputStyleManager } from '$stylist/input/class/style-manager/interaction-input';
-import { TOKEN_LOCALIZATION_ICON } from '$stylist/localization/const/enum/icon';
 import type { TranslatableText } from '$stylist/input/type/struct/interaction-input/translatable-text';
 import type { TranslationEditorStateProps } from '$stylist/localization/interface/recipe/translation-editor';
 
@@ -73,22 +72,22 @@ export function createTranslationEditorState(props: TranslationEditorStateProps)
 	return {
 		// Icons
 		get iconDownload() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'download') ?? 'download';
+			return 'download';
 		},
 		get iconEdit() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'edit-3') ?? 'edit-3';
+			return 'edit-3';
 		},
 		get iconLanguages() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'languages') ?? 'languages';
+			return 'languages';
 		},
 		get iconSave() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'save') ?? 'save';
+			return 'save';
 		},
 		get iconTrash() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'trash-2') ?? 'trash-2';
+			return 'trash-2';
 		},
 		get iconUpload() {
-			return TOKEN_LOCALIZATION_ICON.find((icon) => icon === 'upload') ?? 'upload';
+			return 'upload';
 		},
 		get texts() {
 			return texts;

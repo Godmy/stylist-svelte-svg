@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { PostCard } from '$stylist/commerce';
 	import { createSocialFeedState } from '$stylist/social/function/state/social-feed';
 	import type { Props, Post } from '$stylist/social/type/struct/social-feed';
@@ -18,10 +17,7 @@
 			{#if props.showSearch}
 				<div class="relative w-64">
 					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-						<BaseIcon
-							name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'search') ?? 'search'}
-							class="h-5 w-5 text-[var(--color-text-tertiary)]"
-						/>
+						<BaseIcon name="search" class="h-5 w-5 text-[var(--color-text-tertiary)]" />
 					</div>
 					<input
 						type="text"
@@ -66,10 +62,7 @@
 					<div
 						class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-background-tertiary)]"
 					>
-						<BaseIcon
-							name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'user') ?? 'user'}
-							class="h-6 w-6 text-[var(--color-text-secondary)]"
-						/>
+						<BaseIcon name="user" class="h-6 w-6 text-[var(--color-text-secondary)]" />
 					</div>
 				{/if}
 
@@ -128,10 +121,7 @@
 				<div
 					class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-background-secondary)]"
 				>
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'message-circle') ?? 'message-circle'}
-						class="h-6 w-6 text-[var(--color-text-tertiary)]"
-					/>
+					<BaseIcon name="message-circle" class="h-6 w-6 text-[var(--color-text-tertiary)]" />
 				</div>
 				<h3 class="mt-2 text-sm font-medium text-[var(--color-text-primary)]">No posts</h3>
 				<p class="mt-1 text-sm text-[var(--color-text-secondary)]">

@@ -45,7 +45,6 @@
 				{activeFilePath}
 				previewMode={values.previewMode as any}
 				previewKind={values.previewKind as any}
-				activeFamily="clickable"
 				onFileSelect={(path) => {
 					activeFilePath = path;
 					actionLabel = `file: ${path.split('/').pop()}`;
@@ -58,12 +57,6 @@
 				}}
 				onJsonTreeSelect={() => {
 					actionLabel = 'json-tree';
-				}}
-				onOpenBacklog={() => {
-					actionLabel = 'manual entry';
-				}}
-				onRefineAppearance={() => {
-					actionLabel = 'refine appearance';
 				}}
 			/>
 			<p class="text-sm text-slate-500">Last action: {actionLabel}</p>

@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { BacklogViewTabs } from './backlog-view-tabs/index';
 export { BurnDownChart } from './burn-down-chart/index';
 export { DraggableCard } from './draggable-card/index';
 export { KanbanCard } from './kanban-card/index';

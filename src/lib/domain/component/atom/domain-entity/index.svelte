@@ -4,10 +4,22 @@
 		path: string;
 		fileCount?: number;
 		active?: boolean;
+		draggable?: boolean;
 		onSelect?: (path: string) => void;
+		onAdd?: (path: string) => void;
+		onDragStart?: (event: DragEvent) => void;
 	}
 
-	let { name, path, fileCount, active = false, onSelect }: DomainEntityProps = $props();
+	let {
+		name,
+		path,
+		fileCount,
+		active = false,
+		draggable = false,
+		onSelect,
+		onAdd,
+		onDragStart
+	}: DomainEntityProps = $props();
 </script>
 
 <button
@@ -15,7 +27,10 @@
 	class="c-domain-entity"
 	class:is-active={active}
 	title={path}
+	draggable={draggable}
+	ondragstart={onDragStart}
 	onclick={() => onSelect?.(path)}
+	ondblclick={() => onAdd?.(path)}
 >
 	<span class="entity-name">{name}</span>
 	{#if fileCount != null}

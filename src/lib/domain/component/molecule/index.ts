@@ -1,11 +1,13 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { ClusterToolbar } from './cluster-toolbar/index';
+export { DomainDescriptorPanel } from './domain-descriptor-panel/index';
 export { DomainLandingFeatureGrid } from './domain-landing-feature-grid/index';
 export { DomainLandingHeroPanel } from './domain-landing-hero-panel/index';
 export { DomainLandingHero } from './domain-landing-hero/index';
 export { DomainLandingMetrics } from './domain-landing-metrics/index';
 export { DomainList } from './domain-list/index';
 export { DomainMenu } from './domain-menu/index';
+export { DomainSearch } from './domain-search/index';
 export { DomainToolbar } from './domain-toolbar/index';
 export { FunctionalTaxonomy } from './functional-taxonomy/index';
 export { JointTabButtons } from './joint-tab-buttons/index';

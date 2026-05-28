@@ -1,5 +1,13 @@
 type PreviewMode = 'file' | 'markdown' | 'story' | 'json-tree';
 type StoryModule = { default: unknown };
+type BacklogSaveMode = 'append' | 'replace';
+
+interface BacklogDialogOptions {
+	title?: string;
+	placeholder?: string;
+	draft?: string;
+	saveMode?: BacklogSaveMode;
+}
 
 interface DomainFile {
 	name: string;
@@ -32,6 +40,17 @@ interface DomainPageInput {
 	storyModules: Record<string, () => Promise<StoryModule>>;
 }
 
+interface SearchDomainEntry {
+	id: string;
+	domain: string;
+	cluster: string;
+	joint: string;
+	family: string;
+	entityPath: string;
+	filePath: string;
+	searchText: string;
+}
+
 export function createDomainPageState(input: DomainPageInput) {
 	const { tree, storyModules } = input;
 
@@ -48,10 +67,13 @@ export function createDomainPageState(input: DomainPageInput) {
 	let storyPreviewLoading = $state(false);
 	let storyPreviewError = $state('');
 	let backlogDialogOpen = $state(false);
+	let backlogDialogTitle = $state('Backlog note');
+	let backlogDialogPlaceholder = $state('');
 	let backlogDraft = $state('');
 	let backlogLoading = $state(false);
 	let backlogSaving = $state(false);
 	let backlogError = $state('');
+	let backlogSaveMode = $state<BacklogSaveMode>('append');
 
 	const activeDomainNode = $derived(tree.find((d) => d.name === activeDomain));
 	const activeClusterNode = $derived(
@@ -77,6 +99,34 @@ export function createDomainPageState(input: DomainPageInput) {
 		if (activeFilePath.endsWith('.json')) return 'json';
 		return 'text';
 	});
+	const searchEntries = $derived.by<SearchDomainEntry[]>(() =>
+		tree.flatMap((domainNode) =>
+			domainNode.clusters.flatMap((clusterNode) =>
+				clusterNode.joints.flatMap((jointNode) =>
+					jointNode.entities.map((entity) => ({
+						id: `${domainNode.name}/${clusterNode.name}/${jointNode.name}/${entity.path}`,
+						domain: domainNode.name,
+						cluster: clusterNode.name,
+						joint: jointNode.name,
+						family: entity.name,
+						entityPath: entity.path,
+						filePath: entity.files[0]?.path ?? '',
+						searchText: [
+							domainNode.name,
+							clusterNode.name,
+							jointNode.name,
+							entity.name,
+							entity.path,
+							...entity.files.map((file) => file.name),
+							...entity.files.map((file) => file.path)
+						]
+							.join(' ')
+							.toLowerCase()
+					}))
+				)
+			)
+		)
+	);
 
 	$effect(() => {
 		if (!activeDomainNode) return;
@@ -259,25 +309,44 @@ export function createDomainPageState(input: DomainPageInput) {
 		previewMode = 'json-tree';
 	}
 
-	async function openBacklogDialog() {
+	function selectSearchEntry(entryId: string) {
+		const entry = searchEntries.find((candidate) => candidate.id === entryId);
+		if (!entry) return;
+
+		activeDomain = entry.domain;
+		activeCluster = entry.cluster;
+		activeJoint = entry.joint;
+		activeEntityPath = entry.entityPath;
+		activeFilePath = entry.filePath;
+		previewMode = 'file';
+	}
+
+	function createBacklogDraft(issue: string): string {
+		const lines = [
+			`- ${issue}`,
+			`  domain: ${activeDomain || '-'}`,
+			`  cluster: ${activeCluster || '-'}`,
+			`  joint: ${activeJoint || '-'}`,
+			`  family: ${activeFamily || '-'}`,
+			`  entity: ${activeEntityPath || '-'}`,
+			`  file: ${activeFilePath || '-'}`,
+			'  note: '
+		];
+
+		return lines.join('\n');
+	}
+
+	async function openBacklogDialog(options?: BacklogDialogOptions) {
 		if (!activeFamily) return;
 		backlogDialogOpen = true;
-		backlogDraft = '';
+		backlogDialogTitle = options?.title ?? 'Backlog note';
+		backlogDialogPlaceholder =
+			options?.placeholder ??
+			'Describe the problem or missing work. This note will be saved to the family backlog on disk.';
+		backlogDraft = options?.draft ?? '';
 		backlogError = '';
-		backlogLoading = true;
-		try {
-			const r = await fetch(`/content?path=${encodeURIComponent(backlogPath)}`);
-			if (r.ok) {
-				const p = await r.json();
-				backlogDraft = p.content ?? '';
-				return;
-			}
-			backlogDraft = '';
-		} catch (e) {
-			backlogError = e instanceof Error ? e.message : String(e);
-		} finally {
-			backlogLoading = false;
-		}
+		backlogSaveMode = options?.saveMode ?? 'append';
+		backlogLoading = false;
 	}
 
 	function closeBacklogDialog() {
@@ -289,13 +358,23 @@ export function createDomainPageState(input: DomainPageInput) {
 
 	async function saveBacklog() {
 		if (!activeFamily) return;
+		if (!backlogDraft.trim()) {
+			backlogError = 'Backlog note is empty.';
+			return;
+		}
+
 		backlogSaving = true;
 		backlogError = '';
 		try {
 			const r = await fetch('/content', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify({ domain: activeDomain, family: activeFamily, content: backlogDraft })
+				body: JSON.stringify({
+					domain: activeDomain,
+					family: activeFamily,
+					content: backlogDraft,
+					mode: backlogSaveMode
+				})
 			});
 			const p = await r.json();
 			if (!r.ok) throw new Error(p.error ?? 'Save failed');
@@ -347,6 +426,12 @@ export function createDomainPageState(input: DomainPageInput) {
 		get backlogDialogOpen() {
 			return backlogDialogOpen;
 		},
+		get backlogDialogTitle() {
+			return backlogDialogTitle;
+		},
+		get backlogDialogPlaceholder() {
+			return backlogDialogPlaceholder;
+		},
 		get backlogDraft() {
 			return backlogDraft;
 		},
@@ -392,6 +477,10 @@ export function createDomainPageState(input: DomainPageInput) {
 		get previewKind() {
 			return previewKind;
 		},
+		get searchEntries() {
+			return searchEntries;
+		},
+		createBacklogDraft,
 		handleDomainSelect,
 		handleClusterSelect,
 		handleJointSelect,
@@ -400,6 +489,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		handleMarkdownSelect,
 		handleStorySelect,
 		handleJsonTreeSelect,
+		selectSearchEntry,
 		openBacklogDialog,
 		closeBacklogDialog,
 		saveBacklog

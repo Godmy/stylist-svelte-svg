@@ -6,7 +6,6 @@
 		FRIEND_LIST_FRIEND,
 		FRIEND_LIST_PROPS
 	} from '$stylist/social/type/struct/friend-list';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import { friendListFormatLastSeen as formatLastSeen } from '$stylist/social/function/script/friend-list-format-last-seen';
 	import { friendListGetStatusColor as getStatusColor } from '$stylist/social/function/script/friend-list-get-status-color';
 	import { friendListGetStatusText as getStatusText } from '$stylist/social/function/script/friend-list-get-status-text';
@@ -75,10 +74,7 @@
 				}}
 				aria-label="Send message"
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'message-circle') ?? 'message-circle'}
-					class="h-5 w-5"
-				/>
+				<BaseIcon name="message-circle" class="h-5 w-5" />
 			</button>
 
 			<button
@@ -90,10 +86,7 @@
 				}}
 				aria-label="Make call"
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'phone') ?? 'phone'}
-					class="h-5 w-5"
-				/>
+				<BaseIcon name="phone" class="h-5 w-5" />
 			</button>
 
 			<button
@@ -105,10 +98,7 @@
 				}}
 				aria-label="Make video call"
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'video') ?? 'video'}
-					class="h-5 w-5"
-				/>
+				<BaseIcon name="video" class="h-5 w-5" />
 			</button>
 
 			<button
@@ -120,10 +110,7 @@
 				}}
 				aria-label="More options"
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'more-horizontal') ?? 'more-horizontal'}
-					class="h-5 w-5"
-				/>
+				<BaseIcon name="more-horizontal" class="h-5 w-5" />
 			</button>
 		</div>
 	</div>
@@ -143,10 +130,7 @@
 		{#if props.showSearch}
 			<div class="relative mt-4">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-					<BaseIcon
-						name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'search') ?? 'search'}
-						class="h-5 w-5 text-[var(--color-text-tertiary)]"
-					/>
+					<BaseIcon name="search" class="h-5 w-5 text-[var(--color-text-tertiary)]" />
 				</div>
 				<input
 					type="text"
@@ -192,10 +176,7 @@
 				class="flex w-full items-center justify-center rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] shadow-sm hover:bg-[var(--color-background-secondary)] focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 				onclick={state.handleAddFriendEvent}
 			>
-				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'user-plus') ?? 'user-plus'}
-					class="mr-2 h-5 w-5"
-				/>
+				<BaseIcon name="user-plus" class="mr-2 h-5 w-5" />
 				Add Friend
 			</button>
 		</div>

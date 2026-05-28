@@ -1,5 +1,6 @@
 <script lang="ts">
-	import DomainLanding from '$stylist/domain/component/organism/domain-landing/index.svelte';
+	import { DOMAIN_SCREEN_LANDING } from '$stylist/domain/const/value/domain-screen-landing';
+	import DomainWorkspaceShell from '$stylist/domain/component/organism/domain-workspace-shell/index.svelte';
 	import type { PageData } from './$types';
 
 	type StoryModule = { default: unknown };
@@ -12,4 +13,9 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<DomainLanding tree={data.tree} {storyModules} />
+<DomainWorkspaceShell
+	tree={data.tree}
+	descriptors={data.descriptors}
+	{storyModules}
+	initialScreen={DOMAIN_SCREEN_LANDING}
+/>

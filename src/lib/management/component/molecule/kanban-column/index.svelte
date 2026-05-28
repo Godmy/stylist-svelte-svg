@@ -78,7 +78,7 @@
 					/>
 					<button
 						type="button"
-						class="text-emerald-600 hover:text-emerald-700"
+						class="text-[var(--color-success-600)] hover:text-[var(--color-success-700)]"
 						onclick={state.commitTitleEdit}
 						aria-label="Save column title"
 					>
@@ -103,7 +103,7 @@
 				{#if state.editable && !state.isEditingTitle}
 					<button
 						type="button"
-						class="text-[var(--color-text-tertiary)] transition-colors hover:text-cyan-600"
+						class="text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-primary-600)]"
 						onclick={state.startTitleEdit}
 						aria-label="Edit column title"
 					>
@@ -137,7 +137,7 @@
 		{#each state.visibleCards as card, index (card.id)}
 			{#if state.dragOverIndex === index}
 				<div
-					class="h-2 animate-pulse rounded-full bg-cyan-300/80 ring-2 ring-cyan-200/70"
+					class="h-2 animate-pulse rounded-full border border-[var(--color-primary-400)]/60 bg-[var(--color-primary-500)]/22 ring-2 ring-[var(--color-primary-300)]/40"
 					aria-hidden="true"
 				></div>
 			{/if}
@@ -162,7 +162,7 @@
 
 		{#if state.dragOverIndex === state.visibleCards.length}
 			<div
-				class="h-2 animate-pulse rounded-full bg-cyan-300/80 ring-2 ring-cyan-200/70"
+				class="h-2 animate-pulse rounded-full border border-[var(--color-primary-400)]/60 bg-[var(--color-primary-500)]/22 ring-2 ring-[var(--color-primary-300)]/40"
 				aria-hidden="true"
 			></div>
 		{/if}
