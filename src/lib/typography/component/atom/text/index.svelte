@@ -8,6 +8,22 @@
 
 <span {...state.restProps} class={state.classes}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </span>
+
+<style>
+	.c-typography-text {
+		display: inline;
+		font-size: var(--text-size-md, 1rem);
+		color: var(--color-text-primary);
+	}
+
+	.c-typography-text--disabled {
+		color: var(--color-text-tertiary);
+	}
+
+	.c-typography-text--block {
+		display: block;
+	}
+</style>

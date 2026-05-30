@@ -1,5 +1,12 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 export class StyleManagerSmall {
 	static root(disabled: boolean, block: boolean, className?: string): string {
-		return `text-sm ${disabled ? 'text-[var(--color-text-tertiary)]' : 'text-[var(--color-text-secondary)]'} ${block ? 'block' : ''} ${className ?? ''}`.trim();
+		return mergeClassNames(
+			'c-typography-small',
+			disabled && 'c-typography-small--disabled',
+			block && 'c-typography-small--block',
+			className
+		);
 	}
 }

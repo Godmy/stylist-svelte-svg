@@ -1,9 +1,9 @@
-﻿/**
- * TextAreaControl вЂ” РјРЅРѕРіРѕСЃС‚СЂРѕС‡РЅРѕРµ РїРѕР»Рµ РІРІРѕРґР°..
+/**
+ * TextAreaControl represents a multi-line text input contract.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
- *   ICaptionSlot        (information) вЂ” caption (Caption)
+ * Composition:
+ *   SlotLabel        label content
+ *   SlotCaption      caption content
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';

@@ -1,6 +1,7 @@
 import type { SlotBacklogData as BacklogData } from '$stylist/management/interface/slot/backlog-data';
 import type { SlotBacklogItem as BacklogItem } from '$stylist/management/interface/slot/backlog-item';
 import type { SlotBurnDownData as BurnDownData } from '$stylist/management/interface/slot/burn-down-data';
+import type { SlotIssueMessage as IssueMessage } from '$stylist/management/interface/slot/issue-message';
 import type { KanbanBoardAction, KanbanBoardType } from '$stylist/management/type/struct/kanban-board';
 
 export function createDomainBacklogState(input: {
@@ -22,6 +23,12 @@ export function createDomainBacklogState(input: {
 	};
 
 	type PersistedBacklogDocument = {
+		meta?: {
+			domain?: string;
+			family?: string;
+			version?: number;
+			updatedAt?: string;
+		};
 		title?: string;
 		sprint?: {
 			name?: string;
@@ -36,15 +43,27 @@ export function createDomainBacklogState(input: {
 	let sprintStart = $state(new Date(2026, 4, 26));
 	let sprintEnd = $state(new Date(2026, 5, 1));
 	let items = $state<BacklogItem[]>([]);
+	let issues = $state<IssueMessage[]>([]);
 	let loading = $state(false);
 	let saving = $state(false);
 	let error = $state('');
 	let dirty = $state(false);
-	let path = $state('');
+	let saveStatus = $state<'idle' | 'dirty' | 'saving' | 'saved' | 'error'>('idle');
+	let sourcePath = $state('');
+	let resolvedPath = $state('');
+	let isFallback = $state(false);
+	let lastSavedAt = $state<Date | null>(null);
 	let requestId = 0;
+	let autosaveTimer: ReturnType<typeof setTimeout> | null = null;
 
 	function getFallbackDocument(domain: string, family: string): PersistedBacklogDocument {
 		return {
+			meta: {
+				domain,
+				family,
+				version: 1,
+				updatedAt: '2026-05-26T09:00:00.000Z'
+			},
 			title: `${domain} / ${family} backlog`,
 			sprint: {
 				name: 'Initial sprint',
@@ -81,7 +100,14 @@ export function createDomainBacklogState(input: {
 		return Number.isNaN(parsed.getTime()) ? fallback : parsed;
 	}
 
-	function applyDocument(document: PersistedBacklogDocument, nextPath: string): void {
+	function applyDocument(
+		document: PersistedBacklogDocument,
+		source: {
+			requestedPath: string;
+			resolvedPath: string;
+			isFallback: boolean;
+		}
+	): void {
 		const domain = input.getDomain();
 		const family = input.getFamily();
 		const fallback = getFallbackDocument(domain, family);
@@ -116,12 +142,25 @@ export function createDomainBacklogState(input: {
 				updatedAt
 			};
 		});
-		path = nextPath;
+		sourcePath = source.requestedPath;
+		resolvedPath = source.resolvedPath;
+		isFallback = source.isFallback;
+		lastSavedAt = document.meta?.updatedAt ? parseDate(document.meta.updatedAt, new Date()) : null;
 		dirty = false;
+		saveStatus = 'idle';
 	}
 
 	function serializeDocument(): PersistedBacklogDocument {
+		const domain = input.getDomain();
+		const family = input.getFamily();
+
 		return {
+			meta: {
+				domain,
+				family,
+				version: 1,
+				updatedAt: new Date().toISOString()
+			},
 			title,
 			sprint: {
 				name: sprintName,
@@ -146,6 +185,26 @@ export function createDomainBacklogState(input: {
 	function replaceItem(nextItem: BacklogItem): void {
 		items = items.map((item) => (item.id === nextItem.id ? nextItem : item));
 		dirty = true;
+		saveStatus = 'dirty';
+	}
+
+	async function loadIssues(): Promise<void> {
+		try {
+			const response = await fetch('/api/issues');
+			const payload = (await response.json()) as {
+				items?: IssueMessage[];
+				error?: string;
+			};
+
+			if (!response.ok) {
+				throw new Error(payload.error ?? 'Issues load failed');
+			}
+
+			issues = payload.items ?? [];
+		} catch (value) {
+			issues = [];
+			error = value instanceof Error ? value.message : String(value);
+		}
 	}
 
 	async function load(): Promise<void> {
@@ -159,11 +218,15 @@ export function createDomainBacklogState(input: {
 
 		try {
 			const response = await fetch(
-				`/backlog?domain=${encodeURIComponent(domain)}&family=${encodeURIComponent(family)}`
+				`/api/backlog?domain=${encodeURIComponent(domain)}&family=${encodeURIComponent(family)}`
 			);
 			const payload = (await response.json()) as {
 				document?: PersistedBacklogDocument;
-				path?: string;
+				source?: {
+					requestedPath?: string;
+					resolvedPath?: string;
+					isFallback?: boolean;
+				};
 				error?: string;
 			};
 
@@ -175,13 +238,26 @@ export function createDomainBacklogState(input: {
 				return;
 			}
 
-			applyDocument(payload.document ?? getFallbackDocument(domain, family), payload.path ?? '');
+			applyDocument(payload.document ?? getFallbackDocument(domain, family), {
+				requestedPath:
+					payload.source?.requestedPath ??
+					`management/data/json/component/backlog/${domain}--${family}.json`,
+				resolvedPath:
+					payload.source?.resolvedPath ??
+					`management/data/json/component/backlog/${domain}--${family}.json`,
+				isFallback: payload.source?.isFallback ?? false
+			});
 		} catch (value) {
 			if (activeRequestId !== requestId) {
 				return;
 			}
 			error = value instanceof Error ? value.message : String(value);
-			applyDocument(getFallbackDocument(domain, family), `management/data/json/component/backlog/${domain}--${family}.json`);
+			saveStatus = 'error';
+			applyDocument(getFallbackDocument(domain, family), {
+				requestedPath: `management/data/json/component/backlog/${domain}--${family}.json`,
+				resolvedPath: 'management/data/json/component/backlog/default.json',
+				isFallback: true
+			});
 		} finally {
 			if (activeRequestId === requestId) {
 				loading = false;
@@ -195,9 +271,10 @@ export function createDomainBacklogState(input: {
 
 		saving = true;
 		error = '';
+		saveStatus = 'saving';
 
 		try {
-			const response = await fetch('/backlog', {
+			const response = await fetch('/api/backlog', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
 				body: JSON.stringify({
@@ -206,16 +283,30 @@ export function createDomainBacklogState(input: {
 					document: serializeDocument()
 				})
 			});
-			const payload = (await response.json()) as { path?: string; error?: string };
+			const payload = (await response.json()) as {
+				source?: {
+					requestedPath?: string;
+					resolvedPath?: string;
+					isFallback?: boolean;
+				};
+				error?: string;
+			};
 
 			if (!response.ok) {
 				throw new Error(payload.error ?? 'Backlog save failed');
 			}
 
-			path = payload.path ?? path;
+			sourcePath =
+				payload.source?.requestedPath ??
+				`management/data/json/component/backlog/${domain}--${family}.json`;
+			resolvedPath = payload.source?.resolvedPath ?? sourcePath;
+			isFallback = payload.source?.isFallback ?? false;
+			lastSavedAt = new Date();
 			dirty = false;
+			saveStatus = 'saved';
 		} catch (value) {
 			error = value instanceof Error ? value.message : String(value);
+			saveStatus = 'error';
 		} finally {
 			saving = false;
 		}
@@ -223,16 +314,17 @@ export function createDomainBacklogState(input: {
 
 	function handleBacklogToggle(): Promise<void> {
 		input.onOpen();
-		return load();
+		return Promise.allSettled([load(), loadIssues()]).then(() => undefined);
 	}
 
 	function handleReload(): Promise<void> {
-		return load();
+		return Promise.allSettled([load(), loadIssues()]).then(() => undefined);
 	}
 
 	function handleItemAdd(item: BacklogItem): void {
 		items = [...items, { ...item, updatedAt: new Date() }];
 		dirty = true;
+		saveStatus = 'dirty';
 	}
 
 	function handleItemUpdate(item: BacklogItem): void {
@@ -242,6 +334,7 @@ export function createDomainBacklogState(input: {
 	function handleItemDelete(id: string): void {
 		items = items.filter((item) => item.id !== id);
 		dirty = true;
+		saveStatus = 'dirty';
 	}
 
 	function handleBoardChange(nextBoard: KanbanBoardType, action: KanbanBoardAction): void {
@@ -274,10 +367,60 @@ export function createDomainBacklogState(input: {
 
 		items = updatedItems;
 		dirty = true;
+		saveStatus = 'dirty';
 
 		if (action.type === 'delete-card') {
 			items = updatedItems.filter((item) => item.id !== action.cardId);
 		}
+	}
+
+	async function handleIssuesMoveToBacklog(selectedIssues: IssueMessage[]): Promise<void> {
+		const response = await fetch('/api/backlog-issue', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json' },
+			body: JSON.stringify({
+				issues: selectedIssues
+			})
+		});
+		const payload = (await response.json()) as { error?: string };
+
+		if (!response.ok) {
+			throw new Error(payload.error ?? 'Issue backlog write failed');
+		}
+
+		const existingIds = new Set(items.map((item) => item.id));
+		const nextItems = selectedIssues
+			.filter(
+				(issue) =>
+					!existingIds.has(`issue:${issue.message_key ?? `${issue.id}::${issue.text}`}`)
+			)
+			.map((issue) => {
+				const timestamp = new Date(issue.created_at);
+				const issueKey = issue.message_key ?? `${issue.id}::${issue.text}`;
+
+				return {
+					id: `issue:${issueKey}`,
+					title: issue.id.split('/').at(-1) ?? issue.id,
+					description: issue.text,
+					assignee: '',
+					priority: 'medium',
+					estimatedHours: 2,
+					status: 'todo',
+					tags: ['issue'],
+					createdAt: timestamp,
+					updatedAt: new Date()
+				} satisfies BacklogItem;
+			});
+
+		if (nextItems.length === 0) {
+			await loadIssues();
+			return;
+		}
+
+		items = [...nextItems, ...items];
+		dirty = true;
+		saveStatus = 'dirty';
+		await loadIssues();
 	}
 
 	const backlogData = $derived.by<BacklogData>(() => ({
@@ -337,6 +480,36 @@ export function createDomainBacklogState(input: {
 		};
 	});
 
+	$effect(() => {
+		if (autosaveTimer) {
+			clearTimeout(autosaveTimer);
+			autosaveTimer = null;
+		}
+
+		if (!dirty || loading || saving) {
+			return;
+		}
+
+		autosaveTimer = setTimeout(() => {
+			void save();
+		}, 1400);
+
+		return () => {
+			if (autosaveTimer) {
+				clearTimeout(autosaveTimer);
+				autosaveTimer = null;
+			}
+		};
+	});
+
+	const sourceLabel = $derived.by(() => {
+		if (!sourcePath) {
+			return '';
+		}
+
+		return isFallback ? `${sourcePath} (fallback: ${resolvedPath})` : sourcePath;
+	});
+
 	return {
 		get title() {
 			return title;
@@ -345,7 +518,7 @@ export function createDomainBacklogState(input: {
 			return sprintName;
 		},
 		get path() {
-			return path;
+			return sourcePath;
 		},
 		get loading() {
 			return loading;
@@ -359,8 +532,23 @@ export function createDomainBacklogState(input: {
 		get dirty() {
 			return dirty;
 		},
+		get saveStatus() {
+			return saveStatus;
+		},
+		get sourceLabel() {
+			return sourceLabel;
+		},
+		get isFallback() {
+			return isFallback;
+		},
+		get lastSavedAt() {
+			return lastSavedAt;
+		},
 		get backlogData() {
 			return backlogData;
+		},
+		get issues() {
+			return issues;
 		},
 		get kanbanBoard() {
 			return kanbanBoard;
@@ -373,6 +561,7 @@ export function createDomainBacklogState(input: {
 		handleItemAdd,
 		handleItemUpdate,
 		handleItemDelete,
+		handleIssuesMoveToBacklog,
 		handleBoardChange,
 		save
 	};

@@ -2,7 +2,7 @@
 	import type { GraphToolbarProps } from '$stylist/science/type/struct/graph/graph-toolbar-props';
 	import { createGraphToolbarState } from '$stylist/science/function/state/graph-toolbar';
 	import { IconButton } from '$stylist/control';
-	import { Separator } from '$stylist/typography';
+	import { Separator } from '$stylist/layout';
 
 	let props: GraphToolbarProps = $props();
 	const state = createGraphToolbarState(props);

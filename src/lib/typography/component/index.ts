@@ -1,2 +1,3 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { Abbr, AnimatedNumber, Badge, BadgeGroup, Blockquote, Caption, CountBadge, Counter, DefinitionDescription, DefinitionTerm, Dot, Em, Heading, Highlight, InlineCode, Kbd, Link, ListItemMarker, NodeDot, NpmBadge, NumberFlow, Paragraph, Separator, Small, StatusIndicator, StrikeThrought, Strong, Subscript, Superscript, Text } from './atom';
+export { Abbr, Badge, Blockquote, Caption, CountBadge, DefinitionDescription, DefinitionTerm, Em, Heading, Highlight, InlineCode, Kbd, Link, NpmBadge, Small, StatusIndicator, StrikeThrought, Strong, Subscript, Superscript, Text } from './atom';
+export { BadgeGroup, Paragraph } from './molecule';

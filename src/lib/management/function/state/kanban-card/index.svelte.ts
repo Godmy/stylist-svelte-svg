@@ -73,7 +73,7 @@ export function createKanbanCardState(props: KanbanCardStateProps) {
 	}
 
 	const containerClasses = $derived(
-		`c-kanban-card group relative rounded-xl border border-[--color-border-secondary]/80 bg-[--color-background-primary]/95 p-4 cursor-pointer transition-all duration-[var(--duration-200)] hover:-translate-y-[1px] hover:shadow-[0_14px_26px_-18px_color-mix(in srgb, var(--color-info-600) 55%, transparent)] before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-full ${getPriorityAccentClass(card.priority)}`
+		`c-kanban-card group relative rounded-xl border border-[color:var(--color-border-secondary)] bg-[--color-background-primary]/95 p-4 cursor-pointer transition-all duration-[var(--duration-200)] hover:-translate-y-[1px] hover:border-[color:color-mix(in_srgb,var(--color-primary-500)_38%,var(--color-border-secondary)_62%)] hover:shadow-[0_14px_26px_-18px_color-mix(in_srgb,var(--color-info-600)_55%,transparent)] before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-full ${getPriorityAccentClass(card.priority)}`
 	);
 
 	return {

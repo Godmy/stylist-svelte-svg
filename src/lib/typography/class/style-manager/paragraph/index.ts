@@ -1,5 +1,12 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 export class StyleManagerParagraph {
 	static root(disabled: boolean, block: boolean, className?: string): string {
-		return `text-base ${disabled ? 'text-[var(--color-text-tertiary)]' : 'text-[var(--color-text-primary)]'} ${block ? 'block' : ''} ${className ?? ''}`.trim();
+		return mergeClassNames(
+			'c-typography-paragraph',
+			disabled && 'c-typography-paragraph--disabled',
+			block && 'c-typography-paragraph--block',
+			className
+		);
 	}
 }

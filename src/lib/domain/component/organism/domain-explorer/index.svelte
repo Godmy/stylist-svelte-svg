@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 	import DomainSearch from '$stylist/domain/component/molecule/domain-search/index.svelte';
+	import { DOMAIN_COMPONENT_DEBUG_ERROR } from '$stylist/domain/const/object/error';
 	import { DomainSidebar } from '$stylist/domain/component/organism/domain-sidebar';
 	import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 	import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
@@ -29,11 +30,15 @@
 			(s.activeJoint === 'atom' || s.activeJoint === 'molecule' || s.activeJoint === 'organism')
 	);
 
+	function buildIssueText(baseText: string): string {
+		const family = s.activeFamily || 'component';
+		return baseText ? `${baseText} for ${family}` : `review ${family}`;
+	}
+
 	function openBacklogNote(title: string, issue: string): void {
-		void s.openBacklogDialog({
+		s.openIssueDialog({
 			title,
-			draft: s.createBacklogDraft(issue),
-			saveMode: 'append'
+			text: s.createIssueText(buildIssueText(issue))
 		});
 	}
 
@@ -50,8 +55,8 @@
 				label: 'Add component story',
 				onSelect: () =>
 					openBacklogNote(
-						'Add component story',
-						`add component story for ${s.activeFamily || 'component'}`
+						DOMAIN_COMPONENT_DEBUG_ERROR.addComponentStory.title,
+						DOMAIN_COMPONENT_DEBUG_ERROR.addComponentStory.text
 					)
 			});
 		}
@@ -63,8 +68,8 @@
 					label: 'Story hangs on open',
 					onSelect: () =>
 						openBacklogNote(
-							'Story issue',
-							`fix component story: hangs on open for ${s.activeFamily || 'component'}`
+							DOMAIN_COMPONENT_DEBUG_ERROR.storyHangsOnOpen.title,
+							DOMAIN_COMPONENT_DEBUG_ERROR.storyHangsOnOpen.text
 						)
 				},
 				{
@@ -72,8 +77,8 @@
 					label: 'Story looks wrong',
 					onSelect: () =>
 						openBacklogNote(
-							'Story issue',
-							`fix component story visuals for ${s.activeFamily || 'component'}`
+							DOMAIN_COMPONENT_DEBUG_ERROR.storyLooksWrong.title,
+							DOMAIN_COMPONENT_DEBUG_ERROR.storyLooksWrong.text
 						)
 				},
 				{
@@ -81,8 +86,8 @@
 					label: 'Settings look wrong',
 					onSelect: () =>
 						openBacklogNote(
-							'Settings issue',
-							`fix component settings visuals for ${s.activeFamily || 'component'}`
+							DOMAIN_COMPONENT_DEBUG_ERROR.settingsLookWrong.title,
+							DOMAIN_COMPONENT_DEBUG_ERROR.settingsLookWrong.text
 						)
 				},
 				{
@@ -90,8 +95,8 @@
 					label: 'Functionality is missing',
 					onSelect: () =>
 						openBacklogNote(
-							'Functionality issue',
-							`complete missing story coverage for ${s.activeFamily || 'component'}`
+							DOMAIN_COMPONENT_DEBUG_ERROR.functionalityMissing.title,
+							DOMAIN_COMPONENT_DEBUG_ERROR.functionalityMissing.text
 						)
 				},
 				{
@@ -99,8 +104,8 @@
 					label: 'Theme support is broken',
 					onSelect: () =>
 						openBacklogNote(
-							'Theme issue',
-							`fix component theming for ${s.activeFamily || 'component'}`
+							DOMAIN_COMPONENT_DEBUG_ERROR.themeSupportBroken.title,
+							DOMAIN_COMPONENT_DEBUG_ERROR.themeSupportBroken.text
 						)
 				}
 			);
@@ -112,8 +117,8 @@
 				label: 'Component works incorrectly',
 				onSelect: () =>
 					openBacklogNote(
-						'Component issue',
-						`fix component behavior for ${s.activeFamily || 'component'}`
+						DOMAIN_COMPONENT_DEBUG_ERROR.componentWorksIncorrectly.title,
+						DOMAIN_COMPONENT_DEBUG_ERROR.componentWorksIncorrectly.text
 					)
 			});
 		}
@@ -121,7 +126,11 @@
 		items.push({
 			id: 'custom-note',
 			label: 'Add custom note',
-			onSelect: () => openBacklogNote('Backlog note', `review ${s.activeFamily || 'entity'}`)
+			onSelect: () =>
+				openBacklogNote(
+					DOMAIN_COMPONENT_DEBUG_ERROR.customNote.title,
+					DOMAIN_COMPONENT_DEBUG_ERROR.customNote.text
+				)
 		});
 
 		return items;
@@ -160,6 +169,7 @@
 					files={s.activeEntity.files}
 					markdownFile={s.markdownFile}
 					storyFile={s.storyFile}
+					selectedEntityName={s.activeFamily}
 					activeFilePath={s.activeFilePath}
 					previewMode={s.previewMode}
 					previewKind={s.previewKind}
@@ -194,8 +204,8 @@
 	saving={s.backlogSaving}
 	error={s.backlogError}
 	placeholder={s.backlogDialogPlaceholder}
-	onClose={s.closeBacklogDialog}
-	onSave={() => void s.saveBacklog()}
+	onClose={s.closeIssueDialog}
+	onSave={() => void s.saveIssue()}
 />
 
 <style>
@@ -221,20 +231,24 @@
 	}
 
 	.taxonomy-row {
-		display: flex;
+		display: inline-grid;
+		grid-template-columns: minmax(0, 500px) auto;
 		align-items: center;
-		justify-content: flex-start;
-		gap: 0.35rem;
-		overflow-x: clip;
+		gap: 15px;
+		min-width: 0;
+		justify-self: start;
+		max-width: 100%;
 	}
 
 	.taxonomy-row :global(.c-taxonomy-breadcrumbs) {
-		width: 495px;
-		flex: 0 0 auto;
+		width: 500px;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.taxonomy-row :global(.c-domain-search) {
 		flex-shrink: 0;
+		--domain-search-overlay-width: 510px;
 	}
 
 	@media (max-width: 840px) {

@@ -22,7 +22,7 @@ export function createDomainBacklogPreviewState(input: {
 
 		loading = true;
 		try {
-			const response = await fetch(`/content?path=${encodeURIComponent(path)}`);
+			const response = await fetch(`/api/content?path=${encodeURIComponent(path)}`);
 			const payload = await response.json();
 			if (!response.ok) {
 				throw new Error(payload.error ?? 'Backlog preview failed');

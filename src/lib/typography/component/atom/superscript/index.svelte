@@ -8,6 +8,23 @@
 
 <sup {...state.restProps} class={state.classes}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </sup>
+
+<style>
+	.c-typography-superscript {
+		display: inline;
+		font-size: var(--text-size-xs, 0.75rem);
+		vertical-align: super;
+		color: var(--color-text-primary);
+	}
+
+	.c-typography-superscript--disabled {
+		color: var(--color-text-tertiary);
+	}
+
+	.c-typography-superscript--block {
+		display: block;
+	}
+</style>

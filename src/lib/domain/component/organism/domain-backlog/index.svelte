@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$stylist/media';
 	import BacklogViewTabs from '$stylist/management/component/molecule/backlog-view-tabs/index.svelte';
+	import IssuesTable from '$stylist/management/component/molecule/issues-table/index.svelte';
 	import KanbanBoard from '$stylist/management/component/organism/kanban-board/index.svelte';
 	import ScrumBacklog from '$stylist/management/component/molecule/scrum-backlog/index.svelte';
 	import BurnDownChart from '$stylist/management/component/molecule/burn-down-chart/index.svelte';
@@ -11,11 +12,17 @@
 	import type { SlotBacklogData as BacklogData } from '$stylist/management/interface/slot/backlog-data';
 	import type { SlotBacklogItem as BacklogItem } from '$stylist/management/interface/slot/backlog-item';
 	import type { SlotBurnDownData as BurnDownData } from '$stylist/management/interface/slot/burn-down-data';
+	import type { SlotIssueMessage as IssueMessage } from '$stylist/management/interface/slot/issue-message';
 
 	interface DomainBacklogProps {
 		title?: string;
 		sprintName?: string;
 		path?: string;
+		sourceLabel?: string;
+		saveStatus?: 'idle' | 'dirty' | 'saving' | 'saved' | 'error';
+		isFallback?: boolean;
+		lastSavedAt?: Date | null;
+		issues?: IssueMessage[];
 		backlogData?: BacklogData;
 		kanbanBoard?: KanbanBoardType;
 		burnDownData?: BurnDownData;
@@ -28,6 +35,7 @@
 		onItemAdd?: (item: BacklogItem) => void;
 		onItemUpdate?: (item: BacklogItem) => void;
 		onItemDelete?: (id: string) => void;
+		onIssuesMoveToBacklog?: (items: IssueMessage[]) => void;
 		onBoardChange?: (nextBoard: KanbanBoardType, action: KanbanBoardAction) => void;
 		class?: string;
 	}
@@ -36,6 +44,11 @@
 		title = 'Backlog',
 		sprintName = 'Current sprint',
 		path = '',
+		sourceLabel = '',
+		saveStatus = 'idle',
+		isFallback = false,
+		lastSavedAt = null,
+		issues = [],
 		backlogData = { items: [] },
 		kanbanBoard = { id: 'domain-backlog-board', title: 'Delivery flow', columns: [] },
 		burnDownData = { sprintStart: new Date(), sprintEnd: new Date(), points: [] },
@@ -48,12 +61,14 @@
 		onItemAdd,
 		onItemUpdate,
 		onItemDelete,
+		onIssuesMoveToBacklog,
 		onBoardChange,
 		class: className = ''
 	}: DomainBacklogProps = $props();
 
-	let activeView = $state<'kanban' | 'backlog' | 'burn-down'>('kanban');
+	let activeView = $state<'issues' | 'backlog' | 'kanban' | 'sprint' | 'burn-down' | 'archive'>('issues');
 
+	const issuesCount = $derived(issues.length);
 	const todoCount = $derived(backlogData.items.filter((item) => item.status === 'todo').length);
 	const inProgressCount = $derived(
 		backlogData.items.filter((item) => item.status === 'in-progress').length
@@ -75,6 +90,10 @@
 						<BacklogViewTabs value={activeView} onValueChange={(value) => (activeView = value)} />
 					</div>
 					<div class="hero-metrics">
+						<div class="metric" data-label="Issues" title="Issues" aria-label="Issues">
+							<Icon name="backlog-status-issues" size={16} class="metric-icon" />
+							<strong>{issuesCount}</strong>
+						</div>
 						<div class="metric" data-label="To do" title="To do" aria-label="To do">
 							<Icon name="backlog-status-todo" size={16} class="metric-icon" />
 							<strong>{todoCount}</strong>
@@ -95,7 +114,12 @@
 					class:workspace-card--content-chart={activeView === 'burn-down'}
 					class:workspace-card--content-backlog={activeView === 'backlog'}
 				>
-					{#if activeView === 'kanban'}
+					{#if activeView === 'issues'}
+						<IssuesTable
+							items={issues}
+							onMoveToBacklog={onIssuesMoveToBacklog}
+						/>
+					{:else if activeView === 'kanban'}
 						<KanbanBoard
 							board={kanbanBoard}
 							controlled={true}
@@ -107,6 +131,21 @@
 						/>
 					{:else if activeView === 'burn-down'}
 						<BurnDownChart data={burnDownData} width={1180} height={520} title="" />
+					{:else if activeView === 'sprint'}
+						<div class="placeholder-card">
+							<h2>Sprint</h2>
+							<p>
+								TDD placeholder: sprint items will be selected from backlog and tracked as a separate
+								execution surface.
+							</p>
+						</div>
+					{:else if activeView === 'archive'}
+						<div class="placeholder-card">
+							<h2>Archive</h2>
+							<p>
+								TDD placeholder: archived backlog items and resolution records will be stored and shown here.
+							</p>
+						</div>
 					{:else}
 						<ScrumBacklog
 							data={backlogData}
@@ -303,6 +342,28 @@
 
 	.workspace-card--content-backlog {
 		padding: 0;
+	}
+
+	.placeholder-card {
+		display: grid;
+		gap: 0.6rem;
+		padding: 1.35rem 1.45rem;
+		border: 1px dashed color-mix(in srgb, var(--color-border-primary) 86%, transparent);
+		border-radius: 20px;
+		background: color-mix(in srgb, var(--color-background-secondary) 52%, transparent);
+	}
+
+	.placeholder-card h2 {
+		margin: 0;
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.placeholder-card p {
+		margin: 0;
+		line-height: 1.6;
+		color: var(--color-text-secondary);
 	}
 
 	.panel-content {

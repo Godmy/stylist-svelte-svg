@@ -37,7 +37,7 @@
 
 <style>
 	.c-domain-search-field {
-		width: min(495px, calc(100vw - 5rem));
+		width: 510px;
 		height: 2rem;
 		padding: 0 0.7rem;
 		border: 1px solid var(--color-border-primary);

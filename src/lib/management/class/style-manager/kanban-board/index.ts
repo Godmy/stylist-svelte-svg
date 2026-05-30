@@ -3,7 +3,7 @@ export class KanbanBoardStyleManager {
 		return [
 			'c-kanban-board flex h-full overflow-x-auto gap-5 rounded-2xl p-4 pb-6',
 			'[background-image:var(--gradient-neutral)]',
-			'border border-[--color-border-secondary]/80 shadow-inner'
+			'border border-[color:var(--color-border-secondary)] shadow-inner'
 		].join(' ');
 	}
 
@@ -16,7 +16,7 @@ export class KanbanBoardStyleManager {
 	}
 
 	static getAddButtonClass(): string {
-		return 'rounded-xl border border-dashed border-[--color-border-secondary] bg-[--color-background-primary]/80 hover:bg-[--color-background-primary] text-[--color-text-primary] shadow-sm';
+		return 'rounded-xl border border-dashed border-[color:var(--color-border-secondary)] bg-[--color-background-primary]/80 hover:bg-[--color-background-primary] text-[--color-text-primary] shadow-sm';
 	}
 
 	static getIconClass(): string {

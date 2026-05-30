@@ -8,6 +8,22 @@
 
 <strong {...state.restProps} class={state.classes}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </strong>
+
+<style>
+	.c-typography-strong {
+		display: inline;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.c-typography-strong--disabled {
+		color: var(--color-text-tertiary);
+	}
+
+	.c-typography-strong--block {
+		display: block;
+	}
+</style>

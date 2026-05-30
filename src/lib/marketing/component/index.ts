@@ -1,3 +1,3 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { ConversionFunnel, CtaBanner, Hero } from './molecule';
-export { AbtestConfigurator, TestResultsViewer, TrafficAnalytics, UserBehaviorMetrics } from './organism';
+export { ConversionFunnel, CtaBanner, CtaButtons, FeatureGrid, Hero, StylistHero, StylistMission } from './molecule';
+export { AbtestConfigurator, StylistLanding, TestResultsViewer, TrafficAnalytics, UserBehaviorMetrics } from './organism';

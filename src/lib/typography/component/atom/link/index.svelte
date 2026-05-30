@@ -28,7 +28,7 @@
 
 <a href={state.href} class={state.classes} target={state.target} {...restProps}>
 	{#if children}
-		{#if children}{#if children}{@render children()}{/if}{/if}
+		{@render children()}
 	{:else if state.text}
 		{state.text}
 	{/if}

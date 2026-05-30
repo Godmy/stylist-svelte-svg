@@ -1,3 +1,3 @@
-import { loadDomainPageData } from '$stylist/server/function/async/load-domain-page-data';
+import { getDomainPageData } from '$stylist/server/function/async-get/domain-page-data';
 
-export const load = () => loadDomainPageData();
+export const load = () => getDomainPageData();

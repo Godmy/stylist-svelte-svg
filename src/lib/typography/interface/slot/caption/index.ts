@@ -1,11 +1,11 @@
-/** Слот вспомогательного текста — описание, подзаголовок, подсказка */
+/** Caption slot for secondary text such as description, subtitle, or helper text. */
 export interface SlotCaption {
-	/** Краткое описание под основным контентом */
+	/** Short description below the main content. */
 	caption?: string;
-	/** Развёрнутое описание */
+	/** Extended description. */
 	description?: string;
-	/** Подзаголовок */
+	/** Subtitle text. */
 	subtitle?: string;
-	/** Текст-подсказка под полем ввода */
+	/** Helper text for an input field. */
 	helperText?: string;
 }

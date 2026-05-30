@@ -5,7 +5,6 @@ export { DomainDashboard } from './domain-dashboard/index';
 export { DomainDiagnostics } from './domain-diagnostics/index';
 export { DomainExplorer } from './domain-explorer/index';
 export { DomainFilePreview } from './domain-file-preview/index';
-export { DomainLanding } from './domain-landing/index';
 export { DomainSettings } from './domain-settings/index';
 export { DomainSidebar } from './domain-sidebar/index';
 export { DomainWorkspaceShell } from './domain-workspace-shell/index';

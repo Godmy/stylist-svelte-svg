@@ -1,23 +1,42 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { formatAnimatedValue } from '$stylist/typography/function/script/format-animated-value';
 import { formatNumberFlowValue } from '$stylist/typography/function/script/format-number-flow-value';
 
 export class AnimationStyleManager {
 	static readonly defaultLanguage = 'en';
 
+	static getAnimatedNumberClasses(className = ''): string {
+		return mergeClassNames('c-animation-animated-number', className);
+	}
+
 	static getNumberFlowContainerClasses(className = ''): string {
-		return ['flex items-center', className].filter(Boolean).join(' ');
+		return mergeClassNames('c-animation-number-flow', className);
 	}
 
 	static getNumberFlowPrefixClasses(className = ''): string {
-		return ['mr-1', className].filter(Boolean).join(' ');
+		return mergeClassNames('c-animation-number-flow__prefix', className);
 	}
 
 	static getNumberFlowSuffixClasses(className = ''): string {
-		return ['ml-1', className].filter(Boolean).join(' ');
+		return mergeClassNames('c-animation-number-flow__suffix', className);
 	}
 
 	static getNumberFlowScreenReaderClasses(className = ''): string {
-		return ['sr-only', className].filter(Boolean).join(' ');
+		return mergeClassNames('c-animation-number-flow__sr-only', className);
+	}
+
+	static getNumberFlowClasses(className = ''): {
+		container: string;
+		prefix: string;
+		suffix: string;
+		srOnly: string;
+	} {
+		return {
+			container: this.getNumberFlowContainerClasses(className),
+			prefix: this.getNumberFlowPrefixClasses(),
+			suffix: this.getNumberFlowSuffixClasses(),
+			srOnly: this.getNumberFlowScreenReaderClasses()
+		};
 	}
 
 	static formatNumberFlow(

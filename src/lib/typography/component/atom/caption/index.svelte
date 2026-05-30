@@ -8,6 +8,15 @@
 
 <div {...state.restProps} class={state.classes} {...state.attrs}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </div>
+
+<style>
+	.c-typography-caption {
+		display: block;
+		font-size: var(--text-size-sm, 0.875rem);
+		line-height: var(--line-height-sm, 1.5);
+		color: var(--color-text-secondary);
+	}
+</style>

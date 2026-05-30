@@ -62,7 +62,7 @@
 	aria-label="Kanban column: {state.column.title}"
 >
 	<div
-		class="border-b border-[var(--color-border-primary)]/80 [background-image:var(--gradient-neutral)] p-4"
+		class="border-b border-[color:var(--color-border-primary)] [background-image:var(--gradient-neutral)] p-4"
 	>
 		<div class="mb-2 flex items-center justify-between">
 			{#if state.isEditingTitle}

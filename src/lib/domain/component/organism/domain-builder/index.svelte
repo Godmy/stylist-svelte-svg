@@ -206,7 +206,7 @@
 
 		const timeoutId = window.setTimeout(async () => {
 			try {
-				await fetch('/builder', {
+				await fetch('/api/builder', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json'
@@ -225,7 +225,7 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('/builder');
+			const response = await fetch('/api/builder');
 			if (!response.ok) {
 				hasLoadedLayout = true;
 				return;

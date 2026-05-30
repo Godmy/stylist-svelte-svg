@@ -34,8 +34,26 @@
 		}
 
 		return entries
-			.filter((entry) => entry.searchText.includes(normalizedQuery))
-			.slice(0, 12);
+			.map((entry) => {
+				let score = 0;
+
+				if (entry.family.toLowerCase() === normalizedQuery) score += 100;
+				if (entry.entityPath.toLowerCase() === normalizedQuery) score += 90;
+				if (entry.family.toLowerCase().startsWith(normalizedQuery)) score += 60;
+				if (entry.entityPath.toLowerCase().includes(normalizedQuery)) score += 40;
+				if (entry.searchText.includes(normalizedQuery)) score += 20;
+
+				return { entry, score };
+			})
+			.filter((item) => item.score > 0)
+			.sort(
+				(left, right) =>
+					right.score - left.score ||
+					left.entry.entityPath.length - right.entry.entityPath.length ||
+					left.entry.entityPath.localeCompare(right.entry.entityPath)
+			)
+			.slice(0, 24)
+			.map((item) => item.entry);
 	});
 
 	async function openSearch(): Promise<void> {
@@ -117,6 +135,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
+		width: var(--domain-search-overlay-width, 500px);
 	}
 
 	.search-results {
@@ -124,7 +143,7 @@
 		top: calc(100% + 0.35rem);
 		left: 0;
 		z-index: 1000;
-		width: min(495px, calc(100vw - 2rem));
+		width: 510px;
 		max-height: min(22rem, 60vh);
 		overflow: auto;
 		padding: 0.35rem;

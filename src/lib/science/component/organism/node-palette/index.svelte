@@ -2,7 +2,7 @@
 	import { IconButton } from '$stylist/control';
 	import { InputText } from '$stylist/input';
 	import { Icon } from '$stylist/media';
-	import { Separator } from '$stylist/typography';
+	import { Separator } from '$stylist/layout';
 	import { NodePaletteStyleManager } from '$stylist/science/class/style-manager/node-palette';
 	import { createNodePaletteState } from '$stylist/science/function/state/node-palette';
 	import type { SlotNodePalette as NodePaletteProps } from '$stylist/science/interface/slot/node-palette';

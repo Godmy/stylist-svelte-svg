@@ -1,4 +1,11 @@
 export const TOKEN_ICON_REGISTRY = {
+	'animated-background': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>animated-background</title>
+  <path d="M4 6h16v12H4Z"/>
+  <path d="M9.0 6v12"/>
+  <path d="M8.8 8v8l6.5-4Z"/>
+  <path d="M3.5 9h2M3.5 15h2M18.5 9h2M18.5 15h2"/>
+</svg>`, // animation,
 	'animation': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>animation</title>
   <path d="M4 12a8 8 0 0 1 13.7-5.7"/>
@@ -979,6 +986,15 @@ export const TOKEN_ICON_REGISTRY = {
   <title>backlog status done</title>
   <circle cx="12" cy="12" r="7.5"/>
   <path d="m8.8 12.2 2.1 2.2 4.3-4.8"/>
+</svg>`, // development,
+	'backlog-status-issues': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>backlog status issues</title>
+  <path d="M6.5 7.5h11"/>
+  <path d="M6.5 12h11"/>
+  <path d="M6.5 16.5h7"/>
+  <circle cx="4.5" cy="7.5" r="0.75" fill="currentColor" stroke="none"/>
+  <circle cx="4.5" cy="12" r="0.75" fill="currentColor" stroke="none"/>
+  <circle cx="4.5" cy="16.5" r="0.75" fill="currentColor" stroke="none"/>
 </svg>`, // development,
 	'backlog-status-progress': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>backlog status progress</title>
@@ -3125,6 +3141,20 @@ export const TOKEN_ICON_REGISTRY = {
   <path d="M10 16 7 19v-3"/>
   <path d="M7 9h10M7 12h6"/>
 </svg>`, // marketing,
+	'cta-buttons': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>cta-buttons</title>
+  <circle cx="12" cy="12" r="9.0"/>
+  <path d="M12 12 12.0 10.0"/>
+  <rect x="3" y="5" width="18" height="14" rx="2"/>
+  <path d="M7 9h10M7 13h7"/>
+</svg>`, // marketing,
+	'feature-grid': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>feature-grid</title>
+  <rect x="3" y="3" width="18" height="18" rx="3.8"/>
+  <path d="M3 13.0h18"/>
+  <rect x="3" y="4" width="18" height="16" rx="2"/>
+  <path d="M3 9h18M3 14h18M9 4v16M16 4v16"/>
+</svg>`, // marketing,
 	'hero': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>hero</title>
   <rect x="4" y="4" width="16" height="16" rx="2"/>
@@ -3142,6 +3172,21 @@ export const TOKEN_ICON_REGISTRY = {
   <rect x="3" y="5" width="18" height="11" rx="2"/>
   <path d="M10 16 7 19v-3"/>
   <path d="M7 9h10M7 12h6"/>
+</svg>`, // marketing,
+	'stylist-hero': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>stylist-hero</title>
+  <path d="M4 6h16v12H4Z"/>
+  <path d="M16.0 6v12"/>
+  <rect x="3" y="5" width="18" height="14" rx="2"/>
+  <path d="M7 9h10M7 13h7"/>
+</svg>`, // marketing,
+	'stylist-mission': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>stylist-mission</title>
+  <path d="M4 12a8 8 0 1 0 16 0 8 8 0 1 0-16 0"/>
+  <path d="M6 9.0h12"/>
+  <rect x="3" y="5" width="18" height="11" rx="2"/>
+  <path d="M10 16 7 19v-3"/>
+  <path d="M7 9h10M7 12h7"/>
 </svg>`, // marketing,
 	'traffic-analytics': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>traffic-analytics</title>
@@ -3539,13 +3584,6 @@ export const TOKEN_ICON_REGISTRY = {
   <circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/>
   <path d="M12 4v3M9 17v2h6v-2"/>
 </svg>`, // playground,
-	'playground-animated-background': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-animated-background</title>
-  <path d="M4 6h16v12H4Z"/>
-  <path d="M9.0 6v12"/>
-  <path d="M8.8 8v8l6.5-4Z"/>
-  <path d="M3.5 9h2M3.5 15h2M18.5 9h2M18.5 15h2"/>
-</svg>`, // playground,
 	'playground-canvas-shell': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-canvas-shell</title>
   <circle cx="12" cy="12" r="8.4"/>
@@ -3581,13 +3619,6 @@ export const TOKEN_ICON_REGISTRY = {
   <circle cx="6" cy="7" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="12" cy="18" r="2"/>
   <path d="M7.7 7.2 16.3 6.8M7 7.5l4 8m6.3-5.9-4.1 7.4"/>
 </svg>`, // playground,
-	'playground-cta-buttons': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-cta-buttons</title>
-  <circle cx="12" cy="12" r="9.0"/>
-  <path d="M12 12 12.0 10.0"/>
-  <rect x="3" y="5" width="18" height="14" rx="2"/>
-  <path d="M7 9h10M7 13h7"/>
-</svg>`, // playground,
 	'playground-device-frame': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-device-frame</title>
   <path d="M4 6h16v12H4Z"/>
@@ -3616,26 +3647,12 @@ export const TOKEN_ICON_REGISTRY = {
   <circle cx="12" cy="12" r="9"/>
   <path d="m9 9 6 6m0-6-6 6"/>
 </svg>`, // playground,
-	'playground-feature-grid': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-feature-grid</title>
-  <rect x="3" y="3" width="18" height="18" rx="3.8"/>
-  <path d="M3 13.0h18"/>
-  <rect x="3" y="4" width="18" height="16" rx="2"/>
-  <path d="M3 9h18M3 14h18M9 4v16M16 4v16"/>
-</svg>`, // playground,
 	'playground-generic-code-viewer': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-generic-code-viewer</title>
   <rect x="3" y="3" width="18" height="18" rx="2.6"/>
   <path d="M3 17.0h18"/>
   <path d="m8 8-4 4 4 4M16 8l4 4-4 4"/>
   <path d="m14 5-3 14"/>
-</svg>`, // playground,
-	'playground-hero': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-hero</title>
-  <path d="M4 6h16v12H4Z"/>
-  <path d="M16.0 6v12"/>
-  <rect x="3" y="5" width="18" height="14" rx="2"/>
-  <path d="M7 9h10M7 13h7"/>
 </svg>`, // playground,
 	'playground-live-code-section': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-live-code-section</title>
@@ -3650,14 +3667,6 @@ export const TOKEN_ICON_REGISTRY = {
   <path d="M6 11.0h12"/>
   <path d="m8 8-4 4 4 4M16 8l4 4-4 4"/>
   <path d="m13 5-3 14"/>
-</svg>`, // playground,
-	'playground-mission-banner': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-mission-banner</title>
-  <path d="M4 12a8 8 0 1 0 16 0 8 8 0 1 0-16 0"/>
-  <path d="M6 9.0h12"/>
-  <rect x="3" y="5" width="18" height="11" rx="2"/>
-  <path d="M10 16 7 19v-3"/>
-  <path d="M7 9h10M7 12h7"/>
 </svg>`, // playground,
 	'playground-screenshot-selector': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-screenshot-selector</title>
@@ -3680,14 +3689,6 @@ export const TOKEN_ICON_REGISTRY = {
   <path d="M10.0 3v18"/>
   <rect x="3" y="5" width="18" height="14" rx="2"/>
   <path d="M7 9h10M7 13h7"/>
-</svg>`, // playground,
-	'playground-toast': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>playground-toast</title>
-  <path d="M4 12a8 8 0 1 0 16 0 8 8 0 1 0-16 0"/>
-  <path d="M6 11.0h12"/>
-  <rect x="3" y="5" width="18" height="11" rx="2"/>
-  <path d="M14 16 17 19v-3"/>
-  <path d="M7 9h10M7 13h8"/>
 </svg>`, // playground,
 	'playground-tree-node': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>playground-tree-node</title>

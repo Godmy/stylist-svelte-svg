@@ -1,5 +1,5 @@
 <script lang="ts">
-	type BacklogView = 'kanban' | 'backlog' | 'burn-down';
+	type BacklogView = 'issues' | 'backlog' | 'kanban' | 'sprint' | 'burn-down' | 'archive';
 
 	interface BacklogViewTabsProps {
 		value?: BacklogView;
@@ -8,15 +8,18 @@
 	}
 
 	let {
-		value = 'kanban',
+		value = 'issues',
 		onValueChange,
 		class: className = ''
 	}: BacklogViewTabsProps = $props();
 
 	const descriptions: Record<BacklogView, string> = {
-		kanban: 'Drag tasks between lanes, edit inline, archive or delete when done.',
+		issues: 'Review incoming issue messages, select rows and move them into the backlog.',
 		backlog: 'Review the backlog as a structured task list with filters, edits and quick triage.',
-		'burn-down': 'Inspect sprint burn rate and remaining effort across the current timeline.'
+		kanban: 'Drag tasks between lanes, edit inline, archive or delete when done.',
+		sprint: 'Sprint execution view is being prepared from backlog-selected work items.',
+		'burn-down': 'Inspect sprint burn rate and remaining effort across the current timeline.',
+		archive: 'Archive storage and resolved-task history are being prepared.'
 	};
 </script>
 
@@ -24,12 +27,12 @@
 	<button
 		type="button"
 		class="tab-button"
-		class:tab-button--active={value === 'kanban'}
-		aria-pressed={value === 'kanban'}
-		onclick={() => onValueChange?.('kanban')}
-		data-tooltip={descriptions.kanban}
+		class:tab-button--active={value === 'issues'}
+		aria-pressed={value === 'issues'}
+		onclick={() => onValueChange?.('issues')}
+		data-tooltip={descriptions.issues}
 	>
-		Kanban board
+		Issues
 	</button>
 	<button
 		type="button"
@@ -44,12 +47,42 @@
 	<button
 		type="button"
 		class="tab-button"
+		class:tab-button--active={value === 'kanban'}
+		aria-pressed={value === 'kanban'}
+		onclick={() => onValueChange?.('kanban')}
+		data-tooltip={descriptions.kanban}
+	>
+		Kanban board
+	</button>
+	<button
+		type="button"
+		class="tab-button"
+		class:tab-button--active={value === 'sprint'}
+		aria-pressed={value === 'sprint'}
+		onclick={() => onValueChange?.('sprint')}
+		data-tooltip={descriptions.sprint}
+	>
+		Sprint
+	</button>
+	<button
+		type="button"
+		class="tab-button"
 		class:tab-button--active={value === 'burn-down'}
 		aria-pressed={value === 'burn-down'}
 		onclick={() => onValueChange?.('burn-down')}
 		data-tooltip={descriptions['burn-down']}
 	>
 		Burd down diagram
+	</button>
+	<button
+		type="button"
+		class="tab-button"
+		class:tab-button--active={value === 'archive'}
+		aria-pressed={value === 'archive'}
+		onclick={() => onValueChange?.('archive')}
+		data-tooltip={descriptions.archive}
+	>
+		Archive
 	</button>
 </nav>
 

@@ -19,7 +19,6 @@ export { createLinkState } from './link';
 export { createListItemMarkerState } from './list-item-marker';
 export { createMetricBarState } from './metric-bar';
 export { createMetricBarsCardState } from './metric-bars-card';
-export { createSeparatorState } from './separator';
 export { createStatsCardState } from './stats-card';
 export { createStatusIndicatorState } from './status-indicator';
 export { createTableState } from './table';

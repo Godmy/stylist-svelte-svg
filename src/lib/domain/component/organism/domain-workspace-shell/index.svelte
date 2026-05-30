@@ -9,11 +9,11 @@
 	import DomainBuilder from '$stylist/domain/component/organism/domain-builder/index.svelte';
 	import DomainDiagnostics from '$stylist/domain/component/organism/domain-diagnostics/index.svelte';
 	import DomainExplorer from '$stylist/domain/component/organism/domain-explorer/index.svelte';
-	import DomainLanding from '$stylist/domain/component/organism/domain-landing/index.svelte';
 	import DomainSettings from '$stylist/domain/component/organism/domain-settings/index.svelte';
 	import { createDomainBacklogState } from '$stylist/domain/function/state/domain-backlog/index.svelte';
 	import { createDomainLandingScreenState } from '$stylist/domain/function/state/domain-landing-screen/index.svelte';
 	import { createDomainPageState } from '$stylist/domain/function/state/domain-page/index.svelte';
+	import StylistLanding from '$stylist/marketing/component/organism/stylist-landing/index.svelte';
 	import type { TypeDomainComponentDescriptor } from '$stylist/domain/type/struct/domain-component-descriptor';
 	import type { TypeDomainScreen } from '$stylist/domain/type/alias/domain-screen';
 	import type { TypeDomainTreeNode } from '$stylist/domain/type/struct/domain-tree-node';
@@ -51,8 +51,13 @@
 		<DomainBacklog
 			title={backlogState.title}
 			path={backlogState.path}
+			sourceLabel={backlogState.sourceLabel}
+			saveStatus={backlogState.saveStatus}
+			isFallback={backlogState.isFallback}
+			lastSavedAt={backlogState.lastSavedAt}
 			sprintName={backlogState.sprintName}
 			backlogData={backlogState.backlogData}
+			issues={backlogState.issues}
 			kanbanBoard={backlogState.kanbanBoard}
 			burnDownData={backlogState.burnDownData}
 			loading={backlogState.loading}
@@ -64,12 +69,13 @@
 			onItemAdd={backlogState.handleItemAdd}
 			onItemUpdate={backlogState.handleItemUpdate}
 			onItemDelete={backlogState.handleItemDelete}
+			onIssuesMoveToBacklog={(items) => void backlogState.handleIssuesMoveToBacklog(items)}
 			onBoardChange={backlogState.handleBoardChange}
 		/>
 	{:else if screenState.currentScreen === DOMAIN_SCREEN_DIAGNOSTICS}
 		<DomainDiagnostics />
 	{:else}
-		<DomainLanding
+		<StylistLanding
 			rootDomainCount={tree.length}
 			storyModuleCount={Object.keys(storyModules).length}
 		/>

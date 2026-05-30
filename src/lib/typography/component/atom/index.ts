@@ -1,27 +1,18 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { Abbr } from './abbr/index';
-export { AnimatedNumber } from './animated-number/index';
-export { BadgeGroup } from './badge-group/index';
 export { Badge } from './badge/index';
 export { Blockquote } from './blockquote/index';
 export { Caption } from './caption/index';
 export { CountBadge } from './count-badge/index';
-export { Counter } from './counter/index';
 export { DefinitionDescription } from './definition-description/index';
 export { DefinitionTerm } from './definition-term/index';
-export { Dot } from './dot/index';
 export { Em } from './em/index';
 export { Heading } from './heading/index';
 export { Highlight } from './highlight/index';
 export { InlineCode } from './inline-code/index';
 export { Kbd } from './kbd/index';
 export { Link } from './link/index';
-export { ListItemMarker } from './list-item-marker/index';
-export { NodeDot } from './node-dot/index';
 export { NpmBadge } from './npm-badge/index';
-export { NumberFlow } from './number-flow/index';
-export { Paragraph } from './paragraph/index';
-export { Separator } from './separator/index';
 export { Small } from './small/index';
 export { StatusIndicator } from './status-indicator/index';
 export { StrikeThrought } from './strike-throught/index';

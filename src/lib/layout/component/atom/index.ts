@@ -7,4 +7,6 @@ export { Divider } from './divider/index';
 export { GridLayout } from './grid-layout/index';
 export { Grid } from './grid/index';
 export { HorizontalLayout } from './horizontal-layout/index';
+export { NodeDot } from './node-dot/index';
+export { Separator } from './separator/index';
 export { Spacer } from './spacer/index';

@@ -2,7 +2,7 @@
 	import { IconButton } from '$stylist/control';
 	import { Icon } from '$stylist/media';
 	import { LitegraphCanvas, NodePalette, NodePropertiesPanel } from '$stylist/science';
-	import { Separator } from '$stylist/typography';
+	import { Separator } from '$stylist/layout';
 	import type { GraphEditorProps } from '$stylist/science/type/struct/graph-editor-props';
 	import { createGraphEditorState } from '$stylist/science/function/state/graph-editor';
 

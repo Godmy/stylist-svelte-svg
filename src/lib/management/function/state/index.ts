@@ -4,6 +4,7 @@ export { createBurnDownChartState } from './burn-down-chart';
 export { createDashboardLayoutState } from './dashboard-layout';
 export { createDraggableCardState } from './draggable-card';
 export { createFeatureToggleState } from './feature-toggle';
+export { createIssuesTableState } from './issues-table';
 export { createKanbanBoardState } from './kanban-board';
 export { createKanbanCardState } from './kanban-card';
 export { createKanbanColumnState } from './kanban-column';

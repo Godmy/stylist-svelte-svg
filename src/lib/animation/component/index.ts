@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { Animated, LayoutTransformation, Transformable } from './atom';
+export { Animated, AnimatedBackground, AnimatedNumber, LayoutTransformation, NumberFlow, Transformable } from './atom';

@@ -1,5 +1,12 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 export class StyleManagerSuperscript {
 	static root(disabled: boolean, block: boolean, className?: string): string {
-		return `text-xs align-super ${disabled ? 'text-[var(--color-text-tertiary)]' : 'text-[var(--color-text-primary)]'} ${block ? 'block' : ''} ${className ?? ''}`.trim();
+		return mergeClassNames(
+			'c-typography-superscript',
+			disabled && 'c-typography-superscript--disabled',
+			block && 'c-typography-superscript--block',
+			className
+		);
 	}
 }

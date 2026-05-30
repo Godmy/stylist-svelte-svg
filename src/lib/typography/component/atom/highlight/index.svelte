@@ -17,6 +17,15 @@
 
 <mark class={state.classes} {...restProps}>
 	{#if children}
-		{#if children}{#if children}{@render children()}{/if}{/if}
+		{@render children()}
 	{/if}
 </mark>
+
+<style>
+	.c-typography-highlight {
+		padding-inline: 0.18rem;
+		border-radius: 0.25rem;
+		background: var(--color-warning-100);
+		color: var(--color-text-primary);
+	}
+</style>

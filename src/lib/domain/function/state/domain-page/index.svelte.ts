@@ -1,12 +1,10 @@
 type PreviewMode = 'file' | 'markdown' | 'story' | 'json-tree';
 type StoryModule = { default: unknown };
-type BacklogSaveMode = 'append' | 'replace';
 
-interface BacklogDialogOptions {
+interface IssueDialogOptions {
 	title?: string;
 	placeholder?: string;
-	draft?: string;
-	saveMode?: BacklogSaveMode;
+	text?: string;
 }
 
 interface DomainFile {
@@ -66,14 +64,12 @@ export function createDomainPageState(input: DomainPageInput) {
 	let storyPreviewComponent = $state<unknown>(null);
 	let storyPreviewLoading = $state(false);
 	let storyPreviewError = $state('');
-	let backlogDialogOpen = $state(false);
-	let backlogDialogTitle = $state('Backlog note');
-	let backlogDialogPlaceholder = $state('');
-	let backlogDraft = $state('');
-	let backlogLoading = $state(false);
-	let backlogSaving = $state(false);
-	let backlogError = $state('');
-	let backlogSaveMode = $state<BacklogSaveMode>('append');
+	let issueDialogOpen = $state(false);
+	let issueDialogTitle = $state('Component issue');
+	let issueDialogPlaceholder = $state('');
+	let issueText = $state('');
+	let issueSaving = $state(false);
+	let issueError = $state('');
 
 	const activeDomainNode = $derived(tree.find((d) => d.name === activeDomain));
 	const activeClusterNode = $derived(
@@ -90,8 +86,11 @@ export function createDomainPageState(input: DomainPageInput) {
 	const activeFamily = $derived(activeEntity?.name.split('/').at(-1) ?? '');
 	const activeFamilyName = $derived(activeEntity?.name ?? '');
 	const breadcrumbFile = $derived(activeFilePath ? (activeFilePath.split('/').pop() ?? '') : '');
-	const backlogPath = $derived(
-		activeFamily ? `${activeDomain}/data/md/backlog/${activeFamily}/index.md` : ''
+	const issueLogPath = $derived(
+		'management/data/jsonl/component/issues/index.jsonl'
+	);
+	const issueId = $derived(
+		activeFilePath || [activeDomain, activeCluster, activeJoint, activeFamily, breadcrumbFile].filter(Boolean).join('/')
 	);
 	const storyModulePath = $derived(storyFile ? `../lib/${storyFile.path}` : null);
 	const previewKind = $derived.by(() => {
@@ -173,7 +172,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		}
 		fileLoading = true;
 		fileError = '';
-		fetch(`/content?path=${encodeURIComponent(path)}`)
+		fetch(`/api/content?path=${encodeURIComponent(path)}`)
 			.then(async (r) => {
 				const p = await r.json();
 				if (!r.ok) throw new Error(p.error ?? 'Preview failed');
@@ -199,7 +198,7 @@ export function createDomainPageState(input: DomainPageInput) {
 		}
 		fileLoading = true;
 		fileError = '';
-		fetch(`/content?path=${encodeURIComponent(path)}`)
+		fetch(`/api/content?path=${encodeURIComponent(path)}`)
 			.then(async (r) => {
 				const p = await r.json();
 				if (!r.ok) throw new Error(p.error ?? 'Preview failed');
@@ -321,68 +320,56 @@ export function createDomainPageState(input: DomainPageInput) {
 		previewMode = 'file';
 	}
 
-	function createBacklogDraft(issue: string): string {
-		const lines = [
-			`- ${issue}`,
-			`  domain: ${activeDomain || '-'}`,
-			`  cluster: ${activeCluster || '-'}`,
-			`  joint: ${activeJoint || '-'}`,
-			`  family: ${activeFamily || '-'}`,
-			`  entity: ${activeEntityPath || '-'}`,
-			`  file: ${activeFilePath || '-'}`,
-			'  note: '
-		];
-
-		return lines.join('\n');
+	function createIssueText(issue: string): string {
+		return issue;
 	}
 
-	async function openBacklogDialog(options?: BacklogDialogOptions) {
-		if (!activeFamily) return;
-		backlogDialogOpen = true;
-		backlogDialogTitle = options?.title ?? 'Backlog note';
-		backlogDialogPlaceholder =
+	function openIssueDialog(options?: IssueDialogOptions) {
+		if (!issueId) return;
+		issueDialogOpen = true;
+		issueDialogTitle = options?.title ?? 'Component issue';
+		issueDialogPlaceholder =
 			options?.placeholder ??
-			'Describe the problem or missing work. This note will be saved to the family backlog on disk.';
-		backlogDraft = options?.draft ?? '';
-		backlogError = '';
-		backlogSaveMode = options?.saveMode ?? 'append';
-		backlogLoading = false;
+			'Describe the issue. This message will be appended to the component issue log.';
+		issueText = options?.text ?? '';
+		issueError = '';
 	}
 
-	function closeBacklogDialog() {
-		backlogDialogOpen = false;
-		backlogLoading = false;
-		backlogSaving = false;
-		backlogError = '';
+	function closeIssueDialog() {
+		issueDialogOpen = false;
+		issueSaving = false;
+		issueError = '';
 	}
 
-	async function saveBacklog() {
-		if (!activeFamily) return;
-		if (!backlogDraft.trim()) {
-			backlogError = 'Backlog note is empty.';
+	async function saveIssue() {
+		if (!issueId) return;
+		if (!issueText.trim()) {
+			issueError = 'Issue text is empty.';
 			return;
 		}
 
-		backlogSaving = true;
-		backlogError = '';
+		issueSaving = true;
+		issueError = '';
 		try {
-			const r = await fetch('/content', {
+			const r = await fetch('/api/issues', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
 				body: JSON.stringify({
-					domain: activeDomain,
-					family: activeFamily,
-					content: backlogDraft,
-					mode: backlogSaveMode
+					created_at: new Date().toISOString(),
+					file: activeFilePath,
+					id: issueId,
+					text: issueText,
+					image: null,
+					audio: null
 				})
 			});
 			const p = await r.json();
 			if (!r.ok) throw new Error(p.error ?? 'Save failed');
-			closeBacklogDialog();
+			closeIssueDialog();
 		} catch (e) {
-			backlogError = e instanceof Error ? e.message : String(e);
+			issueError = e instanceof Error ? e.message : String(e);
 		} finally {
-			backlogSaving = false;
+			issueSaving = false;
 		}
 	}
 
@@ -424,28 +411,28 @@ export function createDomainPageState(input: DomainPageInput) {
 			return storyPreviewError;
 		},
 		get backlogDialogOpen() {
-			return backlogDialogOpen;
+			return issueDialogOpen;
 		},
 		get backlogDialogTitle() {
-			return backlogDialogTitle;
+			return issueDialogTitle;
 		},
 		get backlogDialogPlaceholder() {
-			return backlogDialogPlaceholder;
+			return issueDialogPlaceholder;
 		},
 		get backlogDraft() {
-			return backlogDraft;
+			return issueText;
 		},
 		set backlogDraft(v: string) {
-			backlogDraft = v;
+			issueText = v;
 		},
 		get backlogLoading() {
-			return backlogLoading;
+			return false;
 		},
 		get backlogSaving() {
-			return backlogSaving;
+			return issueSaving;
 		},
 		get backlogError() {
-			return backlogError;
+			return issueError;
 		},
 		get availableJointNames() {
 			return availableJointNames;
@@ -472,7 +459,7 @@ export function createDomainPageState(input: DomainPageInput) {
 			return breadcrumbFile;
 		},
 		get backlogPath() {
-			return backlogPath;
+			return issueLogPath;
 		},
 		get previewKind() {
 			return previewKind;
@@ -480,7 +467,8 @@ export function createDomainPageState(input: DomainPageInput) {
 		get searchEntries() {
 			return searchEntries;
 		},
-		createBacklogDraft,
+		createBacklogDraft: createIssueText,
+		createIssueText,
 		handleDomainSelect,
 		handleClusterSelect,
 		handleJointSelect,
@@ -490,8 +478,11 @@ export function createDomainPageState(input: DomainPageInput) {
 		handleStorySelect,
 		handleJsonTreeSelect,
 		selectSearchEntry,
-		openBacklogDialog,
-		closeBacklogDialog,
-		saveBacklog
+		openBacklogDialog: openIssueDialog,
+		openIssueDialog,
+		closeBacklogDialog: closeIssueDialog,
+		closeIssueDialog,
+		saveBacklog: saveIssue,
+		saveIssue
 	};
 }

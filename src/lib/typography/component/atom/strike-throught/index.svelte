@@ -8,6 +8,6 @@
 
 <span {...state.restProps} class={state.classes}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </span>

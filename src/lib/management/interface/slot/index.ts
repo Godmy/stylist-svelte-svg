@@ -13,6 +13,7 @@ export type { SlotDraggableCard } from './draggable-card';
 export type { CardData } from './draggable-card-data';
 export type { DraggableCardProps } from './draggable-card-props';
 export type { SlotFeatureToggle } from './feature-toggle';
+export type { SlotIssueMessage } from './issue-message';
 export type { SlotKanbanCard } from './kanban-card';
 export type { KanbanCardType } from './kanban-card-type';
 export type { Operation } from './operation';

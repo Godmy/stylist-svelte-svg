@@ -42,6 +42,7 @@
 				{files}
 				{markdownFile}
 				{storyFile}
+				selectedEntityName="announcement-banner"
 				{activeFilePath}
 				previewMode={values.previewMode as any}
 				previewKind={values.previewKind as any}

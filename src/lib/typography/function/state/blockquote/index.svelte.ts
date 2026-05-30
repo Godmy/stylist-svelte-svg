@@ -5,8 +5,12 @@ import { BlockquoteStyleManager } from '$stylist/typography/class/style-manager/
 export function createBlockquoteState(props: BlockquoteRecipe) {
 	const cite = $derived(props.cite);
 	const footerPrefix = $derived(props.footerPrefix ?? '');
+	const withBorder = $derived(props.withBorder ?? true);
+	const withBackground = $derived(props.withBackground ?? false);
 	const classes = $derived(
 		BlockquoteStyleManager.getBlockquoteClasses(
+			withBorder,
+			withBackground,
 			typeof props.class === 'string' ? props.class : undefined
 		)
 	);
@@ -18,6 +22,8 @@ export function createBlockquoteState(props: BlockquoteRecipe) {
 			cite: _cite,
 			children: _children,
 			footerPrefix: _footerPrefix,
+			withBorder: _withBorder,
+			withBackground: _withBackground,
 			...rest
 		} = props;
 		return rest;

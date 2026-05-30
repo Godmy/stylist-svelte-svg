@@ -1,5 +1,12 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 export class StyleManagerText {
 	static root(disabled: boolean, block: boolean, className?: string): string {
-		return `text-base ${disabled ? 'text-[var(--color-text-tertiary)]' : 'text-[var(--color-text-primary)]'} ${block ? 'block' : ''} ${className ?? ''}`.trim();
+		return mergeClassNames(
+			'c-typography-text',
+			disabled && 'c-typography-text--disabled',
+			block && 'c-typography-text--block',
+			className
+		);
 	}
 }

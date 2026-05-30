@@ -8,6 +8,23 @@
 
 <sub {...state.restProps} class={state.classes}>
 	{#if state.children}
-		{#if state.children}{#if state.children}{@render state.children()}{/if}{/if}
+		{@render state.children()}
 	{/if}
 </sub>
+
+<style>
+	.c-typography-subscript {
+		display: inline;
+		font-size: var(--text-size-xs, 0.75rem);
+		vertical-align: sub;
+		color: var(--color-text-primary);
+	}
+
+	.c-typography-subscript--disabled {
+		color: var(--color-text-tertiary);
+	}
+
+	.c-typography-subscript--block {
+		display: block;
+	}
+</style>

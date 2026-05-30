@@ -1,5 +1,7 @@
 <script lang="ts">
 	import debugIcon from '$stylist/domain/data/svg/debug.svg?raw';
+	import Icon from '$stylist/media/component/atom/icon/index.svelte';
+	import { TOKEN_ICON_REGISTRY } from '$stylist/media/const/record/icon-registry';
 
 	interface TabFile {
 		name: string;
@@ -17,6 +19,7 @@
 		files?: TabFile[];
 		markdownFile?: TabFile | null;
 		storyFile?: TabFile | null;
+		selectedEntityName?: string;
 		activeFilePath?: string;
 		previewMode?: 'file' | 'markdown' | 'story' | 'json-tree';
 		previewKind?: 'svg' | 'json' | 'text';
@@ -32,6 +35,7 @@
 		files = [],
 		markdownFile = null,
 		storyFile = null,
+		selectedEntityName = '',
 		activeFilePath = '',
 		previewMode = 'file',
 		previewKind = 'text',
@@ -45,6 +49,54 @@
 
 	let dropdownOpen = $state(false);
 
+	const NOT_FOUND_ICON_NAME = 'alert-circle';
+
+	function normalizeEntityName(value: string): string {
+		return value
+			.trim()
+			.replace(/[_\s]+/g, '-')
+			.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+			.toLowerCase();
+	}
+
+	function hasRegisteredIcon(value: string): boolean {
+		return value in TOKEN_ICON_REGISTRY;
+	}
+
+	function buildIconCandidates(name: string): string[] {
+		const normalized = normalizeEntityName(name);
+		if (!normalized) {
+			return [];
+		}
+
+		const parts = normalized.split('-').filter(Boolean);
+		if (parts.length <= 1) {
+			return [normalized];
+		}
+
+		if (parts.length === 2) {
+			return [normalized, parts[0], parts[1]];
+		}
+
+		return [
+			normalized,
+			parts.slice(0, -1).join('-'),
+			parts[0]
+		];
+	}
+
+	const resolvedIconName = $derived.by(() => {
+		for (const candidate of buildIconCandidates(selectedEntityName)) {
+			if (hasRegisteredIcon(candidate)) {
+				return candidate;
+			}
+		}
+
+		return NOT_FOUND_ICON_NAME;
+	});
+
+	const hasResolvedIcon = $derived(resolvedIconName !== NOT_FOUND_ICON_NAME);
+
 	function handleAction(action?: () => void) {
 		dropdownOpen = false;
 		action?.();
@@ -53,6 +105,19 @@
 
 <div class="c-joint-tab-buttons {className}" aria-label="Files">
 	<div class="action-group">
+		<div
+			class="entity-icon-shell"
+			class:entity-icon-shell--missing={!hasResolvedIcon}
+			title={hasResolvedIcon
+				? `Icon: ${resolvedIconName}`
+				: `Icon not found for ${selectedEntityName || 'entity'}`}
+			aria-label={hasResolvedIcon
+				? `Resolved icon ${resolvedIconName}`
+				: `Icon not found for ${selectedEntityName || 'entity'}`}
+		>
+			<Icon name={resolvedIconName} size="sm" />
+		</div>
+
 		<button
 			type="button"
 			class="tab tab--action"
@@ -151,14 +216,34 @@
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.35rem;
-		overflow-x: auto;
 		flex: 1;
 		min-width: 0;
 	}
 
 	.action-group {
 		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
 		flex-shrink: 0;
+	}
+
+	.entity-icon-shell {
+		display: inline-grid;
+		place-items: center;
+		width: 34px;
+		height: 34px;
+		border: 1px solid color-mix(in srgb, var(--color-primary-500) 35%, var(--color-border-primary));
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--color-primary-500) 8%, var(--color-background-primary));
+		color: var(--color-text-primary);
+		flex-shrink: 0;
+	}
+
+	.entity-icon-shell--missing {
+		border-color: color-mix(in srgb, var(--color-danger-500) 32%, var(--color-border-primary));
+		background: color-mix(in srgb, var(--color-danger-500) 8%, var(--color-background-primary));
+		color: var(--color-text-secondary);
 	}
 
 	.chevron {

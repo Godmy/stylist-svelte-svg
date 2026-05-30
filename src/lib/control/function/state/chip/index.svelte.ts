@@ -1,6 +1,5 @@
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import type { ChipRecipe } from '$stylist/typography/interface/recipe/chip';
+import type { ChipRecipe } from '$stylist/control/interface/recipe/chip';
 
 type ChipProps = ChipRecipe & {
 	text?: string;
@@ -9,7 +8,7 @@ type ChipProps = ChipRecipe & {
 	class?: unknown;
 };
 
-// Определение состояния для Chip
+// Define reactive state for the chip component.
 export function createChipState(props: ChipProps) {
 	const classes = joinClassNames(
 		'chip',

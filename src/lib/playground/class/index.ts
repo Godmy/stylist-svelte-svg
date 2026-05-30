@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { PlaygroundAiAssistantStyleManager, PlaygroundAiChatStyleManager, PlaygroundAiPanelStyleManager, PlaygroundAnimatedBackgroundStyleManager, PlaygroundDeviceFrameStyleManager, PlaygroundHeroStyleManager, PlaygroundShellHeaderStyleManager, PlaygroundToastStyleManager, PropsEditorStyleManager } from './style-manager';
+export { PlaygroundAiAssistantStyleManager, PlaygroundAiChatStyleManager, PlaygroundAiPanelStyleManager, PlaygroundDeviceFrameStyleManager, PlaygroundShellHeaderStyleManager, PropsEditorStyleManager } from './style-manager';

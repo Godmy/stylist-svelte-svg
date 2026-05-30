@@ -1,10 +1,21 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 export class BlockquoteStyleManager {
-	static getBlockquoteClasses(className?: string): string {
-		return `border-l-4 border-gray-300 pl-4 italic text-gray-700 my-4 ${className ?? ''}`.trim();
+	static getBlockquoteClasses(
+		withBorder: boolean,
+		withBackground: boolean,
+		className?: string
+	): string {
+		return mergeClassNames(
+			'c-typography-blockquote',
+			withBorder && 'c-typography-blockquote--bordered',
+			withBackground && 'c-typography-blockquote--surface',
+			className
+		);
 	}
 
 	static getFooterClasses(): string {
-		return 'mt-2 text-sm text-gray-500 not-italic';
+		return 'c-typography-blockquote__footer';
 	}
 }

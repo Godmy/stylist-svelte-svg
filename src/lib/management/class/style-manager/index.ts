@@ -3,6 +3,7 @@ export { BurnDownChartStyleManager } from './burn-down-chart';
 export { DashboardLayoutStyleManager } from './dashboard-layout';
 export { DraggableCardStyleManager } from './draggable-card';
 export { FeatureToggleStyleManager } from './feature-toggle';
+export { IssuesTableStyleManager } from './issues-table';
 export { KanbanBoardStyleManager } from './kanban-board';
 export { KanbanColumnStyleManager } from './kanban-column';
 export { KPIIndicatorStyleManager } from './kpi-indicator';

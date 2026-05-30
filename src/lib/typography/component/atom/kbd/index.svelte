@@ -17,6 +17,18 @@
 
 <kbd class={state.classes} {...restProps}>
 	{#if children}
-		{#if children}{#if children}{@render children()}{/if}{/if}
+		{@render children()}
 	{/if}
 </kbd>
+
+<style>
+	.c-typography-kbd {
+		padding: 0.125rem 0.45rem;
+		border: 1px solid var(--color-neutral-200);
+		border-radius: 0.375rem;
+		background: var(--color-neutral-100);
+		color: var(--color-text-primary);
+		font-family: var(--font-family-mono, monospace);
+		font-size: var(--text-size-xs, 0.75rem);
+	}
+</style>
