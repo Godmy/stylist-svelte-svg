@@ -4,7 +4,6 @@ export { createBadgeState } from './badge';
 export { createBadgeGroupState } from './badge-group';
 export { createBlockquoteState } from './blockquote';
 export { createCaptionState } from './caption';
-export { createCharacterCountState } from './characters-count';
 export { createCountBadgeState } from './count-badge';
 export { createDefinitionDescriptionState } from './definition-description';
 export { createDefinitionTermState } from './definition-term';

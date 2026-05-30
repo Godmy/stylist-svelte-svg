@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SlotAbbr as AbbrProps } from '$stylist/navigation/interface/slot/abbr';
+	import type { SlotAbbr as AbbrProps } from '$stylist/typography/interface/slot/abbr';
 	import { createAbbrState } from '$stylist/typography/function/state/abbr';
 
 	let props: AbbrProps = $props();

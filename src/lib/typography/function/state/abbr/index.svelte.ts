@@ -1,16 +1,16 @@
-import { createAbbrState as createBaseAbbrState } from '$stylist/information/function/state/abbr';
+import type { SlotAbbr as AbbrProps } from '$stylist/typography/interface/slot/abbr';
 import { AbbrStyleManager } from '$stylist/typography/class/style-manager/abbr';
-import type { SlotAbbr as AbbrProps } from '$stylist/navigation/interface/slot/abbr';
 
 export function createAbbrState(props: AbbrProps) {
-	const baseState = createBaseAbbrState(props);
-	const classes = $derived(AbbrStyleManager.getAbbrClasses(baseState.classes));
+	const title = $derived(props.title ?? '');
+	const classes = $derived(AbbrStyleManager.getAbbrClasses(props.class ?? ''));
+
 	return {
+		get title() {
+			return title;
+		},
 		get classes() {
 			return classes;
-		},
-		get title() {
-			return baseState.title;
 		}
 	};
 }

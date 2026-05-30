@@ -1,26 +1,37 @@
-import { createBadgeGroupState as createBaseBadgeGroupState } from '$stylist/information/function/state/badge-group';
-import { StyleManagerBadgeGroup } from '$stylist/typography/class/style-manager/badge-group';
 import type { BadgeGroupRecipe } from '$stylist/typography/interface/recipe/badge-group';
+import { BadgeStyleManager } from '$stylist/typography/class/style-manager/badge';
 
 export function createBadgeGroupState(props: BadgeGroupRecipe) {
-	const baseState = createBaseBadgeGroupState(props);
-	const containerClasses = $derived(StyleManagerBadgeGroup.container(baseState.containerClasses));
-	const overflowClasses = $derived(StyleManagerBadgeGroup.overflow(baseState.overflowClasses));
+	const badges = $derived(props.badges ?? []);
+	const maxVisible = $derived(props.maxVisible ?? 5);
+	const showOverflow = $derived(props.showOverflow ?? true);
+	const badgeClass = $derived(props.badgeClass ?? '');
+	const visibleBadges = $derived(badges.slice(0, maxVisible));
+	const overflowCount = $derived(Math.max(0, badges.length - maxVisible));
+	const containerClasses = $derived(
+		BadgeStyleManager.getBadgeGroupContainerClasses(
+			typeof props.class === 'string' ? props.class : ''
+		)
+	);
+	const overflowClasses = $derived(
+		BadgeStyleManager.getBadgeGroupOverflowClasses(props.overflowClass ?? '')
+	);
+
 	return {
-		get containerClasses() {
-			return containerClasses;
-		},
 		get badgeClass() {
-			return baseState.badgeClass;
+			return badgeClass;
 		},
 		get visibleBadges() {
-			return baseState.visibleBadges;
+			return visibleBadges;
 		},
 		get showOverflow() {
-			return baseState.showOverflow;
+			return showOverflow;
 		},
 		get overflowCount() {
-			return baseState.overflowCount;
+			return overflowCount;
+		},
+		get containerClasses() {
+			return containerClasses;
 		},
 		get overflowClasses() {
 			return overflowClasses;

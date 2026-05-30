@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { SlotAnimate } from './animate';
+export type { AnimateValueOptions } from './animate-value-options';
 export type { AnimatedStyleManagerOptions } from './animated-style-manager-options';
 export type { SlotTransformable } from './transformable';
 export type { TransformableStyleManagerOptions } from './transformable-style-manager-options';

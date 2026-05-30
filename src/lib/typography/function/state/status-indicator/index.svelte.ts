@@ -1,18 +1,49 @@
-import { createStatusIndicatorState as createBaseStatusIndicatorState } from '$stylist/information/function/state/status-indicator';
-import { StyleManagerStatusIndicator } from '$stylist/typography/class/style-manager/status-indicator';
 import type { ThemeStatusIndicatorRecipe } from '$stylist/typography/interface/recipe/status-indicator';
+import { IndicatorsStyleManager } from '$stylist/interaction/class/style-manager/indicators';
+import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
+import type { TokenAvailability } from '$stylist/interaction/type/record/availability';
 
 export function createStatusIndicatorState(props: ThemeStatusIndicatorRecipe) {
-	const baseState = createBaseStatusIndicatorState(props);
-	const classes = $derived(StyleManagerStatusIndicator.root(baseState.classes));
+	const status = $derived((props.status ?? 'online') as TokenAvailability);
+	const appearance = $derived((props.appearance ?? 'neutral') as TokenAppearance);
+	const label = $derived(props.label ?? '');
+	const className = $derived(typeof props.class === 'string' ? props.class : undefined);
+	const customColor = $derived(props.customColor);
+	const size = $derived(props.size ?? 'md');
+	const showLabel = $derived(props.showLabel ?? true);
+	const indicatorClass = $derived(props.indicatorClass ?? '');
+	const labelClass = $derived(props.labelClass ?? '');
+	const isSimpleMode = $derived(props.appearance === undefined && !props.customColor);
+	const classes = $derived(IndicatorsStyleManager.getStatusIndicatorContainerClasses(className));
+	const dotClasses = $derived(
+		isSimpleMode
+			? IndicatorsStyleManager.getStatusIndicatorDotClasses(
+					status as Parameters<typeof IndicatorsStyleManager.getStatusIndicatorDotClasses>[0]
+				)
+			: ''
+	);
 	const containerClasses = $derived(
-		StyleManagerStatusIndicator.container(baseState.containerClasses)
+		isSimpleMode
+			? classes
+			: IndicatorsStyleManager.getStatusIndicatorWithLabelContainerClasses(className)
 	);
-	const dotClasses = $derived(StyleManagerStatusIndicator.dot(baseState.dotClasses));
 	const indicatorClasses = $derived(
-		StyleManagerStatusIndicator.indicator(baseState.indicatorClasses)
+		isSimpleMode
+			? dotClasses
+			: IndicatorsStyleManager.getStatusIndicatorWithLabelIndicatorClasses(
+					appearance,
+					size as Parameters<
+						typeof IndicatorsStyleManager.getStatusIndicatorWithLabelIndicatorClasses
+					>[1],
+					customColor,
+					indicatorClass
+				)
 	);
-	const labelClasses = $derived(StyleManagerStatusIndicator.label(baseState.labelClasses));
+	const indicatorStyle = $derived(customColor ? `background-color: ${customColor};` : '');
+	const labelClasses = $derived(
+		IndicatorsStyleManager.getStatusIndicatorWithLabelLabelClasses(labelClass)
+	);
+
 	return {
 		get classes() {
 			return classes;
@@ -27,19 +58,19 @@ export function createStatusIndicatorState(props: ThemeStatusIndicatorRecipe) {
 			return indicatorClasses;
 		},
 		get indicatorStyle() {
-			return baseState.indicatorStyle;
+			return indicatorStyle;
 		},
 		get labelClasses() {
 			return labelClasses;
 		},
 		get label() {
-			return baseState.label;
+			return label;
 		},
 		get showLabel() {
-			return baseState.showLabel;
+			return showLabel;
 		},
 		get isSimpleMode() {
-			return baseState.isSimpleMode;
+			return isSimpleMode;
 		}
 	};
 }

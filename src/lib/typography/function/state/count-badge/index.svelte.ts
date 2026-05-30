@@ -1,22 +1,26 @@
-import { createCountBadgeState as createBaseCountBadgeState } from '$stylist/information/function/state/count-badge';
-import { StyleManagerCountBadge } from '$stylist/typography/class/style-manager/count-badge';
 import type { CountBadgeRecipe } from '$stylist/typography/interface/recipe/count-badge';
+import { IndicatorsStyleManager } from '$stylist/interaction/class/style-manager/indicators';
 
 export function createCountBadgeState(props: CountBadgeRecipe) {
-	const baseState = createBaseCountBadgeState(props);
-	const classes = $derived(StyleManagerCountBadge.root(baseState.classes));
+	const count = $derived(props.count ?? 0);
+	const max = $derived(props.max ?? 99);
+	const showZero = $derived(props.showZero ?? false);
+	const className = $derived(typeof props.class === 'string' ? props.class : undefined);
+	const classes = $derived(IndicatorsStyleManager.getCountBadgeClasses(className));
+	const displayCount = $derived(count > max ? `${max}+` : count);
+
 	return {
 		get classes() {
 			return classes;
 		},
 		get count() {
-			return baseState.count;
+			return count;
 		},
 		get showZero() {
-			return baseState.showZero;
+			return showZero;
 		},
 		get displayCount() {
-			return baseState.displayCount;
+			return displayCount;
 		}
 	};
 }

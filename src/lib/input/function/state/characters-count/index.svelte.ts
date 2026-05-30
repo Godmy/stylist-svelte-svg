@@ -1,4 +1,4 @@
-import { createCharacterCountState as createCharacterCountScriptState } from '$stylist/input/function/script/create-character-count-state';
+import { createCharacterCountState as createCharacterCountScriptState } from '$stylist/information/function/state/characters-count';
 import type { SlotCharacterCount as ICharacterCountProps } from '$stylist/input/interface/slot/character-count';
 
 export const createCharactersCountState = (props: ICharacterCountProps) => {

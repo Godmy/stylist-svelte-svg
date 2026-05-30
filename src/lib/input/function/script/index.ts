@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createCharacterCountState } from './create-character-count-state';
 export { createFormErrorMessageState } from './create-form-error-message-state';
 export { createFormHelperTextState } from './create-form-helper-text-state';
 export { createInputAddonState } from './create-input-addon-state';
