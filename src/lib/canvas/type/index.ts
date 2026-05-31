@@ -1,3 +1,30 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { CanvasToolbarDrawingTool, TokenCanvasIcon } from './enum';
-export type { CanvasObject, CanvasToolbarProps, CanvasUser, CollaborativeEditEvent, CollaborativeEditorContract, CollaborativeEditorProps, CollaborativeUser, DrawingSurfaceCanvasClearedEvent, DrawingSurfaceContract, DrawingSurfaceExposeMethodsEvent, DrawingSurfaceProps, DrawingSurfaceTool, SharedCanvasContract, SharedCanvasDraftObject, SharedCanvasObjectBounds, SharedCanvasPoint, SharedCanvasTool, SharedCanvasToolDefinition, StageCamera, StageContract, StageProps, ThemeGraphColors, ThemeGraphPortDataTypeColors, ThemeGraphPortStateColors, ViewportContract, ViewportProps } from './struct';
+export type {
+	CanvasObject,
+	CanvasToolbarProps,
+	CanvasUser,
+	CollaborativeEditEvent,
+	CollaborativeEditorContract,
+	CollaborativeEditorProps,
+	CollaborativeUser,
+	DrawingSurfaceCanvasClearedEvent,
+	DrawingSurfaceContract,
+	DrawingSurfaceExposeMethodsEvent,
+	DrawingSurfaceProps,
+	DrawingSurfaceTool,
+	SharedCanvasContract,
+	SharedCanvasDraftObject,
+	SharedCanvasObjectBounds,
+	SharedCanvasPoint,
+	SharedCanvasTool,
+	SharedCanvasToolDefinition,
+	StageCamera,
+	StageContract,
+	StageProps,
+	ThemeGraphColors,
+	ThemeGraphPortDataTypeColors,
+	ThemeGraphPortStateColors,
+	ViewportContract,
+	ViewportProps
+} from './struct';

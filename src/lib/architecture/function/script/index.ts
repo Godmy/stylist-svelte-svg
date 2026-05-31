@@ -39,6 +39,14 @@ export { resolveFoundationSemanticZoomStage } from './resolve-foundation-semanti
 export { resolveSceneAtomModelMatrix } from './resolve-scene-atom-model-matrix';
 export { resolveSceneAtomTint } from './resolve-scene-atom-tint';
 export { resolveSemanticZoomNode } from './resolve-semantic-zoom-node';
-export { createDemoSceneGraph, createGridMolecule, createSceneAtomBuffers, createSceneCubeGeometry, pickSceneAtom, resolvePresenterSceneLinks, resolveSceneAtomBaseColor } from './scene';
+export {
+	createDemoSceneGraph,
+	createGridMolecule,
+	createSceneAtomBuffers,
+	createSceneCubeGeometry,
+	pickSceneAtom,
+	resolvePresenterSceneLinks,
+	resolveSceneAtomBaseColor
+} from './scene';
 export { resolveSemanticZoomPresentation } from './semantic-zoom';
 export { useSemanticZoom } from './use-semantic-zoom';

@@ -1,5 +1,50 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { BehaviorTimeRangeFilter } from './behavior';
 export type { ContractScheduleEvent, ContractTimeSlot, RecipeCalendarEvent } from './contract';
-export type { RecipeCalendar, RecipeCalendarDay, RecipeCalendarView, RecipeCalendarViewDay, RecipeDaySchedule, RecipeDayTimeGrid, RecipeEventCalendar, RecipeEventCalendarDay, RecipeExtendedTimeSlot, RecipeMapCalendar, RecipeMiniCalendar, RecipeMiniCalendarDay, RecipeRealTimePresence, RecipeScheduleCalendar, RecipeScheduleCalendarDaySchedule, RecipeScheduleCalendarTimeSlot, RecipeScheduleTimeSlot, RecipeTimeGrid, RecipeTimeGridDayTimeGrid, RecipeTimeGridExtendedTimeSlot, RecipeTimeline, TimeSlotProps } from './recipe';
-export type { ChildrenHtmlAttributes, SlotCalendarDay, SlotCalendarEvent, SlotCalendarViewEvent, SlotDaySchedule, SlotEventCalendar, SlotEventCalendarEvent, SlotMiniCalendar, SlotMiniCalendarEvent, SlotPresenceUser, SlotRealTimePresence, SlotRealTimePresenceStyleClasses, SlotRealTimePresenceUser, SlotScheduleCalendar, SlotScheduleCalendarEvent, SlotScheduleEvent, SlotScheduleTimeSlot, SlotTimeGrid, SlotTimeGridEvent, SlotTimeSlotEvent, SlotTimelineItem } from './slot';
+export type {
+	RecipeCalendar,
+	RecipeCalendarDay,
+	RecipeCalendarView,
+	RecipeCalendarViewDay,
+	RecipeDaySchedule,
+	RecipeDayTimeGrid,
+	RecipeEventCalendar,
+	RecipeEventCalendarDay,
+	RecipeExtendedTimeSlot,
+	RecipeMapCalendar,
+	RecipeMiniCalendar,
+	RecipeMiniCalendarDay,
+	RecipeRealTimePresence,
+	RecipeScheduleCalendar,
+	RecipeScheduleCalendarDaySchedule,
+	RecipeScheduleCalendarTimeSlot,
+	RecipeScheduleTimeSlot,
+	RecipeTimeGrid,
+	RecipeTimeGridDayTimeGrid,
+	RecipeTimeGridExtendedTimeSlot,
+	RecipeTimeline,
+	TimeSlotProps
+} from './recipe';
+export type {
+	ChildrenHtmlAttributes,
+	SlotCalendarDay,
+	SlotCalendarEvent,
+	SlotCalendarViewEvent,
+	SlotDaySchedule,
+	SlotEventCalendar,
+	SlotEventCalendarEvent,
+	SlotMiniCalendar,
+	SlotMiniCalendarEvent,
+	SlotPresenceUser,
+	SlotRealTimePresence,
+	SlotRealTimePresenceStyleClasses,
+	SlotRealTimePresenceUser,
+	SlotScheduleCalendar,
+	SlotScheduleCalendarEvent,
+	SlotScheduleEvent,
+	SlotScheduleTimeSlot,
+	SlotTimeGrid,
+	SlotTimeGridEvent,
+	SlotTimeSlotEvent,
+	SlotTimelineItem
+} from './slot';

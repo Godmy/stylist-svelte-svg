@@ -1,2 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { CalendarViewStyleManager, EventCalendarStyleManager, MiniCalendarStyleManager, RealTimePresenceStyleManager, ScheduleCalendarStyleManager, TimeGridStyleManager } from './style-manager';
+export {
+	CalendarViewStyleManager,
+	EventCalendarStyleManager,
+	MiniCalendarStyleManager,
+	RealTimePresenceStyleManager,
+	ScheduleCalendarStyleManager,
+	TimeGridStyleManager
+} from './style-manager';

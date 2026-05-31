@@ -24,12 +24,7 @@
 		{/each}
 	</div>
 
-	<svg
-		class="ambient-bg__geo"
-		viewBox="0 0 100 100"
-		preserveAspectRatio="none"
-		aria-hidden="true"
-	>
+	<svg class="ambient-bg__geo" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
 		<defs>
 			<radialGradient id="animated-background-gradient-1" cx="30%" cy="20%" r="60%">
 				<stop offset="0%" stop-color="var(--color-warning-500)" stop-opacity="0.12" />
@@ -199,18 +194,66 @@
 		animation: ambient-particle 22s linear infinite;
 	}
 
-	.ambient-bg__particle.p1 { top: 10%; left: 8%; animation-delay: -2s; }
-	.ambient-bg__particle.p2 { top: 16%; left: 26%; animation-delay: -5s; }
-	.ambient-bg__particle.p3 { top: 8%; left: 48%; animation-delay: -11s; }
-	.ambient-bg__particle.p4 { top: 24%; left: 72%; animation-delay: -7s; }
-	.ambient-bg__particle.p5 { top: 38%; left: 12%; animation-delay: -13s; }
-	.ambient-bg__particle.p6 { top: 44%; left: 38%; animation-delay: -17s; }
-	.ambient-bg__particle.p7 { top: 54%; left: 84%; animation-delay: -3s; }
-	.ambient-bg__particle.p8 { top: 62%; left: 58%; animation-delay: -19s; }
-	.ambient-bg__particle.p9 { top: 72%; left: 18%; animation-delay: -23s; }
-	.ambient-bg__particle.p10 { top: 78%; left: 46%; animation-delay: -29s; }
-	.ambient-bg__particle.p11 { top: 86%; left: 70%; animation-delay: -31s; }
-	.ambient-bg__particle.p12 { top: 30%; left: 92%; animation-delay: -37s; }
+	.ambient-bg__particle.p1 {
+		top: 10%;
+		left: 8%;
+		animation-delay: -2s;
+	}
+	.ambient-bg__particle.p2 {
+		top: 16%;
+		left: 26%;
+		animation-delay: -5s;
+	}
+	.ambient-bg__particle.p3 {
+		top: 8%;
+		left: 48%;
+		animation-delay: -11s;
+	}
+	.ambient-bg__particle.p4 {
+		top: 24%;
+		left: 72%;
+		animation-delay: -7s;
+	}
+	.ambient-bg__particle.p5 {
+		top: 38%;
+		left: 12%;
+		animation-delay: -13s;
+	}
+	.ambient-bg__particle.p6 {
+		top: 44%;
+		left: 38%;
+		animation-delay: -17s;
+	}
+	.ambient-bg__particle.p7 {
+		top: 54%;
+		left: 84%;
+		animation-delay: -3s;
+	}
+	.ambient-bg__particle.p8 {
+		top: 62%;
+		left: 58%;
+		animation-delay: -19s;
+	}
+	.ambient-bg__particle.p9 {
+		top: 72%;
+		left: 18%;
+		animation-delay: -23s;
+	}
+	.ambient-bg__particle.p10 {
+		top: 78%;
+		left: 46%;
+		animation-delay: -29s;
+	}
+	.ambient-bg__particle.p11 {
+		top: 86%;
+		left: 70%;
+		animation-delay: -31s;
+	}
+	.ambient-bg__particle.p12 {
+		top: 30%;
+		left: 92%;
+		animation-delay: -37s;
+	}
 
 	.ambient-bg__geo {
 		opacity: 0.7;

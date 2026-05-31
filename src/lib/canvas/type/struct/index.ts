@@ -6,8 +6,21 @@ export type { CollaborativeEditEvent } from './collaborative-edit-event';
 export type { CollaborativeEditorContract } from './collaborative-editor-contract';
 export type { CollaborativeEditorProps } from './collaborative-editor-props';
 export type { CollaborativeUser } from './collaborative-user';
-export type { DrawingSurfaceCanvasClearedEvent, DrawingSurfaceContract, DrawingSurfaceExposeMethodsEvent, DrawingSurfaceProps, DrawingSurfaceTool } from './drawing-surface';
-export type { SharedCanvasContract, SharedCanvasDraftObject, SharedCanvasObjectBounds, SharedCanvasPoint, SharedCanvasTool, SharedCanvasToolDefinition } from './shared-canvas';
+export type {
+	DrawingSurfaceCanvasClearedEvent,
+	DrawingSurfaceContract,
+	DrawingSurfaceExposeMethodsEvent,
+	DrawingSurfaceProps,
+	DrawingSurfaceTool
+} from './drawing-surface';
+export type {
+	SharedCanvasContract,
+	SharedCanvasDraftObject,
+	SharedCanvasObjectBounds,
+	SharedCanvasPoint,
+	SharedCanvasTool,
+	SharedCanvasToolDefinition
+} from './shared-canvas';
 export type { StageCamera, StageContract, StageProps } from './stage';
 export type { ThemeGraphColors } from './theme-graph-colors';
 export type { ThemeGraphPortDataTypeColors } from './theme-graph-port-data-type-colors';

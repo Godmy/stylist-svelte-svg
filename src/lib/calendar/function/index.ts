@@ -1,3 +1,12 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { isToday, isWeekend, molecularTimeSlotToAtomic, scheduleTimeSlotToAtomic } from './script';
-export { createCalendarViewState, createEventCalendarState, createMiniCalendarState, createRealTimePresenceState, createScheduleCalendarState, createTimeGridState, createTimeSlotState, createTimelineState } from './state';
+export {
+	createCalendarViewState,
+	createEventCalendarState,
+	createMiniCalendarState,
+	createRealTimePresenceState,
+	createScheduleCalendarState,
+	createTimeGridState,
+	createTimeSlotState,
+	createTimelineState
+} from './state';

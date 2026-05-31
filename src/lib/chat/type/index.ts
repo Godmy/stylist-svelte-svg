@@ -1,4 +1,47 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { AuthGuardProps, ChatHeaderChat, ChatHeaderOrganismProps, ChatRoomMessage, ChatRoomProps } from './alias';
-export type { TokenChatIcon, TokenMessageState, TokenMessageStatus, TokenNotifictionChannel } from './enum';
-export type { AIProvider, AuthGuardResolution, AuthGuardResolutionInput, Chat, ChatHeaderProps, ChatHeaderUser, ChatInterfaceContract, ChatInterfaceProps, ChatMessageStatus, ChatPreviewContract, ChatPreviewItem, ChatPreviewMessage, ChatPreviewProps, INotificationProps, INotificationSettingsPreference, INotificationSettingsProps, Message, NotificationCenterContract, NotificationCenterProps, NotificationData, NotificationItem, NotificationListContract, NotificationListProps, NotificationPreferencesContract, NotificationPreferencesProps, NotificationSettingsData, NotificationType, ScheduledNotificationContract, ScheduledNotificationItem, ScheduledNotificationProps, User } from './struct';
+export type {
+	AuthGuardProps,
+	ChatHeaderChat,
+	ChatHeaderOrganismProps,
+	ChatRoomMessage,
+	ChatRoomProps
+} from './alias';
+export type {
+	TokenChatIcon,
+	TokenMessageState,
+	TokenMessageStatus,
+	TokenNotifictionChannel
+} from './enum';
+export type {
+	AIProvider,
+	AuthGuardResolution,
+	AuthGuardResolutionInput,
+	Chat,
+	ChatHeaderProps,
+	ChatHeaderUser,
+	ChatInterfaceContract,
+	ChatInterfaceProps,
+	ChatMessageStatus,
+	ChatPreviewContract,
+	ChatPreviewItem,
+	ChatPreviewMessage,
+	ChatPreviewProps,
+	INotificationProps,
+	INotificationSettingsPreference,
+	INotificationSettingsProps,
+	Message,
+	NotificationCenterContract,
+	NotificationCenterProps,
+	NotificationData,
+	NotificationItem,
+	NotificationListContract,
+	NotificationListProps,
+	NotificationPreferencesContract,
+	NotificationPreferencesProps,
+	NotificationSettingsData,
+	NotificationType,
+	ScheduledNotificationContract,
+	ScheduledNotificationItem,
+	ScheduledNotificationProps,
+	User
+} from './struct';
