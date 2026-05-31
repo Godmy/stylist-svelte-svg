@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 
 export interface SlotLocation {
 	id: string;

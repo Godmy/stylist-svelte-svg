@@ -200,7 +200,7 @@
 							directed={Boolean(values.directed)}
 							active={Boolean(values.active)}
 							type={(values.edgeType as 'straight' | 'curve' | 'polyline') ?? 'straight'}
-							label={Boolean(values.showLabels) ? `${from.label} -> ${to.label}` : ''}
+							label={values.showLabels ? `${from.label} -> ${to.label}` : ''}
 							style={edgeStyle(from, to, values)}
 						/>
 					{/if}

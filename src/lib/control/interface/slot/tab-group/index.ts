@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'svelte/elements';
-import type { Snippet } from 'svelte';
 import type { TokenShape } from '$stylist/layout/type/enum/shape';
 import type { SlotTab } from '$stylist/control/interface/slot/tab';
 

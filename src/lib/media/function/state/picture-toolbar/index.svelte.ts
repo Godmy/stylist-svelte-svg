@@ -1,5 +1,4 @@
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { Snippet } from 'svelte';
 import type { PictureToolbarProps } from '$stylist/media/type/alias/picture-toolbar-props';
 
 export function createPictureToolbarState(props: PictureToolbarProps) {

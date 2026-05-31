@@ -1,4 +1,3 @@
-import type { ClickContract } from '$stylist/interaction/type/struct/gesture-click-contract';
 import type { GestureContract } from '$stylist/interaction/type/struct/gesture/gesture-contract';
 import type { TokenCursor } from '$stylist/interaction/type/enum/cursor';
 

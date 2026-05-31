@@ -1,5 +1,4 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
 import type { SlotFolderItem } from '$stylist/file/interface/slot/folder-item';
 import type { BehaviorFileBrowserEvents } from '$stylist/file/interface/behavior/file-browser-events';
 

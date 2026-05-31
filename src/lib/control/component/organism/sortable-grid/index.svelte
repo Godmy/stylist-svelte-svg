@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { createSortableGridState } from '$stylist/control/function/state/sortable-grid';
-	import type { SortableGridItem } from '$stylist/control/type/alias/sortable-grid-item';
 	import type { SortableGridProps } from '$stylist/control/type/alias/sortable-grid-props';
 
 	const GripVertical = 'grip-vertical';

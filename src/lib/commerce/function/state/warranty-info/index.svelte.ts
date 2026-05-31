@@ -1,5 +1,4 @@
 import type { RecipeWarrantyInfo as WarrantyInfoContract } from '$stylist/commerce/interface/recipe/warranty-info';
-import type { SlotWarrantyClaim as WarrantyClaimContract } from '$stylist/commerce/interface/slot/warranty-claim';
 import { WarrantyInfoStyleManager } from '$stylist/commerce/class/style-manager/warranty-info';
 
 export function createWarrantyInfoState(props: WarrantyInfoContract) {

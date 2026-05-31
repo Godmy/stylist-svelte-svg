@@ -1,5 +1,4 @@
 ﻿<script lang="ts">
-	import { tick } from 'svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import StylistTab from '$stylist/control/component/molecule/stylist-tab/index.svelte';
 	import { STYLIST_MENU_MENU_ITEMS } from '$stylist/control/const/record/stylist-menu-menu-items';

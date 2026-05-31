@@ -1,4 +1,3 @@
-import type { HtmlAttributesBase } from '$stylist/information/interface/slot';
 import type { SlotCommentThreadUser } from '$stylist/social/interface/slot/comment-thread-user';
 
 export interface SlotCommentThreadItem {

@@ -1,7 +1,6 @@
 import { untrack } from 'svelte';
 import type {
-	LocationSelectorLocation,
-	LocationSelectorProps
+	LocationSelectorLocation
 } from '$stylist/geo/type/struct/location-selector';
 import type { LocationSelectorStateProps } from '$stylist/geo/interface/recipe/location-selector';
 

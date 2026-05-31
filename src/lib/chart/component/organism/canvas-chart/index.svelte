@@ -2,9 +2,8 @@
 	import type { CanvasChartProps } from '$stylist/chart/type/struct/canvas-chart-props';
 	import { createCanvasChartState } from '$stylist/chart/function/state/canvas-chart';
 	import { ObjectManagerCanvasChart } from '$stylist/chart/class/object-manager/canvas-chart';
-	import { CanvasChartStyleManager } from '$stylist/chart/class/style-manager/canvas-chart';
-
-	let props: CanvasChartProps = $props();
+	
+let props: CanvasChartProps = $props();
 	const state = createCanvasChartState(props);
 
 	let canvasRef: HTMLCanvasElement | null = null;

@@ -1,4 +1,3 @@
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-classes';
 import { StyleManagerBase } from '$stylist/architecture/class/style-manager/base';

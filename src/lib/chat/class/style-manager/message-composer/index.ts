@@ -3,7 +3,6 @@
  * Responsible only for managing MessageComposer styling logic
  * Uses CSS variables from the theme system
  */
-import type { SlotMessageComposer as IMessageComposerProps } from '$stylist/chat/interface/slot/message-composer';
 
 export class MessageComposerStyleManager {
 	static getContainerClasses(hostClass: string): string {

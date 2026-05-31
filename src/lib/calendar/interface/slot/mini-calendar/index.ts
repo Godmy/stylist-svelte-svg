@@ -1,4 +1,3 @@
-import type { CalendarEventMini as RecipeCalendarEvent } from '$stylist/calendar/type/struct';
 import type { SlotCalendarEvent } from '$stylist/calendar/interface/slot/calendar-event';
 
 /**

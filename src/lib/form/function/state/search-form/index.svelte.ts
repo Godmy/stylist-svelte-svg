@@ -1,4 +1,3 @@
-import { SEARCH_ICON_NAME } from '$stylist/form/const/value/search-icon-name';
 import type { SlotSearchForm as SearchFormProps } from '$stylist/form/interface/slot/search-form';
 import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
 import type { SlotSearchFormState } from '$stylist/form/interface/slot/search-form-state';

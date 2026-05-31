@@ -1,5 +1,4 @@
-﻿import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 import { PRICE_ALERT_VARIANT_CLASSES } from '$stylist/commerce/const/record/price-alert-variant-classes';
 import { PRICE_ALERT_SIZE_CLASSES } from '$stylist/commerce/const/map/price-alert-size-classes';

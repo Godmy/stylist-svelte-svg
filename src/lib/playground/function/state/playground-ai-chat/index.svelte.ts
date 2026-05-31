@@ -7,7 +7,7 @@ export function createPlaygroundAiChatState(props: PlaygroundAiChatProps) {
 	const Send = 'send';
 
 	let inputMessage = $state('');
-	let messages = $state<PlaygroundAiChatChatMessage[]>([
+	const messages = $state<PlaygroundAiChatChatMessage[]>([
 		{
 			role: 'assistant',
 			content:

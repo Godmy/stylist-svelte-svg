@@ -18,11 +18,11 @@ export function createDataTableState(props: DataTableRecipe<Row>) {
 		sortDirection = 'asc';
 	};
 
-	let sortedData = $derived(
+	const sortedData = $derived(
 		ObjectManagerTableControls.sortData(props.data, sortKey, sortDirection)
 	);
-	let rootClass = $derived(DataTableStyleManager.root(props.class ?? ''));
-	let containerStyle = $derived(props.maxHeight !== 'none' ? `max-height:${props.maxHeight}` : '');
+	const rootClass = $derived(DataTableStyleManager.root(props.class ?? ''));
+	const containerStyle = $derived(props.maxHeight !== 'none' ? `max-height:${props.maxHeight}` : '');
 
 	return {
 		get sortKey() {

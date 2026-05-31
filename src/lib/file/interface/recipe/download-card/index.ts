@@ -1,6 +1,5 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import type { ContractFileMetadata as FileMetadataContract } from '$stylist/file/interface/contract/file-metadata';
 import type { ContractFileMetadata } from '$stylist/file/interface/contract/file-metadata';
 
 export interface RecipeDownloadCard extends StructIntersectAll<[]> {

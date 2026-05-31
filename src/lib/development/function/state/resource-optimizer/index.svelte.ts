@@ -1,7 +1,5 @@
 import type { ResourceOptimizerProps } from '$stylist/development/type/struct/resource-optimizer-props';
 import type { ResourceOptimizerResourceType } from '$stylist/development/type/struct/resource-optimizer-resource-type';
-import type { ResourceOptimizerResource } from '$stylist/development/type/struct/resource-optimizer-resource';
-import type { ResourceOptimizerOptimizationSuggestion } from '$stylist/development/type/struct/resource-optimizer-optimization-suggestion';
 const HardDrive = 'hard-drive';
 const Zap = 'zap';
 const Image = 'image';

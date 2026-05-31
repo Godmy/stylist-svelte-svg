@@ -2,13 +2,11 @@
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { Avatar } from '$lib';
 	import type {
-		FRIEND_LIST_STATUS,
 		FRIEND_LIST_FRIEND,
 		FRIEND_LIST_PROPS
 	} from '$stylist/social/type/struct/friend-list';
 	import { friendListFormatLastSeen as formatLastSeen } from '$stylist/social/function/script/friend-list-format-last-seen';
 	import { friendListGetStatusColor as getStatusColor } from '$stylist/social/function/script/friend-list-get-status-color';
-	import { friendListGetStatusText as getStatusText } from '$stylist/social/function/script/friend-list-get-status-text';
 	import { createFriendListState } from '$stylist/social/function/state/friend-list';
 
 	let props: FRIEND_LIST_PROPS = $props();

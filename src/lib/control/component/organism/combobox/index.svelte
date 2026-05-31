@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { ComboboxItem } from '$stylist/control/type/struct/combobox/item';
 	import type { ComboboxProps } from '$stylist/control/type/struct/combobox-props';
 	import { createComboboxState } from '$stylist/control/function/state/combobox';
 

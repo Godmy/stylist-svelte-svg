@@ -11,7 +11,6 @@
  * Dependency Inversion: Зависит от абстракций, а не от конкретных реализаций
  */
 
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export interface SlotFileMetadata {
 	/** Имя файла */

@@ -1,5 +1,4 @@
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
-import type { TokenShape } from '$stylist/layout/type/enum/shape';
 import type { IconSize } from '$stylist/media/type/struct/icon-size';
 import type { IconDirection } from '$stylist/media/type/struct/icon-direction';
 import type { IconVariant } from '$stylist/media/type/struct/icon-variant';

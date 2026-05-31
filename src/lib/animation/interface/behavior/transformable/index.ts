@@ -1,5 +1,4 @@
 import type { TransformContract } from '$stylist/animation/type/struct/motion-transform-contract';
-import type { MotionContract } from '$stylist/animation/type/struct/motion';
 
 /**
  * Прото-интерфейс для transformable элементов

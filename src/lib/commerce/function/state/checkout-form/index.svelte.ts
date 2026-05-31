@@ -5,7 +5,6 @@ import type { CardInfo } from '$stylist/commerce/type/struct/card-info';
 import type { CheckoutStep } from '$stylist/commerce/type/struct/checkout-step';
 import type { SlotShippingOption } from '$stylist/commerce/type/struct/shipping-option';
 import type { CheckoutFormProps as Props } from '$stylist/commerce/type/struct/checkout-form-props';
-import { CheckoutFormStyleManager } from '$stylist/commerce/class/style-manager/checkout-form';
 
 function createAddressState(source?: Address): Address {
 	return {
@@ -70,7 +69,7 @@ export function createCheckoutFormState(props: Props) {
 	let billingAddress = $state<Address>(untrack(() => createAddressState(props.defaultAddress)));
 	let shippingAddress = $state<Address>(untrack(() => createAddressState(props.defaultAddress)));
 	let selectedShippingOption = $state(untrack(() => shippingOptions[0]?.id ?? ''));
-	let selectedShippingDetails = $derived(
+	const selectedShippingDetails = $derived(
 		shippingOptions.find((option: SlotShippingOption) => option.id === selectedShippingOption)
 	);
 	let sameAsBilling = $state(false);

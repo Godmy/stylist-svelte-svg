@@ -1,5 +1,4 @@
 import type { ImageProps } from '$stylist/media/type/struct/image';
-import { MediaStyleManager } from '$stylist/media/class/style-manager/media';
 
 const SIZE_CLASSES: Record<string, string> = {
 	sm: 'max-w-[200px] h-auto',

@@ -6,7 +6,6 @@
  *   ThemeAttributes   (theme)       вЂ” class, data-variant, data-tone
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { BehaviorWishlistButtonEvents } from '$stylist/commerce/interface/behavior/wishlist-button-events';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';

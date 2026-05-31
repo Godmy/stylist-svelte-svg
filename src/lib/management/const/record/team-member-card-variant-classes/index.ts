@@ -1,6 +1,4 @@
 import type { TierContent } from '$stylist/architecture/type/enum/tier';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import { CardStyleManager } from '$stylist/information/class/style-manager/card';
 
 export const TEAM_MEMBER_CARD_VARIANT_CLASSES: Partial<Record<TierContent, string>> = {
 	detailed: '',

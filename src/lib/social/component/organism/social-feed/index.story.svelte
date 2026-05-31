@@ -2,8 +2,7 @@
 	import type {
 		FeedUser,
 		FilterOption,
-		Post,
-		Props
+		Post
 	} from '$stylist/social/type/struct/social-feed';
 	import { Story } from '$stylist/playground/component';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';

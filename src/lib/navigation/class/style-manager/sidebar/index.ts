@@ -111,7 +111,7 @@ export class SidebarStyleManager {
 	}
 
 	static getContentAreaClasses(isSidebarOpen: boolean, isMobile: boolean): string {
-		let classes = 'flex-1 lg:ml-0 transition-all duration-[var(--duration-300)] ';
+		const classes = 'flex-1 lg:ml-0 transition-all duration-[var(--duration-300)] ';
 
 		if (isSidebarOpen && !isMobile) {
 			// Space occupied when sidebar is open on desktop

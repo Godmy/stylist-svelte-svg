@@ -1,5 +1,4 @@
 import type { CardData } from '$stylist/management/interface/slot/draggable-card-data';
-import type { DraggableCardProps } from '$stylist/management/interface/slot/draggable-card-props';
 
 export class ObjectManagerDraggableCard {
 	/**

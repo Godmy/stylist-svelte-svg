@@ -1,5 +1,4 @@
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 type SliderTickProps = {
 	value?: number;
 	position?: number;

@@ -3,7 +3,6 @@
 	import { Avatar, Icon } from '$stylist/media';
 	import { UserStatus } from '$stylist/chat';
 	import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
-	import { ChatHeaderStyleManager } from '$stylist/chat/class/style-manager/chat-header';
 	import { createChatHeaderState } from '$stylist/chat/function/state/chat-header';
 
 	export type ChatHeaderChat = {

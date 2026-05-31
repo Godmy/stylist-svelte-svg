@@ -1,8 +1,7 @@
 import { untrack } from 'svelte';
 import type {
 	Coordinates,
-	MapMarker,
-	LocationPickerProps
+	MapMarker
 } from '$stylist/geo/type/struct/location-picker';
 import type { LocationPickerStateProps } from '$stylist/geo/interface/recipe/location-picker';
 

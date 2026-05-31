@@ -1,7 +1,4 @@
-import type { TokenAlignment as MessageAlignment } from '$stylist/layout/type/enum/alignment';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenMessageStatus } from '$stylist/chat/type/enum/message-status';
-import type { TokenMessageState } from '$stylist/chat/type/enum/message-state';
 
 export const MESSAGE_AVATAR_SIZE_CLASSES: Partial<Record<TokenSize, string>> = {
 	sm: 'w-6 h-6',

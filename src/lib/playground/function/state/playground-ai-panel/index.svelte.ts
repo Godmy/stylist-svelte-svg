@@ -1,6 +1,5 @@
 import type { PlaygroundAiPanelProps } from '$stylist/playground/type/struct/playground-ai-panel-props';
 import type { PlaygroundAiPanelAIProvider } from '$stylist/playground/type/struct/playground-ai-panel-ai-provider';
-import type { PlaygroundAiPanelAIOption } from '$stylist/playground/type/struct/playground-ai-panel-ai-option';
 import { PlaygroundAiPanelStyleManager } from '$stylist/playground/class/style-manager/playground-ai-panel';
 
 export function createPlaygroundAiPanelState(props: PlaygroundAiPanelProps) {

@@ -1,6 +1,4 @@
-﻿import { StyleManagerBase } from '$stylist/architecture/class/style-manager/base/index';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+﻿import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 
 export const PRICE_ALERT_VARIANT_CLASSES: Record<TokenMonitoringType, string> = {

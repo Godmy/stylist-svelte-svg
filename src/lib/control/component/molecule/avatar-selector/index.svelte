@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { AvatarSelectorProps } from '$stylist/control/interface/recipe/avatar-selector';
 	import { createAvatarSelectorState } from '$stylist/control/function/state/avatar-selector';
 

@@ -1,5 +1,4 @@
 import type { ProductCatalogProps as Props } from '$stylist/commerce/type/struct/product-catalog-props';
-import type { Layout } from '$stylist/commerce/type/struct/layout';
 
 export function createProductCatalogState(props: Props) {
 	const layout = $derived(props.layout ?? 'grid');

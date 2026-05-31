@@ -1,4 +1,3 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 import type { ChatRoomProps } from '$stylist/chat/type/alias/chat-room-props';
 import { ChatStyleManager } from '$stylist/chat/class/style-manager/chat';
 

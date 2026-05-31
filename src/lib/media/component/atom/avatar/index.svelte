@@ -2,10 +2,8 @@
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { createAvatarState } from '$stylist/media/function/state/avatar';
 	import type { AvatarProps } from '$stylist/media/interface/recipe/avatar-avatar-props';
-	import type { AvatarSize } from '$stylist/media/type/alias/avatar-size';
-	import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
-
-	let props: AvatarProps & InformationHTMLAttributes<HTMLDivElement> = $props();
+	
+let props: AvatarProps & InformationHTMLAttributes<HTMLDivElement> = $props();
 	const state = createAvatarState(props);
 </script>
 

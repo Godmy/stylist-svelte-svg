@@ -1,6 +1,3 @@
-import { StyleManagerBase } from '$stylist/architecture/class/style-manager/base/index';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
-import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export const PROGRESS_VARIANT_CLASSES: Partial<Record<TokenAppearance, string>> = {

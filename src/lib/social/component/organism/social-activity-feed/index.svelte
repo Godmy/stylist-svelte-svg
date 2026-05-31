@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { Avatar } from '$lib';
 	import { socialActivityFeedFormatTime } from '$stylist/social/function/script/social-activity-feed-format-time';
 	import { socialActivityFeedGetDescription } from '$stylist/social/function/script/social-activity-feed-get-description';
 	import { createSocialActivityFeedState } from '$stylist/social/function/state/social-activity-feed';
-	import type { Activity, Props } from '$stylist/social/type/struct/social-activity-feed';
+	import type { Props } from '$stylist/social/type/struct/social-activity-feed';
 
 	let props: Props = $props();
 	const state = createSocialActivityFeedState(props);

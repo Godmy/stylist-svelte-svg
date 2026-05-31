@@ -1,6 +1,5 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
-import type { Snippet } from 'svelte';
 
 export interface RecipePlaygroundShellHeader
 	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLElement>, 'class'>]> {

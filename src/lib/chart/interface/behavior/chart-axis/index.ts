@@ -1,4 +1,3 @@
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
 /**
  * Параметры осей и шкал аналитического чарта.

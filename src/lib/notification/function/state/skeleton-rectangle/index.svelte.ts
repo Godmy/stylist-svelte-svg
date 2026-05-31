@@ -2,13 +2,13 @@ import { SkeletonRectangleStyleManager } from '$stylist/notification/class/style
 import type { SkeletonRectangleProps } from '$stylist/notification/type/struct/skeleton-rectangle-props';
 
 export function createSkeletonRectangleState(props: SkeletonRectangleProps) {
-	let content = $derived(props.content);
-	let restProps = $derived.by(() => {
+	const content = $derived(props.content);
+	const restProps = $derived.by(() => {
 		const { class: _class, width: _width, height: _height, content: _content, ...rest } = props;
 		return rest;
 	});
-	let rootClass = $derived(SkeletonRectangleStyleManager.root(props.class));
-	let style = $derived(SkeletonRectangleStyleManager.style(props.width ?? 120, props.height ?? 80));
+	const rootClass = $derived(SkeletonRectangleStyleManager.root(props.class));
+	const style = $derived(SkeletonRectangleStyleManager.style(props.width ?? 120, props.height ?? 80));
 
 	return {
 		get content() {

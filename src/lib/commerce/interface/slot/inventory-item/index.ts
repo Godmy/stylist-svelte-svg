@@ -7,8 +7,6 @@
  * РџСЂРёРјРµС‡Р°РЅРёРµ: variant Р·РґРµСЃСЊ вЂ” layout-СЂРµР¶РёРј (compact/expanded/dashboard),
  * РЅРµ С‚РµРјР°С‚РёС‡РµСЃРєРёР№ ThemeVariant. РћСЃС‚Р°РІР»РµРЅ inline.
  */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { InventoryItemStatus } from '$stylist/commerce/type/struct/inventory-item-status';
 
 export interface SlotInventoryItem {

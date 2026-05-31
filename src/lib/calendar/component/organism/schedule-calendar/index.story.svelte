@@ -4,7 +4,6 @@
 
 	import * as ScheduleCalendarModule from './index.svelte';
 	const ScheduleCalendar: any = ScheduleCalendarModule.default ?? ScheduleCalendarModule;
-	import type { SlotScheduleCalendar as IScheduleCalendarProps } from '$stylist/calendar/interface/slot/schedule-calendar';
 	import type { SlotScheduleEvent as ScheduleEvent } from '$stylist/calendar/interface/slot/schedule-event';
 
 	export let id: string;

@@ -7,8 +7,6 @@
  *   ThemeAttributes   (theme)       вЂ” class, data-variant, data-tone
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { SlotUpsellProduct } from '$stylist/commerce/interface/slot/upsell-product';
 import type { BehaviorUpsellEvents } from '$stylist/commerce/interface/behavior/upsell-events';

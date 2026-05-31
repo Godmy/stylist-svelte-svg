@@ -5,7 +5,7 @@ export function createCanvasImageEditorState(props: CanvasImageEditorRecipe) {
 	let canvasRef = $state<HTMLCanvasElement | null>(null);
 	let image = $state<HTMLImageElement | null>(null);
 	let imageLoaded = $state(false);
-	let currentCropArea = $state({ x: 0, y: 0, width: 0, height: 0 });
+	const currentCropArea = $state({ x: 0, y: 0, width: 0, height: 0 });
 
 	const width = $derived(props.width ?? 800);
 	const height = $derived(props.height ?? 600);

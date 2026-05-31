@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'svelte/elements';
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 import type { SlotDataTableColumn } from '$stylist/control/interface/slot/data-table-column';
 

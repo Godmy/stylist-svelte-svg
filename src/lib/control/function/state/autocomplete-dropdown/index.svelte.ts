@@ -40,11 +40,11 @@ export function createAutocompleteDropdownState(props: AutocompleteDropdownProps
 		}
 	};
 
-	let rootClass = $derived(AutocompleteDropdownStyleManager.root(props.class ?? ''));
-	let triggerClass = $derived(AutocompleteDropdownStyleManager.trigger());
-	let chevronClass = $derived(AutocompleteDropdownStyleManager.chevron(isOpen));
-	let listboxClass = $derived(AutocompleteDropdownStyleManager.listbox());
-	let optionClass = $derived(AutocompleteDropdownStyleManager.option());
+	const rootClass = $derived(AutocompleteDropdownStyleManager.root(props.class ?? ''));
+	const triggerClass = $derived(AutocompleteDropdownStyleManager.trigger());
+	const chevronClass = $derived(AutocompleteDropdownStyleManager.chevron(isOpen));
+	const listboxClass = $derived(AutocompleteDropdownStyleManager.listbox());
+	const optionClass = $derived(AutocompleteDropdownStyleManager.option());
 
 	return {
 		get isOpen() {

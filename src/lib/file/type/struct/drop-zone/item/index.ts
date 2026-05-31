@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 
 // SlotDropItem type
 export type SlotDropItem = {

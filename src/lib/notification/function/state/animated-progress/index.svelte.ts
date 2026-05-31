@@ -1,5 +1,4 @@
 import type { AnimatedProgressProps } from '$stylist/notification/type/struct/animated-progress-props';
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 
 export function createAnimatedProgressState(props: AnimatedProgressProps) {
 	const percentage = $derived(

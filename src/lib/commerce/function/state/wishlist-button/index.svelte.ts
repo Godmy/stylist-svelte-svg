@@ -1,5 +1,4 @@
 import type { WishlistButtonRecipe } from '$stylist/commerce/interface/recipe/wishlist-button';
-import { WishlistButtonStyleManager } from '$stylist/commerce/class/style-manager/wishlist-button';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createWishlistButtonState(props: WishlistButtonRecipe) {

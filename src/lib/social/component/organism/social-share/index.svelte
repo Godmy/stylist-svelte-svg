@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { Button } from '$lib';
 	import { createSocialShareState } from '$stylist/social/function/state/social-share';

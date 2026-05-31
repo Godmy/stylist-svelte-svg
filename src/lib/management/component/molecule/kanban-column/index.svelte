@@ -5,7 +5,6 @@
 	import { createKanbanColumnState } from '$stylist/management/function/state/kanban-column';
 	import KanbanCard from '$stylist/management/component/molecule/kanban-card/index.svelte';
 	import type { KanbanColumnType } from '$stylist/management/type/struct/kanban-column';
-	import type { KanbanCardType } from '$stylist/management/type/struct/kanban-card';
 	import type { Snippet } from 'svelte';
 
 	let {

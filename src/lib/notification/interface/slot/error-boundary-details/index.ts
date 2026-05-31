@@ -1,5 +1,3 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
-import type { Snippet } from 'svelte';
 
 /**
  * @interface SlotErrorBoundaryDetails

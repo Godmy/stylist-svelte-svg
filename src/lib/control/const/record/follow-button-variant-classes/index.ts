@@ -1,5 +1,3 @@
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export const FOLLOW_BUTTON_VARIANT_CLASSES: Record<string, string> = {
 	following:

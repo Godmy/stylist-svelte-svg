@@ -1,4 +1,3 @@
-import type { SlotChatHeaderStyleClasses as IChatHeaderStyleClasses } from '$stylist/chat/interface/slot/chat-header-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

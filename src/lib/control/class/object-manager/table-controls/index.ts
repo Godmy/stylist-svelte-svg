@@ -1,5 +1,4 @@
 import type { SlotDataTableColumn as DataTableColumn } from '$stylist/control/interface/slot/data-table-column';
-import type { SlotDataTableRecipe as DataTableRecipe } from '$stylist/control/interface/slot/data-table-recipe';
 import type { SlotTableRecord as TableRecord } from '$stylist/control/interface/slot/table-record';
 import type { SlotTableWithFilters as TableWithFiltersProps } from '$stylist/control/interface/slot/table-with-filters';
 import type { Row } from '$stylist/control/type/alias/row';

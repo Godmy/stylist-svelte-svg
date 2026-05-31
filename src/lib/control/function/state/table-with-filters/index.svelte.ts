@@ -9,10 +9,10 @@ export function createTableWithFiltersState(props: TableWithFiltersProps) {
 		filters = { ...filters, [column]: value };
 	};
 
-	let filtered = $derived(
+	const filtered = $derived(
 		ObjectManagerTableControls.filterRows(props.data ?? [], props.columns ?? [], filters)
 	);
-	let rootClass = $derived(
+	const rootClass = $derived(
 		TableExtendedStyleManager.root('c-table-with-filters', props.class ?? '')
 	);
 

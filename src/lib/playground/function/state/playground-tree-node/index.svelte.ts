@@ -1,6 +1,4 @@
 import type { PlaygroundTreeNodeProps } from '$stylist/playground/type/struct/playground-tree-node-props';
-import type { PlaygroundTreeNodeStory } from '$stylist/playground/type/struct/playground-tree-node-story';
-import type { PlaygroundTreeNodeTreeNodeData } from '$stylist/playground/type/struct/playground-tree-node-tree-node-data';
 const ChevronRight = 'chevron-right';
 const Folder = 'folder';
 const FolderOpen = 'folder-open';

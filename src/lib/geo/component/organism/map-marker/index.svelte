@@ -2,9 +2,8 @@
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { Button } from '$lib';
 	import { createMapMarkerState } from '$stylist/geo/function/state/map-marker';
-	import { geoHandleKeyDown } from '$stylist/geo/function/script/handle-key-down';
-
-	/**
+	
+/**
 	 * MapMarker component - A map marker with interactive popup and category-based icons
 	 */
 	let props = $props();

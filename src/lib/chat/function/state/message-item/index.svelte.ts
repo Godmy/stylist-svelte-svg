@@ -14,7 +14,7 @@ export const createMessageItemState = (props: {
 	const enableReactions = $derived(props.enableReactions ?? true);
 
 	let reactionsVisible = $state(false);
-	let availableReactions = $state(['👍', '👎', '❤️', '😂', '😮', '😢']);
+	const availableReactions = $state(['👍', '👎', '❤️', '😂', '😮', '😢']);
 
 	const messageAlignment = $derived(isOwn ? 'items-end' : 'items-start');
 

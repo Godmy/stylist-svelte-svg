@@ -7,10 +7,7 @@
  *   ThemeAttributes   (theme)       вЂ” class, data-variant, data-tone
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
-import type { TokenBillingItem } from '$stylist/commerce/type/enum/billing-item';
 import type { TokenBillingSummary } from '$stylist/commerce/type/enum/billing-summary';
 import type { ContractBillingItem } from '$stylist/commerce/interface/contract/billing-item';
 import type { SlotCaption } from '$stylist/typography/interface/slot/caption';

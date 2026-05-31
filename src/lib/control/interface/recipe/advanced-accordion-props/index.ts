@@ -4,7 +4,6 @@
  */
 
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
 import type { SlotAdvancedAccordionItem } from '$stylist/control/interface/slot/advanced-accordion-item';
 
 /** Пропсы компонента AdvancedAccordion */

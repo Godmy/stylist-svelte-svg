@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';

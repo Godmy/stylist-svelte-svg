@@ -10,7 +10,7 @@ export function createPlaygroundScreenshotSelectorState(props: PlaygroundScreens
 	let currentY = $state(0);
 	let selectionFixed = $state(false);
 	let isDrawing = $state(false);
-	let paths: Array<{ points: Array<{ x: number; y: number }>; color: string }> = $state([]);
+	const paths: Array<{ points: Array<{ x: number; y: number }>; color: string }> = $state([]);
 	let currentPath: Array<{ x: number; y: number }> = $state([]);
 	let overlayElement: HTMLDivElement | undefined = $state();
 	let canvasElement: HTMLCanvasElement | undefined = $state();

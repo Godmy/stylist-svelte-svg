@@ -1,4 +1,3 @@
-import type { SlotMapSelectorStyleClasses as IMapSelectorStyleClasses } from '$stylist/geo/interface/slot/map-selector-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

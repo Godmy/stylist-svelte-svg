@@ -1,4 +1,3 @@
-import type { TierContent } from '$stylist/architecture/type/enum/tier';
 
 /**
  * @file TeamMemberCard Types

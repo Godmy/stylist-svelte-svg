@@ -1,4 +1,3 @@
-import type { HoverContract } from '$stylist/interaction/type/struct/gesture-hover-contract';
 import type { GestureContract } from '$stylist/interaction/type/struct/gesture/gesture-contract';
 
 /**

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { TreeNodeItemNode } from '$stylist/control/type/struct/tree-node-item-node';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import type { TreeNodeItemProps } from '$stylist/control/type/alias/tree-node-item-props';
 	import { createTreeNodeItemState } from '$stylist/control/function/state/tree-node-item';

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 	import { Avatar, Icon as BaseIcon } from '$stylist/media';
 	import { createChatPreviewState } from '$stylist/chat/function/state/chat-preview';
 	import type { ChatPreviewContract } from '$stylist/chat/type/struct/chat-preview-contract';

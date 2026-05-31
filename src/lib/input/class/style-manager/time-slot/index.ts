@@ -1,5 +1,4 @@
 import { TIME_SLOT_DEFAULT_CONFIG as defaultConfig } from '$stylist/input/const/map/time-slot-default-config';
-import type { ITimeSlotStyleConfig } from '$stylist/input/type/interface/time-slot-style-config';
 
 /**
  * Style manager for TimeSlot component

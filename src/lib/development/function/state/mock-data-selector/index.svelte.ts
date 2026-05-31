@@ -1,5 +1,4 @@
 import type { MockDataSelectorProps } from '$stylist/development/type/struct/mock-data-selector-props';
-import type { MockDataSelectorMockDataSchema } from '$stylist/development/type/struct/mock-data-selector-mock-data-schema';
 import type { MockDataSelectorDataSelection } from '$stylist/development/type/struct/mock-data-selector-data-selection';
 import { MockDataSelectorStyleManager } from '$stylist/development/class/style-manager/mock-data-selector';
 

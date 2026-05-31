@@ -30,7 +30,7 @@ export function createCodeWithCopyState(
 	props: Props,
 	dispatch: (event: string, detail?: unknown) => void
 ) {
-	let copied = $state(false);
+	const copied = $state(false);
 
 	const containerClass = $derived(CodeWithCopyStyleManager.getContainerClass());
 	const codeContentClass = $derived(CodeWithCopyStyleManager.getCodeContentClass());

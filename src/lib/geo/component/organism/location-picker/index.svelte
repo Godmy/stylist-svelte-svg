@@ -3,9 +3,8 @@
 	import { Button } from '$stylist/control';
 	import { createLocationPickerState } from '$stylist/geo/function/state/location-picker';
 	import { geoHandleKeyDown } from '$stylist/geo/function/script/handle-key-down';
-	import type { MapMarker } from '$stylist/geo/type/struct/location-picker';
-
-	let props = $props();
+	
+let props = $props();
 	const state = createLocationPickerState(props);
 </script>
 
@@ -40,7 +39,7 @@
 	>
 		<div
 			class={`relative cursor-crosshair bg-[var(--color-primary-50)] ${props.mapClass ?? ''}`}
-			style={`width: 100%; height: 400px;`}
+			style="width: 100%; height: 400px;"
 			onclick={state.handleMapClick}
 			role="button"
 			tabindex={0}
@@ -61,7 +60,7 @@
 
 				<div
 					class="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 transform rounded-full border-2 border-[var(--color-background-primary)] bg-[var(--color-danger-500)]"
-					style={`left: 50%; top: 50%;`}
+					style="left: 50%; top: 50%;"
 				></div>
 			</div>
 

@@ -1,5 +1,3 @@
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TierContent } from '$stylist/architecture/type/enum/tier';
 
 /** Элемент чата для превью */
 export type ChatPreviewItem = {

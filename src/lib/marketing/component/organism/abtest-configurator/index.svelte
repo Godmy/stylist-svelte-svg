@@ -11,7 +11,6 @@
 	const Plus = 'plus';
 
 	import type { SlotABTestConfigurator as IABTestConfiguratorProps } from '$stylist/marketing/interface/slot/ab-test-configurator';
-	import { ABTestConfiguratorStyleManager } from '$stylist/marketing/class/style-manager/abtest-configurator';
 	import { createABTestConfiguratorState } from '$stylist/marketing/function/state/abtest-configurator';
 
 	let props: IABTestConfiguratorProps & {

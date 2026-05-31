@@ -1,4 +1,3 @@
-import type { SlotMockDataSelectorStyleClasses as IMockDataSelectorStyleClasses } from '$stylist/development/interface/slot/mock-data-selector-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 	import type { SlotTabGroup as ITabGroupProps } from '$stylist/control/interface/slot/tab-group';
 	import { TabGroupStyleManager } from '$stylist/control/class/style-manager/tab-group';
 	import { createTabGroupState } from '$stylist/control/function/state/tab-group';

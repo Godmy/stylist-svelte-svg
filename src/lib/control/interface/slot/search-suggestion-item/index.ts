@@ -1,4 +1,3 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 
 export interface SlotSearchSuggestionItem {
 	id: string;

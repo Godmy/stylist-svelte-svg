@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { PostCard } from '$stylist/commerce';
 	import { createSocialFeedState } from '$stylist/social/function/state/social-feed';
-	import type { Props, Post } from '$stylist/social/type/struct/social-feed';
+	import type { Props } from '$stylist/social/type/struct/social-feed';
 
 	let props: Props = $props();
 	const state = createSocialFeedState(props);

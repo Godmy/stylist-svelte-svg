@@ -4,8 +4,8 @@ import { CodeStyleManager } from '$stylist/development/class/style-manager/code-
 
 export function createCodeBlockState(props: CodeBlockProps) {
 	let copied = $state(false);
-	let codeLines = $derived(props.code?.split('\n') ?? []);
-	let languageClass = $derived(`language-${props.language ?? 'text'}`);
+	const codeLines = $derived(props.code?.split('\n') ?? []);
+	const languageClass = $derived(`language-${props.language ?? 'text'}`);
 	const containerClass = $derived(CodeStyleManager.getContainerClass(props.class ?? ''));
 	const headerClassComputed = $derived(CodeStyleManager.getHeaderClass(props.headerClass ?? ''));
 	const lineNumbersContainerClass = $derived(

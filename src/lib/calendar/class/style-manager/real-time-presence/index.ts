@@ -1,4 +1,3 @@
-import type { SlotRealTimePresenceStyleClasses as IRealTimePresenceStyleClasses } from '$stylist/calendar/interface/slot/real-time-presence-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

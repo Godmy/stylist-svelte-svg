@@ -20,7 +20,7 @@
 		<input
 			id="date-picker-hidden"
 			type="date"
-			class={`hidden`}
+			class="hidden"
 			value={state.selectedDate}
 			min={state.minDate}
 			max={state.maxDate}

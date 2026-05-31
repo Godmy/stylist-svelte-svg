@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 
 export interface SlotDropItem {
 	id: string;

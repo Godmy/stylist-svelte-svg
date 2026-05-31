@@ -1,4 +1,3 @@
-import type { SlotComboboxStyleClasses as IComboboxStyleClasses } from '$stylist/control/interface/slot/combobox-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

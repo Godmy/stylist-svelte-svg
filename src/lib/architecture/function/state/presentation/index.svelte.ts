@@ -3,7 +3,7 @@ import type { PresentationFrame } from '$stylist/architecture/interface/slot/pre
 import type { PresentationState } from '$stylist/architecture/interface/recipe/presentation-state';
 
 export function usePresentation(initialFrames?: PresentationFrame[]) {
-	let state = $state<PresentationState>({
+	const state = $state<PresentationState>({
 		mode: 'overview',
 		currentFrameIndex: 0,
 		frames: initialFrames ?? [],

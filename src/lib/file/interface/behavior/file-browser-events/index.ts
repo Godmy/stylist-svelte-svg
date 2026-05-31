@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 import type { SlotFolderItem } from '$stylist/file/interface/slot/folder-item';
 
 export interface BehaviorFileBrowserEvents {

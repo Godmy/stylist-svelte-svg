@@ -5,19 +5,19 @@ export function createSkeletonTableState(props: SkeletonTableProps) {
 	const rows = $derived(props.rows ?? 5);
 	const columns = $derived(props.columns ?? 4);
 
-	let columnIndexes = $derived(Array.from({ length: columns }, (_, index) => index));
-	let containerClass = $derived(SkeletonTableStyleManager.container(props.class));
-	let dataBarStyle = $derived(SkeletonTableStyleManager.bar('120px'));
-	let dataCellClass = $derived(SkeletonTableStyleManager.dataCell());
-	let headerBarStyle = $derived(SkeletonTableStyleManager.bar('80px'));
-	let headerCellClass = $derived(SkeletonTableStyleManager.headerCell());
-	let headerClass = $derived(SkeletonTableStyleManager.header());
-	let restProps = $derived.by(() => {
+	const columnIndexes = $derived(Array.from({ length: columns }, (_, index) => index));
+	const containerClass = $derived(SkeletonTableStyleManager.container(props.class));
+	const dataBarStyle = $derived(SkeletonTableStyleManager.bar('120px'));
+	const dataCellClass = $derived(SkeletonTableStyleManager.dataCell());
+	const headerBarStyle = $derived(SkeletonTableStyleManager.bar('80px'));
+	const headerCellClass = $derived(SkeletonTableStyleManager.headerCell());
+	const headerClass = $derived(SkeletonTableStyleManager.header());
+	const restProps = $derived.by(() => {
 		const { class: _class, rows: _rows, columns: _columns, ...rest } = props;
 		return rest;
 	});
-	let rowIndexes = $derived(Array.from({ length: rows }, (_, index) => index));
-	let tableClass = $derived(SkeletonTableStyleManager.table());
+	const rowIndexes = $derived(Array.from({ length: rows }, (_, index) => index));
+	const tableClass = $derived(SkeletonTableStyleManager.table());
 
 	return {
 		get columnIndexes() {

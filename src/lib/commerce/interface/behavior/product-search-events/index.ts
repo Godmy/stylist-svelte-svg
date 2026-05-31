@@ -5,9 +5,6 @@
  *   ILabelSlot        (information) вЂ” placeholder (РїРѕРґСЃРєР°Р·РєР° РІ РїРѕР»Рµ РїРѕРёСЃРєР°)
  *   ThemeAttributes   (theme)       вЂ” class, data-variant, data-tone
  */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
 export interface BehaviorProductSearchEvents {
 	onSearch?: (query: string) => void;

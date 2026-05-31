@@ -1,7 +1,4 @@
-import type { TokenAlignment as NotificationBadgePosition } from '$stylist/layout/type/enum/alignment';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import type { TokenMarker } from '$stylist/architecture/type/enum/marker';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export const NOTIFICATION_BADGE_APPEARANCE_CLASSES: Record<TokenAppearance, string> = {
 	default: 'bg-[var(--color-neutral-100)] text-[var(--color-text-primary)]',

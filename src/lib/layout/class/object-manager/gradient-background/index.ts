@@ -1,5 +1,4 @@
 import type { ThemeGradientBackgroundRecipe } from '$stylist/layout/interface/recipe/gradient-background';
-import type { GradientLinear } from '$stylist/layout/type/map/gradient-linear';
 import type { TokenGradient } from '$stylist/layout/type/enum/gradient-mode';
 import type { GradientBackgroundStyle } from '$stylist/layout/type/struct/gradient-background-style';
 import type { GradientDirection } from '$stylist/layout/type/alias/gradient-direction';

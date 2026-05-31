@@ -1,7 +1,4 @@
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { StyleManagerBase } from '$stylist/architecture/class/style-manager/base/index';
 
 export const INPUT_VARIANT_CLASSES: Record<TokenAppearance | 'filled', string> = {
 	default:

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { TokenMessageStatus } from '$stylist/chat/type/enum/message-status';
 	import type { RecipeMessageStatusProps as RecipeMessageStatusProps } from '$stylist/chat/interface/recipe/message-status-props';
 	import { createMessageStatusState } from '$stylist/chat/function/state/message-status';
 

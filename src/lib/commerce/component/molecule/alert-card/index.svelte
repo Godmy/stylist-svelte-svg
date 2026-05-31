@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Story } from '$stylist/playground/component';
-	import { alertCardControls } from '$stylist/commerce/const/alert-card/controls';
 	import type { AlertCardStoryProps } from '$stylist/commerce/interface/recipe/alert-card-story-props';
 	import { createAlertCardStoryState } from '$stylist/commerce/function/state/alert-card-story';
 

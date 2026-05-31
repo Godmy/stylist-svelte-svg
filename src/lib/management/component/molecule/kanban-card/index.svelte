@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import { Icon as BaseIcon } from '$stylist/media';
 	const Archive = 'archive';
 	const Check = 'check';
@@ -12,8 +11,6 @@
 	import { Avatar } from '$stylist/media';
 	import { Badge } from '$stylist/typography';
 	import { createKanbanCardState } from '$stylist/management/function/state/kanban-card';
-	import type { KanbanCardType } from '$stylist/management/type/struct/kanban-card';
-	import type { KanbanCardUser } from '$stylist/management/type/alias/kanban-card-user';
 	import type { SlotKanbanCard as KanbanCardProps } from '$stylist/management/interface/slot/kanban-card';
 
 	let props: KanbanCardProps = $props();

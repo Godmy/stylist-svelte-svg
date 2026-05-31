@@ -7,7 +7,6 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { TokenOrderStatus } from '$stylist/commerce/type/enum/order-status';
-import type { TokenBillingItem } from '$stylist/commerce/type/enum/billing-item';
 import type { SlotOrderItem as RecipeOrderItem } from '$stylist/commerce/interface/slot/order-item';
 import type { ContractShippingAddress } from '$stylist/commerce/interface/contract/shipping-address';
 import type { SlotOrderConfirmationPaymentInfo as ContractOrderConfirmationPaymentInfo } from '$stylist/commerce/interface/slot/order-confirmation-payment-info';

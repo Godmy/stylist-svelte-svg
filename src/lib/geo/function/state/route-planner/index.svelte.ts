@@ -1,8 +1,7 @@
 import { untrack } from 'svelte';
 import type {
 	RoutePlannerLocation,
-	RouteOption,
-	RoutePlannerProps
+	RouteOption
 } from '$stylist/geo/type/struct/route-planner';
 import type { RoutePlannerStateProps } from '$stylist/geo/interface/recipe/route-planner';
 

@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte';
-import type { TreeNodeItemNode } from '$stylist/control/type/struct/tree-node-item-node';
 import { TreeNodeItemStyleManager } from '$stylist/control/class/style-manager/tree-node-item';
 import type { TreeNodeItemProps } from '$stylist/control/type/alias/tree-node-item-props';
 

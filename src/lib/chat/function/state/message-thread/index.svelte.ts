@@ -1,4 +1,3 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { SlotMessageThread as MessageThreadProps } from '$stylist/chat/interface/slot/message-thread';
 import { MessageStyleManager } from '$stylist/chat/class/style-manager/message';
 

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Story } from '$stylist/playground/component';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import type { SlotAddressForm as AddressFormProps } from '$stylist/form/interface/slot/address-form';
 	import type { AddressData } from '$stylist/form/type/struct/forms-address-data';
 	import { FormStyleManager } from '$stylist/form';
 	import AddressForm from './index.svelte';

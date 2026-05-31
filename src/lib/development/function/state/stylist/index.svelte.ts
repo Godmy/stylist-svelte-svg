@@ -1,7 +1,6 @@
 import { categories } from '$stylist/development/const/record/stylist-categories';
 import type { StylistProps } from '$stylist/development/type/struct/stylist-props';
 import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
-import type { StylistSelection } from '$stylist/development/type/struct/stylist-selection';
 import { untrack } from 'svelte';
 export function createStylistState(props: StylistProps) {
 	const initialCategory = $derived(props.initialCategory ?? 'architecture');

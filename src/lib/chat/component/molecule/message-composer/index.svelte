@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
 	import { Icon as BaseIcon } from '$stylist/media';
 	const Paperclip = 'paperclip';
 	const Mic = 'mic';

@@ -1,4 +1,3 @@
-import type { SlotFilterBarStyleClasses as IFilterBarStyleClasses } from '$stylist/control/interface/slot/filter-bar-style-classes';
 
 /**
  * Style utility class following Single Responsibility Principle

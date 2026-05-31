@@ -44,7 +44,7 @@
 			</p>
 
 			<p class="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-tertiary)]">
-				Use {'<Em>'} when you need voice or tone emphasis without changing semantics.
+				Use &lt;Em&gt; when you need voice or tone emphasis without changing semantics.
 			</p>
 		</div>
 	{/snippet}

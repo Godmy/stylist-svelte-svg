@@ -1,4 +1,3 @@
-import type { IToastStyleClasses } from '$stylist/notification/type/struct/toast';
 import type { ToastNotificationType } from '$stylist/notification/type/struct/toast';
 
 /**

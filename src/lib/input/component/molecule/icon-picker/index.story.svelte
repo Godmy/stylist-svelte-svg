@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import IconPicker from './index.svelte';
-	import { Icon as BaseIcon } from '$stylist/media';
 	const Heart = 'heart';
 	const Star = 'star';
 	const Mail = 'mail';

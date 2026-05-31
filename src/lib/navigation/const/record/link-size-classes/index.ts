@@ -1,5 +1,4 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export const LINK_SIZE_CLASSES: Record<TokenSize, string> = {
 	xs: 'text-xs',

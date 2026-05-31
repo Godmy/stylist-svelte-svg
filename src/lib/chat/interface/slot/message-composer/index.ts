@@ -3,7 +3,6 @@
  */
 
 import type { HTMLAttributes } from 'svelte/elements';
-import type { Snippet } from 'svelte';
 
 export interface SlotMessageComposer extends HTMLAttributes<HTMLDivElement> {
 	value?: string;

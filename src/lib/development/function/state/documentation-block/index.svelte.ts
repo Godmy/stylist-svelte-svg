@@ -2,7 +2,7 @@ import type { DocumentationBlockProps } from '$stylist/development/type/struct/d
 import { DocumentationBlockStyleManager } from '$stylist/development/class/style-manager/documentation-block';
 
 export function createDocumentationBlockState(props: DocumentationBlockProps) {
-	let variantClasses = $derived(
+	const variantClasses = $derived(
 		{
 			default: 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900',
 			info: 'border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20',
@@ -20,7 +20,7 @@ export function createDocumentationBlockState(props: DocumentationBlockProps) {
 		]
 	);
 
-	let variantHeaderClasses = $derived(
+	const variantHeaderClasses = $derived(
 		{
 			default: 'bg-gray-50 dark:bg-gray-800',
 			info: 'bg-blue-100 dark:bg-blue-800/30',

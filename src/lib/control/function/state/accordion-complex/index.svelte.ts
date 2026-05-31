@@ -1,5 +1,4 @@
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { SlotComplexAccordion as ComplexAccordionProps } from '$stylist/control/interface/slot/complex-accordion';
 
 /**

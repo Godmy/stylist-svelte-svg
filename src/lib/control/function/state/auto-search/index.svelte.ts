@@ -3,9 +3,9 @@ import type { SlotAutoSearch as AutoSearchProps } from '$stylist/control/interfa
 
 export function createAutoSearchState(props: AutoSearchProps) {
 	let localValue = $state(props.value ?? '');
-	let rootClass = $derived(AutoSearchStyleManager.root(props.class ?? ''));
-	let inputClass = $derived(AutoSearchStyleManager.input());
-	let iconWrapperClass = $derived(AutoSearchStyleManager.iconWrapper());
+	const rootClass = $derived(AutoSearchStyleManager.root(props.class ?? ''));
+	const inputClass = $derived(AutoSearchStyleManager.input());
+	const iconWrapperClass = $derived(AutoSearchStyleManager.iconWrapper());
 
 	$effect(() => {
 		localValue = props.value ?? '';

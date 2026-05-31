@@ -1,5 +1,5 @@
 ﻿<script lang="ts">
-	import type { Idef0DiagramProps, Idef0Model } from '$stylist/science/type/struct/idef-zero';
+	import type { Idef0DiagramProps } from '$stylist/science/type/struct/idef-zero';
 	import { createIdef0DiagramState } from '$stylist/science/function/state/idef0';
 	import Idef0BlackBox from '$stylist/science/component/molecule/idef-zero-black-box/index.svelte';
 

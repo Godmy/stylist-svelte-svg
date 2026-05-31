@@ -1,7 +1,7 @@
 import type { Provider, ProviderConfig, Props } from '$stylist/social/type/struct/social-login';
 
 export function createSocialLoginState(props: Props) {
-	let isLoading = $state(false);
+	const isLoading = $state(false);
 	let email = $state('');
 	let password = $state('');
 	let rememberMe = $state(false);

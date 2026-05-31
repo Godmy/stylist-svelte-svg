@@ -1,4 +1,3 @@
-import type { SlotMessageMetaStyleClasses as IMessageMetaStyleClasses } from '$stylist/chat/interface/slot/message-meta-style-classes';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 /**

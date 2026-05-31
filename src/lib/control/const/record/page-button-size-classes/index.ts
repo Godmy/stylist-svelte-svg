@@ -1,6 +1,4 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
 
 export const PAGE_BUTTON_SIZE_CLASSES: Record<TokenSize, string> = {
 	xs: 'w-7 h-7 text-xs',

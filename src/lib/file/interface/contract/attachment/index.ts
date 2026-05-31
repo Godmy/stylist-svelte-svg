@@ -1,4 +1,3 @@
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export interface ContractAttachment {
 	id: string;

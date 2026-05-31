@@ -1,6 +1,5 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
 import { BUTTON_VARIANT_CLASSES } from '$stylist/control/const/record/button-variant-classes';
 import { BUTTON_SIZE_CLASSES } from '$stylist/control/const/record/button-size-classes';
 import { TOKEN_BUTTON_LOADER_CLASSES } from '$stylist/control/const/enum/button-loader-classes';

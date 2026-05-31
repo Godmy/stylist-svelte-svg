@@ -1,5 +1,4 @@
-import type { CtaBannerProps, CtaBannerButton } from '$stylist/marketing/type/struct/cta-banner';
-import type { TokenBackground } from '$stylist/layout/type/enum/background';
+import type { CtaBannerProps } from '$stylist/marketing/type/struct/cta-banner';
 import { CtaBannerStyleManager } from '$stylist/marketing/class/style-manager/cta-banner';
 
 export function createCtaBannerState(props: CtaBannerProps) {

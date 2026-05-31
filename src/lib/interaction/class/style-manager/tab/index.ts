@@ -1,5 +1,4 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { TAB_VARIANT_CLASSES } from '$stylist/interaction/const/record/tab-variant-classes';
 import { TAB_SIZE_CLASSES } from '$stylist/interaction/const/record/tab-size-classes';
 

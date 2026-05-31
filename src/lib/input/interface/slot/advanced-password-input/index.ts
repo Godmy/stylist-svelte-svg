@@ -3,7 +3,6 @@
  * Следует принципам SOLID и архитектуре SAMO
  */
 
-import type { HTMLAttributes } from 'svelte/elements';
 
 /** Пропсы компонента AdvancedPasswordInput */
 export interface SlotAdvancedPasswordInput {

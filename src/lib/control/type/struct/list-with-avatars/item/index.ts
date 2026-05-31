@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 
 // ListItem type
 export type ListItem = {

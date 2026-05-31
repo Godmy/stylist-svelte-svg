@@ -75,7 +75,7 @@
 						<h3 class="mb-2 text-sm font-medium">Editor without User List</h3>
 						<div class="h-[300px]">
 							<CollaborativeEditor
-								content={`<h3>Simple Editor</h3><p>This editor has no user list displayed. It focuses only on the content editing area.</p>`}
+								content="<h3>Simple Editor</h3><p>This editor has no user list displayed. It focuses only on the content editing area.</p>"
 								{users}
 								{currentUser}
 								showToolbar={true}
@@ -87,7 +87,7 @@
 						<h3 class="mb-2 text-sm font-medium">Editor without Toolbar</h3>
 						<div class="h-[300px]">
 							<CollaborativeEditor
-								content={`<p>Content in read-only mode (no editing tools). This could be used for displaying collaborative content without allowing editing.</p>`}
+								content="<p>Content in read-only mode (no editing tools). This could be used for displaying collaborative content without allowing editing.</p>"
 								{users}
 								{currentUser}
 								showToolbar={false}

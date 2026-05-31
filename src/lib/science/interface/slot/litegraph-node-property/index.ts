@@ -1,4 +1,3 @@
-import type { LiteGraphPort } from '$stylist/science/interface/slot/litegraph-port';
 
 export interface LiteGraphNodeProperty {
 	id: string;

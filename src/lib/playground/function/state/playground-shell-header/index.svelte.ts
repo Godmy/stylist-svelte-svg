@@ -1,6 +1,5 @@
 import type { PlaygroundShellHeaderProps } from '$stylist/playground/type/struct/playground-shell-header-props';
 import type { PlaygroundShellHeaderViewportSize } from '$stylist/playground/type/struct/playground-shell-header-viewport-size';
-import type { PlaygroundShellHeaderColorScheme } from '$stylist/playground/type/struct/playground-shell-header-color-scheme';
 const ZoomIn = 'zoom-in';
 const ZoomOut = 'zoom-out';
 const Smartphone = 'smartphone';

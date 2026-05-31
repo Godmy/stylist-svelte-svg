@@ -1,4 +1,3 @@
-import type { HtmlAttributesBase } from '$stylist/information/interface/slot';
 
 export interface SlotPromptVariable {
 	id: string;

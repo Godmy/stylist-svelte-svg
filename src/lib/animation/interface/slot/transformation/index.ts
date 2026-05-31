@@ -1,6 +1,4 @@
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
-import type { BehaviorTransformable as ITransformable } from '$stylist/animation/interface/behavior/transformable';
-import type { BehaviorMotionToken } from '$stylist/animation/interface/behavior/motion-token';
 import type { BehaviorTransformable } from '$stylist/animation/interface/behavior/transformable';
 
 /**

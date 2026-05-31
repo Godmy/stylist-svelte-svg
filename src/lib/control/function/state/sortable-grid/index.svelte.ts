@@ -1,4 +1,3 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct';
 import { SortableGridStyleManager } from '$stylist/control/class/style-manager/sortable-grid';
 import type { SortableGridItem } from '$stylist/control/type/alias/sortable-grid-item';
 import type { SortableGridProps } from '$stylist/control/type/alias/sortable-grid-props';

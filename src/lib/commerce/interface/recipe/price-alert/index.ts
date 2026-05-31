@@ -7,8 +7,6 @@
  *   ThemeAttributes   (theme)        � class, data-variant, data-tone
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
-import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';

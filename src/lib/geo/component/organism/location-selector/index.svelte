@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Icon as BaseIcon } from '$stylist/media';
-	import { Button } from '$stylist/control';
 	import { createLocationSelectorState } from '$stylist/geo/function/state/location-selector';
 	import type { LocationSelectorLocation } from '$stylist/geo/type/struct/location-selector';
 

@@ -3,7 +3,6 @@ import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenMessageStatus } from '$stylist/chat/type/enum/message-status';
 import type { TokenMessageState } from '$stylist/chat/type/enum/message-state';
 import { MESSAGE_AVATAR_SIZE_CLASSES } from '$stylist/chat/const/record/message-avatar-size-classes';
-import { MESSAGE_ALIGNMENT_CLASSES } from '$stylist/chat/const/map/message-alignment-classes';
 import { MESSAGE_VARIANT_BG_CLASSES } from '$stylist/chat/const/map/message-variant-bg-classes';
 import { MESSAGE_VARIANT_TEXT_CLASSES } from '$stylist/chat/const/map/message-variant-text-classes';
 import { MESSAGE_STATUS_CLASSES } from '$stylist/chat/const/map/message-status-classes';

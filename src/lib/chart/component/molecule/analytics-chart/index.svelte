@@ -1,5 +1,4 @@
 ﻿<script lang="ts">
-	import { AnalyticsChartStyleManager } from '$stylist/chart/class/style-manager/analytics-chart';
 	import { ObjectManagerAnalyticsChart } from '$stylist/chart/class/object-manager/analytics-chart';
 	import type { AnalyticsChartRecipe } from '$stylist/chart/interface/recipe/analytics-chart';
 	import { createAnalyticsChartState } from '$stylist/chart/function/state/analytics-chart';

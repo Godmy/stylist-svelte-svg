@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import ChatMessage from '../chat-message/index.svelte';
 	import { MessageComposer } from '$stylist/chat';
 	import { createChatRoomState as stateFn } from '$stylist/chat/function/state/chat-room';

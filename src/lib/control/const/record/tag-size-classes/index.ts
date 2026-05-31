@@ -1,5 +1,4 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
 
 export const TAG_SIZE_CLASSES: Record<TokenSize, string> = {
 	xs: 'px-1 py-0.5 text-[10px]',

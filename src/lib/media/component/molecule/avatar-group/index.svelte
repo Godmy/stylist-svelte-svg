@@ -50,7 +50,7 @@
 	{#if state.overflowCount > 0}
 		<div class={`relative -ml-2 ${state.overflowClass}`}>
 			<div
-				class={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-[var(--color-background-primary)] bg-[var(--color-background-tertiary)] text-xs font-medium text-[var(--color-text-primary)]`}
+				class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[var(--color-background-primary)] bg-[var(--color-background-tertiary)] text-xs font-medium text-[var(--color-text-primary)]"
 			>
 				+{state.overflowCount}
 			</div>

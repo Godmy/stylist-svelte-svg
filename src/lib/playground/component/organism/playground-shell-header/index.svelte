@@ -2,8 +2,6 @@
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { createPlaygroundShellHeaderState } from '$stylist/playground/function/state/playground-shell-header';
 	import type { PlaygroundShellHeaderProps } from '$stylist/playground/type/struct/playground-shell-header-props';
-	import type { PlaygroundShellHeaderViewportSize } from '$stylist/playground/type/struct/playground-shell-header-viewport-size';
-	import type { PlaygroundShellHeaderColorScheme } from '$stylist/playground/type/struct/playground-shell-header-color-scheme';
 	const ZoomIn = 'zoom-in';
 	const ZoomOut = 'zoom-out';
 	const Smartphone = 'smartphone';

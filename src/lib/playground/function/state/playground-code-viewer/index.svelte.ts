@@ -15,7 +15,7 @@ export function createPlaygroundCodeViewerState(props: PlaygroundCodeViewerProps
 	let isLoading = $state(true);
 	let currentTheme = $state(untrack(() => theme));
 	let darkMode = $state(false);
-	let highlightSequence = 0;
+	const highlightSequence = 0;
 	let shikiLoader: Promise<typeof import('shiki')> | null = null;
 
 	const generatedCode = $derived.by(() => {

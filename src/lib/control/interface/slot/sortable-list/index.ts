@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'svelte/elements';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 import type { SlotSortableListItem } from '$stylist/control/interface/slot/sortable-list-item';
 
 export interface SlotSortableList extends HTMLAttributes<HTMLDivElement> {

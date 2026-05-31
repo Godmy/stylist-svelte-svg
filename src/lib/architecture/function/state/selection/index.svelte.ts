@@ -2,7 +2,7 @@ import type { SelectionMode } from '$stylist/architecture/type/struct/selection-
 import type { SelectionState } from '$stylist/architecture/interface/recipe/selection-state';
 
 export function useSelection(initialMode?: SelectionMode) {
-	let state = $state<SelectionState>({
+	const state = $state<SelectionState>({
 		selectedIds: new Set(),
 		mode: initialMode ?? 'single',
 		isSelecting: false,

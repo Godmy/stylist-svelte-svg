@@ -3,9 +3,8 @@
 	import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
 	import MessageItem from '../message-item/index.svelte';
 	import { createMessageListState } from '$stylist/chat/function/state/message-list';
-	import { onMount } from 'svelte';
-
-	export type MessageListProps = {
+	
+export type MessageListProps = {
 		messages: Message[];
 		currentUser: User;
 		onMessageAction?: (action: string, message: Message) => void;

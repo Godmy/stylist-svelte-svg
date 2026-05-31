@@ -1,9 +1,5 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
 	import { Icon as BaseIcon } from '$stylist/media';
-	import { ChatInterfaceStyleManager } from '$stylist/chat/class/style-manager/chat-interface';
-	import type { Message } from '$stylist/chat/type/struct/chat-interface/message';
-	import type { AIProvider } from '$stylist/chat/type/struct/chat-interface/ai-provider';
 	import type { ChatInterfaceProps } from '$stylist/chat/type/struct/chat-interface-props';
 	import { createChatInterfaceState } from '$stylist/chat/function/state/chat-interface';
 
@@ -81,7 +77,7 @@
 						{#if message.sender === 'user'}
 							<BaseIcon
 								name={state.User}
-								class={`mt-0.5 h-4 w-4 flex-shrink-0 text-[--color-primary-200]`}
+								class="mt-0.5 h-4 w-4 flex-shrink-0 text-[--color-primary-200]"
 							/>
 						{/if}
 					</div>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
-	import type { Snippet } from 'svelte';
 	import { Icon as BaseIcon } from '$stylist/media';
 	import { createCollaborativeEditorState } from '$stylist/canvas/function/state/collaborative-editor';
 

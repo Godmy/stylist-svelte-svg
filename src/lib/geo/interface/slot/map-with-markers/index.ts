@@ -1,14 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
-import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenMapType } from '$stylist/geo/type/enum/map-type';
 import type { SlotMapMarkerItem } from '$stylist/geo/interface/slot/map-marker-item';
 import type { SlotMapWithMarkersView } from '$stylist/geo/interface/slot/map-with-markers-view';
-import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
-import type { BehaviorPositionable } from '$stylist/layout/interface/behavior/positionable';
-import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
-import type { SlotIcon } from '$stylist/media/interface/slot/icon';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
 /**
  * SlotMapWithMarkers — свойства карты с маркерами.

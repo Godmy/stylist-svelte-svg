@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Story } from '$stylist/playground/component';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import type { SlotSearchForm as SearchFormProps } from '$stylist/form/interface/slot/search-form';
 	import { SearchFormStyleManager } from '$stylist/form';
 	import SearchForm from './index.svelte';
 

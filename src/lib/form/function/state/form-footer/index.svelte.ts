@@ -2,14 +2,14 @@ import { FormFooterStyleManager } from '$stylist/form/class/style-manager/form-f
 import type { SlotFormFooter as FormFooterProps } from '$stylist/form/interface/slot/form-footer';
 
 export function createFormFooterState(props: FormFooterProps) {
-	let rootClass = $derived(FormFooterStyleManager.root(props.class ?? ''));
-	let secondaryButtonClass = $derived(
+	const rootClass = $derived(FormFooterStyleManager.root(props.class ?? ''));
+	const secondaryButtonClass = $derived(
 		FormFooterStyleManager.secondaryButton(
 			props.secondaryButtonDisabled ?? false,
 			props.secondaryButtonClass ?? ''
 		)
 	);
-	let primaryButtonClass = $derived(
+	const primaryButtonClass = $derived(
 		FormFooterStyleManager.primaryButton(
 			props.primaryButtonDisabled ?? false,
 			props.primaryButtonClass ?? ''

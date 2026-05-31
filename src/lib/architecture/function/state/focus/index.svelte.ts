@@ -2,7 +2,7 @@ import type { FocusTarget } from '$stylist/architecture/interface/slot/focus-tar
 import type { FocusState } from '$stylist/architecture/interface/recipe/focus-state';
 
 export function useFocus() {
-	let state = $state<FocusState>({
+	const state = $state<FocusState>({
 		target: null,
 		isFocused: false,
 		isFullscreen: false

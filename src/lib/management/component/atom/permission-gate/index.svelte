@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import { createPermissionGateState } from '$stylist/management/function/state/permission-gate';
 
 	let props: Parameters<typeof createPermissionGateState>[0] = $props();

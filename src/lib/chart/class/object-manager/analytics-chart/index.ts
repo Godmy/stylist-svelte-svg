@@ -1,6 +1,4 @@
 ﻿import type { AnalyticsChartDataPoint } from '$stylist/chart/type/struct/analytics-chart-data-point';
-import type { AnalyticsChartLineSeries } from '$stylist/chart/type/struct/analytics-chart-line-series';
-import type { AnalyticsChartPiePoint } from '$stylist/chart/type/struct/analytics-chart-pie-point';
 
 export class ObjectManagerAnalyticsChart {
 	static resolveMaxValue(data: AnalyticsChartDataPoint[]): number {

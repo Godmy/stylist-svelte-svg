@@ -1,4 +1,3 @@
-import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export const TOOLTIP_POSITION_CLASSES: Record<string, string> = {
 	top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',

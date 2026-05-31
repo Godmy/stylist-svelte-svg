@@ -1,5 +1,3 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct';
-import type { Snippet } from 'svelte';
 
 export interface SlotAiModel {
 	name: string;

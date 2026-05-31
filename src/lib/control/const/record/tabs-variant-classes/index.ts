@@ -1,4 +1,3 @@
-import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export const TABS_VARIANT_CLASSES: Record<string, string> = {
 	default: 'border-b border-[var(--color-border-primary)]',

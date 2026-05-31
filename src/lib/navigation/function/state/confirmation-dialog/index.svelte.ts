@@ -16,11 +16,11 @@ export function createConfirmationDialogState(props: ConfirmationDialogProps) {
 		props.onClose?.();
 	};
 
-	let overlayClass = $derived(ConfirmationDialogStyleManager.overlay(props.class ?? ''));
-	let contentClass = $derived(ConfirmationDialogStyleManager.content(props.contentClass ?? ''));
-	let headerClass = $derived(ConfirmationDialogStyleManager.header(props.headerClass ?? ''));
-	let bodyClass = $derived(ConfirmationDialogStyleManager.body(props.bodyClass ?? ''));
-	let footerClass = $derived(ConfirmationDialogStyleManager.footer(props.footerClass ?? ''));
+	const overlayClass = $derived(ConfirmationDialogStyleManager.overlay(props.class ?? ''));
+	const contentClass = $derived(ConfirmationDialogStyleManager.content(props.contentClass ?? ''));
+	const headerClass = $derived(ConfirmationDialogStyleManager.header(props.headerClass ?? ''));
+	const bodyClass = $derived(ConfirmationDialogStyleManager.body(props.bodyClass ?? ''));
+	const footerClass = $derived(ConfirmationDialogStyleManager.footer(props.footerClass ?? ''));
 
 	return {
 		get overlayClass() {

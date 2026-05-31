@@ -1,4 +1,3 @@
-import type { SlotUploadFile as IUploadFile } from '$stylist/file/interface/slot/upload-file-upload-progress-2';
 import type { SlotUploadFile } from '$stylist/file/interface/slot/upload-file';
 
 /** Обработчики событий */

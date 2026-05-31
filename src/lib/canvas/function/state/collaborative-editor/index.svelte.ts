@@ -1,4 +1,3 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 import type { CollaborativeEditorProps } from '$stylist/canvas/type/struct/collaborative-editor-props';
 import { CollaborativeEditorStyleManager } from '$stylist/canvas/class/style-manager/collaborative-editor';
 

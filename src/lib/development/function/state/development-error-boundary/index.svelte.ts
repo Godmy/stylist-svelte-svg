@@ -1,5 +1,4 @@
 import type { DevelopmentErrorBoundaryProps } from '$stylist/development/type/struct/development-error-boundary-props';
-import type { DevelopmentErrorBoundaryErrorInfo } from '$stylist/development/type/struct/development-error-boundary-error-info';
 import { DevelopmentErrorBoundaryStyleManager } from '$stylist/development/class/style-manager/development-error-boundary';
 
 export function createDevelopmentErrorBoundaryState(props: DevelopmentErrorBoundaryProps) {

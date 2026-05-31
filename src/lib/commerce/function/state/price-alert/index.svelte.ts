@@ -1,10 +1,8 @@
 ﻿import type { HTMLAttributes } from 'svelte/elements';
-import type { Props } from '$stylist/information/type/struct';
 import type { Preset } from '$stylist/interaction/type/struct/preset';
 import type { PriceAlertStateProps } from '$stylist/commerce/interface/recipe/price-alert-state-props';
 import { buildPresetClassNames } from '$stylist/interaction/function/script/build-preset-class-names';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
-import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 
 /**
  * Универсальный state creator для PriceAlert

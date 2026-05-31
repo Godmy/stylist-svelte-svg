@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { CtaBannerStyleManager } from '$stylist/marketing/class/style-manager/cta-banner';
 	import type { CtaBannerProps } from '$stylist/marketing/type/struct/cta-banner';
 	import { createCtaBannerState } from '$stylist/marketing/function/state/cta-banner';
 

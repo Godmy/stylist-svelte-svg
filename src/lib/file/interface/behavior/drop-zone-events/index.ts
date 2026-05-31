@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 import type { SlotDropItem } from '$stylist/file/interface/slot/drop-item';
 
 export interface BehaviorDropZoneEvents {

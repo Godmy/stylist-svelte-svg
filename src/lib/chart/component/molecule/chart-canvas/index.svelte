@@ -1,5 +1,4 @@
 ﻿<script lang="ts">
-	import type { ChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
 	import type { ChartCanvasRecipe as InformationChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
 	import type { AnalyticsChartCanvasProps } from '$stylist/chart/type/struct/analytics-chart-canvas-props';
 	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';

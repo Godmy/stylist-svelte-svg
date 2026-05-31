@@ -1,4 +1,3 @@
-import type { HtmlAttributesBase } from '$stylist/information/interface/slot';
 import type { SlotCommentUser } from '$stylist/social/interface/slot/comment-user';
 
 export interface SlotCommentItem {

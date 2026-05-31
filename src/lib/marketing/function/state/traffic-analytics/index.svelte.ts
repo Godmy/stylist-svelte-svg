@@ -1,8 +1,6 @@
 import { untrack } from 'svelte';
 import type {
 	TrafficAnalyticsProps,
-	TrafficSource,
-	TrafficDataPoint,
 	TimeRange
 } from '$stylist/marketing/type/struct/traffic-analytics';
 

@@ -1,7 +1,4 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import type { ContentType } from '$stylist/input/type/enum/content-editor-style-content-type';
-import type { ContentElement } from '$stylist/input/interface/slot/content-editor-style-content-element';
-import type { ContentEditorStyleManagerOptions } from '$stylist/input/interface/slot/content-editor-style-manager-options';
 
 export class ContentEditorStyleManager {
 	private static readonly BASE_ROOT =

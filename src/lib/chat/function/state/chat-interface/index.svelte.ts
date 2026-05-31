@@ -1,4 +1,3 @@
-import type { Message } from '$stylist/chat/type/struct/chat-interface/message';
 import type { AIProvider } from '$stylist/chat/type/struct/chat-interface/ai-provider';
 import type { ChatInterfaceProps } from '$stylist/chat/type/struct/chat-interface-props';
 import { ChatInterfaceStyleManager } from '$stylist/chat/class/style-manager/chat-interface';

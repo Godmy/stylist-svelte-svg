@@ -6,7 +6,6 @@
  *   ThemeAttributes   (theme)       вЂ” class, data-variant, data-tone
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { SlotCurrency } from '$stylist/commerce/interface/slot/currency';
 import type { SlotExchangeRate } from '$stylist/commerce/interface/slot/exchange-rate';

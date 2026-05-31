@@ -1,6 +1,5 @@
 import type {
 	UserBehaviorMetricsProps,
-	UserBehaviorMetric,
 	TimeRange
 } from '$stylist/marketing/type/struct/user-behavior-metrics';
 import { untrack } from 'svelte';

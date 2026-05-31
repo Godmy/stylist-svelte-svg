@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte';
 import type { SlotZipEntry } from '$stylist/file/interface/slot/zip-entry';
 
 export interface BehaviorZipViewerEvents {

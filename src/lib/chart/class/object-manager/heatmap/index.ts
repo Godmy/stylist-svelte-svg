@@ -1,7 +1,6 @@
 ﻿import type { IHeatmapCell } from '$stylist/chart/type/struct/heatmap/cell';
 import type { IExtendedHeatmapCell } from '$stylist/chart/type/struct/extended-heatmap-cell';
 import type { TokenThemeScheme } from '$stylist/theme/type/enum/theme-scheme';
-import { TOKEN_THEME_SCHEME } from '$stylist/theme/const/enum/theme-scheme';
 import { HEATMAP_GRADIENT_BY_SCHEME } from '$stylist/chart/const/record/heatmap-gradient-by-scheme';
 import type { HeatmapAxisValue } from '$stylist/chart/type/alias/heatmap-axis-value';
 

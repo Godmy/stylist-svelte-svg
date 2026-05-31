@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 	import { Icon as BaseIcon } from '$stylist/media';
 	const GripVertical = 'grip-vertical';
 	const MoreHorizontal = 'more-horizontal';
@@ -7,8 +6,6 @@
 	import { Button } from '$stylist/control';
 	import BaseCard from '$stylist/information/component/molecule/base-card/index.svelte';
 	import { createDraggableCardState } from '$stylist/management/function/state/draggable-card';
-	import type { CardData } from '$stylist/management/interface/slot/draggable-card-data';
-	import type { DraggableCardRestProps } from '$stylist/management/type/alias/draggable-card-rest-props';
 	import type { SlotDraggableCard as DraggableCardProps } from '$stylist/management/interface/slot/draggable-card';
 
 	let props: DraggableCardProps = $props();

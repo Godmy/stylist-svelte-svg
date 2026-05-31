@@ -1,10 +1,6 @@
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenThemeTone } from '$stylist/theme/type/enum/theme-tone';
-import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
-import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
 /**
  * SlotConfirmationDialog — свойства диалога подтверждения.

@@ -5,9 +5,8 @@
 	import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 	import { createBasePreset } from '$stylist/interaction/preset/base';
 	import { TOKEN_MONITORING_TYPE } from '$stylist/management/const/enum/monitoring-type';
-	import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
-
-	let props: IPriceAlertElementProps & HTMLAttributes<HTMLDivElement> = $props();
+	
+let props: IPriceAlertElementProps & HTMLAttributes<HTMLDivElement> = $props();
 
 	const state = createPriceAlertState(
 		createBasePreset(TOKEN_MONITORING_TYPE, TOKEN_SIZE, {

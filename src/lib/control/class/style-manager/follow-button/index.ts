@@ -1,5 +1,4 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { FOLLOW_BUTTON_VARIANT_CLASSES } from '$stylist/control/const/record/follow-button-variant-classes';
 
 export class FollowButtonStyleManager {

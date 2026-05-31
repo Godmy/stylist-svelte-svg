@@ -25,10 +25,10 @@ export function createZoomToolbarState(props: ZoomToolbarProps) {
 		emit(100);
 	};
 
-	let rootClass = $derived(ZoomToolbarStyleManager.root(props.class ?? ''));
-	let firstButtonClass = $derived(ZoomToolbarStyleManager.firstButton(props.buttonClass ?? ''));
-	let buttonClass = $derived(ZoomToolbarStyleManager.button(props.buttonClass ?? ''));
-	let percentageClass = $derived(ZoomToolbarStyleManager.percentage());
+	const rootClass = $derived(ZoomToolbarStyleManager.root(props.class ?? ''));
+	const firstButtonClass = $derived(ZoomToolbarStyleManager.firstButton(props.buttonClass ?? ''));
+	const buttonClass = $derived(ZoomToolbarStyleManager.button(props.buttonClass ?? ''));
+	const percentageClass = $derived(ZoomToolbarStyleManager.percentage());
 
 	return {
 		get currentZoom() {

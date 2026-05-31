@@ -1,5 +1,4 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import type { VariablesEditorStyleManagerOptions } from '$stylist/input/interface/slot/variables-editor-style-manager-options';
 
 export class VariablesEditorStyleManager {
 	private static readonly BASE_ROOT =
