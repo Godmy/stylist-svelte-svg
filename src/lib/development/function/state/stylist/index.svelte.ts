@@ -1,8 +1,8 @@
-import { categories } from '$stylist/development/const/record/stylist-categories';
-import type { StylistProps } from '$stylist/development/type/struct/stylist-props';
+﻿import { categories } from '$stylist/development/const/record/stylist-categories';
+import type { RecipeStylist } from '$stylist/development/interface/recipe/stylist';
 import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
 import { untrack } from 'svelte';
-export function createStylistState(props: StylistProps) {
+export function createStylistState(props: RecipeStylist) {
 	const initialCategory = $derived(props.initialCategory ?? 'architecture');
 	const className = $derived(props.class ?? '');
 	const onSelectionChange = $derived(props.onSelectionChange);
@@ -106,5 +106,3 @@ export function createStylistState(props: StylistProps) {
 		}
 	};
 }
-
-export default createStylistState;

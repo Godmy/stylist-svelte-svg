@@ -1,4 +1,3 @@
-import { DraggableStyleManager } from '$stylist/interaction/class/style-manager/draggable';
 import { ObjectManagerGesture } from '$stylist/interaction/class/object-manager/gesture';
 import type { SlotDraggable as DragProps } from '$stylist/interaction/interface/slot/draggable';
 
@@ -9,17 +8,24 @@ export const createDraggableState = (props: DragProps) => {
 
 	const normalizedProps = $derived(ObjectManagerGesture.normalizeDragContract(props));
 
-	const classes = $derived.by(() =>
-		DraggableStyleManager.getClasses({
-			draggable: normalizedProps.draggable,
-			dropzone: normalizedProps.dropzone,
-			isDragging,
-			isOverDropZone,
-			disabled: normalizedProps.disabled,
-			showHandle: props.showHandle,
-			class: props.class
-		})
-	);
+	const classes = $derived.by(() => {
+		const { draggable = false, dropzone = false, disabled = false } = normalizedProps;
+		const className = props.class ?? '';
+
+		if (disabled)
+			return ['c-draggable', 'c-draggable--disabled', className].filter(Boolean).join(' ');
+
+		return [
+			'c-draggable',
+			draggable && 'c-draggable--grab',
+			props.showHandle && draggable && 'c-draggable--handle',
+			isDragging && 'c-draggable--dragging',
+			dropzone && isOverDropZone && 'c-draggable--drop-active',
+			className
+		]
+			.filter(Boolean)
+			.join(' ');
+	});
 
 	const restProps = $derived.by(() => {
 		const {

@@ -18,8 +18,14 @@
 >
 	{#snippet children(values: any)}
 		{@const p = values as Props}
-		<div class="sb-organisms-feature-toggle p-4">
+		<div class="sb-organisms-feature-toggle _c1">
 			<FeatureToggle checked={p.checked} disabled={p.disabled} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

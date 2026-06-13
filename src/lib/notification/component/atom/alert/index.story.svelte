@@ -44,10 +44,10 @@
 				: 'info'}
 		{@const title = typeof values.title === 'string' ? values.title : 'Sample Alert'}
 		{@const closable = typeof values.closable === 'boolean' ? values.closable : false}
-		<div class="max-w-md p-4">
+		<div class="_c1">
 			<Alert {variant} {title} {closable}>
 				{#snippet children()}
-					<p class="text-sm">
+					<p class="_c2">
 						{variant === 'success'
 							? 'Everything looks good! Keep monitoring for anomalies.'
 							: 'Add remediation steps or contextual information inside the slot.'}
@@ -57,3 +57,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 28rem;
+		padding: 1rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

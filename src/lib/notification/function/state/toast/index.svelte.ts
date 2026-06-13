@@ -1,7 +1,6 @@
-import type { ToastProps } from '$stylist/notification/type/struct/toast-props';
-import { ToastStyleManager } from '$stylist/notification/class/style-manager/toast';
+﻿import type { RecipeToast } from '$stylist/notification/interface/recipe/toast';
 
-export function createToastState(props: ToastProps) {
+export function createToastState(props: RecipeToast) {
 	const type = $derived(props.type ?? 'info');
 	let internalVisible = $state(props.visible ?? true);
 
@@ -24,7 +23,7 @@ export function createToastState(props: ToastProps) {
 	}
 
 	const classes = $derived(
-		ToastStyleManager.getAllClasses(type, internalVisible, props.class ?? '')
+		`toast toast--${type} ${internalVisible ? 'toast--visible' : 'toast--hidden'} ${props.class ?? ''}`.trim()
 	);
 
 	return {
@@ -37,5 +36,3 @@ export function createToastState(props: ToastProps) {
 		closeToast
 	};
 }
-
-export default createToastState;

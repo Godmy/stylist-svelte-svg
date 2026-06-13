@@ -1,6 +1,4 @@
-import type { RecordColorScale } from '$stylist/theme/type/record/color-scale';
-
-export const TOKEN_COLOR_SCALE: RecordColorScale = {
+export const TOKEN_COLOR_SCALE: Record<number, string> = {
 	50: '50',
 	100: '100',
 	200: '200',

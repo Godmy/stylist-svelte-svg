@@ -1,7 +1,7 @@
-import { untrack } from 'svelte';
-import type { FilterBarProps } from '$stylist/control/type/struct/filter-bar-props';
+﻿import { untrack } from 'svelte';
+import type { RecipeFilterBar } from '$stylist/control/interface/recipe/filter-bar';
 
-export function createFilterBarState(props: FilterBarProps) {
+export function createFilterBarState(props: RecipeFilterBar) {
 	const toggles = $derived(props.toggles ?? []);
 	const tags = $derived(props.tags ?? []);
 	const range = $derived(props.range);
@@ -86,5 +86,3 @@ export function createFilterBarState(props: FilterBarProps) {
 		clearFilters
 	};
 }
-
-export default createFilterBarState;

@@ -1,9 +1,8 @@
-import { IconPickerStyleManager } from '$stylist/media/class/style-manager/icon-picker';
 import { ObjectManagerIconPicker } from '$stylist/media/class/object-manager/icon-picker';
-import type { ThemeIconPickerRecipe } from '$stylist/media/interface/recipe/icon-picker';
+import type { RecipeThemeIconPicker } from '$stylist/media/interface/recipe/icon-picker';
 import type { ThemeIconItem } from '$stylist/media/interface/slot/icon-picker';
 
-export function createIconPickerState(props: ThemeIconPickerRecipe) {
+export function createIconPickerState(props: RecipeThemeIconPicker) {
 	const icons = $derived(ObjectManagerIconPicker.resolveIcons(props));
 	const title = $derived(ObjectManagerIconPicker.resolveTitle(props));
 	const searchPlaceholder = $derived(ObjectManagerIconPicker.resolveSearchPlaceholder(props));
@@ -16,15 +15,20 @@ export function createIconPickerState(props: ThemeIconPickerRecipe) {
 	let searchQuery = $state('');
 
 	const filteredIcons = $derived(ObjectManagerIconPicker.filterIcons(icons, searchQuery));
-	const rootClass = $derived(IconPickerStyleManager.getHostClasses(hostClass));
-	const resolvedHeaderClass = $derived(IconPickerStyleManager.getHeaderClasses(headerClass));
-	const titleClass = $derived(IconPickerStyleManager.getTitleClasses());
-	const searchContainerClass = $derived(IconPickerStyleManager.getSearchContainerClasses());
-	const searchIconClass = $derived(IconPickerStyleManager.getSearchIconClasses());
-	const searchInputClass = $derived(IconPickerStyleManager.getSearchInputClasses());
-	const gridClass = $derived(IconPickerStyleManager.getGridClasses(columns, itemClass));
-	const iconContainerClass = $derived(IconPickerStyleManager.getIconContainerClasses());
-	const iconNameClass = $derived(IconPickerStyleManager.getIconNameClasses());
+	const rootClass = $derived(['icon-picker', hostClass].filter(Boolean).join(' '));
+	const resolvedHeaderClass = $derived(
+		['icon-picker__header', headerClass].filter(Boolean).join(' ')
+	);
+	const titleClass = 'icon-picker__title';
+	const searchContainerClass = 'icon-picker__search-container';
+	const searchIconClass = 'icon-picker__search-icon';
+	const searchInputClass = 'icon-picker__search-input';
+	const gridClass = $derived(
+		['icon-picker__grid', itemClass ? `icon-picker__grid--custom` : ''].filter(Boolean).join(' ')
+	);
+	const iconContainerClass = 'icon-picker__icon-container';
+	const iconNameClass = 'icon-picker__icon-name';
+
 	const restProps = $derived.by(() => {
 		const {
 			icons: _icons,
@@ -49,7 +53,10 @@ export function createIconPickerState(props: ThemeIconPickerRecipe) {
 	}
 
 	function itemClassName(icon: ThemeIconItem): string {
-		return IconPickerStyleManager.getItemClasses(itemClass, props.selectedIcon === icon.name);
+		const selected = props.selectedIcon === icon.name;
+		return ['icon-picker__item', selected ? 'icon-picker__item--selected' : '', itemClass]
+			.filter(Boolean)
+			.join(' ');
 	}
 
 	function selectIcon(icon: ThemeIconItem): void {

@@ -1,10 +1,4 @@
-/**
- * ShippingInfoContract вЂ” РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕСЃС‚Р°РІРєРµ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ThemeAttributes   (theme) вЂ” class, data-variant, data-tone
- */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 
 export interface RecipeShippingRegion extends StructIntersectAll<[]> {
 	id: string;

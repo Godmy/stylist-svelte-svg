@@ -1,10 +1,10 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
 import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/typography-inline-style';
-import type { TextRecipe } from '$stylist/typography/interface/recipe/text';
+import type { RecipeText } from '$stylist/typography/interface/recipe/text';
 
 export function createTextPresenterState(
-	props: TextRecipe,
+	props: RecipeText,
 	baseClassName: string,
 	excludedPropNames: string[] = []
 ) {

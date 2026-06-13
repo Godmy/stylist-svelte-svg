@@ -1,6 +1,6 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import createTranslationEditorState from '$stylist/localization/function/state/translation-editor/index.svelte';
+	import { createTranslationEditorState } from '$stylist/localization/function/state/translation-editor/index.svelte';
 	import type { SlotExtendedTranslationEditor as ExtendedTranslationEditorProps } from '$stylist/localization/interface/slot/extended-translation-editor';
 
 	let {
@@ -18,7 +18,7 @@
 	<div class={state.panelClass}>
 		<div class={state.headerClass}>
 			<div class="c-translation-editor__header-inner">
-				<BaseIcon name={state.iconLanguages} class="h-5 w-5" />
+				<BaseIcon name={state.iconLanguages} class="_c1" />
 				<span class="c-translation-editor__title">Translation Editor</span>
 			</div>
 			<div class="c-translation-editor__actions">
@@ -27,14 +27,14 @@
 					class="c-translation-editor__action-btn"
 					onclick={() => onImport?.({})}
 				>
-					<BaseIcon name={state.iconUpload} class="h-4 w-4" />
+					<BaseIcon name={state.iconUpload} class="_c2" />
 				</button>
 				<button type="button" class="c-translation-editor__action-btn" onclick={() => onExport?.()}>
-					<BaseIcon name={state.iconDownload} class="h-4 w-4" />
+					<BaseIcon name={state.iconDownload} class="_c2" />
 				</button>
 				{#if onSave}
 					<button type="button" class="c-translation-editor__action-btn" onclick={() => onSave?.()}>
-						<BaseIcon name={state.iconSave} class="h-4 w-4" />
+						<BaseIcon name={state.iconSave} class="_c2" />
 					</button>
 				{/if}
 			</div>
@@ -100,7 +100,7 @@
 											class="c-translation-editor__edit-btn"
 											onclick={() => state.beginEdit(text)}
 										>
-											<BaseIcon name={state.iconEdit} class="h-4 w-4" />
+											<BaseIcon name={state.iconEdit} class="_c2" />
 										</button>
 									</div>
 								{/if}
@@ -119,7 +119,7 @@
 									class="c-translation-editor__edit-btn"
 									onclick={() => onTranslationChange?.(text.key, state.currentLocale, '')}
 								>
-									<BaseIcon name={state.iconTrash} class="h-4 w-4" />
+									<BaseIcon name={state.iconTrash} class="_c2" />
 								</button>
 							</td>
 						</tr>
@@ -262,5 +262,14 @@
 
 	.c-translation-editor__edit-btn:hover {
 		color: var(--color-text-primary);
+	}
+
+	._c1 {
+		height: 1.25rem;
+		width: 1.25rem;
+	}
+	._c2 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

@@ -1,71 +1,36 @@
-﻿<script lang="ts">
-	import type { PresenterSceneContract } from '$stylist/architecture/type/struct/presenter-scene/presenter-scene-contract';
-	import { PresenterSceneStyleManager } from '$stylist/architecture/class/style-manager/presenter-scene';
+<script lang="ts">
+	import type { RecipePresenterScene } from '$stylist/architecture/interface/recipe/presenter-scene';
 	import createPresenterSceneState from '$stylist/architecture/function/state/presenter-scene/index.svelte';
 	import PresenterNodeShell from '$stylist/architecture/component/molecule/presenter-node-shell/index.svelte';
 
-	const contract: PresenterSceneContract = $props();
-	const state = createPresenterSceneState(contract);
-	let viewportElement: HTMLDivElement | null = null;
-
-	$effect(() => {
-		state.syncCamera();
-	});
-
-	$effect(() => {
-		state.syncSelectedNode();
-	});
-
-	$effect(() => {
-		if (!viewportElement) return;
-
-		const element = viewportElement;
-		const syncViewportSize = () => {
-			state.setViewportSize(element.clientWidth, element.clientHeight);
-		};
-
-		syncViewportSize();
-
-		const observer = new ResizeObserver(() => {
-			syncViewportSize();
-		});
-
-		observer.observe(element);
-
-		return () => {
-			observer.disconnect();
-		};
-	});
+	let props: RecipePresenterScene = $props();
+	const state = createPresenterSceneState(props);
 </script>
 
-<section class={PresenterSceneStyleManager.getSectionClass(String(contract.class ?? ''))}>
+<section class={state.sectionClass}>
 	{#if state.showHeader}
-		<header class={PresenterSceneStyleManager.getHeaderClass()}>
+		<header class="presenter-scene__header">
 			<div>
-				<h2 class={PresenterSceneStyleManager.getTitleClass()}>{state.title}</h2>
-				<p class={PresenterSceneStyleManager.getSubtitleClass()}>
-					{contract.nodes?.length ?? 0} nodes, camera depth {state.camera.depth}, zoom {state.camera.zoom.toFixed(
+				<h2 class="presenter-scene__title">{state.title}</h2>
+				<p class="presenter-scene__subtitle">
+					{props.nodes?.length ?? 0} nodes, camera depth {state.camera.depth}, zoom {state.camera.zoom.toFixed(
 						2
 					)}
 				</p>
 			</div>
 
 			{#if state.showDepthControls}
-				<div class={PresenterSceneStyleManager.getControlsClass()}>
-					<button
-						type="button"
-						class={PresenterSceneStyleManager.getControlClass()}
-						onclick={() => state.stepDepth(80)}>Zoom out</button
+				<div class="presenter-scene__controls">
+					<button type="button" class="presenter-scene__control" onclick={() => state.stepDepth(80)}
+						>Zoom out</button
 					>
 					<button
 						type="button"
-						class={PresenterSceneStyleManager.getControlClass()}
+						class="presenter-scene__control"
 						onclick={() => state.stepDepth(-80)}>Zoom in</button
 					>
-					<button
-						type="button"
-						class={PresenterSceneStyleManager.getControlClass()}
-						onclick={state.resetCamera}>Reset</button
+					<button type="button" class="presenter-scene__control" onclick={state.resetCamera}
+						>Reset</button
 					>
 				</div>
 			{/if}
@@ -73,8 +38,8 @@
 	{/if}
 
 	<div
-		class={PresenterSceneStyleManager.getViewportClass(state.isDragging)}
-		bind:this={viewportElement}
+		class={state.viewportClass}
+		use:state.viewport
 		tabindex="0"
 		role="button"
 		aria-roledescription="pan and zoom scene viewport"
@@ -86,7 +51,7 @@
 		data-camera-y={state.camera.y}
 		data-selected-node-id={state.selectedNode?.id}
 		data-selected-node-layer={state.selectedNode?.layer}
-		onwheel={(event) => state.handleWheel(event, viewportElement?.getBoundingClientRect())}
+		onwheel={state.handleWheel}
 		onpointerdown={state.handlePointerDown}
 		onpointermove={state.handlePointerMove}
 		onpointerup={state.handlePointerUp}
@@ -94,10 +59,10 @@
 		onkeydown={state.handleKeyDown}
 	>
 		{#if state.showGrid}
-			<div class={PresenterSceneStyleManager.getGridClass()} aria-hidden="true"></div>
+			<div class="presenter-scene__grid" aria-hidden="true"></div>
 		{/if}
 		{#if state.showLinks}
-			<svg class={PresenterSceneStyleManager.getLinksClass()} aria-hidden="true">
+			<svg class="presenter-scene__links" aria-hidden="true">
 				{#each state.sceneLinks as link (link.id)}
 					<line
 						x1={state.projectX(link.from.position.x)}
@@ -113,7 +78,7 @@
 			</svg>
 		{/if}
 
-		{#each contract.nodes ?? [] as node (node.id)}
+		{#each props.nodes ?? [] as node (node.id)}
 			<PresenterNodeShell
 				{node}
 				camera={state.camera}
@@ -125,20 +90,20 @@
 
 	{#if state.showInspector && state.selectedNode}
 		<aside
-			class={PresenterSceneStyleManager.getInspectorClass()}
+			class="presenter-scene__inspector"
 			data-node-id={state.selectedNode.id}
 			data-node-depth={state.selectedNode.depth}
 			data-node-layer={state.selectedNode.layer}
 		>
-			<div class={PresenterSceneStyleManager.getBadgeClass()}>{state.selectedNode.title}</div>
-			<div class={PresenterSceneStyleManager.getInspectorLineClass()}>
+			<div class="presenter-scene__badge">{state.selectedNode.title}</div>
+			<div class="presenter-scene__inspector-line">
 				Depth: {state.selectedNode.depth}
 			</div>
-			<div class={PresenterSceneStyleManager.getInspectorLineClass()}>
+			<div class="presenter-scene__inspector-line">
 				Accent: {state.selectedNode.accent}
 			</div>
 			{#if state.selectedNode.description}
-				<p class={PresenterSceneStyleManager.getDescriptionClass()}>
+				<p class="presenter-scene__description">
 					{state.selectedNode.description}
 				</p>
 			{/if}

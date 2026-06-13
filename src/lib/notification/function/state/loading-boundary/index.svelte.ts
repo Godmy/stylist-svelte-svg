@@ -1,15 +1,9 @@
 import type { LoadingBoundaryProps } from '$stylist/notification/type/struct/loading-boundary-props';
-import { InteractionFeedbackStyleManager } from '$stylist/notification/class/style-manager/interaction-feedback';
 
 export function createLoadingBoundaryState(props: LoadingBoundaryProps) {
 	const loading = $derived(props.loading ?? false);
 	const error = $derived(props.error ?? '');
-	const containerClasses = $derived(
-		InteractionFeedbackStyleManager.root(
-			'c-loading-boundary border rounded-lg p-4',
-			props.class ?? ''
-		)
-	);
+	const containerClasses = $derived(`c-loading-boundary ${props.class ?? ''}`.trim());
 
 	return {
 		get loading() {

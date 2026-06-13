@@ -1,9 +1,9 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { ObjectManagerColorPalette } from '$stylist/color/class/object-manager/color-palette';
-import type { ThemeColorPaletteRecipe } from '$stylist/color/interface/recipe/color-palette';
+import type { RecipeThemeColorPalette } from '$stylist/color/interface/recipe/color-palette';
 import type { ThemeColorPaletteItem } from '$stylist/color/interface/slot/color-palette-item';
 
-export function createColorPaletteState(props: ThemeColorPaletteRecipe) {
+export function createColorPaletteState(props: RecipeThemeColorPalette) {
 	const colors = $derived(ObjectManagerColorPalette.resolveColors(props));
 	const title = $derived(ObjectManagerColorPalette.resolveTitle(props));
 	const showLabels = $derived(ObjectManagerColorPalette.resolveShowLabels(props));

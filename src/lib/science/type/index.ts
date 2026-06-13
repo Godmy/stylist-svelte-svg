@@ -1,5 +1,11 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { NodeTitleVariant, TokenScienceIcon } from './enum';
+export type {
+	NodeTitleVariant,
+	ScienceGraphNodeCategory,
+	ScienceGraphThemeId,
+	ScienceGraphToolMode,
+	TokenScienceIcon
+} from './enum';
 export type {
 	ConnectionLinePoint,
 	ConnectionPathResult,
@@ -18,7 +24,6 @@ export type {
 	GraphPortDimensions,
 	GraphPortStateColor,
 	GraphToolbarItem,
-	GraphToolbarProps,
 	Idef0BlackBoxProps,
 	Idef0DiagramProps,
 	Idef0InputsProps,
@@ -30,7 +35,6 @@ export type {
 	LiteGraphPort,
 	LitegraphCanvasNodeAddPayload,
 	LitegraphNodePresentation,
-	LitegraphNodeProps,
 	MinimapBounds,
 	MinimapContract,
 	MinimapNodeRect,
@@ -40,7 +44,6 @@ export type {
 	MinimapViewport,
 	Model,
 	ModelSelectorProps,
-	NodeHeaderProps,
 	OntologyEdge,
 	OntologyEdgeComponentProps,
 	OntologyNode,
@@ -52,4 +55,11 @@ export type {
 	ScienceHTMLAttributes,
 	SentimentAnalysisStatus,
 	ThemeSceneColors
+} from './struct';
+export type { ScienceGraphWorkspaceConnectionInput } from './type';
+export type {
+	ScienceGraphNodeDraft,
+	ScienceGraphWorkspaceBounds,
+	ScienceGraphWorkspaceConnection,
+	ScienceGraphWorkspaceNode
 } from './struct';

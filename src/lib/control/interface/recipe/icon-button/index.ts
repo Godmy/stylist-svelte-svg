@@ -13,5 +13,5 @@ import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/inter
 import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 
-export interface IconButtonRecipe
+export interface RecipeIconButton
 	extends StructIntersectAll<[IIconSlot, IClickable, IFocusable, ISizable]> {}

@@ -22,7 +22,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-4 rounded-xl bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
 			<MessageBubble
 				author={args.author}
 				message={args.message}
@@ -34,3 +34,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+</style>

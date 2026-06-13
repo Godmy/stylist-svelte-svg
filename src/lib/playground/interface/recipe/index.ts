@@ -18,4 +18,4 @@ export type { RecipePlaygroundScreenshotSelector } from './playground-screenshot
 export type { RecipePlaygroundShellHeader } from './playground-shell-header';
 export type { RecipePlaygroundShortcutsPanel } from './playground-shortcuts-panel';
 export type { RecipePlaygroundTreeNode } from './playground-tree-node';
-export type { PropsEditorRecipe } from './props-editor';
+export type { RecipePropsEditor } from './props-editor';

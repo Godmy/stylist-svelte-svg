@@ -1,7 +1,6 @@
-import { ProcessStepStyleManager } from '$stylist/management/class/style-manager/process-step';
-import type { ProcessStepStateProps } from '$stylist/management/interface/recipe/process-step';
+﻿import type { RecipeProcessStep } from '$stylist/management/interface/recipe/process-step';
 
-export function createProcessStepState(props: ProcessStepStateProps) {
+export function createProcessStepState(props: RecipeProcessStep) {
 	const number = $derived(props.number);
 	const title = $derived(props.title);
 	const description = $derived(props.description);
@@ -11,15 +10,6 @@ export function createProcessStepState(props: ProcessStepStateProps) {
 	const className = $derived(props.class ?? '');
 
 	const hostClass = $derived(className == null ? undefined : String(className));
-
-	const classes = $derived(ProcessStepStyleManager.getBaseClasses(active, hostClass));
-	const numberContainerClasses = $derived(
-		ProcessStepStyleManager.getNumberContainerClasses(active)
-	);
-	const contentContainerClasses = $derived(ProcessStepStyleManager.getContentContainerClasses());
-	const titleClasses = $derived(ProcessStepStyleManager.getTitleClasses(active));
-	const agentBadgeClasses = $derived(ProcessStepStyleManager.getAgentBadgeClasses());
-	const descriptionClasses = $derived(ProcessStepStyleManager.getDescriptionClasses());
 
 	return {
 		get number() {
@@ -42,23 +32,6 @@ export function createProcessStepState(props: ProcessStepStateProps) {
 		},
 		get classes() {
 			return classes;
-		},
-		get numberContainerClasses() {
-			return numberContainerClasses;
-		},
-		get contentContainerClasses() {
-			return contentContainerClasses;
-		},
-		get titleClasses() {
-			return titleClasses;
-		},
-		get agentBadgeClasses() {
-			return agentBadgeClasses;
-		},
-		get descriptionClasses() {
-			return descriptionClasses;
 		}
 	};
 }
-
-export default createProcessStepState;

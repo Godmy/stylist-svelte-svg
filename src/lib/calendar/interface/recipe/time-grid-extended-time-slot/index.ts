@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotTimeGridEvent } from '$stylist/calendar/interface/slot/time-grid-event';
 
 export interface RecipeTimeGridExtendedTimeSlot extends StructIntersectAll<[]> {

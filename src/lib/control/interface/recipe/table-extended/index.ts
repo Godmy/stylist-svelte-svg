@@ -1,4 +1,4 @@
-﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TableSpecificProps } from '$stylist/control/interface/recipe/table-specific-props';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
@@ -12,7 +12,7 @@ import type { BehaviorSized as ISized } from '$stylist/layout/interface/behavior
 import type { BehaviorSpaced as ISpaced } from '$stylist/layout/interface/behavior/spaced';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
-export interface TableRecipe
+export interface RecipeTable
 	extends StructIntersectAll<
 			[
 				ILabelSlot,

@@ -1,7 +1,8 @@
-import type { Snippet } from 'svelte';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { UploadStatus } from '$stylist/file/type/struct/upload-status';
 
-export interface SlotFileUpload {
+export interface SlotFileUpload extends StructIntersectAll<[SlotChildren]> {
 	accept?: string;
 	maxSize?: number;
 	multiple?: boolean;
@@ -9,7 +10,6 @@ export interface SlotFileUpload {
 	file?: File | null;
 	onFileSelect?: (file: File | FileList | null) => void;
 	onUpload?: (file: File) => Promise<void>;
-	children?: Snippet;
 	disabled?: boolean;
 	uploadText?: string;
 	class?: string;

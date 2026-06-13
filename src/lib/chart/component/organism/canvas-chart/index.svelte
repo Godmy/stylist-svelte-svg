@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { CanvasChartProps } from '$stylist/chart/type/struct/canvas-chart-props';
+	import type { RecipeCanvasChart } from '$stylist/chart/interface/recipe/canvas-chart';
 	import createCanvasChartState from '$stylist/chart/function/state/canvas-chart/index.svelte';
 	import { ObjectManagerCanvasChart } from '$stylist/chart/class/object-manager/canvas-chart';
 
-	let props: CanvasChartProps = $props();
+	let props: RecipeCanvasChart = $props();
 	const state = createCanvasChartState(props);
 
 	let canvasRef: HTMLCanvasElement | null = null;
@@ -34,3 +34,14 @@
 	class={state.canvasClasses}
 	{...state.restProps}
 ></canvas>
+
+<style>
+	.c-canvas-chart__canvas {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+	}
+</style>

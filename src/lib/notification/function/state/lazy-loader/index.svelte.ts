@@ -1,12 +1,9 @@
 import type { LazyLoaderProps } from '$stylist/notification/type/struct/lazy-loader-props';
-import { InteractionFeedbackStyleManager } from '$stylist/notification/class/style-manager/interaction-feedback';
 
 export function createLazyLoaderState(props: LazyLoaderProps) {
 	const loading = $derived(props.loading ?? true);
 	const text = $derived(props.text ?? 'Loading content...');
-	const containerClasses = $derived(
-		InteractionFeedbackStyleManager.root('c-lazy-loader border rounded-lg p-4', props.class ?? '')
-	);
+	const containerClasses = $derived(`c-lazy-loader ${props.class ?? ''}`.trim());
 
 	return {
 		get loading() {

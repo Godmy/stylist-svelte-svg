@@ -1,6 +1,6 @@
-import type { GraphNodeCardRecipe } from '$stylist/science/interface/recipe/graph-node-card';
+import type { RecipeGraphNodeCard } from '$stylist/science/interface/recipe/graph-node-card';
 
-export type GraphNodeCardData = GraphNodeCardRecipe & {
+export type GraphNodeCardData = RecipeGraphNodeCard & {
 	name: string;
 	type: string;
 	description?: string;

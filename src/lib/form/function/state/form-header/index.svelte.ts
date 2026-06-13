@@ -1,15 +1,21 @@
-import { FormHeaderStyleManager } from '$stylist/form/class/style-manager/form-header';
-import type { SlotFormHeader as FormHeaderProps } from '$stylist/form/interface/slot/form-header';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { SlotFormHeader as RecipeFormHeader } from '$stylist/form/interface/slot/form-header';
 
-export function createFormHeaderState(props: FormHeaderProps) {
-	const rootClass = $derived(FormHeaderStyleManager.root(props.class ?? ''));
-	const backButtonClass = $derived(FormHeaderStyleManager.backButton(props.backButtonClass ?? ''));
-	const titleClass = $derived(FormHeaderStyleManager.title(props.titleClass ?? ''));
-	const subtitleClass = $derived(FormHeaderStyleManager.subtitle(props.subtitleClass ?? ''));
-	const descriptionClass = $derived(
-		FormHeaderStyleManager.description(props.descriptionClass ?? '')
+export function createFormHeaderState(props: RecipeFormHeader) {
+	const rootClass = $derived(mergeClassNames('c-form-header', props.class ?? ''));
+	const backButtonClass = $derived(
+		mergeClassNames('c-form-header__back-btn', props.backButtonClass ?? '')
 	);
-	const actionsClass = $derived(FormHeaderStyleManager.actions(props.actionsClass ?? ''));
+	const titleClass = $derived(mergeClassNames('c-form-header__title', props.titleClass ?? ''));
+	const subtitleClass = $derived(
+		mergeClassNames('c-form-header__subtitle', props.subtitleClass ?? '')
+	);
+	const descriptionClass = $derived(
+		mergeClassNames('c-form-header__description', props.descriptionClass ?? '')
+	);
+	const actionsClass = $derived(
+		mergeClassNames('c-form-header__actions', props.actionsClass ?? '')
+	);
 
 	return {
 		get rootClass() {
@@ -32,5 +38,3 @@ export function createFormHeaderState(props: FormHeaderProps) {
 		}
 	};
 }
-
-export default createFormHeaderState;

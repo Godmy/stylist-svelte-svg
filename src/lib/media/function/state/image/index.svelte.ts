@@ -1,4 +1,4 @@
-import type { ImageProps } from '$stylist/media/type/struct/image';
+﻿import type { RecipeImage } from '$stylist/media/interface/recipe/image';
 
 const SIZE_CLASSES: Record<string, string> = {
 	sm: 'max-w-[200px] h-auto',
@@ -7,7 +7,7 @@ const SIZE_CLASSES: Record<string, string> = {
 	xl: 'max-w-full h-auto'
 };
 
-export function createImageState(props: ImageProps) {
+export function createImageState(props: RecipeImage) {
 	let isLoaded = $state(false);
 	let hasError = $state(false);
 
@@ -106,5 +106,3 @@ export function createImageState(props: ImageProps) {
 		handleError
 	};
 }
-
-export default createImageState;

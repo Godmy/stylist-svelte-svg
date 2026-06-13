@@ -47,7 +47,7 @@
 
 <Story {controls} title="TabGroup Component" description="Advanced TabGroup with multiple tabs">
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<TabGroup
 				tabs={complexTabs as any}
 				activeTab={controlValues.activeTab}
@@ -56,3 +56,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

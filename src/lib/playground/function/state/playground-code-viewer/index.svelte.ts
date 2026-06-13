@@ -1,6 +1,6 @@
-import type { PlaygroundCodeViewerProps } from '$stylist/playground/type/struct/playground-code-viewer-props';
+﻿import type { RecipePlaygroundCodeViewer } from '$stylist/playground/interface/recipe/playground-code-viewer';
 import { untrack } from 'svelte';
-export function createPlaygroundCodeViewerState(props: PlaygroundCodeViewerProps) {
+export function createPlaygroundCodeViewerState(props: RecipePlaygroundCodeViewer) {
 	const code = $derived(props.code ?? '');
 	const componentName = $derived(props.componentName ?? '');
 	const componentProps = $derived(props.props ?? {});
@@ -144,5 +144,3 @@ export function createPlaygroundCodeViewerState(props: PlaygroundCodeViewerProps
 		loadShiki
 	};
 }
-
-export default createPlaygroundCodeViewerState;

@@ -1,31 +1,15 @@
-import { SortableGridStyleManager } from '$stylist/control/class/style-manager/sortable-grid';
 import type { SortableGridItem } from '$stylist/control/type/alias/sortable-grid-item';
 import type { SortableGridProps } from '$stylist/control/type/alias/sortable-grid-props';
-
-const gridColsMap: Record<number | string, string> = {
-	1: 'grid-cols-1',
-	2: 'grid-cols-2',
-	3: 'grid-cols-3',
-	4: 'grid-cols-4',
-	5: 'grid-cols-5',
-	6: 'grid-cols-6'
-};
-const gapMap: Record<string, string> = { none: 'gap-0', sm: 'gap-2', md: 'gap-4', lg: 'gap-6' };
 
 export function createSortableGridState(props: SortableGridProps) {
 	const items = $derived(props.items ?? []);
 	const className = $derived(props.class ?? '');
 	const itemClass = $derived(props.itemClass ?? '');
 	const cols = $derived(typeof props.cols === 'number' ? props.cols : 3);
-	const gap = $derived((props.gap ?? 'md') as keyof typeof gapMap);
+	const gap = $derived((props.gap ?? 'md') as 'none' | 'sm' | 'md' | 'lg');
 	const draggable = $derived(props.draggable ?? true);
 
-	const gridColsClass = $derived(
-		typeof cols === 'number'
-			? (gridColsMap[cols as keyof typeof gridColsMap] ?? 'grid-cols-3')
-			: (gridColsMap[cols] ?? 'grid-cols-3')
-	);
-	const gapClass = $derived(gapMap[gap] ?? 'gap-4');
+	const containerClass = $derived(['c-sortable-grid', props.class].filter(Boolean).join(' '));
 
 	let draggedItem = $state<SortableGridItem | null>(null);
 	let draggedOverIndex = $state<number | null>(null);
@@ -67,10 +51,6 @@ export function createSortableGridState(props: SortableGridProps) {
 		draggedOverIndex = null;
 	}
 
-	const containerClass = $derived(
-		SortableGridStyleManager.getContainerClass('default', 'md', !draggable, className)
-	);
-
 	return {
 		get items() {
 			return items;
@@ -89,12 +69,6 @@ export function createSortableGridState(props: SortableGridProps) {
 		},
 		get draggable() {
 			return draggable;
-		},
-		get gridColsClass() {
-			return gridColsClass;
-		},
-		get gapClass() {
-			return gapClass;
 		},
 		get containerClass() {
 			return containerClass;

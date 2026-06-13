@@ -47,7 +47,7 @@
 			pattern={props.pattern}
 			minlength={props.minlength}
 			maxlength={props.maxlength}
-			class={`${state.inputClasses} ${state.groupInputClasses} rounded-r-none border-r-0`}
+			class={`${state.inputClasses} ${state.groupInputClasses}`}
 			oninput={state.handleInput}
 			onchange={state.handleChange}
 			aria-describedby={state.hasError && (props.showErrors ?? true)
@@ -63,7 +63,7 @@
 			size={props.size ?? 'md'}
 			disabled={(props.buttonDisabled ?? false) || (props.disabled ?? false)}
 			onclick={props.onButtonClick}
-			class={`${state.groupButtonClasses} rounded-l-none`}
+			class={state.groupButtonClasses}
 		>
 			{props.buttonLabel ?? 'Действие'}
 		</Button>
@@ -81,6 +81,30 @@
 </div>
 
 <style>
+	.input-field-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.input-group-container {
+		display: flex;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.input-group-input {
+		flex: 1;
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+		border-inline-end: none;
+	}
+
+	.input-group-button {
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;

@@ -13,3 +13,6 @@
 		<span class={state.labelClasses}>{state.statusText}</span>
 	{/if}
 </span>
+
+<style>
+</style>

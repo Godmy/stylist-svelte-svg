@@ -36,12 +36,12 @@
 
 	<div class={state.messageBubbleClasses}>
 		{#if !state.isOwn && props.sender}
-			<div class="mb-1 text-sm font-semibold">{props.sender.name}</div>
+			<div class="mi-sender-name">{props.sender.name}</div>
 		{/if}
 
 		{#if props.message.replyTo}
 			<div
-				class="mb-1 text-xs italic"
+				class="mi-reply-preview"
 				style="border-left: 2px solid var(--color-border-secondary); padding-left: var(--spacing-2);"
 			>
 				Р’ РѕС‚РІРµС‚ РЅР° СЃРѕРѕР±С‰РµРЅРёРµ
@@ -52,7 +52,7 @@
 			{#if !props.message.type || props.message.type === 'text'}
 				{props.message.content}
 			{:else if props.message.type === 'image'}
-				<img src={props.message.content} alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ" class="max-w-xs rounded-md" />
+				<img src={props.message.content} alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ" class="mi-image" />
 			{:else if props.message.type === 'file' && props.message.attachments?.length}
 				{#each props.message.attachments as attachment, index}
 					<RecipeAttachmentPreview
@@ -178,5 +178,19 @@
 
 	.reaction-option:hover {
 		background-color: var(--color-background-secondary);
+	}
+	.mi-sender-name {
+		margin-bottom: 0.25rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+	}
+	.mi-reply-preview {
+		margin-bottom: 0.25rem;
+		font-size: 0.75rem;
+		font-style: italic;
+	}
+	.mi-image {
+		max-width: 20rem;
+		border-radius: 0.375rem;
 	}
 </style>

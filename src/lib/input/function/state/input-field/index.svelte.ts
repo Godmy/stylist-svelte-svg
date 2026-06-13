@@ -1,10 +1,9 @@
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
-import type { SlotInputField as IInputFieldProps } from '$stylist/input/interface/slot/input-field';
+﻿import type { SlotInputField as IInputFieldProps } from '$stylist/input/interface/slot/input-field';
 
 export const createInputFieldState = (props: IInputFieldProps) => {
 	const showHelper = $derived(!!props.helperText && (props.errors?.length ?? 0) === 0);
 	const containerClasses = $derived('input-field-container');
-	const helperTextClasses = $derived(InputStyleManager.getHelperTextClass(''));
+	const helperTextClasses = $derived('input-field-helper-text');
 
 	return {
 		get showHelper() {
@@ -18,5 +17,3 @@ export const createInputFieldState = (props: IInputFieldProps) => {
 		}
 	};
 };
-
-export default createInputFieldState;

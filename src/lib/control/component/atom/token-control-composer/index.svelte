@@ -10,28 +10,53 @@
 	const state = createTokenControlComposerState(props);
 </script>
 
-{#if state.controlKind === 'radio'}
-	<TokenRadioControl
-		definition={state.definition as any}
-		value={state.value}
-		onChange={state.onChange}
-	/>
-{:else if state.controlKind === 'select'}
-	<TokenSelectControl
-		definition={state.definition as any}
-		value={state.value}
-		onChange={state.onChange}
-	/>
-{:else if state.controlKind === 'range'}
-	<TokenRangeControl
-		definition={state.definition as any}
-		value={state.rangeValue}
-		onChange={(next) => state.onChange?.(next)}
-	/>
-{:else}
-	<TokenTextControl
-		definition={state.definition as any}
-		value={state.textValue}
-		onChange={(next) => state.onChange?.(next)}
-	/>
-{/if}
+<div class="c-token-composer">
+	<div class="c-token-composer__control">
+		{#if state.controlKind === 'radio'}
+			<TokenRadioControl
+				definition={state.definition as any}
+				value={state.value}
+				onChange={state.onChange}
+			/>
+		{:else if state.controlKind === 'select'}
+			<TokenSelectControl
+				definition={state.definition as any}
+				value={state.value}
+				onChange={state.onChange}
+			/>
+		{:else if state.controlKind === 'range'}
+			<TokenRangeControl
+				definition={state.definition as any}
+				value={state.rangeValue}
+				onChange={(next) => state.onChange?.(next)}
+			/>
+		{:else}
+			<TokenTextControl
+				definition={state.definition as any}
+				value={state.textValue}
+				onChange={(next) => state.onChange?.(next)}
+			/>
+		{/if}
+	</div>
+</div>
+
+<style>
+	.c-token-composer {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.c-token-composer__label {
+		font-size: 0.75rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+		white-space: nowrap;
+		min-width: 4rem;
+	}
+
+	.c-token-composer__control {
+		flex: 1;
+	}
+</style>

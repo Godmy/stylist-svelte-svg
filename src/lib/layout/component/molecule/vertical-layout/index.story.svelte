@@ -35,10 +35,20 @@
 			fillHeight={values.fillHeight}
 		>
 			{#snippet children()}
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Header</div>
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Body</div>
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Footer</div>
+				<div class="_c1">Header</div>
+				<div class="_c1">Body</div>
+				<div class="_c1">Footer</div>
 			{/snippet}
 		</VerticalLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.75rem;
+	}
+</style>

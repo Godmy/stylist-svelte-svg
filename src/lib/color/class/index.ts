@@ -4,8 +4,3 @@ export {
 	ObjectManagerColorPalette,
 	ObjectManagerColorSwatch
 } from './object-manager';
-export {
-	StyleManagerAdvancedColorPicker,
-	StyleManagerColorPalette,
-	StyleManagerColorSwatch
-} from './style-manager';

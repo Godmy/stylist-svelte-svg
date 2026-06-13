@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { TableRowRecipe as TableRowRecipe } from '$stylist/information/interface/recipe/table-row';
+	import type { RecipeTableRow as RecipeTableRow } from '$stylist/information/interface/recipe/table-row';
 	import createTableRowState from '$stylist/information/function/state/table-row/index.svelte';
 
-	let props: TableRowRecipe = $props();
+	let props: RecipeTableRow = $props();
 	const state = createTableRowState(props);
 </script>
 
@@ -11,3 +11,6 @@
 		{@render props.content()}
 	{/if}
 </tr>
+
+<style>
+</style>

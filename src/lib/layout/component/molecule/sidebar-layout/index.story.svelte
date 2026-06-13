@@ -69,7 +69,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<ThemeProvider initialMode="light" initialScheme="minimal">
+		<ThemeProvider themeMode="light" themeScheme="minimal">
 			<div class="layout-story">
 				<section class="hero">
 					<div class="hero-backdrop"></div>
@@ -128,7 +128,7 @@
 																{/snippet}
 
 																{#snippet secondary()}
-																	<StackedLayout direction="vertical" gap="sm" class="h-full">
+																	<StackedLayout direction="vertical" gap="sm" class="_c1">
 																		{#snippet children()}
 																			<Card
 																				shape="rounded"
@@ -276,7 +276,7 @@
 																	{ content: 'Backlog' },
 																	{ content: 'Escalated', colSpan: 2 }
 																]}
-																class="grid-cols-3 gap-3"
+																class="_c2"
 															/>
 														{/snippet}
 													</Card>
@@ -392,9 +392,9 @@
 									{#snippet children()}
 										<Grid cols={3} gap="sm" responsive={false}>
 											{#snippet children()}
-												<div class="demo-block text-center">A</div>
-												<div class="demo-block text-center">B</div>
-												<div class="demo-block text-center">C</div>
+												<div class="demo-block _c3">A</div>
+												<div class="demo-block _c3">B</div>
+												<div class="demo-block _c3">C</div>
 											{/snippet}
 										</Grid>
 									{/snippet}
@@ -485,7 +485,7 @@
 								<Grid cols={3} gap="sm" responsive={false}>
 									{#snippet children()}
 										{#each Array(6) as _, index}
-											<div class="demo-block text-center">Cell {index + 1}</div>
+											<div class="demo-block _c3">Cell {index + 1}</div>
 										{/each}
 									{/snippet}
 								</Grid>
@@ -997,5 +997,16 @@
 		:global(.shell-layout) {
 			height: auto;
 		}
+	}
+
+	._c1 {
+		height: 100%;
+	}
+	._c2 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+	._c3 {
+		text-align: center;
 	}
 </style>

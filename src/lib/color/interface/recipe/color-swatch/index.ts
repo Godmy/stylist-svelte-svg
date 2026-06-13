@@ -1,9 +1,9 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { ContentProp } from '$stylist/information/type/struct/content-prop';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface ThemeColorSwatchRecipe
-	extends StructIntersectAll<[ContentProp, ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeThemeColorSwatch
+	extends StructIntersectAll<[ContentProp, HTMLAttributes<HTMLDivElement>]> {
 	color?: string;
 	size?: number;
 }

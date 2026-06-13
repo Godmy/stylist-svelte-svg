@@ -35,10 +35,21 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<section
-			class="sb-organisms-sentiment-analysis grid gap-6 rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6"
-		>
+		<section class="sb-organisms-sentiment-analysis _c1">
 			<SentimentAnalysis text={values.text} status={values.status} result={sampleResult} />
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1.5rem;
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+</style>

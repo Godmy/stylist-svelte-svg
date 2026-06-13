@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { FaviconProps } from '$stylist/media/type/struct/favicon';
-	import createFaviconState from '$stylist/media/function/state/favicon/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeFavicon } from '$stylist/media/interface/recipe/favicon';
+	import { createFaviconState } from '$stylist/media/function/state/favicon/index.svelte';
 
-	let props: FaviconProps = $props();
+	let props: RecipeFavicon = $props();
 	const state = createFaviconState(props);
 </script>
 

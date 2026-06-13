@@ -29,6 +29,18 @@
 	});
 </script>
 
-<div class={state.classes} role="group">
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div class="c-toggle-group" data-disabled={state.disabled || undefined} role="group" {...restProps}>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-toggle-group {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.c-toggle-group[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+	}
+</style>

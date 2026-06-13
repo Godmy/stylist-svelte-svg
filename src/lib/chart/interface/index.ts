@@ -1,24 +1,21 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { BehaviorChartAxis, BehaviorChartColorable, BehaviorLegendable } from './behavior';
 export type {
-	AnalyticsChartRecipe,
-	BarChartRecipe,
-	CanvasChartRecipe,
-	ChartAxisXRecipe,
-	ChartAxisYProps,
-	ChartAxisYRecipe,
-	ChartAxisZProps,
-	ChartAxisZRecipe,
-	ChartBackgroundProps,
-	ChartBackgroundRecipe,
-	ChartCanvasRecipe,
-	ChartNameRecipe,
-	ChartPolylineRecipe,
-	ChartProps,
-	ChartRecipe,
-	HeatmapRecipe,
-	LineChartRecipe,
 	PieChartProps,
-	PieChartRecipe,
-	ScatterPlotRecipe
+	RecipeAnalyticsChart,
+	RecipeBarChart,
+	RecipeCanvasChart,
+	RecipeChart,
+	RecipeChartAxisX,
+	RecipeChartAxisY,
+	RecipeChartAxisZ,
+	RecipeChartBackground,
+	RecipeChartCanvas,
+	RecipeChartName,
+	RecipeChartPolyline,
+	RecipeHeatmap,
+	RecipeLineChart,
+	RecipePieChart,
+	RecipeScatterPlot
 } from './recipe';
+export type { SlotChartAxis } from './slot';

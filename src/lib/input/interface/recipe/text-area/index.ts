@@ -1,7 +1,8 @@
+﻿import type { RecipeTextAreaProps as LegacyTextAreaProps1 } from '$stylist/input/interface/recipe/text-area-props';
 /**
- * Text Area вЂ” РјРЅРѕРіРѕСЃС‚СЂРѕС‡РЅРѕРµ РїРѕР»Рµ РІРІРѕРґР°.
+ * Text Area РІР‚вЂќ Р СР Р…Р С•Р С–Р С•РЎРѓРЎвЂљРЎР‚Р С•РЎвЂЎР Р…Р С•Р Вµ Р С—Р С•Р В»Р Вµ Р Р†Р Р†Р С•Р Т‘Р В°.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   IIconSlot                 (information/icon-slot)
@@ -15,5 +16,7 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface TextAreaRecipe
-	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]> {}
+export interface RecipeTextArea
+	extends StructIntersectAll<
+		[LegacyTextAreaProps1, ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]
+	> {}

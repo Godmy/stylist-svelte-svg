@@ -1,7 +1,7 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { PictureToolbarProps } from '$stylist/media/type/alias/picture-toolbar-props';
+﻿import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
+import type { RecipePictureToolbar } from '$stylist/media/interface/recipe/picture-toolbar';
 
-export function createPictureToolbarState(props: PictureToolbarProps) {
+export function createPictureToolbarState(props: RecipePictureToolbar) {
 	let activeTool = $state(props.activeTool);
 
 	$effect(() => {
@@ -47,5 +47,3 @@ export function createPictureToolbarState(props: PictureToolbarProps) {
 		selectTool
 	};
 }
-
-export default createPictureToolbarState;

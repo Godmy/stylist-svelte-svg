@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createLocationPickerState from '$stylist/geo/function/state/location-picker/index.svelte';
+	import { createLocationPickerState } from '$stylist/geo/function/state/location-picker/index.svelte';
 	import { geoHandleKeyDown } from '$stylist/geo/function/script/handle-key-down';
 
 	let props = $props();
@@ -80,7 +80,7 @@
 				onclick={state.handleZoomIn}
 				disabled={state.currentZoom >= state.maxZoom}
 			>
-				<BaseIcon name="plus" class="h-4 w-4" />
+				<BaseIcon name="plus" class="_c1" />
 			</Button>
 			<Button
 				variant="secondary"
@@ -88,14 +88,14 @@
 				onclick={state.handleZoomOut}
 				disabled={state.currentZoom <= state.minZoom}
 			>
-				<BaseIcon name="minus" class="h-4 w-4" />
+				<BaseIcon name="minus" class="_c1" />
 			</Button>
 			<Button variant="secondary" size="sm" onclick={state.handleResetView}>
-				<BaseIcon name="rotate-ccw" class="h-4 w-4" />
+				<BaseIcon name="rotate-ccw" class="_c1" />
 			</Button>
 			{#if state.showCurrentLocation}
 				<Button variant="secondary" size="sm" onclick={state.handleCurrentLocation}>
-					<BaseIcon name="crosshair" class="h-4 w-4" />
+					<BaseIcon name="crosshair" class="_c1" />
 				</Button>
 			{/if}
 		</div>
@@ -258,5 +258,10 @@
 		padding: 0.5rem 0.75rem;
 		font-size: 0.875rem;
 		backdrop-filter: blur(4px);
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

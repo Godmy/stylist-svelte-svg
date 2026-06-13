@@ -1,7 +1,7 @@
-import type { StoreLocatorStore } from '$stylist/geo/type/struct/store-locator/storelocatorstore';
-import type { StoreLocatorStateProps } from '$stylist/geo/interface/recipe/store-locator';
+﻿import type { StoreLocatorStore } from '$stylist/geo/type/struct/store-locator/storelocatorstore';
+import type { RecipeStoreLocator } from '$stylist/geo/interface/recipe/store-locator';
 
-export function createStoreLocatorState(props: StoreLocatorStateProps) {
+export function createStoreLocatorState(props: RecipeStoreLocator) {
 	const stores = $derived(props.stores ?? []);
 	const showSearch = $derived(props.showSearch ?? true);
 	const showFilters = $derived(props.showFilters ?? true);
@@ -189,5 +189,3 @@ export function createStoreLocatorState(props: StoreLocatorStateProps) {
 		}
 	};
 }
-
-export default createStoreLocatorState;

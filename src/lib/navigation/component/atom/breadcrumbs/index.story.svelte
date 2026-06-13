@@ -11,16 +11,40 @@
 	description="Low-level breadcrumb navigation container for custom breadcrumb compositions."
 >
 	{#snippet children()}
-		<div class="rounded-3xl border border-slate-200 bg-white p-6">
-			<Breadcrumbs class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+		<div class="_c1">
+			<Breadcrumbs class="_c2">
 				{#snippet children()}
 					<BreadcrumbLink href="/domain">domain</BreadcrumbLink>
 					<BreadcrumbSeparator />
 					<BreadcrumbLink href="/domain/interaction">interaction</BreadcrumbLink>
 					<BreadcrumbSeparator />
-					<span class="font-medium text-slate-900">clickable</span>
+					<span class="_c3">clickable</span>
 				{/snippet}
 			</Breadcrumbs>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding: 1.5rem;
+	}
+	._c2 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+	._c3 {
+		font-weight: 500;
+		color: #0f172a;
+	}
+</style>

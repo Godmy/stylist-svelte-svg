@@ -47,7 +47,7 @@
 
 <Story {controls} title="TreeNodeItem Component" description="A single node item in a tree view">
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<TreeNodeItem
 				node={{
 					key: 'sample-node',
@@ -59,3 +59,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

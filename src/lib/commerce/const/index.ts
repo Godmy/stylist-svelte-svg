@@ -19,7 +19,14 @@ export {
 	PRODUCT_AVAILABILITY_BADGE_CLASSES,
 	PRODUCT_AVAILABILITY_STATUS_CLASSES
 } from './map';
-export { PRESET_BULK_ORDER } from './preset';
+export {
+	PRESET_BULK_ORDER,
+	PresetAlertCard,
+	PresetBillingSummary,
+	PresetOrderConfirmation,
+	PresetPriceAlert,
+	PresetQuoteRequest
+} from './preset';
 export {
 	DEFAULT_BULK_ORDER,
 	LINK_CARD_VARIANT_CLASSES,

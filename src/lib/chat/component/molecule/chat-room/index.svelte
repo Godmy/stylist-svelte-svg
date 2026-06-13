@@ -11,23 +11,27 @@
 <div class={state.containerClasses} {...props}>
 	<!-- Header -->
 	<header class={state.headerClasses}>
-		<div class="flex-1">
+		<div class="cr-title-wrap">
 			{#if props.title}
-				<h2 class="text-lg font-semibold">{props.title}</h2>
+				<h2 class="cr-title">{props.title}</h2>
 			{/if}
 			{#if props.subtitle}
-				<p class="text-sm text-[var(--color-text-secondary)]">{props.subtitle}</p>
+				<p class="cr-subtitle">{props.subtitle}</p>
 			{/if}
 		</div>
-		<div class="flex items-center">
+		<div class="cr-participants">
 			{#each props.participants.slice(0, 3) as participant, index}
 				<div class={state.participantAvatarClasses(index)} style="z-index: {10 - index};">
-					<img src={participant.avatar} alt={participant.name} class="h-full w-full object-cover" />
+					<img
+						src={participant.avatar}
+						alt={participant.name}
+						style="width:100%;height:100%;object-fit:cover"
+					/>
 				</div>
 			{/each}
 			{#if props.participants.length > 3}
 				<div class={state.participantOverflowClasses} style="z-index: var(--z-index-base);">
-					<span class="text-xs">+{props.participants.length - 3}</span>
+					<span class="cr-overflow">+{props.participants.length - 3}</span>
 				</div>
 			{/if}
 		</div>
@@ -63,3 +67,24 @@
 		/>
 	</footer>
 </div>
+
+<style>
+	.cr-title-wrap {
+		flex: 1;
+	}
+	.cr-title {
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+	.cr-subtitle {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+	.cr-participants {
+		display: flex;
+		align-items: center;
+	}
+	.cr-overflow {
+		font-size: 0.75rem;
+	}
+</style>

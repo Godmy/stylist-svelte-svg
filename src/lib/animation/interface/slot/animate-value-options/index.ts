@@ -1,9 +1,12 @@
+import type { TokenDuration } from '$stylist/animation/type/enum/duration';
+import type { TokenEasing } from '$stylist/animation/type/enum/easing';
+
 export interface AnimateValueOptions {
 	from: number;
 	to: number;
-	duration: number;
+	duration: TokenDuration;
 	delay: number;
-	easing: 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
+	easing: TokenEasing;
 	onUpdate: (value: number) => void;
 	onFinish?: () => void;
 }

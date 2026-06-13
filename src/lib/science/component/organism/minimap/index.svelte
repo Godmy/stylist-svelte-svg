@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { MinimapContract } from '$stylist/science/type/struct/minimap/minimap-contract';
 	import type { MinimapProps } from '$stylist/science/type/struct/minimap/minimap-props';
-	import { MinimapStyleManager } from '$stylist/science/class/style-manager/minimap';
 	import IconButton from '$stylist/control/component/atom/icon-button/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import createMinimapState from '$stylist/science/function/state/minimap/index.svelte';
@@ -18,7 +17,7 @@
 	<!-- MiniMap Canvas -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions a11y_no_noninteractive_tabindex -->
 	<svg
-		class={MinimapStyleManager.getCanvasClass()}
+		class="minimap__canvas"
 		width={state.width}
 		height={state.height}
 		onclick={state.handleMapClick}
@@ -48,7 +47,7 @@
 				height={Math.max(rect.height, 6)}
 				fill={node.selected ? state.activeNodeColor : state.nodeColor}
 				rx={2}
-				class={MinimapStyleManager.getNodeClass()}
+				class="minimap__node"
 				data-node-id={node.id}
 			/>
 		{/each}
@@ -64,13 +63,13 @@
 				stroke-width={2}
 				stroke-opacity={0.35}
 				rx={4}
-				class={MinimapStyleManager.getViewportClass()}
+				class="minimap__viewport"
 			/>
 		{/if}
 	</svg>
 
 	{#if state.showZoomControls}
-		<div class={MinimapStyleManager.getControlsClass()}>
+		<div class="minimap__controls">
 			<IconButton
 				variant="ghost"
 				size="sm"

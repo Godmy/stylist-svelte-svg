@@ -1,4 +1,4 @@
-import type { Props } from '$stylist/file/type/struct/file-browser/props/-props';
+﻿import type { Props } from '$stylist/file/type/struct/file-browser/props/-props';
 import type { SlotFolderItem } from '$stylist/file/type/struct/file-browser/folder-item';
 import { handleAction as handleActionFn } from '$stylist/file/function/script/file-browser-handle-action';
 import { handleSelect as handleSelectFn } from '$stylist/file/function/script/file-browser-handle-select';
@@ -111,5 +111,3 @@ export function createFileBrowserState(props: Props) {
 		isExpanded
 	};
 }
-
-export default createFileBrowserState;

@@ -26,13 +26,33 @@
 			axis={values.axis}
 			fillHeight={values.fillHeight}
 			fillWidth={values.fillWidth}
-			class="h-48 rounded-lg border border-[--color-border-primary]"
+			class="_c1"
 		>
 			{#snippet children()}
-				<div class="rounded-lg border border-[--color-border-primary] px-4 py-2 text-sm">
-					Centered content
-				</div>
+				<div class="_c2">Centered content</div>
 			{/snippet}
 		</CenteredLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 12rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c2 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

@@ -31,22 +31,14 @@
 <div class={state.containerClasses}>
 	{#if props.chat}
 		<div class={state.headerClasses}>
-			<div class="font-semibold text-[var(--color-text-primary)]">{state.compatibleChat.name}</div>
-			<div class="flex gap-2">
-				<button
-					type="button"
-					class="text-sm text-[var(--color-text-secondary)]"
-					onclick={() => props.onCall?.()}>Call</button
+			<div class="cw-chat-name">{state.compatibleChat.name}</div>
+			<div class="cw-header-actions">
+				<button type="button" class="cw-action-btn" onclick={() => props.onCall?.()}>Call</button>
+				<button type="button" class="cw-action-btn" onclick={() => props.onVideoCall?.()}
+					>Video</button
 				>
-				<button
-					type="button"
-					class="text-sm text-[var(--color-text-secondary)]"
-					onclick={() => props.onVideoCall?.()}>Video</button
-				>
-				<button
-					type="button"
-					class="text-sm text-[var(--color-text-secondary)]"
-					onclick={() => props.onChatInfo?.()}>Info</button
+				<button type="button" class="cw-action-btn" onclick={() => props.onChatInfo?.()}
+					>Info</button
 				>
 			</div>
 		</div>
@@ -85,5 +77,20 @@
 	.chat-input {
 		border-top: 1px solid var(--color-border-primary);
 		background-color: white;
+	}
+	.cw-chat-name {
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	.cw-header-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.cw-action-btn {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+		background: none;
+		border: none;
+		cursor: pointer;
 	}
 </style>

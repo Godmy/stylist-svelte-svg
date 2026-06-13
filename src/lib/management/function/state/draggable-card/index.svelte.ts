@@ -1,4 +1,3 @@
-import { DraggableCardStyleManager } from '$stylist/management/class/style-manager/draggable-card';
 import type { DraggableCardStateProps } from '$stylist/management/type/alias/draggable-card-state-props';
 
 export function createDraggableCardState(props: DraggableCardStateProps) {
@@ -15,25 +14,6 @@ export function createDraggableCardState(props: DraggableCardStateProps) {
 	const variant = $derived(props.variant ?? 'default');
 
 	let isDragging = $state(false);
-
-	const rootClass = $derived(
-		DraggableCardStyleManager.getRootClass(
-			`${isDragging ? DraggableCardStyleManager.getDraggingClass() : 'opacity-[var(--opacity-100)]'} ${
-				variant === 'compact'
-					? DraggableCardStyleManager.getCompactClass()
-					: DraggableCardStyleManager.getDefaultClass()
-			} ${hostClass}`
-		)
-	);
-	const handleClass = $derived(DraggableCardStyleManager.getHandleClass());
-	const gripIconClass = $derived(DraggableCardStyleManager.getGripIconClass());
-	const titleClass = $derived(DraggableCardStyleManager.getTitleClass());
-	const descriptionClass = $derived(DraggableCardStyleManager.getDescriptionClass());
-	const tagsContainerClass = $derived(DraggableCardStyleManager.getTagsContainerClass());
-	const tagClass = $derived(DraggableCardStyleManager.getTagClass());
-	const metadataClass = $derived(DraggableCardStyleManager.getMetadataClass());
-	const dateClass = $derived(DraggableCardStyleManager.getDateClass());
-	const assigneeClass = $derived(DraggableCardStyleManager.getAssigneeClass());
 
 	function handleDragStart(e: DragEvent): void {
 		if (disabled || !draggable) return;
@@ -118,36 +98,6 @@ export function createDraggableCardState(props: DraggableCardStateProps) {
 		},
 		get isDragging() {
 			return isDragging;
-		},
-		get rootClass() {
-			return rootClass;
-		},
-		get handleClass() {
-			return handleClass;
-		},
-		get gripIconClass() {
-			return gripIconClass;
-		},
-		get titleClass() {
-			return titleClass;
-		},
-		get descriptionClass() {
-			return descriptionClass;
-		},
-		get tagsContainerClass() {
-			return tagsContainerClass;
-		},
-		get tagClass() {
-			return tagClass;
-		},
-		get metadataClass() {
-			return metadataClass;
-		},
-		get dateClass() {
-			return dateClass;
-		},
-		get assigneeClass() {
-			return assigneeClass;
 		},
 		get restProps() {
 			return restProps;

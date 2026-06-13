@@ -1,19 +1,7 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/**
- * ChartAxisZ — ось Z графика..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- */
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { SlotChartAxis } from '$stylist/chart/interface/slot/chart-axis';
 
-export interface ChartAxisZRecipe extends StructIntersectAll<[ThemeAttributes<SVGGElement>]> {
-	label?: string;
-	startX?: number;
-	startY?: number;
-	endX?: number;
-	endY?: number;
-	tickCount?: number;
-	showArrow?: boolean;
-	color?: string;
-}
+export interface RecipeChartAxisZ
+	extends StructIntersectAll<[SlotTheme, SlotChartAxis, HTMLAttributes<SVGGElement>]> {}

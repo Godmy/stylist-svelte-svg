@@ -49,7 +49,7 @@
 		maxlength={props.maxlength}
 		rows={props.rows ?? 4}
 		bind:this={textareaElement}
-		class={`${state.inputClasses} resize-y`}
+		class={`${state.inputClasses} input-long__textarea`}
 		style={`max-height: ${props.maxHeight ?? '300px'};`}
 		oninput={() => state.handleInput(textareaElement)}
 		aria-describedby={state.hasError && (props.showErrors ?? true)
@@ -73,6 +73,16 @@
 </div>
 
 <style>
+	.input-field-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.input-long__textarea {
+		resize: vertical;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;

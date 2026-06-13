@@ -9,8 +9,16 @@
 	description="Interactive L6 shell combining movable seed, orbit layers, and expandable control card."
 >
 	{#snippet children()}
-		<div class="rounded-3xl bg-[linear-gradient(180deg,#dbeafe,#f8fafc)] p-8">
+		<div class="_c1">
 			<PrismaticOrbitL6 />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1.5rem;
+		background-color: linear-gradient(180deg, #dbeafe, #f8fafc);
+		padding: 2rem;
+	}
+</style>

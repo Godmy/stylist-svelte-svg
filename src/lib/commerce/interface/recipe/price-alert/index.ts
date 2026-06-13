@@ -1,33 +1,21 @@
-/**
- * PriceAlertContract � ���������� �� ��������� ����.
- *
- * LEGO-������:
- *   ISizable          (architecture) � size (������ ����������)
- *   IClickable        (interaction)  � disabled, loading
- *   ThemeAttributes   (theme)        � class, data-variant, data-tone
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 
 export interface RecipePriceAlert
 	extends StructIntersectAll<
-		[BehaviorSizable, BehaviorClickable, ThemeAttributes<HTMLDivElement>]
+		[SlotTheme, BehaviorSizable, BehaviorClickable, HTMLAttributes<HTMLDivElement>]
 	> {
-	/** Current price */
 	currentPrice?: number;
-	/** Target price */
 	targetPrice?: number;
-	/** SlotCurrency symbol */
 	currency?: string;
-	/** Alert status (analytics monitoring type) */
 	status?: TokenMonitoringType;
-	/** Product name */
 	productName?: string;
-	/** Visual variant (analytics monitoring type) */
 	variant?: TokenMonitoringType;
-	/** Callback when status changes */
+	size?: string;
+	disabled?: boolean;
 	onStatusChange?: (status: TokenMonitoringType) => void;
 }

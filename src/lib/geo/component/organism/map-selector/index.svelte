@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createMapSelectorState from '$stylist/geo/function/state/map-selector/index.svelte';
+	import { createMapSelectorState } from '$stylist/geo/function/state/map-selector/index.svelte';
 
 	let props = $props();
 	const state = createMapSelectorState(props);
@@ -72,10 +72,10 @@
 		{#if state.showZoomControls}
 			<div class="c-map-selector__controls {props.controlsClass ?? ''}">
 				<Button variant="secondary" size="sm" onclick={state.handleZoomIn} aria-label="Zoom in">
-					<BaseIcon name="plus" class="h-4 w-4" />
+					<BaseIcon name="plus" class="_c1" />
 				</Button>
 				<Button variant="secondary" size="sm" onclick={state.handleZoomOut} aria-label="Zoom out">
-					<BaseIcon name="minus" class="h-4 w-4" />
+					<BaseIcon name="minus" class="_c1" />
 				</Button>
 				<Button
 					variant="secondary"
@@ -83,7 +83,7 @@
 					onclick={state.handleResetView}
 					aria-label="Reset view"
 				>
-					<BaseIcon name="rotate-ccw" class="h-4 w-4" />
+					<BaseIcon name="rotate-ccw" class="_c1" />
 				</Button>
 			</div>
 		{/if}
@@ -96,7 +96,7 @@
 					onclick={state.handleCurrentLocation}
 					aria-label="Show current location"
 				>
-					<BaseIcon name="navigation" class="h-4 w-4" />
+					<BaseIcon name="navigation" class="_c1" />
 				</Button>
 			</div>
 		{/if}
@@ -284,5 +284,10 @@
 		padding: 0.5rem 0.75rem;
 		font-size: 0.875rem;
 		backdrop-filter: blur(4px);
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

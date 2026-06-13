@@ -31,12 +31,22 @@
 			disabled={values.disabled}
 			variant={values.variant}
 		>
-			{#snippet summary()}<p class="text-sm text-[--color-text-secondary]">
-					Click to inspect timeline and mitigation.
-				</p>{/snippet}
-			{#snippet details()}<p class="text-sm">
+			{#snippet summary()}<p class="_c1">Click to inspect timeline and mitigation.</p>{/snippet}
+			{#snippet details()}<p class="_c2">
 					Mitigation shipped at 15:40 UTC. Recovery complete.
 				</p>{/snippet}
 		</ExpandableCard>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

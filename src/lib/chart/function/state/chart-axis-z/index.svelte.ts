@@ -1,16 +1,14 @@
-import type { ChartAxisZProps } from '$stylist/chart/interface/recipe/chart-axis-z-props';
-import { ChartStyleManager } from '$stylist/chart/class/style-manager/chart';
+import type { RecipeChartAxisZ } from '$stylist/chart/interface/recipe/chart-axis-z';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartAxisZState(props: ChartAxisZProps) {
-	const axisClasses = $derived(
-		ChartStyleManager.getChartAxisClasses(resolveClassName(props.class))
-	);
-	const gridClasses = $derived(ChartStyleManager.getChartAxisGridClasses());
-	const labelClasses = $derived(ChartStyleManager.getChartAxisLabelClasses());
+export function createChartAxisZState(props: RecipeChartAxisZ) {
+	const axisClasses = $derived(mergeClassNames('c-chart-axis', resolveClassName(props.class)));
+	const gridClasses = $derived('c-chart-axis__grid');
+	const labelClasses = $derived('c-chart-axis__label');
 
 	return {
 		get axisClasses() {

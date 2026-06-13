@@ -1,8 +1,7 @@
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { Snippet } from 'svelte';
 
-export interface CanvasChartRecipe extends StructIntersectAll<[]> {
+export interface RecipeCanvasChart extends StructIntersectAll<[SlotChildren]> {
 	width?: number;
 	height?: number;
 	data?: Array<Record<string, unknown>>;
@@ -14,6 +13,7 @@ export interface CanvasChartRecipe extends StructIntersectAll<[]> {
 	showLegend?: boolean;
 	showTooltip?: boolean;
 	colors?: string[];
+	xAxisLabel?: string;
+	yAxisLabel?: string;
 	class?: string;
-	children?: Snippet;
 }

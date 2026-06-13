@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { SlotAnimate as AnimateProps } from '$stylist/animation/interface/slot/animate';
+	import type { RecipeAnimated } from '$stylist/animation/interface/recipe/animated';
 	import createAnimatedState from '$stylist/animation/function/state/animated/index.svelte';
 
-	let props: AnimateProps = $props();
+	let props: RecipeAnimated = $props();
 	const state = createAnimatedState(props);
 </script>
 
-<div class={state.classes} style={state.inlineStyle} {...state.restProps}>
-	{#if props.children}
-		{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div class={state.classes} style={state.inlineStyle}>
+	{#if state.children}
+		{@render state.children()}
 	{:else}
 		{state.formattedValue}
 	{/if}

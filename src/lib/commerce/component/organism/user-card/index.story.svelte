@@ -40,14 +40,14 @@
 
 <Story component={UserCard} title="User Card" description="Compact commerce user card." {controls}>
 	{#snippet children(values: any)}
-		<section class="grid gap-4">
+		<section class="_c1">
 			<UserCard
 				user={primaryUser}
 				showEmail={values.showEmail as boolean}
 				showRole={values.showRole as boolean}
 				size={values.size as TokenUserCardSize}
 			/>
-			<div class="space-y-3">
+			<div class="_c2">
 				{#each roster as member}
 					<UserCard user={member} showEmail={false} showRole={true} size="sm" />
 				{/each}
@@ -55,3 +55,13 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+	}
+	._c2 > * + * {
+		margin-top: 0.75rem;
+	}
+</style>

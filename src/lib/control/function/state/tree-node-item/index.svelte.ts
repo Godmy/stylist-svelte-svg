@@ -1,4 +1,3 @@
-import { TreeNodeItemStyleManager } from '$stylist/control/class/style-manager/tree-node-item';
 import type { TreeNodeItemProps } from '$stylist/control/type/alias/tree-node-item-props';
 
 export function createTreeNodeItemState(props: TreeNodeItemProps) {
@@ -14,16 +13,18 @@ export function createTreeNodeItemState(props: TreeNodeItemProps) {
 	const expanded = $derived(node.key ? expandedNodes.has(node.key) : false);
 	const hasChildren = $derived(node.child !== undefined && node.child.length > 0);
 
-	const containerClasses = $derived(TreeNodeItemStyleManager.getNodeContainerClasses());
-	const headerClasses = $derived(TreeNodeItemStyleManager.getNodeHeaderClasses(expanded));
-	const toggleIconClasses = $derived(TreeNodeItemStyleManager.getToggleIconClasses());
-	const noToggleClasses = $derived(TreeNodeItemStyleManager.getNoToggleClasses());
-	const textClasses = $derived(TreeNodeItemStyleManager.getNodeTextClasses());
-	const secondaryIconClasses = $derived(TreeNodeItemStyleManager.getSecondaryIconClasses());
-	const secondaryIconImageClasses = $derived(
-		TreeNodeItemStyleManager.getSecondaryIconImageClasses()
+	const containerClasses = 'c-tree-node';
+	const headerClasses = $derived(
+		['c-tree-node__header', expanded ? 'c-tree-node__header--expanded' : '']
+			.filter(Boolean)
+			.join(' ')
 	);
-	const childrenClasses = $derived(TreeNodeItemStyleManager.getNodeChildrenClasses());
+	const toggleIconClasses = 'c-tree-node__toggle';
+	const noToggleClasses = 'c-tree-node__no-toggle';
+	const textClasses = 'c-tree-node__text';
+	const secondaryIconClasses = 'c-tree-node__icon';
+	const secondaryIconImageClasses = 'c-tree-node__icon-img';
+	const childrenClasses = 'c-tree-node__children';
 
 	function handleSelect() {
 		if (node.key) {

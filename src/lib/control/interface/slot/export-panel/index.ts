@@ -1,9 +1,8 @@
-import type { Snippet } from 'svelte';
-
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 // ExportPanel props interface
-export interface SlotExportPanel {
+export interface SlotExportPanel extends StructIntersectAll<[SlotChildren]> {
 	class?: string;
-	children?: Snippet;
 	onexport?: (
 		event: CustomEvent<{
 			format: 'png' | 'jpeg' | 'svg' | 'pdf';
@@ -11,4 +10,9 @@ export interface SlotExportPanel {
 			includeFilters: boolean;
 		}>
 	) => void;
+	onExport?: (detail: {
+		format: 'png' | 'jpeg' | 'svg' | 'pdf';
+		includeLegend: boolean;
+		includeFilters: boolean;
+	}) => void;
 }

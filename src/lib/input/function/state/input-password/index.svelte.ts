@@ -1,4 +1,3 @@
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 import createInputTextState from '$stylist/input/function/state/input-text/index.svelte';
 import type { SlotInputPassword as IInputPasswordProps } from '$stylist/input/interface/slot/input-password';
 
@@ -32,13 +31,7 @@ export const createInputPasswordState = (props: IInputPasswordProps) => {
 		if (/[^a-zA-Z0-9]/.test(value)) strength++;
 
 		const labels = ['Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
-		const colors = [
-			'bg-[var(--color-danger-500)]',
-			'bg-orange-500',
-			'bg-yellow-500',
-			'bg-lime-500',
-			'bg-[var(--color-success-500)]'
-		];
+		const colors = ['ps-danger', 'ps-orange', 'ps-yellow', 'ps-lime', 'ps-success'];
 
 		return {
 			value: strength,
@@ -65,22 +58,22 @@ export const createInputPasswordState = (props: IInputPasswordProps) => {
 			return inputState.classes;
 		},
 		get containerClasses() {
-			return InputStyleManager.getContainerClass('');
+			return 'input-field-container';
 		},
 		get labelClasses() {
-			return InputStyleManager.getLabelClass('');
+			return 'input-field-label';
 		},
 		get helperTextClasses() {
-			return InputStyleManager.getHelperTextClass('');
+			return 'input-field-helper-text';
 		},
 		get errorTextClasses() {
-			return InputStyleManager.getErrorTextClass('');
+			return 'input-field-error-text';
 		},
 		get requiredIndicatorClasses() {
-			return InputStyleManager.getRequiredIndicatorClass('');
+			return 'input-field-required';
 		},
 		get passwordToggleClasses() {
-			return InputStyleManager.getPasswordToggleClass('');
+			return 'input-password-toggle';
 		},
 		get showHelper() {
 			return showHelper;

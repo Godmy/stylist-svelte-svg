@@ -1,42 +1,29 @@
 <script lang="ts">
-	let {
-		size = 200,
-		rotationX = 25,
-		rotationY = 45,
-		rotationZ = 0
-	}: {
-		size?: number;
-		rotationX?: number;
-		rotationY?: number;
-		rotationZ?: number;
-	} = $props();
+	import type { RecipeCss3dCube } from '$stylist/architecture/interface/recipe/css-3d-cube';
+	import createCss3dCubeState from '$stylist/architecture/function/state/css-3d-cube/index.svelte';
+
+	let props: RecipeCss3dCube = $props();
+	const state = createCss3dCubeState(props);
 </script>
 
-<div class="scene">
-	<div
-		class="cube"
-		style="
-			width: {size}px;
-			height: {size}px;
-			transform: rotateX({rotationX}deg) rotateY({rotationY}deg) rotateZ({rotationZ}deg);
-		"
-	>
-		<div class="face front" style="transform: translateZ({size / 2}px)">
+<div class="scene" {...state.restProps}>
+	<div class="cube" style={state.cubeStyle}>
+		<div class="face front" style="transform: translateZ({state.halfSize}px)">
 			<span>Front</span>
 		</div>
-		<div class="face back" style="transform: rotateY(180deg) translateZ({size / 2}px)">
+		<div class="face back" style="transform: rotateY(180deg) translateZ({state.halfSize}px)">
 			<span>Back</span>
 		</div>
-		<div class="face right" style="transform: rotateY(90deg) translateZ({size / 2}px)">
+		<div class="face right" style="transform: rotateY(90deg) translateZ({state.halfSize}px)">
 			<span>Right</span>
 		</div>
-		<div class="face left" style="transform: rotateY(-90deg) translateZ({size / 2}px)">
+		<div class="face left" style="transform: rotateY(-90deg) translateZ({state.halfSize}px)">
 			<span>Left</span>
 		</div>
-		<div class="face top" style="transform: rotateX(90deg) translateZ({size / 2}px)">
+		<div class="face top" style="transform: rotateX(90deg) translateZ({state.halfSize}px)">
 			<span>Top</span>
 		</div>
-		<div class="face bottom" style="transform: rotateX(-90deg) translateZ({size / 2}px)">
+		<div class="face bottom" style="transform: rotateX(-90deg) translateZ({state.halfSize}px)">
 			<span>Bottom</span>
 		</div>
 	</div>

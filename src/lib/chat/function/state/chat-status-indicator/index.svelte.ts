@@ -2,7 +2,6 @@ import { derived, writable } from 'svelte/store';
 import type { SlotChatStatusIndicator as ChatStatusIndicatorProps } from '$stylist/chat/interface/slot/chat-status-indicator';
 import type { SlotChatStatusIndicator as ChatStatusIndicatorContract } from '$stylist/chat/interface/slot/chat-status-indicator';
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import { ChatStyleManager } from '$stylist/chat/class/style-manager/chat';
 
 export function createChatStatusIndicatorState(
 	props: ChatStatusIndicatorProps | ChatStatusIndicatorContract
@@ -29,9 +28,19 @@ export function createChatStatusIndicatorState(
 	});
 
 	const styles = {
-		container: ChatStyleManager.getPresenceContainerClasses(),
-		indicator: ChatStyleManager.getPresenceIndicatorClasses(size as 'sm' | 'md' | 'lg', status),
-		label: ChatStyleManager.getPresenceLabelClasses()
+		container: 'inline-flex items-center gap-2',
+		indicator: joinClassNames(
+			'inline-flex rounded-full ring-2 ring-[var(--color-background-primary)] shadow-sm',
+			size === 'lg' ? 'h-3 w-3' : size === 'md' ? 'h-2.5 w-2.5' : 'h-2 w-2',
+			status === 'online'
+				? 'bg-emerald-500'
+				: status === 'away'
+					? 'bg-amber-500'
+					: status === 'typing'
+						? 'bg-sky-500'
+						: 'bg-slate-400'
+		),
+		label: 'text-xs font-medium text-[var(--color-text-secondary)]'
 	};
 
 	// Merge classes with custom classes

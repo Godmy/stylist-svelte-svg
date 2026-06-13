@@ -1,9 +1,9 @@
-import { untrack } from 'svelte';
+﻿import { untrack } from 'svelte';
 import type { Coordinates } from '$stylist/geo/type/struct/location-picker/coordinates';
 import type { MapMarker } from '$stylist/geo/type/struct/location-picker/mapmarker';
-import type { LocationPickerStateProps } from '$stylist/geo/interface/recipe/location-picker';
+import type { RecipeLocationPicker } from '$stylist/geo/interface/recipe/location-picker';
 
-export function createLocationPickerState(props: LocationPickerStateProps) {
+export function createLocationPickerState(props: RecipeLocationPicker) {
 	const center = $derived(props.center ?? { lat: 51.505, lng: -0.09 });
 	const zoom = $derived(props.zoom ?? 13);
 	const markers = $derived(props.markers ?? []);
@@ -191,5 +191,3 @@ export function createLocationPickerState(props: LocationPickerStateProps) {
 		}
 	};
 }
-
-export default createLocationPickerState;

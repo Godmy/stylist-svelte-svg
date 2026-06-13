@@ -38,9 +38,7 @@
 		>
 			{#snippet children()}
 				{#each [1, 2, 3, 4, 5, 6] as item}
-					<div
-						class="rounded-xl border border-[--color-border-primary] bg-[--color-background-secondary] p-4 text-sm"
-					>
+					<div class="_c1">
 						Tile {item}
 					</div>
 				{/each}
@@ -48,3 +46,16 @@
 		</Grid>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

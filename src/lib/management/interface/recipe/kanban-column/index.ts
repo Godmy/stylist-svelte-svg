@@ -1,8 +1,7 @@
+﻿import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { KanbanColumnType } from '$stylist/management/type/struct/kanban-column';
-import type { Snippet } from 'svelte';
-
-export interface KanbanColumnStateProps extends StructIntersectAll<[]> {
+export interface RecipeKanbanColumn extends StructIntersectAll<[SlotContent]> {
 	column: KanbanColumnType;
 	droppable?: boolean;
 	editable?: boolean;
@@ -13,5 +12,4 @@ export interface KanbanColumnStateProps extends StructIntersectAll<[]> {
 	onCardTitleChange?: (columnId: string, cardId: string, title: string) => void;
 	onCardDelete?: (columnId: string, cardId: string) => void;
 	onCardArchive?: (columnId: string, cardId: string) => void;
-	content?: Snippet;
 }

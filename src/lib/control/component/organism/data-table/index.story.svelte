@@ -54,46 +54,46 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-data-table p-4">
-			<h1 class="mb-4 text-lg font-semibold">DataTable Component</h1>
+		<div class="sb-organisms-data-table _c1">
+			<h1 class="_c2">DataTable Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive DataTable</h2>
-				<div class="max-w-4xl">
+			<div class="_c3">
+				<h2 class="_c4">Interactive DataTable</h2>
+				<div class="_c5">
 					<DataTable {data} {columns} onRowClick={handleRowClick} />
 				</div>
 
-				<div class="mt-4 flex flex-wrap gap-4">
-					<div class="flex items-end">
-						<label for="striped" class="flex items-center gap-1">
+				<div class="_c6">
+					<div class="_c7">
+						<label for="striped" class="_c8">
 							<input id="striped" type="checkbox" bind:checked={values.striped} />
 							Striped
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="hoverable" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="hoverable" class="_c8">
 							<input id="hoverable" type="checkbox" bind:checked={values.hoverable} />
 							Hoverable
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="compact" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="compact" class="_c8">
 							<input id="compact" type="checkbox" bind:checked={values.compact} />
 							Compact
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-header" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="show-header" class="_c8">
 							<input id="show-header" type="checkbox" bind:checked={values.showHeader} />
 							Show Header
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="sortable" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="sortable" class="_c8">
 							<input id="sortable" type="checkbox" bind:checked={values.sortable} />
 							Sortable
 						</label>
@@ -103,3 +103,46 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 56rem;
+	}
+	._c6 {
+		margin-top: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	._c7 {
+		display: flex;
+		align-items: flex-end;
+	}
+	._c8 {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+</style>

@@ -1,31 +1,17 @@
-import type { ListItemMarkerRecipe } from '$stylist/information/interface/recipe/list-item-marker';
-import { IndicatorsStyleManager } from '$stylist/interaction/class/style-manager/indicators';
+import type { RecipeListItemMarker } from '$stylist/information/interface/recipe/list-item-marker';
 
-/**
- * ListItemMarker state creator
- * Provides reactive state management for list item marker components using Svelte 5 runes
- *
- * @param props - ListItemMarker component props
- * @returns Reactive state object with classes and computed values
- */
-export function createListItemMarkerState(props: ListItemMarkerRecipe) {
+export function createListItemMarkerState(props: RecipeListItemMarker) {
 	const type = $derived(props.type ?? 'bullet');
 	const value = $derived(props.value ?? '');
 	const color = $derived(props.color ?? 'gray');
 	const size = $derived(props.size ?? 'md');
 	const className = $derived(typeof props.class === 'string' ? props.class : undefined);
 	const classes = $derived(
-		IndicatorsStyleManager.getMarkerClasses(
-			color as Parameters<typeof IndicatorsStyleManager.getMarkerClasses>[0],
-			size as Parameters<typeof IndicatorsStyleManager.getMarkerClasses>[1],
-			className
-		)
+		['list-item-marker', `list-item-marker--${color}`, `list-item-marker--${size}`, className]
+			.filter(Boolean)
+			.join(' ')
 	);
-	const bulletClasses = $derived(
-		IndicatorsStyleManager.getBulletClasses(
-			size as Parameters<typeof IndicatorsStyleManager.getBulletClasses>[0]
-		)
-	);
+	const bulletClasses = $derived(`list-item-marker__bullet list-item-marker__bullet--${size}`);
 
 	return {
 		get type() {

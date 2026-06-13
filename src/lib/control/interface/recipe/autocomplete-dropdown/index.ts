@@ -19,7 +19,7 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface AutocompleteDropdownRecipe
+export interface RecipeAutocompleteDropdown
 	extends StructIntersectAll<
 		[ILabelSlot, ICaptionSlot, IIconSlot, ISelectable<string>, IFocusable, ISizable, IScrollable]
 	> {}

@@ -11,9 +11,7 @@
 	const classes = $derived(
 		[
 			state.classes,
-			(props.position ?? 'left') === 'left'
-				? 'rounded-l-md border-r border-r-transparent'
-				: 'rounded-r-md border-l border-l-transparent'
+			(props.position ?? 'left') === 'left' ? 'input-addon--left' : 'input-addon--right'
 		]
 			.filter(Boolean)
 			.join(' ')
@@ -23,3 +21,21 @@
 <div class={classes}>
 	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
 </div>
+
+<style>
+	.input-addon--left {
+		border-start-start-radius: var(--border-radius-base, 0.375rem);
+		border-end-start-radius: var(--border-radius-base, 0.375rem);
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+		border-inline-end-color: transparent;
+	}
+
+	.input-addon--right {
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+		border-start-end-radius: var(--border-radius-base, 0.375rem);
+		border-end-end-radius: var(--border-radius-base, 0.375rem);
+		border-inline-start-color: transparent;
+	}
+</style>

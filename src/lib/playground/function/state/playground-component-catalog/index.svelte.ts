@@ -1,4 +1,4 @@
-import type { PlaygroundComponentCatalogProps } from '$stylist/playground/type/struct/playground-component-catalog-props';
+﻿import type { RecipePlaygroundComponentCatalog } from '$stylist/playground/interface/recipe/playground-component-catalog';
 import type { PlaygroundComponentCatalogComponentCatalogStory } from '$stylist/playground/type/struct/playground-component-catalog-component-catalog-story';
 const Search = 'search';
 const Filter = 'filter';
@@ -13,7 +13,7 @@ const Package = 'package';
 const ArrowRight = 'arrow-right';
 const Sparkles = 'sparkles';
 
-export function createPlaygroundComponentCatalogState(props: PlaygroundComponentCatalogProps) {
+export function createPlaygroundComponentCatalogState(props: RecipePlaygroundComponentCatalog) {
 	const stories = $derived(props.stories);
 	const categories = $derived(props.categories);
 	const categoryCounts = $derived(props.categoryCounts);
@@ -153,5 +153,3 @@ export function createPlaygroundComponentCatalogState(props: PlaygroundComponent
 		}
 	};
 }
-
-export default createPlaygroundComponentCatalogState;

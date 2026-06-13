@@ -26,9 +26,8 @@
 	description="Copies text to clipboard"
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3">
-			<pre
-				class="overflow-auto rounded border bg-[var(--color-background-secondary)] p-3 text-sm">{values.text as string}</pre>
+		<div class="_c1">
+			<pre class="_c2">{values.text as string}</pre>
 			<CopyButton
 				text={values.text as string}
 				label={values.label as string}
@@ -40,3 +39,19 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		overflow: auto;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		background-color: var(--color-background-secondary);
+		padding: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

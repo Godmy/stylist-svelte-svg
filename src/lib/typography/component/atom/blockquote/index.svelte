@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { BlockquoteRecipe } from '$stylist/typography/interface/recipe/blockquote';
+	import type { RecipeBlockquote } from '$stylist/typography/interface/recipe/blockquote';
 	import createBlockquoteState from '$stylist/typography/function/state/blockquote/index.svelte';
 
-	let props: BlockquoteRecipe = $props();
+	let props: RecipeBlockquote = $props();
 
 	const state = createBlockquoteState(props);
 	const children = $derived(props.children);

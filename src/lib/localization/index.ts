@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { LanguageSelectorStyleManager, LocaleSwitcherStyleManager } from './class';
 export { LanguageSelector, LocaleSwitcher, TranslationEditor } from './component';
 export {
 	TOKEN_LOCALE_SWITCHER_ICON,
@@ -18,12 +17,12 @@ export {
 export type { TokenLocalizationIcon, TokenTranslation } from './type';
 export type {
 	LocaleSwitcherStateProps,
+	RecipeTranslationEditor,
 	SlotExtendedTranslationEditor,
 	SlotLanguageSelector,
 	SlotLanguageSelectorStyleClasses,
 	SlotLocaleSwitcher,
 	SlotLocaleSwitcherLocale,
 	SlotLocaleSwitcherTimezoneOption,
-	SlotTranslationEditor,
-	TranslationEditorStateProps
+	SlotTranslationEditor
 } from './interface';

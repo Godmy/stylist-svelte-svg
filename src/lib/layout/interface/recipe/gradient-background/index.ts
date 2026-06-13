@@ -1,11 +1,11 @@
-import type { Snippet } from 'svelte';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { TokenGradient } from '$stylist/layout/type/enum/gradient-mode';
 import type { ThemeGradientBackgroundDirection } from '$stylist/layout/type/enum/gradient-background-direction';
 
-export interface ThemeGradientBackgroundRecipe
-	extends StructIntersectAll<[InformationHTMLAttributes<HTMLDivElement>]> {
+export interface RecipeThemeGradientBackground
+	extends StructIntersectAll<[InformationHTMLAttributes<HTMLDivElement>, SlotChildren]> {
 	variant?: TokenGradient;
 	colors?: string[];
 	speed?: number;
@@ -13,5 +13,4 @@ export interface ThemeGradientBackgroundRecipe
 	direction?: ThemeGradientBackgroundDirection;
 	animated?: boolean;
 	class?: string;
-	children?: Snippet;
 }

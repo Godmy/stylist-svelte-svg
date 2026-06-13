@@ -19,10 +19,24 @@
 	{#snippet children(values: any)}
 		<AiResultCard title={values.title} description={values.description} icon={values.icon}>
 			{#snippet children()}
-				<button class="mt-3 rounded-md border border-[--color-border-primary] px-3 py-1 text-sm"
-					>View details</button
-				>
+				<button class="_c1">View details</button>
 			{/snippet}
 		</AiResultCard>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-top: 0.75rem;
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

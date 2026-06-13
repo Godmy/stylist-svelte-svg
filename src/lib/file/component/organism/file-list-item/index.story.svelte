@@ -35,7 +35,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded border">
+		<div class="_c1">
 			<FileListItem
 				{item}
 				showThumbnail={args.showThumbnail as boolean}
@@ -58,3 +58,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

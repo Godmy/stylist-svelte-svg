@@ -1,5 +1,4 @@
 import { ObjectManagerTableControls } from '$stylist/control/class/object-manager/table-controls';
-import { DataTableStyleManager } from '$stylist/control/class/style-manager/data-table-style-manager';
 import type { SlotDataTableRecipe as DataTableRecipe } from '$stylist/control/interface/slot/data-table-recipe';
 
 type Row = Record<string, unknown>;
@@ -21,7 +20,7 @@ export function createDataTableState(props: DataTableRecipe<Row>) {
 	const sortedData = $derived(
 		ObjectManagerTableControls.sortData(props.data, sortKey, sortDirection)
 	);
-	const rootClass = $derived(DataTableStyleManager.root(props.class ?? ''));
+	const rootClass = $derived(['c-data-table', props.class].filter(Boolean).join(' '));
 	const containerStyle = $derived(
 		props.maxHeight !== 'none' ? `max-height:${props.maxHeight}` : ''
 	);

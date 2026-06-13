@@ -1,6 +1,6 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import type { SlotPhoneNumberInput as IPhoneNumberInputProps } from '$stylist/input/interface/slot/phone-number-input';
-	import createPhoneNumberInputState from '$stylist/input/function/state/phone-number-input/index.svelte';
+	import { createPhoneNumberInputState } from '$stylist/input/function/state/phone-number-input/index.svelte';
 
 	let props: IPhoneNumberInputProps = $props();
 	const state = createPhoneNumberInputState(props);

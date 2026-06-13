@@ -1,7 +1,7 @@
-import { CalendarViewStyleManager } from '$stylist/calendar/class/style-manager/calendar-view';
 import type { RecipeCalendarView as CalendarViewContract } from '$stylist/calendar/interface/recipe/calendar-view';
 import type { SlotCalendarViewEvent } from '$stylist/calendar/interface/slot/calendar-view-event';
 import type { RecipeCalendarViewDay as RecipeCalendarViewDay } from '$stylist/calendar/interface/recipe/calendar-view-day';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createCalendarViewState(props: CalendarViewContract) {
 	let currentDate = $state(new Date(props.initialDate ?? new Date()));
@@ -14,14 +14,12 @@ export function createCalendarViewState(props: CalendarViewContract) {
 	const eventClass = $derived(props.eventClass ?? '');
 	const headerClassProp = $derived(props.headerClass ?? '');
 
-	const wrapperClasses = $derived(`${CalendarViewStyleManager.getWrapperClasses()} ${className}`);
-	const headerClasses = $derived(
-		`${CalendarViewStyleManager.getHeaderClasses()} ${headerClassProp}`
-	);
-	const gridClasses = $derived(CalendarViewStyleManager.getGridClasses());
-	const weekdayHeaderClasses = $derived(CalendarViewStyleManager.getWeekdayHeaderClasses());
-	const todayButtonClasses = $derived(CalendarViewStyleManager.getTodayButtonClasses());
-	const navigationButtonClasses = $derived(CalendarViewStyleManager.getNavigationButtonClasses());
+	const wrapperClasses = $derived(mergeClassNames('c-calendar-view', className));
+	const headerClasses = $derived(mergeClassNames('c-calendar-view__header', headerClassProp));
+	const gridClasses = $derived('c-calendar-view__grid');
+	const weekdayHeaderClasses = $derived('c-calendar-view__weekday');
+	const todayButtonClasses = $derived('c-calendar-view__today-btn');
+	const navigationButtonClasses = $derived('c-calendar-view__nav-btn');
 
 	const days = $derived.by<RecipeCalendarViewDay[]>(() => getDaysInMonth(currentDate));
 	const weekdays = $derived(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
@@ -102,27 +100,38 @@ export function createCalendarViewState(props: CalendarViewContract) {
 	}
 
 	function getViewToggleButtonClasses(isActive: boolean): string {
-		return CalendarViewStyleManager.getViewToggleButtonClasses(isActive);
+		return mergeClassNames(
+			'c-calendar-view__view-btn',
+			isActive && 'c-calendar-view__view-btn--active'
+		);
 	}
 
 	function getDayCellClasses(isTodayDate: boolean, isCurrentMonth: boolean): string {
-		return CalendarViewStyleManager.getDayCellClasses(isTodayDate, isCurrentMonth);
+		return mergeClassNames(
+			'c-calendar-view__day',
+			isTodayDate && 'c-calendar-view__day--today',
+			!isCurrentMonth && 'c-calendar-view__day--other'
+		);
 	}
 
 	function getDateNumberClasses(isTodayDate: boolean): string {
-		return CalendarViewStyleManager.getDateNumberClasses(isTodayDate);
+		return mergeClassNames(
+			'c-calendar-view__date-num',
+			isTodayDate && 'c-calendar-view__date-num--today'
+		);
 	}
 
 	function getEventItemClasses(color?: string): string {
-		return CalendarViewStyleManager.getEventItemClasses(color);
+		void color;
+		return 'c-calendar-view__event';
 	}
 
 	function getAddEventButtonClasses(): string {
-		return CalendarViewStyleManager.getAddEventButtonClasses();
+		return 'c-calendar-view__add-btn';
 	}
 
 	function getWeekNumberClasses(): string {
-		return CalendarViewStyleManager.getWeekNumberClasses();
+		return 'c-calendar-view__week-num';
 	}
 
 	return {

@@ -1,14 +1,14 @@
-import { AccountFormsStyleManager } from '$stylist/form/class/style-manager/account-forms';
-import type { UserProfileCardStateProps } from '$stylist/management/interface/recipe/user-profile-card';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeUserProfileCard } from '$stylist/management/interface/recipe/user-profile-card';
 
-export function createUserProfileCardState(props: UserProfileCardStateProps) {
+export function createUserProfileCardState(props: RecipeUserProfileCard) {
 	const name = $derived(props.name ?? 'Jane Doe');
 	const role = $derived(props.role ?? 'Administrator');
 	const email = $derived(props.email ?? 'jane@example.com');
 	const className = $derived(props.class ?? '');
 
 	const containerClasses = $derived(
-		AccountFormsStyleManager.root('c-user-profile-card border rounded-lg p-4', className)
+		mergeClassNames('c-user-profile-card border rounded-lg p-4', className)
 	);
 
 	const initial = $derived(name.charAt(0));
@@ -39,5 +39,3 @@ export function createUserProfileCardState(props: UserProfileCardStateProps) {
 		}
 	};
 }
-
-export default createUserProfileCardState;

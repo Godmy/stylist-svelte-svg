@@ -34,12 +34,40 @@
 	);
 </script>
 
-<div {...restProps} class={state.classes} aria-hidden={!state.isOpen}>
-	<div class={state.contentClasses}>
+<div
+	{...restProps}
+	class="c-accordion-panel"
+	data-expanded={state.isOpen ? '' : undefined}
+	aria-hidden={!state.isOpen}
+>
+	<div class="c-accordion-panel__content">
 		{#if state.content}
 			{@render state.content()}
 		{:else if children}
-			{#if children}{#if children}{@render children()}{/if}{/if}
+			{#if children}{@render children()}{/if}
 		{/if}
 	</div>
 </div>
+
+<style>
+	.c-accordion-panel {
+		overflow: hidden;
+		max-height: 0;
+		opacity: 0;
+		transition:
+			max-height var(--duration-200, 200ms) var(--animation-ease, cubic-bezier(0.4, 0, 0.2, 1)),
+			opacity var(--duration-200, 200ms) var(--animation-ease, cubic-bezier(0.4, 0, 0.2, 1));
+	}
+
+	.c-accordion-panel[data-expanded] {
+		max-height: 24rem;
+		opacity: 1;
+	}
+
+	.c-accordion-panel__content {
+		padding: var(--spacing-md, 1rem);
+		border-top: 1px solid var(--color-border-primary);
+		color: var(--color-text-secondary);
+		font-size: 0.875rem;
+	}
+</style>

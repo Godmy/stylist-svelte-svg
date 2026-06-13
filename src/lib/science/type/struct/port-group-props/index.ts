@@ -1,11 +1,11 @@
-import type { PortGroupRecipe } from '$stylist/media/interface/recipe/port-group';
-import type { GraphPortRecipe } from '$stylist/science/interface/recipe/graph-port';
+import type { RecipePortGroup } from '$stylist/media/interface/recipe/port-group';
+import type { RecipeGraphPort } from '$stylist/science/interface/recipe/graph-port';
 
-export type PortGroupProps = PortGroupRecipe & {
+export type PortGroupProps = RecipePortGroup & {
 	id?: string;
-	ports?: GraphPortRecipe[];
+	ports?: RecipeGraphPort[];
 	showTypeIcons?: boolean;
 	onPortClick?: (portId: string, event: MouseEvent) => void;
-	onConnectionStart?: (port: GraphPortRecipe, event: MouseEvent) => void;
-	onConnectionEnd?: (port: GraphPortRecipe, event: MouseEvent) => void;
+	onConnectionStart?: (port: RecipeGraphPort, event: MouseEvent) => void;
+	onConnectionEnd?: (port: RecipeGraphPort, event: MouseEvent) => void;
 };

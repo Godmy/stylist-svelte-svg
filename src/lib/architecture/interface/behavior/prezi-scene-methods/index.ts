@@ -5,6 +5,7 @@ import type { resolveSemanticZoomNode } from '$stylist/architecture/function/scr
 export interface BehaviorPreziSceneMethods {
 	setCamera: (camera: Partial<PreziCamera>) => void;
 	setViewportSize: (width: number, height: number) => void;
+	viewport: (element: HTMLDivElement) => { destroy(): void };
 	selectNode: (node: SceneNode | null) => void;
 	toggleGrid: () => void;
 	toggleMinimap: () => void;

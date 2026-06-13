@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { CartSummaryItem } from '$stylist/commerce/type/struct/cart-summary-item';
 import type { CartSummaryPromotion } from '$stylist/commerce/type/struct/cart-summary-promotion';
 

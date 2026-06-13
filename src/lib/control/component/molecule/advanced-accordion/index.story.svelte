@@ -58,9 +58,20 @@
 	title="AdvancedAccordion Component"
 	description="Interactive advanced accordion with customizable content"
 >
-	<div class="p-4">
-		<div class="mx-auto max-w-2xl">
+	<div class="_c1">
+		<div class="_c2">
 			<AdvancedAccordion items={defaultItems} />
 		</div>
 	</div>
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 42rem;
+	}
+</style>

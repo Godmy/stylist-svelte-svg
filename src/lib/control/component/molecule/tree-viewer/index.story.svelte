@@ -126,11 +126,11 @@
 	title="TreeViewer Component"
 	description="Interactive tree viewer with hierarchical data display"
 >
-	<div class="p-4">
-		<p class="mb-2 text-sm text-[var(--color-text-secondary)]">
+	<div class="_c1">
+		<p class="_c2">
 			Selected node: {selectedKey || 'None'}
 		</p>
-		<div class="rounded border">
+		<div class="_c3">
 			<TreeViewer
 				tree={treeData}
 				onSelectCallback={handleSelectCallback}
@@ -139,3 +139,20 @@
 		</div>
 	</div>
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

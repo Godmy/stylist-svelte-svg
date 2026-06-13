@@ -1,14 +1,17 @@
-﻿/**
- * Sort вЂ” СЃРѕСЂС‚РёСЂРѕРІРєР°..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * Sort РІР‚вЂќ РЎРѓР С•РЎР‚РЎвЂљР С‘РЎР‚Р С•Р Р†Р С”Р В°..
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
- *   IIconSlot        (information) вЂ” icon (Icon)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
+ *   IIconSlot        (information) РІР‚вЂќ icon (Icon)
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface SortRecipe
-	extends StructIntersectAll<[ILabelSlot, IIconSlot, ThemeAttributes<HTMLButtonElement>]> {}
+export interface RecipeSort
+	extends StructIntersectAll<
+		[SlotTheme, ILabelSlot, IIconSlot, HTMLAttributes<HTMLButtonElement>]
+	> {}

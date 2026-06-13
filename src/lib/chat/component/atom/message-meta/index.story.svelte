@@ -34,11 +34,11 @@
 	tags={['message', 'meta', 'timestamp', 'status']}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
-			<h1 class="mb-4 text-lg font-semibold">MessageMeta Component</h1>
+		<div class="_c1">
+			<h1 class="_c2">MessageMeta Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive MessageMeta</h2>
+			<div class="_c3">
+				<h2 class="_c4">Interactive MessageMeta</h2>
 				<MessageMeta
 					{message}
 					showTimestamp={values.showTimestamp}
@@ -46,27 +46,69 @@
 				/>
 			</div>
 
-			<div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-				<div class="rounded border p-4">
-					<h2 class="text-md mb-2 font-semibold">With Timestamp Only</h2>
+			<div class="_c5">
+				<div class="_c6">
+					<h2 class="_c4">With Timestamp Only</h2>
 					<MessageMeta {message} showTimestamp={true} showStatus={false} />
 				</div>
 
-				<div class="rounded border p-4">
-					<h2 class="text-md mb-2 font-semibold">With Status Only</h2>
+				<div class="_c6">
+					<h2 class="_c4">With Status Only</h2>
 					<MessageMeta {message} showTimestamp={false} showStatus={true} />
 				</div>
 
-				<div class="rounded border p-4">
-					<h2 class="text-md mb-2 font-semibold">Without Meta Info</h2>
+				<div class="_c6">
+					<h2 class="_c4">Without Meta Info</h2>
 					<MessageMeta {message} showTimestamp={false} showStatus={false} />
 				</div>
 
-				<div class="rounded border p-4">
-					<h2 class="text-md mb-2 font-semibold">Default MessageMeta</h2>
+				<div class="_c6">
+					<h2 class="_c4">Default MessageMeta</h2>
 					<MessageMeta {message} showTimestamp={true} showStatus={true} />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		margin-bottom: 1.5rem;
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		._c5 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	._c6 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+</style>

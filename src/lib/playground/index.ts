@@ -1,13 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	PlaygroundAiAssistantStyleManager,
-	PlaygroundAiChatStyleManager,
-	PlaygroundAiPanelStyleManager,
-	PlaygroundDeviceFrameStyleManager,
-	PlaygroundShellHeaderStyleManager,
-	PropsEditorStyleManager
-} from './class';
-export {
 	PlaygroundAiAssistant,
 	PlaygroundAiChat,
 	PlaygroundAiPanel,
@@ -102,11 +94,9 @@ export type {
 	PlaygroundTreeNodeStory,
 	PlaygroundTreeNodeTreeNodeData,
 	PropDefinition,
-	PropsEditorProps,
 	TokenPlaygroundIcon
 } from './type';
 export type {
-	PropsEditorRecipe,
 	RecipePlaygroundAiAssistant,
 	RecipePlaygroundAiChat,
 	RecipePlaygroundAiPanel,
@@ -125,5 +115,6 @@ export type {
 	RecipePlaygroundScreenshotSelector,
 	RecipePlaygroundShellHeader,
 	RecipePlaygroundShortcutsPanel,
-	RecipePlaygroundTreeNode
+	RecipePlaygroundTreeNode,
+	RecipePropsEditor
 } from './interface';

@@ -25,8 +25,14 @@
 	{controls}
 >
 	{#snippet children()}
-		<div class="p-4">
+		<div class="_c1">
 			<ExportPanel onExport={handleExport} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

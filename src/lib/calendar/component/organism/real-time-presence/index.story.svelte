@@ -47,7 +47,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-real-time-presence p-4">
+		<div class="sb-organisms-real-time-presence _c1">
 			<h1>RealTimePresence Story</h1>
 			<RealTimePresence
 				users={users as any}
@@ -56,8 +56,18 @@
 				showStatus={values.showStatus}
 				showLastSeen={values.showLastSeen}
 				showCursorPositions={values.showCursorPositions}
-				class="my-2"
+				class="_c2"
 			/>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+</style>

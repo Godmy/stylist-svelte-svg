@@ -1,7 +1,7 @@
-import type { DevelopmentErrorBoundaryProps } from '$stylist/development/type/struct/development-error-boundary-props';
-import { DevelopmentErrorBoundaryStyleManager } from '$stylist/development/class/style-manager/development-error-boundary';
+﻿import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createDevelopmentErrorBoundaryState(props: DevelopmentErrorBoundaryProps) {
+export function createDevelopmentErrorBoundaryState(props: RecipeDevelopmentErrorBoundary) {
 	const Bug = 'bug';
 	const RotateCcw = 'rotate-ccw';
 	const Copy = 'copy';
@@ -27,15 +27,11 @@ export function createDevelopmentErrorBoundaryState(props: DevelopmentErrorBound
 	const className = $derived(props.class == null ? '' : String(props.class));
 	const children = $derived(props.children);
 
-	const containerClass = $derived(
-		DevelopmentErrorBoundaryStyleManager.getContainerClasses(className)
-	);
-	const fallbackContainerClass = $derived(
-		DevelopmentErrorBoundaryStyleManager.getFallbackContainerClasses()
-	);
-	const headerComputedClass = $derived(DevelopmentErrorBoundaryStyleManager.getHeaderClasses());
-	const detailsComputedClass = $derived(DevelopmentErrorBoundaryStyleManager.getDetailsClasses());
-	const actionsComputedClass = $derived(DevelopmentErrorBoundaryStyleManager.getActionsClasses());
+	const containerClass = $derived(className);
+	const fallbackContainerClass = $derived('border border-red-200 rounded-lg bg-red-50 p-6');
+	const headerComputedClass = $derived('flex items-start');
+	const detailsComputedClass = $derived('mt-4 p-4 bg-white rounded border');
+	const actionsComputedClass = $derived('mt-4 flex flex-wrap gap-3');
 
 	$effect(() => {
 		if (hasError && error && errorInfo && onError) {
@@ -164,5 +160,3 @@ export function createDevelopmentErrorBoundaryState(props: DevelopmentErrorBound
 		}
 	};
 }
-
-export default createDevelopmentErrorBoundaryState;

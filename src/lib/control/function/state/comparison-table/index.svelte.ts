@@ -1,15 +1,23 @@
 import type { ComparisonTableProps } from '$stylist/control/type/struct/comparison-table-props';
 
 export function createComparisonTableState(props: ComparisonTableProps) {
-	const containerClass = $derived(`overflow-x-auto ${props.class ?? ''}`);
+	const containerClass = $derived(['c-comparison-table', props.class].filter(Boolean).join(' '));
 	const headerClass = $derived(
-		`${props.headerClass ?? ''} ${(props.showHeader ?? true) ? '' : 'sr-only'}`
+		['c-comparison-table__head', props.headerClass, (props.showHeader ?? true) ? '' : 'sr-only']
+			.filter(Boolean)
+			.join(' ')
 	);
-	const featureClass = $derived(props.featureClass ?? '');
-	const productClass = $derived(props.productClass ?? '');
-	const valueClass = $derived(props.valueClass ?? '');
+	const featureClass = $derived(
+		['c-comparison-table__feature-cell', props.featureClass].filter(Boolean).join(' ')
+	);
+	const productClass = $derived(
+		['c-comparison-table__product', props.productClass].filter(Boolean).join(' ')
+	);
+	const valueClass = $derived(
+		['c-comparison-table__value-cell', props.valueClass].filter(Boolean).join(' ')
+	);
 	const primaryProductClass = $derived(
-		props.primaryProductClass ?? 'ring-2 ring-blue-500 ring-offset-2'
+		['c-comparison-table__product--primary', props.primaryProductClass].filter(Boolean).join(' ')
 	);
 
 	return {

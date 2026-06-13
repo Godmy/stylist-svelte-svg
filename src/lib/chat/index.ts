@@ -1,19 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AuthGuardStyleManager,
-	ChatHeaderStyleManager,
-	ChatInterfaceStyleManager,
-	ChatStyleManager,
-	DocumentPreviewStyleManager,
-	MessageBubbleStyleManager,
-	MessageComposerStyleManager,
-	MessageMetaStyleManager,
-	MessageStyleManager,
-	NotificationSettingsStyleManager,
-	NotificationStyleManager,
-	ResponseViewerStyleManager
-} from './class';
-export {
 	AuthGuard,
 	ChatHeader,
 	ChatInterface,

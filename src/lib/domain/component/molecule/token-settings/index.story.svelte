@@ -34,7 +34,7 @@
 	{#snippet children(values: any)}
 		{@const definition =
 			L6_TOKEN_DEFINITIONS[values.definitionKey as keyof typeof L6_TOKEN_DEFINITIONS]}
-		<div class="rounded-3xl bg-[linear-gradient(180deg,#eff6ff,#f8fafc)] p-6">
+		<div class="_c1">
 			<TokenSettings
 				{definition}
 				value={definition.defaultValue}
@@ -47,7 +47,21 @@
 					lastValue = String(value);
 				}}
 			/>
-			<p class="mt-4 text-sm text-slate-500">Last value: {lastValue}</p>
+			<p class="_c2">Last value: {lastValue}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1.5rem;
+		background-color: linear-gradient(180deg, #eff6ff, #f8fafc);
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-top: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

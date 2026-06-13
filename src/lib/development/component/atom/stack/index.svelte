@@ -15,3 +15,6 @@
 >
 	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
 </div>
+
+<style>
+</style>

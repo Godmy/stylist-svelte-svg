@@ -1,7 +1,7 @@
-import type { PlaygroundDeviceFrameProps } from '$stylist/playground/type/struct/playground-device-frame-props';
+import type { RecipePlaygroundDeviceFrame } from '$stylist/playground/interface/recipe/playground-device-frame';
 import type { PlaygroundDeviceFrameViewportSize } from '$stylist/playground/type/struct/playground-device-frame-viewport-size';
-export function createPlaygroundDeviceFrameState(props: PlaygroundDeviceFrameProps) {
-	const device = $derived(props.device);
+export function createPlaygroundDeviceFrameState(props: RecipePlaygroundDeviceFrame) {
+	const device = props.device ?? 'desktop';
 	const children = $derived(props.children);
 
 	const deviceSpecs: Record<
@@ -32,5 +32,3 @@ export function createPlaygroundDeviceFrameState(props: PlaygroundDeviceFramePro
 		}
 	};
 }
-
-export default createPlaygroundDeviceFrameState;

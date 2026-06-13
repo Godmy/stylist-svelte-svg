@@ -29,9 +29,25 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-3 rounded-xl bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
 			<ProductCarousel products={getProducts(args.items, args.basePrice, args.currency)} />
-			<p class="text-sm text-[var(--color-text-secondary)]">Use arrows or dots to switch slides.</p>
+			<p class="_c2">Use arrows or dots to switch slides.</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

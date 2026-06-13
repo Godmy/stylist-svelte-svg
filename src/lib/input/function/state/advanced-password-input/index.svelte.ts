@@ -1,5 +1,4 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
-import { AdvancedPasswordInputStyleManager } from '$stylist/input/class/style-manager/advanced-password-input';
+﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { SlotAdvancedPasswordInput as IAdvancedPasswordInputProps } from '$stylist/input/interface/slot/advanced-password-input';
 
 export const createAdvancedPasswordInputState = (
@@ -59,33 +58,35 @@ export const createAdvancedPasswordInputState = (
 		}
 	}
 
-	const containerClass = $derived(AdvancedPasswordInputStyleManager.getContainerClass(props.class));
-	const inputWrapperClass = $derived(AdvancedPasswordInputStyleManager.getInputWrapperClass());
+	const containerClass = $derived(['adv-password-input', props.class].filter(Boolean).join(' '));
+	const inputWrapperClass = $derived('adv-password-input__wrapper');
 	const inputClass = $derived(
-		AdvancedPasswordInputStyleManager.getInputClass(props.disabled ?? false, props.inputClass)
+		[
+			'adv-password-input__input',
+			props.disabled ? 'adv-password-input__input--disabled' : '',
+			props.inputClass ?? ''
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
 	const buttonClass = $derived(
-		AdvancedPasswordInputStyleManager.getToggleButtonClass(
-			props.disabled ?? false,
-			props.buttonClass
-		)
+		[
+			'adv-password-input__toggle',
+			props.disabled ? 'adv-password-input__toggle--hidden' : '',
+			props.buttonClass ?? ''
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
-	const eyeIconClass = $derived(AdvancedPasswordInputStyleManager.getEyeIconClass());
-	const strengthMeterContainerClass = $derived(
-		AdvancedPasswordInputStyleManager.getStrengthMeterContainerClass()
-	);
-	const strengthLabelsContainerClass = $derived(
-		AdvancedPasswordInputStyleManager.getStrengthLabelsContainerClass()
-	);
-	const strengthLabelClass = $derived(AdvancedPasswordInputStyleManager.getStrengthLabelClass());
+	const strengthMeterContainerClass = $derived('adv-password-input__strength');
+	const strengthLabelsContainerClass = $derived('adv-password-input__strength-header');
+	const strengthLabelClass = $derived('adv-password-input__strength-label');
 	const strengthValueClass = $derived(
-		AdvancedPasswordInputStyleManager.getStrengthValueClass(getPasswordStrength())
+		`adv-password-input__strength-value adv-password-input__strength-value--${getPasswordStrength()}`
 	);
-	const strengthMeterBgClass = $derived(
-		AdvancedPasswordInputStyleManager.getStrengthMeterBackgroundClass()
-	);
+	const strengthMeterBgClass = $derived('adv-password-input__strength-track');
 	const strengthMeterFillClass = $derived(
-		AdvancedPasswordInputStyleManager.getStrengthMeterFillClass(getPasswordStrength())
+		`adv-password-input__strength-fill adv-password-input__strength-fill--${getPasswordStrength()}`
 	);
 
 	return {
@@ -131,9 +132,6 @@ export const createAdvancedPasswordInputState = (
 		get buttonClass() {
 			return buttonClass;
 		},
-		get eyeIconClass() {
-			return eyeIconClass;
-		},
 		get strengthMeterContainerClass() {
 			return strengthMeterContainerClass;
 		},
@@ -157,5 +155,3 @@ export const createAdvancedPasswordInputState = (
 		togglePasswordVisibility
 	};
 };
-
-export default createAdvancedPasswordInputState;

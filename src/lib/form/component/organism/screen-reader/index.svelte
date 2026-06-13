@@ -10,3 +10,6 @@
 	<p class={state.contentClass}>{props.content}</p>
 	<button class={state.actionButtonClass} aria-label="Hidden accessible action">Action</button>
 </div>
+
+<style>
+</style>

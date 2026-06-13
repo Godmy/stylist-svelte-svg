@@ -1,10 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { ContractCodeBlock, ContractDevelopment } from './contract';
 export type {
-	CodeBlockRecipe,
-	CodeEditorRecipe,
 	RecipeAtomicPrinciplesShowcase,
+	RecipeCodeBlock,
 	RecipeCodeDiff,
+	RecipeCodeEditor,
 	RecipeComponentLibraryStats,
 	RecipeComponentPreview,
 	RecipeDebugConsole,
@@ -15,13 +15,17 @@ export type {
 	RecipePrivacySettings,
 	RecipeResourceOptimizer,
 	RecipeStylist,
-	ThemeSyntaxHighlightedCodeRecipe
+	RecipeThemeSyntaxHighlightedCode
 } from './recipe';
 export type {
 	ComponentPreviewCodeOptions,
 	DomainForEachContext,
 	DomainForEachOptions,
 	SlotAiModel,
+	SlotCodeBlock,
+	SlotCodeDiff,
+	SlotComponentPreview,
+	SlotDocumentationBlock,
 	SlotMockDataSelector,
 	SlotMockDataSelectorStyleClasses
 } from './slot';

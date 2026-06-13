@@ -1,13 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	CalendarViewStyleManager,
-	EventCalendarStyleManager,
-	MiniCalendarStyleManager,
-	RealTimePresenceStyleManager,
-	ScheduleCalendarStyleManager,
-	TimeGridStyleManager
-} from './class';
-export {
 	CalendarView,
 	EventCalendar,
 	MiniCalendar,
@@ -51,7 +43,6 @@ export type {
 	PresenceStatus,
 	RealTimePresenceStatus,
 	RecipeExtendedTimeSlot,
-	TimelineProps,
 	TimelineStatus,
 	TokenCalendarIcon,
 	TokenPriority,

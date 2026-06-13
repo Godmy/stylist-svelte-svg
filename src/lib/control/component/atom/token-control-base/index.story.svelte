@@ -29,9 +29,9 @@
 >
 	{#snippet children()}
 		<TokenControlBase {definition} layout="inline">
-			<div class="flex gap-2">
+			<div class="_c1">
 				{#each definition.options as option}
-					<button type="button" class="rounded-full border px-2 py-1 text-sm">
+					<button type="button" class="_c2">
 						{option.label}
 					</button>
 				{/each}
@@ -39,3 +39,21 @@
 		</TokenControlBase>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		gap: 0.5rem;
+	}
+	._c2 {
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

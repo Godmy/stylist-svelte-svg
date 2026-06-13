@@ -1,49 +1,43 @@
-import { derived, writable } from 'svelte/store';
-import type { SlotSortableTableHeader as SortableTableHeaderProps } from '$stylist/control/interface/slot/sortable-table-header';
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
+import type { RecipeSortableTableHeader } from '$stylist/control/interface/recipe/sortable-table-header';
 
-export function createSortableTableHeaderState(props: SortableTableHeaderProps) {
-	// Initialize props with defaults
-	const title = props.title;
-	const sortKey = props.sortKey;
-	const currentSortKey = props.currentSortKey;
-	const currentSortDirection = props.currentSortDirection ?? null;
+export function createSortableTableHeaderState(props: RecipeSortableTableHeader) {
+	const title = $derived(props.title);
+	const sortKey = $derived(props.sortKey);
+	const currentSortKey = $derived(props.currentSortKey);
+	const currentSortDirection = $derived(props.currentSortDirection ?? null);
 
-	// Determine if this header is currently being sorted
-	const isCurrentSort = derived(
-		[writable(currentSortKey), writable(sortKey)],
-		([$currentSortKey, $sortKey]) => $currentSortKey === $sortKey
+	const isCurrentSort = $derived(
+		currentSortKey !== undefined && sortKey !== undefined && currentSortKey === sortKey
 	);
 
-	const styles = {
-		container:
-			'cursor-pointer select-none px-4 py-3 text-left align-middle text-sm font-medium text-[--color-text-primary]',
-		content: 'flex items-center gap-2',
-		icon: 'h-4 w-4 text-[--color-text-secondary]'
-	};
+	const sortDirection = $derived(isCurrentSort ? currentSortDirection : null);
 
-	// Merge classes with custom classes
-	const containerClasses = derived(
-		[writable(props.class), writable(styles.container)],
-		([$class, $container]) => joinClassNames($container, $class)
-	);
+	function handleClick() {
+		if (sortKey) {
+			props.onValueInput?.(sortKey);
+			props.onValueChange?.(sortKey);
+		}
+	}
 
 	return {
-		title,
-		sortKey,
-		currentSortKey,
-		currentSortDirection,
-		isCurrentSort,
-		containerClasses,
-		contentClasses: styles.content,
-		iconClasses: styles.icon,
-		handleClick() {
-			if (sortKey) {
-				props.onValueInput?.(sortKey);
-				props.onValueChange?.(sortKey);
-			}
-		}
+		get title() {
+			return title;
+		},
+		get sortKey() {
+			return sortKey;
+		},
+		get currentSortKey() {
+			return currentSortKey;
+		},
+		get currentSortDirection() {
+			return currentSortDirection;
+		},
+		get isCurrentSort() {
+			return isCurrentSort;
+		},
+		get sortDirection() {
+			return sortDirection;
+		},
+		handleClick
 	};
 }
-
-export default createSortableTableHeaderState;

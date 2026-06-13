@@ -1,14 +1,14 @@
-import { SkeletonTextStyleManager } from '$stylist/notification/class/style-manager/skeleton-text';
-import type { SkeletonTextProps } from '$stylist/notification/type/struct/skeleton-text-props';
+﻿import type { RecipeSkeletonText } from '$stylist/notification/interface/recipe/skeleton-text';
 
-export function createSkeletonTextState(props: SkeletonTextProps) {
+export function createSkeletonTextState(props: RecipeSkeletonText) {
 	const content = $derived(props.content);
 	const restProps = $derived.by(() => {
 		const { class: _class, width: _width, content: _content, ...rest } = props;
 		return rest;
 	});
-	const rootClass = $derived(SkeletonTextStyleManager.root(props.class));
-	const style = $derived(SkeletonTextStyleManager.style(props.width ?? '100%'));
+	const width = $derived(props.width ?? '100%');
+	const rootClass = $derived(`skeleton-container variant-text ${props.class ?? ''}`.trim());
+	const style = $derived(`width: ${width};`);
 
 	return {
 		get content() {
@@ -25,5 +25,3 @@ export function createSkeletonTextState(props: SkeletonTextProps) {
 		}
 	};
 }
-
-export default createSkeletonTextState;

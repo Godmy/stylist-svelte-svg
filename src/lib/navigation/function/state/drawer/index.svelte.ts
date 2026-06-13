@@ -1,5 +1,4 @@
 import type { DrawerProps } from '$stylist/navigation/type/struct/drawer-props/drawer-props';
-import { DrawerStyleManager } from '$stylist/navigation/class/style-manager/drawer';
 import { close } from '$stylist/navigation/function/script/close';
 import { handleBackdropClick } from '$stylist/navigation/function/script/handle-backdrop-click';
 import { handleBackdropKeyDown } from '$stylist/navigation/function/script/handle-backdrop-key-down';
@@ -13,18 +12,6 @@ export function createDrawerState(props: DrawerProps) {
 	const size = $derived(props.size ?? '300px');
 	const closable = $derived(props.closable ?? true);
 	const showBackdrop = $derived(props.showBackdrop ?? true);
-	const backdropClasses = $derived(DrawerStyleManager.getBackdropClasses(showBackdrop));
-	const drawerClasses = $derived(
-		DrawerStyleManager.getDrawerClasses(
-			position,
-			typeof props.class === 'string' ? props.class : ''
-		)
-	);
-	const drawerOpenClasses = $derived(DrawerStyleManager.getDrawerOpenClasses(isOpen, position));
-	const headerClasses = $derived(DrawerStyleManager.getHeaderClasses());
-	const contentClasses = $derived(DrawerStyleManager.getContentClasses());
-	const actionsClasses = $derived(DrawerStyleManager.getActionsClasses());
-	const closeButtonClasses = $derived(DrawerStyleManager.getCloseButtonClasses());
 
 	function closeFn() {
 		close(props, closable);
@@ -69,27 +56,6 @@ export function createDrawerState(props: DrawerProps) {
 		},
 		get showBackdrop() {
 			return showBackdrop;
-		},
-		get backdropClasses() {
-			return backdropClasses;
-		},
-		get drawerClasses() {
-			return drawerClasses;
-		},
-		get drawerOpenClasses() {
-			return drawerOpenClasses;
-		},
-		get headerClasses() {
-			return headerClasses;
-		},
-		get contentClasses() {
-			return contentClasses;
-		},
-		get actionsClasses() {
-			return actionsClasses;
-		},
-		get closeButtonClasses() {
-			return closeButtonClasses;
 		},
 		closeFn,
 		handleBackdropClickFn,

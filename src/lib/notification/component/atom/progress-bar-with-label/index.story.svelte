@@ -72,9 +72,23 @@
 				? (values.color as ProgressBarWithLabelStoryProps['color'])
 				: 'blue'}
 		{@const height = typeof values.height === 'string' ? values.height : 'h-2'}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
-			<h2 class="mb-4 text-xl font-bold">ProgressBarWithLabel Story</h2>
+		<div class="_c1">
+			<h2 class="_c2">ProgressBarWithLabel Story</h2>
 			<ProgressBarWithLabel {value} {max} {label} {showPercentage} {color} {height} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+</style>

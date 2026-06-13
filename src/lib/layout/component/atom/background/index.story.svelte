@@ -53,18 +53,18 @@
 	description="Компонент для управления фоном с поддержкой цветов, изображений и градиентов"
 >
 	{#snippet children(values: any)}
-		<div class="w-full rounded-lg py-4">
-			<Background {...values} class="rounded-lg p-6">
+		<div class="_c1">
+			<Background {...values} class="_c2">
 				{#snippet children()}
-					<div class="text-center">
-						<p class="font-medium">
+					<div class="_c3">
+						<p class="_c4">
 							Background type: <strong>{values.background || 'default'}</strong>
 						</p>
 						{#if values.gradient}
-							<p class="text-muted mt-1 text-sm">Gradient: {values.gradient.substring(0, 50)}...</p>
+							<p class="text-muted _c5">Gradient: {values.gradient.substring(0, 50)}...</p>
 						{/if}
 						{#if values.backgroundImage}
-							<p class="text-muted mt-1 text-sm">
+							<p class="text-muted _c5">
 								Image: {values.backgroundImage.substring(0, 50)}...
 							</p>
 						{/if}
@@ -74,3 +74,27 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+		border-radius: 0.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	._c2 {
+		border-radius: 0.5rem;
+		padding: 1.5rem;
+	}
+	._c3 {
+		text-align: center;
+	}
+	._c4 {
+		font-weight: 500;
+	}
+	._c5 {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

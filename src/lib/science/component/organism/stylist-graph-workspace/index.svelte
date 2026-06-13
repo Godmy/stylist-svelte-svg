@@ -6,59 +6,31 @@
 	import NodeIcon from '$stylist/media/component/atom/node-icon/index.svelte';
 	import Viewport from '$stylist/canvas/component/atom/viewport/index.svelte';
 
-	type ThemeId = 'default' | 'light' | 'dark';
-	type ToolMode = 'select' | 'pan' | 'frame' | 'inspect';
-	type NodeCategory = 'cluster' | 'signal' | 'insight' | 'delivery' | 'narrative';
-	type WorkspaceNode = {
-		id: string;
-		title: string;
-		category: NodeCategory;
-		x: number;
-		y: number;
-		width: number;
-		height: number;
-		color: string;
-		accent: string;
-		summary: string;
-		details: readonly string[];
-		shape: 'rounded' | 'pill' | 'circle';
-	};
-	type WorkspaceConnection = {
-		id: string;
-		startId: string;
-		endId: string;
-	};
-	type WorkspaceBounds = {
-		width: number;
-		height: number;
-	};
-	type WorkspaceConnectionInput = readonly [string, string] | WorkspaceConnection;
-	type NodeDraft = {
-		title: string;
-		category: NodeCategory;
-		summary: string;
-		color: string;
-		accent: string;
-		width: number;
-		height: number;
-		details: string;
-	};
+	import type { ScienceGraphThemeId } from '$stylist/science/type/enum/graph-theme-id';
+	import type { ScienceGraphToolMode } from '$stylist/science/type/enum/graph-tool-mode';
+	import type { ScienceGraphNodeCategory } from '$stylist/science/type/enum/graph-node-category';
+	import type { ScienceGraphWorkspaceNode } from '$stylist/science/type/struct/graph-workspace-node';
+	import type { ScienceGraphWorkspaceConnection } from '$stylist/science/type/struct/graph-workspace-connection';
+	import type { ScienceGraphWorkspaceBounds } from '$stylist/science/type/struct/graph-workspace-bounds';
+	import type { ScienceGraphWorkspaceConnectionInput } from '$stylist/science/type/type/graph-workspace-connection-input';
+	import type { ScienceGraphNodeDraft } from '$stylist/science/type/struct/graph-node-draft';
+	import type { RecipeStylistGraphWorkspace } from '$stylist/science/interface/recipe/stylist-graph-workspace';
 
-	const THEME_OPTIONS: ThemeId[] = ['default', 'light', 'dark'];
-	const TOOL_OPTIONS: { mode: ToolMode; label: string }[] = [
+	const THEME_OPTIONS: ScienceGraphThemeId[] = ['default', 'light', 'dark'];
+	const TOOL_OPTIONS: { mode: ScienceGraphToolMode; label: string }[] = [
 		{ mode: 'select', label: 'Select' },
 		{ mode: 'pan', label: 'Pan' },
 		{ mode: 'frame', label: 'Frame' },
 		{ mode: 'inspect', label: 'Inspect' }
 	];
-	const ICON_BY_CATEGORY: Record<NodeCategory, string> = {
+	const ICON_BY_CATEGORY: Record<ScienceGraphNodeCategory, string> = {
 		cluster: 'NS',
 		signal: 'SG',
 		insight: 'IN',
 		delivery: 'DL',
 		narrative: 'NV'
 	};
-	const DEFAULT_NODE_DRAFT: NodeDraft = {
+	const DEFAULT_NODE_DRAFT: ScienceGraphNodeDraft = {
 		title: 'New Node',
 		category: 'signal',
 		summary: 'Editable node',
@@ -70,15 +42,15 @@
 	};
 
 	function isWorkspaceConnection(
-		connection: WorkspaceConnectionInput
-	): connection is WorkspaceConnection {
+		connection: ScienceGraphWorkspaceConnectionInput
+	): connection is ScienceGraphWorkspaceConnection {
 		return !Array.isArray(connection);
 	}
 
 	function normalizeConnection(
-		connection: WorkspaceConnectionInput,
+		connection: ScienceGraphWorkspaceConnectionInput,
 		index: number
-	): WorkspaceConnection {
+	): ScienceGraphWorkspaceConnection {
 		if (!isWorkspaceConnection(connection)) {
 			return {
 				id: `connection-${index + 1}`,
@@ -98,22 +70,18 @@
 		initialNodes = [],
 		initialConnections = [],
 		worldBounds = { width: 2200, height: 1400 }
-	}: {
-		initialNodes?: readonly WorkspaceNode[];
-		initialConnections?: readonly WorkspaceConnectionInput[];
-		worldBounds?: WorkspaceBounds;
-	} = $props();
+	}: RecipeStylistGraphWorkspace = $props();
 
 	let viewportWidth = $state(1180);
 	let viewportHeight = $state(760);
-	let selectedTheme = $state<ThemeId>('default');
-	let activeTool = $state<ToolMode>('select');
+	let selectedTheme = $state<ScienceGraphThemeId>('default');
+	let activeTool = $state<ScienceGraphToolMode>('select');
 	let showDebug = $state(false);
 	let selectedNodeId = $state<string>(initialNodes[0]?.id ?? '');
 	let pendingConnectionTargetId = $state<string>('');
-	let nodeDraft = $state<NodeDraft>({ ...DEFAULT_NODE_DRAFT });
-	let nodeLayouts = $state<WorkspaceNode[]>(initialNodes.map((node) => ({ ...node })));
-	let connections = $state<WorkspaceConnection[]>(
+	let nodeDraft = $state<ScienceGraphNodeDraft>({ ...DEFAULT_NODE_DRAFT });
+	let nodeLayouts = $state<ScienceGraphWorkspaceNode[]>(initialNodes.map((node) => ({ ...node })));
+	let connections = $state<ScienceGraphWorkspaceConnection[]>(
 		initialConnections.map((connection, index) => normalizeConnection(connection, index))
 	);
 	let camera = $state<SceneCamera>(createOverviewCamera());
@@ -395,13 +363,16 @@
 		};
 	}
 
-	function updateNode(nodeId: string, updater: (node: WorkspaceNode) => WorkspaceNode) {
+	function updateNode(
+		nodeId: string,
+		updater: (node: ScienceGraphWorkspaceNode) => ScienceGraphWorkspaceNode
+	) {
 		nodeLayouts = nodeLayouts.map((node) => (node.id === nodeId ? updater(node) : node));
 	}
 
-	function updateSelectedNodeField<K extends keyof WorkspaceNode>(
+	function updateSelectedNodeField<K extends keyof ScienceGraphWorkspaceNode>(
 		field: K,
-		value: WorkspaceNode[K]
+		value: ScienceGraphWorkspaceNode[K]
 	) {
 		if (!selectedNodeId) {
 			return;
@@ -446,7 +417,7 @@
 		const zoomCenterX = camera.x + viewportWidth / (2 * camera.zoom);
 		const zoomCenterY = camera.y + viewportHeight / (2 * camera.zoom);
 		const id = createUniqueNodeId(nodeDraft.title);
-		const nextNode: WorkspaceNode = {
+		const nextNode: ScienceGraphWorkspaceNode = {
 			id,
 			title: nodeDraft.title.trim() || 'New Node',
 			category: nodeDraft.category,
@@ -484,7 +455,7 @@
 		}
 
 		const duplicateId = createUniqueNodeId(`${selectedNode.title} Copy`);
-		const duplicateNode: WorkspaceNode = {
+		const duplicateNode: ScienceGraphWorkspaceNode = {
 			...selectedNode,
 			id: duplicateId,
 			title: `${selectedNode.title} Copy`,
@@ -676,7 +647,7 @@
 							onchange={(event) => {
 								nodeDraft = {
 									...nodeDraft,
-									category: (event.target as HTMLSelectElement).value as NodeCategory
+									category: (event.target as HTMLSelectElement).value as ScienceGraphNodeCategory
 								};
 							}}
 						>
@@ -819,7 +790,7 @@
 							<select
 								value={selectedTheme}
 								onchange={(event) => {
-									selectedTheme = (event.target as HTMLSelectElement).value as ThemeId;
+									selectedTheme = (event.target as HTMLSelectElement).value as ScienceGraphThemeId;
 								}}
 							>
 								{#each THEME_OPTIONS as theme}
@@ -959,7 +930,7 @@
 								onchange={(event) =>
 									updateSelectedNodeField(
 										'category',
-										(event.target as HTMLSelectElement).value as NodeCategory
+										(event.target as HTMLSelectElement).value as ScienceGraphNodeCategory
 									)}
 							>
 								<option value="cluster">cluster</option>

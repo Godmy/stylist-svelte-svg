@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 
 export interface PromoBannerProps extends StructIntersectAll<[]> {
 	title?: string;

@@ -1,12 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	DownloadCardStyleManager,
-	DropZoneStyleManager,
-	FileExplorerStyleManager,
-	UploadProgressStyleManager,
-	ZipViewerStyleManager
-} from './class';
-export {
 	AttachmentPreview,
 	DataExporter,
 	DocumentPreview,
@@ -133,6 +126,7 @@ export type {
 	RecipeFileInput,
 	RecipeFileListItem,
 	RecipeFileUpload,
+	RecipeUploadProgress,
 	RecipeZipViewer,
 	SlotAttachment,
 	SlotDownloadCard,
@@ -154,6 +148,5 @@ export type {
 	SlotUploadProgressDisplayOptions,
 	SlotUploadProgressEventHandlers,
 	SlotZipViewer,
-	SlotZipViewerStyleClasses,
-	UploadProgressStateProps
+	SlotZipViewerStyleClasses
 } from './interface';

@@ -1,7 +1,7 @@
-import type { WishlistButtonRecipe } from '$stylist/commerce/interface/recipe/wishlist-button';
+import type { RecipeWishlistButton } from '$stylist/commerce/interface/recipe/wishlist-button';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createWishlistButtonState(props: WishlistButtonRecipe) {
+export function createWishlistButtonState(props: RecipeWishlistButton) {
 	let isLoading = $state(false);
 	let showMessage = $state(false);
 	let message = $state('');

@@ -1,10 +1,11 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenTrajectory } from '$stylist/architecture/type/enum/trajectory';
 import type { TokenBorderStyle } from '$stylist/layout/type/enum/border-style';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface ConnectionLineRecipe
-	extends StructIntersectAll<[ThemeAttributes<SVGPathElement>]> {
+export interface RecipeConnectionLine
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<SVGPathElement>]> {
 	startX: number;
 	startY: number;
 	endX: number;

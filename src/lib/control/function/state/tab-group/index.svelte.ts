@@ -1,7 +1,6 @@
-import { TabGroupStyleManager } from '$stylist/control/class/style-manager/tab-group';
-import type { SlotTabGroup as ITabGroupProps } from '$stylist/control/interface/slot/tab-group';
+import type { RecipeTabGroup } from '$stylist/control/interface/recipe/tab-group';
 
-export function createTabGroupState(props: ITabGroupProps) {
+export function createTabGroupState(props: RecipeTabGroup) {
 	let currentTab = $state(props.activeTab ?? props.tabs?.[0]?.id ?? '');
 
 	$effect(() => {
@@ -18,11 +17,13 @@ export function createTabGroupState(props: ITabGroupProps) {
 		}
 	});
 
-	const wrapperClasses = $derived(TabGroupStyleManager.getWrapperClasses(props.class ?? ''));
+	const wrapperClasses = $derived(['c-tab-group', props.class].filter(Boolean).join(' '));
 	const tabListClasses = $derived(
-		TabGroupStyleManager.getTabListClasses(props.variant ?? 'rectangle', props.tabListClass ?? '')
+		['c-tab-group__list', props.tabListClass].filter(Boolean).join(' ')
 	);
-	const panelClasses = $derived(TabGroupStyleManager.getPanelClasses(props.panelClass ?? ''));
+	const panelClasses = $derived(
+		['c-tab-group__panels', props.panelClass].filter(Boolean).join(' ')
+	);
 
 	return {
 		get currentTab() {
@@ -48,5 +49,3 @@ export function createTabGroupState(props: ITabGroupProps) {
 		}
 	};
 }
-
-export default createTabGroupState;

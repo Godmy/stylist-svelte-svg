@@ -1,6 +1,6 @@
-import type { LitegraphNodeRecipe } from '$stylist/science/interface/recipe/litegraph-node';
+import type { RecipeLitegraphNode } from '$stylist/science/interface/recipe/litegraph-node';
 
-export type GraphEditorNodeData = LitegraphNodeRecipe & {
+export type GraphEditorNodeData = RecipeLitegraphNode & {
 	properties?: readonly {
 		id: string;
 		name: string;

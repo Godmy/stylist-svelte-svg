@@ -2,12 +2,12 @@
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import GraphEditor from './index.svelte';
-	import type { LitegraphNodeRecipe } from '$stylist/science/interface/recipe/litegraph-node';
+	import type { RecipeLitegraphNode } from '$stylist/science/interface/recipe/litegraph-node';
 	import type { LiteGraphPort } from '$stylist/science/type/struct/litegraph-port';
-	import type { ConnectionLineRecipe } from '$stylist/science/interface/recipe/connection-line';
+	import type { RecipeConnectionLine } from '$stylist/science/interface/recipe/connection-line';
 	import type { SlotGraphToolbarItem as GraphToolbarItem } from '$stylist/science/interface/slot/graph-toolbar-item';
 
-	const sampleNodes: LitegraphNodeRecipe[] = [
+	const sampleNodes: RecipeLitegraphNode[] = [
 		{
 			id: 'node-1',
 			title: 'Data Source',
@@ -51,7 +51,7 @@
 		}
 	];
 
-	const sampleConnections: ConnectionLineRecipe[] = [
+	const sampleConnections: RecipeConnectionLine[] = [
 		{
 			id: 'conn-1',
 			startX: 320,

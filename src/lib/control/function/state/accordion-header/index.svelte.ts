@@ -1,4 +1,3 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { SlotAccordionHeader as AccordionHeaderProps } from '$stylist/control/interface/slot/accordion-header';
 
 type AccordionHeaderContext = {
@@ -13,39 +12,15 @@ type AccordionHeaderStateProps = AccordionHeaderProps & {
 export function createAccordionHeaderState(props: AccordionHeaderStateProps) {
 	const ctx = props.accordionContext;
 	const open = $derived(ctx.isPanelOpen(props.value));
-	const classes = $derived(
-		joinClassNames(
-			'accordion-header',
-			open ? 'open' : 'closed',
-			props.disabled ? 'disabled' : '',
-			props.class
-		)
-	);
-
-	const chevronClasses = $derived(
-		joinClassNames(
-			'accordion-chevron',
-			`size-${props.chevronSize ?? 'md'}`,
-			open ? 'rotated' : '',
-			props.chevronSizeClass
-		)
-	);
+	const disabled = props.disabled ?? false;
 
 	return {
 		header: props.header,
-		chevronSize: props.chevronSize ?? 'md',
-		padding: props.padding ?? 'md',
-		paddingClass: props.paddingClass,
-		chevronSizeClass: props.chevronSizeClass,
 		get open() {
 			return open;
 		},
-		disabled: props.disabled ?? false,
-		get classes() {
-			return classes;
-		},
-		get chevronClasses() {
-			return chevronClasses;
+		get disabled() {
+			return disabled;
 		},
 		handleClick() {
 			ctx.handleValueChange?.(props.value);

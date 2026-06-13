@@ -1,4 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { ThemeAdvancedColorPickerRecipe } from './advanced-color-picker';
-export type { ThemeColorPaletteRecipe } from './color-palette';
-export type { ThemeColorSwatchRecipe } from './color-swatch';
+export type { RecipeThemeAdvancedColorPicker } from './advanced-color-picker';
+export type { RecipeThemeColorPalette } from './color-palette';
+export type { RecipeThemeColorSwatch } from './color-swatch';

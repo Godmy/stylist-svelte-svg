@@ -30,7 +30,7 @@
 	description="Interactive complex accordion with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<ComplexAccordion multiple={controlValues.multiple} onValueChange={handleValueChange}>
 				{#snippet content()}
 					<AccordionItem value="item-1">
@@ -52,3 +52,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

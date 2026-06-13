@@ -1,8 +1,8 @@
-import type { MockDataSelectorProps } from '$stylist/development/type/struct/mock-data-selector-props';
+﻿import type { RecipeMockDataSelector } from '$stylist/development/interface/recipe/mock-data-selector';
 import type { MockDataSelectorDataSelection } from '$stylist/development/type/struct/mock-data-selector-data-selection';
-import { MockDataSelectorStyleManager } from '$stylist/development/class/style-manager/mock-data-selector';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createMockDataSelectorState(props: MockDataSelectorProps) {
+export function createMockDataSelectorState(props: RecipeMockDataSelector) {
 	const Database = 'database';
 	const Shuffle = 'shuffle';
 	const Download = 'download';
@@ -33,13 +33,18 @@ export function createMockDataSelectorState(props: MockDataSelectorProps) {
 	const previewClass = $derived(props.previewClass ?? '');
 	const footerClass = $derived(props.footerClass ?? '');
 
-	const containerClass = $derived(MockDataSelectorStyleManager.getContainerClasses(className));
+	const containerClass = $derived(
+		mergeClassNames(
+			'c-mock-data-selector bg-[--color-background-primary] rounded-lg border border-[--color-border-primary] p-6',
+			className
+		)
+	);
 	const headerComputedClass = $derived.by(() => {
-		const header = MockDataSelectorStyleManager.getHeaderClasses();
+		const header = 'mb-6';
 		return headerClass ? `${header} ${headerClass}` : header;
 	});
 	const footerComputedClass = $derived.by(() => {
-		const footer = MockDataSelectorStyleManager.getFooterClasses();
+		const footer = 'mt-6 flex justify-end gap-3';
 		return footerClass ? `${footer} ${footerClass}` : footer;
 	});
 
@@ -299,5 +304,3 @@ export function createMockDataSelectorState(props: MockDataSelectorProps) {
 		}
 	};
 }
-
-export default createMockDataSelectorState;

@@ -28,21 +28,54 @@
 		<ContainerQuery
 			containerType={values.containerType}
 			containerName={values.containerName || undefined}
-			class="w-full rounded-lg border border-[--color-border-primary] p-4"
+			class="_c1"
 		>
 			{#snippet children()}
-				<div
-					class="text-sm text-[--color-text-secondary] @sm:text-base @sm:font-semibold @sm:text-[--color-text-primary]"
-				>
-					Resize me — this text changes style when container ≥ 640px
-				</div>
-				<div class="mt-3 block @sm:flex @sm:gap-4">
-					<div class="mb-2 rounded border border-[--color-border-primary] p-2 text-xs @sm:mb-0">
-						Panel A
-					</div>
-					<div class="rounded border border-[--color-border-primary] p-2 text-xs">Panel B</div>
+				<div class="_c2">Resize me — this text changes style when container ≥ 640px</div>
+				<div class="_c3">
+					<div class="_c4">Panel A</div>
+					<div class="_c5">Panel B</div>
 				</div>
 			{/snippet}
 		</ContainerQuery>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 1rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		margin-top: 0.75rem;
+		display: block;
+	}
+	._c4 {
+		margin-bottom: 0.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	._c5 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+</style>

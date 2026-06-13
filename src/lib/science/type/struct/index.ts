@@ -1,7 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { ConnectionLinePoint } from './connection-line-point';
 export type { ConnectionPathResult } from './connection-path-result';
-export type { GraphToolbarItem, GraphToolbarProps } from './graph';
+export type { GraphToolbarItem } from './graph';
 export type { GraphCanvasProps } from './graph-canvas';
 export type { GraphCanvasPosition } from './graph-canvas-position';
 export type { GraphCanvasViewport } from './graph-canvas-viewport';
@@ -27,7 +27,6 @@ export type { LiteGraphNodeProps } from './lite-graph-node-props';
 export type { LitegraphCanvasNodeAddPayload } from './litegraph-canvas-node-add-payload';
 export type { LitegraphNodePresentation } from './litegraph-node-presentation';
 export type { LiteGraphNodeProperty } from './litegraph-node-property';
-export type { LitegraphNodeProps } from './litegraph-node-props';
 export type { LiteGraphPort } from './litegraph-port';
 export type {
 	MinimapBounds,
@@ -40,7 +39,6 @@ export type {
 } from './minimap';
 export type { Model } from './model';
 export type { ModelSelectorProps } from './model-selector-props';
-export type { NodeHeaderProps } from './node-header-props';
 export type {
 	OntologyEdge,
 	OntologyEdgeComponentProps,
@@ -54,3 +52,7 @@ export type { PromptVariableType } from './prompt-variable-type';
 export type { ScienceHTMLAttributes } from './science-html-attributes';
 export type { SentimentAnalysisStatus } from './sentiment-analysis-status';
 export type { ThemeSceneColors } from './theme-scene-colors';
+export type { ScienceGraphNodeDraft } from './graph-node-draft';
+export type { ScienceGraphWorkspaceBounds } from './graph-workspace-bounds';
+export type { ScienceGraphWorkspaceConnection } from './graph-workspace-connection';
+export type { ScienceGraphWorkspaceNode } from './graph-workspace-node';

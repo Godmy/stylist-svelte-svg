@@ -1,7 +1,9 @@
+﻿import type { SlotAdvancedPasswordInput as Slot } from '$stylist/input/interface/slot/advanced-password-input';
+import type { SlotAdvancedPasswordInput as SlotAdvancedPasswordInput } from '$stylist/input/interface/slot/advanced-password-input';
 /**
- * Advanced Password Input вЂ” СЂР°СЃС€РёСЂРµРЅРЅРѕРµ РїРѕР»Рµ РїР°СЂРѕР»СЏ.
+ * Advanced Password Input РІР‚вЂќ РЎР‚Р В°РЎРѓРЎв‚¬Р С‘РЎР‚Р ВµР Р…Р Р…Р С•Р Вµ Р С—Р С•Р В»Р Вµ Р С—Р В°РЎР‚Р С•Р В»РЎРЏ.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   IIconSlot                 (information/icon-slot)
@@ -15,5 +17,7 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface AdvancedPasswordInputRecipe
-	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]> {}
+export interface RecipeAdvancedPasswordInput
+	extends StructIntersectAll<
+		[Slot, SlotAdvancedPasswordInput, ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]
+	> {}

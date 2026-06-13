@@ -1,7 +1,7 @@
 import type { RecipeMiniCalendar as MiniCalendarContract } from '$stylist/calendar/interface/recipe/mini-calendar';
 import type { SlotMiniCalendarEvent as SlotMiniCalendarEvent } from '$stylist/calendar/interface/slot/mini-calendar-event';
 import type { RecipeMiniCalendarDay as RecipeMiniCalendarDay } from '$stylist/calendar/interface/recipe/mini-calendar-day';
-import { MiniCalendarStyleManager } from '$stylist/calendar/class/style-manager/mini-calendar';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createMiniCalendarState(props: MiniCalendarContract) {
 	let currentDate = $state(new Date(props.initialDate ?? new Date()));
@@ -17,13 +17,13 @@ export function createMiniCalendarState(props: MiniCalendarContract) {
 	const headerClassProp = $derived(props.headerClass ?? '');
 
 	const wrapperClasses = $derived(
-		MiniCalendarStyleManager.getWrapperClasses(compact, `c-mini-calendar ${className}`)
+		mergeClassNames('c-mini-calendar', compact && 'c-mini-calendar--compact', className)
 	);
-	const headerClasses = $derived(MiniCalendarStyleManager.getHeaderClasses(headerClassProp));
+	const headerClasses = $derived(mergeClassNames('c-mini-calendar__header', headerClassProp));
 	const weekdayHeaderClasses = $derived(
-		MiniCalendarStyleManager.getWeekdayHeaderClasses(headerClassProp)
+		mergeClassNames('c-mini-calendar__weekday', headerClassProp)
 	);
-	const gridClasses = $derived(MiniCalendarStyleManager.getGridClasses());
+	const gridClasses = $derived('c-mini-calendar__grid');
 
 	const days = $derived.by<RecipeMiniCalendarDay[]>(() => getDaysInMonth(currentDate));
 	const weekdays = $derived(['S', 'M', 'T', 'W', 'T', 'F', 'S']);
@@ -111,20 +111,22 @@ export function createMiniCalendarState(props: MiniCalendarContract) {
 		isCurrentMonth: boolean,
 		hasEvent: boolean
 	): string {
-		return MiniCalendarStyleManager.getDayCellClasses(
-			isTodayDate,
-			isCurrentMonth,
-			hasEvent,
+		return mergeClassNames(
+			'c-mini-calendar__day',
+			isTodayDate && 'c-mini-calendar__day--today',
+			!isCurrentMonth && 'c-mini-calendar__day--other',
+			hasEvent && 'c-mini-calendar__day--has-event',
 			dayClass
 		);
 	}
 
 	function getDateNumberClasses(): string {
-		return MiniCalendarStyleManager.getDateNumberClasses();
+		return 'c-mini-calendar__date-num';
 	}
 
 	function getEventIndicatorClasses(color?: string): string {
-		return MiniCalendarStyleManager.getEventIndicatorClasses(color, eventClass);
+		void color;
+		return mergeClassNames('c-mini-calendar__event-dot', eventClass);
 	}
 
 	return {

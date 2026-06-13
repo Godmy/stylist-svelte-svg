@@ -14,6 +14,24 @@
 	);
 </script>
 
-<div {...restProps} role="tablist" aria-orientation="horizontal" class={state.classes}>
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div
+	{...restProps}
+	role="tablist"
+	aria-orientation="horizontal"
+	class="c-tab-list"
+	data-disabled={state.disabled ? '' : undefined}
+>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-tab-list {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.c-tab-list[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+	}
+</style>

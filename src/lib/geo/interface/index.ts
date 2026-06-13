@@ -6,15 +6,15 @@ export type {
 } from './behavior';
 export type {
 	GeoJSONViewerStateProps,
-	IMapSettingsRecipe,
-	IRouteRecipe,
-	LocationPickerStateProps,
-	LocationSelectorStateProps,
-	MapMarkerStateProps,
-	MapSelectorStateProps,
-	MapWithMarkersStateProps,
-	RoutePlannerStateProps,
-	StoreLocatorStateProps
+	RecipeIMapSettings,
+	RecipeIRoute,
+	RecipeLocationPicker,
+	RecipeLocationSelector,
+	RecipeMapMarker,
+	RecipeMapSelector,
+	RecipeMapWithMarkers,
+	RecipeStoreLocator,
+	RoutePlannerStateProps
 } from './recipe';
 export type {
 	SlotContactInfo,

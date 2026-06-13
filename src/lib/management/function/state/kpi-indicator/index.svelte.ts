@@ -1,8 +1,7 @@
-import { KPIIndicatorStyleManager } from '$stylist/management/class/style-manager/kpi-indicator';
 import { ObjectManagerKPIIndicator } from '$stylist/management/class/object-manager/kpi-indicator';
-import type { KPIIndicatorRecipe } from '$stylist/management/interface/recipe/kpi-indicator';
+import type { RecipeKPIIndicator } from '$stylist/management/interface/recipe/kpi-indicator';
 
-export function createKPIIndicatorState(props: KPIIndicatorRecipe) {
+export function createKPIIndicatorState(props: RecipeKPIIndicator) {
 	const label = $derived((props as any).label ?? '');
 	const currentValue = $derived((props as any).currentValue ?? 0);
 	const targetValue = $derived((props as any).targetValue ?? 0);
@@ -16,14 +15,6 @@ export function createKPIIndicatorState(props: KPIIndicatorRecipe) {
 	);
 	const statusText = $derived(ObjectManagerKPIIndicator.resolveStatusText(status));
 	const trendIcon = $derived(ObjectManagerKPIIndicator.resolveTrendIconName(trend));
-	const containerClasses = $derived(
-		`${KPIIndicatorStyleManager.getContainerClasses(size)} ${KPIIndicatorStyleManager.getStatusColorClasses(status)} ${props.class ?? ''}`.trim()
-	);
-	const titleClasses = $derived(KPIIndicatorStyleManager.getTitleClasses(props.titleClass ?? ''));
-	const valueClasses = $derived(KPIIndicatorStyleManager.getValueClasses(props.valueClass ?? ''));
-	const trendColorClasses = $derived(KPIIndicatorStyleManager.getTrendColorClasses(trend));
-	const progressTrackClasses = $derived(KPIIndicatorStyleManager.getProgressTrackClasses());
-	const progressFillClasses = $derived(KPIIndicatorStyleManager.getProgressFillClasses());
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,
@@ -75,24 +66,6 @@ export function createKPIIndicatorState(props: KPIIndicatorRecipe) {
 		},
 		get trendIcon() {
 			return trendIcon;
-		},
-		get containerClasses() {
-			return containerClasses;
-		},
-		get titleClasses() {
-			return titleClasses;
-		},
-		get valueClasses() {
-			return valueClasses;
-		},
-		get trendColorClasses() {
-			return trendColorClasses;
-		},
-		get progressTrackClasses() {
-			return progressTrackClasses;
-		},
-		get progressFillClasses() {
-			return progressFillClasses;
 		},
 		get restProps() {
 			return restProps;

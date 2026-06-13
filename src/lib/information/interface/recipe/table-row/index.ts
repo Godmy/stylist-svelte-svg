@@ -1,15 +1,10 @@
-﻿/**
- * TableRow — строка таблицы..
- *
- * LEGO-состав:
-
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface TableRowRecipe extends StructIntersectAll<[ThemeAttributes<HTMLTableRowElement>]> {
-	content?: Snippet;
+export interface RecipeTableRow
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLTableRowElement>, SlotContent]> {
 	striped?: boolean;
 	active?: boolean;
 }

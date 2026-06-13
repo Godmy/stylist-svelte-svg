@@ -1,24 +1,22 @@
 <script lang="ts">
-	import type { SlotTransformable as TransformProps } from '$stylist/animation/interface/slot/transformable';
+	import type { RecipeTransformable } from '$stylist/animation/interface/recipe/transformable';
 	import createTransformableState from '$stylist/animation/function/state/transformable/index.svelte';
 
-	let props: TransformProps = $props();
+	let props: RecipeTransformable = $props();
 	const state = createTransformableState(props);
 </script>
 
 <div
 	class={state.classes}
-	style={state.inlineStyle !== 'none'
-		? `transform: ${state.inlineStyle}; transition: transform 300ms ease-in-out;`
-		: undefined}
+	style={state.containerStyle}
 	{...state.restProps}
 	onmouseenter={state.handleMouseEnter}
 	onmouseleave={state.handleMouseLeave}
 	onmousedown={state.handleMouseDown}
 	onmouseup={state.handleMouseUp}
 >
-	{#if props.children}
-		{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+	{#if state.children}
+		{@render state.children()}
 	{/if}
 </div>
 

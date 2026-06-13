@@ -1,32 +1,32 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** Специфичные свойства для компонентов обратной связи */
+/** РЎРїРµС†РёС„РёС‡РЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РґР»СЏ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё */
 import type { Snippet } from 'svelte';
 
-export interface FeedbackSpecificProps extends StructIntersectAll<[]> {
-	/** Тип компонента */
+export interface FeedbackSpecificProps extends StructIntersectAll<[SlotChildren]> {
+	/** РўРёРї РєРѕРјРїРѕРЅРµРЅС‚Р° */
 	type?: 'feedback' | 'error' | 'toast' | 'dialog' | 'boundary';
 
-	/** Действия (кнопки) */
+	/** Р”РµР№СЃС‚РІРёСЏ (РєРЅРѕРїРєРё) */
 	actions?: Snippet;
 
-	/** Текст кнопки подтверждения (для dialog) */
+	/** РўРµРєСЃС‚ РєРЅРѕРїРєРё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ (РґР»СЏ dialog) */
 	confirmText?: string;
 
-	/** Текст кнопки отмены (для dialog) */
+	/** РўРµРєСЃС‚ РєРЅРѕРїРєРё РѕС‚РјРµРЅС‹ (РґР»СЏ dialog) */
 	cancelText?: string;
 
-	/** Обработчик подтверждения (для dialog) */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ (РґР»СЏ dialog) */
 	onConfirm?: () => void;
 
-	/** Обработчик отмены (для dialog) */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє РѕС‚РјРµРЅС‹ (РґР»СЏ dialog) */
 	onCancel?: () => void;
 
-	/** Автоматическое скрытие (для toast) */
+	/** РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ СЃРєСЂС‹С‚РёРµ (РґР»СЏ toast) */
 	autoDismiss?: boolean;
 
-	/** Время до скрытия (для toast, мс) */
+	/** Р’СЂРµРјСЏ РґРѕ СЃРєСЂС‹С‚РёСЏ (РґР»СЏ toast, РјСЃ) */
 	dismissTimeout?: number;
 
-	/** children как Snippet */
-	children?: Snippet;
+	/** children РєР°Рє Snippet */
 }

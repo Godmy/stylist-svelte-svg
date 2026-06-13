@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import { FileExplorerStyleManager } from '$stylist/file/class/style-manager/file-explorer';
-	import createFileExplorerState from '$stylist/file/function/state/file-explorer/index.svelte';
+	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+	import { createFileExplorerState } from '$stylist/file/function/state/file-explorer/index.svelte';
 	import type { SlotFileSystemItem } from '$stylist/file/type/struct/file-explorer/file-system-item';
 	import type { Props } from '$stylist/file/type/struct/file-explorer/props/-props';
 	import { getFileIcon } from '$stylist/file/function/script/file-explorer-get-file-icon';
@@ -12,10 +12,10 @@
 	const state = createFileExplorerState(props);
 </script>
 
-<div class={FileExplorerStyleManager.getBaseClasses(state.classes)} {...state.restProps}>
-	<div class={FileExplorerStyleManager.getHeaderClasses(props.headerClass ?? '')}>
+<div class={mergeClassNames('c-file-explorer', state.classes)} {...state.restProps}>
+	<div class={mergeClassNames('fe-header', props.headerClass ?? '')}>
 		{#if state.showPath}
-			<div class={FileExplorerStyleManager.getPathClasses(props.pathClass ?? '')}>
+			<div class={mergeClassNames('fe-path', props.pathClass ?? '')}>
 				{#each state.pathParts as part, index}
 					<span>{part}</span>
 					{#if index < state.pathParts.length - 1}
@@ -25,7 +25,7 @@
 			</div>
 		{/if}
 
-		<div class={FileExplorerStyleManager.getToolbarClasses(props.toolbarClass ?? '')}>
+		<div class={mergeClassNames('fe-toolbar', props.toolbarClass ?? '')}>
 			<div class="fe-toolbar-left">
 				{#if state.searchable}
 					<div class="fe-search-wrap">
@@ -37,7 +37,7 @@
 						</div>
 						<input
 							type="text"
-							class={FileExplorerStyleManager.getSearchClasses(props.searchClass ?? '')}
+							class={mergeClassNames('fe-search-input', props.searchClass ?? '')}
 							placeholder="Search files..."
 							value={state.searchQuery}
 							oninput={state.handleSearchInput}
@@ -130,7 +130,7 @@
 								{#if item.type === 'folder'}
 									Folder
 								{:else}
-									{item.size ? formatFileSize(item.size) : 'File'} •
+									{item.size ? formatFileSize(item.size) : 'File'} вЂў
 									{item.modified ? item.modified.toLocaleDateString() : ''}
 								{/if}
 							</div>
@@ -168,7 +168,8 @@
 	.fe-search-icon {
 		pointer-events: none;
 		position: absolute;
-		inset-y: 0;
+		top: 0;
+		bottom: 0;
 		left: 0;
 		display: flex;
 		align-items: center;
@@ -301,5 +302,45 @@
 		white-space: nowrap;
 		font-size: 0.75rem;
 		color: var(--color-text-secondary);
+	}
+
+	.c-file-explorer {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+	.fe-header {
+		padding: 0.75rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+	.fe-path {
+		display: flex;
+		align-items: center;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+		margin-bottom: 0.5rem;
+	}
+	.fe-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.fe-search-input {
+		display: block;
+		width: 100%;
+		padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		line-height: 1.25rem;
+		background-color: var(--color-background-primary);
+		font-size: 0.875rem;
+	}
+	.fe-search-input:focus {
+		outline: none;
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 1px var(--color-blue-500);
+	}
+	.fe-search-input::placeholder {
+		color: rgb(107 114 128);
 	}
 </style>

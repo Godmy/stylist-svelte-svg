@@ -1,6 +1,6 @@
-<script lang="ts">
-	import createFormHeaderState from '$stylist/form/function/state/form-header/index.svelte';
-	import type { SlotFormHeader as FormHeaderProps } from '$stylist/form/interface/slot/form-header';
+﻿<script lang="ts">
+	import type { RecipeFormHeader } from '$stylist/form/interface/recipe/form-header';
+	import { createFormHeaderState } from '$stylist/form/function/state/form-header/index.svelte';
 
 	let {
 		title,
@@ -16,7 +16,7 @@
 		actionsClass = '',
 		backButtonClass = '',
 		...restProps
-	}: FormHeaderProps = $props();
+	}: RecipeFormHeader = $props();
 
 	const state = createFormHeaderState({
 		title,

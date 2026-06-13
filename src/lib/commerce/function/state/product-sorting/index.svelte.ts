@@ -1,14 +1,6 @@
-import type { ProductSortingProps as Props } from '$stylist/commerce/type/struct/product-sorting-props';
-import { ProductSortingStyleManager } from '$stylist/commerce/class/style-manager/product-sorting';
+import type { RecipeProductSorting } from '$stylist/commerce/interface/recipe/product-sorting';
 
-export function createProductSortingState(props: Props) {
-	const baseClasses = $derived(ProductSortingStyleManager.getBaseClasses(props.class ?? ''));
-	const selectClasses = $derived(ProductSortingStyleManager.getSelectClasses());
-
-	function getOptionClasses(): string {
-		return ProductSortingStyleManager.getOptionClasses();
-	}
-
+export function createProductSortingState(props: RecipeProductSorting) {
 	function handleChange(event: Event): void {
 		props.onchange?.(event);
 	}
@@ -18,16 +10,16 @@ export function createProductSortingState(props: Props) {
 	}
 
 	return {
-		get baseClasses() {
-			return baseClasses;
+		get containerClass() {
+			return ['product-sorting', props.class].filter(Boolean).join(' ');
 		},
-		get selectClasses() {
-			return selectClasses;
+		get selectClass() {
+			return 'product-sorting__select';
 		},
-		getOptionClasses,
+		get optionClass() {
+			return 'product-sorting__option';
+		},
 		handleChange,
 		handleInput
 	};
 }
-
-export default createProductSortingState;

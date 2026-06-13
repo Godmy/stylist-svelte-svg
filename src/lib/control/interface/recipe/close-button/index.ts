@@ -1,17 +1,11 @@
-/**
- * Close Button вЂ” РєРЅРѕРїРєР° Р·Р°РєСЂС‹С‚РёСЏ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   IIconSlot                 (information/icon-slot)
- *   IClickable                (interaction/clickable)
- *   IFocusable                (interaction/focusable)
- *   ISizable                  (architecture/sizable)
- */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
-import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
-import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
-import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
+import type { SlotButtonElement } from '$stylist/control/interface/slot/button-element';
+import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
+import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
+import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
+import type { SlotIcon } from '$stylist/media/interface/slot/icon';
 
-export interface CloseButtonRecipe
-	extends StructIntersectAll<[IIconSlot, IClickable, IFocusable, ISizable]> {}
+export interface RecipeCloseButton
+	extends StructIntersectAll<
+		[SlotButtonElement, SlotIcon, BehaviorClickable, BehaviorFocusable, BehaviorSizable]
+	> {}

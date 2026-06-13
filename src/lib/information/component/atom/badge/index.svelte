@@ -1,8 +1,8 @@
 <script lang="ts">
 	import createBadgeState from '$stylist/information/function/state/badge/index.svelte';
-	import type { BadgeRecipe } from '$stylist/information/interface/recipe/badge';
+	import type { RecipeBadge } from '$stylist/information/interface/recipe/badge';
 
-	let props: BadgeRecipe = $props();
+	let props: RecipeBadge = $props();
 
 	const state = createBadgeState(props);
 	const children = $derived(props.children);
@@ -20,3 +20,6 @@
 		{@render children()}
 	{/if}
 </span>
+
+<style>
+</style>

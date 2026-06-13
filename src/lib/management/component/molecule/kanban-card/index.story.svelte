@@ -52,22 +52,39 @@
 
 <Story {id} {title} {description} component={KanbanCard} category="Molecules" {controls}>
 	{#snippet children()}
-		<div class="grid gap-4 rounded-xl bg-[var(--color-background-secondary)] p-4 md:grid-cols-3">
-			<div
-				class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-3"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				<KanbanCard card={sampleCard} />
 			</div>
-			<div
-				class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-3"
-			>
+			<div class="_c2">
 				<KanbanCard card={lowPriorityCard} />
 			</div>
-			<div
-				class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-3"
-			>
+			<div class="_c2">
 				<KanbanCard card={mediumPriorityCard} />
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	@media (min-width: 768px) {
+		._c1 {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+	._c2 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.75rem;
+	}
+</style>

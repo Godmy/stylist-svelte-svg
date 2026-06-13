@@ -1,5 +1,4 @@
 import { ObjectManagerSharedCanvas } from '$stylist/canvas/class/object-manager/shared-canvas';
-import { StyleManagerSharedCanvas } from '$stylist/canvas/class/style-manager/shared-canvas';
 import { cloneCanvasObjects } from '$stylist/canvas/function/script/canvas/share/index';
 import { createDraftCanvasObject } from '$stylist/canvas/function/script/canvas-create-draft-object';
 import { drawCanvasObjects } from '$stylist/canvas/function/script/canvas-draw-objects';
@@ -35,34 +34,37 @@ export function createSharedCanvasState(contract: SharedCanvasContract) {
 	const restProps = $derived.by(() => ObjectManagerSharedCanvas.getRestProps(contract));
 
 	const containerClass = $derived(
-		StyleManagerSharedCanvas.getContainerClass(
-			contract.variant ?? 'default',
-			contract.size,
+		mergeClassNames(
+			'c-shared-canvas',
+			contract.variant === 'minimal' && 'c-shared-canvas--minimal',
 			mergeClassNames(contract.class)
 		)
 	);
-	const toolbarClass = $derived(StyleManagerSharedCanvas.getToolbarClass(contract.toolbarClass));
-	const canvasClass = $derived(StyleManagerSharedCanvas.getCanvasClass(contract.canvasClass));
+	const toolbarClass = $derived(mergeClassNames('c-shared-canvas__toolbar', contract.toolbarClass));
+	const canvasClass = $derived(mergeClassNames('c-shared-canvas__canvas', contract.canvasClass));
 	const toolDefinitions = $derived(ObjectManagerSharedCanvas.toolDefinitions);
-	const toolbarGroupClass = $derived(StyleManagerSharedCanvas.getToolbarGroupClass());
-	const toolbarDividerClass = $derived(StyleManagerSharedCanvas.getToolbarDividerClass());
-	const colorLabelClass = $derived(StyleManagerSharedCanvas.getColorLabelClass());
-	const colorInputClass = $derived(StyleManagerSharedCanvas.getColorInputClass());
-	const workspaceClass = $derived(StyleManagerSharedCanvas.getWorkspaceClass());
-	const canvasPaneClass = $derived(StyleManagerSharedCanvas.getCanvasPaneClass());
-	const remoteCursorClass = $derived(StyleManagerSharedCanvas.getRemoteCursorClass());
-	const userPanelClass = $derived(StyleManagerSharedCanvas.getUserPanelClass());
-	const userPanelTitleClass = $derived(StyleManagerSharedCanvas.getUserPanelTitleClass());
-	const userListClass = $derived(StyleManagerSharedCanvas.getUserListClass());
-	const userItemClass = $derived(StyleManagerSharedCanvas.getUserItemClass());
-	const userSwatchClass = $derived(StyleManagerSharedCanvas.getUserSwatchClass());
-	const userNameClass = $derived(StyleManagerSharedCanvas.getUserNameClass());
-	const currentUserClass = $derived(StyleManagerSharedCanvas.getCurrentUserClass());
+	const toolbarGroupClass = $derived('c-shared-canvas__toolbar-group');
+	const toolbarDividerClass = $derived('c-shared-canvas__toolbar-divider');
+	const colorLabelClass = $derived('c-shared-canvas__color-label');
+	const colorInputClass = $derived('c-shared-canvas__color-input');
+	const workspaceClass = $derived('c-shared-canvas__workspace');
+	const canvasPaneClass = $derived('c-shared-canvas__pane');
+	const remoteCursorClass = $derived('c-shared-canvas__cursor');
+	const userPanelClass = $derived('c-shared-canvas__user-panel');
+	const userPanelTitleClass = $derived('c-shared-canvas__user-panel-title');
+	const userListClass = $derived('c-shared-canvas__user-list');
+	const userItemClass = $derived('c-shared-canvas__user-item');
+	const userSwatchClass = $derived('c-shared-canvas__user-swatch');
+	const userNameClass = $derived('c-shared-canvas__user-name');
+	const currentUserClass = $derived('c-shared-canvas__current-user');
 	const toolButtonClass = $derived.by(
 		() => (tool: SharedCanvasTool) =>
-			StyleManagerSharedCanvas.getToolButtonClass(selectedTool === tool)
+			mergeClassNames(
+				'c-shared-canvas__tool-btn',
+				selectedTool === tool && 'c-shared-canvas__tool-btn--active'
+			)
 	);
-	const actionButtonClass = $derived(StyleManagerSharedCanvas.getActionButtonClass());
+	const actionButtonClass = $derived('c-shared-canvas__action-btn');
 	const actionIcons = $derived(ObjectManagerSharedCanvas.actionIcons);
 
 	function syncFromProps(nextObjects: readonly CanvasObject[] = []): void {

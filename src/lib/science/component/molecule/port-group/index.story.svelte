@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import type { GraphPortRecipe } from '$stylist/science/interface/recipe/graph-port';
+	import type { RecipeGraphPort } from '$stylist/science/interface/recipe/graph-port';
 	import PortGroup from './index.svelte';
 
 	const controls: InterfaceControllerSettings[] = [
@@ -13,13 +13,13 @@
 		{ name: 'title', type: 'text', defaultValue: '' }
 	];
 
-	const inputPorts: GraphPortRecipe[] = [
+	const inputPorts: RecipeGraphPort[] = [
 		{ id: 'in-1', direction: 'input', label: 'Data In', dataType: 'string', connected: true },
 		{ id: 'in-2', direction: 'input', label: 'Config', dataType: 'object', connected: false },
 		{ id: 'in-3', direction: 'input', label: 'Options', dataType: 'array', connected: true }
 	];
 
-	const outputPorts: GraphPortRecipe[] = [
+	const outputPorts: RecipeGraphPort[] = [
 		{ id: 'out-1', direction: 'output', label: 'Result', dataType: 'string', connected: true },
 		{ id: 'out-2', direction: 'output', label: 'Error', dataType: 'object', connected: false }
 	];

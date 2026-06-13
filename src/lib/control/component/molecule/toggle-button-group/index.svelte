@@ -36,21 +36,18 @@
 	});
 </script>
 
-<div class={`inline-flex rounded-md shadow-sm ${className}`} role="group" {...restProps}>
-	{#each options as option, index}
+<div
+	class={['c-toggle-btn-group', className].filter(Boolean).join(' ')}
+	role="group"
+	data-size={state.size}
+	{...restProps}
+>
+	{#each options as option}
 		<button
 			type="button"
-			class={`relative inline-flex items-center border ${
-				index === 0 ? 'rounded-l-md' : index === options.length - 1 ? 'rounded-r-md' : '-ml-px'
-			} border-[var(--color-border-primary)] font-medium focus:z-[var(--z-index-docked)] focus:border-[var(--color-primary-500)] focus:ring-1 focus:ring-blue-500 focus:outline-none ${
-				state.isSelected(option.value)
-					? `bg-[var(--color-primary-500)] text-[var(--color-text-inverse)] ${activeButtonClass}`
-					: `bg-[var(--color-background-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)] ${inactiveButtonClass}`
-			} ${
-				option.disabled || disabled
-					? 'cursor-not-allowed opacity-[var(--opacity-50)]'
-					: 'cursor-pointer'
-			} ${state.sizeClasses} ${buttonClass}`}
+			class="c-toggle-btn-group__btn"
+			data-active={state.isSelected(option.value) || undefined}
+			data-disabled={option.disabled || disabled || undefined}
 			onclick={() => state.handleToggle(option.value)}
 			disabled={option.disabled || disabled}
 			aria-pressed={state.isSelected(option.value)}
@@ -59,3 +56,82 @@
 		</button>
 	{/each}
 </div>
+
+<style>
+	.c-toggle-btn-group {
+		display: inline-flex;
+		border-radius: 0.375rem;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		overflow: hidden;
+	}
+
+	.c-toggle-btn-group__btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		border: 1px solid var(--color-border-primary);
+		font-weight: 500;
+		cursor: pointer;
+		transition:
+			background-color var(--duration-120, 120ms),
+			color var(--duration-120, 120ms);
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+	}
+
+	.c-toggle-btn-group__btn:not(:first-child) {
+		margin-left: -1px;
+	}
+
+	.c-toggle-btn-group__btn:first-child {
+		border-radius: 0.375rem 0 0 0.375rem;
+	}
+
+	.c-toggle-btn-group__btn:last-child {
+		border-radius: 0 0.375rem 0.375rem 0;
+	}
+
+	.c-toggle-btn-group__btn:hover:not([data-disabled]):not([data-active]) {
+		background: var(--color-background-secondary);
+	}
+
+	.c-toggle-btn-group__btn[data-active] {
+		z-index: 1;
+		background: var(--color-primary-500);
+		color: var(--color-text-inverse);
+		border-color: var(--color-primary-500);
+	}
+
+	.c-toggle-btn-group__btn[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	.c-toggle-btn-group__btn:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+		z-index: 2;
+	}
+
+	/* sizes */
+	.c-toggle-btn-group[data-size='xs'] .c-toggle-btn-group__btn {
+		font-size: 0.75rem;
+		padding: 0.25rem 0.5rem;
+	}
+
+	.c-toggle-btn-group[data-size='sm'] .c-toggle-btn-group__btn {
+		font-size: 0.75rem;
+		padding: 0.25rem 0.5rem;
+	}
+
+	.c-toggle-btn-group[data-size='md'] .c-toggle-btn-group__btn {
+		font-size: 0.875rem;
+		padding: 0.5rem 0.75rem;
+	}
+
+	.c-toggle-btn-group[data-size='lg'] .c-toggle-btn-group__btn {
+		font-size: 1rem;
+		padding: 0.75rem 1rem;
+	}
+</style>

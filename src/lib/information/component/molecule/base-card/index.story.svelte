@@ -22,10 +22,16 @@
 	{#snippet children(values: any)}
 		<BaseCard title={values.title} description={values.description}>
 			{#snippet children()}
-				<div class="text-sm text-[--color-text-secondary]">
-					Body content can contain any custom UI.
-				</div>
+				<div class="_c1">Body content can contain any custom UI.</div>
 			{/snippet}
 		</BaseCard>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

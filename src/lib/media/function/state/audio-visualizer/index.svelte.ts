@@ -1,6 +1,6 @@
-import type { AudioVisualizerProps } from '$stylist/media/type/struct/audio-visualizer';
+﻿import type { RecipeAudioVisualizer } from '$stylist/media/interface/recipe/audio-visualizer';
 
-export function createAudioVisualizerState(props: AudioVisualizerProps) {
+export function createAudioVisualizerState(props: RecipeAudioVisualizer) {
 	let localIsPlaying = $state(props.isPlaying ?? false);
 
 	$effect(() => {
@@ -62,5 +62,3 @@ export function createAudioVisualizerState(props: AudioVisualizerProps) {
 		togglePlay
 	};
 }
-
-export default createAudioVisualizerState;

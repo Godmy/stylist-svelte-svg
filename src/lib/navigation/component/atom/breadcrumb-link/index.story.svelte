@@ -17,8 +17,18 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="flex items-center gap-2 text-sm">
+		<div class="_c1">
 			<BreadcrumbLink href={values.href} current={values.current}>{values.label}</BreadcrumbLink>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

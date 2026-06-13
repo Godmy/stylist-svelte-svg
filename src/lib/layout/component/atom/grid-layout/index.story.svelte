@@ -33,10 +33,19 @@
 	description="A responsive grid layout component"
 >
 	{#snippet children(values: any)}
-		<div
-			class="rounded border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-3"
-		>
+		<div class="_c1">
 			<GridLayout {...values} {items} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 0.75rem;
+	}
+</style>

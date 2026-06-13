@@ -15,12 +15,28 @@
 	description="Interaction-level token nodes rendered on the outer orbit ring."
 >
 	{#snippet children(values: any)}
-		<div
-			class="grid place-items-center rounded-3xl bg-[linear-gradient(180deg,#f5f3ff,#f8fafc)] p-10"
-		>
-			<div class="relative h-80 w-80 rounded-full border border-violet-200/70 bg-white/70">
+		<div class="_c1">
+			<div class="_c2 border-violet-200/70 bg-white/70">
 				<OrbitInteraction opened={Boolean(values.opened)} />
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		place-items: center;
+		display: grid;
+		border-radius: 1.5rem;
+		background-color: linear-gradient(180deg, #f5f3ff, #f8fafc);
+		padding: 2.5rem;
+	}
+	._c2 {
+		position: relative;
+		height: 20rem;
+		width: 20rem;
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

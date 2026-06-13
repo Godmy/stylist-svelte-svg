@@ -1,9 +1,9 @@
 <script lang="ts">
 	import createNpmBadgeState from '$stylist/information/function/state/npm-badge/index.svelte';
-	import type { NpmBadgeRecipe } from '$stylist/information/interface/recipe/npm-badge';
+	import type { RecipeNpmBadge } from '$stylist/information/interface/recipe/npm-badge';
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 
-	let props: NpmBadgeRecipe & InformationHTMLAttributes<HTMLElement> = $props();
+	let props: RecipeNpmBadge & InformationHTMLAttributes<HTMLElement> = $props();
 
 	const state = createNpmBadgeState(props);
 	const value = $derived(props.value);
@@ -26,8 +26,8 @@
 {#if link}
 	<a href={link} class={state.linkClasses} target="_blank" rel="noopener noreferrer" {...restProps}>
 		<span class={state.classes}>
-			<span class="npm-badge-label font-semibold">{state.label}:</span>
-			<span class="npm-badge-value ml-1">{value}</span>
+			<span class="npm-badge-label">{state.label}:</span>
+			<span class="npm-badge-value">{value}</span>
 		</span>
 	</a>
 {:else}

@@ -1,9 +1,9 @@
 import createTextPresenterState from '$stylist/typography/function/state/text-presenter/index.svelte';
-import type { HeadingRecipe } from '$stylist/typography/interface/recipe/heading';
-import type { TextRecipe } from '$stylist/typography/interface/recipe/text';
+import type { RecipeHeading } from '$stylist/typography/interface/recipe/heading';
+import type { RecipeText } from '$stylist/typography/interface/recipe/text';
 
-export function createHeadingState(props: HeadingRecipe) {
-	const presenterState = createTextPresenterState(props as TextRecipe, 'c-typography-heading', [
+export function createHeadingState(props: RecipeHeading) {
+	const presenterState = createTextPresenterState(props as RecipeText, 'c-typography-heading', [
 		'level'
 	]);
 	const level = $derived(props.level ?? 2);

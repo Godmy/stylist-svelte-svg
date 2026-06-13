@@ -1,5 +1,5 @@
-import { CodeWithCopyStyleManager } from '$stylist/development/class/style-manager/code-with-copy';
 import type { Props } from '$stylist/development/type/alias/props';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function copyToClipboard(
 	copied: boolean,
@@ -32,10 +32,13 @@ export function createCodeWithCopyState(
 ) {
 	const copied = $state(false);
 
-	const containerClass = $derived(CodeWithCopyStyleManager.getContainerClass());
-	const codeContentClass = $derived(CodeWithCopyStyleManager.getCodeContentClass());
-	const copyButtonClass = $derived(CodeWithCopyStyleManager.getCopyButtonClass());
-	const iconClass = (isCopied: boolean) => CodeWithCopyStyleManager.getIconClass(isCopied);
+	const containerClass = $derived('c-code-with-copy relative group');
+	const codeContentClass = $derived('code-content');
+	const copyButtonClass = $derived(
+		'absolute right-2 top-2 rounded-md bg-[var(--color-background-secondary)] p-1.5 opacity-[var(--opacity-0)] transition-colors transition-opacity hover:bg-[var(--color-neutral-200)] group-hover:opacity-[var(--opacity-100)]'
+	);
+	const iconClass = (isCopied: boolean) =>
+		mergeClassNames('h-4 w-4', isCopied ? 'text-[var(--color-success-600)]' : '');
 
 	function handleCopyToClipboard() {
 		copyToClipboard(

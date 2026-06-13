@@ -1,4 +1,4 @@
-import type { DataDisplayCardRecipe as DataDisplayCardProps } from '$stylist/commerce/interface/recipe/data-display-card';
+import type { RecipeDataDisplayCard as DataDisplayCardProps } from '$stylist/commerce/interface/recipe/data-display-card';
 
 export class ObjectManagerDataDisplayCard {
 	static getRestProps(props: DataDisplayCardProps) {

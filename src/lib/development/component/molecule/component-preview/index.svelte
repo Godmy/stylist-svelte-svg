@@ -1,11 +1,6 @@
-<script lang="ts">
-	/**
-	 * @component RecipeComponentPreview
-	 * @description Component preview with code and demo
-	 */
-
-	import type { Snippet } from 'svelte';
-	import createComponentPreviewState from '$stylist/development/function/state/component-preview/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
+	import { createComponentPreviewState } from '$stylist/development/function/state/component-preview/index.svelte';
 	import CodeBlock from '../code-block/index.svelte';
 
 	let {
@@ -16,15 +11,7 @@
 		componentDemo,
 		showCode = false,
 		class: className = ''
-	}: {
-		title: string;
-		description?: string;
-		code: string;
-		language?: string;
-		componentDemo: Snippet;
-		showCode?: boolean;
-		class?: string;
-	} = $props();
+	}: RecipeComponentPreview = $props();
 
 	const state = createComponentPreviewState({
 		title,
@@ -76,3 +63,84 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-component-preview {
+		overflow: hidden;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+	.c-component-preview__header {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 1rem 1.5rem;
+	}
+
+	.c-component-preview__title {
+		margin: 0;
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.c-component-preview__description {
+		margin: 0.25rem 0 0;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-component-preview__tabs {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-component-preview__tab-list {
+		display: flex;
+		margin-bottom: -1px;
+	}
+
+	.c-component-preview__tab {
+		border: none;
+		border-bottom: 2px solid transparent;
+		border-radius: 0.5rem 0.5rem 0 0;
+		padding: 0.5rem 1rem;
+		background: transparent;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-tertiary);
+		cursor: pointer;
+	}
+
+	.c-component-preview__tab:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
+	}
+
+	.c-component-preview__tab--active {
+		border-bottom-color: var(--color-primary-500);
+		background: var(--color-primary-50);
+		color: var(--color-primary-600);
+	}
+
+	.c-component-preview__tab--inactive:hover {
+		border-bottom-color: var(--color-border-primary);
+		color: var(--color-text-primary);
+	}
+
+	.c-component-preview__preview {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 1.5rem;
+	}
+
+	.c-component-preview__demo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100px;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.75rem;
+		background: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

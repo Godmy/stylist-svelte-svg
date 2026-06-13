@@ -1,5 +1,4 @@
 import { ObjectManagerTableControls } from '$stylist/control/class/object-manager/table-controls';
-import { TableExtendedStyleManager } from '$stylist/control/class/style-manager/table-extended';
 import type { SlotTableWithFilters as TableWithFiltersProps } from '$stylist/control/interface/slot/table-with-filters';
 
 export function createTableWithFiltersState(props: TableWithFiltersProps) {
@@ -12,9 +11,7 @@ export function createTableWithFiltersState(props: TableWithFiltersProps) {
 	const filtered = $derived(
 		ObjectManagerTableControls.filterRows(props.data ?? [], props.columns ?? [], filters)
 	);
-	const rootClass = $derived(
-		TableExtendedStyleManager.root('c-table-with-filters', props.class ?? '')
-	);
+	const rootClass = $derived(['c-table-filters', props.class].filter(Boolean).join(' '));
 
 	return {
 		get filters() {

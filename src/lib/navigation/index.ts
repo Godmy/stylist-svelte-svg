@@ -1,14 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	BreadcrumbLinkStyleManager,
-	ConfirmationDialogStyleManager,
-	DialogControlsStyleManager,
-	DrawerManager,
-	DrawerStyleManager,
-	GraphToolbarStyleManager,
-	PaginationStyleManager,
-	SidebarStyleManager
-} from './class';
+export { DrawerManager } from './class';
 export {
 	BreadcrumbDropdown,
 	BreadcrumbLink,
@@ -102,32 +93,32 @@ export type {
 	ToolbarItem
 } from './type';
 export type {
-	BreadcrumbDropdownRecipe,
-	BreadcrumbLinkRecipe,
-	BreadcrumbRecipe,
-	BreadcrumbsRecipe,
 	ChartLegendProps,
-	ConfirmationDialogRecipe,
-	DialogControlsRecipe,
-	LayoutRecipe,
 	LayoutSpecificProps,
-	LinkRecipe,
 	LinkSpecificProps,
-	PageEllipsisRecipe,
-	PaginationRecipe,
 	PaginationStateProps,
+	RecipeBreadcrumb,
+	RecipeBreadcrumbDropdown,
+	RecipeBreadcrumbLink,
 	RecipeBreadcrumbLinkProps,
+	RecipeBreadcrumbs,
+	RecipeConfirmationDialog,
+	RecipeDialogControls,
+	RecipeLink,
 	RecipeLinkProps,
+	RecipePageEllipsis,
+	RecipePagination,
 	RecipePaginationProps,
+	RecipeSidebar,
+	RecipeToolbar,
+	RecipeToolbarField,
+	RecipeToolbarGroup,
+	RecipeToolbarSeparator,
+	RecipeTooltipWithArrow,
 	SidebarStateProps,
 	SlotConfirmationDialog,
 	SlotDialog,
 	SlotModal,
 	SlotPagination,
-	SlotSidebar,
-	ToolbarFieldRecipe,
-	ToolbarGroupRecipe,
-	ToolbarRecipe,
-	ToolbarSeparatorRecipe,
-	TooltipWithArrowRecipe
+	SlotSidebar
 } from './interface';

@@ -1,17 +1,20 @@
-﻿/**
- * Idef0FunctionBox вЂ” С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ Р±Р»РѕРє IDEF0..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * Idef0FunctionBox РІР‚вЂќ РЎвЂћРЎС“Р Р…Р С”РЎвЂ Р С‘Р С•Р Р…Р В°Р В»РЎРЉР Р…РЎвЂ№Р в„– Р В±Р В»Р С•Р С” IDEF0..
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
- *   ICaptionSlot        (information) вЂ” caption (Caption)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
+ *   ICaptionSlot        (information) РІР‚вЂќ caption (Caption)
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface Idef0FunctionBoxRecipe
-	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeIdef0FunctionBox
+	extends StructIntersectAll<
+		[SlotTheme, ILabelSlot, ICaptionSlot, HTMLAttributes<HTMLDivElement>]
+	> {
 	title?: string;
 	subtitle?: string;
 	x?: number;

@@ -43,4 +43,3 @@ export type { PlaygroundTreeNodeProps } from './playground-tree-node-props';
 export type { PlaygroundTreeNodeStory } from './playground-tree-node-story';
 export type { PlaygroundTreeNodeTreeNodeData } from './playground-tree-node-tree-node-data';
 export type { PropDefinition } from './prop-definition';
-export type { PropsEditorProps } from './props-editor-props';

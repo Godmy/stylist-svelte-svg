@@ -1,12 +1,12 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import { ObjectManagerAnalyticsChart } from '$stylist/chart/class/object-manager/analytics-chart';
-	import type { AnalyticsChartRecipe } from '$stylist/chart/interface/recipe/analytics-chart';
+	import type { RecipeAnalyticsChart } from '$stylist/chart/interface/recipe/analytics-chart';
 	import createAnalyticsChartState from '$stylist/chart/function/state/analytics-chart/index.svelte';
 	import BarChart from '$stylist/chart/component/molecule/bar-chart/index.svelte';
 	import LineChart from '$stylist/chart/component/organism/line-chart/index.svelte';
 	import PieChart from '$stylist/chart/component/atom/chart-pie/index.svelte';
 
-	let props: AnalyticsChartRecipe = $props();
+	let props: RecipeAnalyticsChart = $props();
 	const state = createAnalyticsChartState(props);
 
 	const maxValue = $derived(ObjectManagerAnalyticsChart.resolveMaxValue(props.data ?? []));
@@ -80,6 +80,84 @@
 </div>
 
 <style>
+	.c-analytics-chart {
+		overflow: hidden;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+	}
+
+	.c-analytics-chart__header {
+		padding: 1rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-analytics-chart__title-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.c-analytics-chart__title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.c-analytics-chart__subtitle {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-analytics-chart__trend {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.c-analytics-chart__trend--positive {
+		color: var(--color-success-500);
+	}
+
+	.c-analytics-chart__trend--negative {
+		color: var(--color-danger-500);
+	}
+
+	.c-analytics-chart__chart {
+		padding: 1rem;
+	}
+
+	.c-analytics-chart__legend {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.5rem 1rem;
+		margin-top: 1rem;
+	}
+
+	.c-analytics-chart__legend-item {
+		display: flex;
+		align-items: center;
+	}
+
+	.c-analytics-chart__legend-color {
+		width: 0.75rem;
+		height: 0.75rem;
+		border-radius: 0.125rem;
+		margin-right: 0.5rem;
+	}
+
+	.c-analytics-chart__legend-label {
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+	}
+
+	.c-analytics-chart__legend-value {
+		margin-left: 0.25rem;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
 	.ac-trend-row {
 		display: flex;
 		align-items: center;

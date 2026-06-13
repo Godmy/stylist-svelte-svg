@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Idef0FunctionBoxRecipe as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
+	import type { RecipeIdef0FunctionBox as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
 	import createIdef0FunctionBoxState from '$stylist/science/function/state/idef0-function-box/index.svelte';
 
 	let props: Idef0FunctionBoxProps = $props();
@@ -32,3 +32,21 @@
 		</text>
 	{/if}
 </g>
+
+<style>
+	:global(.idef0-function-box__rect) {
+		fill: var(--color-background-secondary);
+		stroke: var(--color-border-primary);
+	}
+
+	:global(.idef0-function-box__title) {
+		fill: var(--color-text-primary);
+		font-size: 0.875rem;
+		font-weight: var(--font-weight-semibold, 600);
+	}
+
+	:global(.idef0-function-box__subtitle) {
+		fill: var(--color-text-secondary);
+		font-size: 0.75rem;
+	}
+</style>

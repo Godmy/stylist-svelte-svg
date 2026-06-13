@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ThemeKbdRecipe } from '$stylist/typography/interface/recipe/kbd';
+	import type { RecipeThemeKbd } from '$stylist/typography/interface/recipe/kbd';
 	import createKbdState from '$stylist/typography/function/state/kbd/index.svelte';
 
-	let props: ThemeKbdRecipe = $props();
+	let props: RecipeThemeKbd = $props();
 
 	const state = createKbdState(props);
 	const children = $derived(props.children);

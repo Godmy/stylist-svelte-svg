@@ -1,17 +1,11 @@
-/**
- * NumberFlow represents a formatted numeric stream.
- *
- * Composition:
- *   SlotLabel        label content
- *   SlotBadge        badge content
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { SlotBadge } from '$stylist/information/interface/slot/badge';
+import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
-export interface NumberFlowRecipe
-	extends StructIntersectAll<[ILabelSlot, IBadgeSlot, ThemeAttributes<HTMLSpanElement>]> {
+export interface RecipeNumberFlow
+	extends StructIntersectAll<[SlotTheme, SlotLabel, SlotBadge, HTMLAttributes<HTMLDivElement>]> {
 	value?: number;
 	locales?: Intl.LocalesArgument;
 	format?: Intl.NumberFormatOptions;

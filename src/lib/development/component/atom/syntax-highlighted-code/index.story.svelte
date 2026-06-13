@@ -36,17 +36,17 @@
 	tags={['code', 'syntax', 'highlighting', 'typography']}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<SyntaxHighlightedCode
 				code={sampleCode}
 				language={values.language}
 				showLineNumbers={values.showLineNumbers}
 			/>
 
-			<h3 class="mt-8 mb-4 text-lg font-bold">Different Languages</h3>
-			<div class="space-y-4">
+			<h3 class="_c2">Different Languages</h3>
+			<div class="_c3">
 				<div>
-					<p class="mb-2 text-sm font-semibold">TypeScript:</p>
+					<p class="_c4">TypeScript:</p>
 					<SyntaxHighlightedCode
 						code={`interface User {
   id: number;
@@ -57,7 +57,7 @@
 					/>
 				</div>
 				<div>
-					<p class="mb-2 text-sm font-semibold">HTML:</p>
+					<p class="_c4">HTML:</p>
 					<SyntaxHighlightedCode
 						code={`<div class="container">
   <h1>Hello World</h1>
@@ -70,3 +70,25 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+	._c3 > * + * {
+		margin-top: 1rem;
+	}
+	._c4 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+	}
+</style>

@@ -19,7 +19,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-4">
+		<div class="_c1">
 			<SlotRadio
 				id="radio-main"
 				name="story-radio"
@@ -30,11 +30,26 @@
 				required={values.required}
 				size={values.size}
 			/>
-			<div
-				class="rounded-xl border border-[--color-border-primary] bg-[--color-background-secondary] p-3 text-sm text-[--color-text-secondary]"
-			>
+			<div class="_c2">
 				Use one `name` for a group. This story renders a single controllable option.
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+	._c2 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

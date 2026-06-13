@@ -1,27 +1,28 @@
-import type { AtomicPrinciplesShowcaseProps } from '$stylist/development/type/struct/atomic-principles-showcase-props';
-import { AtomicPrinciplesShowcaseStyleManager } from '$stylist/development/class/style-manager/atomic-principles-showcase';
+﻿import type { RecipeAtomicPrinciplesShowcase } from '$stylist/development/interface/recipe/atomic-principles-showcase';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createAtomicPrinciplesShowcaseState(props: AtomicPrinciplesShowcaseProps) {
+export function createAtomicPrinciplesShowcaseState(props: RecipeAtomicPrinciplesShowcase) {
 	const GitBranch = 'git-branch';
 	const Code = 'code';
 	const Layers = 'layers';
 	const Package = 'package';
 
 	const sectionClass = $derived(
-		AtomicPrinciplesShowcaseStyleManager.getSectionClasses(
+		mergeClassNames(
+			'c-atomic-principles-showcase',
 			props.class == null ? undefined : String(props.class)
 		)
 	);
-	const innerContainerClass = $derived(
-		AtomicPrinciplesShowcaseStyleManager.getInnerContainerClasses()
+	const innerContainerClass = $derived('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8');
+	const textCenterClass = $derived('text-center');
+	const badgeClass = $derived(
+		'inline-flex items-center gap-2 rounded-full bg-[var(--color-primary-100)] px-4 py-2 text-sm font-medium text-[var(--color-primary-700)]'
 	);
-	const textCenterClass = $derived(AtomicPrinciplesShowcaseStyleManager.getTextCenterClasses());
-	const badgeClass = $derived(AtomicPrinciplesShowcaseStyleManager.getBadgeClasses());
-	const badgeIconClass = $derived(AtomicPrinciplesShowcaseStyleManager.getBadgeIconClasses());
-	const badgeTextClass = $derived(AtomicPrinciplesShowcaseStyleManager.getBadgeTextClasses());
-	const titleClass = $derived(AtomicPrinciplesShowcaseStyleManager.getTitleClasses());
-	const descriptionClass = $derived(AtomicPrinciplesShowcaseStyleManager.getDescriptionClasses());
-	const gridClass = $derived(AtomicPrinciplesShowcaseStyleManager.getGridClasses());
+	const badgeIconClass = $derived('h-4 w-4');
+	const badgeTextClass = $derived('font-medium');
+	const titleClass = $derived('mt-6 text-4xl font-bold text-[var(--color-text-primary)]');
+	const descriptionClass = $derived('mt-4 text-lg leading-8 text-[var(--color-text-secondary)]');
+	const gridClass = $derived('mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4');
 
 	const badgeText = $derived(props.badgeText ?? 'Atomic Design');
 	const title = $derived(props.title ?? 'Built on Atomic Principles');
@@ -99,5 +100,3 @@ export function createAtomicPrinciplesShowcaseState(props: AtomicPrinciplesShowc
 		}
 	};
 }
-
-export default createAtomicPrinciplesShowcaseState;

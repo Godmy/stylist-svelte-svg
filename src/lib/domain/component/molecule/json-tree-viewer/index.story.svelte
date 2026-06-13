@@ -31,8 +31,20 @@
 	description="Interactive JSON explorer with collapse and parse error handling."
 >
 	{#snippet children(values: any)}
-		<div class="h-96 overflow-auto rounded-2xl border border-slate-200 bg-white">
+		<div class="_c1">
 			<JsonTreeViewer content={values.contentState === 'invalid' ? invalidJson : validJson} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 24rem;
+		overflow: auto;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+	}
+</style>

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import createMetricBarState from '$stylist/information/function/state/metric-bar/index.svelte';
-	import type { MetricBarRecipe } from '$stylist/information/interface/recipe/metric-bar';
+	import type { RecipeMetricBar } from '$stylist/information/interface/recipe/metric-bar';
 
-	let props: MetricBarRecipe = $props();
+	let props: RecipeMetricBar = $props();
 	const state = createMetricBarState(props);
 </script>
 
@@ -29,3 +29,6 @@
 		<div class={state.fillClasses} style={state.widthStyle} aria-hidden="true"></div>
 	</div>
 </div>
+
+<style>
+</style>

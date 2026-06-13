@@ -66,7 +66,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-2xl p-4">
+		<div class="_c1">
 			<RecipeQuoteRequest
 				title={values.title}
 				description={values.description}
@@ -80,3 +80,10 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 42rem;
+		padding: 1rem;
+	}
+</style>

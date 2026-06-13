@@ -22,7 +22,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<ProductAvailability
 				available={args.available}
 				stock={args.stock}
@@ -30,9 +30,23 @@
 				estimatedRestock={args.estimatedRestock}
 				onNotifyMe={() => (notified = true)}
 			/>
-			<p class="mt-3 text-sm text-[var(--color-text-secondary)]">
+			<p class="_c2">
 				Notify status: {notified ? 'Requested' : 'Not requested'}
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		margin-top: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

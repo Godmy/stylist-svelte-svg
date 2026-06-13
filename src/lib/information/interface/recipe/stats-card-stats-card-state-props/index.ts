@@ -1,6 +1,6 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { StatsCardRecipe } from '$stylist/information/interface/recipe/stats-card';
+import type { RecipeStatsCard } from '$stylist/information/interface/recipe/stats-card';
 
-export interface StatsCardStateProps extends StructIntersectAll<[StatsCardRecipe]> {
+export interface StatsCardStateProps extends StructIntersectAll<[RecipeStatsCard]> {
 	class?: string;
 }

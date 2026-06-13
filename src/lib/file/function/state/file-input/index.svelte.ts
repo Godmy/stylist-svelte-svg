@@ -1,4 +1,4 @@
-import { untrack } from 'svelte';
+﻿import { untrack } from 'svelte';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { clearFile } from '$stylist/file/function/script/clear-file';
 import { resolveFileSelectionLabel } from '$stylist/file/function/script/resolve-file-selection-label';
@@ -82,5 +82,3 @@ export function createFileInputState(
 		clearSelection
 	};
 }
-
-export default createFileInputState;

@@ -6,12 +6,10 @@
 	const state = createSliderWithInputState(props);
 </script>
 
-<div class={`flex items-center space-x-4 ${state.className}`} {...props}>
+<div class={`slider-with-input ${state.className}`} {...props}>
 	<input
 		type="range"
-		class={`h-2 w-full cursor-pointer appearance-none rounded-lg bg-[var(--color-background-tertiary)] ${
-			state.disabled ? 'cursor-not-allowed opacity-[var(--opacity-50)]' : ''
-		} ${state.sliderClass}`}
+		class={`slider-with-input__range ${state.disabled ? 'slider-with-input__range--disabled' : ''} ${state.sliderClass}`}
 		min={state.min}
 		max={state.max}
 		step={state.step}
@@ -28,9 +26,7 @@
 	{#if state.showInput}
 		<input
 			type="number"
-			class={`w-${state.inputWidth.replace('px', '')} rounded-md border border-[var(--color-border-primary)] px-3 py-2 shadow-sm focus:border-[var(--color-primary-500)] focus:ring-blue-500 focus:outline-none ${
-				state.disabled ? 'cursor-not-allowed bg-[var(--color-background-secondary)]' : ''
-			} ${state.inputClass}`}
+			class={`slider-with-input__number ${state.disabled ? 'slider-with-input__number--disabled' : ''} ${state.inputClass}`}
 			min={state.min}
 			max={state.max}
 			step={state.step}
@@ -41,3 +37,43 @@
 		/>
 	{/if}
 </div>
+
+<style>
+	.slider-with-input {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.slider-with-input__range {
+		height: 0.5rem;
+		width: 100%;
+		cursor: pointer;
+		appearance: none;
+		border-radius: var(--border-radius-full, 9999px);
+		background-color: var(--color-background-tertiary);
+	}
+
+	.slider-with-input__range--disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	.slider-with-input__number {
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 0.75rem;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+	.slider-with-input__number:focus {
+		outline: none;
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 2px var(--color-primary-100);
+	}
+
+	.slider-with-input__number--disabled {
+		cursor: not-allowed;
+		background-color: var(--color-background-secondary);
+	}
+</style>

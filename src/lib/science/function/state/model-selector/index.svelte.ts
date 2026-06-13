@@ -1,6 +1,5 @@
 import type { RecipeModelSelector as ModelSelectorContract } from '$stylist/science/interface/recipe/model-selector';
 import type { SlotModelOption as ModelOption } from '$stylist/science/interface/slot/model-option';
-import { ModelSelectorStyleManager } from '$stylist/science/class/style-manager/model-selector';
 
 export function createModelSelectorState(props: ModelSelectorContract) {
 	let isOpen = $state(false);
@@ -30,37 +29,24 @@ export function createModelSelectorState(props: ModelSelectorContract) {
 
 		return rest;
 	});
-	const containerClass = $derived(ModelSelectorStyleManager.getContainerClass(props.class ?? ''));
+
+	const containerClass = $derived(props.class ? `model-selector ${props.class}` : 'model-selector');
 	const dropdownButtonClass = $derived(
-		ModelSelectorStyleManager.getDropdownButtonClass(props.dropdownClass ?? '')
+		props.dropdownClass ? `model-selector__button ${props.dropdownClass}` : 'model-selector__button'
 	);
-	const modelInfoContainerClass = $derived(ModelSelectorStyleManager.getModelInfoContainerClass());
-	const selectedModelNameClass = $derived(ModelSelectorStyleManager.getSelectedModelNameClass());
-	const selectedModelDescriptionClass = $derived(
-		ModelSelectorStyleManager.getSelectedModelDescriptionClass()
-	);
-	const placeholderClass = $derived(ModelSelectorStyleManager.getPlaceholderClass());
-	const chevronClass = $derived(ModelSelectorStyleManager.getChevronClass(isOpen));
 	const dropdownMenuClass = $derived(
-		ModelSelectorStyleManager.getDropdownMenuClass(props.dropdownClass ?? '')
+		props.dropdownClass ? `model-selector__menu ${props.dropdownClass}` : 'model-selector__menu'
 	);
-	const modelDetailsContainerClass = $derived(
-		ModelSelectorStyleManager.getModelDetailsContainerClass()
+	const chevronClass = $derived(
+		isOpen ? 'model-selector__chevron model-selector__chevron--open' : 'model-selector__chevron'
 	);
-	const modelNameClass = $derived(ModelSelectorStyleManager.getModelNameClass());
-	const modelProviderVersionClass = $derived(
-		ModelSelectorStyleManager.getModelProviderVersionClass()
-	);
-	const modelDescriptionClass = $derived(ModelSelectorStyleManager.getModelDescriptionClass());
-	const capabilitiesContainerClass = $derived(
-		ModelSelectorStyleManager.getCapabilitiesContainerClass()
-	);
-	const capabilityTagClass = $derived(ModelSelectorStyleManager.getCapabilityTagClass());
-	const moreCapabilitiesTagClass = $derived(
-		ModelSelectorStyleManager.getMoreCapabilitiesTagClass()
-	);
-	const tagsContainerClass = $derived(ModelSelectorStyleManager.getTagsContainerClass());
-	const tagClass = $derived(ModelSelectorStyleManager.getTagClass());
+
+	function getModelItemClass(isSelected: boolean) {
+		const base = props.modelItemClass
+			? `model-selector__item ${props.modelItemClass}`
+			: 'model-selector__item';
+		return isSelected ? `${base} model-selector__item--selected` : base;
+	}
 
 	function selectModel(model: ModelOption) {
 		selectedModelValue = model;
@@ -70,10 +56,6 @@ export function createModelSelectorState(props: ModelSelectorContract) {
 
 	function toggleOpen() {
 		isOpen = !isOpen;
-	}
-
-	function getModelItemClass(isSelected: boolean) {
-		return ModelSelectorStyleManager.getModelItemClass(isSelected, props.modelItemClass ?? '');
 	}
 
 	return {
@@ -105,16 +87,16 @@ export function createModelSelectorState(props: ModelSelectorContract) {
 			return dropdownButtonClass;
 		},
 		get modelInfoContainerClass() {
-			return modelInfoContainerClass;
+			return 'model-selector__info';
 		},
 		get selectedModelNameClass() {
-			return selectedModelNameClass;
+			return 'model-selector__selected-name';
 		},
 		get selectedModelDescriptionClass() {
-			return selectedModelDescriptionClass;
+			return 'model-selector__selected-description';
 		},
 		get placeholderClass() {
-			return placeholderClass;
+			return 'model-selector__placeholder';
 		},
 		get chevronClass() {
 			return chevronClass;
@@ -123,31 +105,31 @@ export function createModelSelectorState(props: ModelSelectorContract) {
 			return dropdownMenuClass;
 		},
 		get modelDetailsContainerClass() {
-			return modelDetailsContainerClass;
+			return 'model-selector__item-details';
 		},
 		get modelNameClass() {
-			return modelNameClass;
+			return 'model-selector__item-name';
 		},
 		get modelProviderVersionClass() {
-			return modelProviderVersionClass;
+			return 'model-selector__item-meta';
 		},
 		get modelDescriptionClass() {
-			return modelDescriptionClass;
+			return 'model-selector__item-description';
 		},
 		get capabilitiesContainerClass() {
-			return capabilitiesContainerClass;
+			return 'model-selector__capabilities';
 		},
 		get capabilityTagClass() {
-			return capabilityTagClass;
+			return 'model-selector__tag model-selector__tag--capability';
 		},
 		get moreCapabilitiesTagClass() {
-			return moreCapabilitiesTagClass;
+			return 'model-selector__tag model-selector__tag--more';
 		},
 		get tagsContainerClass() {
-			return tagsContainerClass;
+			return 'model-selector__tags';
 		},
 		get tagClass() {
-			return tagClass;
+			return 'model-selector__tag';
 		},
 		getModelItemClass,
 		selectModel,

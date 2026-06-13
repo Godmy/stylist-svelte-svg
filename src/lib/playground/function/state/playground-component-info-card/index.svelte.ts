@@ -1,5 +1,5 @@
-import type { PlaygroundComponentInfoCardProps } from '$stylist/playground/type/struct/playground-component-info-card-props';
-export function createPlaygroundComponentInfoCardState(props: PlaygroundComponentInfoCardProps) {
+﻿import type { RecipePlaygroundComponentInfoCard } from '$stylist/playground/interface/recipe/playground-component-info-card';
+export function createPlaygroundComponentInfoCardState(props: RecipePlaygroundComponentInfoCard) {
 	const componentName = $derived(props.componentName ?? '');
 	const category = $derived(props.category ?? '');
 	const subcategory = $derived(props.subcategory ?? '');
@@ -82,5 +82,3 @@ export function createPlaygroundComponentInfoCardState(props: PlaygroundComponen
 		handleClose
 	};
 }
-
-export default createPlaygroundComponentInfoCardState;

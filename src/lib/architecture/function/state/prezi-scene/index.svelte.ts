@@ -1,8 +1,8 @@
 import { resolveSemanticZoomNode } from '$stylist/architecture/function/script/resolve-semantic-zoom-node';
 import { RECORD_FRAME } from '$stylist/architecture/const/record/frame/index';
 import { FOCUS_DURATION_MS } from '$stylist/architecture/const/value/prezi-scene/index';
+import type { RecipePreziScene } from '$stylist/architecture/interface/recipe/prezi-scene';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
-import type { PreziSceneContract } from '$stylist/architecture/type/struct/prezi-scene/index';
 import type { PreziCamera } from '$stylist/architecture/interface/slot/prezi-camera/index';
 import type { PreziSceneState } from '$stylist/architecture/interface/recipe/prezi-scene-state/index';
 import type { BehaviorPreziSceneMethods } from '$stylist/architecture/interface/behavior/prezi-scene-methods';
@@ -13,7 +13,7 @@ import type { BehaviorPreziSceneMethods } from '$stylist/architecture/interface/
  * Nodes внутри world-div используют raw position (не трансформированные).
  */
 export function usePreziState(
-	contract: PreziSceneContract
+	contract: RecipePreziScene
 ): PreziSceneState & BehaviorPreziSceneMethods {
 	const {
 		nodes = [],
@@ -60,6 +60,32 @@ export function usePreziState(
 	let animationTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const clampZoom = (z: number) => Math.max(minZoom, Math.min(maxZoom, z));
+	const nodeCamera = $derived({
+		x: 0,
+		y: 0,
+		zoom: 1,
+		depth: camera.depth,
+		viewportWidth,
+		viewportHeight
+	});
+	const worldStyle = $derived.by(
+		() =>
+			`transform: translate(${camera.x}px, ${camera.y}px) scale(${camera.zoom}); --prezi-animation-duration: ${animationDurationMs}ms;`
+	);
+
+	$effect(() => {
+		if (controlledSelectedNodeId === undefined) return;
+
+		if (controlledSelectedNodeId === null) {
+			selectNode(null);
+			return;
+		}
+
+		const node = nodes.find((candidate) => candidate.id === controlledSelectedNodeId) ?? null;
+		if (node) {
+			selectNode(node);
+		}
+	});
 
 	const setCamera = (next: Partial<PreziCamera>) => {
 		camera = { ...camera, ...next };
@@ -69,6 +95,26 @@ export function usePreziState(
 	const setViewportSize = (width: number, height: number) => {
 		viewportWidth = Math.max(1, width);
 		viewportHeight = Math.max(1, height);
+	};
+
+	const viewport = (element: HTMLDivElement) => {
+		const syncViewportSize = () => {
+			setViewportSize(element.clientWidth, element.clientHeight);
+		};
+
+		syncViewportSize();
+
+		const observer = new ResizeObserver(() => {
+			syncViewportSize();
+		});
+
+		observer.observe(element);
+
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
 	};
 
 	const selectNode = (node: SceneNode | null) => {
@@ -135,9 +181,14 @@ export function usePreziState(
 		const factor = event.deltaY < 0 ? 1.12 : 1 / 1.12;
 		const newZoom = clampZoom(camera.zoom * factor);
 
-		if (viewportRect) {
-			const mouseX = event.clientX - viewportRect.left;
-			const mouseY = event.clientY - viewportRect.top;
+		const bounds =
+			viewportRect ??
+			(event.currentTarget as HTMLDivElement | null)?.getBoundingClientRect() ??
+			undefined;
+
+		if (bounds) {
+			const mouseX = event.clientX - bounds.left;
+			const mouseY = event.clientY - bounds.top;
 			const worldX = (mouseX - camera.x) / camera.zoom;
 			const worldY = (mouseY - camera.y) / camera.zoom;
 			setCamera({
@@ -275,14 +326,21 @@ export function usePreziState(
 		get maxZoom() {
 			return maxZoom;
 		},
+		get nodeCamera() {
+			return nodeCamera;
+		},
 		get nodes() {
 			return nodes;
+		},
+		get worldStyle() {
+			return worldStyle;
 		},
 		get restProps() {
 			return restProps;
 		},
 		setCamera,
 		setViewportSize,
+		viewport,
 		selectNode,
 		toggleGrid: () => {
 			showGrid = !showGrid;

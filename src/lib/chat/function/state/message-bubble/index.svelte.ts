@@ -1,29 +1,53 @@
 import type { SlotMessageBubble as IMessageBubbleProps } from '$stylist/chat/interface/slot/message-bubble';
-import { MessageBubbleStyleManager } from '$stylist/chat/class/style-manager/message-bubble';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import { MESSAGE_BUBBLE_WRAPPER_VARIANTS } from '$stylist/chat/const/map/message-bubble-wrapper-variants';
 
 export const createMessageBubbleState = (props: IMessageBubbleProps) => {
 	const containerClasses = $derived(
-		MessageBubbleStyleManager.getContainerClasses(props.align ?? 'left', String(props.class ?? ''))
+		mergeClassNames(
+			'message-bubble-container flex',
+			(props.align ?? 'left') === 'right' ? 'justify-end ml-auto' : 'justify-start mr-auto',
+			String(props.class ?? '')
+		)
 	);
 
 	const wrapperClasses = $derived(
-		MessageBubbleStyleManager.getWrapperClasses(props.align ?? 'left', props.variant ?? 'primary')
+		mergeClassNames(
+			'message-bubble-wrapper relative max-w-xs p-4',
+			(props.variant ?? 'primary') === 'secondary'
+				? MESSAGE_BUBBLE_WRAPPER_VARIANTS.secondary
+				: (props.align ?? 'left') === 'right'
+					? MESSAGE_BUBBLE_WRAPPER_VARIANTS.right
+					: MESSAGE_BUBBLE_WRAPPER_VARIANTS.left
+		)
 	);
 
 	const authorClasses = $derived(
-		MessageBubbleStyleManager.getAuthorClasses(props.align ?? 'left', props.variant ?? 'primary')
+		(props.variant ?? 'primary') === 'secondary'
+			? 'text-sm font-semibold text-center text-[var(--color-text-secondary)]'
+			: (props.align ?? 'left') === 'right'
+				? 'text-sm font-semibold text-[var(--color-primary-100)]'
+				: 'text-sm font-semibold text-[var(--color-text-secondary)]'
 	);
 
 	const messageClasses = $derived(
-		MessageBubbleStyleManager.getMessageClasses(props.align ?? 'left', props.variant ?? 'primary')
+		(props.variant ?? 'primary') === 'secondary'
+			? 'mt-1 text-center text-[var(--color-text-secondary)]'
+			: (props.align ?? 'left') === 'right'
+				? 'mt-1 text-[var(--color-text-inverse)]'
+				: 'mt-1 text-[var(--color-text-primary)]'
 	);
 
 	const timestampClasses = $derived(
-		MessageBubbleStyleManager.getTimestampClasses(props.align ?? 'left', props.variant ?? 'primary')
+		(props.variant ?? 'primary') === 'secondary'
+			? 'text-xs mt-2 text-center text-[var(--color-text-tertiary)]'
+			: (props.align ?? 'left') === 'right'
+				? 'text-xs mt-2 text-[var(--color-primary-100)]'
+				: 'text-xs mt-2 text-[var(--color-text-tertiary)]'
 	);
 
 	const avatarContainerClasses = $derived(
-		MessageBubbleStyleManager.getAvatarContainerClasses(props.align ?? 'left')
+		`flex ${(props.align ?? 'left') === 'left' ? 'mr-3' : 'ml-3'}`
 	);
 
 	const showLeftAvatar = $derived(props.avatar != null && props.align === 'left');

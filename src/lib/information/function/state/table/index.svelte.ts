@@ -1,12 +1,16 @@
-import type { TableRecipe as TableRecipe } from '$stylist/information/interface/recipe/table';
+import type { RecipeTable as RecipeTable } from '$stylist/information/interface/recipe/table';
 import { ObjectManagerTable } from '$stylist/information/class/object-manager/table';
-import { TableStyleManager } from '$stylist/information/class/style-manager/table';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import { TABLE_CLASSES } from '$stylist/information/const/record/table-classes';
 
-export function createTableState(props: TableRecipe) {
+export function createTableState(props: RecipeTable) {
 	const classes = $derived(
-		TableStyleManager.getTableClasses(typeof props.class === 'string' ? props.class : undefined)
+		mergeClassNames(
+			...TABLE_CLASSES.table,
+			typeof props.class === 'string' ? props.class : undefined
+		)
 	);
-	const captionClasses = $derived(TableStyleManager.getCaptionClasses());
+	const captionClasses = $derived(mergeClassNames(...TABLE_CLASSES.caption));
 	const restProps = $derived(ObjectManagerTable.getTableRestProps(props));
 
 	return {

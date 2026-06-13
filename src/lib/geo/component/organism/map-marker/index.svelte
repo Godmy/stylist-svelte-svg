@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createMapMarkerState from '$stylist/geo/function/state/map-marker/index.svelte';
+	import { createMapMarkerState } from '$stylist/geo/function/state/map-marker/index.svelte';
 
 	let props = $props();
 	const state = createMapMarkerState(props);

@@ -1,8 +1,8 @@
-import type { Snippet } from 'svelte';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { SlotDropItem } from '$stylist/file/type/struct/drop-zone/item';
 
-export interface SlotDropZone {
-	children?: Snippet;
+export interface SlotDropZone extends StructIntersectAll<[SlotChildren]> {
 	class?: string;
 	accept?: string;
 	multiple?: boolean;

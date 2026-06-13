@@ -1,7 +1,6 @@
-import { NotificationBadgeStyleManager } from '$stylist/management/class/style-manager/notification-badge';
-import type { NotificationBadgeStateProps } from '$stylist/management/interface/recipe/notification-badge';
+﻿import type { RecipeNotificationBadge } from '$stylist/management/interface/recipe/notification-badge';
 
-export function createNotificationBadgeState(props: NotificationBadgeStateProps) {
+export function createNotificationBadgeState(props: RecipeNotificationBadge) {
 	const count = $derived(props.count ?? 0);
 	const maxCount = $derived(props.maxCount ?? 99);
 	const marker = $derived(props.marker ?? 'number');
@@ -22,11 +21,6 @@ export function createNotificationBadgeState(props: NotificationBadgeStateProps)
 	});
 
 	const shouldShow = $derived(count > 0 || showZero || showDot);
-
-	const containerClasses = $derived(NotificationBadgeStyleManager.getContainerClasses(className));
-	const badgeClasses = $derived(
-		NotificationBadgeStyleManager.getBadgeClasses(marker, appearance, position, badgeClass)
-	);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -72,16 +66,8 @@ export function createNotificationBadgeState(props: NotificationBadgeStateProps)
 		get shouldShow() {
 			return shouldShow;
 		},
-		get containerClasses() {
-			return containerClasses;
-		},
-		get badgeClasses() {
-			return badgeClasses;
-		},
 		get restProps() {
 			return restProps;
 		}
 	};
 }
-
-export default createNotificationBadgeState;

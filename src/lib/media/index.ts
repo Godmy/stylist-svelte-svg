@@ -1,14 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	CanvasImageEditorStyleManager,
-	CountryFlagStyleManager,
-	IconPickerStyleManager,
-	IconStyleManager,
-	ImageGalleryStyleManager,
-	ImageStyleManager,
-	MediaStyleManager,
-	ObjectManagerIconPicker
-} from './class';
+export { ObjectManagerIconPicker } from './class';
 export {
 	AnnouncementBanner,
 	AudioPlayer,
@@ -87,7 +78,6 @@ export type {
 	MediaLibraryProps,
 	MediaType,
 	NodeIconProps,
-	PictureToolbarProps,
 	PictureToolbarTool,
 	PromoBannerProps,
 	PromoBannerVariant,
@@ -98,12 +88,6 @@ export type {
 	VideoPlayerProps
 } from './type';
 export type {
-	AnnouncementBannerRecipe,
-	AudioPlayerRecipe,
-	AudioSliderRecipe,
-	AudioVisualizerRecipe,
-	AvatarRecipe,
-	CanvasImageEditorRecipe,
 	ContractAnnouncementBanner,
 	ContractAudioPlayer,
 	ContractAudioSlider,
@@ -124,17 +108,33 @@ export type {
 	ContractSvg,
 	ContractTeamAvatarStack,
 	ContractVideoPlayer,
-	CountryFlagRecipe,
-	IconChevronRecipe,
-	IconCircleRecipe,
-	IconWrapperRecipe,
 	ImageGalleryStateProps,
-	MediaItemRecipe,
-	PictureToolbarRecipe,
-	PortGroupRecipe,
+	RecipeAnnouncementBanner,
+	RecipeAudioPlayer,
+	RecipeAudioSlider,
+	RecipeAudioVisualizer,
+	RecipeAvatar,
+	RecipeAvatarGroup,
+	RecipeCanvasImageEditor,
+	RecipeCountryFlag,
+	RecipeFavicon,
+	RecipeIconChevron,
+	RecipeIconCircle,
+	RecipeIconWrapper,
+	RecipeImage,
+	RecipeImageGallery,
+	RecipeImageWithCaption,
+	RecipeMediaItem,
+	RecipeMediaLibrary,
+	RecipeNodeIcon,
+	RecipePictureToolbar,
+	RecipePortGroup,
+	RecipePromoBanner,
+	RecipeTeamAvatarStack,
+	RecipeThemeIconPicker,
+	RecipeVideoPlayer,
 	SlotIcon,
 	SlotImageItem,
 	SlotMedia,
-	ThemeIconItem,
-	ThemeIconPickerRecipe
+	ThemeIconItem
 } from './interface';

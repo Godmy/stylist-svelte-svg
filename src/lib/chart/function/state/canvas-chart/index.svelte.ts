@@ -1,8 +1,8 @@
-﻿/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { CanvasChartRecipe } from '$stylist/chart/interface/recipe/canvas-chart';
-import { CanvasChartStyleManager } from '$stylist/chart/class/style-manager/canvas-chart';
+/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+import type { RecipeCanvasChart } from '$stylist/chart/interface/recipe/canvas-chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createCanvasChartState(props: CanvasChartRecipe) {
+export function createCanvasChartState(props: RecipeCanvasChart) {
 	const width = $derived(props.width ?? 800);
 	const height = $derived(props.height ?? 600);
 	const data = $derived(props.data ?? []);
@@ -11,8 +11,8 @@ export function createCanvasChartState(props: CanvasChartRecipe) {
 	const showGrid = $derived(props.showGrid ?? true);
 	const colors = $derived(props.colors ?? ['#3b82f6', '#10b981', '#f59e0b', '#ef4444']);
 
-	const canvasClasses = $derived(CanvasChartStyleManager.getCanvasClasses(props.class));
-	const containerClasses = $derived(CanvasChartStyleManager.getContainerClasses());
+	const canvasClasses = $derived(mergeClassNames('c-canvas-chart__canvas', props.class));
+	const containerClasses = $derived('c-canvas-chart');
 
 	const restProps = $derived.by(() => {
 		const {
@@ -24,6 +24,8 @@ export function createCanvasChartState(props: CanvasChartRecipe) {
 			title: _title,
 			showGrid: _showGrid,
 			colors: _colors,
+			xAxisLabel: _xAxisLabel,
+			yAxisLabel: _yAxisLabel,
 			children: _children,
 			...rest
 		} = props;

@@ -1,17 +1,14 @@
-import { InteractionFeedbackStyleManager } from '$stylist/notification/class/style-manager/interaction-feedback';
-import type { NotificationCenterStateProps } from '$stylist/management/interface/recipe/notification-center';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeNotificationCenter } from '$stylist/management/interface/recipe/notification-center';
 
-export function createNotificationCenterState(props: NotificationCenterStateProps) {
+export function createNotificationCenterState(props: RecipeNotificationCenter) {
 	const notifications = $derived(props.notifications ?? []);
 	const className = $derived(props.class ?? '');
 
 	const unread = $derived(notifications.filter((n: { read?: boolean }) => !n.read).length);
 
 	const containerClasses = $derived(
-		InteractionFeedbackStyleManager.root(
-			'c-notification-center border rounded-lg p-4',
-			className != null ? String(className) : ''
-		)
+		mergeClassNames('c-notification-center border rounded-lg p-4', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -34,5 +31,3 @@ export function createNotificationCenterState(props: NotificationCenterStateProp
 		}
 	};
 }
-
-export default createNotificationCenterState;

@@ -1,13 +1,5 @@
-/**
- * CardWithImage — карточка с изображением..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- *   ICaptionSlot        (information) — caption (Caption)
- *   IMediaSlot        (information) — media (Media)
- *   IBadgeSlot        (information) — badge (Badge)
- *   IIconSlot        (information) — icon (Icon)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
@@ -15,11 +7,18 @@ import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotMedia as IMediaSlot } from '$stylist/media/interface/slot/media';
 import type { Snippet } from 'svelte';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface CardWithImageRecipe
+export interface RecipeCardWithImage
 	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, IMediaSlot, IBadgeSlot, IIconSlot, ThemeAttributes<HTMLDivElement>]
+		[
+			SlotTheme,
+			ILabelSlot,
+			ICaptionSlot,
+			IMediaSlot,
+			IBadgeSlot,
+			IIconSlot,
+			HTMLAttributes<HTMLDivElement>
+		]
 	> {
 	title?: string;
 	subtitle?: string;

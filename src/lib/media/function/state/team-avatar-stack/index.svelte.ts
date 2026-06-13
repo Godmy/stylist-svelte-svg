@@ -1,5 +1,5 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { TeamAvatarStackProps } from '$stylist/media/type/struct/team-avatar-stack/teamavatarstack-props';
+﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { RecipeTeamAvatarStack } from '$stylist/media/interface/recipe/team-avatar-stack';
 
 function getStatusColor(status?: string): string {
 	switch (status) {
@@ -15,7 +15,7 @@ function getStatusColor(status?: string): string {
 }
 
 export function createTeamAvatarStackState(
-	props: TeamAvatarStackProps & InformationHTMLAttributes<HTMLDivElement>
+	props: RecipeTeamAvatarStack & InformationHTMLAttributes<HTMLDivElement>
 ) {
 	const members = $derived(props.members ?? []);
 	const maxVisible = $derived(props.maxVisible ?? 5);
@@ -106,5 +106,3 @@ export function createTeamAvatarStackState(
 		getStatusColor
 	};
 }
-
-export default createTeamAvatarStackState;

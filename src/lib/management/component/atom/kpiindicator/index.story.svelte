@@ -62,11 +62,11 @@
 	tags={['kpi', 'indicator', 'metrics', 'performance']}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
-			<h1 class="mb-4 text-lg font-semibold">KPIIndicator Component</h1>
+		<div class="_c1">
+			<h1 class="_c2">KPIIndicator Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Default KPI Indicator</h2>
+			<div class="_c3">
+				<h2 class="_c4">Default KPI Indicator</h2>
 				<KPIIndicator
 					label={values.label}
 					currentValue={parseInt(values.currentValue as string) || 750}
@@ -79,11 +79,11 @@
 				/>
 			</div>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Different Statuses</h2>
-				<div class="flex flex-wrap gap-4">
+			<div class="_c3">
+				<h2 class="_c4">Different Statuses</h2>
+				<div class="_c5">
 					<div>
-						<h3 class="mb-1 text-sm font-medium">On Track</h3>
+						<h3 class="_c6">On Track</h3>
 						<KPIIndicator
 							label="Revenue"
 							currentValue={850}
@@ -96,7 +96,7 @@
 						/>
 					</div>
 					<div>
-						<h3 class="mb-1 text-sm font-medium">At Risk</h3>
+						<h3 class="_c6">At Risk</h3>
 						<KPIIndicator
 							label="Users"
 							currentValue={250}
@@ -109,7 +109,7 @@
 						/>
 					</div>
 					<div>
-						<h3 class="mb-1 text-sm font-medium">Exceeded</h3>
+						<h3 class="_c6">Exceeded</h3>
 						<KPIIndicator
 							label="Goals"
 							currentValue={1200}
@@ -124,11 +124,11 @@
 				</div>
 			</div>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Different Sizes</h2>
-				<div class="flex items-end gap-6">
+			<div class="_c3">
+				<h2 class="_c4">Different Sizes</h2>
+				<div class="_c7">
 					<div>
-						<h3 class="mb-1 text-sm font-medium">Small</h3>
+						<h3 class="_c6">Small</h3>
 						<KPIIndicator
 							label="Small"
 							currentValue={50}
@@ -141,7 +141,7 @@
 						/>
 					</div>
 					<div>
-						<h3 class="mb-1 text-sm font-medium">Medium</h3>
+						<h3 class="_c6">Medium</h3>
 						<KPIIndicator
 							label="Medium"
 							currentValue={50}
@@ -154,7 +154,7 @@
 						/>
 					</div>
 					<div>
-						<h3 class="mb-1 text-sm font-medium">Large</h3>
+						<h3 class="_c6">Large</h3>
 						<KPIIndicator
 							label="Large"
 							currentValue={50}
@@ -171,3 +171,44 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	._c6 {
+		margin-bottom: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+	._c7 {
+		display: flex;
+		align-items: flex-end;
+		gap: 1.5rem;
+	}
+</style>

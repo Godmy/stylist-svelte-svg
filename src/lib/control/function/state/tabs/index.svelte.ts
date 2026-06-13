@@ -1,17 +1,10 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { SlotTabs as TabsProps } from '$stylist/control/interface/slot/tabs';
+import type { RecipeTabs } from '$stylist/control/interface/recipe/tabs';
 
-export const createTabsState = (props: TabsProps) => {
+export function createTabsState(props: RecipeTabs) {
 	const variant = $derived(props.variant ?? 'default');
 	const size = $derived(props.size ?? 'md');
 	const disabled = $derived(props.disabled ?? false);
-	const classes = $derived(
-		joinClassNames(
-			'inline-flex items-center gap-1',
-			disabled ? 'opacity-[var(--opacity-50)] pointer-events-none' : '',
-			props.class
-		)
-	);
+	const classes = $derived(['c-tabs', props.class].filter(Boolean).join(' '));
 	const tabsId = $derived(Math.random().toString(36).substring(2, 9));
 	let selectedTabId = $state(props.selectedId || '');
 	let tabs = $state<string[]>([]);
@@ -58,6 +51,4 @@ export const createTabsState = (props: TabsProps) => {
 			tabs = tabs.filter((tabId) => tabId !== id);
 		}
 	};
-};
-
-export default createTabsState;
+}

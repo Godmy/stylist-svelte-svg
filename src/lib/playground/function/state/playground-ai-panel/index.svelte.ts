@@ -1,8 +1,6 @@
-import type { PlaygroundAiPanelProps } from '$stylist/playground/type/struct/playground-ai-panel-props';
+﻿import type { RecipePlaygroundAiPanel } from '$stylist/playground/interface/recipe/playground-ai-panel';
 import type { PlaygroundAiPanelAIProvider } from '$stylist/playground/type/struct/playground-ai-panel-ai-provider';
-import { PlaygroundAiPanelStyleManager } from '$stylist/playground/class/style-manager/playground-ai-panel';
-
-export function createPlaygroundAiPanelState(props: PlaygroundAiPanelProps) {
+export function createPlaygroundAiPanelState(props: RecipePlaygroundAiPanel) {
 	const ChevronRight = 'chevron-right';
 	const ChevronDown = 'chevron-down';
 
@@ -11,36 +9,36 @@ export function createPlaygroundAiPanelState(props: PlaygroundAiPanelProps) {
 			id: 'claude',
 			name: 'CLAUDE',
 			options: [
-				{ id: 'new-chat', label: 'Новый чат' },
-				{ id: 'version', label: 'Версия' },
-				{ id: 'settings', label: 'Настройки' }
+				{ id: 'new-chat', label: 'РќРѕРІС‹Р№ С‡Р°С‚' },
+				{ id: 'version', label: 'Р’РµСЂСЃРёСЏ' },
+				{ id: 'settings', label: 'РќР°СЃС‚СЂРѕР№РєРё' }
 			]
 		},
 		{
 			id: 'codex',
 			name: 'CODEX',
 			options: [
-				{ id: 'new-chat', label: 'Новый чат' },
-				{ id: 'version', label: 'Версия' },
-				{ id: 'settings', label: 'Настройки' }
+				{ id: 'new-chat', label: 'РќРѕРІС‹Р№ С‡Р°С‚' },
+				{ id: 'version', label: 'Р’РµСЂСЃРёСЏ' },
+				{ id: 'settings', label: 'РќР°СЃС‚СЂРѕР№РєРё' }
 			]
 		},
 		{
 			id: 'gemini',
 			name: 'GEMINI',
 			options: [
-				{ id: 'new-chat', label: 'Новый чат' },
-				{ id: 'version', label: 'Версия' },
-				{ id: 'settings', label: 'Настройки' }
+				{ id: 'new-chat', label: 'РќРѕРІС‹Р№ С‡Р°С‚' },
+				{ id: 'version', label: 'Р’РµСЂСЃРёСЏ' },
+				{ id: 'settings', label: 'РќР°СЃС‚СЂРѕР№РєРё' }
 			]
 		},
 		{
 			id: 'qwen',
 			name: 'QWEN',
 			options: [
-				{ id: 'new-chat', label: 'Новый чат' },
-				{ id: 'version', label: 'Версия' },
-				{ id: 'settings', label: 'Настройки' }
+				{ id: 'new-chat', label: 'РќРѕРІС‹Р№ С‡Р°С‚' },
+				{ id: 'version', label: 'Р’РµСЂСЃРёСЏ' },
+				{ id: 'settings', label: 'РќР°СЃС‚СЂРѕР№РєРё' }
 			]
 		}
 	];
@@ -50,14 +48,6 @@ export function createPlaygroundAiPanelState(props: PlaygroundAiPanelProps) {
 	const selectedProviderId = $derived(props.selectedProviderId ?? null);
 	const onOptionSelect = $derived(props.onOptionSelect);
 	const onStartChat = $derived(props.onStartChat);
-
-	const containerClass = $derived(PlaygroundAiPanelStyleManager.getContainerClasses());
-	const headerClass = $derived(PlaygroundAiPanelStyleManager.getHeaderClasses());
-	const providerHeaderClass = $derived(PlaygroundAiPanelStyleManager.getProviderHeaderClasses());
-	const optionItemClass = $derived(PlaygroundAiPanelStyleManager.getOptionItemClasses());
-	const selectedOptionItemClass = $derived(
-		PlaygroundAiPanelStyleManager.getSelectedOptionItemClasses()
-	);
 
 	function toggleProvider(providerId: string) {
 		const newExpanded = new Set(expandedProviders);
@@ -129,5 +119,3 @@ export function createPlaygroundAiPanelState(props: PlaygroundAiPanelProps) {
 		isSelected
 	};
 }
-
-export default createPlaygroundAiPanelState;

@@ -1,19 +1,11 @@
-import { LegendItemStyleManager } from '$stylist/management/class/style-manager/legend-item';
-import type { LegendItemStateProps } from '$stylist/management/interface/recipe/legend-item';
+﻿import type { RecipeLegendItem } from '$stylist/management/interface/recipe/legend-item';
 
-export function createLegendItemState(props: LegendItemStateProps) {
+export function createLegendItemState(props: RecipeLegendItem) {
 	const label = $derived(props.label);
 	const type = $derived(props.type);
 	const count = $derived(props.count ?? 0);
 	const variant = $derived(props.variant ?? 'default');
 	const active = $derived(props.active ?? false);
-
-	const itemClasses = $derived(
-		`${LegendItemStyleManager.getBaseClasses()} ${LegendItemStyleManager.getVariantClasses(variant as Parameters<typeof LegendItemStyleManager.getVariantClasses>[0], active, !!props.onClick)}`
-	);
-	const iconClasses = $derived(LegendItemStyleManager.getIconClasses());
-	const labelClasses = $derived(LegendItemStyleManager.getLabelClasses());
-	const countClasses = $derived(LegendItemStyleManager.getCountClasses());
 
 	function getIconName(type: string): string {
 		switch (type) {
@@ -64,19 +56,8 @@ export function createLegendItemState(props: LegendItemStateProps) {
 		get itemClasses() {
 			return itemClasses;
 		},
-		get iconClasses() {
-			return iconClasses;
-		},
-		get labelClasses() {
-			return labelClasses;
-		},
-		get countClasses() {
-			return countClasses;
-		},
 		getIconName,
 		handleClick,
 		handleKeyDown
 	};
 }
-
-export default createLegendItemState;

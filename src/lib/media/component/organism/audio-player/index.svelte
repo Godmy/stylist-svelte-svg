@@ -1,10 +1,10 @@
-<script lang="ts">
-	import createAudioPlayerState from '$stylist/media/function/state/audio-player/index.svelte';
-	import type { AudioPlayerProps } from '$stylist/media/interface/recipe/audio-player-audio-player-props';
+﻿<script lang="ts">
+	import type { RecipeAudioPlayer } from '$stylist/media/interface/recipe/audio-player';
+	import { createAudioPlayerState } from '$stylist/media/function/state/audio-player/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
 
-	let props: AudioPlayerProps = $props();
+	let props: RecipeAudioPlayer = $props();
 	const state = createAudioPlayerState(props);
 </script>
 
@@ -19,14 +19,12 @@
 	></audio>
 
 	{#if state.title}
-		<div class="mb-2 truncate font-medium text-[var(--color-text-primary)]">
-			{state.title}
-		</div>
+		<div class="ap-title">{state.title}</div>
 	{/if}
 
 	{#if state.showControls}
-		<div class={`flex items-center justify-between ${state.controlsClass}`}>
-			<div class="flex items-center space-x-2">
+		<div class={`ap-controls ${state.controlsClass}`}>
+			<div class="ap-controls-left">
 				<Button
 					variant="ghost"
 					size="sm"
@@ -34,9 +32,9 @@
 					aria-label={state.isPlaying ? 'Pause' : 'Play'}
 				>
 					{#if state.isPlaying}
-						<BaseIcon name={state.icons.PAUSE} class="h-5 w-5" />
+						<BaseIcon name={state.icons.PAUSE} style="width:1.25rem;height:1.25rem" />
 					{:else}
-						<BaseIcon name={state.icons.PLAY} class="h-5 w-5" />
+						<BaseIcon name={state.icons.PLAY} style="width:1.25rem;height:1.25rem" />
 					{/if}
 				</Button>
 
@@ -47,31 +45,27 @@
 					aria-label={state.isMuted ? 'Unmute' : 'Mute'}
 				>
 					{#if state.isMuted}
-						<BaseIcon name={state.icons.VOLUME_X} class="h-5 w-5" />
+						<BaseIcon name={state.icons.VOLUME_X} style="width:1.25rem;height:1.25rem" />
 					{:else}
-						<BaseIcon name={state.icons.VOLUME_2} class="h-5 w-5" />
+						<BaseIcon name={state.icons.VOLUME_2} style="width:1.25rem;height:1.25rem" />
 					{/if}
 				</Button>
 			</div>
 
-			<div class="mx-4 flex flex-1 items-center space-x-2">
-				<span class="w-10 text-xs text-[var(--color-text-secondary)]"
-					>{state.formatTime(state.currentTime)}</span
-				>
+			<div class="ap-progress-wrap">
+				<span class="ap-time">{state.formatTime(state.currentTime)}</span>
 				<input
 					type="range"
 					min="0"
 					max={state.duration || 100}
 					value={state.currentTime}
 					oninput={(e) => state.handleProgressChange(e)}
-					class="flex-1 accent-blue-500"
+					class="ap-progress"
 				/>
-				<span class="w-10 text-xs text-[var(--color-text-secondary)]"
-					>{state.formatTime(state.duration)}</span
-				>
+				<span class="ap-time">{state.formatTime(state.duration)}</span>
 			</div>
 
-			<div class="flex items-center space-x-2">
+			<div class="ap-controls-right">
 				<input
 					type="range"
 					min="0"
@@ -79,7 +73,7 @@
 					step="0.01"
 					value={state.volume}
 					oninput={(e) => state.handleVolumeChange(e)}
-					class="w-20 accent-blue-500"
+					class="ap-volume"
 				/>
 				<Button
 					variant="ghost"
@@ -87,9 +81,55 @@
 					onclick={() => state.reloadAudio()}
 					aria-label="Reload audio"
 				>
-					<BaseIcon name={state.icons.ROTATE_CCW} class="h-4 w-4" />
+					<BaseIcon name={state.icons.ROTATE_CCW} style="width:1rem;height:1rem" />
 				</Button>
 			</div>
 		</div>
 	{/if}
 </div>
+
+<style>
+	.ap-title {
+		margin-bottom: 0.5rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	.ap-controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.ap-controls-left {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.ap-progress-wrap {
+		margin: 0 1rem;
+		display: flex;
+		flex: 1;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.ap-time {
+		width: 2.5rem;
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	.ap-progress {
+		flex: 1;
+		accent-color: #3b82f6;
+	}
+	.ap-controls-right {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.ap-volume {
+		width: 5rem;
+		accent-color: #3b82f6;
+	}
+</style>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { CounterRecipe } from '$stylist/information/interface/recipe/counter';
+	import type { RecipeCounter } from '$stylist/information/interface/recipe/counter';
 	import createCounterState from '$stylist/information/function/state/counter/index.svelte';
 
-	let props: CounterRecipe = $props();
+	let props: RecipeCounter = $props();
 
 	const state = createCounterState(props);
 
@@ -24,3 +24,6 @@
 <span class={state.classes} {...restProps}>
 	{state.displayCount}
 </span>
+
+<style>
+</style>

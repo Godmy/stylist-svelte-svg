@@ -1,25 +1,22 @@
 <script lang="ts">
-	import { TreeControlsStyleManager } from '$stylist/control/class/style-manager/tree-controls';
 	import type { FlatTreeProps } from '$stylist/control/type/struct/flat-tree-props';
 	import createTreeExpansionState from '$stylist/control/function/state/tree-expansion/index.svelte';
 	let { nodes = [], class: className = '', ...restProps }: FlatTreeProps = $props();
 	const state = createTreeExpansionState();
+	const rootClass = $derived(['c-flat-tree', className].filter(Boolean).join(' '));
 </script>
 
-<div class={TreeControlsStyleManager.root('c-flat-tree', className)} {...restProps}>
-	<ul class="space-y-1">
+<div class={rootClass} {...restProps}>
+	<ul class="c-tree__list">
 		{#each nodes as node}
 			<li>
-				<button
-					type="button"
-					class="w-full rounded px-2 py-1 text-left hover:bg-[var(--color-background-secondary)]"
-					onclick={() => state.toggle(node.id)}
+				<button type="button" class="c-tree__item-btn" onclick={() => state.toggle(node.id)}
 					>{node.children?.length ? (state.isOpen(node) ? '-' : '+') : ''} {node.label}</button
 				>
 				{#if node.children?.length && state.isOpen(node)}
-					<ul class="mt-1 ml-5 space-y-1">
+					<ul class="c-tree__children">
 						{#each node.children as child}
-							<li class="rounded bg-[var(--color-background-secondary)] px-2 py-1">
+							<li class="c-tree__child-item">
 								{child.label}
 							</li>
 						{/each}
@@ -29,3 +26,51 @@
 		{/each}
 	</ul>
 </div>
+
+<style>
+	.c-flat-tree {
+		display: block;
+	}
+	.c-tree__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.c-tree__item-btn {
+		width: 100%;
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.5rem;
+		text-align: left;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		color: var(--color-text-primary);
+		transition: background-color var(--duration-120, 120ms);
+	}
+	.c-tree__item-btn:hover {
+		background: var(--color-background-secondary);
+	}
+	.c-tree__item-btn:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+	}
+	.c-tree__children {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		list-style: none;
+		margin-top: 0.25rem;
+		margin-left: 1.25rem;
+		padding: 0;
+	}
+	.c-tree__child-item {
+		border-radius: 0.25rem;
+		background: var(--color-background-secondary);
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+	}
+</style>

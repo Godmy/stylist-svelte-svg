@@ -1,9 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	AccountFormsRecipe,
-	FormFooterRecipe,
-	FormHeaderRecipe,
-	InteractionFormsRecipe
+	RecipeAccountForms,
+	RecipeFormFooter,
+	RecipeFormHeader,
+	RecipeInteractionForms
 } from './recipe';
 export type {
 	SlotAccountSettingsForm,

@@ -1,7 +1,7 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { NotificationPreferencesProps } from '$stylist/chat/type/struct/notification-preferences-props';
 
-export interface NotificationPreferencesStateProps
+export interface RecipeNotificationPreferences
 	extends StructIntersectAll<[NotificationPreferencesProps]> {
 	email?: boolean;
 	push?: boolean;

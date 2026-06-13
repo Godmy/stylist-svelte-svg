@@ -17,7 +17,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<table class="w-full border-collapse rounded-xl border border-[--color-border-primary]">
+		<table class="_c1 border-collapse">
 			<tbody>
 				<AnimatedExpandableTableRow
 					expanded={values.expanded}
@@ -25,16 +25,35 @@
 					colspan={values.colspan}
 				>
 					{#snippet children()}
-						<td class="px-4 py-3">INV-1042</td>
-						<td class="px-4 py-3">Paid</td>
+						<td class="_c2">INV-1042</td>
+						<td class="_c2">Paid</td>
 					{/snippet}
 					{#snippet details()}
-						<div class="text-sm text-[--color-text-secondary]">
-							Paid via corporate card on 2026-02-20.
-						</div>
+						<div class="_c3">Paid via corporate card on 2026-02-20.</div>
 					{/snippet}
 				</AnimatedExpandableTableRow>
 			</tbody>
 		</table>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c2 {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

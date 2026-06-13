@@ -7,55 +7,62 @@
 </script>
 
 <button
-	class="tool-button"
-	class:active={state.active}
+	class="c-tool-button"
+	data-active={state.active || undefined}
 	aria-pressed={state.active}
 	aria-label={state.label ?? state.tool}
 	title={state.label ?? state.tool}
 	onclick={state.handleClick}
 >
-	<span class="icon">{state.icon}</span>
+	<span class="c-tool-button__icon">{state.icon}</span>
 	{#if state.label}
-		<span class="label">{state.label}</span>
+		<span class="c-tool-button__label">{state.label}</span>
 	{/if}
 </button>
 
 <style>
-	.tool-button {
-		display: flex;
+	.c-tool-button {
+		display: inline-flex;
 		align-items: center;
-		gap: 8px;
-		padding: 8px 12px;
+		justify-content: center;
+		flex-shrink: 0;
+		gap: 0.5rem;
+		padding: 0.5rem 0.75rem;
 		border: 1px solid transparent;
-		background: var(--color-surface-primary, #ffffff);
-		color: var(--color-text-primary, #333);
-		border-radius: var(--radius-md, 8px);
+		background: transparent;
+		color: var(--color-text-primary);
 		cursor: pointer;
-		transition: all 150ms var(--easing-standard, ease);
-		font-size: 14px;
+		transition: background-color var(--duration-120, 120ms);
+		border-radius: 0.375rem;
+		font-size: 0.875rem;
 	}
 
-	.tool-button:hover {
-		background: var(--color-surface-secondary, #f5f5f5);
+	.c-tool-button:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
 	}
 
-	.tool-button:active {
-		background: var(--color-surface-tertiary, #e0e0e0);
+	.c-tool-button:hover:not([data-disabled]) {
+		background: var(--color-background-secondary);
 	}
 
-	.tool-button.active {
-		background: var(--color-primary-container, #e3f2fd);
-		color: var(--color-on-primary-container, #0d47a1);
-		border-color: var(--color-primary, #1976d2);
+	.c-tool-button[data-active] {
+		background: var(--color-primary-600);
+		color: var(--color-text-inverse);
 	}
 
-	.icon {
-		font-size: 18px;
+	.c-tool-button[data-active]:hover {
+		background: var(--color-primary-700);
+	}
+
+	.c-tool-button__icon {
+		display: inline-flex;
+		font-size: 1.125rem;
 		line-height: 1;
 	}
 
-	.label {
-		font-size: 12px;
+	.c-tool-button__label {
+		font-size: 0.75rem;
 		font-weight: 500;
 	}
 </style>

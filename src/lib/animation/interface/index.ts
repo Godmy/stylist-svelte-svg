@@ -1,11 +1,19 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
 	BehaviorAnimate,
+	BehaviorMotion,
 	BehaviorMotionPreset,
-	BehaviorMotionToken,
+	BehaviorTransform,
 	BehaviorTransformable
 } from './behavior';
-export type { AnimatedNumberRecipe, NumberFlowRecipe } from './recipe';
+export type {
+	RecipeAnimated,
+	RecipeAnimatedBackground,
+	RecipeAnimatedNumber,
+	RecipeLayoutTransformation,
+	RecipeNumberFlow,
+	RecipeTransformable
+} from './recipe';
 export type {
 	AnimateValueOptions,
 	SlotAnimate,

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ThemeAdvancedColorPickerRecipe } from '$stylist/color/interface/recipe/advanced-color-picker';
+	import type { RecipeThemeAdvancedColorPicker } from '$stylist/color/interface/recipe/advanced-color-picker';
 	import createAdvancedColorPickerState from '$stylist/color/function/state/advanced-color-picker/index.svelte';
 
-	let props: ThemeAdvancedColorPickerRecipe = $props();
+	let props: RecipeThemeAdvancedColorPicker = $props();
 	const state = createAdvancedColorPickerState(props);
 </script>
 

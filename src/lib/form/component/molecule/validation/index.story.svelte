@@ -37,19 +37,43 @@
 	description="Form field group component with label, description, and error support"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-8">
+		<div class="_c1">
 			<FormFieldGroup
 				label={controlValues.label}
 				description={controlValues.description}
 				required={controlValues.required}
 				error={controlValues.error}
 			>
-				<input
-					type="email"
-					placeholder="email@example.com"
-					class="mt-1 block w-full rounded-md border border-[var(--color-border-primary)] p-2 shadow-sm focus:border-[var(--color-primary-500)] focus:ring-indigo-500 sm:text-sm"
-				/>
+				<input type="email" placeholder="email@example.com" class="_c2 _c1" />
 			</FormFieldGroup>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 2rem;
+	}
+	._c2 {
+		margin-top: 0.25rem;
+		display: block;
+		width: 100%;
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	@media (min-width: 640px) {
+		._c2 {
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+		}
+	}
+
+	._c1:focus {
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 3px var(--color-indigo-500);
+	}
+</style>

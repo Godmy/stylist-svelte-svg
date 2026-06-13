@@ -4,16 +4,3 @@ export {
 	ObjectManagerGesture,
 	ObjectManagerSearchBar
 } from './object-manager';
-export {
-	AccountSettingsStyleManager,
-	ClickableStyleManager,
-	DraggableStyleManager,
-	FocusableStyleManager,
-	HoverableStyleManager,
-	IndicatorsStyleManager,
-	InteractionStyleManager,
-	SecuritySettingsStyleManager,
-	SettingsStyleManager,
-	TabStyleManager,
-	ToggleStyleManager
-} from './style-manager';

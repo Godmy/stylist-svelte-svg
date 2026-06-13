@@ -2,9 +2,9 @@ import type { SlotGeoJsonLayer as GeoJsonLayer } from '$stylist/geo/interface/sl
 import type { SlotMapView as MapView } from '$stylist/geo/interface/slot/map-view';
 import type { SlotGeoJsonFeature as GeoJsonFeature } from '$stylist/geo/interface/slot/geo-json-feature';
 import type { SlotGeoJsonFeatureCollection as GeoJsonFeatureCollection } from '$stylist/geo/interface/slot/geo-json-feature-collection';
-import { GeoJSONViewerStyleManager } from '$stylist/geo/class/style-manager/geo-jsonviewer';
 import type { GeoJSONViewerStateProps } from '$stylist/geo/interface/recipe/geo-jsonviewer-state-props';
 import { untrack } from 'svelte';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createGeoJSONViewerState(props: GeoJSONViewerStateProps) {
 	// Props with defaults
@@ -75,41 +75,26 @@ export function createGeoJSONViewerState(props: GeoJSONViewerStateProps) {
 	});
 
 	// Computed
-	const hostClasses = $derived(
-		GeoJSONViewerStyleManager.getHostClasses({ class: props.class ?? '', ...restProps })
-	);
+	const hostClasses = $derived(mergeClassNames('c-geo-jsonviewer', props.class ?? ''));
 	const mapContainerClasses = $derived(
-		GeoJSONViewerStyleManager.getMapContainerClasses({
-			mapClass: props.mapClass ?? '',
-			...restProps
-		})
+		mergeClassNames('c-geo-jsonviewer__map', props.mapClass ?? '')
 	);
-	const mapContainerStyles = $derived(GeoJSONViewerStyleManager.getMapContainerStyles());
-	const layersPanelClasses = $derived(GeoJSONViewerStyleManager.getLayersPanelClasses());
-	const layersPanelStyles = $derived(GeoJSONViewerStyleManager.getLayersPanelStyles());
-	const fileUploadButtonClasses = $derived(GeoJSONViewerStyleManager.getFileUploadButtonClasses());
-	const fileUploadButtonStyles = $derived(GeoJSONViewerStyleManager.getFileUploadButtonStyles());
-	const fileUploadButtonHoverClasses = $derived(
-		GeoJSONViewerStyleManager.getFileUploadButtonClasses()
-	);
-	const fileUploadButtonHoverStyles = $derived(
-		GeoJSONViewerStyleManager.getFileUploadButtonHoverStyles()
-	);
-	const layerControlItemClasses = $derived(GeoJSONViewerStyleManager.getLayerControlItemClasses());
-	const layerControlItemStyles = $derived(GeoJSONViewerStyleManager.getLayerControlItemStyles());
-	const layerVisibilityCheckboxClasses = $derived(
-		GeoJSONViewerStyleManager.getLayerVisibilityCheckboxClasses()
-	);
-	const layerVisibilityCheckboxStyles = $derived(
-		GeoJSONViewerStyleManager.getLayerVisibilityCheckboxStyles()
-	);
-	const layerOpacitySliderClasses = $derived(
-		GeoJSONViewerStyleManager.getLayerOpacitySliderClasses()
-	);
-	const svgClasses = $derived(GeoJSONViewerStyleManager.getSvgClasses());
-	const geometryElementClasses = $derived(GeoJSONViewerStyleManager.getGeometryElementClasses());
-	const featureInfoPanelClasses = $derived(GeoJSONViewerStyleManager.getFeatureInfoPanelClasses());
-	const featureInfoPanelStyles = $derived(GeoJSONViewerStyleManager.getFeatureInfoPanelStyles());
+	const mapContainerStyles = $derived('');
+	const layersPanelClasses = $derived('c-geo-jsonviewer__layers-panel');
+	const layersPanelStyles = $derived('');
+	const fileUploadButtonClasses = $derived('c-geo-jsonviewer__upload-btn');
+	const fileUploadButtonStyles = $derived('');
+	const fileUploadButtonHoverClasses = $derived('c-geo-jsonviewer__upload-btn');
+	const fileUploadButtonHoverStyles = $derived('');
+	const layerControlItemClasses = $derived('c-geo-jsonviewer__layer-item');
+	const layerControlItemStyles = $derived('');
+	const layerVisibilityCheckboxClasses = $derived('c-geo-jsonviewer__layer-checkbox');
+	const layerVisibilityCheckboxStyles = $derived('accent-color: var(--color-primary-600);');
+	const layerOpacitySliderClasses = $derived('c-geo-jsonviewer__layer-slider');
+	const svgClasses = $derived('c-geo-jsonviewer__svg');
+	const geometryElementClasses = $derived('c-geo-jsonviewer__geometry');
+	const featureInfoPanelClasses = $derived('c-geo-jsonviewer__feature-panel');
+	const featureInfoPanelStyles = $derived('');
 
 	// Methods
 	function handleMapClick(e: MouseEvent): void {
@@ -211,15 +196,15 @@ export function createGeoJSONViewerState(props: GeoJSONViewerStateProps) {
 	}
 
 	function getPointStyles(color: string, opacity: number): string {
-		return GeoJSONViewerStyleManager.getPointStyles(color, opacity);
+		return `fill: ${color}; fill-opacity: ${opacity};`;
 	}
 
 	function getPolygonStyles(color: string, opacity: number): string {
-		return GeoJSONViewerStyleManager.getPolygonStyles(color, opacity);
+		return `fill: ${color}; fill-opacity: ${opacity * 0.5}; stroke: ${color}; stroke-opacity: ${opacity}; stroke-width: 1;`;
 	}
 
 	function getLineStringStyles(color: string, opacity: number): string {
-		return GeoJSONViewerStyleManager.getLineStringStyles(color, opacity);
+		return `stroke: ${color}; stroke-opacity: ${opacity}; stroke-width: 2;`;
 	}
 
 	function handleKeyDown(e: KeyboardEvent, fn: () => void): void {

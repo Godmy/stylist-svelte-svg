@@ -1,7 +1,7 @@
-import type { PropsEditorProps } from '$stylist/playground/type/struct/props-editor-props';
+﻿import type { RecipePropsEditor } from '$stylist/playground/interface/recipe/props-editor';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createPropsEditorState(props: PropsEditorProps) {
+export function createPropsEditorState(props: RecipePropsEditor) {
 	let internalPropValues = $state<Record<string, unknown>>({ ...(props.propValues ?? {}) });
 	$effect(() => {
 		internalPropValues = { ...(props.propValues ?? {}) };
@@ -24,5 +24,3 @@ export function createPropsEditorState(props: PropsEditorProps) {
 		handlePropChange
 	};
 }
-
-export default createPropsEditorState;

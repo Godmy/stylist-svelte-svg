@@ -1,20 +1,22 @@
+﻿import type { SlotDownloadCard as Slot } from '$stylist/file/interface/slot/download-card';
+import type { SlotDownloadCard as SlotDownloadCard } from '$stylist/file/interface/slot/download-card';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import type { ContractFileMetadata } from '$stylist/file/interface/contract/file-metadata';
 
-export interface RecipeDownloadCard extends StructIntersectAll<[]> {
-	/** Метаданные файла */
+export interface RecipeDownloadCard extends StructIntersectAll<[Slot, SlotDownloadCard]> {
+	/** РњРµС‚Р°РґР°РЅРЅС‹Рµ С„Р°Р№Р»Р° */
 	file: ContractFileMetadata;
-	/** Вариант оформления */
+	/** Р’Р°СЂРёР°РЅС‚ РѕС„РѕСЂРјР»РµРЅРёСЏ */
 	variant?: TokenAppearance;
-	/** URL для скачивания файла */
+	/** URL РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ С„Р°Р№Р»Р° */
 	downloadUrl: string;
-	/** Альтернативный текст для иконки файла */
+	/** РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Р№ С‚РµРєСЃС‚ РґР»СЏ РёРєРѕРЅРєРё С„Р°Р№Р»Р° */
 	iconAlt?: string;
-	/** Показывать ли метаданные файла */
+	/** РџРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё РјРµС‚Р°РґР°РЅРЅС‹Рµ С„Р°Р№Р»Р° */
 	showMetadata?: boolean;
-	/** Пользовательская иконка для файла */
+	/** РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РёРєРѕРЅРєР° РґР»СЏ С„Р°Р№Р»Р° */
 	icon?: string;
-	/** Дополнительные CSS классы */
+	/** Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ CSS РєР»Р°СЃСЃС‹ */
 	class?: string;
 }

@@ -35,9 +35,9 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3">
-			<table class="min-w-full border-collapse rounded-xl border border-[--color-border-primary]">
-				<thead class="bg-[--color-background-secondary]">
+		<div class="_c1">
+			<table class="_c2 border-collapse">
+				<thead class="_c3">
 					<tr>
 						<SortableTableHeader
 							title={values.title}
@@ -51,9 +51,30 @@
 					</tr>
 				</thead>
 			</table>
-			<p class="text-sm text-[--color-text-secondary]">
+			<p class="_c4">
 				Active sort: {currentSortKey} ({currentSortDirection ?? 'none'})
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		min-width: 100%;
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c3 {
+		background-color: var(--color-background-secondary);
+	}
+	._c4 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

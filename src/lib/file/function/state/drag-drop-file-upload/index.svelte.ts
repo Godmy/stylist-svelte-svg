@@ -1,4 +1,4 @@
-import type { Props } from '$stylist/file/type/struct/drag-drop-file-upload/props';
+﻿import type { Props } from '$stylist/file/type/struct/drag-drop-file-upload/props';
 import type { FileType } from '$stylist/file/type/struct/drag-drop-file-upload/file-type';
 import { formatFileSize } from '$stylist/file/function/script/drag-drop-file-upload-format-file-size';
 import { handleDrop as handleDropFn } from '$stylist/file/function/script/drag-drop-file-upload-handle-drop';
@@ -154,5 +154,3 @@ export function createDragDropFileUploadState(props: Props) {
 		triggerFileInput
 	};
 }
-
-export default createDragDropFileUploadState;

@@ -21,17 +21,31 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3 p-6">
+		<div class="_c1">
 			<ProductSearch
 				placeholder={values.placeholder}
 				{suggestions}
 				onSearch={(value) => (query = value)}
 				onSuggestionSelect={(value) => (picked = value)}
 			/>
-			<p class="text-sm text-[var(--color-text-secondary)]">Search query: {query || 'none'}</p>
-			<p class="text-sm text-[var(--color-text-secondary)]">
+			<p class="_c2">Search query: {query || 'none'}</p>
+			<p class="_c2">
 				Suggestion picked: {picked || 'none'}
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

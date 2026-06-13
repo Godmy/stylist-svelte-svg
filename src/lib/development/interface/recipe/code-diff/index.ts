@@ -1,20 +1,4 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { SlotCodeDiff } from '$stylist/development/interface/slot/code-diff';
 
-export interface RecipeCodeDiff
-	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>]> {
-	/** Original code */
-	original?: string;
-	/** Modified code */
-	modified?: string;
-	/** Programming language */
-	language?: string;
-	/** Show line numbers */
-	showLineNumbers?: boolean;
-	/** Additional CSS class */
-	class?: string;
-	/** Content CSS class */
-	contentClass?: string;
-	/** Header CSS class */
-	headerClass?: string;
-}
+export interface RecipeCodeDiff extends StructIntersectAll<[SlotCodeDiff]> {}

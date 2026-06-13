@@ -239,7 +239,7 @@
 				<span>same anchors, different route geometry</span>
 			</div>
 
-			<div class="grid gap-3">
+			<div class="_c1">
 				{#each [{ id: 'straight', label: 'Straight', type: 'straight', color: '#334155' }, { id: 'curve', label: 'Curve', type: 'curve', color: '#2563eb' }, { id: 'polyline', label: 'Polyline', type: 'polyline', color: '#0f766e' }] as item}
 					<div class="variant-track">
 						<div class="variant-copy">
@@ -380,5 +380,10 @@
 	}
 	.variant-anchor-end {
 		right: 8px;
+	}
+
+	._c1 {
+		display: grid;
+		gap: 0.75rem;
 	}
 </style>

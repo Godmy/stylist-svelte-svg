@@ -2,7 +2,6 @@
 export type { CameraState } from './camera';
 export type { SceneCameraInput } from './camera-input';
 export type { StructIntersectAll } from './intersect-all';
-export type { ArchitectureHTMLAttributes } from './item-architecture-html-attributes';
 export type { Position2D } from './position2d';
 export type { PresentationMode } from './presentation-mode';
 export type { PresenterNodeShellProps } from './presenter-node-shell';

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { TableCellRecipe as TableCellRecipe } from '$stylist/information/interface/recipe/table-cell';
+	import type { RecipeTableCell as RecipeTableCell } from '$stylist/information/interface/recipe/table-cell';
 	import createTableCellState from '$stylist/information/function/state/table-cell/index.svelte';
 
-	let props: TableCellRecipe = $props();
+	let props: RecipeTableCell = $props();
 	const state = createTableCellState(props);
 </script>
 
@@ -19,3 +19,6 @@
 		{/if}
 	</td>
 {/if}
+
+<style>
+</style>

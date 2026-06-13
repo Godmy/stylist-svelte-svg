@@ -29,7 +29,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-4 p-8">
+		<div class="_c1">
 			<Combobox
 				id="demo-combobox"
 				label="Sample Combobox"
@@ -47,3 +47,12 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 2rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+</style>

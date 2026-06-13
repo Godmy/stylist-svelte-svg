@@ -2,7 +2,7 @@ import { LITEGRAPH_CANVAS_ICONS } from '$stylist/science/const/record/litegraph-
 import type { RecipeLitegraphCanvas as LitegraphCanvasContract } from '$stylist/science/interface/recipe/litegraph-canvas';
 import type { SlotGraphToolbarItem as GraphToolbarItem } from '$stylist/science/interface/slot/graph-toolbar-item';
 import type { ContractLitegraphPort as LitegraphPort } from '$stylist/science/interface/contract/litegraph-port';
-import type { GraphCanvasRecipe } from '$stylist/science/interface/recipe/graph-canvas';
+import type { RecipeGraphCanvas } from '$stylist/science/interface/recipe/graph-canvas';
 import type { LiteGraphPort as LitegraphPortRecipe } from '$stylist/science/type/struct/litegraph-port';
 import type { LitegraphCanvasNodeAddPayload } from '$stylist/science/type/struct/litegraph-canvas-node-add-payload';
 
@@ -315,7 +315,7 @@ export function createLitegraphCanvasState(props: LitegraphCanvasContract) {
 	const effectivePanMode = $derived<'drag' | 'space'>(
 		activeTool === 'pan' ? 'drag' : (props.panMode ?? 'drag')
 	);
-	const effectiveGridMode = $derived<GraphCanvasRecipe['gridMode']>(
+	const effectiveGridMode = $derived<RecipeGraphCanvas['gridMode']>(
 		props.gridMode === 'none' ||
 			props.gridMode === 'dots' ||
 			props.gridMode === 'lines' ||

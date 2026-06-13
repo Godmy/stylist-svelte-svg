@@ -1,4 +1,3 @@
-import { StackedLayoutStyleManager } from '$stylist/layout/class/style-manager/stacked-layout';
 import type { StackedLayoutDirection } from '$stylist/layout/type/enum/stacked-layout-direction';
 import type { StackedLayoutGap } from '$stylist/layout/type/enum/stacked-layout-gap';
 import type { StackedLayoutProps } from '$stylist/layout/interface/recipe/stacked-layout';
@@ -11,9 +10,6 @@ export function createStackedLayoutState(props: StackedLayoutProps) {
 	);
 	const justifyContent = $derived<'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'>(
 		props.justifyContent ?? 'start'
-	);
-	const classes = $derived(
-		StackedLayoutStyleManager.getHostClass(direction, gap, alignItems, justifyContent, props.class)
 	);
 
 	const restProps = $derived.by(() => {
@@ -41,9 +37,6 @@ export function createStackedLayoutState(props: StackedLayoutProps) {
 		},
 		get justifyContent() {
 			return justifyContent;
-		},
-		get classes() {
-			return classes;
 		},
 		get restProps() {
 			return restProps;

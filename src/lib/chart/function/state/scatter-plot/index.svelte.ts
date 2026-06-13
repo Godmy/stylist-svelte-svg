@@ -1,5 +1,5 @@
-import type { ScatterPlotRecipe } from '$stylist/chart/interface/recipe/scatter-plot';
-type ScatterPlotStateProps = ScatterPlotRecipe & {
+import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
+type ScatterPlotStateProps = RecipeScatterPlot & {
 	width?: number;
 	height?: number;
 	class?: string;

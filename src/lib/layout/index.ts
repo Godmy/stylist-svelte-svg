@@ -1,28 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	CardStyleManager,
-	CenteredLayoutStyleManager,
-	ContainerQueryStyleManager,
-	GradientBackgroundStyleManager,
-	GridMoleculeStyleManager,
-	GridStyleManager,
-	InteractiveStyleManager,
-	LayoutStyleManager,
-	ObjectManagerBackground,
-	ObjectManagerGradientBackground,
-	OverlayLayoutStyleManager,
-	PopoverStyleManager,
-	SeparatorStyleManager,
-	SidebarLayoutStyleManager,
-	SplitLayoutStyleManager,
-	StackStyleManager,
-	StackedLayoutStyleManager,
-	StickyLayoutStyleManager,
-	StyleManagerBackground,
-	StyleManagerThemeSurface,
-	VerticalLayoutStyleManager,
-	WidgetContainerStyleManager
-} from './class';
+export { ObjectManagerBackground, ObjectManagerGradientBackground } from './class';
 export {
 	AnimatedExpandableTableRow,
 	AspectRatio,
@@ -252,12 +229,12 @@ export type {
 	BehaviorSizable,
 	BehaviorSized,
 	BehaviorSpaced,
-	BorderRecipe,
-	CardRecipe,
 	NodeDotProps,
 	PopoverProps,
-	StackedLayoutProps,
-	ThemeBackgroundRecipe,
-	ThemeGradientBackgroundRecipe,
-	ThemeSurfaceRecipe
+	RecipeBorder,
+	RecipeCard,
+	RecipeThemeBackground,
+	RecipeThemeGradientBackground,
+	RecipeThemeSurface,
+	StackedLayoutProps
 } from './interface';

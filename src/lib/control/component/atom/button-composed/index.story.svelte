@@ -27,7 +27,7 @@
 	description="Composed control button with icon, badge, focus, and click behaviors."
 >
 	{#snippet children(values: any)}
-		<div class="grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+		<div class="_c1">
 			<ButtonComposed
 				label={values.label as string}
 				variant={values.variant as any}
@@ -47,7 +47,25 @@
 					eventLog = 'blur';
 				}}
 			/>
-			<p class="text-sm text-slate-500">Last event: {eventLog}</p>
+			<p class="_c2">Last event: {eventLog}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #f8fafc;
+		padding: 1.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

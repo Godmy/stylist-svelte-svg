@@ -24,6 +24,28 @@
 	);
 </script>
 
-<div {...restProps} id={panelId} role="tabpanel" aria-labelledby={tabId} class={state.classes}>
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div
+	{...restProps}
+	id={panelId}
+	role="tabpanel"
+	aria-labelledby={tabId}
+	class="c-tab-panel"
+	data-selected={state.isSelected ? '' : undefined}
+	data-disabled={state.disabled ? '' : undefined}
+>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-tab-panel {
+		display: none;
+	}
+
+	.c-tab-panel[data-selected] {
+		display: block;
+	}
+
+	.c-tab-panel[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+	}
+</style>

@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export interface RecipeToggleBaseProps extends StructIntersectAll<[]> {

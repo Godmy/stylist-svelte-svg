@@ -1,15 +1,32 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeNotificationList } from '$stylist/management/interface/recipe/notification-list';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import createNotificationListState from '$stylist/management/function/state/notification-list/index.svelte';
-	import type { NotificationListProps } from '$stylist/chat/type/struct/notification-list-props';
+	import { createNotificationListState } from '$stylist/management/function/state/notification-list/index.svelte';
 
-	let props: NotificationListProps = $props();
+	let props: RecipeNotificationList = $props();
 	const state = createNotificationListState(props);
 </script>
 
 <div class={state.containerClasses} {...state.restProps as HTMLAttributes<HTMLDivElement>}>
-	{#each state.notifications as n}<div class="rounded border p-2">
-			<div class="font-medium">{n.title}</div>
-			{#if n.message}<div class="text-sm text-[var(--color-text-secondary)]">{n.message}</div>{/if}
+	{#each state.notifications as n}<div class="_c1">
+			<div class="_c2">{n.title}</div>
+			{#if n.message}<div class="_c3">{n.message}</div>{/if}
 		</div>{/each}
 </div>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.5rem;
+	}
+	._c2 {
+		font-weight: 500;
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

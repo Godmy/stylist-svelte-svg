@@ -1,8 +1,8 @@
-﻿import { PieChartStyleManager } from '$stylist/chart/class/style-manager/pie-chart';
 import { ObjectManagerPieChart } from '$stylist/chart/class/object-manager/pie-chart';
-import type { PieChartRecipe } from '$stylist/chart/interface/recipe/pie-chart';
+import type { RecipePieChart } from '$stylist/chart/interface/recipe/pie-chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createPieChartState(props: PieChartRecipe) {
+export function createPieChartState(props: RecipePieChart) {
 	const data = $derived((props as any).data ?? []);
 	const width = $derived((props as any).width ?? 200);
 	const height = $derived((props as any).height ?? 200);
@@ -11,11 +11,11 @@ export function createPieChartState(props: PieChartRecipe) {
 	const resolvedColors = $derived(ObjectManagerPieChart.resolveColors(colors));
 	const total = $derived(ObjectManagerPieChart.resolveTotal(data));
 	const segments = $derived(ObjectManagerPieChart.resolveSegments(data, total, resolvedColors));
-	const containerClasses = $derived(PieChartStyleManager.getContainerClasses(classNameStr));
-	const legendClasses = $derived(PieChartStyleManager.getLegendClasses());
-	const legendItemClasses = $derived(PieChartStyleManager.getLegendItemClasses());
-	const legendSwatchClasses = $derived(PieChartStyleManager.getLegendSwatchClasses());
-	const legendTextClasses = $derived(PieChartStyleManager.getLegendTextClasses());
+	const containerClasses = $derived(mergeClassNames('c-pie-chart', classNameStr));
+	const legendClasses = $derived('c-pie-chart__legend');
+	const legendItemClasses = $derived('c-pie-chart__legend-item');
+	const legendSwatchClasses = $derived('c-pie-chart__legend-swatch');
+	const legendTextClasses = $derived('c-pie-chart__legend-text');
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,

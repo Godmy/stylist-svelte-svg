@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Idef0PortLabelRecipe as Idef0PortLabelProps } from '$stylist/science/interface/recipe/idef0-port-label';
+	import type { RecipeIdef0PortLabel as Idef0PortLabelProps } from '$stylist/science/interface/recipe/idef0-port-label';
 	import createIdef0PortLabelState from '$stylist/science/function/state/idef0-port-label/index.svelte';
 
 	let props: Idef0PortLabelProps = $props();
@@ -15,3 +15,11 @@
 >
 	{props.text}
 </text>
+
+<style>
+	:global(.idef0-port-label) {
+		fill: var(--color-text-secondary);
+		font-size: 0.75rem;
+		font-weight: var(--font-weight-medium, 500);
+	}
+</style>

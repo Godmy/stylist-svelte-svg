@@ -1,7 +1,7 @@
-<script lang="ts">
-	import createPlaygroundDrawingOverlayState from '$stylist/playground/function/state/playground-drawing-overlay/index.svelte';
-	import type { PlaygroundDrawingOverlayProps } from '$stylist/playground/type/struct/playground-drawing-overlay-props';
-	let props: PlaygroundDrawingOverlayProps = $props();
+﻿<script lang="ts">
+	import type { RecipePlaygroundDrawingOverlay } from '$stylist/playground/interface/recipe/playground-drawing-overlay';
+	import { createPlaygroundDrawingOverlayState } from '$stylist/playground/function/state/playground-drawing-overlay/index.svelte';
+	let props: RecipePlaygroundDrawingOverlay = $props();
 	const state = createPlaygroundDrawingOverlayState(props);
 </script>
 

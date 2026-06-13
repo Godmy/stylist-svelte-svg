@@ -6,13 +6,13 @@
 	const state = createDatePickerState(props);
 </script>
 
-<div class="relative inline-block">
+<div class="date-picker">
 	<input
 		type="text"
 		readonly
 		value={state.displayValue}
 		placeholder={state.placeholder}
-		class="rounded-md border border-[var(--color-border-primary)] px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+		class="date-picker__input"
 		onclick={state.openPicker}
 		disabled={state.disabled}
 		{...props}
@@ -25,8 +25,39 @@
 			onchange={state.handleDateChange}
 			min={state.minValue}
 			max={state.maxValue}
-			class="absolute top-full left-0 z-[var(--z-index-docked)] mt-1 rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-2 shadow-lg"
+			class="date-picker__calendar"
 			style="width: fit-content;"
 		/>
 	{/if}
 </div>
+
+<style>
+	.date-picker {
+		position: relative;
+		display: inline-block;
+	}
+
+	.date-picker__input {
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 0.75rem;
+	}
+
+	.date-picker__input:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-200);
+	}
+
+	.date-picker__calendar {
+		position: absolute;
+		inset-block-start: 100%;
+		inset-inline-start: 0;
+		z-index: var(--z-index-docked);
+		margin-block-start: 0.25rem;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.5rem;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+</style>

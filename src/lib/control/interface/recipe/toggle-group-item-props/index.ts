@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { HTMLButtonAttributes } from 'svelte/elements';
 
 export interface RecipeToggleGroupItemProps

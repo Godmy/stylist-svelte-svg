@@ -28,7 +28,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-xl">
+		<div class="_c1">
 			<Toast type={values.type} visible={values.visible} duration={values.duration}>
 				{#snippet title()}
 					{values.titleText}
@@ -40,3 +40,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 36rem;
+	}
+</style>

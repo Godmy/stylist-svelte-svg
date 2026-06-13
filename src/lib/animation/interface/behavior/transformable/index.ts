@@ -1,16 +1,24 @@
-import type { TransformContract } from '$stylist/animation/type/struct/motion/transform-contract';
+import type { TokenAnimation } from '$stylist/animation/type/enum/animation';
+import type { TokenDuration } from '$stylist/animation/type/enum/duration';
+import type { TokenEasing } from '$stylist/animation/type/enum/easing';
 
-/**
- * Прото-интерфейс для transformable элементов
- * Расширяет TransformContract дополнительными свойствами
- */
-export interface BehaviorTransformable extends Partial<TransformContract> {
-	/** Анимировать при наведении */
+export interface BehaviorTransformable {
+	animation?: TokenAnimation;
+	duration?: TokenDuration;
+	easing?: TokenEasing;
+	delay?: number;
+	infinite?: boolean;
+	direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+	iterations?: number | 'infinite';
+	scale?: number;
+	rotate?: number;
+	translateX?: number;
+	translateY?: number;
+	skewX?: number;
+	skewY?: number;
+	transformOrigin?: string;
 	animateOnHover?: boolean;
-	/** Анимировать при клике */
 	animateOnClick?: boolean;
-	/** Бесконечная анимация */
 	animateInfinite?: boolean;
-	/** Отключить трансформацию */
 	disabled?: boolean;
 }

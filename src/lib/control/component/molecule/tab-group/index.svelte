@@ -1,76 +1,46 @@
 <script lang="ts">
-	import type { SlotTabGroup as ITabGroupProps } from '$stylist/control/interface/slot/tab-group';
-	import { TabGroupStyleManager } from '$stylist/control/class/style-manager/tab-group';
-	import createTabGroupState from '$stylist/control/function/state/tab-group/index.svelte';
+	import { createTabGroupState } from '$stylist/control/function/state/tab-group/index.svelte';
+	import type { RecipeTabGroup } from '$stylist/control/interface/recipe/tab-group';
 
-	/**
-	 * TabGroup component - A flexible tab component with various visual styles and states
-	 *
-	 * Following SOLID principles:
-	 * - Single Responsibility: Only handles component rendering and state
-	 * - Open/Closed: Extendable through properties but closed for modification
-	 * - Liskov Substitution: Can be substituted with other tab components
-	 * - Interface Segregation: Small focused interface
-	 * - Dependency Inversion: Depends on abstractions (interfaces) rather than concretions
-	 *
-	 * @param tabs - Array of tab objects with id, title and content
-	 * @param activeTab - ID of the currently active tab
-	 * @param variant - Visual shape of the tabs ('rectangle' | 'square' | 'pill')
-	 * @param class - CSS class for the wrapper element
-	 * @param tabListClass - CSS class for the tab list container
-	 * @param tabClass - CSS class for individual tabs
-	 * @param activeTabClass - CSS class for active tab
-	 * @param inactiveTabClass - CSS class for inactive tabs
-	 * @param panelClass - CSS class for the tab panels
-	 * @param onChange - Callback function called when tab changes
-	 * @returns An accessible, styled tab component
-	 */
-	let {
-		tabs = [],
-		activeTab = tabs[0]?.id || '',
-		variant = 'rectangle',
-		class: className = '',
-		tabListClass = '',
-		tabClass = '',
-		activeTabClass = '',
-		inactiveTabClass = '',
-		panelClass = '',
-		onValueInput,
-		onValueChange,
-		onChange,
-		...restProps
-	}: ITabGroupProps = $props();
+	let props: RecipeTabGroup = $props();
+	const state = createTabGroupState(props);
 
-	const state = createTabGroupState({
-		tabs,
-		activeTab,
-		variant,
-		class: className,
-		tabListClass,
-		tabClass,
-		activeTabClass,
-		inactiveTabClass,
-		panelClass,
-		onValueInput,
-		onValueChange,
-		onChange
+	let tabs = $derived(props.tabs ?? []);
+	let restProps = $derived.by(() => {
+		const {
+			tabs: tabItems,
+			activeTab,
+			variant,
+			class: className,
+			tabListClass,
+			tabClass,
+			activeTabClass,
+			inactiveTabClass,
+			panelClass,
+			onValueInput,
+			onValueChange,
+			onChange,
+			...rest
+		} = props;
+		return rest;
 	});
 </script>
 
 <div class={state.wrapperClasses} {...restProps}>
-	<!-- Tab List -->
-	<div class={state.tabListClasses}>
+	<div class={state.tabListClasses} data-variant={props.variant ?? 'rectangle'}>
 		{#each tabs as tab}
 			<button
 				type="button"
-				class={TabGroupStyleManager.getTabClasses(
-					variant,
-					state.currentTab === tab.id,
-					!!tab.disabled,
-					tabClass,
-					activeTabClass,
-					inactiveTabClass
-				)}
+				class={[
+					'c-tab-group__tab',
+					props.tabClass,
+					state.currentTab === tab.id ? props.activeTabClass : props.inactiveTabClass
+				]
+					.filter(Boolean)
+					.join(' ')}
+				data-active={state.currentTab === tab.id || undefined}
+				data-disabled={tab.disabled || undefined}
+				data-variant={props.variant ?? 'rectangle'}
 				onclick={() => state.changeTab(tab.id)}
 				disabled={tab.disabled}
 				aria-selected={state.currentTab === tab.id}
@@ -81,14 +51,103 @@
 		{/each}
 	</div>
 
-	<!-- Tab Panels -->
 	<div class={state.panelClasses}>
 		{#each tabs as tab}
 			{#if state.currentTab === tab.id}
-				<div role="tabpanel" class="p-4" aria-labelledby={`tab-${tab.id}`}>
+				<div class="c-tab-group__panel" role="tabpanel" aria-labelledby={`tab-${tab.id}`}>
 					{@render tab.content()}
 				</div>
 			{/if}
 		{/each}
 	</div>
 </div>
+
+<style>
+	.c-tab-group {
+		width: 100%;
+	}
+
+	.c-tab-group__list {
+		display: flex;
+	}
+
+	.c-tab-group__list[data-variant='rectangle'] {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-tab-group__tab {
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		cursor: pointer;
+		border: none;
+		background: transparent;
+		transition:
+			color var(--duration-120, 120ms),
+			border-color var(--duration-120, 120ms);
+	}
+
+	.c-tab-group__tab:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+	}
+
+	.c-tab-group__list[data-variant='rectangle'] .c-tab-group__tab {
+		border-bottom: 2px solid transparent;
+		color: var(--color-text-secondary);
+		border-radius: 0.5rem 0.5rem 0 0;
+	}
+
+	.c-tab-group__list[data-variant='rectangle'] .c-tab-group__tab:hover {
+		color: var(--color-text-primary);
+		border-bottom-color: var(--color-border-secondary);
+	}
+
+	.c-tab-group__list[data-variant='rectangle'] .c-tab-group__tab[data-active] {
+		border-bottom-color: var(--color-primary-500);
+		color: var(--color-primary-600);
+	}
+
+	.c-tab-group__list[data-variant='square'] .c-tab-group__tab {
+		border: 1px solid var(--color-border-primary);
+		color: var(--color-text-secondary);
+	}
+
+	.c-tab-group__list[data-variant='square'] .c-tab-group__tab[data-active] {
+		border-color: var(--color-primary-500);
+		background: var(--color-primary-50);
+		color: var(--color-primary-600);
+	}
+
+	.c-tab-group__list[data-variant='square'] .c-tab-group__tab:hover:not([data-active]) {
+		background: var(--color-secondary-50);
+	}
+
+	.c-tab-group__list[data-variant='pill'] .c-tab-group__tab {
+		border-radius: 9999px;
+		color: var(--color-text-secondary);
+	}
+
+	.c-tab-group__list[data-variant='pill'] .c-tab-group__tab[data-active] {
+		background: var(--color-primary-500);
+		color: var(--color-text-inverse);
+	}
+
+	.c-tab-group__list[data-variant='pill'] .c-tab-group__tab:hover:not([data-active]) {
+		background: var(--color-secondary-100);
+	}
+
+	.c-tab-group__tab[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	.c-tab-group__panels {
+		margin-top: 1rem;
+	}
+
+	.c-tab-group__panel {
+		padding: 1rem;
+	}
+</style>

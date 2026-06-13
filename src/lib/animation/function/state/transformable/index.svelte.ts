@@ -1,5 +1,5 @@
-import { ObjectManagerMotion } from '$stylist/animation/class/object-manager/motion';
-import type { SlotTransformable as TransformProps } from '$stylist/animation/interface/slot/transformable';
+import { ManagerMotion } from '$stylist/animation/class/manager/motion';
+import type { RecipeTransformable as TransformProps } from '$stylist/animation/interface/recipe/transformable';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export const createTransformableState = (props: TransformProps) => {
@@ -8,7 +8,7 @@ export const createTransformableState = (props: TransformProps) => {
 	let isActive = $state(false);
 
 	// Нормализация props
-	const normalizedProps = $derived(ObjectManagerMotion.normalizeTransformContract(props));
+	const normalizedProps = $derived(ManagerMotion.normalizeBehaviorTransformable(props));
 
 	// Вычисляемые классы
 	const classes = $derived.by(() =>
@@ -45,6 +45,7 @@ export const createTransformableState = (props: TransformProps) => {
 	// Извлечение rest props
 	const restProps = $derived.by(() => {
 		const {
+			children: _children,
 			class: _class,
 			scale,
 			rotate,
@@ -64,6 +65,12 @@ export const createTransformableState = (props: TransformProps) => {
 		} = props;
 		return rest;
 	});
+	const children = $derived(props.children);
+	const containerStyle = $derived(
+		inlineStyle !== 'none'
+			? `transform: ${inlineStyle}; transition: transform 300ms ease-in-out;`
+			: undefined
+	);
 
 	// Обработчики
 	function handleMouseEnter() {
@@ -107,8 +114,14 @@ export const createTransformableState = (props: TransformProps) => {
 		get inlineStyle() {
 			return inlineStyle;
 		},
+		get containerStyle() {
+			return containerStyle;
+		},
 		get restProps() {
 			return restProps;
+		},
+		get children() {
+			return children;
 		},
 
 		// Handlers

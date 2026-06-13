@@ -1,6 +1,6 @@
-import type { Snippet } from 'svelte';
-
-export interface SlotKanbanCard {
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+export interface SlotKanbanCard extends StructIntersectAll<[SlotChildren]> {
 	card: Record<string, unknown>;
 	draggable?: boolean;
 	selected?: boolean;
@@ -12,5 +12,4 @@ export interface SlotKanbanCard {
 	onTitleChange?: (title: string) => void;
 	onArchive?: () => void;
 	onDelete?: () => void;
-	children?: Snippet;
 }

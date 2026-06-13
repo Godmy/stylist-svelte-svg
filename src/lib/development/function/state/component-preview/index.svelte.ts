@@ -1,22 +1,23 @@
-import { ComponentPreviewStyleManager } from '$stylist/development/class/style-manager/component-preview';
-import type { ComponentPreviewProps } from '$stylist/development/type/alias/component-preview-props';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
 
-export function createComponentPreviewState(props: ComponentPreviewProps) {
+export function createComponentPreviewState(props: RecipeComponentPreview) {
 	let activeTab = $state(props.showCode ? 'code' : 'preview');
 
-	const classes = $derived(ComponentPreviewStyleManager.getBaseClasses(props.class ?? ''));
-	const headerClasses = $derived(ComponentPreviewStyleManager.getHeaderClasses());
-	const titleClasses = $derived(ComponentPreviewStyleManager.getTitleClasses());
-	const descriptionClasses = $derived(ComponentPreviewStyleManager.getDescriptionClasses());
-	const previewContainerClasses = $derived(
-		ComponentPreviewStyleManager.getPreviewContainerClasses()
-	);
-	const demoContainerClasses = $derived(ComponentPreviewStyleManager.getDemoContainerClasses());
-	const codeContainerClasses = $derived(ComponentPreviewStyleManager.getCodeContainerClasses());
-	const tabContainerClasses = $derived(ComponentPreviewStyleManager.getTabContainerClasses());
-	const tabListClasses = $derived(ComponentPreviewStyleManager.getTabListClasses());
+	const classes = $derived(mergeClassNames('c-component-preview', props.class ?? ''));
+	const headerClasses = 'c-component-preview__header';
+	const titleClasses = 'c-component-preview__title';
+	const descriptionClasses = 'c-component-preview__description';
+	const previewContainerClasses = 'c-component-preview__preview';
+	const demoContainerClasses = 'c-component-preview__demo';
+	const codeContainerClasses = 'c-component-preview__code';
+	const tabContainerClasses = 'c-component-preview__tabs';
+	const tabListClasses = 'c-component-preview__tab-list';
 	const tabButtonClasses = (isActive: boolean) =>
-		ComponentPreviewStyleManager.getTabButtonClasses(isActive);
+		mergeClassNames(
+			'c-component-preview__tab',
+			isActive ? 'c-component-preview__tab--active' : 'c-component-preview__tab--inactive'
+		);
 
 	function setPreviewTab(tab: 'preview' | 'code') {
 		activeTab = tab;
@@ -57,5 +58,3 @@ export function createComponentPreviewState(props: ComponentPreviewProps) {
 		setPreviewTab
 	};
 }
-
-export default createComponentPreviewState;

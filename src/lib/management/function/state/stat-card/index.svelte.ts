@@ -1,8 +1,7 @@
-import { StatCardStyleManager } from '$stylist/management/class/style-manager/stat-card';
 import { ObjectManagerStatCard } from '$stylist/management/class/object-manager/stat-card';
-import type { StatCardRecipe } from '$stylist/management/interface/recipe/stat-card';
+import type { RecipeStatCard } from '$stylist/management/interface/recipe/stat-card';
 
-export function createStatCardState(props: StatCardRecipe) {
+export function createStatCardState(props: RecipeStatCard) {
 	const label = $derived((props as any).label ?? '');
 	const value = $derived((props as any).value);
 	const icon = $derived((props as any).icon);
@@ -13,14 +12,6 @@ export function createStatCardState(props: StatCardRecipe) {
 	const animated = $derived((props as any).animated ?? false);
 	const numericValue = $derived(ObjectManagerStatCard.resolveNumericValue(value));
 	const classNameStr = $derived(props.class == null ? undefined : String(props.class));
-	const classes = $derived(StatCardStyleManager.getBaseClasses(variant, classNameStr));
-	const titleClasses = $derived(StatCardStyleManager.getTitleClasses());
-	const valueClasses = $derived(StatCardStyleManager.getValueClasses());
-	const trendContainerClasses = $derived(StatCardStyleManager.getTrendContainerClasses());
-	const trendTextClasses = $derived(StatCardStyleManager.getTrendTextClasses(trend));
-	const trendIconClasses = $derived(StatCardStyleManager.getTrendIconClasses(trend));
-	const descriptionClasses = $derived(StatCardStyleManager.getDescriptionClasses());
-	const iconContainerClasses = $derived(StatCardStyleManager.getIconContainerClasses());
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,
@@ -67,27 +58,6 @@ export function createStatCardState(props: StatCardRecipe) {
 		},
 		get classes() {
 			return classes;
-		},
-		get titleClasses() {
-			return titleClasses;
-		},
-		get valueClasses() {
-			return valueClasses;
-		},
-		get trendContainerClasses() {
-			return trendContainerClasses;
-		},
-		get trendTextClasses() {
-			return trendTextClasses;
-		},
-		get trendIconClasses() {
-			return trendIconClasses;
-		},
-		get descriptionClasses() {
-			return descriptionClasses;
-		},
-		get iconContainerClasses() {
-			return iconContainerClasses;
 		},
 		get restProps() {
 			return restProps;

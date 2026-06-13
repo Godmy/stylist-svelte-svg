@@ -1,6 +1,5 @@
 import type { DrawerProps } from '$stylist/navigation/type/struct/drawer-props/drawer-props';
 import type { DrawerPosition } from '$stylist/navigation/type/struct/drawer-props/drawerposition';
-import { DrawerStyleManager } from '$stylist/navigation/class/style-manager/drawer';
 import { close } from '$stylist/navigation/function/script/close';
 import { handleBackdropClick } from '$stylist/navigation/function/script/handle-backdrop-click';
 import { handleBackdropKeyDown } from '$stylist/navigation/function/script/handle-backdrop-key-down';
@@ -33,18 +32,19 @@ export class DrawerManager {
 	}
 
 	get backdropClasses(): string {
-		return DrawerStyleManager.getBackdropClasses(this.showBackdrop);
+		return ['drawer__backdrop', this.showBackdrop ? `drawer__backdrop--selected` : '']
+			.filter(Boolean)
+			.join(' ');
 	}
 
 	get drawerClasses(): string {
-		return DrawerStyleManager.getDrawerClasses(
-			this.position,
-			typeof this.props.class === 'string' ? this.props.class : ''
-		);
+		return 'drawer__drawer';
 	}
 
 	get drawerOpenClasses(): string {
-		return DrawerStyleManager.getDrawerOpenClasses(this.isOpen, this.position);
+		return ['drawer__drawer-open', this.isOpen ? `drawer__drawer-open--selected` : '']
+			.filter(Boolean)
+			.join(' ');
 	}
 
 	close(): void {

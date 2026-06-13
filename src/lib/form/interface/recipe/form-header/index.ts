@@ -1,4 +1,6 @@
-﻿/**
+﻿import type { SlotFormHeader as Slot } from '$stylist/form/interface/slot/form-header';
+import type { SlotFormHeader as SlotFormHeader } from '$stylist/form/interface/slot/form-header';
+/**
  * Form Header вЂ” Р·Р°РіРѕР»РѕРІРѕРє С„РѕСЂРјС‹.
  *
  * LEGO-СЃРѕСЃС‚Р°РІ:
@@ -9,4 +11,5 @@ import type { StructIntersectAll } from '$stylist/architecture/type/struct/inter
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface FormHeaderRecipe extends StructIntersectAll<[ILabelSlot, ICaptionSlot]> {}
+export interface RecipeFormHeader
+	extends StructIntersectAll<[Slot, SlotFormHeader, ILabelSlot, ICaptionSlot]> {}

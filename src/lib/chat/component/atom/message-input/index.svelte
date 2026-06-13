@@ -56,3 +56,6 @@
 		</button>
 	{/if}
 </div>
+
+<style>
+</style>

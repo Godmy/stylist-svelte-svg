@@ -32,3 +32,6 @@
 	{onSelect}
 	class="c-joint-toolbar {className}"
 />
+
+<style>
+</style>

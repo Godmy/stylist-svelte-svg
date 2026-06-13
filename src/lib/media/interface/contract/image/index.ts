@@ -1,9 +1,12 @@
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { HTMLImgAttributes } from 'svelte/elements';
-import type { Snippet } from 'svelte';
 import type { ImageSize } from '$stylist/media/type/struct/image-size';
 
 export interface ContractImage
-	extends Omit<HTMLImgAttributes, 'class' | 'src' | 'alt' | 'width' | 'height' | 'loading'> {
+	extends StructIntersectAll<
+		[Omit<HTMLImgAttributes, 'class' | 'src' | 'alt' | 'width' | 'height' | 'loading'>, SlotContent]
+	> {
 	/** Image variant */
 	variant?: 'default';
 	/** Image size */
@@ -21,7 +24,6 @@ export interface ContractImage
 	/** Image height */
 	height?: number | string;
 	/** Content snippet */
-	content?: Snippet;
 	/** On load callback */
 	onLoad?: () => void;
 	/** On error callback */

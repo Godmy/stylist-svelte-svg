@@ -32,3 +32,6 @@
 	copyable={state.props.showCopyButton}
 	class={state.props.class}
 />
+
+<style>
+</style>

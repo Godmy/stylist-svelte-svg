@@ -27,10 +27,16 @@
 			maximizable={values.maximizable}
 		>
 			{#snippet content()}
-				<div class="text-sm text-[--color-text-secondary]">
-					No incidents detected in the last 24 hours.
-				</div>
+				<div class="_c1">No incidents detected in the last 24 hours.</div>
 			{/snippet}
 		</WidgetContainer>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -34,17 +34,35 @@
 	description="Inline date + time picker with dropdown calendar and keyboard-friendly selectors"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<DateTimePicker
 				value={toDateOrUndefined(controlValues.value)}
 				disabled={controlValues.disabled}
 				placeholder={controlValues.placeholder}
 			/>
-			<div
-				class="mt-4 rounded-2xl border border-[--color-border-primary] bg-[--color-background-secondary] px-4 py-3 text-sm"
-			>
+			<div class="_c2">
 				Selected timestamp: {humanize(controlValues.value)}
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 1rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

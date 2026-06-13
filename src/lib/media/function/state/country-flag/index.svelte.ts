@@ -1,19 +1,14 @@
-import { MediaStyleManager } from '$stylist/media/class/style-manager/media';
-import type { CountryFlagRecipe as CountryFlagProps } from '$stylist/media/interface/recipe/country-flag';
+import type { RecipeCountryFlag } from '$stylist/media/interface/recipe/country-flag';
 
-export function createCountryFlagState(props: CountryFlagProps) {
+export function createCountryFlagState(props: RecipeCountryFlag) {
 	const countryCode = $derived(props.countryCode ?? '');
 	const size = $derived(props.size ?? 24);
-	const emoji = $derived(MediaStyleManager.resolveCountryFlagEmoji(countryCode));
+	const emoji = $derived(`media__TODO media__TODO--${countryCode}`);
 	const isValid = $derived(Boolean(countryCode && countryCode.length === 2));
-	const classes = $derived(
-		MediaStyleManager.getCountryFlagClasses(
-			typeof props.class === 'string' ? props.class : undefined
-		)
-	);
-	const style = $derived(MediaStyleManager.getCountryFlagStyle(size));
-	const fallbackStyle = $derived(MediaStyleManager.getCountryFlagStyle(size));
-	const fallbackClasses = $derived(MediaStyleManager.getCountryFlagFallbackClasses());
+	const classes = $derived('media__country-flag');
+	const style = $derived(`media__TODO media__TODO--${size}`);
+	const fallbackStyle = $derived(`media__TODO media__TODO--${size}`);
+	const fallbackClasses = $derived('media__country-flag-fallback');
 
 	// Rest props
 	const restProps = $derived.by(() => {
@@ -57,5 +52,3 @@ export function createCountryFlagState(props: CountryFlagProps) {
 		}
 	};
 }
-
-export default createCountryFlagState;

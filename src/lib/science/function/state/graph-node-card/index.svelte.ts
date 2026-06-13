@@ -1,9 +1,8 @@
-import { createEventDispatcher } from 'svelte';
-import { GraphNodeCardStyleManager } from '$stylist/science/class/style-manager/graph-node-card';
+﻿import { createEventDispatcher } from 'svelte';
 import type { GraphNodeCardData } from '$stylist/science/type/struct/graph-node-card-data';
-import type { GraphNodeCardProps } from '$stylist/science/type/struct/graph-node-card-props';
+import type { RecipeGraphNodeCard } from '$stylist/science/interface/recipe/graph-node-card';
 
-export function createGraphNodeCardState(props: GraphNodeCardProps) {
+export function createGraphNodeCardState(props: RecipeGraphNodeCard) {
 	const dispatch = createEventDispatcher<{
 		toggleExpand: { node: GraphNodeCardData };
 		viewDetails: { node: GraphNodeCardData };
@@ -18,25 +17,15 @@ export function createGraphNodeCardState(props: GraphNodeCardProps) {
 	});
 
 	const containerClass = $derived(
-		GraphNodeCardStyleManager.getContainerClass(
-			props.variant ?? 'default',
-			props.size ?? 'md',
-			props.selected ?? false,
-			props.highlight ?? false,
+		[
+			'graph-node-card',
+			(props.selected ?? false) && 'graph-node-card--selected',
+			(props.highlight ?? false) ? 'graph-node-card--highlight' : 'graph-node-card--default',
 			props.class ?? ''
-		)
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
-	const headerClass = GraphNodeCardStyleManager.getHeaderClass();
-	const titleClass = GraphNodeCardStyleManager.getTitleClass();
-	const typeClass = $derived(GraphNodeCardStyleManager.getTypeClass(props.node.type));
-	const contentClass = GraphNodeCardStyleManager.getContentClass();
-	const descriptionClass = GraphNodeCardStyleManager.getDescriptionClass();
-	const fieldsListClass = GraphNodeCardStyleManager.getFieldsListClass();
-	const fieldItemClass = GraphNodeCardStyleManager.getFieldItemClass();
-	const fieldNameClass = GraphNodeCardStyleManager.getFieldNameClass();
-	const fieldTypeClass = GraphNodeCardStyleManager.getFieldTypeClass();
-	const fieldRequiredClass = GraphNodeCardStyleManager.getFieldRequiredClass();
-	const actionsClass = GraphNodeCardStyleManager.getActionsClass();
 
 	function getIconName(type: string) {
 		switch (type) {
@@ -82,37 +71,37 @@ export function createGraphNodeCardState(props: GraphNodeCardProps) {
 			return containerClass;
 		},
 		get headerClass() {
-			return headerClass;
+			return 'graph-node-card__header';
 		},
 		get titleClass() {
-			return titleClass;
+			return 'graph-node-card__title';
 		},
 		get typeClass() {
-			return typeClass;
+			return 'graph-node-card__type';
 		},
 		get contentClass() {
-			return contentClass;
+			return 'graph-node-card__content';
 		},
 		get descriptionClass() {
-			return descriptionClass;
+			return 'graph-node-card__description';
 		},
 		get fieldsListClass() {
-			return fieldsListClass;
+			return 'graph-node-card__fields';
 		},
 		get fieldItemClass() {
-			return fieldItemClass;
+			return 'graph-node-card__field-item';
 		},
 		get fieldNameClass() {
-			return fieldNameClass;
+			return 'graph-node-card__field-name';
 		},
 		get fieldTypeClass() {
-			return fieldTypeClass;
+			return 'graph-node-card__field-type';
 		},
 		get fieldRequiredClass() {
-			return fieldRequiredClass;
+			return 'graph-node-card__field-required';
 		},
 		get actionsClass() {
-			return actionsClass;
+			return 'graph-node-card__actions';
 		},
 		getIconName,
 		toggleExpanded,
@@ -121,5 +110,3 @@ export function createGraphNodeCardState(props: GraphNodeCardProps) {
 		handleAddField
 	};
 }
-
-export default createGraphNodeCardState;

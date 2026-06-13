@@ -22,3 +22,6 @@
 		/>
 	{/each}
 </g>
+
+<style>
+</style>

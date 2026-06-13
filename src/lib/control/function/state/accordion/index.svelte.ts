@@ -1,6 +1,6 @@
-import type { SlotAccordion as IAccordionProps } from '$stylist/control/interface/slot/accordion';
+import type { RecipeAccordion } from '$stylist/control/interface/recipe/accordion';
 
-export function createAccordionState(props: IAccordionProps) {
+export function createAccordionState(props: RecipeAccordion) {
 	let activeIds = $state<string[]>([]);
 
 	function toggleAccordion(id: string) {
@@ -24,5 +24,3 @@ export function createAccordionState(props: IAccordionProps) {
 		isExpanded
 	};
 }
-
-export default createAccordionState;

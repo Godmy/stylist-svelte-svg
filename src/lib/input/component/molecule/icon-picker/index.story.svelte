@@ -104,8 +104,8 @@
 	description="Interactive icon picker with searchable icon library"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
-			<div class="mx-auto max-w-xl">
+		<div class="_c1">
+			<div class="_c2">
 				<IconPicker
 					{icons}
 					title={controlValues.title}
@@ -120,3 +120,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 36rem;
+	}
+</style>

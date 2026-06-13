@@ -1,5 +1,5 @@
 import type { RecipePredictionResult as PredictionResultContract } from '$stylist/science/interface/recipe/prediction-result';
-import { PredictionResultStyleManager } from '$stylist/science/class/style-manager/prediction-result';
+import type { PredictionResultStatus } from '$stylist/science/type/struct/prediction-result-status';
 
 export function createPredictionResultState(props: PredictionResultContract) {
 	const predictions = $derived(props.predictions ?? []);
@@ -44,55 +44,33 @@ export function createPredictionResultState(props: PredictionResultContract) {
 		return rest;
 	});
 	const containerClass = $derived(
-		PredictionResultStyleManager.getContainerClass(props.class ?? '')
+		props.class ? `prediction-result ${props.class}` : 'prediction-result'
 	);
 	const headerClass = $derived(
-		PredictionResultStyleManager.getHeaderClass(props.headerClass ?? '')
+		props.headerClass
+			? `prediction-result__header ${props.headerClass}`
+			: 'prediction-result__header'
 	);
-	const statusIconClass = $derived(PredictionResultStyleManager.getStatusIconClass(status));
-	const titleClass = $derived(PredictionResultStyleManager.getTitleClass());
-	const modelTagClass = $derived(PredictionResultStyleManager.getModelTagClass());
+	const statusIconStyle = $derived((): string => {
+		const base = 'width: 1.25rem; height: 1.25rem; margin-right: var(--spacing-sm);';
+		const statusStyles: Record<PredictionResultStatus, string> = {
+			loading: `${base} color: var(--color-primary-500); animation: spin 1s linear infinite;`,
+			error: `${base} color: var(--color-danger-500);`,
+			warning: `${base} color: var(--color-warning-500);`,
+			success: `${base} color: var(--color-primary-500);`
+		};
+		return statusStyles[status] ?? base;
+	});
 	const contentClass = $derived(
-		PredictionResultStyleManager.getContentClass(props.contentClass ?? '')
+		props.contentClass
+			? `prediction-result__content ${props.contentClass}`
+			: 'prediction-result__content'
 	);
-	const descriptionClass = $derived(PredictionResultStyleManager.getDescriptionClass());
-	const centeredDisplayClass = $derived(PredictionResultStyleManager.getCenteredDisplayClass());
-	const retryButtonClass = $derived(PredictionResultStyleManager.getRetryButtonClass());
-	const predictionSummaryGridClass = $derived(
-		PredictionResultStyleManager.getPredictionSummaryGridClass()
-	);
-	const confidenceSectionClass = $derived(PredictionResultStyleManager.getConfidenceSectionClass());
-	const confidenceLabelClass = $derived(PredictionResultStyleManager.getConfidenceLabelClass());
-	const confidencePercentageClass = $derived(
-		PredictionResultStyleManager.getConfidencePercentageClass()
-	);
-	const confidenceBarContainerClass = $derived(
-		PredictionResultStyleManager.getConfidenceBarContainerClass()
-	);
-	const confidenceBarFillClass = $derived(PredictionResultStyleManager.getConfidenceBarFillClass());
-	const breakdownHeaderClass = $derived(PredictionResultStyleManager.getBreakdownHeaderClass());
-	const predictionItemClass = $derived(PredictionResultStyleManager.getPredictionItemClass());
-	const predictionItemLabelClass = $derived(
-		PredictionResultStyleManager.getPredictionItemLabelClass()
-	);
-	const predictionItemValueClass = $derived(
-		PredictionResultStyleManager.getPredictionItemValueClass()
-	);
-	const chartBarContainerClass = $derived(PredictionResultStyleManager.getChartBarContainerClass());
-	const chartBarFillClass = $derived(PredictionResultStyleManager.getChartBarFillClass());
 	const footerClass = $derived(
-		PredictionResultStyleManager.getFooterClass(props.footerClass ?? '')
+		props.footerClass
+			? `prediction-result__footer ${props.footerClass}`
+			: 'prediction-result__footer'
 	);
-	const trendUpClass = $derived(PredictionResultStyleManager.getTrendIndicatorClass(true));
-	const trendDownClass = $derived(PredictionResultStyleManager.getTrendIndicatorClass(false));
-	const trendUpDescriptionClass = $derived(
-		PredictionResultStyleManager.getTrendDescriptionClass(true)
-	);
-	const trendDownDescriptionClass = $derived(
-		PredictionResultStyleManager.getTrendDescriptionClass(false)
-	);
-	const predictionLabelClass = $derived(PredictionResultStyleManager.getPredictionLabelClass());
-	const predictionValueClass = $derived(PredictionResultStyleManager.getPredictionValueClass());
 
 	return {
 		get predictions() {
@@ -137,86 +115,88 @@ export function createPredictionResultState(props: PredictionResultContract) {
 		get headerClass() {
 			return headerClass;
 		},
-		get statusIconClass() {
-			return statusIconClass;
+		get statusIconStyle() {
+			return statusIconStyle();
 		},
 		get titleClass() {
-			return titleClass;
+			return 'prediction-result__title';
 		},
 		get modelTagClass() {
-			return modelTagClass;
+			return 'prediction-result__model-tag';
 		},
 		get contentClass() {
 			return contentClass;
 		},
 		get descriptionClass() {
-			return descriptionClass;
+			return 'prediction-result__description';
 		},
 		get centeredDisplayClass() {
-			return centeredDisplayClass;
+			return 'prediction-result__centered';
 		},
 		get retryButtonClass() {
-			return retryButtonClass;
+			return 'prediction-result__retry-btn';
 		},
 		get predictionSummaryGridClass() {
-			return predictionSummaryGridClass;
+			return 'prediction-result__summary-grid';
 		},
 		get confidenceSectionClass() {
-			return confidenceSectionClass;
+			return 'prediction-result__confidence';
 		},
 		get confidenceLabelClass() {
-			return confidenceLabelClass;
+			return 'prediction-result__confidence-label';
 		},
 		get confidencePercentageClass() {
-			return confidencePercentageClass;
+			return 'prediction-result__confidence-percent';
 		},
 		get confidenceBarContainerClass() {
-			return confidenceBarContainerClass;
+			return 'prediction-result__confidence-bar';
 		},
 		get confidenceBarFillClass() {
-			return confidenceBarFillClass;
+			return 'prediction-result__confidence-fill';
 		},
 		get breakdownHeaderClass() {
-			return breakdownHeaderClass;
+			return 'prediction-result__breakdown-header';
 		},
 		get predictionItemClass() {
-			return predictionItemClass;
+			return 'prediction-result__items';
 		},
 		get predictionItemLabelClass() {
-			return predictionItemLabelClass;
+			return 'prediction-result__item-label';
 		},
 		get predictionItemValueClass() {
-			return predictionItemValueClass;
+			return 'prediction-result__item-value';
 		},
 		get chartBarContainerClass() {
-			return chartBarContainerClass;
+			return 'prediction-result__chart-bar';
 		},
 		get chartBarFillClass() {
-			return chartBarFillClass;
+			return 'prediction-result__chart-fill';
 		},
 		get footerClass() {
 			return footerClass;
 		},
-		get trendUpClass() {
-			return trendUpClass;
+		get trendUpStyle() {
+			return 'width: 1.25rem; height: 1.25rem; color: var(--color-success-500);';
 		},
-		get trendDownClass() {
-			return trendDownClass;
+		get trendDownStyle() {
+			return 'width: 1.25rem; height: 1.25rem; color: var(--color-danger-500);';
 		},
 		get trendUpDescriptionClass() {
-			return trendUpDescriptionClass;
+			return 'prediction-result__trend--up';
 		},
 		get trendDownDescriptionClass() {
-			return trendDownDescriptionClass;
+			return 'prediction-result__trend--down';
 		},
 		get predictionLabelClass() {
-			return predictionLabelClass;
+			return 'prediction-result__prediction-label';
 		},
 		get predictionValueClass() {
-			return predictionValueClass;
+			return 'prediction-result__prediction-value';
 		},
 		getPredictionBoxClass(isPredicted: boolean) {
-			return PredictionResultStyleManager.getPredictionBoxClass(isPredicted);
+			return isPredicted
+				? 'prediction-result__box prediction-result__box--predicted'
+				: 'prediction-result__box prediction-result__box--actual';
 		}
 	};
 }

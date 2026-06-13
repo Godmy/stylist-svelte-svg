@@ -1,7 +1,9 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface CountBadgeRecipe extends StructIntersectAll<[ThemeAttributes<HTMLSpanElement>]> {
+export interface RecipeCountBadge
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLSpanElement>]> {
 	count?: number;
 	max?: number;
 	showZero?: boolean;

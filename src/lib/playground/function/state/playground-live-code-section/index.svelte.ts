@@ -1,5 +1,5 @@
-import type { PlaygroundLiveCodeSectionProps } from '$stylist/playground/type/struct/playground-live-code-section-props';
-export function createPlaygroundLiveCodeSectionState(props: PlaygroundLiveCodeSectionProps) {
+﻿import type { RecipePlaygroundLiveCodeSection } from '$stylist/playground/interface/recipe/playground-live-code-section';
+export function createPlaygroundLiveCodeSectionState(props: RecipePlaygroundLiveCodeSection) {
 	const badgeText = $derived(props.badgeText ?? 'Live Preview');
 	const title = $derived(props.title ?? 'See It In Action');
 	const description = $derived(props.description ?? 'Every component comes with ready-to-use code');
@@ -36,5 +36,3 @@ export function createPlaygroundLiveCodeSectionState(props: PlaygroundLiveCodeSe
 		}
 	};
 }
-
-export default createPlaygroundLiveCodeSectionState;

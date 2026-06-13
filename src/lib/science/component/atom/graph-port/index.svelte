@@ -1,9 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { GraphPortRecipe as GraphPortProps } from '$stylist/science/interface/recipe/graph-port';
-	import type { GraphPortDataTypeColor } from '$stylist/science/type/struct/graph-port/graph-port-data-type-color';
+	import type { RecipeGraphPort as GraphPortProps } from '$stylist/science/interface/recipe/graph-port';
 	import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
-	import { GraphPortStyleManager } from '$stylist/science/class/style-manager/graph-port';
 	import createGraphPortState from '$stylist/science/function/state/graph-port/index.svelte';
 
 	let props: GraphPortProps = $props();
@@ -11,9 +9,6 @@
 	const state = createGraphPortState(props);
 	const label = $derived(props.label ?? '');
 	const dataType = $derived((props.dataType ?? 'any') as TokenPropertyType);
-	const portColor = $derived(
-		props.color ?? GraphPortStyleManager.getDataTypeColor(dataType as keyof GraphPortDataTypeColor)
-	);
 
 	const restProps = $derived(
 		(() => {
@@ -54,7 +49,7 @@
 	{...restProps}
 >
 	<div class="graph-port__hit-area" aria-hidden="true"></div>
-	<div class="graph-port__circle" style={`background-color: ${portColor};`}></div>
+	<div class="graph-port__circle" style={`background-color: ${state.color};`}></div>
 	{#if label}
 		<span class="graph-port__label">{label}</span>
 	{/if}

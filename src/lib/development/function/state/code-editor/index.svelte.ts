@@ -1,13 +1,13 @@
-import type { CodeEditorRecipe } from '$stylist/development/interface/recipe/code-editor';
-import { CodeEditorStyleManager } from '$stylist/development/class/style-manager/code-editor';
+import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createCodeEditorState(props: CodeEditorRecipe & { class?: string }) {
+export function createCodeEditorState(props: RecipeCodeEditor & { class?: string }) {
 	let internalCode = $state(props.code ?? '');
 	$effect(() => {
 		internalCode = props.code ?? '';
 	});
 
-	const containerClass = $derived(CodeEditorStyleManager.root(props.class ?? ''));
+	const containerClass = $derived(mergeClassNames('c-code-editor', props.class ?? ''));
 
 	function handleCodeChange(newValue: string) {
 		internalCode = newValue;
@@ -21,10 +21,10 @@ export function createCodeEditorState(props: CodeEditorRecipe & { class?: string
 	function handleDownload() {
 		const blob = new Blob([internalCode], { type: 'text/plain' });
 		const url = URL.createObjectURL(blob);
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = `code.${props.language ?? 'javascript'}`;
-		a.click();
+		const anchor = document.createElement('a');
+		anchor.href = url;
+		anchor.download = `code.${props.language ?? 'javascript'}`;
+		anchor.click();
 		URL.revokeObjectURL(url);
 	}
 
@@ -40,5 +40,3 @@ export function createCodeEditorState(props: CodeEditorRecipe & { class?: string
 		handleDownload
 	};
 }
-
-export default createCodeEditorState;

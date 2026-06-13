@@ -10,7 +10,7 @@
 <div class={state.hostClasses} {...props}>
 	{#if state.title}
 		<header class={state.headerClasses}>
-			<h3 class="text-lg font-semibold">{state.title}</h3>
+			<h3 class="mt-title">{state.title}</h3>
 		</header>
 	{/if}
 
@@ -24,7 +24,7 @@
 				{#each state.messages as message}
 					<div class={`message-item ${state.variantClass}`}>
 						<p>{message.text}</p>
-						<span class="text-xs text-[var(--color-text-secondary)]">
+						<span class="mt-meta">
 							{message.sender} - {message.timestamp}
 						</span>
 					</div>
@@ -33,3 +33,14 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.mt-title {
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+	.mt-meta {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+</style>

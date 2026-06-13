@@ -3,7 +3,7 @@ import type { InformationHTMLAttributes } from '$stylist/information/type/struct
 import type { TokenBackground } from '$stylist/layout/type/enum/background';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
-export interface ThemeBackgroundRecipe
+export interface RecipeThemeBackground
 	extends StructIntersectAll<[InformationHTMLAttributes<HTMLDivElement>]> {
 	background?: TokenBackground;
 	backgroundColor?: string;

@@ -1,9 +1,6 @@
-import type { SlotQuantitySelector as IQuantitySelectorProps } from '$stylist/control/interface/slot/quantity-selector';
-import type { TokenSelectorKind } from '$stylist/control/type/record/selection-kind';
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { QuantitySelectorStyleManager } from '$stylist/control/class/style-manager/quantity-selector';
+import type { RecipeQuantitySelector } from '$stylist/control/interface/recipe/quantity-selector';
 
-export function createQuantitySelectorState(props: IQuantitySelectorProps) {
+export function createQuantitySelectorState(props: RecipeQuantitySelector) {
 	let quantity = $state(props.value ?? 1);
 	const inputId = $derived(`quantity-${Math.random().toString(36).slice(2, 9)}`);
 
@@ -11,36 +8,22 @@ export function createQuantitySelectorState(props: IQuantitySelectorProps) {
 		quantity = props.value ?? 1;
 	});
 
-	const rootClasses = $derived(QuantitySelectorStyleManager.getRootClasses(props.class ?? ''));
-	const labelClasses = $derived(QuantitySelectorStyleManager.getLabelClasses());
-	const containerClasses = $derived(QuantitySelectorStyleManager.getContainerClasses());
+	const rootClasses = $derived(['c-qty-selector', props.class].filter(Boolean).join(' '));
+	const labelClasses = 'c-qty-selector__label';
+	const containerClasses = 'c-qty-selector__controls';
 	const decrementButtonClasses = $derived(
-		QuantitySelectorStyleManager.getButtonClasses(
-			props.disabled ?? false,
-			props.showButtons ?? true,
-			true,
-			(props.size ?? 'md') as TokenSize,
-			props.buttonClass ?? ''
-		)
+		['c-qty-selector__btn', 'c-qty-selector__btn--decrement', props.buttonClass]
+			.filter(Boolean)
+			.join(' ')
 	);
 	const incrementButtonClasses = $derived(
-		QuantitySelectorStyleManager.getButtonClasses(
-			props.disabled ?? false,
-			props.showButtons ?? true,
-			false,
-			(props.size ?? 'md') as TokenSize,
-			props.buttonClass ?? ''
-		)
+		['c-qty-selector__btn', 'c-qty-selector__btn--increment', props.buttonClass]
+			.filter(Boolean)
+			.join(' ')
 	);
 	const inputClasses = $derived(
-		QuantitySelectorStyleManager.getInputClasses(
-			props.showButtons ?? true,
-			(props.size ?? 'md') as TokenSize,
-			(props.variant ?? 'default') as TokenSelectorKind,
-			props.inputClass ?? ''
-		)
+		['c-qty-selector__input', props.inputClass].filter(Boolean).join(' ')
 	);
-	const iconClasses = $derived(QuantitySelectorStyleManager.getIconClasses());
 
 	function increment() {
 		const { disabled = false, max = 99, step = 1, onValueChange, onIncrement } = props;
@@ -100,13 +83,8 @@ export function createQuantitySelectorState(props: IQuantitySelectorProps) {
 		get inputClasses() {
 			return inputClasses;
 		},
-		get iconClasses() {
-			return iconClasses;
-		},
 		increment,
 		decrement,
 		handleInputChange
 	};
 }
-
-export default createQuantitySelectorState;

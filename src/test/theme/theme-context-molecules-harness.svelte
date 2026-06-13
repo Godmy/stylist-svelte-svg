@@ -2,7 +2,7 @@
 	import { ThemeProvider, ThemeContext, ThemeSurface } from '$stylist';
 </script>
 
-<ThemeProvider initialMode="dark">
+<ThemeProvider themeMode="dark">
 	<ThemeContext>
 		{#snippet children(themeContext)}
 			<div data-testid="theme-context-mode">{themeContext?.themeMode ?? 'missing'}</div>

@@ -1,7 +1,9 @@
+﻿import type { SlotPhoneNumberInput as Slot } from '$stylist/input/interface/slot/phone-number-input';
+import type { SlotPhoneNumberInput as SlotPhoneNumberInput } from '$stylist/input/interface/slot/phone-number-input';
 /**
- * Phone Number Input вЂ” РІРІРѕРґ РЅРѕРјРµСЂР° С‚РµР»РµС„РѕРЅР°.
+ * Phone Number Input РІР‚вЂќ Р Р†Р Р†Р С•Р Т‘ Р Р…Р С•Р СР ВµРЎР‚Р В° РЎвЂљР ВµР В»Р ВµРЎвЂћР С•Р Р…Р В°.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   IIconSlot                 (information/icon-slot)
@@ -15,5 +17,7 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface PhoneNumberInputRecipe
-	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]> {}
+export interface RecipePhoneNumberInput
+	extends StructIntersectAll<
+		[Slot, SlotPhoneNumberInput, ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]
+	> {}

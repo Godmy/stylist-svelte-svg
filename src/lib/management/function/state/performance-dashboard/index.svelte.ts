@@ -1,5 +1,4 @@
 import { untrack } from 'svelte';
-import { PerformanceDashboardStyleManager } from '$stylist/management/class/style-manager/performance-dashboard';
 import type { TokenTimeRange } from '$stylist/management/type/enum/time-range/token-time-range';
 import { ObjectManagerPerformanceDashboard } from '$stylist/management/class/object-manager/performance-dashboard';
 import type { PerformanceDashboardStateProps } from '$stylist/management/interface/recipe/performance-dashboard-performance-dashboard-state-props';
@@ -28,30 +27,6 @@ export function createPerformanceDashboardState(props: PerformanceDashboardState
 	let selectedTimeRange = $state(untrack(() => timeRange));
 	const timeRanges = ObjectManagerPerformanceDashboard.resolveTimeRanges();
 	const chartBarHeights = ObjectManagerPerformanceDashboard.resolveChartBarHeights();
-
-	const containerClass = $derived(
-		PerformanceDashboardStyleManager.getContainerClass(variant, size, classNameStr)
-	);
-	const headerClassComputed = $derived(
-		PerformanceDashboardStyleManager.getHeaderClass(headerClassStr)
-	);
-	const timeRangeButtonClass = $derived(PerformanceDashboardStyleManager.getTimeRangeButtonClass());
-	const activeTimeRangeButtonClass = $derived(
-		PerformanceDashboardStyleManager.getActiveTimeRangeButtonClass()
-	);
-	const metricsGridClass = $derived(
-		PerformanceDashboardStyleManager.getMetricsGridClass(metricsClassStr)
-	);
-	const metricCardClassComputed = $derived(
-		PerformanceDashboardStyleManager.getMetricCardClass(metricCardClassStr)
-	);
-	const metricHeaderClass = $derived(PerformanceDashboardStyleManager.getMetricHeaderClass());
-	const metricTitleClass = $derived(PerformanceDashboardStyleManager.getMetricTitleClass());
-	const metricValueClass = $derived(PerformanceDashboardStyleManager.getMetricValueClass());
-	const trendPositiveClass = $derived(PerformanceDashboardStyleManager.getTrendPositiveClass());
-	const trendNegativeClass = $derived(PerformanceDashboardStyleManager.getTrendNegativeClass());
-	const chartContainerClass = $derived(PerformanceDashboardStyleManager.getChartContainerClass());
-	const chartBarClass = $derived(PerformanceDashboardStyleManager.getChartBarClass());
 
 	function handleTimeRangeChange(range: TokenTimeRange): void {
 		selectedTimeRange = ObjectManagerPerformanceDashboard.selectTimeRange(
@@ -108,44 +83,11 @@ export function createPerformanceDashboardState(props: PerformanceDashboardState
 		get chartBarHeights() {
 			return chartBarHeights;
 		},
-		get containerClass() {
-			return containerClass;
-		},
 		get headerClassComputed() {
 			return headerClassComputed;
 		},
-		get timeRangeButtonClass() {
-			return timeRangeButtonClass;
-		},
-		get activeTimeRangeButtonClass() {
-			return activeTimeRangeButtonClass;
-		},
-		get metricsGridClass() {
-			return metricsGridClass;
-		},
 		get metricCardClassComputed() {
 			return metricCardClassComputed;
-		},
-		get metricHeaderClass() {
-			return metricHeaderClass;
-		},
-		get metricTitleClass() {
-			return metricTitleClass;
-		},
-		get metricValueClass() {
-			return metricValueClass;
-		},
-		get trendPositiveClass() {
-			return trendPositiveClass;
-		},
-		get trendNegativeClass() {
-			return trendNegativeClass;
-		},
-		get chartContainerClass() {
-			return chartContainerClass;
-		},
-		get chartBarClass() {
-			return chartBarClass;
 		},
 		get restProps() {
 			return restProps;

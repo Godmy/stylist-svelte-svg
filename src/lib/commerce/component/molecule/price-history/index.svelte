@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { PriceHistoryProps } from '$stylist/commerce/interface/recipe/price-history-props';
-	import createPriceHistoryState from '$stylist/commerce/function/state/price-history/createpricehistorystate/index.svelte';
-	import { PriceHistoryStyleManager } from '$stylist/commerce/class/style-manager/price-history';
+	import type { RecipePriceHistory } from '$stylist/commerce/interface/recipe/price-history';
+	import { createPriceHistoryState } from '$stylist/commerce/function/state/price-history/index.svelte';
 
-	let props: PriceHistoryProps = $props();
+	let props: RecipePriceHistory = $props();
 	const state = createPriceHistoryState(props);
 </script>
 
@@ -11,11 +10,7 @@
 	<h3 class={state.titleClass}>{props.title ?? 'Price History'}</h3>
 	<div class={state.chartContainerClass}>
 		{#if state.data.length > 0}
-			<svg
-				width={state.chartWidth}
-				height={state.chartHeight}
-				class={PriceHistoryStyleManager.getSVGClass()}
-			>
+			<svg width={state.chartWidth} height={state.chartHeight} class="price-history__s-v-g">
 				<!-- Grid lines -->
 				{#each [0, 0.25, 0.5, 0.75, 1] as tick}
 					<line
@@ -23,12 +18,12 @@
 						y1={tick * state.chartHeight}
 						x2={state.chartWidth}
 						y2={tick * state.chartHeight}
-						class={PriceHistoryStyleManager.getGridLineClass()}
+						class="price-history__TODO-getGridLineClass"
 					/>
 					<text
 						x={state.chartWidth + 5}
 						y={tick * state.chartHeight + 4}
-						class={PriceHistoryStyleManager.getGridTextClass()}
+						class="price-history__grid-text"
 					>
 						{Math.round(state.maxPrice - tick * state.priceRange)}
 					</text>
@@ -48,7 +43,7 @@
 							return `${x},${y}`;
 						})
 						.join(' ')}
-					class={PriceHistoryStyleManager.getPriceLineClass()}
+					class="price-history__TODO-getPriceLineClass"
 				/>
 
 				<!-- Data points -->
@@ -59,7 +54,7 @@
 							((d.price - state.minPrice) / state.priceRange) * state.chartHeight}
 						r="3"
 						fill="var(--color-primary-500)"
-						class={PriceHistoryStyleManager.getDataPointClass()}
+						class="price-history__TODO-getDataPointClass"
 					/>
 				{/each}
 			</svg>
@@ -76,3 +71,50 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.price-history {
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		overflow: hidden;
+	}
+
+	.price-history__title {
+		margin-bottom: 1rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.price-history__chart-container {
+		position: relative;
+	}
+
+	.price-history__s-v-g {
+		width: 100%;
+	}
+
+	.price-history__grid-text {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.price-history__no-data {
+		display: flex;
+		height: 12rem;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-text-tertiary);
+	}
+
+	.price-history__info {
+		margin-top: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

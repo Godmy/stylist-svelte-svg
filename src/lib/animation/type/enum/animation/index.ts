@@ -1,6 +1,3 @@
-import { TOKEN_ANIMATION } from '$stylist/animation/const/map/animation';
+import { TOKEN_ANIMATION } from '$stylist/animation/const/object/animation';
 
-/**
- * Тип токена анимации
- */
 export type TokenAnimation = (typeof TOKEN_ANIMATION)[keyof typeof TOKEN_ANIMATION];

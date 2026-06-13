@@ -1,4 +1,4 @@
-import type { HTMLVideoAttributes } from 'svelte/elements';
+﻿import type { HTMLVideoAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 
 export interface VideoPlayerProps extends StructIntersectAll<[HTMLVideoAttributes]> {

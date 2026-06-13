@@ -10,15 +10,11 @@
 	const state = createAnimatedExpandableTableRowState(props);
 </script>
 
-<!-- Parent table row -->
-<tr {...state.restProps} class="parent-row {state.className}">
-	<!-- Cell for expand icon -->
+<tr {...state.restProps} class={['aet-row', state.className].filter(Boolean).join(' ')}>
 	{#if state.expandable}
-		<td
-			class="expand-cell w-12 px-6 py-4 text-sm whitespace-nowrap text-[var(--color-text-secondary)]"
-		>
+		<td class="aet-row__expand-cell">
 			<button
-				class="expand-toggle focus:outline-none"
+				class="aet-row__toggle"
 				onclick={state.toggle}
 				aria-expanded={state.isExpanded}
 				aria-label={state.isExpanded ? 'Collapse' : 'Expand'}
@@ -27,29 +23,27 @@
 					{#if state.collapseIcon}
 						{@html state.collapseIcon}
 					{:else}
-						<BaseIcon name={ChevronUp} class="h-5 w-5 text-[var(--color-text-secondary)]" />
+						<BaseIcon name={ChevronUp} class="aet-row__icon" />
 					{/if}
 				{:else if state.expandIcon}
 					{@html state.expandIcon}
 				{:else}
-					<BaseIcon name={ChevronDown} class="h-5 w-5 text-[var(--color-text-secondary)]" />
+					<BaseIcon name={ChevronDown} class="aet-row__icon" />
 				{/if}
 			</button>
 		</td>
 	{/if}
 
-	<!-- Child slot for main row cells -->
 	{#if state.children}{@render state.children()}{/if}
 </tr>
 
-<!-- Expanded row with details -->
 {#if state.isExpanded}
-	<tr class="expanded-row">
+	<tr class="aet-row__expanded">
 		<td
 			colspan={state.expandable ? state.colspan : state.colspan - 1}
-			class="expanded-cell bg-[var(--color-background-secondary)] px-6 py-4 text-sm text-[var(--color-text-primary)]"
+			class="aet-row__expanded-cell"
 		>
-			<div class="details-content p-4">
+			<div class="aet-row__details">
 				{@render state.details()}
 			</div>
 		</td>
@@ -57,31 +51,60 @@
 {/if}
 
 <style>
-	.expand-toggle {
-		transition: transform var(--duration-200) var(--animation-ease);
+	.aet-row__expand-cell {
+		width: 3rem;
+		padding: 1rem 1.5rem;
+		font-size: 0.875rem;
+		white-space: nowrap;
+		color: var(--color-text-secondary);
 	}
 
-	.expand-toggle:active {
+	.aet-row__toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		transition: transform var(--duration-200, 200ms) var(--animation-ease, ease);
+	}
+
+	.aet-row__toggle:active {
 		transform: scale(0.95);
 	}
 
-	.expanded-cell {
+	.aet-row__toggle:focus {
+		outline: none;
+	}
+
+	:global(.aet-row__icon) {
+		width: 1.25rem;
+		height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.aet-row__expanded-cell {
 		border-top: none;
+		background-color: var(--color-background-secondary);
+		padding: 1rem 1.5rem;
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
 	}
 
-	.details-content {
-		animation: slideDown var(--duration-300) var(--animation-ease-out);
+	.aet-row__details {
+		padding: 1rem;
+		animation: aet-slide-down var(--duration-300, 300ms) var(--animation-ease-out, ease-out);
 	}
 
-	@keyframes slideDown {
+	@keyframes aet-slide-down {
 		from {
-			max-height: var(--size-0);
-			opacity: var(--opacity-0);
+			max-height: 0;
+			opacity: 0;
 			transform: translateY(-10px);
 		}
 		to {
 			max-height: 500px;
-			opacity: var(--opacity-100);
+			opacity: 1;
 			transform: translateY(0);
 		}
 	}

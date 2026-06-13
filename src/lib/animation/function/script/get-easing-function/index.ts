@@ -1,9 +1,9 @@
 import { BASE_EASING } from '$stylist/animation/const/record/base-easing';
-import type {
-	EasingFunction,
-	EasingType
-} from '$stylist/animation/type/script/get-easing-function';
+import { TOKEN_EASING } from '$stylist/animation/const/object/easing';
+import type { EasingFunction } from '$stylist/animation/type/script/get-easing-function';
 
-export function getEasingFunction(easing: EasingType): EasingFunction {
-	return BASE_EASING[easing] ?? BASE_EASING['ease-out'];
+type EasingValue = (typeof TOKEN_EASING)[keyof typeof TOKEN_EASING];
+
+export function getEasingFunction(easing: EasingValue): EasingFunction {
+	return BASE_EASING[easing] ?? BASE_EASING[TOKEN_EASING.EASE_OUT]!;
 }

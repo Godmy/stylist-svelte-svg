@@ -13,3 +13,6 @@
 <p class={state.classes} {...restProps}>
 	{props.text ?? ''}
 </p>
+
+<style>
+</style>

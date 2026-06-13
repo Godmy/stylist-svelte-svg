@@ -1,7 +1,7 @@
-﻿/**
- * Progress Bar вЂ” РёРЅРґРёРєР°С‚РѕСЂ РїСЂРѕРіСЂРµСЃСЃР°.
+/**
+ * Progress Bar — индикатор прогресса.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-состав:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   IStatusSlot               (information/status-slot)
@@ -11,5 +11,5 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotStatus as IStatusSlot } from '$stylist/information/interface/slot/status';
 
-export interface ProgressBarRecipe
+export interface RecipeProgressBar
 	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IStatusSlot]> {}

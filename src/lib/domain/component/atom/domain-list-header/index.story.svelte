@@ -16,8 +16,18 @@
 	description="List header with a compact title and entity count."
 >
 	{#snippet children(values: any)}
-		<div class="rounded-2xl border border-slate-200 bg-white">
+		<div class="_c1">
 			<DomainListHeader label={values.label as string} count={Number(values.count)} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+	}
+</style>

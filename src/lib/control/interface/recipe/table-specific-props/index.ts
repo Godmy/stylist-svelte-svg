@@ -1,31 +1,31 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** Специфичные свойства для таблиц */
+/** РЎРїРµС†РёС„РёС‡РЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РґР»СЏ С‚Р°Р±Р»РёС† */
 import type { Snippet } from 'svelte';
 
-export interface TableSpecificProps extends StructIntersectAll<[]> {
-	/** Тип таблицы */
+export interface TableSpecificProps extends StructIntersectAll<[SlotChildren]> {
+	/** РўРёРї С‚Р°Р±Р»РёС†С‹ */
 	type?: 'extended' | 'controls' | 'header' | 'data';
 
-	/** Колонки таблицы */
+	/** РљРѕР»РѕРЅРєРё С‚Р°Р±Р»РёС†С‹ */
 	columns?: Array<{ key: string; label: string; sortable?: boolean; icon?: string }>;
 
-	/** Данные строк */
+	/** Р”Р°РЅРЅС‹Рµ СЃС‚СЂРѕРє */
 	data?: Array<Record<string, any>>;
 
-	/** Сортировка */
+	/** РЎРѕСЂС‚РёСЂРѕРІРєР° */
 	sortBy?: string;
 	sortDirection?: 'asc' | 'desc' | 'none';
 	onSort?: (column: string, direction: 'asc' | 'desc') => void;
 
-	/** Пагинация */
+	/** РџР°РіРёРЅР°С†РёСЏ */
 	pagination?: boolean;
 	pageSize?: number;
 	currentPage?: number;
 
-	/** Выделение строк */
+	/** Р’С‹РґРµР»РµРЅРёРµ СЃС‚СЂРѕРє */
 	selectableRows?: boolean;
 	multiSelect?: boolean;
 
-	/** children как Snippet */
-	children?: Snippet;
+	/** children РєР°Рє Snippet */
 }

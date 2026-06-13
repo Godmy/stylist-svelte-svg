@@ -69,7 +69,7 @@
 	tags={['token', 'control', 'composer']}
 >
 	{#snippet children()}
-		<div class="flex flex-col gap-4">
+		<div class="_c1">
 			<TokenControlComposer
 				definition={radioDefinition}
 				onChange={(v) => console.log('SlotRadio:', v)}
@@ -86,3 +86,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+</style>

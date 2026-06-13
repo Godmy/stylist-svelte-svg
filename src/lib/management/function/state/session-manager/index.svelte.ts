@@ -1,16 +1,13 @@
-import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
-import type { SessionManagerStateProps } from '$stylist/management/interface/recipe/session-manager';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeSessionManager } from '$stylist/management/interface/recipe/session-manager';
 
-export function createSessionManagerState(props: SessionManagerStateProps) {
+export function createSessionManagerState(props: RecipeSessionManager) {
 	const activeSessions = $derived(props.activeSessions ?? 1);
 	const expiresAt = $derived(props.expiresAt ?? '2026-12-31 23:59');
 	const className = $derived(props.class ?? '');
 
 	const containerClasses = $derived(
-		InteractionFormsStyleManager.root(
-			'c-session-manager border rounded-lg p-4 space-y-2',
-			className
-		)
+		mergeClassNames('c-session-manager border rounded-lg p-4 space-y-2', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -38,5 +35,3 @@ export function createSessionManagerState(props: SessionManagerStateProps) {
 		}
 	};
 }
-
-export default createSessionManagerState;

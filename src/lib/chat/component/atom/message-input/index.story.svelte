@@ -21,7 +21,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3">
+		<div class="_c1">
 			<MessageInput
 				placeholder={values.placeholder}
 				disabled={values.disabled}
@@ -30,7 +30,18 @@
 				showSend={values.showSend}
 				onSendMessage={(message) => (sent = message)}
 			/>
-			<p class="text-sm text-[--color-text-secondary]">Last sent: {sent || 'none'}</p>
+			<p class="_c2">Last sent: {sent || 'none'}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

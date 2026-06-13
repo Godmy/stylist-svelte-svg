@@ -38,10 +38,28 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-molecules-ontology-node-component p-6">
-			<div class="mx-auto flex h-64 max-w-md items-center justify-center rounded-lg border">
+		<div class="sb-molecules-ontology-node-component _c1">
+			<div class="_c2">
 				<OntologyNodeComponent {node} showLabel={values.showLabel} />
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-left: auto;
+		margin-right: auto;
+		display: flex;
+		height: 16rem;
+		max-width: 28rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

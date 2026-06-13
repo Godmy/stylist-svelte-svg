@@ -1,4 +1,3 @@
-import { SidebarLayoutStyleManager } from '$stylist/layout/class/style-manager/sidebar-layout';
 import type { SidebarLayoutGap } from '$stylist/layout/type/enum/sidebar-layout-gap';
 import type { SidebarLayoutSide } from '$stylist/layout/type/enum/sidebar-layout-side';
 import type { SidebarLayoutWidth } from '$stylist/layout/type/enum/sidebar-layout-width';
@@ -12,20 +11,6 @@ export function createSidebarLayoutState(props: SidebarLayoutProps) {
 	const collapsed = $derived(props.collapsed ?? false);
 	const fillHeight = $derived(props.fillHeight ?? false);
 	const responsive = $derived(props.responsive ?? true);
-
-	const classes = $derived(
-		responsive
-			? SidebarLayoutStyleManager.getResponsiveHostClass(gap, fillHeight, props.class)
-			: SidebarLayoutStyleManager.getHostClass(gap, fillHeight, props.class)
-	);
-
-	const sidebarClass = $derived(
-		responsive
-			? SidebarLayoutStyleManager.getResponsiveSidebarClass(sidebarWidth, collapsed)
-			: SidebarLayoutStyleManager.getSidebarWidthClass(sidebarWidth, collapsed)
-	);
-
-	const contentClass = $derived(SidebarLayoutStyleManager.getContentClass(fillHeight));
 
 	const restProps = $derived.by(() => {
 		const {
@@ -63,17 +48,8 @@ export function createSidebarLayoutState(props: SidebarLayoutProps) {
 		get responsive() {
 			return responsive;
 		},
-		get classes() {
-			return classes;
-		},
 		get sidebarLabel() {
 			return sidebarLabel;
-		},
-		get sidebarClass() {
-			return sidebarClass;
-		},
-		get contentClass() {
-			return contentClass;
 		},
 		get restProps() {
 			return restProps;

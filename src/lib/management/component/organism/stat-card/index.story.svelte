@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { StatCardRecipe } from '$stylist/management/interface/recipe/stat-card';
+	import type { RecipeStatCard } from '$stylist/management/interface/recipe/stat-card';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 
@@ -11,7 +11,7 @@
 		{ name: 'trend', type: 'select', options: ['up', 'down', 'neutral'], defaultValue: 'up' }
 	];
 
-	const sampleStats: StatCardRecipe[] = [
+	const sampleStats: RecipeStatCard[] = [
 		{
 			label: 'Total Components',
 			value: '429',
@@ -37,7 +37,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<section class="grid gap-4 lg:grid-cols-2">
+		<section class="_c1">
 			{#each sampleStats as stat}
 				<StatCard
 					label={stat.label}
@@ -59,3 +59,15 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+	}
+	@media (min-width: 1024px) {
+		._c1 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

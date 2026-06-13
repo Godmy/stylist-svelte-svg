@@ -32,8 +32,16 @@
 	description="A component for selecting avatars with preview"
 >
 	{#snippet children(controlValues: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<AvatarSelector src={controlValues.src} alt={controlValues.alt} size={controlValues.size} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+</style>

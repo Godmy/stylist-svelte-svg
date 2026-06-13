@@ -1,9 +1,9 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { createRichTextSegments } from '$stylist/typography/function/script/rich-text-segments';
 import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/typography-inline-style';
-import type { RichTextRecipe } from '$stylist/typography/interface/recipe/rich-text';
+import type { RecipeRichText } from '$stylist/typography/interface/recipe/rich-text';
 
-export function createRichTextState(props: RichTextRecipe) {
+export function createRichTextState(props: RecipeRichText) {
 	const text = $derived(props.text ?? '');
 	const marks = $derived(props.marks ?? []);
 	const disabled = $derived(props.disabled ?? false);

@@ -62,3 +62,65 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.autocomplete-dropdown {
+		position: relative;
+		width: 100%;
+	}
+
+	.autocomplete-dropdown__trigger {
+		width: 100%;
+		padding: 0.5rem 1rem;
+		text-align: left;
+		background-color: var(--color-background-primary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		cursor: pointer;
+		position: relative;
+	}
+
+	.autocomplete-dropdown__trigger:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-500);
+	}
+
+	.autocomplete-dropdown__chevron {
+		position: absolute;
+		right: 0.75rem;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 1.25rem;
+		height: 1.25rem;
+		transition: transform 0.15s ease;
+	}
+
+	.autocomplete-dropdown__chevron--open {
+		transform: translateY(-50%) rotate(180deg);
+	}
+
+	.autocomplete-dropdown__listbox {
+		position: absolute;
+		z-index: var(--z-index-docked, 10);
+		margin-top: 0.25rem;
+		width: 100%;
+		background-color: var(--color-background-primary);
+		box-shadow:
+			0 4px 6px -1px rgba(0, 0, 0, 0.1),
+			0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		border-radius: 0.375rem;
+		border: 1px solid var(--color-border-primary);
+		max-height: 15rem;
+		overflow: auto;
+	}
+
+	.autocomplete-dropdown__option {
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+	}
+
+	.autocomplete-dropdown__option:hover {
+		background-color: var(--color-background-secondary);
+	}
+</style>

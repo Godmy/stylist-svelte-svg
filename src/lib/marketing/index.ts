@@ -1,11 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	ABTestConfiguratorStyleManager,
-	ConversionFunnelStyleManager,
-	CtaBannerStyleManager,
-	HeroStyleManager
-} from './class';
-export {
 	AbtestConfigurator,
 	ConversionFunnel,
 	CtaBanner,

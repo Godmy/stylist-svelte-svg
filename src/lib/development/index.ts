@@ -1,24 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AtomicPrinciplesShowcaseStyleManager,
-	CodeDiffStyleManager,
-	CodeEditorStyleManager,
-	CodeSectionStyleManager,
-	CodeStyleManager,
-	CodeWithCopyStyleManager,
-	CodeWithLineNumbersStyleManager,
-	ComponentLibraryStatsStyleManager,
-	ComponentPreviewStyleManager,
-	CopyableCodeStyleManager,
-	DebugConsoleStyleManager,
-	DesignTokensStyleManager,
-	DevelopmentErrorBoundaryStyleManager,
-	DocumentationBlockStyleManager,
-	MockDataSelectorStyleManager,
-	PrivacySettingsStyleManager,
-	StyleManagerSyntaxHighlightedCode
-} from './class';
-export {
 	AtomicPrinciplesShowcase,
 	CodeBlock,
 	CodeBlockWithLineNumbers,
@@ -44,6 +25,8 @@ export {
 export {
 	CODE_WITH_COPY_DISPATCH,
 	PARTICLE_COUNT,
+	PresetCodeBlock,
+	PresetCodeEditor,
 	TOKEN_CODE_LANGUAGE,
 	TOKEN_CODE_VIEW,
 	TOKEN_DEVELOPMENT_ICON,
@@ -94,7 +77,6 @@ export type {
 	CodeWithCopyVariant,
 	ComponentLibraryStatsComponentStats,
 	ComponentLibraryStatsProps,
-	ComponentPreviewProps,
 	CopyableCodeBlockProps,
 	CopyableCodeBlockRestProps,
 	DebugConsoleLogEntry,
@@ -104,7 +86,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	DocumentationBlockProps,
 	DocumentationBlockVariant,
 	ErrorLogEntry,
 	ErrorLogPayload,
@@ -130,15 +111,15 @@ export type {
 	TokenPropertyType
 } from './type';
 export type {
-	CodeBlockRecipe,
-	CodeEditorRecipe,
 	ComponentPreviewCodeOptions,
 	ContractCodeBlock,
 	ContractDevelopment,
 	DomainForEachContext,
 	DomainForEachOptions,
 	RecipeAtomicPrinciplesShowcase,
+	RecipeCodeBlock,
 	RecipeCodeDiff,
+	RecipeCodeEditor,
 	RecipeComponentLibraryStats,
 	RecipeComponentPreview,
 	RecipeDebugConsole,
@@ -149,9 +130,13 @@ export type {
 	RecipePrivacySettings,
 	RecipeResourceOptimizer,
 	RecipeStylist,
+	RecipeThemeSyntaxHighlightedCode,
 	SlotAiModel,
+	SlotCodeBlock,
+	SlotCodeDiff,
+	SlotComponentPreview,
+	SlotDocumentationBlock,
 	SlotMockDataSelector,
-	SlotMockDataSelectorStyleClasses,
-	ThemeSyntaxHighlightedCodeRecipe
+	SlotMockDataSelectorStyleClasses
 } from './interface';
 export type { ExtractConstEnumDomainPayload, ExtractConstEnumTokenPayload } from './type';

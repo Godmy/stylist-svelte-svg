@@ -62,10 +62,8 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-molecules-ontology-edge-component p-6">
-			<div
-				class="relative mx-auto h-64 max-w-md overflow-hidden rounded-lg border bg-[var(--color-background-primary)]"
-			>
+		<div class="sb-molecules-ontology-edge-component _c1">
+			<div class="_c2">
 				<OntologyEdgeComponent
 					showLabel={values.showLabel}
 					edge={relationship}
@@ -76,3 +74,21 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		height: 16rem;
+		max-width: 28rem;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		background-color: var(--color-background-primary);
+	}
+</style>

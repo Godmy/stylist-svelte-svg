@@ -65,8 +65,14 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<StoreLocator stores={defaultStores} radius={values.radius} showMap={values.showMap} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

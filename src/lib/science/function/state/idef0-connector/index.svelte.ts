@@ -1,24 +1,19 @@
-import type { Idef0ConnectorRecipe as Idef0ConnectorProps } from '$stylist/science/interface/recipe/idef0-connector';
-import { Idef0StyleManager } from '$stylist/science/class/style-manager/idef0';
+import type { RecipeIdef0Connector as Idef0ConnectorProps } from '$stylist/science/interface/recipe/idef0-connector';
 
 export function createIdef0ConnectorState(props: Idef0ConnectorProps) {
 	const groupClasses = $derived(
-		Idef0StyleManager.getConnectorGroupClasses(
-			typeof props.class === 'string' ? props.class : undefined
-		)
+		typeof props.class === 'string' ? `idef0-connector ${props.class}` : 'idef0-connector'
 	);
-	const lineClasses = $derived(Idef0StyleManager.getConnectorLineClasses());
-	const labelClasses = $derived(Idef0StyleManager.getConnectorLabelClasses());
 
 	return {
 		get groupClasses() {
 			return groupClasses;
 		},
 		get lineClasses() {
-			return lineClasses;
+			return 'idef0-connector__line';
 		},
 		get labelClasses() {
-			return labelClasses;
+			return 'idef0-connector__label';
 		}
 	};
 }

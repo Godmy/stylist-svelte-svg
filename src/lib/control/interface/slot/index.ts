@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export type { SlotAccessibilityToolbar } from './accessibility-toolbar';
 export type { SlotAccordion } from './accordion';
 export type { SlotAccordionBase } from './accordion-base';
 export type { SlotAccordionDataItem } from './accordion-data-item';
@@ -6,6 +7,7 @@ export type { SlotAccordionHeader } from './accordion-header';
 export type { SlotAccordionHeaderDouble } from './accordion-header-double';
 export type { SlotAccordionItem } from './accordion-item';
 export type { SlotAccordionPanel } from './accordion-panel';
+export type { SlotAdvancedAccordion } from './advanced-accordion';
 export type { SlotAdvancedAccordionItem } from './advanced-accordion-item';
 export type { SlotAdvancedColumnDefinition } from './advanced-column-definition';
 export type { SlotAutoSearch } from './auto-search';
@@ -52,6 +54,7 @@ export type { SlotSearchSuggestionItem } from './search-suggestion-item';
 export type { SlotSelect } from './select';
 export type { SlotSelectOption } from './select-option';
 export type { SlotSelectStyleClasses } from './select-style-classes';
+export type { SlotSelector } from './selector';
 export type { SlotSortableList } from './sortable-list';
 export type { SlotSortableListItem } from './sortable-list-item';
 export type { SlotSortableTableHeader } from './sortable-table-header';

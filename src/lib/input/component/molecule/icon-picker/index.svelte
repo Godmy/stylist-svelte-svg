@@ -1,11 +1,12 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import createIconPickerState from '$stylist/input/function/state/icon-picker/index.svelte';
-	import { IconPickerStyleManager } from '$stylist/media/class/style-manager/icon-picker';
-	import type { ThemeIconPickerRecipe } from '$stylist/media/interface/recipe/icon-picker';
+	import type { RecipeThemeIconPicker } from '$stylist/media/interface/recipe/icon-picker';
 	import type { Snippet } from 'svelte';
 
-	let props: ThemeIconPickerRecipe = $props();
+	const SearchIconName = 'search';
+
+	let props: RecipeThemeIconPicker = $props();
 	const state = createIconPickerState(props);
 </script>
 
@@ -18,7 +19,7 @@
 		{#if state.showSearch}
 			<div class={state.searchContainerClass}>
 				<div class={state.searchIconClass}>
-					<BaseIcon name={IconPickerStyleManager.searchIconName} />
+					<BaseIcon name={SearchIconName} />
 				</div>
 				<input
 					type="text"
@@ -50,3 +51,6 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+</style>

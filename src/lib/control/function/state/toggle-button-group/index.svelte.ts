@@ -12,15 +12,7 @@ export function createToggleButtonGroupState(props: ToggleButtonGroupProps) {
 		}
 	});
 
-	const sizeClasses = $derived(
-		props.size === 'sm'
-			? 'text-xs px-2 py-1'
-			: props.size === 'md'
-				? 'text-sm px-3 py-2'
-				: props.size === 'lg'
-					? 'text-base px-4 py-3'
-					: 'text-sm px-3 py-2'
-	);
+	const size = $derived(props.size ?? 'md');
 
 	function handleToggle(optionValue: string) {
 		if (props.disabled || props.options.find((option) => option.value === optionValue)?.disabled) {
@@ -54,8 +46,8 @@ export function createToggleButtonGroupState(props: ToggleButtonGroupProps) {
 		get selectedValues() {
 			return selectedValues;
 		},
-		get sizeClasses() {
-			return sizeClasses;
+		get size() {
+			return size;
 		},
 		handleToggle,
 		isSelected

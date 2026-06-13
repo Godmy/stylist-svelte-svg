@@ -1,7 +1,6 @@
-import { MediaStyleManager } from '$stylist/media/class/style-manager/media';
-import type { FaviconProps } from '$stylist/media/type/struct/favicon';
+import type { RecipeFavicon } from '$stylist/media/interface/recipe/favicon';
 
-export function createFaviconState(props: FaviconProps) {
+export function createFaviconState(props: RecipeFavicon) {
 	let error = $state(props.error ?? false);
 
 	$effect(() => {
@@ -10,13 +9,15 @@ export function createFaviconState(props: FaviconProps) {
 
 	const size = $derived(props.size ?? 16);
 	const url = $derived(props.url);
-	const faviconUrl = $derived(MediaStyleManager.getFaviconUrl(url));
-	const baseClasses = $derived(MediaStyleManager.getFaviconImageClasses(props.class));
-	const sizeStyle = $derived(MediaStyleManager.getFaviconStyle(size));
+	const faviconUrl = $derived(`favicon__TODO favicon__TODO--${url}`);
+	const baseClasses = $derived(`favicon__favicon-image favicon__favicon-image--${props.class}`);
+	const sizeStyle = $derived(`favicon__TODO favicon__TODO--${size}`);
 
 	// Define individual classes for different elements
 	const imageClasses = $derived(baseClasses);
-	const fallbackClasses = $derived(MediaStyleManager.getFaviconFallbackClasses(baseClasses));
+	const fallbackClasses = $derived(
+		`favicon__favicon-fallback favicon__favicon-fallback--${baseClasses}`
+	);
 
 	const restProps = $derived.by(() => {
 		const { error: _error, onError: _onError, content: _content, ...rest } = props;
@@ -53,5 +54,3 @@ export function createFaviconState(props: FaviconProps) {
 		handleError
 	};
 }
-
-export default createFaviconState;

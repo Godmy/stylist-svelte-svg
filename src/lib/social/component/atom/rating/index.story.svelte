@@ -21,7 +21,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-2">
+		<div class="_c1">
 			<Rating
 				{rating}
 				max={values.max as number}
@@ -30,7 +30,18 @@
 				size={values.size as 'sm' | 'md' | 'lg'}
 				onRatingChange={(next: number) => (rating = next)}
 			/>
-			<p class="text-sm text-[--color-text-secondary]">Selected rating: {rating}</p>
+			<p class="_c2">Selected rating: {rating}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

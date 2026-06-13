@@ -11,12 +11,12 @@ export type {
 	BehaviorSpaced
 } from './behavior';
 export type {
-	BorderRecipe,
-	CardRecipe,
 	NodeDotProps,
 	PopoverProps,
-	StackedLayoutProps,
-	ThemeBackgroundRecipe,
-	ThemeGradientBackgroundRecipe,
-	ThemeSurfaceRecipe
+	RecipeBorder,
+	RecipeCard,
+	RecipeThemeBackground,
+	RecipeThemeGradientBackground,
+	RecipeThemeSurface,
+	StackedLayoutProps
 } from './recipe';

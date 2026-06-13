@@ -10,3 +10,32 @@
 	<div class={state.statusClasses}>Status: {state.status}</div>
 	<pre class={state.responsePreClasses}>{state.response}</pre>
 </div>
+
+<style>
+	.c-response-viewer {
+		border: 1px solid var(--color-border-primary);
+		border-radius: var(--border-radius-large, 0.5rem);
+		padding: 1rem;
+	}
+
+	.c-response-viewer__title {
+		font-weight: 600;
+		margin-bottom: 0.25rem;
+	}
+
+	.c-response-viewer__status {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+		margin-bottom: 0.5rem;
+	}
+
+	.c-response-viewer__pre {
+		font-size: 0.75rem;
+		background-color: var(--color-background-secondary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: var(--border-radius-base, 0.375rem);
+		padding: 0.5rem;
+		overflow: auto;
+		margin: 0;
+	}
+</style>

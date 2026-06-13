@@ -1,21 +1,21 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	AlertRecipe,
-	CardSkeletonRecipe,
-	ErrorBoundaryRecipe,
-	ErrorMessageRecipe,
-	LoadingRecipe,
+	RecipeAlert,
+	RecipeCardSkeleton,
+	RecipeErrorBoundary,
+	RecipeErrorMessage,
 	RecipeProgressBarProps,
+	RecipeSkeleton,
+	RecipeSkeletonCircle,
 	RecipeSkeletonProps,
+	RecipeSkeletonRectangle,
+	RecipeSkeletonTable,
+	RecipeSkeletonText,
+	RecipeSpinner,
 	RecipeSpinnerProps,
+	RecipeToast,
 	RecipeToastProps,
-	SkeletonCircleRecipe,
-	SkeletonRecipe,
-	SkeletonRectangleRecipe,
-	SkeletonSpecificProps,
-	SkeletonTableRecipe,
-	SkeletonTextRecipe,
-	ToastRecipe
+	SkeletonSpecificProps
 } from './recipe';
 export type {
 	SlotAccountProgressTracker,

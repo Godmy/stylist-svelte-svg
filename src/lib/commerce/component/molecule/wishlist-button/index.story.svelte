@@ -20,14 +20,28 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3 p-6">
+		<div class="_c1">
 			<WishlistButton
 				inWishlist={values.inWishlist}
 				showLabel={values.showLabel}
 				disabled={values.disabled}
 				onToggle={() => (toggles += 1)}
 			/>
-			<p class="text-sm text-[var(--color-text-secondary)]">SlotToggle count: {toggles}</p>
+			<p class="_c2">SlotToggle count: {toggles}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

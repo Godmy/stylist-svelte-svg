@@ -23,9 +23,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div
-			class="rounded-xl border border-[--color-border-primary] bg-[var(--color-background-primary)] p-5"
-		>
+		<div class="_c1">
 			<FormHeader
 				title={values.title}
 				subtitle={values.subtitle}
@@ -36,3 +34,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.25rem;
+	}
+</style>

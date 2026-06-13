@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createFileListItemState from '$stylist/file/function/state/file-list-item/index.svelte';
+	import { createFileListItemState } from '$stylist/file/function/state/file-list-item/index.svelte';
 	import { formatFileSize } from '$stylist/file/function/script/file-list-item-format-file-size';
 	import type { Props } from '$stylist/file/type/struct/file-list-item/props/-props';
 
@@ -53,11 +53,11 @@
 					<span>{formatFileSize(state.item.size)}</span>
 				{/if}
 				{#if state.showModified && state.item.modified}
-					<span class="fli-sep">•</span>
+					<span class="fli-sep">вЂў</span>
 					<span>{state.item.modified.toLocaleDateString()}</span>
 				{/if}
 				{#if state.showOwner && state.item.owner}
-					<span class="fli-sep">•</span>
+					<span class="fli-sep">вЂў</span>
 					<span>{state.item.owner}</span>
 				{/if}
 			</div>

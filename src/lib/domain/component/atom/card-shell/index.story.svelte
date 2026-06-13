@@ -17,27 +17,13 @@
 	description="Expandable shell used by the orbit tooling panel."
 >
 	{#snippet children(values: any)}
-		<div
-			class="relative h-72 overflow-hidden rounded-3xl bg-[radial-gradient(circle_at_top,#dbeafe,transparent_60%),#eff6ff] p-8"
-		>
-			<div class="absolute top-16 left-10">
+		<div class="_c1">
+			<div class="_c2">
 				<CardShell expanded={Boolean(values.expanded)} title={values.title as string}>
 					{#snippet children()}
-						<button
-							type="button"
-							class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
-							>Layout</button
-						>
-						<button
-							type="button"
-							class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
-							>Variants</button
-						>
-						<button
-							type="button"
-							class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
-							>States</button
-						>
+						<button type="button" class="_c3">Layout</button>
+						<button type="button" class="_c3">Variants</button>
+						<button type="button" class="_c3">States</button>
 					{/snippet}
 
 					{#snippet close()}
@@ -48,3 +34,31 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		height: 18rem;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		background-color: radial-gradient(circle at top, #dbeafe, transparent 60%), #eff6ff;
+		padding: 2rem;
+	}
+	._c2 {
+		position: absolute;
+		top: 4rem;
+		left: 2.5rem;
+	}
+	._c3 {
+		border-radius: 9999px;
+		background-color: #f1f5f9;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 500;
+		color: #334155;
+	}
+</style>

@@ -72,51 +72,79 @@
 
 <Story {id} {title} {description} component={TeamMemberCard} category="Organisms" {controls}>
 	{#snippet children(values: any)}
-		<section class="sb-organisms-team-member-card grid w-full gap-8 lg:grid-cols-[1fr_1fr_1fr]">
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
-				<p class="text-sm font-semibold tracking-wide text-[--color-text-secondary] uppercase">
-					Claude (Content Strategist)
-				</p>
-				<p class="mt-1 text-[--color-text-primary]">
-					Specializes in documentation and architectural analysis.
-				</p>
+		<section class="sb-organisms-team-member-card _c1">
+			<div class="_c2">
+				<p class="_c3">Claude (Content Strategist)</p>
+				<p class="_c4">Specializes in documentation and architectural analysis.</p>
 
-				<div class="mt-6">
+				<div class="_c5">
 					<TeamMemberCard {...sampleTeamMembers[0]} />
 				</div>
 			</div>
 
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-			>
-				<p class="text-sm font-semibold tracking-wide text-[--color-text-secondary] uppercase">
-					Qwen (Tech Lead)
-				</p>
-				<p class="mt-1 text-[--color-text-primary]">
-					Leads technical implementation and architectural decisions.
-				</p>
+			<div class="_c6">
+				<p class="_c3">Qwen (Tech Lead)</p>
+				<p class="_c4">Leads technical implementation and architectural decisions.</p>
 
-				<div class="mt-6">
+				<div class="_c5">
 					<TeamMemberCard {...sampleTeamMembers[1]} />
 				</div>
 			</div>
 
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
-				<p class="text-sm font-semibold tracking-wide text-[--color-text-secondary] uppercase">
-					Gemini (Scrum Master)
-				</p>
-				<p class="mt-1 text-[--color-text-primary]">
-					Facilitates team collaboration and Scrum practices.
-				</p>
+			<div class="_c2">
+				<p class="_c3">Gemini (Scrum Master)</p>
+				<p class="_c4">Facilitates team collaboration and Scrum practices.</p>
 
-				<div class="mt-6">
+				<div class="_c5">
 					<TeamMemberCard {...sampleTeamMembers[2]} />
 				</div>
 			</div>
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		width: 100%;
+		gap: 2rem;
+	}
+	@media (min-width: 1024px) {
+		._c1 {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+	._c2 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		letter-spacing: 0.025em;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+	}
+	._c4 {
+		margin-top: 0.25rem;
+		color: var(--color-text-primary);
+	}
+	._c5 {
+		margin-top: 1.5rem;
+	}
+	._c6 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+</style>

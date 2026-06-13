@@ -38,7 +38,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-map-selector p-4">
+		<div class="sb-organisms-map-selector _c1">
 			<h1>MapSelector Story</h1>
 			<MapSelector
 				{locations}
@@ -48,8 +48,18 @@
 				showMarkers={values.showMarkers}
 				height={values.height}
 				width={values.width}
-				class="my-2"
+				class="_c2"
 			/>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+</style>

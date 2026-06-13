@@ -110,6 +110,12 @@
 </div>
 
 <style>
+	.input-field-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;

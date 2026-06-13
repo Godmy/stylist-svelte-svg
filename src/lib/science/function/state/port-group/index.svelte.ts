@@ -1,7 +1,6 @@
 import type { PortGroupProps } from '$stylist/science/type/struct/port-group-props';
-import type { GraphPortRecipe } from '$stylist/science/interface/recipe/graph-port';
+import type { RecipeGraphPort } from '$stylist/science/interface/recipe/graph-port';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { PortGroupStyleManager } from '$stylist/science/class/style-manager/port-group';
 
 export function createPortGroupState(props: PortGroupProps) {
 	const direction = $derived(
@@ -35,17 +34,19 @@ export function createPortGroupState(props: PortGroupProps) {
 		return rest;
 	});
 
-	const classes = $derived(PortGroupStyleManager.getGroupClasses(direction, compact));
+	const classes = $derived(
+		`port-group port-group--${direction}${compact ? ' port-group--compact' : ''}`
+	);
 
-	function handlePortClick(port: GraphPortRecipe, event: MouseEvent) {
+	function handlePortClick(port: RecipeGraphPort, event: MouseEvent) {
 		props.onPortClick?.(port.id ?? '', event);
 	}
 
-	function handleConnectionStart(port: GraphPortRecipe, event: MouseEvent) {
+	function handleConnectionStart(port: RecipeGraphPort, event: MouseEvent) {
 		props.onConnectionStart?.(port, event);
 	}
 
-	function handleConnectionEnd(port: GraphPortRecipe, event: MouseEvent) {
+	function handleConnectionEnd(port: RecipeGraphPort, event: MouseEvent) {
 		props.onConnectionEnd?.(port, event);
 	}
 

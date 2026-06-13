@@ -7,12 +7,10 @@ export function createAnimatedProgressState(props: AnimatedProgressProps) {
 		)
 	);
 
-	const containerClasses = $derived(`w-full ${props.class ?? ''}`);
-	const labelClasses = $derived('text-sm font-medium');
-	const progressBarBgClasses = $derived(
-		'h-2.5 w-full rounded-full bg-[var(--color-background-tertiary)]'
-	);
-	const progressFillClasses = $derived('h-2.5 rounded-full bg-[var(--color-primary-600)]');
+	const containerClasses = $derived(`animated-progress ${props.class ?? ''}`);
+	const labelClasses = $derived('animated-progress__label');
+	const progressBarBgClasses = $derived('animated-progress__track');
+	const progressFillClasses = $derived('animated-progress__fill');
 
 	return {
 		get percentage() {

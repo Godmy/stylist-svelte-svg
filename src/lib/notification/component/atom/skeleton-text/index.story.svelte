@@ -15,27 +15,63 @@
 </script>
 
 <Story component={SkeletonText} {controls}>
-	<div class="space-y-4 p-6">
+	<div class="_c1">
 		{#each Array.from({ length: lines }) as _, index}
 			<SkeletonText
 				width={`${Math.max(40, width - index * 8)}%`}
-				class={animate ? '' : '!animate-none'}
+				class={animate ? '' : 'story-no-anim'}
 			/>
 		{/each}
 
-		<div class="grid gap-3 md:grid-cols-2">
-			<label class="flex flex-col gap-1 text-sm">
+		<div class="_c2">
+			<label class="_c3">
 				Lines ({lines})
 				<input type="range" min="1" max="6" step="1" bind:value={lines} />
 			</label>
-			<label class="flex flex-col gap-1 text-sm">
+			<label class="_c3">
 				Base width ({width}%)
 				<input type="range" min="30" max="100" step="5" bind:value={width} />
 			</label>
-			<label class="flex items-center gap-2 text-sm">
+			<label class="_c4">
 				<input type="checkbox" bind:checked={animate} />
 				Animate pulse
 			</label>
 		</div>
 	</div>
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+	._c2 {
+		display: grid;
+		gap: 0.75rem;
+	}
+	@media (min-width: 768px) {
+		._c2 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	._c3 {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c4 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+
+	.story-no-anim {
+		animation: none !important;
+	}
+</style>

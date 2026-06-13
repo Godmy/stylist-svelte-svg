@@ -120,18 +120,12 @@
 	description="Interactive field highlighter with graph visualization"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
-			<div class="grid gap-6 lg:grid-cols-[280px_1fr]">
-				<div class="space-y-4">
+		<div class="_c1">
+			<div class="_c2">
+				<div class="_c3">
 					<div>
-						<label for="node-select" class="text-sm font-medium text-[--color-text-secondary]">
-							РђРєС‚РёРІРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
-						</label>
-						<select
-							id="node-select"
-							class="mt-1 w-full rounded-lg border border-[--color-border-primary] px-3 py-2 text-sm"
-							bind:value={selectedNodeId}
-						>
+						<label for="node-select" class="_c4"> РђРєС‚РёРІРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ </label>
+						<select id="node-select" class="_c5" bind:value={selectedNodeId}>
 							{#each graphData.nodes as node}
 								<option value={node.id}>{node.name}</option>
 							{/each}
@@ -139,12 +133,10 @@
 					</div>
 
 					<div>
-						<label for="field-select" class="text-sm font-medium text-[--color-text-secondary]">
-							Р’С‹РґРµР»РёС‚СЊ РїРѕР»Рµ
-						</label>
+						<label for="field-select" class="_c4"> Р’С‹РґРµР»РёС‚СЊ РїРѕР»Рµ </label>
 						<select
 							id="field-select"
-							class="mt-1 w-full rounded-lg border border-[--color-border-primary] px-3 py-2 text-sm"
+							class="_c5"
 							bind:value={selectedFieldName}
 							disabled={!selectedNode?.fields?.length}
 						>
@@ -156,24 +148,18 @@
 						</select>
 					</div>
 
-					<div
-						class="rounded-xl bg-[--color-background-secondary] p-4 text-sm text-[--color-text-secondary]"
-					>
-						<p class="font-semibold text-[--color-text-primary]">{selectedNode?.name}</p>
+					<div class="_c6">
+						<p class="_c7">{selectedNode?.name}</p>
 						<p>{selectedNode?.description ?? 'РќРµС‚ РѕРїРёСЃР°РЅРёСЏ'}</p>
 						{#if selectedField}
-							<p class="mt-3 text-xs tracking-wide text-[--color-text-secondary] uppercase">
-								Р’С‹Р±СЂР°РЅРЅРѕРµ РїРѕР»Рµ: <span class="font-semibold text-[--color-text-primary]"
-									>{selectedField.name}</span
-								>
+							<p class="_c8">
+								Р’С‹Р±СЂР°РЅРЅРѕРµ РїРѕР»Рµ: <span class="_c7">{selectedField.name}</span>
 							</p>
 						{/if}
 					</div>
 				</div>
 
-				<div
-					class="relative min-h-[360px] overflow-hidden rounded-2xl border border-dashed border-[--color-border-primary] bg-[--color-background-secondary] p-4"
-				>
+				<div class="_c9">
 					<FieldHighlighter
 						data={graphData as any}
 						selectedNode={selectedNode as any}
@@ -184,3 +170,72 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		display: grid;
+		gap: 1.5rem;
+	}
+	@media (min-width: 1024px) {
+		._c2 {
+			grid-template-columns: 280px 1fr;
+		}
+	}
+	._c3 > * + * {
+		margin-top: 1rem;
+	}
+	._c4 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+	._c5 {
+		margin-top: 0.25rem;
+		width: 100%;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c6 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c7 {
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c8 {
+		margin-top: 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		letter-spacing: 0.025em;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+	}
+	._c9 {
+		position: relative;
+		min-height: 360px;
+		overflow: hidden;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

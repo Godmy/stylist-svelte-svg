@@ -1,4 +1,4 @@
-import type { SlotSkeleton as ISkeletonProps } from '$stylist/notification/interface/slot/skeleton';
+﻿import type { SlotSkeleton as ISkeletonProps } from '$stylist/notification/interface/slot/skeleton';
 
 export function createSkeletonState(
 	props: {
@@ -35,5 +35,3 @@ export function createSkeletonState(
 		}
 	};
 }
-
-export default createSkeletonState;

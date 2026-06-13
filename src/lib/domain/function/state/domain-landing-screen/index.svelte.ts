@@ -61,3 +61,5 @@ export function createDomainLandingScreenState(
 		closeSettings
 	};
 }
+
+export default createDomainLandingScreenState;

@@ -1,14 +1,10 @@
-/**
- * ProductSorting types and interfaces following SOLID principles
- */
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 
-import type { Snippet } from 'svelte';
-
-export interface SlotProductSorting {
+export interface SlotProductSorting extends StructIntersectAll<[SlotChildren]> {
 	class?: string;
 	options?: Array<{ value: string; label: string }>;
 	value?: string;
-	children?: Snippet;
 	oninput?: (event: Event) => void;
 	onchange?: (event: Event) => void;
 }

@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeConfirmationDialog } from '$stylist/navigation/interface/recipe/confirmation-dialog';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createConfirmationDialogState from '$stylist/navigation/function/state/confirmation-dialog/index.svelte';
-	import type { SlotConfirmationDialog as ConfirmationDialogProps } from '$stylist/navigation/interface/slot/confirmation-dialog';
+	import { createConfirmationDialogState } from '$stylist/navigation/function/state/confirmation-dialog/index.svelte';
 
 	let {
 		open = false,
@@ -20,7 +20,7 @@
 		footerClass = '',
 		size = 'md',
 		...restProps
-	}: ConfirmationDialogProps = $props();
+	}: RecipeConfirmationDialog = $props();
 
 	const state = createConfirmationDialogState({
 		open,
@@ -42,11 +42,11 @@
 </script>
 
 {#if open}
-	<div class={state.overlayClass} {...restProps}>
-		<div class={state.contentClass}>
-			<h3 class={state.headerClass}>{title}</h3>
-			<p class={state.bodyClass}>{message}</p>
-			<div class={state.footerClass}>
+	<div class="confirmation-dialog__overlay" {...restProps}>
+		<div class="confirmation-dialog__content">
+			<h3 class="confirmation-dialog__header">{title}</h3>
+			<p class="confirmation-dialog__body">{message}</p>
+			<div class="confirmation-dialog__footer">
 				<Button variant="secondary" onclick={state.handleCancel}>
 					{cancelText}
 				</Button>
@@ -57,3 +57,6 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+</style>

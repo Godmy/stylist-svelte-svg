@@ -1,4 +1,4 @@
-import { ViewportStyleManager } from '$stylist/canvas/class/style-manager/viewport';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { ViewportProps } from '$stylist/canvas/type/struct/viewport/viewport-props';
 
 export function createViewportState(props: ViewportProps) {
@@ -12,8 +12,9 @@ export function createViewportState(props: ViewportProps) {
 	const worldWidth = $derived(props.worldWidth ?? 10000);
 	const worldHeight = $derived(props.worldHeight ?? 10000);
 	const classes = $derived(
-		ViewportStyleManager.getViewportClass(
-			isDragging,
+		mergeClassNames(
+			'viewport',
+			isDragging && 'dragging',
 			typeof props.class === 'string' ? props.class : undefined
 		)
 	);

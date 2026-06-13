@@ -15,7 +15,7 @@
 	}
 </script>
 
-<ThemeModeToggle currentTheme={theme} onThemeChange={handleThemeChange} onToggle={handleToggle} />
+<ThemeModeToggle themeMode={theme} onThemeModeChange={handleThemeChange} onToggle={handleToggle} />
 
 <output data-testid="theme-mode-value">{theme}</output>
 <output data-testid="theme-change-count">{themeChangeCount}</output>

@@ -1,18 +1,13 @@
-import { derived, writable } from 'svelte/store';
-import type { SlotErrorMessage as ErrorMessageProps } from '$stylist/notification/interface/slot/error-message-error-message';
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
+﻿import type { SlotErrorMessage as RecipeErrorMessage } from '$stylist/notification/interface/slot/error-message-error-message';
 
-export function createErrorMessageState(props: ErrorMessageProps) {
-	// Initialize props with defaults
+export function createErrorMessageState(props: RecipeErrorMessage) {
 	const error = props.error;
 	const title = props.title ?? 'Error';
 	const onRetry = props.onRetry;
 	const showRetry = props.showRetry ?? true;
 
-	// Local state for error message
 	let errorMessage = $state<string | null>(null);
 
-	// Update error message when prop changes
 	$effect(() => {
 		if (error) {
 			errorMessage =
@@ -22,21 +17,7 @@ export function createErrorMessageState(props: ErrorMessageProps) {
 		}
 	});
 
-	const styles = {
-		container:
-			'rounded-lg border border-[--color-danger-200] bg-[--color-danger-50] p-4 text-[--color-danger-900]',
-		title: 'text-sm font-semibold',
-		text: 'mt-1 text-sm',
-		button:
-			'inline-flex items-center rounded-md bg-[--color-danger-600] px-3 py-1.5 text-sm font-medium text-[--color-text-inverse] transition-colors hover:bg-[--color-danger-700]',
-		buttonContainer: 'mt-3'
-	};
-
-	// Merge classes with custom classes
-	const containerClasses = derived(
-		[writable(props.class), writable(styles.container)],
-		([$class, $container]) => joinClassNames($container, $class)
-	);
+	const containerClasses = $derived(`error-message ${props.class ?? ''}`.trim());
 
 	return {
 		error,
@@ -47,11 +28,9 @@ export function createErrorMessageState(props: ErrorMessageProps) {
 			return errorMessage;
 		},
 		containerClasses,
-		titleClasses: styles.title,
-		textClasses: styles.text,
-		buttonClasses: styles.button,
-		buttonContainerClasses: styles.buttonContainer
+		titleClasses: 'error-message__title',
+		textClasses: 'error-message__text',
+		buttonClasses: 'error-message__retry-btn',
+		buttonContainerClasses: 'error-message__actions'
 	};
 }
-
-export default createErrorMessageState;

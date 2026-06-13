@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { HeadingRecipe } from '$stylist/typography/interface/recipe/heading';
+	import type { RecipeHeading } from '$stylist/typography/interface/recipe/heading';
 	import createHeadingState from '$stylist/typography/function/state/heading/index.svelte';
 
-	let props: HeadingRecipe = $props();
+	let props: RecipeHeading = $props();
 	const state = createHeadingState(props);
 </script>
 

@@ -23,7 +23,7 @@ export function createFileExplorerState(props: Props) {
 	const disabled = $derived(props.disabled ?? false);
 	const classes = $derived([props.class || ''].filter(Boolean).join(' '));
 
-	const pathParts = $derived(currentPath.split('/').filter((part) => part));
+	const pathParts = $derived(currentPath.split('/').filter((part: string) => part));
 	const filteredItems = $derived.by(() => {
 		const query = searchQuery.trim().toLowerCase();
 
@@ -31,7 +31,7 @@ export function createFileExplorerState(props: Props) {
 			return items;
 		}
 
-		return items.filter((item) => {
+		return items.filter((item: SlotFileSystemItem) => {
 			const path = typeof item.path === 'string' ? item.path.toLowerCase() : '';
 			return item.name.toLowerCase().includes(query) || path.includes(query);
 		});
@@ -176,5 +176,3 @@ export function createFileExplorerState(props: Props) {
 		openUploadDialog
 	};
 }
-
-export default createFileExplorerState;

@@ -1,4 +1,3 @@
-import { VerticalLayoutStyleManager } from '$stylist/layout/class/style-manager/vertical-layout';
 import type { VerticalLayoutProps } from '$stylist/layout/type/struct/layout-extended/vertical-layout-props';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
 import type { TokenJustification } from '$stylist/layout/type/enum/justification';
@@ -13,15 +12,6 @@ export function createVerticalLayoutState(props: VerticalLayoutProps) {
 		(props.justifyContent as TokenJustification | undefined) ?? 'justify'
 	);
 	const fillHeight = $derived(props.fillHeight ?? false);
-	const classes = $derived(
-		VerticalLayoutStyleManager.getHostClass(
-			gap,
-			alignItems,
-			justifyContent,
-			fillHeight,
-			props.class
-		)
-	);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -48,9 +38,6 @@ export function createVerticalLayoutState(props: VerticalLayoutProps) {
 		},
 		get fillHeight() {
 			return fillHeight;
-		},
-		get classes() {
-			return classes;
 		},
 		get restProps() {
 			return restProps;

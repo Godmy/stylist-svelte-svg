@@ -91,34 +91,20 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<section class="grid w-full gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)]">
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-7 shadow-sm"
-			>
-				<div class="flex flex-wrap items-start justify-between gap-3">
+		<section class="_c1">
+			<div class="_c2">
+				<div class="_c3">
 					<div>
-						<p
-							class="text-xs font-semibold tracking-[0.24em] text-[--color-text-tertiary] uppercase"
-						>
-							Interactive Preview
-						</p>
-						<h3 class="mt-2 text-xl font-semibold text-[--color-text-primary]">
-							Inline navigation link
-						</h3>
+						<p class="_c4 tracking-[0.24em]">Interactive Preview</p>
+						<h3 class="_c5">Inline navigation link</h3>
 					</div>
-					<span
-						class="rounded-full bg-[--color-background-secondary] px-3 py-1 text-xs font-semibold text-[--color-text-secondary]"
-					>
+					<span class="_c6">
 						{values.variant}
 					</span>
 				</div>
 
-				<div
-					class="mt-6 rounded-[1.5rem] border border-dashed border-[--color-border-primary] bg-[--color-background-secondary] p-5"
-				>
-					<p class="mb-4 text-sm text-[--color-text-secondary]">
-						The link below updates every visible prop of the component.
-					</p>
+				<div class="_c7">
+					<p class="_c8">The link below updates every visible prop of the component.</p>
 					<Link
 						href={values.href}
 						variant={values.variant}
@@ -130,9 +116,7 @@
 					/>
 				</div>
 
-				<div
-					class="mt-6 rounded-[1.5rem] bg-[--color-background-secondary] p-4 text-sm leading-7 text-[--color-text-secondary]"
-				>
+				<div class="_c9">
 					Use it inline inside copy:
 					<Link
 						href={values.href}
@@ -144,12 +128,10 @@
 				</div>
 			</div>
 
-			<div class="grid gap-6">
-				<div
-					class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-				>
-					<h3 class="text-base font-semibold text-[--color-text-primary]">Appearance Rail</h3>
-					<div class="mt-4 grid gap-3 rounded-[1.5rem] bg-[--color-background-primary] p-5">
+			<div class="_c10">
+				<div class="_c11">
+					<h3 class="_c12">Appearance Rail</h3>
+					<div class="_c13">
 						{#each appearanceOptions as appearance}
 							<Link
 								href="#"
@@ -163,22 +145,18 @@
 					</div>
 				</div>
 
-				<div
-					class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-				>
-					<h3 class="text-base font-semibold text-[--color-text-primary]">Size Rail</h3>
-					<div class="mt-4 flex flex-col gap-3">
+				<div class="_c14">
+					<h3 class="_c12">Size Rail</h3>
+					<div class="_c15">
 						{#each ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as size}
 							<Link href="#" size={size as any} variant="default" text={`size: ${size}`} />
 						{/each}
 					</div>
 				</div>
 
-				<div
-					class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-				>
-					<h3 class="text-base font-semibold text-[--color-text-primary]">Usage Note</h3>
-					<p class="mt-3 text-[--color-text-secondary]">
+				<div class="_c11">
+					<h3 class="_c12">Usage Note</h3>
+					<p class="_c16">
 						Use `Link` for navigational text and inline references. If the surface starts behaving
 						like a full CTA, it likely belongs in another domain instead of typography.
 					</p>
@@ -187,3 +165,128 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		width: 100%;
+		gap: 2rem;
+	}
+	@media (min-width: 1280px) {
+		._c1 {
+			grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
+		}
+	}
+	._c10 {
+		display: grid;
+		gap: 1.5rem;
+	}
+	._c11 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c12 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c13 {
+		margin-top: 1rem;
+		display: grid;
+		gap: 0.75rem;
+		border-radius: 1.5rem;
+		background-color: var(--color-background-primary);
+		padding: 1.25rem;
+	}
+	._c14 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c15 {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	._c16 {
+		margin-top: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.75rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+	._c4 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+	}
+	._c5 {
+		margin-top: 0.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c6 {
+		border-radius: 9999px;
+		background-color: var(--color-background-secondary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+	}
+	._c7 {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.25rem;
+	}
+	._c8 {
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c9 {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.75rem;
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -9,16 +9,12 @@
 	const state = createDateTimePickerState(props);
 </script>
 
-<div class={`relative ${state.className}`.trim()}>
-	<div class="flex items-center">
+<div class={`date-time-picker ${state.className}`.trim()}>
+	<div class="date-time-picker__row">
 		<input
 			use:state.dateInputAction
 			type="text"
-			class={`w-full cursor-pointer rounded-l-md border border-[var(--color-border-primary)] p-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none ${state.dateClass} ${
-				state.disabled
-					? 'cursor-not-allowed bg-[var(--color-background-secondary)] text-[var(--color-text-tertiary)]'
-					: ''
-			}`}
+			class={`date-time-picker__date-input ${state.dateClass} ${state.disabled ? 'date-time-picker__input--disabled' : ''}`.trim()}
 			readonly
 			value={state.selectedDate ? state.selectedDate.toLocaleDateString() : ''}
 			onclick={state.toggleDropdown}
@@ -27,11 +23,7 @@
 		/>
 
 		<select
-			class={`rounded-r-md border border-l-0 border-[var(--color-border-primary)] p-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none ${state.timeClass} ${
-				state.disabled
-					? 'cursor-not-allowed bg-[var(--color-background-secondary)] text-[var(--color-text-tertiary)]'
-					: ''
-			}`}
+			class={`date-time-picker__time-select ${state.timeClass} ${state.disabled ? 'date-time-picker__input--disabled' : ''}`.trim()}
 			value={state.selectedTime}
 			onchange={state.handleTimeChange}
 			disabled={state.disabled}
@@ -46,19 +38,20 @@
 			{/each}
 		</select>
 
-		<button
-			type="button"
-			class={`absolute top-0 right-0 h-full rounded-r-md px-3 hover:bg-[var(--color-background-secondary)] ${state.disabled ? 'hidden' : 'block'}`}
-			onclick={state.toggleDropdown}
-		>
-			<BaseIcon name={Calendar} class="h-4 w-4 text-[var(--color-text-secondary)]" />
-		</button>
+		{#if !state.disabled}
+			<button type="button" class="date-time-picker__icon-btn" onclick={state.toggleDropdown}>
+				<BaseIcon
+					name={Calendar}
+					style="width: 1rem; height: 1rem; color: var(--color-text-secondary)"
+				/>
+			</button>
+		{/if}
 	</div>
 
 	{#if state.isOpen}
 		<div
 			use:state.datePickerAction
-			class={`absolute z-[var(--z-index-docked)] mt-1 rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4 shadow-lg ${state.dropdownClass}`}
+			class={`date-time-picker__panel ${state.dropdownClass}`}
 			onclick={(e) => e.stopPropagation()}
 			onkeydown={(e: KeyboardEvent) => e.stopPropagation()}
 			role="dialog"
@@ -73,3 +66,79 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.date-time-picker {
+		position: relative;
+	}
+
+	.date-time-picker__row {
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+
+	.date-time-picker__date-input {
+		width: 100%;
+		cursor: pointer;
+		border-start-start-radius: var(--border-radius-base, 0.375rem);
+		border-end-start-radius: var(--border-radius-base, 0.375rem);
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem;
+	}
+
+	.date-time-picker__date-input:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-200);
+	}
+
+	.date-time-picker__time-select {
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+		border-start-end-radius: var(--border-radius-base, 0.375rem);
+		border-end-end-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		border-inline-start: none;
+		padding: 0.5rem;
+	}
+
+	.date-time-picker__time-select:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-200);
+	}
+
+	.date-time-picker__input--disabled {
+		cursor: not-allowed;
+		background-color: var(--color-background-secondary);
+		color: var(--color-text-tertiary);
+	}
+
+	.date-time-picker__icon-btn {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: 0;
+		padding-inline: 0.75rem;
+		border-start-end-radius: var(--border-radius-base, 0.375rem);
+		border-end-end-radius: var(--border-radius-base, 0.375rem);
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.date-time-picker__icon-btn:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.date-time-picker__panel {
+		position: absolute;
+		z-index: var(--z-index-docked);
+		margin-block-start: 0.25rem;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+</style>

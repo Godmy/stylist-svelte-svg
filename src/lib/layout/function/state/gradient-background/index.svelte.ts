@@ -1,27 +1,34 @@
-import { GradientBackgroundStyleManager } from '$stylist/layout/class/style-manager/gradient-background';
 import { ObjectManagerGradientBackground } from '$stylist/layout/class/object-manager/gradient-background';
-import type { ThemeGradientBackgroundRecipe } from '$stylist/layout/interface/recipe/gradient-background';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeThemeGradientBackground } from '$stylist/layout/interface/recipe/gradient-background';
 
-export function createGradientBackgroundState(props: ThemeGradientBackgroundRecipe) {
+export function createGradientBackgroundState(props: RecipeThemeGradientBackground) {
 	const variant = $derived(ObjectManagerGradientBackground.resolveVariant(props.variant));
 	const colors = $derived(ObjectManagerGradientBackground.resolveColors(props.colors));
 	const speed = $derived(ObjectManagerGradientBackground.resolveSpeed(props.speed));
 	const intensity = $derived(ObjectManagerGradientBackground.resolveIntensity(props.intensity));
 	const direction = $derived(ObjectManagerGradientBackground.resolveDirection(props.direction));
-	const containerClass = $derived(
-		GradientBackgroundStyleManager.getContainerClasses(mergeClassNames(props.class))
-	);
-	const gradientClass = $derived(
-		GradientBackgroundStyleManager.getGradientClasses(variant, direction)
-	);
-	const contentWrapperClass = $derived(GradientBackgroundStyleManager.getContentWrapperClasses());
+
 	const gradientStyle = $derived(
 		ObjectManagerGradientBackground.createStyle(variant, direction, colors, speed)
 	);
-	const inlineStyle = $derived(
-		GradientBackgroundStyleManager.getGradientInlineStyle(gradientStyle, intensity)
-	);
+
+	const inlineStyle = $derived.by(() => {
+		const opacity = Math.max(0, Math.min(intensity, 100)) / 100;
+		return [
+			`--gradient-start: ${gradientStyle.gradientStart}`,
+			`--gradient-end: ${gradientStyle.gradientEnd}`,
+			`--gradient-inner: ${gradientStyle.gradientInner}`,
+			`--gradient-outer: ${gradientStyle.gradientOuter}`,
+			`background-image: ${gradientStyle.backgroundImage}`,
+			`opacity: ${opacity}`,
+			gradientStyle.animationDuration
+				? `animation-duration: ${gradientStyle.animationDuration}`
+				: null
+		]
+			.filter(Boolean)
+			.join('; ');
+	});
+
 	const restProps = $derived.by(() => {
 		const {
 			variant: _variant,
@@ -33,19 +40,12 @@ export function createGradientBackgroundState(props: ThemeGradientBackgroundReci
 			children: _children,
 			...rest
 		} = props;
-
 		return rest;
 	});
 
 	return {
-		get containerClass() {
-			return containerClass;
-		},
-		get gradientClass() {
-			return gradientClass;
-		},
-		get contentWrapperClass() {
-			return contentWrapperClass;
+		get variant() {
+			return variant;
 		},
 		get inlineStyle() {
 			return inlineStyle;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { PermissionGateProps } from '$stylist/management/interface/recipe/permission-gate';
 	import createPermissionGateState from '$stylist/management/function/state/permission-gate/index.svelte';
 
 	let props: Parameters<typeof createPermissionGateState>[0] = $props();
@@ -10,7 +11,13 @@
 {:else if state.fallback}
 	{@render state.fallback()}
 {:else}
-	<div class="p-4 text-center text-[var(--color-text-secondary)]">
-		You do not have permission to view this content.
-	</div>
+	<div class="_c1">You do not have permission to view this content.</div>
 {/if}
+
+<style>
+	._c1 {
+		padding: 1rem;
+		text-align: center;
+		color: var(--color-text-secondary);
+	}
+</style>

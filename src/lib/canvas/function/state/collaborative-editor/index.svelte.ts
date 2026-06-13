@@ -1,5 +1,5 @@
 import type { CollaborativeEditorProps } from '$stylist/canvas/type/struct/collaborative-editor-props';
-import { CollaborativeEditorStyleManager } from '$stylist/canvas/class/style-manager/collaborative-editor';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 const Bold = 'bold';
 const Italic = 'italic';
@@ -22,37 +22,35 @@ export const createCollaborativeEditorState = (props: CollaborativeEditorProps) 
 	const users = $derived(props.users ?? []);
 	const currentUser = $derived(props.currentUser);
 
-	const containerClasses = $derived(
-		CollaborativeEditorStyleManager.getContainerClasses(props.class ?? '')
-	);
+	const containerClasses = $derived(mergeClassNames('c-collaborative-editor', props.class ?? ''));
 
 	const toolbarClasses = $derived(
-		CollaborativeEditorStyleManager.getToolbarClasses(props.toolbarClass ?? '')
+		mergeClassNames('c-collaborative-editor__toolbar', props.toolbarClass ?? '')
 	);
 
 	const editorClasses = $derived(
-		CollaborativeEditorStyleManager.getEditorClasses(props.editorClass ?? '')
+		mergeClassNames('c-collaborative-editor__editor', props.editorClass ?? '')
 	);
 
 	const userListClasses = $derived(
-		CollaborativeEditorStyleManager.getUserListClasses(props.userListClass ?? '')
+		mergeClassNames('c-collaborative-editor__user-list', props.userListClass ?? '')
 	);
 
-	const userListHeaderClasses = CollaborativeEditorStyleManager.getUserListHeaderClasses();
+	const userListHeaderClasses = 'c-collaborative-editor__user-list-header';
 
-	const userListEntryClasses = CollaborativeEditorStyleManager.getUserListEntryClasses();
+	const userListEntryClasses = 'c-collaborative-editor__user-entry';
 
-	const userAvatarClasses = CollaborativeEditorStyleManager.getUserAvatarClasses();
+	const userAvatarClasses = 'c-collaborative-editor__user-avatar';
 
-	const userInitialsClasses = CollaborativeEditorStyleManager.getUserInitialsClasses();
+	const userInitialsClasses = 'c-collaborative-editor__user-initials';
 
-	const userNameClasses = CollaborativeEditorStyleManager.getUserNameClasses();
+	const userNameClasses = 'c-collaborative-editor__user-name';
 
-	const userIndicatorClasses = CollaborativeEditorStyleManager.getUserIndicatorClasses();
+	const userIndicatorClasses = 'c-collaborative-editor__user-indicator';
 
-	const toolbarButtonClasses = CollaborativeEditorStyleManager.getToolbarButtonClasses();
+	const toolbarButtonClasses = 'c-collaborative-editor__toolbar-btn';
 
-	const toolbarSeparatorClasses = CollaborativeEditorStyleManager.getToolbarSeparatorClasses();
+	const toolbarSeparatorClasses = 'c-collaborative-editor__toolbar-sep';
 
 	function handleInput() {
 		props.onContentChange?.(editorContent);

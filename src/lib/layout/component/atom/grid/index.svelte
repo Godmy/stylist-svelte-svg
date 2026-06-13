@@ -1,4 +1,5 @@
 <script lang="ts">
+	import createGridState from '$stylist/layout/function/state/grid/index.svelte';
 	import type { GridSvgProps } from '$stylist/layout/type/struct/grid/grid-svg-props';
 	import stateFn from '$stylist/layout/function/state/grid-svg/index.svelte';
 
@@ -6,7 +7,11 @@
 	const state = stateFn(props);
 </script>
 
-<svg class={state.hostClass} style={state.svgStyle} {...state.restProps}>
+<svg
+	class={['layout-grid-svg', state.hostClass].filter(Boolean).join(' ')}
+	style={state.svgStyle}
+	{...state.restProps}
+>
 	<defs>
 		<pattern
 			id="grid-pattern"
@@ -27,3 +32,10 @@
 	</defs>
 	<rect width="100%" height="100%" fill="url(#grid-pattern)" />
 </svg>
+
+<style>
+	.layout-grid-svg {
+		display: block;
+		pointer-events: none;
+	}
+</style>

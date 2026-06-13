@@ -40,9 +40,7 @@
 	description="A component to display process steps in a workflow"
 >
 	{#snippet children(values: any)}
-		<div
-			class="max-w-md rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-		>
+		<div class="_c1">
 			<ProcessStep
 				number={Number(values.number) || 1}
 				title={values.title as string}
@@ -53,3 +51,15 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 28rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

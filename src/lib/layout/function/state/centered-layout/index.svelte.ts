@@ -1,4 +1,3 @@
-import { CenteredLayoutStyleManager } from '$stylist/layout/class/style-manager/centered-layout';
 import type { CenteredLayoutAxis } from '$stylist/layout/type/enum/centered-layout-axis';
 import type { CenteredLayoutProps } from '$stylist/layout/type/struct/layout-extended/centered-layout-props';
 
@@ -7,11 +6,6 @@ export function createCenteredLayoutState(props: CenteredLayoutProps) {
 	const fillHeight = $derived(props.fillHeight ?? false);
 	const fillWidth = $derived(props.fillWidth ?? true);
 	const maxWidth = $derived(props.maxWidth);
-
-	const classes = $derived(
-		CenteredLayoutStyleManager.getHostClass(axis, fillHeight, fillWidth, props.class)
-	);
-	const innerClass = $derived(CenteredLayoutStyleManager.getInnerClass(maxWidth));
 
 	const restProps = $derived.by(() => {
 		const {
@@ -38,12 +32,6 @@ export function createCenteredLayoutState(props: CenteredLayoutProps) {
 		},
 		get maxWidth() {
 			return maxWidth;
-		},
-		get classes() {
-			return classes;
-		},
-		get innerClass() {
-			return innerClass;
 		},
 		get restProps() {
 			return restProps;

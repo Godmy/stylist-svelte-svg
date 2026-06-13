@@ -4,7 +4,6 @@ import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { TOKEN_APPEARANCE } from '$stylist/interaction/const/enum/appearance';
 import { createBasePreset } from '$stylist/interaction/preset/base';
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 
 // ============================================================================
 // Input Field Preset

@@ -1,29 +1,12 @@
-import { IndicatorsStyleManager } from '$stylist/interaction/class/style-manager/indicators';
-import type { TokenMessageStatus } from '$stylist/chat/type/enum/message-status';
 import type { RecipeMessageStatusProps as RecipeMessageStatusProps } from '$stylist/chat/interface/recipe/message-status-props';
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 
-/**
- * MessageStatus state creator
- * Provides reactive state management for message status components using Svelte 5 runes
- *
- * @param props - MessageStatus component props
- * @returns Reactive state object with classes and computed values
- */
 export function createMessageStatusState(props: RecipeMessageStatusProps) {
 	const status = $derived(props.status ?? 'sent');
 	const size = $derived(props.size ?? 'sm');
 	const containerClasses = $derived(
-		joinClassNames(
-			IndicatorsStyleManager.getMessageStatusContainerClasses(status as TokenMessageStatus),
-			props.class
-		)
+		['message-status', `message-status--${status}`, props.class].filter(Boolean).join(' ')
 	);
-	const iconClasses = $derived(
-		IndicatorsStyleManager.getMessageStatusIconClasses(
-			size as Parameters<typeof IndicatorsStyleManager.getMessageStatusIconClasses>[0]
-		)
-	);
+	const iconClasses = $derived(['message-status__icon', `message-status__icon--${size}`].join(' '));
 	const isDoubleCheck = $derived(status === 'read');
 
 	return {

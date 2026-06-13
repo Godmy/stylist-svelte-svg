@@ -1,5 +1,5 @@
-<script lang="ts">
-	import createBurnDownChartState from '$stylist/management/function/state/burn-down-chart/index.svelte';
+﻿<script lang="ts">
+	import { createBurnDownChartState } from '$stylist/management/function/state/burn-down-chart/index.svelte';
 	import type { SlotBurnDownData as BurnDownData } from '$stylist/management/interface/slot/burn-down-data';
 
 	let {
@@ -86,5 +86,41 @@
 <style>
 	:global(.c-burn-down-chart .chart-title) {
 		text-align: center;
+	}
+
+	.burn-down-chart {
+		width: 100%;
+	}
+
+	.burn-down-chart__title {
+		margin-bottom: 0.75rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.burn-down-chart__svg {
+		width: 100%;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+
+	.burn-down-chart__x-axis-label {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.burn-down-chart__y-axis-label {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.burn-down-chart__legend-text {
+		font-size: 0.75rem;
+		line-height: 1rem;
 	}
 </style>

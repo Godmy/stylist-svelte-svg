@@ -1,4 +1,5 @@
 ﻿<script lang="ts">
+	import type { TreeViewerProps } from '$stylist/control/interface/recipe/tree-viewer';
 	import type { TreeNodeItemNode } from '$stylist/control/type/struct/tree-node-item-node';
 	import AdvancedVirtualTree from '$stylist/control/component/organism/advanced-virtual-tree/index.svelte';
 	import { normalizeTreeViewerNode } from '$stylist/control/function/script/normalize-tree-viewer-node';

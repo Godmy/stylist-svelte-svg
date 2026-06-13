@@ -1,10 +1,9 @@
-import { CardSkeletonStyleManager } from '$stylist/notification/class/style-manager/card-skeleton';
-import type { SlotCardSkeleton as CardSkeletonProps } from '$stylist/notification/interface/slot/card-skeleton';
+﻿import type { SlotCardSkeleton as RecipeCardSkeleton } from '$stylist/notification/interface/slot/card-skeleton';
 
-export function createCardSkeletonState(props: CardSkeletonProps) {
+export function createCardSkeletonState(props: RecipeCardSkeleton) {
 	const cards = $derived(Array.from({ length: props.count ?? 3 }, (_, index) => index));
-	const rootClass = $derived(CardSkeletonStyleManager.root(props.class ?? ''));
-	const cardClass = $derived(CardSkeletonStyleManager.card());
+	const rootClass = $derived(`card-skeleton ${props.class ?? ''}`.trim());
+	const cardClass = $derived('card-skeleton__item');
 
 	return {
 		get cards() {
@@ -18,5 +17,3 @@ export function createCardSkeletonState(props: CardSkeletonProps) {
 		}
 	};
 }
-
-export default createCardSkeletonState;

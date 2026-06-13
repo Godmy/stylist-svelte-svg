@@ -1,22 +1,12 @@
 <script lang="ts">
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-	import type { NumberFlowRecipe as NumberFlowProps } from '$stylist/animation/interface/recipe/number-flow';
+	import type { RecipeNumberFlow } from '$stylist/animation/interface/recipe/number-flow';
 	import createNumberFlowState from '$stylist/animation/function/state/number-flow/index.svelte';
 
-	let {
-		class: className,
-		value,
-		locales,
-		format,
-		prefix,
-		suffix,
-		...restProps
-	}: NumberFlowProps & InformationHTMLAttributes<HTMLDivElement> = $props();
-
-	const state = createNumberFlowState({ value, locales, format, prefix, suffix, class: className });
+	let props: RecipeNumberFlow = $props();
+	const state = createNumberFlowState(props);
 </script>
 
-<div class={state.classes.container} role="status" aria-live="polite" {...restProps}>
+<div class={state.classes.container} role="status" aria-live="polite" {...state.restProps}>
 	{#if state.prefix}
 		<span class={state.classes.prefix} aria-hidden="true">{state.prefix}</span>
 	{/if}

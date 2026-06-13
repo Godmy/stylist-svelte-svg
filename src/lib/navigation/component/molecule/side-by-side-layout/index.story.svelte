@@ -38,19 +38,36 @@
 					id: 'left',
 					size: '2/3',
 					content: (() => ({
-						render: () =>
-							'<div class="rounded-xl border border-[--color-border-primary] bg-[--color-background-secondary] p-4">Left section</div>'
+						render: () => '<div class="_c1">Left section</div>'
 					})) as any
 				},
 				{
 					id: 'right',
 					size: '1/3',
 					content: (() => ({
-						render: () =>
-							'<div class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-4">Right section</div>'
+						render: () => '<div class="_c2">Right section</div>'
 					})) as any
 				}
 			]}
 		/>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c2 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+</style>

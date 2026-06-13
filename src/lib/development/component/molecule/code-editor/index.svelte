@@ -1,11 +1,8 @@
-<script lang="ts">
-	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { CodeEditorProps } from '$stylist/development/type/struct/code-editor-props';
-	import createCodeEditorState from '$stylist/development/function/state/code-editor/index.svelte';
-
-	const Copy = 'copy';
-	const Download = 'download';
-	const RefreshCw = 'refresh-cw';
+﻿<script lang="ts">
+	import { PresetCodeEditor } from '$stylist/development/const/preset/code-editor';
+	import Icon from '$stylist/media/component/atom/icon/index.svelte';
+	import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
+	import { createCodeEditorState } from '$stylist/development/function/state/code-editor/index.svelte';
 
 	let {
 		code = '',
@@ -19,7 +16,7 @@
 		class: className = '',
 		onCodeChange,
 		...restProps
-	}: CodeEditorProps = $props();
+	}: RecipeCodeEditor = $props();
 
 	const state = createCodeEditorState({
 		code,
@@ -37,28 +34,66 @@
 </script>
 
 <div class={state.containerClass}>
-	<div class="flex items-center justify-between border-b border-[var(--color-border-primary)] p-2">
-		<span class="text-xs text-gray-500 uppercase">{language}</span>
-		<div class="flex gap-2">
-			{#if showCopyButton}<button type="button" class="" onclick={state.handleCopy}
-					><BaseIcon name={Copy} class="mr-1 inline h-3 w-3" />Copy</button
+	<div class="ce-toolbar">
+		<span class="ce-lang-label">{language}</span>
+		<div class="ce-toolbar-btns">
+			{#if showCopyButton}<button type="button" onclick={state.handleCopy}
+					><Icon
+						name={PresetCodeEditor.Copy}
+						style="width:0.75rem;height:0.75rem;margin-right:0.25rem;display:inline"
+					/>Copy</button
 				>{/if}
-			<button type="button" class="" onclick={state.handleDownload}
-				><BaseIcon name={Download} class="mr-1 inline h-3 w-3" />Download</button
+			<button type="button" onclick={state.handleDownload}
+				><Icon
+					name={PresetCodeEditor.Download}
+					style="width:0.75rem;height:0.75rem;margin-right:0.25rem;display:inline"
+				/>Download</button
 			>
-			<button
-				type="button"
-				class=""
-				onclick={() => state.handleCodeChange(code)}
-				disabled={readOnly}><BaseIcon name={RefreshCw} class="mr-1 inline h-3 w-3" />Reset</button
+			<button type="button" onclick={() => state.handleCodeChange(code)} disabled={readOnly}
+				><Icon
+					name={PresetCodeEditor.RefreshCw}
+					style="width:0.75rem;height:0.75rem;margin-right:0.25rem;display:inline"
+				/>Reset</button
 			>
 		</div>
 	</div>
 	<textarea
-		class="w-full resize-none p-3 font-mono focus:outline-none"
+		class="ce-textarea"
 		style={`height:${height};width:${width};font-size:${FONT_SIZE}px;${showLineNumbers ? 'padding-left: var(--spacing-10);' : ''}`}
 		bind:value={state.internalCode}
 		oninput={(e) => state.handleCodeChange((e.target as HTMLTextAreaElement).value)}
 		readonly={readOnly}
 	></textarea>
 </div>
+
+<style>
+	.c-code-editor {
+		overflow: hidden;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+	}
+
+	.ce-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 0.5rem;
+	}
+	.ce-lang-label {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+	}
+	.ce-toolbar-btns {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.ce-textarea {
+		width: 100%;
+		resize: none;
+		padding: 0.75rem;
+		font-family: monospace;
+		outline: none;
+	}
+</style>

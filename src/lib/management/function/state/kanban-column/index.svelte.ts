@@ -1,15 +1,14 @@
-import { untrack } from 'svelte';
-import { KanbanColumnStyleManager } from '$stylist/management/class/style-manager/kanban-column';
+﻿import { untrack } from 'svelte';
 import type { KanbanCardType } from '$stylist/management/interface/slot/kanban-card-type';
 import { applyKanbanColumnDrop } from '$stylist/management/function/script/apply-kanban-column-drop';
-import type { KanbanColumnStateProps } from '$stylist/management/interface/recipe/kanban-column';
+import type { RecipeKanbanColumn } from '$stylist/management/interface/recipe/kanban-column';
 
 const Check = 'check';
 const Pencil = 'pencil';
 const Plus = 'plus';
 const X = 'x';
 
-export function createKanbanColumnState(props: KanbanColumnStateProps) {
+export function createKanbanColumnState(props: RecipeKanbanColumn) {
 	// Props with defaults
 	const column = $derived(props.column);
 	const droppable = $derived(props.droppable ?? true);
@@ -108,7 +107,6 @@ export function createKanbanColumnState(props: KanbanColumnStateProps) {
 	}
 
 	// CSS classes
-	const containerClass = $derived(KanbanColumnStyleManager.getContainerClass());
 
 	return {
 		get column() {
@@ -159,9 +157,6 @@ export function createKanbanColumnState(props: KanbanColumnStateProps) {
 		get xIcon() {
 			return xIcon;
 		},
-		get containerClass() {
-			return containerClass;
-		},
 		handleColumnDrop,
 		handleCardDrop,
 		handleDragOver,
@@ -173,5 +168,3 @@ export function createKanbanColumnState(props: KanbanColumnStateProps) {
 		handleCardDragEnd
 	};
 }
-
-export default createKanbanColumnState;

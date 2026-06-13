@@ -1,6 +1,6 @@
-import type { AudioSliderProps } from '$stylist/media/type/struct/audio-slider';
+﻿import type { RecipeAudioSlider } from '$stylist/media/interface/recipe/audio-slider';
 
-export function createAudioSliderState(props: AudioSliderProps) {
+export function createAudioSliderState(props: RecipeAudioSlider) {
 	let localValue = $state(props.value ?? 0);
 
 	$effect(() => {
@@ -58,5 +58,3 @@ export function createAudioSliderState(props: AudioSliderProps) {
 		}
 	};
 }
-
-export default createAudioSliderState;

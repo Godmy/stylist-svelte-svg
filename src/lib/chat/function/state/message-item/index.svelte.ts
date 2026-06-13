@@ -1,6 +1,5 @@
 import type { SlotMessage as Message } from '$stylist/chat/interface/slot/message';
 import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
-import { MessageStyleManager } from '$stylist/chat/class/style-manager/message';
 
 export const createMessageItemState = (props: {
 	message: Message;
@@ -30,24 +29,27 @@ export const createMessageItemState = (props: {
 
 	const messageMargin = $derived(isOwn ? 'ml-auto' : '');
 
-	const messageContainerClasses = $derived.by(() =>
-		MessageStyleManager.getMessageContainerClasses(isOwn ? 'right' : 'left')
+	const messageContainerClasses = $derived.by(
+		() => `message-row flex w-full items-end gap-3 ${isOwn ? 'justify-end' : 'justify-start'}`
 	);
 
 	const messageBubbleClasses = $derived(
-		`${MessageStyleManager.getMessageBubbleClasses(isOwn ? 'outgoing' : 'incoming', 'relative')} ${messageBackground} ${messageBorder} ${messageMargin}`.trim()
+		`message-bubble rounded-[1.25rem] border px-4 py-3 max-w-[75%] shadow-custom28 ${isOwn ? 'bg-[var(--color-primary-500)]' : 'bg-[var(--color-background-primary)]'} relative ${messageBackground} ${messageBorder} ${messageMargin}`.trim()
 	);
 
 	const messageContentClasses = 'message-content word-wrap break-word whitespace-pre-wrap';
 
-	const messageActionsClasses = MessageStyleManager.getActionsClasses();
+	const messageActionsClasses =
+		'message-actions mt-2 flex items-center gap-1 opacity-[var(--opacity-70)] transition-opacity hover:opacity-[var(--opacity-100)]';
 
-	const actionButtonClasses = MessageStyleManager.getActionButtonClasses();
+	const actionButtonClasses =
+		'action-button rounded-full border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]/70 p-1.5 transition-colors hover:bg-[var(--color-background-secondary)]';
 
 	const reactionsPickerClasses =
 		'reactions-picker absolute bottom-full left-0 flex gap-1 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-2 shadow-custom38 z-[var(--z-index-docked)]';
 
-	const reactionOptionClasses = MessageStyleManager.getReactionButtonClasses();
+	const reactionOptionClasses =
+		'reaction-option rounded-full p-1 text-lg transition-colors hover:bg-[var(--color-background-secondary)]';
 
 	function handleReactionClick(reaction: string) {
 		// dispatch('reaction', { reaction })

@@ -39,9 +39,9 @@
 				aria-label={state.expanded ? 'Collapse' : 'Expand'}
 			>
 				{#if state.expanded}
-					<BaseIcon name={state.ChevronDown} class="h-4 w-4" />
+					<BaseIcon name={state.ChevronDown} style="width:1rem;height:1rem;" />
 				{:else}
-					<BaseIcon name={state.ChevronRight} class="h-4 w-4" />
+					<BaseIcon name={state.ChevronRight} style="width:1rem;height:1rem;" />
 				{/if}
 			</button>
 		{:else}
@@ -80,13 +80,13 @@
 
 <style>
 	/* Base tree node container styles */
-	.tree-node-container {
+	.c-tree-node {
 		display: flex;
 		flex-direction: column;
 	}
 
 	/* Tree node header styles */
-	.tree-node-header {
+	.c-tree-node__header {
 		display: flex;
 		align-items: center;
 		padding: var(--spacing-1) var(--spacing-2);
@@ -96,16 +96,16 @@
 		min-height: var(--spacing-8);
 	}
 
-	.tree-node-header:hover {
+	.c-tree-node__header:hover {
 		background-color: var(--color-secondary-100);
 	}
 
-	.tree-node-header-expanded {
+	.c-tree-node__header--expanded {
 		background-color: var(--color-secondary-50);
 	}
 
 	/* Tree toggle icon styles */
-	.tree-toggle-icon {
+	.c-tree-node__toggle {
 		width: var(--spacing-4);
 		height: var(--spacing-4);
 		margin-right: var(--spacing-2);
@@ -113,37 +113,37 @@
 		color: var(--color-text-secondary);
 	}
 
-	.tree-toggle-icon:hover {
+	.c-tree-node__toggle:hover {
 		color: var(--color-text-primary);
 	}
 
 	/* No toggle placeholder */
-	.tree-no-toggle {
+	.c-tree-node__no-toggle {
 		width: var(--spacing-4);
 		height: var(--spacing-4);
 		margin-right: var(--spacing-2);
 	}
 
 	/* Tree node text */
-	.tree-node-text {
+	.c-tree-node__text {
 		flex: 1;
 		color: var(--color-text-primary);
 	}
 
 	/* Secondary icon */
-	.tree-secondary-icon {
+	.c-tree-node__icon {
 		margin-left: var(--spacing-2);
 		color: var(--color-text-secondary);
 	}
 
-	.tree-secondary-icon-img {
+	.c-tree-node__icon-img {
 		margin-left: var(--spacing-2);
 		width: var(--spacing-4);
 		height: var(--spacing-4);
 	}
 
 	/* Tree node children */
-	.tree-node-children {
+	.c-tree-node__children {
 		margin-left: var(--spacing-6);
 		border-left: 2px solid var(--color-border-secondary);
 		padding-left: var(--spacing-2);

@@ -16,5 +16,11 @@
 	{controls}
 >
 	{#snippet children(values: any)}{@const p = values as Props}
-		<div class="sb-organisms-lazy-loader p-4"><LazyLoader loading={p.loading} /></div>{/snippet}
+		<div class="sb-organisms-lazy-loader _c1"><LazyLoader loading={p.loading} /></div>{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

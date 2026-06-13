@@ -35,9 +35,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div
-			class="flex min-h-40 items-center justify-center rounded-2xl border border-dashed border-[--color-border-primary] bg-[--color-background-secondary] p-8"
-		>
+		<div class="_c1">
 			<Tooltip
 				content={values.content}
 				placement={values.placement}
@@ -47,12 +45,36 @@
 				disabled={values.disabled}
 			>
 				{#snippet children()}
-					<button
-						class="rounded-lg bg-[--color-primary-600] px-4 py-2 text-sm font-semibold text-[var(--color-text-inverse)]"
-						>Target element</button
-					>
+					<button class="_c2">Target element</button>
 				{/snippet}
 			</Tooltip>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		min-height: 10rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		border-radius: 0.5rem;
+		background-color: var(--color-primary-600);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-inverse);
+	}
+</style>

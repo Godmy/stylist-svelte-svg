@@ -7,7 +7,7 @@
 </script>
 
 <div class={state.containerClasses}>
-	<div class="flex flex-1 flex-col gap-1">
+	<div class="input-double__field">
 		{#if props.label1 ?? 'Поле 1'}
 			<label
 				for={props.id1}
@@ -28,7 +28,7 @@
 			placeholder={props.placeholder1}
 			disabled={props.disabled1 ?? false}
 			required={props.required1 ?? false}
-			class={`${state.inputClasses1} w-full`}
+			class={state.inputClasses1}
 			aria-describedby={state.hasError1 ? state.errorId1 : undefined}
 			aria-invalid={state.hasError1 ? 'true' : 'false'}
 			aria-required={props.required1 ? 'true' : 'false'}
@@ -41,7 +41,7 @@
 			</p>
 		{/if}
 	</div>
-	<div class="flex flex-1 flex-col gap-1">
+	<div class="input-double__field">
 		{#if props.label2 ?? 'Поле 2'}
 			<label
 				for={props.id2}
@@ -62,7 +62,7 @@
 			placeholder={props.placeholder2}
 			disabled={props.disabled2 ?? false}
 			required={props.required2 ?? false}
-			class={`${state.inputClasses2} w-full`}
+			class={state.inputClasses2}
 			aria-describedby={state.hasError2 ? state.errorId2 : undefined}
 			aria-invalid={state.hasError2 ? 'true' : 'false'}
 			aria-required={props.required2 ? 'true' : 'false'}
@@ -78,6 +78,19 @@
 </div>
 
 <style>
+	.input-double-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.input-double__field {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;

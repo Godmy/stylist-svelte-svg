@@ -1,7 +1,7 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 
-export interface ThemeAdvancedColorPickerRecipe
+export interface RecipeThemeAdvancedColorPicker
 	extends StructIntersectAll<[InteractionHTMLAttributes<HTMLDivElement>]> {
 	value?: string;
 	disabled?: boolean;

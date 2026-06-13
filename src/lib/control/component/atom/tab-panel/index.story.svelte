@@ -27,7 +27,7 @@
 >
 	{#snippet children(values: any)}
 		<Tabs selectedId={values.selectedId}>
-			<TabList class="mb-3">
+			<TabList class="_c1">
 				<Tab id="docs">Documentation</Tab>
 				<Tab id="api" disabled={values.disabledApi}>API</Tab>
 				<Tab id="faq">FAQ</Tab>
@@ -40,3 +40,9 @@
 		</Tabs>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-bottom: 0.75rem;
+	}
+</style>

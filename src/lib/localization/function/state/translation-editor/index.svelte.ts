@@ -1,8 +1,8 @@
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { TranslatableText } from '$stylist/input/type/struct/interaction-input/translatable-text';
-import type { TranslationEditorStateProps } from '$stylist/localization/interface/recipe/translation-editor';
+import type { RecipeTranslationEditor } from '$stylist/localization/interface/recipe/translation-editor';
 
-export function createTranslationEditorState(props: TranslationEditorStateProps) {
+export function createTranslationEditorState(props: RecipeTranslationEditor) {
 	const texts = props.texts ?? [];
 	const locales = props.locales ?? [];
 	const defaultLocale = props.defaultLocale ?? 'en';
@@ -137,5 +137,3 @@ export function createTranslationEditorState(props: TranslationEditorStateProps)
 		cancelEdit
 	};
 }
-
-export default createTranslationEditorState;

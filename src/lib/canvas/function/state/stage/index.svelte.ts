@@ -1,4 +1,4 @@
-import { StageStyleManager } from '$stylist/canvas/class/style-manager/stage';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { StageProps } from '$stylist/canvas/type/struct/stage/stage-props';
 
 export function createStageState(props: StageProps) {
@@ -6,12 +6,12 @@ export function createStageState(props: StageProps) {
 	const worldWidth = $derived(props.worldWidth ?? 10000);
 	const worldHeight = $derived(props.worldHeight ?? 10000);
 	const classes = $derived(
-		StageStyleManager.getStageClass(typeof props.class === 'string' ? props.class : undefined)
+		mergeClassNames('stage', typeof props.class === 'string' ? props.class : undefined)
 	);
-	const worldClass = $derived(StageStyleManager.getWorldClass());
-	const worldStyle = $derived(StageStyleManager.getWorldStyle(worldWidth, worldHeight));
+	const worldClass = $derived('world');
+	const worldStyle = $derived(`--world-width: ${worldWidth}px; --world-height: ${worldHeight}px;`);
 	const transformStyle = $derived(
-		StageStyleManager.getTransformStyle(camera.x, camera.y, camera.zoom)
+		`transform: translate(${-camera.x}px, ${-camera.y}px) scale(${camera.zoom});`
 	);
 	const restProps = $derived.by(() => {
 		const {

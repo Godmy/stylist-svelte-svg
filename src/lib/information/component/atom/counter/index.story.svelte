@@ -32,14 +32,28 @@
 	{#snippet children(values: any)}
 		{@const count = Number(values.count)}
 		{@const max = Number(values.max)}
-		<div class="mt-2 flex items-center space-x-4">
+		<div class="_c1">
 			<Counter
 				count={Number.isNaN(count) ? 5 : count}
 				max={Number.isNaN(max) ? 99 : max}
 				variant={values.variant}
 				size={values.size}
 			/>
-			<span class="text-[--color-text-primary]">Notifications</span>
+			<span class="_c2">Notifications</span>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-top: 0.5rem;
+		display: flex;
+		align-items: center;
+	}
+	._c1 > * + * {
+		margin-left: 1rem;
+	}
+	._c2 {
+		color: var(--color-text-primary);
+	}
+</style>

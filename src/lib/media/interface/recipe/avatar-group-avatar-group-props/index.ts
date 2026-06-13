@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 
 export interface AvatarGroupProps extends StructIntersectAll<[]> {
 	avatars: Record<string, unknown>[];

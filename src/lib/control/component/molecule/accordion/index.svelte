@@ -1,75 +1,48 @@
-<!--
-/**
- * Accordion Component - Следует принципам SOLID:
- *
- * 1. Single Responsibility Principle (SRP):
- *    Компонент отвечает только за отображение аккордеона и управление его состоянием.
- *    Логика стилизации вынесена в AccordionStyleManager.
- *
- * 2. Open/Closed Principle (OCP):
- *    Легко расширяется через пропсы и CSS-переменные темы.
- *
- * 3. Liskov Substitution Principle (LSP):
- *    Соблюдает контракт, определённый интерфейсом IAccordionProps.
- *
- * 4. Interface Segregation Principle (ISP):
- *    Использует минимально необходимый интерфейс IAccordionProps.
- *
- * 5. Dependency Inversion Principle (DIP):
- *    Зависит от абстракции (типов и стилей) а не от конкретных реализаций.
- */
--->
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import { PresetAccordion } from '$stylist/control/const/preset/accordion';
+	import { createAccordionState } from '$stylist/control/function/state/accordion/index.svelte';
+	import type { RecipeAccordion } from '$stylist/control/interface/recipe/accordion';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	const ChevronDown = 'chevron-down';
 
-	import { AccordionStyleManager } from '$stylist/control/class/style-manager/accordion';
-	import type { SlotAccordion as IAccordionProps } from '$stylist/control/interface/slot/accordion';
-	import createAccordionState from '$stylist/control/function/state/accordion/index.svelte';
+	let props: RecipeAccordion = $props();
+	const state = createAccordionState(props);
 
-	let {
-		items,
-		multiple = false,
-		class: className = '',
-		itemClass = '',
-		headerClass = '',
-		contentClass = '',
-		...restProps
-	}: IAccordionProps & InteractionHTMLAttributes<HTMLElement> = $props();
-	const state = createAccordionState({
-		items,
-		multiple,
-		class: className,
-		itemClass,
-		headerClass,
-		contentClass,
-		...restProps
+	let restProps = $derived.by(() => {
+		const {
+			items,
+			multiple,
+			class: className,
+			itemClass,
+			headerClass,
+			contentClass,
+			...rest
+		} = props;
+		return rest;
 	});
-
-	// Generate CSS classes using the style manager
-	const containerClass = $derived(AccordionStyleManager.getContainerClass(className));
 </script>
 
-<div class={containerClass} {...restProps}>
-	{#each items as item}
-		<div class={AccordionStyleManager.getItemClass(itemClass)}>
-			<h3 class="m-0">
+<div class={['c-accordion', props.class].filter(Boolean).join(' ')} {...restProps}>
+	{#each props.items as item}
+		<div
+			class={['c-accordion__item', props.itemClass].filter(Boolean).join(' ')}
+			data-expanded={state.isExpanded(item.id) || undefined}
+		>
+			<h3 class="c-accordion__heading">
 				<button
 					type="button"
-					class={AccordionStyleManager.getHeaderClass(
-						state.isExpanded(item.id),
-						item.disabled || false,
-						headerClass
-					)}
+					class={['c-accordion__header', props.headerClass].filter(Boolean).join(' ')}
+					data-expanded={state.isExpanded(item.id) || undefined}
+					data-disabled={item.disabled || undefined}
 					onclick={() => !item.disabled && state.toggleAccordion(item.id)}
 					aria-expanded={state.isExpanded(item.id)}
 					aria-controls={`panel-${item.id}`}
 				>
 					<span>{item.title}</span>
 					<BaseIcon
-						name={ChevronDown}
-						class={AccordionStyleManager.getChevronClass(state.isExpanded(item.id))}
+						name={PresetAccordion.ChevronDown}
+						style="width:1rem;height:1rem;"
+						class="c-accordion__chevron"
+						aria-hidden="true"
 					/>
 				</button>
 			</h3>
@@ -78,9 +51,10 @@
 				id={`panel-${item.id}`}
 				role="region"
 				aria-labelledby={`accordion-header-${item.id}`}
-				class={AccordionStyleManager.getContentPanelClass(state.isExpanded(item.id), contentClass)}
+				class="c-accordion__panel"
+				data-expanded={state.isExpanded(item.id) || undefined}
 			>
-				<div class={AccordionStyleManager.getContentWrapperClass()}>
+				<div class={['c-accordion__content', props.contentClass].filter(Boolean).join(' ')}>
 					{#if typeof item.content === 'function'}
 						{@html item.content()}
 					{:else}
@@ -91,3 +65,80 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+	.c-accordion {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+
+	.c-accordion__item {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-accordion__item:last-child {
+		border-bottom: none;
+	}
+
+	.c-accordion__heading {
+		margin: 0;
+	}
+
+	.c-accordion__header {
+		width: 100%;
+		text-align: left;
+		padding: 1rem;
+		font-weight: 500;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+		border: none;
+		transition: background-color var(--duration-120, 120ms);
+	}
+
+	.c-accordion__header:hover {
+		background: var(--color-background-secondary);
+	}
+
+	.c-accordion__header[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
+	.c-accordion__header[data-expanded] {
+		background: var(--color-primary-50);
+		color: var(--color-primary-700);
+	}
+
+	.c-accordion__chevron {
+		flex-shrink: 0;
+		transition: transform var(--duration-200, 200ms);
+	}
+
+	[data-expanded] .c-accordion__chevron {
+		transform: rotate(180deg);
+	}
+
+	.c-accordion__panel {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height var(--duration-200, 200ms) ease;
+	}
+
+	.c-accordion__panel[data-expanded] {
+		max-height: 1000px;
+	}
+
+	.c-accordion__content {
+		padding: 1rem;
+		border-top: 1px solid var(--color-border-primary);
+		background: var(--color-background-primary);
+	}
+</style>

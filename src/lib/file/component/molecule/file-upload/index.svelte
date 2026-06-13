@@ -1,6 +1,6 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createFileUploadState from '$stylist/file/function/state/file-upload/index.svelte';
+	import { createFileUploadState } from '$stylist/file/function/state/file-upload/index.svelte';
 	import type { Props } from '$stylist/file/type/struct/file-upload/props';
 
 	let props: Props = $props();

@@ -23,31 +23,32 @@
 
 <div class={state.rootClass} {...restProps}>
 	{#if state.loading}
-		<div class="p-8 text-center text-sm text-[var(--color-text-secondary)]">Loading...</div>
+		<div class="c-search-results__loading">Loading...</div>
 	{:else if state.displayedResults.length === 0 && state.query}
-		<div class="p-8 text-center text-sm text-[var(--color-text-secondary)]">
+		<div class="c-search-results__empty">
 			No results for "{state.query}"
 		</div>
 	{:else}
-		<div class="divide-y divide-gray-200 rounded-lg border">
+		<div class="c-search-results__list">
 			{#each state.displayedResults as result}
 				<button
 					type="button"
-					class="w-full p-4 text-left hover:bg-[var(--color-background-secondary)]"
+					class="c-search-results__item"
 					onclick={() => state.onResultClick?.(result)}
 				>
-					<div class="flex gap-3">
+					<div class="c-search-results__item-inner">
 						<BaseIcon
 							name={state.icon(result.type)}
-							class="h-5 w-5 text-[var(--color-text-secondary)]"
+							style="width:1.25rem;height:1.25rem;"
+							class="c-search-results__icon"
 						/>
-						<div>
-							<div class="font-medium">{result.title}</div>
-							{#if result.description}<div class="text-sm text-[var(--color-text-secondary)]">
-									{result.description}
-								</div>{/if}
+						<div class="c-search-results__content">
+							<div class="c-search-results__title">{result.title}</div>
+							{#if result.description}
+								<div class="c-search-results__desc">{result.description}</div>
+							{/if}
 							{#if state.showMetadata && result.metadata}
-								<div class="mt-1 text-xs text-[var(--color-text-secondary)]">
+								<div class="c-search-results__meta">
 									{result.metadata.date}
 									{result.metadata.author}
 									{result.metadata.location}
@@ -60,3 +61,61 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-search-results__loading,
+	.c-search-results__empty {
+		padding: 2rem;
+		text-align: center;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+	.c-search-results__list {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+	.c-search-results__item {
+		display: block;
+		width: 100%;
+		padding: 1rem;
+		text-align: left;
+		border: none;
+		border-bottom: 1px solid var(--color-border-primary);
+		background: transparent;
+		cursor: pointer;
+		color: inherit;
+		transition: background-color var(--duration-120, 120ms);
+	}
+	.c-search-results__item:last-child {
+		border-bottom: none;
+	}
+	.c-search-results__item:hover {
+		background: var(--color-background-secondary);
+	}
+	.c-search-results__item:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+	}
+	.c-search-results__item-inner {
+		display: flex;
+		gap: 0.75rem;
+	}
+	.c-search-results__icon {
+		color: var(--color-text-secondary);
+		flex-shrink: 0;
+	}
+	.c-search-results__title {
+		font-weight: 500;
+	}
+	.c-search-results__desc {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+		margin-top: 0.25rem;
+	}
+	.c-search-results__meta {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+		margin-top: 0.25rem;
+	}
+</style>

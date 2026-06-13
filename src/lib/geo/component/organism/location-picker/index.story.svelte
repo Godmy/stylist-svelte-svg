@@ -55,12 +55,12 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-location-picker p-4">
-			<h1 class="mb-4 text-lg font-semibold">LocationPicker Component</h1>
+		<div class="sb-organisms-location-picker _c1">
+			<h1 class="_c2">LocationPicker Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive LocationPicker</h2>
-				<div class="mx-auto max-w-3xl">
+			<div class="_c3">
+				<h2 class="_c4">Interactive LocationPicker</h2>
+				<div class="_c5">
 					<LocationPicker
 						{center}
 						{zoom}
@@ -85,23 +85,23 @@
 					/>
 				</div>
 
-				<div class="mt-4 flex flex-wrap gap-2">
-					<div class="flex items-end">
-						<label for="show-search" class="flex items-center gap-1">
+				<div class="_c6">
+					<div class="_c7">
+						<label for="show-search" class="_c8">
 							<input id="show-search" type="checkbox" bind:checked={showSearch} />
 							Show Search
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-coordinates" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="show-coordinates" class="_c8">
 							<input id="show-coordinates" type="checkbox" bind:checked={showCoordinates} />
 							Show Coordinates
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-current-location" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="show-current-location" class="_c8">
 							<input
 								id="show-current-location"
 								type="checkbox"
@@ -111,45 +111,31 @@
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="disable-interaction" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="disable-interaction" class="_c8">
 							<input id="disable-interaction" type="checkbox" bind:checked={disableInteraction} />
 							Disable Interaction
 						</label>
 					</div>
 
 					<div>
-						<label for="max-zoom" class="mb-1 block text-sm">Max Zoom:</label>
-						<input
-							id="max-zoom"
-							type="number"
-							bind:value={maxZoom}
-							class="w-16 rounded border p-1"
-							min="1"
-							max="20"
-						/>
+						<label for="max-zoom" class="_c9">Max Zoom:</label>
+						<input id="max-zoom" type="number" bind:value={maxZoom} class="_c10" min="1" max="20" />
 					</div>
 
 					<div>
-						<label for="min-zoom" class="mb-1 block text-sm">Min Zoom:</label>
-						<input
-							id="min-zoom"
-							type="number"
-							bind:value={minZoom}
-							class="w-16 rounded border p-1"
-							min="1"
-							max="20"
-						/>
+						<label for="min-zoom" class="_c9">Min Zoom:</label>
+						<input id="min-zoom" type="number" bind:value={minZoom} class="_c10" min="1" max="20" />
 					</div>
 				</div>
 			</div>
 
-			<div class="rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">LocationPicker Variations</h2>
-				<div class="space-y-4">
+			<div class="_c11">
+				<h2 class="_c4">LocationPicker Variations</h2>
+				<div class="_c12">
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Without Search</h3>
-						<div class="mx-auto max-w-3xl">
+						<h3 class="_c13">Without Search</h3>
+						<div class="_c5">
 							<!-- New York -->
 							<LocationPicker
 								center={{ lat: 40.7128, lng: -74.006 }}
@@ -164,8 +150,8 @@
 						</div>
 					</div>
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Without Coordinates Display</h3>
-						<div class="mx-auto max-w-3xl">
+						<h3 class="_c13">Without Coordinates Display</h3>
+						<div class="_c5">
 							<!-- Los Angeles -->
 							<LocationPicker
 								center={{ lat: 34.0522, lng: -118.2437 }}
@@ -184,3 +170,76 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c10 {
+		width: 4rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.25rem;
+	}
+	._c11 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c12 > * + * {
+		margin-top: 1rem;
+	}
+	._c13 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 48rem;
+	}
+	._c6 {
+		margin-top: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	._c7 {
+		display: flex;
+		align-items: flex-end;
+	}
+	._c8 {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	._c9 {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

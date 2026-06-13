@@ -1,24 +1,7 @@
-import type { ProductCatalogProps as Props } from '$stylist/commerce/type/struct/product-catalog-props';
+import type { RecipeProductCatalog } from '$stylist/commerce/interface/recipe/product-catalog';
 
-export function createProductCatalogState(props: Props) {
+export function createProductCatalogState(props: RecipeProductCatalog) {
 	const layout = $derived(props.layout ?? 'grid');
-	const containerClass = $derived(
-		`bg-[var(--color-background-primary)] rounded-lg shadow ${props.class ?? ''}`
-	);
-
-	const contentClass = $derived(
-		layout === 'grid'
-			? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6'
-			: 'flex flex-col p-4'
-	);
-
-	function getGridItemClass(): string {
-		return 'border rounded-lg overflow-hidden';
-	}
-
-	function getListItemClass(): string {
-		return 'flex border-b py-4 last:border-b-0';
-	}
 
 	function isGridLayout(): boolean {
 		return layout === 'grid';
@@ -29,15 +12,48 @@ export function createProductCatalogState(props: Props) {
 			return layout;
 		},
 		get containerClass() {
-			return containerClass;
+			return ['product-catalog', props.class].filter(Boolean).join(' ');
 		},
 		get contentClass() {
-			return contentClass;
+			return layout === 'grid'
+				? 'product-catalog__content product-catalog__content--grid'
+				: 'product-catalog__content product-catalog__content--list';
 		},
-		getGridItemClass,
-		getListItemClass,
+		get imageClass() {
+			return 'product-catalog__image';
+		},
+		get listImageClass() {
+			return 'product-catalog__image product-catalog__image--list';
+		},
+		get contentBodyClass() {
+			return 'product-catalog__body';
+		},
+		get titleClass() {
+			return 'product-catalog__title';
+		},
+		get ratingRowClass() {
+			return 'product-catalog__rating-row';
+		},
+		get ratingClass() {
+			return 'product-catalog__rating';
+		},
+		get priceRowClass() {
+			return 'product-catalog__price-row';
+		},
+		get priceClass() {
+			return 'product-catalog__price';
+		},
+		getGridItemClass(): string {
+			return 'product-catalog__item product-catalog__item--grid';
+		},
+		getListItemClass(): string {
+			return 'product-catalog__item product-catalog__item--list';
+		},
+		getStarClass(active: boolean) {
+			return active
+				? 'product-catalog__star product-catalog__star--active'
+				: 'product-catalog__star product-catalog__star--inactive';
+		},
 		isGridLayout
 	};
 }
-
-export default createProductCatalogState;

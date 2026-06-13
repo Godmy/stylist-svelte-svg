@@ -1,5 +1,5 @@
-import type { PromoBannerVariant } from '$stylist/media/type/alias/promo-banner-variant';
-import type { PromoBannerProps } from '$stylist/media/interface/recipe/promo-banner-promo-banner-props';
+﻿import type { PromoBannerVariant } from '$stylist/media/type/alias/promo-banner-variant';
+import type { RecipePromoBanner } from '$stylist/media/interface/recipe/promo-banner';
 
 const VARIANT_CLASSES: Record<PromoBannerVariant, string> = {
 	primary:
@@ -13,7 +13,7 @@ const VARIANT_CLASSES: Record<PromoBannerVariant, string> = {
 		'bg-[var(--color-danger-50)] border-[var(--color-danger-200)] text-[var(--color-danger-800)]'
 };
 
-export function createPromoBannerState(props: PromoBannerProps) {
+export function createPromoBannerState(props: RecipePromoBanner) {
 	const title = $derived(props.title ?? '');
 	const description = $derived(props.description ?? '');
 	const cta = $derived(props.cta ?? 'Learn More');
@@ -60,5 +60,3 @@ export function createPromoBannerState(props: PromoBannerProps) {
 		}
 	};
 }
-
-export default createPromoBannerState;

@@ -86,21 +86,16 @@
 	description="Атом для CSS-трансформаций: scale, rotate, translate, skew"
 >
 	{#snippet children(values: any)}
-		<div class="w-full rounded-lg py-4">
-			<div
-				class="flex h-64 items-center justify-center overflow-hidden rounded-lg bg-[var(--color-background-tertiary)]"
-			>
-				<Transformation
-					{...values}
-					class="rounded-lg bg-[var(--color-background-primary)] p-6 shadow-lg"
-				>
+		<div class="_c1">
+			<div class="_c2">
+				<Transformation {...values} class="_c3">
 					{#snippet children()}
-						<div class="text-center">
-							<p class="font-medium">🎯 Transform</p>
-							<p class="text-muted mt-1 text-xs">
+						<div class="_c4">
+							<p class="_c5">🎯 Transform</p>
+							<p class="text-muted _c6">
 								scale: {values.scale || 1} | rotate: {values.rotate || 0}°
 							</p>
-							<p class="text-muted text-xs">
+							<p class="text-muted _c7">
 								translate: ({values.translateX || 0}, {values.translateY || 0})
 							</p>
 						</div>
@@ -109,16 +104,16 @@
 			</div>
 
 			<!-- Transform values -->
-			<div class="mt-4 grid grid-cols-3 gap-2 text-xs">
-				<div class="rounded bg-[var(--color-background-secondary)] p-2">
+			<div class="_c8">
+				<div class="_c9">
 					<span class="text-muted">Origin:</span>
 					{values.transformOrigin || 'center'}
 				</div>
-				<div class="rounded bg-[var(--color-background-secondary)] p-2">
+				<div class="_c9">
 					<span class="text-muted">Duration:</span>
 					{values.duration || 300}ms
 				</div>
-				<div class="rounded bg-[var(--color-background-secondary)] p-2">
+				<div class="_c9">
 					<span class="text-muted">Easing:</span>
 					{values.easing || 'ease'}
 				</div>
@@ -126,3 +121,57 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+		border-radius: 0.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	._c2 {
+		display: flex;
+		height: 16rem;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		background-color: var(--color-background-tertiary);
+	}
+	._c3 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow:
+			0 10px 15px -3px rgb(0 0 0 / 0.1),
+			0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+	._c4 {
+		text-align: center;
+	}
+	._c5 {
+		font-weight: 500;
+	}
+	._c6 {
+		margin-top: 0.25rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	._c7 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	._c8 {
+		margin-top: 1rem;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	._c9 {
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding: 0.5rem;
+	}
+</style>

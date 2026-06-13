@@ -1,9 +1,9 @@
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { SVGAttributes } from 'svelte/elements';
-import type { Snippet } from 'svelte';
-
-export interface ContractSvg extends Omit<SVGAttributes<SVGSVGElement>, 'class'> {
+export interface ContractSvg
+	extends StructIntersectAll<[Omit<SVGAttributes<SVGSVGElement>, 'class'>, SlotContent]> {
 	/** SVG content */
-	content?: Snippet;
 	/** SVG source */
 	src?: string;
 	/** SVG title */

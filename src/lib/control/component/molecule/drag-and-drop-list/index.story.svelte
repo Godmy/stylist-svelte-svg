@@ -45,7 +45,7 @@
 	description="Reorderable list component for backlog grooming, playlists, or priority queues"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<DragAndDropList
 				{items}
 				variant={controlValues.variant}
@@ -55,3 +55,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

@@ -1,10 +1,23 @@
+﻿import type { RestProps as LegacyDropZoneProps2 } from '$stylist/file/type/struct/drop-zone/props/rest-props';
+import type { Props as LegacyDropZoneProps1 } from '$stylist/file/type/struct/drop-zone/props/-props';
+import type { SlotDropZone as Slot } from '$stylist/file/interface/slot/drop-zone';
+import type { SlotDropZone as SlotDropZone } from '$stylist/file/interface/slot/drop-zone';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
 import type { BehaviorDropZoneEvents } from '$stylist/file/interface/behavior/drop-zone-events';
 
-export interface RecipeDropZone extends StructIntersectAll<[BehaviorDropZoneEvents]> {
+export interface RecipeDropZone
+	extends StructIntersectAll<
+		[
+			LegacyDropZoneProps2,
+			LegacyDropZoneProps1,
+			Slot,
+			SlotDropZone,
+			BehaviorDropZoneEvents,
+			SlotChildren
+		]
+	> {
 	/** Children slot */
-	children?: Snippet;
 	/** Accepted file types */
 	accept?: string;
 	/** Multiple files allowed */

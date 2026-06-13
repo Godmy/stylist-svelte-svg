@@ -1,4 +1,4 @@
-import type { ThemeGradientBackgroundRecipe } from '$stylist/layout/interface/recipe/gradient-background';
+import type { RecipeThemeGradientBackground } from '$stylist/layout/interface/recipe/gradient-background';
 import type { TokenGradient } from '$stylist/layout/type/enum/gradient-mode';
 import type { GradientBackgroundStyle } from '$stylist/layout/type/struct/gradient-background-style';
 import type { GradientDirection } from '$stylist/layout/type/alias/gradient-direction';
@@ -12,24 +12,24 @@ export class ObjectManagerGradientBackground {
 		'var(--color-warning-300)'
 	];
 
-	static resolveVariant(variant?: ThemeGradientBackgroundRecipe['variant']): TokenGradient {
+	static resolveVariant(variant?: RecipeThemeGradientBackground['variant']): TokenGradient {
 		return variant ?? 'dynamic';
 	}
 
-	static resolveColors(colors?: ThemeGradientBackgroundRecipe['colors']): string[] {
+	static resolveColors(colors?: RecipeThemeGradientBackground['colors']): string[] {
 		return colors?.length ? colors : [...ObjectManagerGradientBackground.defaultColors];
 	}
 
-	static resolveSpeed(speed?: ThemeGradientBackgroundRecipe['speed']): number {
+	static resolveSpeed(speed?: RecipeThemeGradientBackground['speed']): number {
 		return speed ?? 20;
 	}
 
-	static resolveIntensity(intensity?: ThemeGradientBackgroundRecipe['intensity']): number {
+	static resolveIntensity(intensity?: RecipeThemeGradientBackground['intensity']): number {
 		return intensity ?? 50;
 	}
 
 	static resolveDirection(
-		direction?: ThemeGradientBackgroundRecipe['direction']
+		direction?: RecipeThemeGradientBackground['direction']
 	): GradientDirection {
 		switch (direction) {
 			case 'horizontal':

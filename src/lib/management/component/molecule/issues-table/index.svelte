@@ -2,7 +2,7 @@
 	import Button from '$stylist/control/component/atom/button/index.svelte';
 	import Switch from '$stylist/control/component/atom/switch/index.svelte';
 	import Badge from '$stylist/information/component/atom/badge/index.svelte';
-	import createIssuesTableState from '$stylist/management/function/state/issues-table/index.svelte';
+	import { createIssuesTableState } from '$stylist/management/function/state/issues-table/index.svelte';
 	import type { SlotIssueMessage as IssueMessage } from '$stylist/management/interface/slot/issue-message';
 
 	let {
@@ -23,7 +23,7 @@
 
 <section class="{state.containerClass} {className}" aria-label="Issues table">
 	<div class={state.toolbarClass}>
-		<div class="flex flex-wrap items-center gap-3">
+		<div class="_c1">
 			<Switch id="issues-state-filter" label="Only new" bind:checked={state.showNewOnly} />
 			<p class={state.toolbarMetaClass}>
 				{state.filteredItems.length} visible / {items.length} total
@@ -52,7 +52,7 @@
 							class={state.checkboxClass}
 							type="checkbox"
 							checked={state.filteredItems.length > 0 &&
-								state.filteredItems.every((item) =>
+								state.filteredItems.every((item: IssueMessage) =>
 									state.selectedIds.includes(state.getIssueKey(item))
 								)}
 							onchange={state.toggleAllVisible}
@@ -101,7 +101,7 @@
 								{/if}
 							</td>
 							<td class={state.bodyCellClass}>
-								<div class="break-all">{item.file}</div>
+								<div class="_c2">{item.file}</div>
 							</td>
 							<td class={state.bodyCellClass}>
 								<p class={state.messageTextClass}>{item.text}</p>
@@ -127,3 +127,113 @@
 		</table>
 	</div>
 </section>
+
+<style>
+	._c1 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	._c2 {
+		word-break: break-all;
+	}
+
+	.issues-table {
+		overflow: hidden;
+		border-radius: 1rem;
+		background-color: var(--color-background-primary);
+	}
+
+	.issues-table__toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+
+	.issues-table__toolbar-meta {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.issues-table__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.issues-table__table-wrap {
+		overflow-x: auto;
+	}
+
+	.issues-table__table {
+		min-width: 100%;
+	}
+
+	.issues-table__head-cell {
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		text-align: left;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: var(--color-text-secondary);
+	}
+
+	.issues-table__body-row {
+		background-color: var(--color-background-primary);
+	}
+
+	.issues-table__body-cell {
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-primary);
+	}
+
+	.issues-table__muted-text {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+
+	.issues-table__message-text {
+		max-width: 34rem;
+		white-space: pre-wrap;
+		line-height: 1.5rem;
+		color: var(--color-text-primary);
+	}
+
+	.issues-table__checkbox {
+		height: 1rem;
+		width: 1rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+</style>

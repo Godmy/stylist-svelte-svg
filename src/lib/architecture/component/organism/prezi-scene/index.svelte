@@ -1,47 +1,13 @@
-﻿<script lang="ts">
-	import type { PreziSceneContract } from '$stylist/architecture/type/struct/prezi-scene';
+<script lang="ts">
+	import type { RecipePreziScene } from '$stylist/architecture/interface/recipe/prezi-scene';
 	import usePreziState from '$stylist/architecture/function/state/prezi-scene/index.svelte';
 	import PresenterNodeShell from '$stylist/architecture/component/molecule/presenter-node-shell/index.svelte';
 	import Minimap from '$stylist/science/component/organism/minimap/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import Grid from '$stylist/layout/component/atom/grid/index.svelte';
 
-	const props: PreziSceneContract = $props();
+	let props: RecipePreziScene = $props();
 	const state = usePreziState(props);
-
-	let viewportElement: HTMLDivElement | null = null;
-
-	$effect(() => {
-		if (!viewportElement) return;
-		const el = viewportElement;
-		state.setViewportSize(el.clientWidth, el.clientHeight);
-
-		const observer = new ResizeObserver(() => {
-			state.setViewportSize(el.clientWidth, el.clientHeight);
-		});
-		observer.observe(el);
-		return () => observer.disconnect();
-	});
-
-	$effect(() => {
-		if (props.selectedNodeId !== undefined) {
-			if (props.selectedNodeId === null) {
-				state.selectNode(null);
-			} else {
-				const node = state.nodes.find((n) => n.id === props.selectedNodeId);
-				if (node) state.selectNode(node);
-			}
-		}
-	});
-
-	const nodeCamera = $derived({
-		x: 0,
-		y: 0,
-		zoom: 1,
-		depth: state.camera.depth,
-		viewportWidth: state.viewportWidth,
-		viewportHeight: state.viewportHeight
-	});
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -122,34 +88,33 @@
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
 			class="prezi-scene__viewport"
-			bind:this={viewportElement}
+			use:state.viewport
 			role="application"
 			aria-label="Prezi scene viewport"
 			aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - 0 Escape"
 			tabindex="0"
-			onwheel={(event) => state.handleWheel(event, viewportElement?.getBoundingClientRect())}
+			onwheel={state.handleWheel}
 			onpointerdown={state.handlePointerDown}
 			onpointermove={state.handlePointerMove}
 			onpointerup={state.handlePointerUp}
 			onpointerleave={state.handlePointerUp}
 			onkeydown={state.handleKeyDown}
-			onclick={() => viewportElement?.focus()}
+			onclick={(event) => event.currentTarget.focus()}
 		>
 			{#if state.showGrid}
 				<Grid class="prezi-scene__grid" />
 			{/if}
 
-			<!-- World: РµРґРёРЅС‹Р№ CSS-С‚СЂР°РЅСЃС„РѕСЂРј. РќРѕРґС‹ РІРЅСѓС‚СЂРё вЂ” raw world-РєРѕРѕСЂРґРёРЅР°С‚С‹. -->
+			<!-- World: единый CSS-трансформ. Ноды внутри — raw world-координаты. -->
 			<div
 				class="prezi-scene__world"
 				class:prezi-scene__world--animating={state.isAnimating}
-				style="transform: translate({state.camera.x}px, {state.camera.y}px) scale({state.camera
-					.zoom}); --prezi-animation-duration: {props.animationDurationMs ?? 600}ms;"
+				style={state.worldStyle}
 			>
 				{#each state.nodes as node (node.id)}
 					<PresenterNodeShell
 						{node}
-						camera={nodeCamera}
+						camera={state.nodeCamera}
 						selected={node.id === state.selectedNodeId}
 						onselect={() => state.focusNode(node)}
 					/>
@@ -247,11 +212,11 @@
 	{#if state.selectedNode}
 		<div class="prezi-scene__status-bar">
 			<span>Selected: {state.selectedNode.title}</span>
-			<span class="prezi-scene__divider">вЂў</span>
+			<span class="prezi-scene__divider">•</span>
 			<span>Depth: {state.camera.depth}</span>
-			<span class="prezi-scene__divider">вЂў</span>
+			<span class="prezi-scene__divider">•</span>
 			<span>Zoom: {Math.round(state.camera.zoom * 100)}%</span>
-			<span class="prezi-scene__divider">вЂў</span>
+			<span class="prezi-scene__divider">•</span>
 			<span>
 				Position: ({Math.round(state.camera.x)}, {Math.round(state.camera.y)})
 			</span>
@@ -352,7 +317,7 @@
 		color: var(--color-text-secondary, #6b7280);
 	}
 
-	/* в”Ђв”Ђв”Ђ Viewport в”Ђв”Ђв”Ђ */
+	/* ─── Viewport ─── */
 
 	.prezi-scene__viewport-container {
 		position: relative;
@@ -376,7 +341,7 @@
 		cursor: grabbing;
 	}
 
-	/* в”Ђв”Ђв”Ђ World: РµРґРёРЅС‹Р№ GPU-layer РґР»СЏ РІСЃРµС… РЅРѕРґ в”Ђв”Ђв”Ђ */
+	/* ─── World: единый GPU-layer для всех нод ─── */
 
 	.prezi-scene__world {
 		position: absolute;
@@ -384,11 +349,11 @@
 		left: 0;
 		transform-origin: 0 0;
 		will-change: transform;
-		/* Р’Рѕ РІСЂРµРјСЏ drag/scroll вЂ” Р±РµР· Р·Р°РґРµСЂР¶РєРё */
+		/* Во время drag/scroll — без задержки */
 		transition: none;
 	}
 
-	/* Prezi-Р°РЅРёРјР°С†РёСЏ: РїР»Р°РІРЅС‹Р№ zoom-to-node (CSS РґРµР»Р°РµС‚ РІСЃС‘ С‚СЏР¶С‘Р»РѕРµ) */
+	/* Prezi-анимация: плавный zoom-to-node (CSS делает всё тяжёлое) */
 	.prezi-scene__world--animating {
 		transition: transform var(--prezi-animation-duration, 600ms) cubic-bezier(0.16, 1, 0.3, 1);
 	}
@@ -400,7 +365,7 @@
 		opacity: 0.5;
 	}
 
-	/* в”Ђв”Ђв”Ђ Minimap в”Ђв”Ђв”Ђ */
+	/* ─── Minimap ─── */
 
 	.prezi-scene__minimap {
 		position: absolute;
@@ -412,7 +377,7 @@
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
 	}
 
-	/* в”Ђв”Ђв”Ђ Inspector в”Ђв”Ђв”Ђ */
+	/* ─── Inspector ─── */
 
 	.prezi-scene__inspector {
 		position: absolute;
@@ -506,7 +471,7 @@
 		border: 1px solid var(--color-border-primary, #e5e7eb);
 	}
 
-	/* в”Ђв”Ђв”Ђ Status bar в”Ђв”Ђв”Ђ */
+	/* ─── Status bar ─── */
 
 	.prezi-scene__status-bar {
 		display: flex;

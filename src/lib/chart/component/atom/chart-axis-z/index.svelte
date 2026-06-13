@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ChartAxisZProps } from '$stylist/chart/interface/recipe/chart-axis-z-props';
+	import type { RecipeChartAxisZ } from '$stylist/chart/interface/recipe/chart-axis-z';
 	import createChartAxisZState from '$stylist/chart/function/state/chart-axis-z/index.svelte';
 
-	let props: ChartAxisZProps = $props();
+	let props: RecipeChartAxisZ = $props();
 	const state = createChartAxisZState(props);
 
 	const startX = $derived(props.startX ?? 0);
@@ -52,3 +52,18 @@
 		</text>
 	{/if}
 </g>
+
+<style>
+	.c-chart-axis {
+		color: var(--color-text-secondary);
+	}
+
+	.c-chart-axis__grid {
+		opacity: var(--opacity-40);
+	}
+
+	.c-chart-axis__label {
+		fill: var(--color-text-secondary);
+		font-size: 0.75rem;
+	}
+</style>

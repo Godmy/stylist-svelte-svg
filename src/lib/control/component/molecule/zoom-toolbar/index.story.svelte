@@ -50,10 +50,8 @@
 	description="Interactive zoom toolbar with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
-			<div
-				class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4 shadow-sm"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				<ZoomToolbar
 					zoomLevel={controlValues.zoomLevel}
 					minZoom={controlValues.minZoom}
@@ -65,20 +63,18 @@
 				/>
 			</div>
 
-			<div
-				class="mt-4 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-			>
-				<h3 class="text-sm font-semibold text-[var(--color-text-primary)]">РСЃС‚РѕСЂРёСЏ</h3>
+			<div class="_c3">
+				<h3 class="_c4">РСЃС‚РѕСЂРёСЏ</h3>
 				{#if log.length > 0}
-					<ul class="mt-2 space-y-1 text-sm text-[var(--color-text-primary)]">
+					<ul class="_c5">
 						{#each log as entry}
-							<li class="rounded-md bg-[var(--color-background-primary)] px-3 py-1 shadow-sm">
+							<li class="_c6">
 								{entry}
 							</li>
 						{/each}
 					</ul>
 				{:else}
-					<p class="mt-2 text-sm text-[var(--color-text-secondary)]">
+					<p class="_c7">
 						РСЃС‚РѕСЂРёСЏ РїРѕСЏРІРёС‚СЃСЏ РїРѕСЃР»Рµ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ
 						РїР°РЅРµР»СЊСЋ.
 					</p>
@@ -87,3 +83,57 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		margin-top: 1rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c5 {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-primary);
+	}
+	._c5 > * + * {
+		margin-top: 0.25rem;
+	}
+	._c6 {
+		border-radius: 0.375rem;
+		background-color: var(--color-background-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c7 {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -1,7 +1,7 @@
-import type { ConnectionLineRecipe } from '$stylist/canvas/interface/recipe/connection-line';
-import { ConnectionLineStyleManager } from '$stylist/canvas/class/style-manager/connection-line';
+import type { RecipeConnectionLine } from '$stylist/canvas/interface/recipe/connection-line';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createConnectionLineState(props: ConnectionLineRecipe) {
+export function createConnectionLineState(props: RecipeConnectionLine) {
 	const id = $derived(props.id ?? `connection-${Date.now()}`);
 	const startX = $derived(props.startX ?? 0);
 	const startY = $derived(props.startY ?? 0);
@@ -16,15 +16,22 @@ export function createConnectionLineState(props: ConnectionLineRecipe) {
 	const showArrow = $derived(props.showArrow ?? true);
 	const arrowSize = $derived(props.arrowSize ?? 10);
 
-	const classes = $derived(ConnectionLineStyleManager.getLineClasses(props.class));
-	const pathClasses = $derived(ConnectionLineStyleManager.getPathClasses());
-	const hitAreaClasses = $derived(ConnectionLineStyleManager.getHitAreaClasses());
+	const classes = $derived(
+		mergeClassNames(
+			'connection-line',
+			style !== 'solid' && `connection-line--${style}`,
+			animated && 'connection-line--animated',
+			props.class
+		)
+	);
+	const pathClasses = $derived('connection-line__path');
+	const hitAreaClasses = $derived('connection-line__hit-area');
 
 	const dashArray = $derived(style === 'dashed' ? '5,5' : style === 'dotted' ? '2,2' : 'none');
 
 	const arrowMarkerId = $derived(`arrow-${id}`);
 	const arrowMarkerHtml = $derived(
-		ConnectionLineStyleManager.getArrowMarker(arrowSize, activeColor)
+		`<marker id="${arrowMarkerId}" markerWidth="${arrowSize}" markerHeight="${arrowSize * 0.7}" refX="${arrowSize * 0.9}" refY="${arrowSize * 0.35}" orient="auto"><polygon points="0 0, ${arrowSize} ${arrowSize * 0.35}, 0 ${arrowSize * 0.7}" fill="${activeColor}" /></marker>`
 	);
 
 	const restProps = $derived.by(() => {

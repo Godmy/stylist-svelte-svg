@@ -58,9 +58,42 @@
 	aria-selected={isSelected}
 	aria-controls={panelId}
 	aria-label={props.ariaLabel || undefined}
-	class={state.classes}
+	class="c-tab"
+	data-active={isSelected ? '' : undefined}
+	data-variant={state.variant}
+	data-size={state.size}
+	data-disabled={state.disabled ? '' : undefined}
 	disabled={state.disabled}
 	onclick={handleClick}
 >
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+	{#if props.children}{@render props.children()}{/if}
 </button>
+
+<style>
+	.c-tab {
+		padding: 0.5rem 1rem;
+		font-weight: 500;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		transition:
+			color var(--duration-200, 200ms),
+			background-color var(--duration-200, 200ms);
+	}
+
+	.c-tab:hover:not([data-disabled]) {
+		color: var(--color-text-primary);
+	}
+
+	.c-tab[data-active] {
+		color: var(--color-primary-500);
+		border-bottom: 2px solid var(--color-primary-500);
+	}
+
+	.c-tab[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+	}
+</style>

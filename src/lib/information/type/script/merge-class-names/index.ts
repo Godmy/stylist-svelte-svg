@@ -1,1 +1,8 @@
-export type ClassValue = import('clsx').ClassValue;
+export type ClassValue =
+	| string
+	| number
+	| boolean
+	| null
+	| undefined
+	| ClassValue[]
+	| Record<string, boolean | null | undefined>;

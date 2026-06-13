@@ -1,9 +1,9 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeAvatarGroup } from '$stylist/media/interface/recipe/avatar-group';
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-	import createAvatarGroupState from '$stylist/media/function/state/avatar-group/index.svelte';
-	import type { AvatarGroupProps } from '$stylist/media/type/struct/avatar-group/avatargroup-props';
+	import { createAvatarGroupState } from '$stylist/media/function/state/avatar-group/index.svelte';
 
-	let props: AvatarGroupProps & InformationHTMLAttributes<HTMLDivElement> = $props();
+	let props: RecipeAvatarGroup & InformationHTMLAttributes<HTMLDivElement> = $props();
 	const state = createAvatarGroupState(props);
 </script>
 
@@ -18,31 +18,15 @@
 			onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && avatar.onClick && avatar.onClick()}
 		>
 			{#if avatar.src}
-				<img
-					src={avatar.src}
-					alt={avatar.name}
-					class={`${state.sizeClasses} rounded-full border-2 border-[var(--color-background-primary)] object-cover`}
-				/>
+				<img src={avatar.src} alt={avatar.name} class={`ag-avatar-img ${state.sizeClasses}`} />
 			{:else}
-				<div
-					class={`${state.sizeClasses} flex items-center justify-center rounded-full border-2 border-[var(--color-background-primary)] bg-[var(--color-background-tertiary)] ${state.fontSizeClasses} font-medium text-[var(--color-text-primary)]`}
-				>
+				<div class={`ag-avatar-initials ${state.sizeClasses} ${state.fontSizeClasses}`}>
 					{avatar.name ? avatar.name.charAt(0).toUpperCase() : '?'}
 				</div>
 			{/if}
 
 			{#if avatar.status}
-				<div
-					class={`absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-[var(--color-background-primary)] ${
-						avatar.status === 'online'
-							? 'bg-[var(--color-success-500)]'
-							: avatar.status === 'away'
-								? 'bg-yellow-500'
-								: avatar.status === 'busy'
-									? 'bg-[var(--color-danger-500)]'
-									: 'bg-[var(--color-neutral-400)]'
-					}`}
-				></div>
+				<div class={`ag-status-dot ag-status--${avatar.status ?? 'offline'}`}></div>
 			{/if}
 		</div>
 	{/each}
@@ -80,5 +64,39 @@
 		font-size: 0.75rem;
 		font-weight: 500;
 		color: var(--color-text-primary);
+	}
+	.ag-avatar-img {
+		border-radius: 9999px;
+		border: 2px solid var(--color-background-primary);
+		object-fit: cover;
+	}
+	.ag-avatar-initials {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		border: 2px solid var(--color-background-primary);
+		background-color: var(--color-background-tertiary);
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	.ag-status-dot {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 0.75rem;
+		height: 0.75rem;
+		border-radius: 9999px;
+		border: 2px solid var(--color-background-primary);
+		background-color: var(--color-neutral-400);
+	}
+	.ag-status--online {
+		background-color: var(--color-success-500);
+	}
+	.ag-status--away {
+		background-color: #eab308;
+	}
+	.ag-status--busy {
+		background-color: var(--color-danger-500);
 	}
 </style>

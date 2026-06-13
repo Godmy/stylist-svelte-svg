@@ -1,4 +1,3 @@
-import { LayoutStyleManager } from '$stylist/layout/class/style-manager/layout';
 import type { DividerProps } from '$stylist/layout/type/struct/divider';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
@@ -7,10 +6,6 @@ export function createDividerState(props: DividerProps) {
 	const orientation = $derived<TokenOrientation>(props.orientation ?? 'horizontal');
 	const align = $derived<TokenAlignment>((props.align as TokenAlignment | undefined) ?? 'center');
 	const dashed = $derived(props.dashed ?? false);
-
-	const baseLineClass = $derived(LayoutStyleManager.getDividerLineClass(dashed));
-	const leftLineFlex = $derived(LayoutStyleManager.getDividerLineFlexClass(align, 'left'));
-	const rightLineFlex = $derived(LayoutStyleManager.getDividerLineFlexClass(align, 'right'));
 	const isHorizontal = $derived(orientation === 'horizontal');
 
 	const restProps = $derived.by(() => {
@@ -34,15 +29,6 @@ export function createDividerState(props: DividerProps) {
 		},
 		get dashed() {
 			return dashed;
-		},
-		get baseLineClass() {
-			return baseLineClass;
-		},
-		get leftLineFlex() {
-			return leftLineFlex;
-		},
-		get rightLineFlex() {
-			return rightLineFlex;
 		},
 		get isHorizontal() {
 			return isHorizontal;

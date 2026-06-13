@@ -1,36 +1,27 @@
 <script lang="ts">
-	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
+	import { PresetZoomToolbar } from '$stylist/control/const/preset/zoom-toolbar';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createZoomToolbarState from '$stylist/control/function/state/zoom-toolbar/index.svelte';
-	import type { SlotZoomToolbar as ZoomToolbarProps } from '$stylist/control/interface/slot/zoom-toolbar';
+	import { createZoomToolbarState } from '$stylist/control/function/state/zoom-toolbar/index.svelte';
+	import type { RecipeZoomToolbar } from '$stylist/control/interface/recipe/zoom-toolbar';
+	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	const ZoomIn = 'zoom-in';
-	const ZoomOut = 'zoom-out';
-	const RotateCcw = 'rotate-ccw';
+	let props: RecipeZoomToolbar = $props();
+	const state = createZoomToolbarState(props);
 
-	let {
-		zoomLevel = 100,
-		minZoom = 50,
-		maxZoom = 200,
-		step = 10,
-		class: hostClass = '',
-		buttonClass = '',
-		onZoomChange,
-		showReset = true,
-		showPercentage = true,
-		...restProps
-	}: ZoomToolbarProps = $props();
-
-	const state = createZoomToolbarState({
-		zoomLevel,
-		minZoom,
-		maxZoom,
-		step,
-		class: hostClass,
-		buttonClass,
-		onZoomChange,
-		showReset,
-		showPercentage
+	let restProps = $derived.by(() => {
+		const {
+			zoomLevel,
+			minZoom,
+			maxZoom,
+			step,
+			class: hostClass,
+			buttonClass,
+			onZoomChange,
+			showReset,
+			showPercentage,
+			...rest
+		} = props;
+		return rest;
 	});
 </script>
 
@@ -38,16 +29,16 @@
 	<Button
 		variant="ghost"
 		size="sm"
+		class={props.buttonClass}
 		onclick={state.zoomOut}
 		aria-label="Zoom out"
-		disabled={state.currentZoom <= minZoom}
-		class={state.firstButtonClass}
+		disabled={state.currentZoom <= (props.minZoom ?? 50)}
 	>
-		<BaseIcon name={ZoomOut} class="h-4 w-4" />
+		<BaseIcon name={PresetZoomToolbar.ZoomOut} style="width:1rem;height:1rem;" aria-hidden="true" />
 	</Button>
 
-	{#if showPercentage}
-		<div class={state.percentageClass}>
+	{#if props.showPercentage !== false}
+		<div class="c-zoom-toolbar__percentage">
 			{Math.round(state.currentZoom)}%
 		</div>
 	{/if}
@@ -55,24 +46,52 @@
 	<Button
 		variant="ghost"
 		size="sm"
+		class={props.buttonClass}
 		onclick={state.zoomIn}
 		aria-label="Zoom in"
-		disabled={state.currentZoom >= maxZoom}
-		class={state.buttonClass}
+		disabled={state.currentZoom >= (props.maxZoom ?? 200)}
 	>
-		<BaseIcon name={ZoomIn} class="h-4 w-4" />
+		<BaseIcon name={PresetZoomToolbar.ZoomIn} style="width:1rem;height:1rem;" aria-hidden="true" />
 	</Button>
 
-	{#if showReset}
-		<div class="border-l border-[var(--color-border-primary)]"></div>
+	{#if props.showReset !== false}
+		<div class="c-zoom-toolbar__divider"></div>
 		<Button
 			variant="ghost"
 			size="sm"
+			class={props.buttonClass}
 			onclick={state.resetZoom}
 			aria-label="Reset zoom"
-			class={state.buttonClass}
 		>
-			<BaseIcon name={RotateCcw} class="h-4 w-4" />
+			<BaseIcon
+				name={PresetZoomToolbar.RotateCcw}
+				style="width:1rem;height:1rem;"
+				aria-hidden="true"
+			/>
 		</Button>
 	{/if}
 </div>
+
+<style>
+	.c-zoom-toolbar {
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		overflow: hidden;
+	}
+
+	.c-zoom-toolbar__percentage {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		min-width: 3.125rem;
+		text-align: center;
+	}
+
+	.c-zoom-toolbar__divider {
+		width: 1px;
+		height: 100%;
+		background: var(--color-border-primary);
+	}
+</style>

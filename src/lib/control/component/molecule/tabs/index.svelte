@@ -1,9 +1,9 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeTabs } from '$stylist/control/interface/recipe/tabs';
 	import { setContext } from 'svelte';
-	import type { SlotTabs as TabsProps } from '$stylist/control/interface/slot/tabs';
-	import createTabsState from '$stylist/control/function/state/tabs/index.svelte';
+	import { createTabsState } from '$stylist/control/function/state/tabs/index.svelte';
 
-	let props: TabsProps = $props();
+	let props: RecipeTabs = $props();
 
 	const state = createTabsState(props);
 
@@ -43,6 +43,19 @@
 	);
 </script>
 
-<div {...restProps} class={state.classes}>
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div {...restProps} class={state.classes} data-disabled={state.disabled || undefined}>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-tabs {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.c-tabs[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		pointer-events: none;
+	}
+</style>

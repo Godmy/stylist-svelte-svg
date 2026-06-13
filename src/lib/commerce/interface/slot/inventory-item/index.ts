@@ -1,12 +1,3 @@
-/**
- * InventoryTrackerContract вЂ” С‚СЂРµРєРµСЂ СЃРєР»Р°РґСЃРєРёС… РѕСЃС‚Р°С‚РєРѕРІ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ThemeAttributes   (theme) вЂ” class, data-variant, data-tone
- *
- * РџСЂРёРјРµС‡Р°РЅРёРµ: variant Р·РґРµСЃСЊ вЂ” layout-СЂРµР¶РёРј (compact/expanded/dashboard),
- * РЅРµ С‚РµРјР°С‚РёС‡РµСЃРєРёР№ ThemeVariant. РћСЃС‚Р°РІР»РµРЅ inline.
- */
 import type { InventoryItemStatus } from '$stylist/commerce/type/struct/inventory-item-status';
 
 export interface SlotInventoryItem {

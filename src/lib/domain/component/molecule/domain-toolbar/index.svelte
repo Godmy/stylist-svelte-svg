@@ -28,3 +28,6 @@
 	{onSelect}
 	class="c-domain-toolbar {className}"
 />
+
+<style>
+</style>

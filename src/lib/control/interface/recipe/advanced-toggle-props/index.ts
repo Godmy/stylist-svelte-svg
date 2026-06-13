@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { RecipeToggleBaseProps } from '$stylist/control/interface/recipe/toggle-base-props';
 
 export interface RecipeAdvancedToggleProps extends StructIntersectAll<[RecipeToggleBaseProps]> {

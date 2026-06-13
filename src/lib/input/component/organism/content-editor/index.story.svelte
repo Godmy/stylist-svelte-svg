@@ -27,7 +27,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="h-[500px]">
+		<div class="_c1">
 			<ContentEditor
 				{initialContent}
 				placeholder={values.placeholder as string}
@@ -43,3 +43,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 500px;
+	}
+</style>

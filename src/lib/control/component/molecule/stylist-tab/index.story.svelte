@@ -30,12 +30,31 @@
 	description="РљРѕРјРїРѕРЅРµРЅС‚ РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹С… С‚Р°РєСЃРѕРЅРѕРјРёР№ СЃ Р°РЅРёРјР°С†РёРµР№"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
-			<h3 class="mb-4 text-lg font-semibold">Functional Taxonomy Tabs</h3>
+		<div class="_c1">
+			<h3 class="_c2">Functional Taxonomy Tabs</h3>
 			<StylistTab selectedId={controlValues.selectedId} onSelect={handleSelect} />
 
-			<h3 class="mt-8 mb-4 text-lg font-semibold">Custom Items</h3>
+			<h3 class="_c3">Custom Items</h3>
 			<StylistTab items={customItems as any} selectedId="dashboard" onSelect={handleSelect} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+</style>

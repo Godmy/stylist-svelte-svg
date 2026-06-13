@@ -1,4 +1,4 @@
-import type { HTMLAudioAttributes } from 'svelte/elements';
+﻿import type { HTMLAudioAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 
 export interface AudioPlayerProps extends StructIntersectAll<[HTMLAudioAttributes]> {

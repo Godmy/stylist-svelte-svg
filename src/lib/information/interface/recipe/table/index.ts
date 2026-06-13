@@ -1,18 +1,14 @@
-﻿/**
- * Table вЂ” С‚Р°Р±Р»РёС†Р° РґР°РЅРЅС‹С…..
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { Snippet } from 'svelte';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface TableRecipe
-	extends StructIntersectAll<[ILabelSlot, ThemeAttributes<HTMLTableElement>]> {
+export interface RecipeTable
+	extends StructIntersectAll<
+		[SlotTheme, ILabelSlot, HTMLAttributes<HTMLTableElement>, SlotContent]
+	> {
 	caption?: string;
-	content?: Snippet;
 	striped?: boolean;
 	bordered?: boolean;
 	hoverable?: boolean;

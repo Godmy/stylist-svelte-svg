@@ -1,8 +1,7 @@
-import { ImageGalleryStyleManager } from '$stylist/media/class/style-manager/image-gallery';
-import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
-import type { ImageGalleryStateProps } from '$stylist/media/interface/recipe/image-gallery-image-gallery-state-props';
+﻿import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
+import type { RecipeImageGallery } from '$stylist/media/interface/recipe/image-gallery';
 
-export function createImageGalleryState(props: ImageGalleryStateProps) {
+export function createImageGalleryState(props: RecipeImageGallery) {
 	let currentIndex = $state(0);
 	let isFullscreen = $state(false);
 
@@ -11,8 +10,6 @@ export function createImageGalleryState(props: ImageGalleryStateProps) {
 	const autoPlay = $derived(props.autoPlay ?? false);
 	const autoPlayInterval = $derived(props.autoPlayInterval ?? 3000);
 	const showCaptions = $derived(props.showCaptions ?? false);
-
-	const containerClass = $derived(ImageGalleryStyleManager.getHostClasses(props.class ?? ''));
 
 	// Auto-play functionality
 	$effect(() => {
@@ -126,5 +123,3 @@ export function createImageGalleryState(props: ImageGalleryStateProps) {
 		closeFullscreen
 	};
 }
-
-export default createImageGalleryState;

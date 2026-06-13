@@ -44,9 +44,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div
-			class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-5"
-		>
+		<div class="_c1">
 			<CubeControl
 				size={values.size}
 				perspective={values.perspective}
@@ -64,23 +62,19 @@
 				}}
 			/>
 
-			<p class="mt-3 text-sm text-[--color-text-secondary]">
+			<p class="_c2">
 				Rotation X: {currentRotation.x.toFixed(1)}deg, Rotation Y: {currentRotation.y.toFixed(1)}deg
 			</p>
-			<p class="text-sm text-[--color-text-tertiary]">
-				Tip: hold and drag inside the cube area to rotate manually.
-			</p>
-			<p class="mt-2 text-xs text-[--color-text-secondary]">
+			<p class="_c3">Tip: hold and drag inside the cube area to rotate manually.</p>
+			<p class="_c4">
 				Selected icon: {selectionState.selectedIconId ?? 'none'} | Selected title face: {selectionState.selectedTitleFace ??
 					'none'}
 			</p>
-			<div
-				class="mt-3 rounded-md border border-[--color-border-primary] bg-[var(--color-background-primary)]/50 p-2 text-xs text-[--color-text-secondary]"
-			>
-				<p class="mb-1 font-semibold">Click Log (last {debugLogs.length})</p>
-				<div class="max-h-40 space-y-1 overflow-auto">
+			<div class="_c5">
+				<p class="_c6">Click Log (last {debugLogs.length})</p>
+				<div class="_c7">
 					{#each debugLogs as log}
-						<div class="font-mono">
+						<div class="_c8">
 							{new Date(log.ts).toLocaleTimeString()} | {log.source}:{log.action}
 							{#if log.id}
 								| {log.id}{/if}
@@ -95,3 +89,60 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.25rem;
+	}
+	._c2 {
+		margin-top: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-tertiary);
+	}
+	._c4 {
+		margin-top: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c5 {
+		margin-top: 0.75rem;
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c6 {
+		margin-bottom: 0.25rem;
+		font-weight: 600;
+	}
+	._c7 {
+		max-height: 10rem;
+		overflow: auto;
+	}
+	._c7 > * + * {
+		margin-top: 0.25rem;
+	}
+	._c8 {
+		font-family: ui-monospace, monospace;
+	}
+
+	._c5 {
+		background-color: color-mix(in srgb, var(--color-background-primary) 50%, transparent);
+	}
+</style>

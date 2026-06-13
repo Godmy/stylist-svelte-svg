@@ -1,7 +1,7 @@
 import type { ExportFormat } from '$stylist/control/type/alias/export-format';
-import type { ExportPanelStateProps } from '$stylist/control/type/alias/export-panel-state-props';
+import type { RecipeExportPanel } from '$stylist/control/interface/recipe/export-panel';
 
-export function createExportPanelState(props: ExportPanelStateProps) {
+export function createExportPanelState(props: RecipeExportPanel) {
 	let exportFormat = $state<ExportFormat>('png');
 	let includeLegend = $state(true);
 	let includeFilters = $state(true);
@@ -18,11 +18,14 @@ export function createExportPanelState(props: ExportPanelStateProps) {
 	}
 
 	function handleExport() {
-		props.dispatch?.('export', {
+		const detail = {
 			format: exportFormat,
 			includeLegend,
 			includeFilters
-		});
+		};
+
+		props.onExport?.(detail);
+		props.onexport?.(new CustomEvent('export', { detail }));
 	}
 
 	return {
@@ -46,5 +49,3 @@ export function createExportPanelState(props: ExportPanelStateProps) {
 		handleExport
 	};
 }
-
-export default createExportPanelState;

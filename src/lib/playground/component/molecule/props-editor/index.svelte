@@ -1,6 +1,6 @@
-<script lang="ts">
-	import type { PropsEditorProps } from '$stylist/playground/type/struct/props-editor-props';
-	import createPropsEditorState from '$stylist/playground/function/state/props-editor/index.svelte';
+﻿<script lang="ts">
+	import type { RecipePropsEditor } from '$stylist/playground/interface/recipe/props-editor';
+	import { createPropsEditorState } from '$stylist/playground/function/state/props-editor/index.svelte';
 
 	let {
 		propDefinitions = [],
@@ -8,7 +8,7 @@
 		onPropChange,
 		class: className = '',
 		...restProps
-	}: PropsEditorProps = $props();
+	}: RecipePropsEditor = $props();
 
 	const state = createPropsEditorState({
 		propDefinitions,
@@ -20,12 +20,12 @@
 </script>
 
 <div class={state.containerClass} role="region" aria-label="Props editor">
-	<div class="mb-3 font-semibold">Props Editor</div>
-	<div class="space-y-3">
+	<div class="pe-title">Props Editor</div>
+	<div class="pe-fields">
 		{#each propDefinitions as def}
-			<div class="space-y-1">
-				<label class="text-sm font-medium" for={`prop-${def.name}`}
-					>{def.name} <span class="text-xs text-gray-500">({def.type})</span></label
+			<div class="pe-field">
+				<label class="pe-label" for={`prop-${def.name}`}
+					>{def.name} <span class="pe-type">({def.type})</span></label
 				>
 				{#if def.type === 'boolean'}
 					<input
@@ -39,7 +39,7 @@
 					<input
 						id={`prop-${def.name}`}
 						type="number"
-						class="w-full rounded border p-2"
+						class="pe-input"
 						value={Number(state.internalPropValues[def.name] ?? def.defaultValue ?? 0)}
 						min={def.min}
 						max={def.max}
@@ -50,7 +50,7 @@
 				{:else if def.type === 'enum'}
 					<select
 						id={`prop-${def.name}`}
-						class="w-full rounded border p-2"
+						class="pe-input"
 						value={String(state.internalPropValues[def.name] ?? def.defaultValue ?? '')}
 						onchange={(e) =>
 							state.handlePropChange(def.name, (e.target as HTMLSelectElement).value)}
@@ -61,13 +61,48 @@
 					<input
 						id={`prop-${def.name}`}
 						type="text"
-						class="w-full rounded border p-2"
+						class="pe-input"
 						value={String(state.internalPropValues[def.name] ?? def.defaultValue ?? '')}
 						oninput={(e) => state.handlePropChange(def.name, (e.target as HTMLInputElement).value)}
 					/>
 				{/if}
-				{#if def.description}<div class="text-xs text-gray-500">{def.description}</div>{/if}
+				{#if def.description}<div class="pe-desc">{def.description}</div>{/if}
 			</div>
 		{/each}
 	</div>
 </div>
+
+<style>
+	.pe-title {
+		margin-bottom: 0.75rem;
+		font-weight: 600;
+	}
+	.pe-fields {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.pe-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+	.pe-label {
+		font-size: 0.875rem;
+		font-weight: 500;
+	}
+	.pe-type {
+		font-size: 0.75rem;
+		color: #6b7280;
+	}
+	.pe-input {
+		width: 100%;
+		border-radius: 0.25rem;
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem;
+	}
+	.pe-desc {
+		font-size: 0.75rem;
+		color: #6b7280;
+	}
+</style>

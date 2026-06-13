@@ -1,5 +1,4 @@
 import type { RecipeSentimentAnalysis as SentimentAnalysisContract } from '$stylist/science/interface/recipe/sentiment-analysis';
-import { SentimentAnalysisStyleManager } from '$stylist/science/class/style-manager/sentiment-analysis';
 
 export function createSentimentAnalysisState(props: SentimentAnalysisContract) {
 	let inputText = $state(props.text ?? '');
@@ -34,49 +33,58 @@ export function createSentimentAnalysisState(props: SentimentAnalysisContract) {
 	}
 
 	const containerClass = $derived(
-		SentimentAnalysisStyleManager.getContainerClass(props.class ?? '')
+		props.class ? `sentiment-analysis ${props.class}` : 'sentiment-analysis'
 	);
 	const headerClass = $derived(
-		SentimentAnalysisStyleManager.getHeaderClass(props.headerClass ?? '')
+		props.headerClass
+			? `sentiment-analysis__header ${props.headerClass}`
+			: 'sentiment-analysis__header'
 	);
-	const titleClass = $derived(SentimentAnalysisStyleManager.getTitleClass());
 	const contentClass = $derived(
-		SentimentAnalysisStyleManager.getContentClass(props.contentClass ?? '')
+		props.contentClass
+			? `sentiment-analysis__content ${props.contentClass}`
+			: 'sentiment-analysis__content'
 	);
-	const inputLabelClass = $derived(SentimentAnalysisStyleManager.getInputLabelClass());
 	const inputAreaClass = $derived(
-		SentimentAnalysisStyleManager.getInputAreaClass(props.inputClass ?? '')
+		props.inputClass
+			? `sentiment-analysis__input-area ${props.inputClass}`
+			: 'sentiment-analysis__input-area'
 	);
 	const analyzeButtonClass = $derived(
-		SentimentAnalysisStyleManager.getAnalyzeButtonClass(status === 'analyzing', !inputText.trim())
+		status === 'analyzing' || !inputText.trim()
+			? 'sentiment-analysis__analyze-btn sentiment-analysis__analyze-btn--disabled'
+			: 'sentiment-analysis__analyze-btn'
 	);
-	const loadingSpinnerClass = $derived(SentimentAnalysisStyleManager.getLoadingSpinnerClass());
-	const errorMessageContainerClass = $derived(
-		SentimentAnalysisStyleManager.getErrorMessageContainerClass()
-	);
-	const errorIconClass = $derived(SentimentAnalysisStyleManager.getErrorIconClass());
-	const errorMessageClass = $derived(SentimentAnalysisStyleManager.getErrorMessageClass());
 	const resultSectionClass = $derived(
-		SentimentAnalysisStyleManager.getResultSectionClass(props.resultClass ?? '')
+		props.resultClass
+			? `sentiment-analysis__result ${props.resultClass}`
+			: 'sentiment-analysis__result'
 	);
-	const sentimentIconContainerClass = $derived(
-		SentimentAnalysisStyleManager.getSentimentIconContainerClass()
-	);
-	const confidenceLabelClass = $derived(SentimentAnalysisStyleManager.getConfidenceLabelClass());
-	const breakdownHeaderClass = $derived(SentimentAnalysisStyleManager.getBreakdownHeaderClass());
-	const breakdownBarClass = $derived(SentimentAnalysisStyleManager.getBreakdownBarClass());
-	const negativeSegmentClass = $derived(SentimentAnalysisStyleManager.getNegativeSegmentClass());
-	const neutralSegmentClass = $derived(SentimentAnalysisStyleManager.getNeutralSegmentClass());
-	const positiveSegmentClass = $derived(SentimentAnalysisStyleManager.getPositiveSegmentClass());
-	const sentimentLabelClass = $derived(SentimentAnalysisStyleManager.getSentimentLabelClass());
-	const sentimentScaleContainerClass = $derived(
-		SentimentAnalysisStyleManager.getSentimentScaleContainerClass()
-	);
-	const gradientScaleClass = $derived(SentimentAnalysisStyleManager.getGradientScaleClass());
-	const scaleLabelsClass = $derived(SentimentAnalysisStyleManager.getScaleLabelsClass());
 	const footerClass = $derived(
-		SentimentAnalysisStyleManager.getFooterClass(props.footerClass ?? '')
+		props.footerClass
+			? `sentiment-analysis__footer ${props.footerClass}`
+			: 'sentiment-analysis__footer'
 	);
+
+	function getSentimentIconStyle(score: number): string {
+		const base = 'width: 3rem; height: 3rem;';
+		if (score < -0.3) return `${base} color: var(--color-danger-500);`;
+		if (score < 0.3) return `${base} color: var(--color-warning-500);`;
+		return `${base} color: var(--color-success-500);`;
+	}
+
+	function getSentimentScoreClass(score: number): string {
+		if (score < -0.3) return 'sentiment-analysis__score sentiment-analysis__score--negative';
+		if (score < 0.3) return 'sentiment-analysis__score sentiment-analysis__score--neutral';
+		return 'sentiment-analysis__score sentiment-analysis__score--positive';
+	}
+
+	function getScoreIndicatorClass(score: number): string {
+		if (score < -0.3)
+			return 'sentiment-analysis__indicator sentiment-analysis__indicator--negative';
+		if (score < 0.3) return 'sentiment-analysis__indicator sentiment-analysis__indicator--neutral';
+		return 'sentiment-analysis__indicator sentiment-analysis__indicator--positive';
+	}
 
 	return {
 		get inputText() {
@@ -104,13 +112,13 @@ export function createSentimentAnalysisState(props: SentimentAnalysisContract) {
 			return headerClass;
 		},
 		get titleClass() {
-			return titleClass;
+			return 'sentiment-analysis__title';
 		},
 		get contentClass() {
 			return contentClass;
 		},
 		get inputLabelClass() {
-			return inputLabelClass;
+			return 'sentiment-analysis__input-label';
 		},
 		get inputAreaClass() {
 			return inputAreaClass;
@@ -118,66 +126,60 @@ export function createSentimentAnalysisState(props: SentimentAnalysisContract) {
 		get analyzeButtonClass() {
 			return analyzeButtonClass;
 		},
-		get loadingSpinnerClass() {
-			return loadingSpinnerClass;
+		get loadingSpinnerStyle() {
+			return 'width: 1rem; height: 1rem; margin-right: var(--spacing-sm); animation: spin 1s linear infinite;';
 		},
 		get errorMessageContainerClass() {
-			return errorMessageContainerClass;
+			return 'sentiment-analysis__error';
 		},
-		get errorIconClass() {
-			return errorIconClass;
+		get errorIconStyle() {
+			return 'width: 1.25rem; height: 1.25rem; color: var(--color-danger-500); margin-right: var(--spacing-sm);';
 		},
 		get errorMessageClass() {
-			return errorMessageClass;
+			return 'sentiment-analysis__error-msg';
 		},
 		get resultSectionClass() {
 			return resultSectionClass;
 		},
 		get sentimentIconContainerClass() {
-			return sentimentIconContainerClass;
-		},
-		get confidenceLabelClass() {
-			return confidenceLabelClass;
-		},
-		get breakdownHeaderClass() {
-			return breakdownHeaderClass;
-		},
-		get breakdownBarClass() {
-			return breakdownBarClass;
-		},
-		get negativeSegmentClass() {
-			return negativeSegmentClass;
-		},
-		get neutralSegmentClass() {
-			return neutralSegmentClass;
-		},
-		get positiveSegmentClass() {
-			return positiveSegmentClass;
+			return 'sentiment-analysis__icon-container';
 		},
 		get sentimentLabelClass() {
-			return sentimentLabelClass;
+			return 'sentiment-analysis__sentiment-label';
+		},
+		get confidenceLabelClass() {
+			return 'sentiment-analysis__confidence-label';
+		},
+		get breakdownHeaderClass() {
+			return 'sentiment-analysis__breakdown-header';
+		},
+		get breakdownBarClass() {
+			return 'sentiment-analysis__breakdown-bar';
+		},
+		get negativeSegmentClass() {
+			return 'sentiment-analysis__segment sentiment-analysis__segment--negative';
+		},
+		get neutralSegmentClass() {
+			return 'sentiment-analysis__segment sentiment-analysis__segment--neutral';
+		},
+		get positiveSegmentClass() {
+			return 'sentiment-analysis__segment sentiment-analysis__segment--positive';
 		},
 		get sentimentScaleContainerClass() {
-			return sentimentScaleContainerClass;
+			return 'sentiment-analysis__scale';
 		},
 		get gradientScaleClass() {
-			return gradientScaleClass;
+			return 'sentiment-analysis__scale-gradient';
 		},
 		get scaleLabelsClass() {
-			return scaleLabelsClass;
+			return 'sentiment-analysis__scale-labels';
 		},
 		get footerClass() {
 			return footerClass;
 		},
-		getSentimentIconClass(score: number) {
-			return SentimentAnalysisStyleManager.getSentimentIconClass(score);
-		},
-		getSentimentScoreClass(score: number) {
-			return SentimentAnalysisStyleManager.getSentimentScoreClass(score);
-		},
-		getScoreIndicatorClass(score: number) {
-			return SentimentAnalysisStyleManager.getScoreIndicatorClass(score);
-		},
+		getSentimentIconStyle,
+		getSentimentScoreClass,
+		getScoreIndicatorClass,
 		analyzeSentiment
 	};
 }

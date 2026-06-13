@@ -39,9 +39,9 @@
 	tags={['list', 'marker', 'indicator', 'typography']}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-4">
+		<div class="_c1">
 			<!-- Default story -->
-			<div class="flex items-center p-4">
+			<div class="_c2">
 				<ListItemMarker
 					type={values.type}
 					value={values.value}
@@ -51,27 +51,27 @@
 			</div>
 
 			<!-- Different marker types -->
-			<div class="space-y-4 p-4">
-				<h3 class="text-lg font-medium">Bullet Marker</h3>
-				<div class="flex items-center space-x-2">
+			<div class="_c3">
+				<h3 class="_c4">Bullet Marker</h3>
+				<div class="_c5">
 					<ListItemMarker type="bullet" color="gray" size="sm" />
 					<ListItemMarker type="bullet" color="gray" size="md" />
 					<ListItemMarker type="bullet" color="gray" size="lg" />
 				</div>
 			</div>
 
-			<div class="space-y-4 p-4">
-				<h3 class="text-lg font-medium">Number Marker</h3>
-				<div class="flex items-center space-x-2">
+			<div class="_c3">
+				<h3 class="_c4">Number Marker</h3>
+				<div class="_c5">
 					<ListItemMarker type="number" value="1" color="primary" size="sm" />
 					<ListItemMarker type="number" value="2" color="primary" size="md" />
 					<ListItemMarker type="number" value="3" color="primary" size="lg" />
 				</div>
 			</div>
 
-			<div class="space-y-4 p-4">
-				<h3 class="text-lg font-medium">Icon Markers</h3>
-				<div class="flex items-center space-x-2">
+			<div class="_c3">
+				<h3 class="_c4">Icon Markers</h3>
+				<div class="_c5">
 					<ListItemMarker type="icon" value="check" color="success" size="sm" />
 					<ListItemMarker type="icon" value="check" color="success" size="md" />
 					<ListItemMarker type="icon" value="check" color="success" size="lg" />
@@ -81,9 +81,9 @@
 				</div>
 			</div>
 
-			<div class="space-y-4 p-4">
-				<h3 class="text-lg font-medium">Color Variations</h3>
-				<div class="flex items-center space-x-2">
+			<div class="_c3">
+				<h3 class="_c4">Color Variations</h3>
+				<div class="_c5">
 					<ListItemMarker type="bullet" color="primary" size="md" />
 					<ListItemMarker type="bullet" color="secondary" size="md" />
 					<ListItemMarker type="bullet" color="success" size="md" />
@@ -96,3 +96,32 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+	._c2 {
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+	}
+	._c3 {
+		padding: 1rem;
+	}
+	._c3 > * + * {
+		margin-top: 1rem;
+	}
+	._c4 {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 500;
+	}
+	._c5 {
+		display: flex;
+		align-items: center;
+	}
+	._c5 > * + * {
+		margin-left: 0.5rem;
+	}
+</style>

@@ -1,7 +1,22 @@
-import type { GraphPortRecipe as GraphPortProps } from '$stylist/science/interface/recipe/graph-port';
-import type { GraphPortDataTypeColor } from '$stylist/science/type/struct/graph-port/graph-port-data-type-color';
+import type { RecipeGraphPort as GraphPortProps } from '$stylist/science/interface/recipe/graph-port';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { GraphPortStyleManager } from '$stylist/science/class/style-manager/graph-port';
+
+const PORT_SIZE_MAP: Record<string, string> = {
+	xs: 'graph-port--xs',
+	sm: 'graph-port--sm',
+	md: 'graph-port--md',
+	lg: 'graph-port--lg',
+	xl: 'graph-port--xl',
+	'2xl': 'graph-port--2xl',
+	'1/4': 'graph-port--xs',
+	'1/3': 'graph-port--sm',
+	'2/5': 'graph-port--sm',
+	'1/2': 'graph-port--md',
+	'3/5': 'graph-port--md',
+	'2/3': 'graph-port--lg',
+	'3/4': 'graph-port--xl',
+	full: 'graph-port--2xl'
+};
 
 export function createGraphPortState(props: GraphPortProps) {
 	const direction = $derived(props.direction === 'input' ? 'input' : 'output');
@@ -10,18 +25,18 @@ export function createGraphPortState(props: GraphPortProps) {
 	const connected = $derived(Boolean(props.connected));
 	const active = $derived(Boolean(props.active));
 	const color = $derived(
-		props.color ?? GraphPortStyleManager.getDataTypeColor(dataType as keyof GraphPortDataTypeColor)
+		props.color ?? `var(--color-graph-port-type-${dataType}, var(--color-graph-port-type-any))`
 	);
 
-	const sizeClasses = $derived(GraphPortStyleManager.getPortSizeClasses(size));
+	const sizeClasses = $derived(PORT_SIZE_MAP[size] ?? 'graph-port--md');
 	const stateClasses = $derived(
-		GraphPortStyleManager.getPortStateClasses({
-			connected,
-			active,
-			hovered: false
-		})
+		`graph-port${connected ? ' graph-port--connected' : ''}${active ? ' graph-port--active' : ''}`
 	);
-	const styles = $derived(GraphPortStyleManager.getPortStyles(color, direction));
+	const styles = $derived(
+		direction === 'input'
+			? `--graph-port-color: ${color}; left: -6px; transform: translateX(-100%);`
+			: `--graph-port-color: ${color}; right: -6px; transform: translateX(100%);`
+	);
 
 	return {
 		get direction() {

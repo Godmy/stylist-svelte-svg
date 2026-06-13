@@ -1,46 +1,17 @@
-import type { SpinnerProps } from '$stylist/notification/type/struct/spinner-props';
+import type { RecipeSpinner } from '$stylist/notification/interface/recipe/spinner';
 import type { SpinnerVariant } from '$stylist/notification/type/alias/spinner-variant';
 
-const sizeClassesMap: Record<string, string> = {
-	xs: 'w-4 h-4',
-	sm: 'w-5 h-5',
-	md: 'w-8 h-8',
-	lg: 'w-12 h-12',
-	xl: 'w-16 h-16'
-};
-
-const colorClassesMap: Record<string, string> = {
-	blue: 'text-[var(--color-primary-500)]',
-	gray: 'text-[var(--color-text-secondary)]',
-	green: 'text-[var(--color-success-500)]',
-	red: 'text-[var(--color-danger-500)]',
-	yellow: 'text-yellow-500',
-	white: 'text-[var(--color-text-inverse)]'
-};
-
-export function createSpinnerState(props: SpinnerProps) {
-	const variant = $derived((props.variant as SpinnerVariant) ?? 'icon');
+export function createSpinnerState(props: RecipeSpinner) {
+	const variant = $derived((props.variant ?? 'icon') as SpinnerVariant);
 	const size = $derived(props.size ?? 'md');
 	const color = $derived(props.color ?? 'blue');
 	const label = $derived(props.label ?? 'Loading...');
 	const showLabel = $derived(props.showLabel ?? false);
 
-	const sizeClasses = $derived(sizeClassesMap[size] || sizeClassesMap.md);
-	const colorClasses = $derived(colorClassesMap[color] || `text-[${color}]`);
-
-	const iconColorClasses = $derived.by(() => {
-		if (color === 'blue') return 'text-[var(--color-primary-500)]';
-		if (color === 'gray') return 'text-[var(--color-text-secondary)]';
-		if (color === 'green') return 'text-[var(--color-success-500)]';
-		if (color === 'red') return 'text-[var(--color-danger-500)]';
-		if (color === 'yellow') return 'text-yellow-500';
-		if (color === 'white') return 'text-[var(--color-text-inverse)]';
-		return 'text-[var(--color-primary-500)]';
-	});
-
-	const containerClasses = $derived(
-		`flex flex-col items-center justify-center ${props.class ?? ''}`
-	);
+	const sizeClasses = $derived(`spinner-size-${size}`);
+	const colorClasses = $derived(`spinner-color-${color}`);
+	const iconColorClasses = $derived(`spinner-color-${color}`);
+	const containerClasses = $derived(`c-spinner ${props.class ?? ''}`.trim());
 
 	return {
 		get variant() {
@@ -72,5 +43,3 @@ export function createSpinnerState(props: SpinnerProps) {
 		}
 	};
 }
-
-export default createSpinnerState;

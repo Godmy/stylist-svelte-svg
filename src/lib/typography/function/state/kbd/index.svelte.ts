@@ -1,7 +1,7 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import type { ThemeKbdRecipe } from '$stylist/typography/interface/recipe/kbd';
+import type { RecipeThemeKbd } from '$stylist/typography/interface/recipe/kbd';
 
-export function createKbdState(props: ThemeKbdRecipe) {
+export function createKbdState(props: RecipeThemeKbd) {
 	const classes = $derived(
 		mergeClassNames('c-typography-kbd', typeof props.class === 'string' ? props.class : undefined)
 	);

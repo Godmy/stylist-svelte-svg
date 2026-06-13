@@ -1,14 +1,12 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { SlotButtonElement as ButtonElementProps } from '$stylist/control/interface/slot/button-element';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
+﻿import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { RecipeCloseButton } from '$stylist/control/interface/recipe/close-button';
+import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-classes';
 import { createBasePreset } from '$stylist/interaction/preset/base';
 import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
 
-type CloseButtonProps = ButtonElementProps & HTMLButtonAttributes;
-
-export function createCloseButtonState(props: CloseButtonProps) {
-	const preset = createBasePreset(InteractionStyleManager.getInteractiveVariants(), TOKEN_SIZE, {
+export function createCloseButtonState(props: RecipeCloseButton & HTMLButtonAttributes) {
+	const preset = createBasePreset(Object.keys(VARIANT_CLASSES), TOKEN_SIZE, {
 		variant: 'ghost',
 		size: 'sm'
 	});
@@ -18,19 +16,9 @@ export function createCloseButtonState(props: CloseButtonProps) {
 	const disabled = $derived(props.disabled ?? preset.defaults.disabled);
 	const loading = $derived(props.loading ?? false);
 
-	const classes = $derived(
-		[
-			preset.classes.variant[variant as keyof typeof preset.classes.variant],
-			preset.classes.size[size as keyof typeof preset.classes.size],
-			disabled && preset.classes.state['disabled'],
-			loading && preset.classes.state['loading'],
-			props.class
-		]
-			.filter(Boolean)
-			.join(' ')
-	);
+	const classes = $derived('c-close-button');
 
-	const loaderClasses = $derived('animate-spin w-4 h-4');
+	const loaderClasses = $derived('c-close-button__loader');
 
 	const ariaLabel = $derived(
 		resolveAriaLabel(
@@ -73,5 +61,3 @@ export function createCloseButtonState(props: CloseButtonProps) {
 		}
 	};
 }
-
-export default createCloseButtonState;

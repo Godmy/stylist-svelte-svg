@@ -28,14 +28,12 @@
 <Story component={Tab} title="Tab" description="Single tab item used inside Tabs." {controls}>
 	{#snippet children(values: any)}
 		<Tabs selectedId={values.selectedId} size={values.size} variant={values.variant}>
-			<TabList class="mb-3">
+			<TabList class="_c1">
 				<Tab id="overview">Overview</Tab>
 				<Tab id="activity">Activity</Tab>
 				<Tab id="settings" disabled={values.disableSettings}>Settings</Tab>
 			</TabList>
-			<TabPanels
-				class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-4"
-			>
+			<TabPanels class="_c2">
 				<TabPanel id="overview">Project summary and latest highlights.</TabPanel>
 				<TabPanel id="activity">Recent actions, updates, and timeline events.</TabPanel>
 				<TabPanel id="settings">Configuration options for this workspace.</TabPanel>
@@ -43,3 +41,17 @@
 		</Tabs>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-bottom: 0.75rem;
+	}
+	._c2 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+</style>

@@ -1,4 +1,3 @@
-import { PaymentSummaryStyleManager } from '$stylist/commerce/class/style-manager/payment-summary-style-manager';
 import type { PaymentSummaryProps } from '$stylist/commerce/type/struct/payment-summary-props';
 import type { PaymentSummaryDiscount } from '$stylist/commerce/type/struct/payment-summary-discount';
 import type { PaymentSummaryItem } from '$stylist/commerce/type/struct/payment-summary-item';
@@ -14,7 +13,6 @@ export function createPaymentSummaryState(props: PaymentSummaryProps) {
 	const taxTotal = $derived(
 		(props.taxes ?? []).reduce((sum: number, t: PaymentSummaryTax) => sum + t.amount, 0)
 	);
-	const rootClass = $derived(PaymentSummaryStyleManager.root(props.class ?? ''));
 
 	return {
 		get subtotal() {
@@ -25,9 +23,6 @@ export function createPaymentSummaryState(props: PaymentSummaryProps) {
 		},
 		get taxTotal() {
 			return taxTotal;
-		},
-		get rootClass() {
-			return rootClass;
 		},
 		money(v: number): string {
 			return new Intl.NumberFormat('en-US', {

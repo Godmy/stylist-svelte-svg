@@ -1,5 +1,5 @@
-import type { PlaygroundErrorBoundaryProps } from '$stylist/playground/type/struct/playground-error-boundary-props';
-export function createPlaygroundErrorBoundaryState(props: PlaygroundErrorBoundaryProps) {
+﻿import type { RecipePlaygroundErrorBoundary } from '$stylist/playground/interface/recipe/playground-error-boundary';
+export function createPlaygroundErrorBoundaryState(props: RecipePlaygroundErrorBoundary) {
 	const component = $derived(props.component);
 	const componentProps = $derived(props.props ?? {});
 	const children = $derived(props.children);
@@ -33,5 +33,3 @@ export function createPlaygroundErrorBoundaryState(props: PlaygroundErrorBoundar
 		clearError
 	};
 }
-
-export default createPlaygroundErrorBoundaryState;

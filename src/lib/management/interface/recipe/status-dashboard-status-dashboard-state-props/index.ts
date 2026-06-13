@@ -1,4 +1,4 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { StatusDashboardRecipe } from '$stylist/management/interface/recipe/status-dashboard';
+import type { RecipeStatusDashboard } from '$stylist/management/interface/recipe/status-dashboard';
 
-export interface StatusDashboardStateProps extends StructIntersectAll<[StatusDashboardRecipe]> {}
+export interface StatusDashboardStateProps extends StructIntersectAll<[RecipeStatusDashboard]> {}

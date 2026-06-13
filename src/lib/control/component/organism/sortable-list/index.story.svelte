@@ -35,7 +35,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-sortable-list p-4">
+		<div class="sb-organisms-sortable-list _c1">
 			<SortableList
 				{items}
 				showHandle={typedProps.showHandle}
@@ -45,3 +45,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

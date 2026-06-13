@@ -1,9 +1,9 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeAvatar } from '$stylist/media/interface/recipe/avatar';
 	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-	import createAvatarState from '$stylist/media/function/state/avatar/index.svelte';
-	import type { AvatarProps } from '$stylist/media/interface/recipe/avatar-avatar-props';
+	import { createAvatarState } from '$stylist/media/function/state/avatar/index.svelte';
 
-	let props: AvatarProps & InformationHTMLAttributes<HTMLDivElement> = $props();
+	let props: RecipeAvatar & InformationHTMLAttributes<HTMLDivElement> = $props();
 	const state = createAvatarState(props);
 </script>
 

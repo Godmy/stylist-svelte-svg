@@ -1,4 +1,3 @@
-import { AutocompleteDropdownStyleManager } from '$stylist/control/class/style-manager/autocomplete-dropdown';
 import type { SlotAutocompleteDropdownOption as AutocompleteDropdownOption } from '$stylist/control/interface/slot/autocomplete-dropdown-option';
 import type { SlotAutocompleteDropdown as AutocompleteDropdownProps } from '$stylist/control/interface/slot/autocomplete-dropdown';
 
@@ -40,11 +39,17 @@ export function createAutocompleteDropdownState(props: AutocompleteDropdownProps
 		}
 	};
 
-	const rootClass = $derived(AutocompleteDropdownStyleManager.root(props.class ?? ''));
-	const triggerClass = $derived(AutocompleteDropdownStyleManager.trigger());
-	const chevronClass = $derived(AutocompleteDropdownStyleManager.chevron(isOpen));
-	const listboxClass = $derived(AutocompleteDropdownStyleManager.listbox());
-	const optionClass = $derived(AutocompleteDropdownStyleManager.option());
+	const rootClass = $derived(
+		('autocomplete-dropdown' + (props.class ? ` ${props.class}` : '')).trim()
+	);
+	const triggerClass = $derived('autocomplete-dropdown__trigger');
+	const chevronClass = $derived(
+		isOpen
+			? 'autocomplete-dropdown__chevron autocomplete-dropdown__chevron--open'
+			: 'autocomplete-dropdown__chevron'
+	);
+	const listboxClass = $derived('autocomplete-dropdown__listbox');
+	const optionClass = $derived('autocomplete-dropdown__option');
 
 	return {
 		get isOpen() {

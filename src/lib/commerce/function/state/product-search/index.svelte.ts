@@ -1,7 +1,7 @@
-import type { ProductSearchRecipe } from '$stylist/commerce/interface/recipe/product-search';
+import type { RecipeProductSearch } from '$stylist/commerce/interface/recipe/product-search';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createProductSearchState(props: ProductSearchRecipe) {
+export function createProductSearchState(props: RecipeProductSearch) {
 	let query = $state('');
 	let showSuggestions = $state(false);
 
@@ -32,9 +32,6 @@ export function createProductSearchState(props: ProductSearchRecipe) {
 		},
 		set query(value: string) {
 			query = value;
-		},
-		get rootClasses() {
-			return rootClasses;
 		},
 		get showSuggestions() {
 			return suggestionVisible;

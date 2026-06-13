@@ -1,8 +1,8 @@
-import type { BreadcrumbLinkRecipe } from '$stylist/navigation/interface/recipe/breadcrumb-link';
+import type { RecipeBreadcrumbLink } from '$stylist/navigation/interface/recipe/breadcrumb-link';
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 
 export function createBreadcrumbLinkState(
-	props: BreadcrumbLinkRecipe & { current?: boolean; href?: string; class?: string }
+	props: RecipeBreadcrumbLink & { current?: boolean; href?: string; class?: string }
 ) {
 	const linkClass = $derived(
 		joinClassNames(

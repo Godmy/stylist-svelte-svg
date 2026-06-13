@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import type { HTMLTextareaAttributes } from 'svelte/elements';
 	import { onMount } from 'svelte';
 	import type { SlotTextarea as ITextareaProps } from '$stylist/input/interface/slot/textarea';
@@ -49,7 +49,7 @@
 		maxlength={props.maxlength}
 		rows={props.rows ?? 4}
 		bind:this={textareaElement}
-		class={`${state.classes} resize-y`}
+		class={`${state.classes} text-area__textarea`}
 		oninput={() => state.handleInput(textareaElement)}
 		aria-describedby={state.hasError && (props.showErrors ?? true)
 			? state.errorId
@@ -74,13 +74,25 @@
 		<p class="text-area-counter">
 			{state.currentLength} / {props.maxlength}
 			{#if state.remainingChars !== null && state.remainingChars <= 10}
-				<span class="text-area-counter__warning">Осталось символов: {state.remainingChars}</span>
+				<span class="text-area-counter__warning"
+					>РћСЃС‚Р°Р»РѕСЃСЊ СЃРёРјРІРѕР»РѕРІ: {state.remainingChars}</span
+				>
 			{/if}
 		</p>
 	{/if}
 </div>
 
 <style>
+	.input-field-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.text-area__textarea {
+		resize: vertical;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;

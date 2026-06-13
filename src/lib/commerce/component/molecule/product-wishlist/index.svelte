@@ -1,30 +1,31 @@
 <script lang="ts">
-	import createProductWishlistState from '$stylist/commerce/function/state/product-wishlist/createproductwishliststate/index.svelte';
-	import type { ProductWishlistProps } from '$stylist/commerce/interface/recipe/product-wishlist-props';
+	import type { RecipeProductWishlist } from '$stylist/commerce/interface/recipe/product-wishlist';
+	import { createProductWishlistState } from '$stylist/commerce/function/state/product-wishlist/index.svelte';
 
-	let props: ProductWishlistProps = $props();
+	let props: RecipeProductWishlist = $props();
 	const state = createProductWishlistState(props);
 </script>
 
 <div class={state.containerClass}>
-	<h2 class="border-b p-4 text-xl font-bold">Wishlist ({props.items.length})</h2>
+	<h2 class={state.titleClass}>Wishlist ({props.items.length})</h2>
 	{#if props.items.length === 0}
-		<div class="p-8 text-center text-[var(--color-text-secondary)]">Your wishlist is empty</div>
+		<div class={state.emptyClass}>Your wishlist is empty</div>
 	{:else}
-		<div class="divide-y">
+		<div class={state.listClass}>
 			{#each props.items as item}
-				<div class="flex p-4">
+				<div class={state.itemClass}>
 					{#if item.image}
-						<img src={item.image} alt={item.title} class="mr-4 h-20 w-20 rounded object-cover" />
+						<img src={item.image} alt={item.title} class={state.imageClass} />
 					{/if}
-					<div class="flex-1">
-						<h3 class="font-bold">{item.title}</h3>
-						<div class="mt-1 flex items-center">
-							<div class="flex text-yellow-400">
-								{#each Array(5) as _, i}
+					<div class={state.contentClass}>
+						<h3 class={state.itemTitleClass}>{item.title}</h3>
+						<div class={state.ratingRowClass}>
+							<div class={state.ratingClass}>
+								{#each Array(5) as _, index}
 									<svg
-										class={`h-4 w-4 ${i < Math.floor(item.rating) ? 'fill-current' : 'fill-gray-300'}`}
+										class={state.getStarClass(index < Math.floor(item.rating))}
 										viewBox="0 0 24 24"
+										aria-hidden="true"
 									>
 										<path
 											d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -33,19 +34,13 @@
 								{/each}
 							</div>
 						</div>
-						<div class="mt-2 font-bold">{item.currency}{item.price.toFixed(2)}</div>
+						<div class={state.priceClass}>{item.currency}{item.price.toFixed(2)}</div>
 					</div>
-					<div class="ml-4 flex flex-col space-y-2">
-						<button
-							onclick={() => props.onMoveToCart?.(item.id)}
-							class="rounded bg-[var(--color-primary-500)] px-3 py-1 text-sm text-[var(--color-text-inverse)] hover:bg-[var(--color-primary-600)]"
-						>
+					<div class={state.actionsClass}>
+						<button onclick={() => props.onMoveToCart?.(item.id)} class={state.moveButtonClass}>
 							Add to Cart
 						</button>
-						<button
-							onclick={() => props.onRemove?.(item.id)}
-							class="rounded border border-[var(--color-border-primary)] px-3 py-1 text-sm hover:bg-[var(--color-background-secondary)]"
-						>
+						<button onclick={() => props.onRemove?.(item.id)} class={state.removeButtonClass}>
 							Remove
 						</button>
 					</div>
@@ -54,3 +49,106 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.product-wishlist__title {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+
+	.product-wishlist__empty {
+		padding: 2rem;
+		text-align: center;
+		color: var(--color-text-secondary);
+	}
+
+	.product-wishlist__list > * + * {
+		border-top: 1px solid var(--color-border-primary);
+	}
+
+	.product-wishlist__item {
+		display: flex;
+		padding: 1rem;
+	}
+
+	.product-wishlist__image {
+		width: 5rem;
+		height: 5rem;
+		margin-right: 1rem;
+		border-radius: 0.25rem;
+		object-fit: cover;
+	}
+
+	.product-wishlist__content {
+		flex: 1 1 0%;
+	}
+
+	.product-wishlist__item-title {
+		font-weight: 700;
+	}
+
+	.product-wishlist__rating-row {
+		display: flex;
+		align-items: center;
+		margin-top: 0.25rem;
+	}
+
+	.product-wishlist__rating {
+		display: flex;
+	}
+
+	.product-wishlist__star {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.product-wishlist__star--active {
+		fill: var(--color-warning-500, #f59e0b);
+	}
+
+	.product-wishlist__star--inactive {
+		fill: var(--color-background-tertiary, #d1d5db);
+	}
+
+	.product-wishlist__price {
+		margin-top: 0.5rem;
+		font-weight: 700;
+	}
+
+	.product-wishlist__actions {
+		display: flex;
+		flex-direction: column;
+		margin-left: 1rem;
+	}
+
+	.product-wishlist__actions > * + * {
+		margin-top: 0.5rem;
+	}
+
+	.product-wishlist__button {
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+
+	.product-wishlist__button--move {
+		background-color: var(--color-primary-500);
+		color: var(--color-text-inverse);
+	}
+
+	.product-wishlist__button--move:hover {
+		background-color: var(--color-primary-600);
+	}
+
+	.product-wishlist__button--remove {
+		border: 1px solid var(--color-border-primary);
+	}
+
+	.product-wishlist__button--remove:hover {
+		background-color: var(--color-background-secondary);
+	}
+</style>

@@ -9,25 +9,6 @@ export function createToggleWithDescriptionState(props: ToggleWithDescriptionPro
 		}
 	});
 
-	const containerClass = $derived(
-		`flex items-start p-4 border border-[var(--color-border-primary)] rounded-lg ${props.class ?? ''} ${
-			props.disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : 'cursor-pointer'
-		}`.trim()
-	);
-	const toggleClass = $derived(props.toggleClass ?? '');
-	const labelClass = $derived(props.labelClass ?? '');
-	const descriptionClass = $derived(props.descriptionClass ?? '');
-	const trackClass = $derived(
-		`absolute h-full w-full rounded-full transition-colors ${
-			isChecked ? 'bg-[var(--color-primary-600)]' : 'bg-[var(--color-background-tertiary)]'
-		}`
-	);
-	const thumbClass = $derived(
-		`absolute left-0 inline-block h-4 w-4 transform rounded-full border-2 bg-[var(--color-background-primary)] transition-transform ${
-			isChecked ? 'translate-x-6' : 'translate-x-1'
-		} ${props.disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`.trim()
-	);
-
 	function handleToggle() {
 		if (props.disabled) return;
 
@@ -49,23 +30,14 @@ export function createToggleWithDescriptionState(props: ToggleWithDescriptionPro
 		get isChecked() {
 			return isChecked;
 		},
-		get containerClass() {
-			return containerClass;
+		get disabled() {
+			return props.disabled ?? false;
 		},
-		get toggleClass() {
-			return toggleClass;
+		get label() {
+			return props.label ?? '';
 		},
-		get labelClass() {
-			return labelClass;
-		},
-		get descriptionClass() {
-			return descriptionClass;
-		},
-		get trackClass() {
-			return trackClass;
-		},
-		get thumbClass() {
-			return thumbClass;
+		get description() {
+			return props.description ?? '';
 		},
 		handleToggle,
 		handleKeyDown

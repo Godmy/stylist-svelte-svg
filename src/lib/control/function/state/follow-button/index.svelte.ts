@@ -1,19 +1,6 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { RecipeFollowButton } from '$stylist/control/interface/recipe/follow-button';
 
-type FollowButtonProps = InteractionHTMLAttributes<HTMLButtonElement> & {
-	isFollowing?: boolean;
-	showText?: boolean;
-	variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-	size?: 'sm' | 'md' | 'lg';
-	class?: string;
-	followingText?: string;
-	unfollowText?: string;
-	disabled?: boolean;
-	onFollow?: () => void | Promise<void>;
-	onUnfollow?: () => void | Promise<void>;
-};
-
-export function createFollowButtonState(props: FollowButtonProps) {
+export function createFollowButtonState(props: RecipeFollowButton) {
 	const isFollowing = $derived(props.isFollowing ?? false);
 	const showText = $derived(props.showText ?? true);
 	const variant = $derived(props.variant ?? 'primary');
@@ -24,32 +11,6 @@ export function createFollowButtonState(props: FollowButtonProps) {
 
 	const buttonVariant = $derived(isFollowing ? 'outline' : variant);
 	const buttonText = $derived(isFollowing ? followingText : unfollowText);
-
-	const classes = $derived(
-		[
-			'follow-button',
-			isFollowing
-				? 'text-[var(--color-text-primary)] bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-tertiary)]'
-				: variant === 'primary'
-					? 'text-[var(--color-text-inverse)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)]'
-					: variant === 'secondary'
-						? 'text-[var(--color-text-inverse)] bg-[var(--color-secondary-600)] hover:bg-[var(--color-secondary-700)]'
-						: variant === 'outline'
-							? 'text-[var(--color-text-primary)] bg-[var(--color-background-primary)] hover:bg-[var(--color-background-secondary)] border border-[var(--color-border-primary)]'
-							: 'text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)]',
-			size === 'sm'
-				? 'text-xs px-2 py-1'
-				: size === 'lg'
-					? 'text-base px-4 py-2'
-					: 'text-sm px-3 py-1.5',
-			'font-medium rounded-md',
-			disabled ? 'opacity-[var(--opacity-75)] cursor-not-allowed' : 'cursor-pointer',
-			props.class
-		]
-			.filter(Boolean)
-			.join(' ')
-	);
-
 	const ariaLabel = $derived(isFollowing ? 'Unfollow user' : 'Follow user');
 	let isPending = $state(false);
 
@@ -73,7 +34,7 @@ export function createFollowButtonState(props: FollowButtonProps) {
 			return buttonText;
 		},
 		get classes() {
-			return classes;
+			return 'c-follow-button';
 		},
 		get ariaLabel() {
 			return ariaLabel;
@@ -96,5 +57,3 @@ export function createFollowButtonState(props: FollowButtonProps) {
 		}
 	};
 }
-
-export default createFollowButtonState;

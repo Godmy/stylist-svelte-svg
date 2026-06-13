@@ -12,3 +12,6 @@
 	<input class={state.inputClass} placeholder={props.placeholder} value={props.query} />
 	<button class={state.submitButtonClass} type="submit">Search</button>
 </form>
+
+<style>
+</style>

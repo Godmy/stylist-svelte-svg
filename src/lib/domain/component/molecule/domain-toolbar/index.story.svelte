@@ -23,7 +23,7 @@
 	description="Primary domain navigation rail used by the domain explorer."
 >
 	{#snippet children(values: any)}
-		<div class="rounded-2xl border border-slate-200 bg-white p-4">
+		<div class="_c1">
 			<DomainToolbar
 				{active}
 				orientation={values.orientation as 'horizontal' | 'vertical'}
@@ -35,3 +35,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding: 1rem;
+	}
+</style>

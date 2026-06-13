@@ -1,7 +1,6 @@
-import { PaginationStyleManager } from '$stylist/navigation/class/style-manager/pagination';
-import type { PaginationStateProps } from '$stylist/navigation/interface/recipe/pagination-pagination-state-props';
+﻿import type { RecipePagination } from '$stylist/navigation/interface/recipe/pagination';
 
-export function createPaginationState(props: PaginationStateProps) {
+export function createPaginationState(props: RecipePagination) {
 	// Props with defaults
 	const currentPage = $derived(props.currentPage ?? 1);
 	const totalPages = $derived(props.totalPages ?? 1);
@@ -13,23 +12,6 @@ export function createPaginationState(props: PaginationStateProps) {
 	const disabled = $derived(props.disabled ?? false);
 
 	// Computed classes
-	const containerClass = $derived(
-		PaginationStyleManager.getPaginationContainerClasses(props.class)
-	);
-	const navClass = $derived(PaginationStyleManager.getPaginationClasses(size));
-	const buttonClassComputed = $derived(
-		PaginationStyleManager.getPageItemClasses(false, false, size, props.buttonClass)
-	);
-	const activeButtonClassComputed = $derived(
-		PaginationStyleManager.getPageItemClasses(true, false, size, props.activeButtonClass)
-	);
-	const disabledButtonClassComputed = $derived(
-		PaginationStyleManager.getPageItemClasses(false, true, size, props.disabledButtonClass)
-	);
-	const iconButtonClass = $derived(
-		PaginationStyleManager.getPaginationPrevClasses(false, props.buttonClass)
-	);
-	const dotsClass = $derived(PaginationStyleManager.getPaginationEllipsisClasses());
 
 	// Calculate visible page range
 	function getVisiblePages(): number[] {
@@ -158,5 +140,3 @@ export function createPaginationState(props: PaginationStateProps) {
 		goToNext
 	};
 }
-
-export default createPaginationState;

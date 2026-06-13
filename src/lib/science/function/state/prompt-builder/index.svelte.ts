@@ -1,6 +1,5 @@
 import type { RecipePromptBuilder as PromptBuilderContract } from '$stylist/science/interface/recipe/prompt-builder';
 import type { ContractPromptVariable as PromptVariable } from '$stylist/science/interface/contract/prompt-variable';
-import { PromptBuilderStyleManager } from '$stylist/science/class/style-manager/prompt-builder';
 
 export function createPromptBuilderState(props: PromptBuilderContract) {
 	let prompt = $state(props.initialPrompt ?? '');
@@ -96,55 +95,35 @@ export function createPromptBuilderState(props: PromptBuilderContract) {
 		if (templates.length > 0) selectTemplate(templates[0].id);
 	}
 
-	const containerClass = $derived(PromptBuilderStyleManager.getContainerClass(props.class ?? ''));
-	const headerClass = $derived(PromptBuilderStyleManager.getHeaderClass(props.headerClass ?? ''));
-	const titleClass = $derived(PromptBuilderStyleManager.getTitleClass());
-	const headerButtonsClass = $derived(PromptBuilderStyleManager.getHeaderButtonsClass());
-	const copyButtonClass = $derived(PromptBuilderStyleManager.getCopyButtonClass(copied));
-	const runButtonClass = $derived(PromptBuilderStyleManager.getRunButtonClass(running));
-	const loadingSpinnerClass = $derived(PromptBuilderStyleManager.getLoadingSpinnerClass());
-	const mainLayoutClass = $derived(PromptBuilderStyleManager.getMainLayoutClass());
-	const templatesSidebarClass = $derived(PromptBuilderStyleManager.getTemplatesSidebarClass());
-	const templatesHeaderClass = $derived(PromptBuilderStyleManager.getTemplatesHeaderClass());
-	const templatesTitleClass = $derived(PromptBuilderStyleManager.getTemplatesTitleClass());
-	const addTemplateButtonClass = $derived(PromptBuilderStyleManager.getAddTemplateButtonClass());
-	const templatesListClass = $derived(PromptBuilderStyleManager.getTemplatesListClass());
-	const templateNameClass = $derived(PromptBuilderStyleManager.getTemplateNameClass());
-	const templateDescriptionClass = $derived(
-		PromptBuilderStyleManager.getTemplateDescriptionClass()
+	const containerClass = $derived(props.class ? `prompt-builder ${props.class}` : 'prompt-builder');
+	const headerClass = $derived(
+		props.headerClass ? `prompt-builder__header ${props.headerClass}` : 'prompt-builder__header'
 	);
-	const mainContentClass = $derived(PromptBuilderStyleManager.getMainContentClass());
-	const promptEditorSectionClass = $derived(
-		PromptBuilderStyleManager.getPromptEditorSectionClass()
+	const copyButtonClass = $derived(
+		copied
+			? 'prompt-builder__copy-btn prompt-builder__copy-btn--copied'
+			: 'prompt-builder__copy-btn'
 	);
-	const promptEditorLabelClass = $derived(PromptBuilderStyleManager.getPromptEditorLabelClass());
+	const runButtonClass = $derived(
+		running ? 'prompt-builder__run-btn prompt-builder__run-btn--running' : 'prompt-builder__run-btn'
+	);
 	const promptEditorClass = $derived(
-		PromptBuilderStyleManager.getPromptEditorClass(props.editorClass ?? '')
+		props.editorClass ? `prompt-builder__editor ${props.editorClass}` : 'prompt-builder__editor'
 	);
-	const variablesSectionClass = $derived(PromptBuilderStyleManager.getVariablesSectionClass());
-	const variablesHeaderClass = $derived(PromptBuilderStyleManager.getVariablesHeaderClass());
-	const variablesTitleClass = $derived(PromptBuilderStyleManager.getVariablesTitleClass());
-	const addVariableButtonClass = $derived(PromptBuilderStyleManager.getAddVariableButtonClass());
-	const variablesListClass = $derived(PromptBuilderStyleManager.getVariablesListClass());
 	const variableItemClass = $derived(
-		PromptBuilderStyleManager.getVariableItemClass(props.variablesClass ?? '')
+		props.variablesClass
+			? `prompt-builder__variable-item ${props.variablesClass}`
+			: 'prompt-builder__variable-item'
 	);
-	const variableInfoContainerClass = $derived(
-		PromptBuilderStyleManager.getVariableInfoContainerClass()
+	const footerClass = $derived(
+		props.footerClass ? `prompt-builder__footer ${props.footerClass}` : 'prompt-builder__footer'
 	);
-	const variableNameClass = $derived(PromptBuilderStyleManager.getVariableNameClass());
-	const variableTypeBadgeClass = $derived(PromptBuilderStyleManager.getVariableTypeBadgeClass());
-	const requiredBadgeClass = $derived(PromptBuilderStyleManager.getRequiredBadgeClass());
-	const variableActionsClass = $derived(PromptBuilderStyleManager.getVariableActionsClass());
-	const variableActionButtonClass = $derived(
-		PromptBuilderStyleManager.getVariableActionButtonClass()
-	);
-	const variableDescriptionClass = $derived(
-		PromptBuilderStyleManager.getVariableDescriptionClass()
-	);
-	const footerClass = $derived(PromptBuilderStyleManager.getFooterClass(props.footerClass ?? ''));
-	const cancelButtonClass = $derived(PromptBuilderStyleManager.getCancelButtonClass());
-	const saveButtonClass = $derived(PromptBuilderStyleManager.getSaveButtonClass());
+
+	function getTemplateItemClass(isSelected: boolean) {
+		return isSelected
+			? 'prompt-builder__template-item prompt-builder__template-item--selected'
+			: 'prompt-builder__template-item';
+	}
 
 	return {
 		get prompt() {
@@ -184,10 +163,10 @@ export function createPromptBuilderState(props: PromptBuilderContract) {
 			return headerClass;
 		},
 		get titleClass() {
-			return titleClass;
+			return 'prompt-builder__title';
 		},
 		get headerButtonsClass() {
-			return headerButtonsClass;
+			return 'prompt-builder__header-actions';
 		},
 		get copyButtonClass() {
 			return copyButtonClass;
@@ -195,96 +174,91 @@ export function createPromptBuilderState(props: PromptBuilderContract) {
 		get runButtonClass() {
 			return runButtonClass;
 		},
-		get loadingSpinnerClass() {
-			return loadingSpinnerClass;
-		},
 		get mainLayoutClass() {
-			return mainLayoutClass;
+			return 'prompt-builder__layout';
 		},
 		get templatesSidebarClass() {
-			return templatesSidebarClass;
+			return 'prompt-builder__sidebar';
 		},
 		get templatesHeaderClass() {
-			return templatesHeaderClass;
+			return 'prompt-builder__sidebar-header';
 		},
 		get templatesTitleClass() {
-			return templatesTitleClass;
+			return 'prompt-builder__sidebar-title';
 		},
 		get addTemplateButtonClass() {
-			return addTemplateButtonClass;
+			return 'prompt-builder__sidebar-add-btn';
 		},
 		get templatesListClass() {
-			return templatesListClass;
+			return 'prompt-builder__templates-list';
 		},
 		get templateNameClass() {
-			return templateNameClass;
+			return 'prompt-builder__template-name';
 		},
 		get templateDescriptionClass() {
-			return templateDescriptionClass;
+			return 'prompt-builder__template-description';
 		},
 		get mainContentClass() {
-			return mainContentClass;
+			return 'prompt-builder__main';
 		},
 		get promptEditorSectionClass() {
-			return promptEditorSectionClass;
+			return 'prompt-builder__editor-section';
 		},
 		get promptEditorLabelClass() {
-			return promptEditorLabelClass;
+			return 'prompt-builder__editor-label';
 		},
 		get promptEditorClass() {
 			return promptEditorClass;
 		},
 		get variablesSectionClass() {
-			return variablesSectionClass;
+			return 'prompt-builder__variables-section';
 		},
 		get variablesHeaderClass() {
-			return variablesHeaderClass;
+			return 'prompt-builder__variables-header';
 		},
 		get variablesTitleClass() {
-			return variablesTitleClass;
+			return 'prompt-builder__variables-title';
 		},
 		get addVariableButtonClass() {
-			return addVariableButtonClass;
+			return 'prompt-builder__add-variable-btn';
 		},
 		get variablesListClass() {
-			return variablesListClass;
+			return 'prompt-builder__variables-list';
 		},
 		get variableItemClass() {
 			return variableItemClass;
 		},
 		get variableInfoContainerClass() {
-			return variableInfoContainerClass;
+			return 'prompt-builder__variable-info';
 		},
 		get variableNameClass() {
-			return variableNameClass;
+			return 'prompt-builder__variable-name';
 		},
 		get variableTypeBadgeClass() {
-			return variableTypeBadgeClass;
+			return 'prompt-builder__badge prompt-builder__badge--type';
 		},
 		get requiredBadgeClass() {
-			return requiredBadgeClass;
+			return 'prompt-builder__badge prompt-builder__badge--required';
 		},
 		get variableActionsClass() {
-			return variableActionsClass;
+			return 'prompt-builder__variable-actions';
 		},
 		get variableActionButtonClass() {
-			return variableActionButtonClass;
+			return 'prompt-builder__variable-action-btn';
 		},
 		get variableDescriptionClass() {
-			return variableDescriptionClass;
+			return 'prompt-builder__variable-description';
 		},
 		get footerClass() {
 			return footerClass;
 		},
 		get cancelButtonClass() {
-			return cancelButtonClass;
+			return 'prompt-builder__cancel-btn';
 		},
 		get saveButtonClass() {
-			return saveButtonClass;
+			return 'prompt-builder__save-btn';
 		},
-		getTemplateItemClass(selected: boolean) {
-			return PromptBuilderStyleManager.getTemplateItemClass(selected);
-		},
+		getTemplateItemClass,
 		addVariable,
 		removeVariable,
 		selectTemplate,

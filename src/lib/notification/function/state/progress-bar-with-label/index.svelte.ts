@@ -6,25 +6,14 @@ export function createProgressBarWithLabelState(props: ProgressBarWithLabelProps
 	const label = $derived(props.label ?? '');
 	const showPercentage = $derived(props.showPercentage ?? true);
 	const color = $derived(props.color ?? 'blue');
-	const height = $derived(props.height ?? 'h-2');
 
 	const percentage = $derived(Math.round((value / max) * 100));
 
-	const colorClasses: Record<string, string> = {
-		blue: 'bg-[var(--color-primary-500)]',
-		green: 'bg-[var(--color-success-500)]',
-		red: 'bg-[var(--color-danger-500)]',
-		yellow: 'bg-yellow-500',
-		purple: 'bg-[var(--color-secondary-500)]'
-	};
-
-	const containerClasses = $derived(`${props.class ?? ''}`);
-	const labelWrapperClasses = $derived('mb-1 flex justify-between');
-	const labelClasses = $derived('text-sm font-medium');
-	const trackClasses = $derived(
-		`w-full rounded-full bg-[var(--color-background-tertiary)] ${height}`
-	);
-	const fillClasses = $derived(`h-full rounded-full ${colorClasses[color] || colorClasses.blue}`);
+	const containerClasses = $derived(`pbwl ${props.class ?? ''}`.trim());
+	const labelWrapperClasses = $derived('pbwl__header');
+	const labelClasses = $derived('pbwl__label');
+	const trackClasses = $derived('pbwl__track');
+	const fillClasses = $derived(`pbwl__fill pbwl__fill--${color}`);
 
 	return {
 		get value() {

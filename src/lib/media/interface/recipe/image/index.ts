@@ -1,17 +1,17 @@
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { Snippet } from 'svelte';
 
-export interface CanvasImageEditorRecipe extends StructIntersectAll<[]> {
+export interface RecipeImage extends StructIntersectAll<[SlotChildren]> {
+	src?: string;
+	alt?: string;
+	fallback?: string;
+	loading?: 'eager' | 'lazy';
 	width?: number;
 	height?: number;
-	src?: string;
-	cropEnabled?: boolean;
-	filter?: string;
-	brightness?: number;
-	contrast?: number;
-	saturation?: number;
-	hue?: number;
+	content?: string;
+	onLoad?: () => void;
+	onError?: () => void;
+	variant?: string;
+	size?: string;
 	class?: string;
-	children?: Snippet;
 }

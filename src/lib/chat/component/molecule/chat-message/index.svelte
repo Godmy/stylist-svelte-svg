@@ -44,9 +44,14 @@
 		{#if !props.isOwn}
 			<div class={state.headerClasses}>
 				{#if props.senderAvatar}
-					<Avatar src={props.senderAvatar} alt={props.sender} size="sm" class="mr-2" />
+					<Avatar
+						src={props.senderAvatar}
+						alt={props.sender}
+						size="sm"
+						style="margin-right:0.5rem"
+					/>
 				{/if}
-				<span class="text-xs font-semibold text-[var(--color-text-secondary)]">{props.sender}</span>
+				<span class="cm-sender-name">{props.sender}</span>
 			</div>
 		{/if}
 
@@ -69,3 +74,11 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.cm-sender-name {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--color-text-secondary);
+	}
+</style>

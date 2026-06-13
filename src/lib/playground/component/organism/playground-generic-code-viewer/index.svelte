@@ -1,7 +1,7 @@
-<script lang="ts">
-	import createPlaygroundGenericCodeViewerState from '$stylist/playground/function/state/playground-generic-code-viewer/index.svelte';
-	import type { PlaygroundGenericCodeViewerProps } from '$stylist/playground/type/struct/playground-generic-code-viewer-props';
-	let props: PlaygroundGenericCodeViewerProps = $props();
+﻿<script lang="ts">
+	import type { RecipePlaygroundGenericCodeViewer } from '$stylist/playground/interface/recipe/playground-generic-code-viewer';
+	import { createPlaygroundGenericCodeViewerState } from '$stylist/playground/function/state/playground-generic-code-viewer/index.svelte';
+	let props: RecipePlaygroundGenericCodeViewer = $props();
 	const state = createPlaygroundGenericCodeViewerState(props);
 
 	$effect(() => {
@@ -9,35 +9,31 @@
 	});
 </script>
 
-<div
-	class="overflow-hidden rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-950 text-gray-100 shadow-2xl"
->
-	<div
-		class="flex items-center justify-between border-b border-gray-800 bg-gray-900/80 px-5 py-3 backdrop-blur-sm"
-	>
-		<div class="flex items-center gap-2">
-			<div class="h-2 w-2 rounded-full bg-red-500"></div>
-			<div class="h-2 w-2 rounded-full bg-yellow-500"></div>
-			<div class="h-2 w-2 rounded-full bg-green-500"></div>
-			<span class="ml-2 font-mono text-xs text-gray-400">{state.language}</span>
+<div class="gcv-wrap">
+	<div class="gcv-header">
+		<div class="gcv-traffic">
+			<div style="width:0.5rem;height:0.5rem;border-radius:9999px;background:#ef4444"></div>
+			<div style="width:0.5rem;height:0.5rem;border-radius:9999px;background:#eab308"></div>
+			<div style="width:0.5rem;height:0.5rem;border-radius:9999px;background:#22c55e"></div>
+			<span class="gcv-lang">{state.language}</span>
 		</div>
-		<div class="flex items-center gap-2">
+		<div class="gcv-actions">
 			<button
-				class="flex items-center gap-2 rounded-lg bg-gray-800 px-3 py-1.5 text-sm font-medium text-gray-200 shadow-lg transition-all hover:scale-105 hover:bg-gray-700 active:scale-95"
+				class="gcv-copy-btn"
 				onclick={state.copyCode}
 				title={state.copied ? 'Copied!' : 'Copy code'}
 			>
 				{#if state.copied}
-					<svg class="h-4 w-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+					<svg style="width:1rem;height:1rem;color:#4ade80" fill="currentColor" viewBox="0 0 20 20">
 						<path
 							fill-rule="evenodd"
 							d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
 							clip-rule="evenodd"
 						/>
 					</svg>
-					<span class="text-green-400">Copied!</span>
+					<span class="gcv-copied-text">Copied!</span>
 				{:else}
-					<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg style="width:1rem;height:1rem" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -51,17 +47,15 @@
 		</div>
 	</div>
 
-	<div
-		class="scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900 max-h-96 overflow-auto bg-gray-950/50 p-5"
-	>
+	<div class="gcv-content">
 		{#if state.code && state.highlightedCode}
-			<pre class="font-mono text-sm leading-relaxed">{@html state.highlightedCode}</pre>
+			<pre class="gcv-pre">{@html state.highlightedCode}</pre>
 		{:else if state.code}
-			<pre class="font-mono text-sm leading-relaxed text-gray-300">{state.code}</pre>
+			<pre class="gcv-pre gcv-pre--plain">{state.code}</pre>
 		{:else}
-			<div class="flex flex-col items-center justify-center py-12 text-center">
+			<div class="gcv-empty">
 				<svg
-					class="mb-3 h-12 w-12 text-gray-600"
+					style="margin-bottom:0.75rem;width:3rem;height:3rem;color:#4b5563"
 					fill="none"
 					stroke="currentColor"
 					viewBox="0 0 24 24"
@@ -73,9 +67,103 @@
 						d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
 					/>
 				</svg>
-				<p class="text-sm text-gray-500">No code to display</p>
-				<p class="mt-1 text-xs text-gray-600">Adjust component props to see generated code</p>
+				<p class="gcv-empty-title">No code to display</p>
+				<p class="gcv-empty-desc">Adjust component props to see generated code</p>
 			</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+	.gcv-wrap {
+		overflow: hidden;
+		border-radius: 0.75rem;
+		border: 1px solid #1f2937;
+		background: linear-gradient(to bottom right, #111827, #030712);
+		color: #f3f4f6;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	.gcv-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid #1f2937;
+		background: rgb(17 24 39 / 0.8);
+		padding: 0.75rem 1.25rem;
+		backdrop-filter: blur(4px);
+	}
+	.gcv-traffic {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.gcv-lang {
+		margin-left: 0.5rem;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 0.75rem;
+		color: #9ca3af;
+	}
+	.gcv-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.gcv-copy-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-radius: 0.5rem;
+		background: #1f2937;
+		padding: 0.375rem 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: #e5e7eb;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+		border: none;
+		cursor: pointer;
+	}
+	.gcv-copy-btn:hover {
+		transform: scale(1.05);
+		background: #374151;
+	}
+	.gcv-copy-btn:active {
+		transform: scale(0.95);
+	}
+	.gcv-copied-text {
+		color: #4ade80;
+	}
+	.gcv-content {
+		max-height: 24rem;
+		overflow: auto;
+		background: rgb(3 7 18 / 0.5);
+		padding: 1.25rem;
+	}
+	.gcv-pre {
+		margin: 0;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 0.875rem;
+		line-height: 1.625;
+	}
+	.gcv-pre--plain {
+		color: #d1d5db;
+	}
+	.gcv-empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		text-align: center;
+	}
+	.gcv-empty-title {
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+	.gcv-empty-desc {
+		margin-top: 0.25rem;
+		font-size: 0.75rem;
+		color: #4b5563;
+	}
+</style>

@@ -1,9 +1,9 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import createStatsCardState from '$stylist/information/function/state/stats-card/index.svelte';
-	import type { StatsCardRecipe } from '$stylist/information/interface/recipe/stats-card';
+	import type { RecipeStatsCard } from '$stylist/information/interface/recipe/stats-card';
 
-	let stateProps: StatsCardRecipe = $props();
+	let stateProps: RecipeStatsCard = $props();
 
 	const state = createStatsCardState(stateProps as Parameters<typeof createStatsCardState>[0]);
 </script>
@@ -35,3 +35,6 @@
 		{/if}
 	</div>
 </article>
+
+<style>
+</style>

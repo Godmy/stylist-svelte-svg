@@ -8,19 +8,16 @@
 	const state = createFormDatePickerState(props);
 </script>
 
-<div class={`date-picker-container relative ${state.hostClass}`}>
-	<label
-		for="date-picker-input"
-		class="mb-1 block text-sm font-medium text-[var(--color-text-primary)]"
-	>
+<div class={`fdp ${state.hostClass}`}>
+	<label for="date-picker-input" class="fdp__label">
 		{state.label}
 	</label>
 
-	<div class="relative">
+	<div class="fdp__input-wrap">
 		<input
 			id="date-picker-hidden"
 			type="date"
-			class="hidden"
+			class="fdp__hidden"
 			value={state.selectedDate}
 			min={state.minDate}
 			max={state.maxDate}
@@ -32,7 +29,7 @@
 		<input
 			id="date-picker-input"
 			type="text"
-			class={`block w-full rounded-md border border-[var(--color-border-primary)] py-2 pr-10 pl-3 shadow-sm focus:border-[var(--color-primary-500)] focus:ring-blue-500 focus:outline-none ${state.inputClass}`}
+			class={`fdp__input ${state.inputClass}`}
 			placeholder={state.placeholder}
 			value={state.selectedDate ? state.formatDate(state.selectedDate) : ''}
 			readonly
@@ -40,18 +37,19 @@
 			aria-label={state.label || 'Select date'}
 		/>
 
-		<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pl-3">
-			<BaseIcon name={Calendar} class="h-5 w-5 text-[var(--color-text-tertiary)]" />
+		<div class="fdp__icon-wrap">
+			<BaseIcon
+				name={Calendar}
+				style="width: 1.25rem; height: 1.25rem; color: var(--color-text-tertiary)"
+			/>
 		</div>
 	</div>
 
 	{#if state.showCalendar}
-		<div
-			class={`absolute z-[var(--z-index-docked)] mt-1 rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-3 shadow-lg ${state.calendarClass}`}
-		>
+		<div class={`fdp__calendar ${state.calendarClass}`}>
 			<input
 				type="date"
-				class="block w-full rounded-md border border-[var(--color-border-primary)] p-2"
+				class="fdp__calendar-input"
 				value={state.selectedDate}
 				min={state.minDate}
 				max={state.maxDate}
@@ -64,20 +62,93 @@
 	{/if}
 
 	{#if state.helperText}
-		<p class="mt-1 text-xs text-[var(--color-text-secondary)]">{state.helperText}</p>
+		<p class="fdp__helper">{state.helperText}</p>
 	{/if}
 
 	{#if state.error}
-		<p class="mt-1 text-xs text-[var(--color-danger-600)]">{state.error}</p>
+		<p class="fdp__error">{state.error}</p>
 	{/if}
 </div>
 
 <style>
-	.date-picker-container {
+	.fdp {
 		position: relative;
 	}
 
-	.date-picker-container input[type='date']::-webkit-calendar-picker-indicator {
+	.fdp__label {
+		display: block;
+		margin-block-end: 0.25rem;
+		font-size: var(--text-size-sm, 0.875rem);
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.fdp__input-wrap {
+		position: relative;
+	}
+
+	.fdp__hidden {
+		display: none;
+	}
+
+	.fdp__input {
+		display: block;
+		width: 100%;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		cursor: pointer;
+	}
+
+	.fdp__input:focus {
+		outline: none;
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 2px var(--color-primary-100);
+	}
+
+	.fdp__icon-wrap {
+		pointer-events: none;
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: 0;
+		display: flex;
+		align-items: center;
+		padding-inline-start: 0.75rem;
+	}
+
+	.fdp__calendar {
+		position: absolute;
+		z-index: var(--z-index-docked);
+		margin-block-start: 0.25rem;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.75rem;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+
+	.fdp__calendar-input {
+		display: block;
+		width: 100%;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem;
+	}
+
+	.fdp__helper {
+		margin-block-start: 0.25rem;
+		font-size: var(--text-size-xs, 0.75rem);
+		color: var(--color-text-secondary);
+	}
+
+	.fdp__error {
+		margin-block-start: 0.25rem;
+		font-size: var(--text-size-xs, 0.75rem);
+		color: var(--color-danger-600);
+	}
+
+	.fdp input[type='date']::-webkit-calendar-picker-indicator {
 		background: transparent;
 		bottom: 0;
 		color: transparent;

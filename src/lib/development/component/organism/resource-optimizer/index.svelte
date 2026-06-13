@@ -1,7 +1,7 @@
-<script lang="ts">
-	import type { ResourceOptimizerProps } from '$stylist/development/type/struct/resource-optimizer-props';
+﻿<script lang="ts">
+	import type { RecipeResourceOptimizer } from '$stylist/development/interface/recipe/resource-optimizer';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import createResourceOptimizerState from '$stylist/development/function/state/resource-optimizer/index.svelte';
+	import { createResourceOptimizerState } from '$stylist/development/function/state/resource-optimizer/index.svelte';
 
 	const HardDrive = 'hard-drive';
 	const Zap = 'zap';
@@ -25,7 +25,7 @@
 		description,
 		class: className = '',
 		...restProps
-	}: ResourceOptimizerProps = $props();
+	}: RecipeResourceOptimizer = $props();
 
 	const state = createResourceOptimizerState({
 		resources,
@@ -43,49 +43,124 @@
 	});
 </script>
 
-<div
-	class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow {state.className}"
-	{...restProps}
->
-	<div class="border-b px-6 py-5 {state.headerClass}">
-		<div class="flex items-center">
-			<BaseIcon name={Zap} class="mr-2 h-6 w-6 text-gray-500" />
+<div class={`ro-container ${state.className}`} {...restProps}>
+	<div class={`ro-header ${state.headerClass}`}>
+		<div class="ro-header-inner">
+			<BaseIcon name={Zap} style="width:1.5rem;height:1.5rem;margin-right:0.5rem;color:#6b7280" />
 			<div>
-				<h3 class="text-lg font-medium text-gray-900">{state.title}</h3>
+				<h3 class="ro-title">{state.title}</h3>
 				{#if state.description}
-					<p class="mt-1 text-sm text-gray-500">{state.description}</p>
+					<p class="ro-desc">{state.description}</p>
 				{/if}
 			</div>
 		</div>
 	</div>
 
-	<div class="px-6 py-5">
-		<div class="mb-6 grid grid-cols-2 gap-4">
-			<div class="rounded bg-gray-50 p-4">
-				<div class="text-2xl font-semibold text-gray-900">{state.resources.length}</div>
-				<div class="text-sm text-gray-500">Total Resources</div>
+	<div class="ro-body">
+		<div class="ro-stats">
+			<div class="ro-stat-card">
+				<div class="ro-stat-value">{state.resources.length}</div>
+				<div class="ro-stat-label">Total Resources</div>
 			</div>
-			<div class="rounded bg-gray-50 p-4">
-				<div class="text-2xl font-semibold text-gray-900">{state.totalSize}</div>
-				<div class="text-sm text-gray-500">Total Size</div>
+			<div class="ro-stat-card">
+				<div class="ro-stat-value">{state.totalSize}</div>
+				<div class="ro-stat-label">Total Size</div>
 			</div>
 		</div>
 
-		<div class="space-y-4">
+		<div class="ro-resource-list">
 			{#each state.resources as resource (resource.id)}
-				<div class="rounded-lg border p-4">
-					<div class="flex items-center justify-between">
-						<div class="flex items-center">
+				<div class="ro-resource-card">
+					<div class="ro-resource-header">
+						<div class="ro-resource-left">
 							<BaseIcon
 								name={state.getResourceTypeIcon(resource.type)}
-								class="mr-2 h-5 w-5 text-gray-400"
+								style="width:1.25rem;height:1.25rem;margin-right:0.5rem;color:#9ca3af"
 							/>
-							<span class="font-medium text-gray-900">{resource.name}</span>
+							<span class="ro-resource-name">{resource.name}</span>
 						</div>
-						<span class="text-sm text-gray-500">{state.formatBytes(resource.size)}</span>
+						<span class="ro-resource-size">{state.formatBytes(resource.size)}</span>
 					</div>
 				</div>
 			{/each}
 		</div>
 	</div>
 </div>
+
+<style>
+	.ro-container {
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border: 1px solid #e5e7eb;
+		background: white;
+		box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+	}
+	.ro-header {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 1.25rem 1.5rem;
+	}
+	.ro-header-inner {
+		display: flex;
+		align-items: center;
+	}
+	.ro-title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: #111827;
+	}
+	.ro-desc {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+	.ro-body {
+		padding: 1.25rem 1.5rem;
+	}
+	.ro-stats {
+		margin-bottom: 1.5rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+	.ro-stat-card {
+		border-radius: 0.25rem;
+		background: #f9fafb;
+		padding: 1rem;
+	}
+	.ro-stat-value {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111827;
+	}
+	.ro-stat-label {
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+	.ro-resource-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.ro-resource-card {
+		border-radius: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		padding: 1rem;
+	}
+	.ro-resource-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.ro-resource-left {
+		display: flex;
+		align-items: center;
+	}
+	.ro-resource-name {
+		font-weight: 500;
+		color: #111827;
+	}
+	.ro-resource-size {
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+</style>

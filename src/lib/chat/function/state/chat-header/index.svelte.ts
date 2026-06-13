@@ -1,5 +1,5 @@
 import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
-import { ChatHeaderStyleManager } from '$stylist/chat/class/style-manager/chat-header';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { ChatHeaderOrganismProps } from '$stylist/chat/type/alias/chat-header-organism-props';
 
 export const createChatHeaderState = (props: ChatHeaderOrganismProps) => {
@@ -14,11 +14,18 @@ export const createChatHeaderState = (props: ChatHeaderOrganismProps) => {
 		!isGroupChat ? chat.participants.find((u: User) => u.id !== currentUser.id) : null
 	) as User | null;
 
-	const containerClasses = $derived(ChatHeaderStyleManager.getAllClasses(className));
-	const infoClasses = $derived(ChatHeaderStyleManager.getInfoClasses());
-	const detailsClasses = $derived(ChatHeaderStyleManager.getDetailsClasses());
-	const nameClasses = $derived(ChatHeaderStyleManager.getNameClasses());
-	const actionsClasses = $derived(ChatHeaderStyleManager.getActionsClasses());
+	const containerClasses = $derived(
+		mergeClassNames(
+			'c-chat-header flex items-center justify-between border-b border-[--color-border-primary] bg-[--color-background-primary] px-4 py-3',
+			className
+		)
+	);
+	const infoClasses = $derived('chat-info flex flex-1 items-center gap-3.5 min-w-0');
+	const detailsClasses = $derived('chat-details flex flex-1 flex-col gap-[2px] min-w-0');
+	const nameClasses = $derived(
+		'chat-name truncate text-sm font-semibold tracking-[0.01em] text-[--color-text-primary]'
+	);
+	const actionsClasses = $derived('chat-actions flex items-center gap-2');
 
 	function handleCall() {
 		props.onCall?.();

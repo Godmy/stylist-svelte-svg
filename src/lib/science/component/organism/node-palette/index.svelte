@@ -3,7 +3,6 @@
 	import InputText from '$stylist/input/component/atom/input-text/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import Separator from '$stylist/layout/component/atom/separator/index.svelte';
-	import { NodePaletteStyleManager } from '$stylist/science/class/style-manager/node-palette';
 	import createNodePaletteState from '$stylist/science/function/state/node-palette/index.svelte';
 	import type { SlotNodePalette as NodePaletteProps } from '$stylist/science/interface/slot/node-palette';
 
@@ -53,9 +52,9 @@
 
 {#if isOpen}
 	<div class={state.rootClass} style={state.paletteStyle} {...restProps}>
-		<div class={NodePaletteStyleManager.header()}>
-			<div class={NodePaletteStyleManager.headerTitle()}>
-				<h3 class={NodePaletteStyleManager.title()}>Node Palette</h3>
+		<div class="node-palette__header">
+			<div class="node-palette__header-title">
+				<h3 class="node-palette__title">Node Palette</h3>
 				{#if dismissible}
 					<IconButton
 						variant="ghost"
@@ -68,7 +67,7 @@
 				{/if}
 			</div>
 
-			<div class={NodePaletteStyleManager.search()}>
+			<div class="node-palette__search">
 				<InputText
 					placeholder="Search nodes..."
 					value={searchQuery}
@@ -77,7 +76,7 @@
 				/>
 			</div>
 
-			<div class={NodePaletteStyleManager.actions()}>
+			<div class="node-palette__actions">
 				<IconButton
 					variant={viewMode === 'list' ? 'primary' : 'ghost'}
 					size="sm"
@@ -99,11 +98,11 @@
 			</div>
 		</div>
 
-		<div class={NodePaletteStyleManager.categories()}>
+		<div class="node-palette__categories">
 			{#each state.categories as category}
 				<button
 					type="button"
-					class={NodePaletteStyleManager.category(category === selectedCategory)}
+					class={`node-palette__category${category === selectedCategory ? ' node-palette__category--active' : ''}`}
 					onclick={() => state.handleCategorySelect(category)}
 				>
 					{state.getCategoryLabel(category)}
@@ -113,9 +112,9 @@
 
 		<Separator orientation="horizontal" />
 
-		<div class={NodePaletteStyleManager.content()}>
+		<div class="node-palette__content">
 			{#if state.filteredItems.length === 0}
-				<div class={NodePaletteStyleManager.empty()}>
+				<div class="node-palette__empty">
 					{#if searchQuery}
 						<p>No nodes found for "{searchQuery}"</p>
 					{:else}
@@ -125,42 +124,40 @@
 			{:else}
 				{#each Object.entries(state.groupedItems) as [category, categoryItems]}
 					{#if viewMode === 'list' && category !== 'all'}
-						<div class={NodePaletteStyleManager.group()}>
-							<h4 class={NodePaletteStyleManager.groupTitle()}>{category}</h4>
+						<div class="node-palette__group">
+							<h4 class="node-palette__group-title">{category}</h4>
 							{#each categoryItems as item}
 								<button
 									type="button"
-									class={NodePaletteStyleManager.item()}
+									class="node-palette__item"
 									onclick={() => state.handleNodeClick(item)}
 								>
 									<div
-										class={NodePaletteStyleManager.itemIcon()}
+										class="node-palette__item-icon"
 										style={`background-color: ${item.color ?? 'var(--color-primary-500)'};`}
 									></div>
-									<div class={NodePaletteStyleManager.itemInfo()}>
-										<span class={NodePaletteStyleManager.itemTitle()}>{item.title}</span>
+									<div class="node-palette__item-info">
+										<span class="node-palette__item-title">{item.title}</span>
 										{#if item.description}
-											<span class={NodePaletteStyleManager.itemDescription()}
-												>{item.description}</span
-											>
+											<span class="node-palette__item-description">{item.description}</span>
 										{/if}
 									</div>
 								</button>
 							{/each}
 						</div>
 					{:else}
-						<div class={NodePaletteStyleManager.grid()}>
+						<div class="node-palette__grid">
 							{#each categoryItems as item}
 								<button
 									type="button"
-									class={NodePaletteStyleManager.gridItem()}
+									class="node-palette__grid-item"
 									onclick={() => state.handleNodeClick(item)}
 								>
 									<div
-										class={NodePaletteStyleManager.gridItemIcon()}
+										class="node-palette__grid-item-icon"
 										style={`background-color: ${item.color ?? 'var(--color-primary-500)'};`}
 									></div>
-									<span class={NodePaletteStyleManager.gridItemTitle()}>{item.title}</span>
+									<span class="node-palette__grid-item-title">{item.title}</span>
 								</button>
 							{/each}
 						</div>

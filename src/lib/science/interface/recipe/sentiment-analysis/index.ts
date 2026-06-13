@@ -1,9 +1,9 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
 import type { SlotSentimentAnalysisResult } from '$stylist/science/interface/slot/sentiment-analysis-result';
 import type { SentimentAnalysisStatus } from '$stylist/science/type/struct/sentiment-analysis-status';
 
-export interface RecipeSentimentAnalysis extends StructIntersectAll<[]> {
+export interface RecipeSentimentAnalysis extends StructIntersectAll<[SlotChildren]> {
 	text?: string;
 	result?: SlotSentimentAnalysisResult;
 	onAnalyze?: (text: string) => void;
@@ -15,5 +15,4 @@ export interface RecipeSentimentAnalysis extends StructIntersectAll<[]> {
 	inputClass?: string;
 	resultClass?: string;
 	footerClass?: string;
-	children?: Snippet;
 }

@@ -1,15 +1,27 @@
-<script lang="ts">
-	import createNotificationPreferencesState from '$stylist/management/function/state/notification-preferences/index.svelte';
-	import type { NotificationPreferencesProps } from '$stylist/chat/type/struct/notification-preferences-props';
+﻿<script lang="ts">
+	import type { RecipeNotificationPreferences } from '$stylist/management/interface/recipe/notification-preferences';
+	import { createNotificationPreferencesState } from '$stylist/management/function/state/notification-preferences/index.svelte';
 
-	let props: NotificationPreferencesProps & { email?: boolean; push?: boolean; sms?: boolean } =
+	let props: RecipeNotificationPreferences & { email?: boolean; push?: boolean; sms?: boolean } =
 		$props();
 	const state = createNotificationPreferencesState(props);
 </script>
 
 <div class={state.containerClasses} {...state.restProps}>
-	<div class="mb-2 font-semibold">Notification Preferences</div>
-	<label class="block text-sm"><input type="checkbox" checked={state.email} /> Email</label>
-	<label class="block text-sm"><input type="checkbox" checked={state.push} /> Push</label>
-	<label class="block text-sm"><input type="checkbox" checked={state.sms} /> SMS</label>
+	<div class="_c1">Notification Preferences</div>
+	<label class="_c2"><input type="checkbox" checked={state.email} /> Email</label>
+	<label class="_c2"><input type="checkbox" checked={state.push} /> Push</label>
+	<label class="_c2"><input type="checkbox" checked={state.sms} /> SMS</label>
 </div>
+
+<style>
+	._c1 {
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c2 {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { ListItemMarkerRecipe } from '$stylist/information/interface/recipe/list-item-marker';
+	import type { RecipeListItemMarker } from '$stylist/information/interface/recipe/list-item-marker';
 	import createListItemMarkerState from '$stylist/information/function/state/list-item-marker/index.svelte';
 
 	type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
 
-	let props: ListItemMarkerRecipe = $props();
+	let props: RecipeListItemMarker = $props();
 	const state = createListItemMarkerState(props);
 	const iconSize = $derived<IconSize>(
 		(
@@ -49,3 +49,6 @@
 		<Icon name={state.value} size={iconSize} />
 	{/if}
 </span>
+
+<style>
+</style>

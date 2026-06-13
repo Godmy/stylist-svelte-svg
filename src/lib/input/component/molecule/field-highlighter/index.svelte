@@ -8,11 +8,7 @@
 
 <div class="field-highlighter-visualization">
 	{#each state.data.edges as edge}
-		<div
-			class="rounded border px-2 py-1 text-xs"
-			class:border-[var(--color-primary-400)]={state.isEdgeHighlighted(edge)}
-			class:border-[var(--color-border-primary)]={!state.isEdgeHighlighted(edge)}
-		>
+		<div class={`fh-edge ${state.isEdgeHighlighted(edge) ? 'fh-edge--highlighted' : ''}`}>
 			{edge.fromNodeId} -> {edge.toNodeId}{#if edge.label}
 				({edge.label}){/if}
 		</div>
@@ -21,21 +17,54 @@
 	{#each state.data.nodes as node}
 		<button
 			type="button"
-			class="absolute rounded border bg-[var(--color-background-primary)] px-3 py-2 text-left shadow-sm"
-			class:border-[var(--color-primary-500)]={state.selectedNode?.id === node.id ||
-				state.isNodeHighlighted(node)}
-			class:border-[var(--color-border-primary)]={!(
-				state.selectedNode?.id === node.id || state.isNodeHighlighted(node)
-			)}
+			class={`fh-node ${state.selectedNode?.id === node.id || state.isNodeHighlighted(node) ? 'fh-node--selected' : ''}`}
 			onclick={() => state.handleNodeClick(node)}
 			style="left: {node.x || 0}px; top: {node.y || 0}px;"
 		>
-			<div class="font-medium">{node.label || node.id}</div>
+			<div class="fh-node__label">{node.label || node.id}</div>
 			{#if node.children}
-				<div class="mt-1 text-xs text-[var(--color-text-secondary)]">
+				<div class="fh-node__meta">
 					{@render node.children()}
 				</div>
 			{/if}
 		</button>
 	{/each}
 </div>
+
+<style>
+	.fh-edge {
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.25rem 0.5rem;
+		font-size: var(--text-size-xs, 0.75rem);
+	}
+
+	.fh-edge--highlighted {
+		border-color: var(--color-primary-400);
+	}
+
+	.fh-node {
+		position: absolute;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.5rem 0.75rem;
+		text-align: start;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		cursor: pointer;
+	}
+
+	.fh-node--selected {
+		border-color: var(--color-primary-500);
+	}
+
+	.fh-node__label {
+		font-weight: 500;
+	}
+
+	.fh-node__meta {
+		margin-block-start: 0.25rem;
+		font-size: var(--text-size-xs, 0.75rem);
+		color: var(--color-text-secondary);
+	}
+</style>

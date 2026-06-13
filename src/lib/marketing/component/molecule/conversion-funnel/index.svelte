@@ -2,7 +2,6 @@
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import type { ConversionFunnelProps } from '$stylist/marketing/type/struct/conversion-funnel/conversionfunnel-props';
 	import createConversionFunnelState from '$stylist/marketing/function/state/conversion-funnel/index.svelte';
-	import { ConversionFunnelStyleManager } from '$stylist/marketing/class/style-manager/conversion-funnel';
 
 	const BarChart3 = 'bar-chart-3';
 	const ArrowRight = 'arrow-right';
@@ -11,8 +10,8 @@
 	const state = createConversionFunnelState(props);
 </script>
 
-<div class={state.containerClasses} {...state.restProps}>
-	<div class={state.headerClasses}>
+<div class="conversion-funnel__TODO-containerClasses" {...state.restProps}>
+	<div class="conversion-funnel__TODO-headerClasses">
 		<div class="cf-row">
 			<BaseIcon
 				name={BarChart3}
@@ -54,12 +53,11 @@
 
 					<div class="cf-bar-wrapper">
 						<div
-							class={ConversionFunnelStyleManager.getFunnelStepVisualizationClass()}
-							style={ConversionFunnelStyleManager.getFunnelStepVisualizationStyle(
-								step.value,
-								state.maxValue,
-								step.color
-							)}
+							class="conversion-funnel__funnel-step-visualization"
+							style={'width: ' +
+								(state.maxValue > 0 ? Math.round((step.value / state.maxValue) * 100) : 0) +
+								'%; background-color: ' +
+								(step.color || 'var(--color-primary-500)')}
 						>
 							<span class="cf-bar-label"
 								>{step.value} ({Math.round((step.value / state.steps[0].value) * 100)}%)</span
@@ -68,7 +66,7 @@
 
 						{#if state.showPercentage}
 							<div
-								class={ConversionFunnelStyleManager.getPercentageLabelClass()}
+								class="conversion-funnel__percentage-label"
 								style={`width: ${(step.value / state.maxValue) * 100}%;`}
 							>
 								{Math.round((step.value / state.steps[0].value) * 100)}%
@@ -162,5 +160,25 @@
 		margin-top: 1rem;
 		display: flex;
 		justify-content: center;
+	}
+
+	.conversion-funnel__funnel-step-visualization {
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.conversion-funnel__percentage-label {
+		position: absolute;
+		top: 0;
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		padding-left: 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 500;
+		color: var(--color-text-inverse);
 	}
 </style>

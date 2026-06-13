@@ -20,24 +20,16 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<section
-			class="sb-organisms-auth-guard grid gap-6 rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6"
-		>
+		<section class="sb-organisms-auth-guard _c1">
 			<AuthGuard
 				isAuthenticated={values.isAuthenticated}
 				requiredRole={values.requiredRole}
 				userRoles={values.isAuthenticated ? ['member', 'admin'] : []}
 				redirectUrl={values.redirectUrl}
 			>
-				<article
-					class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-5"
-				>
-					<h3
-						class="font-[--font-weight-semibold] text-[--color-text-primary] text-[--text-size-lg]"
-					>
-						Protected panel
-					</h3>
-					<p class="mt-2 text-[--color-text-secondary] text-[--text-size-sm]">
+				<article class="_c2">
+					<h3 class="_c3 font-[--font-weight-semibold]">Protected panel</h3>
+					<p class="_c4">
 						This content is visible only when the user is authenticated and has the required role.
 					</p>
 				</article>
@@ -45,3 +37,31 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1.5rem;
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c2 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.25rem;
+	}
+	._c3 {
+		color: var(--text-size-lg);
+	}
+	._c4 {
+		margin-top: 0.5rem;
+		color: var(--text-size-sm);
+	}
+</style>

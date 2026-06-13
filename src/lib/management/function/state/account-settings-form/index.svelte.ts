@@ -1,7 +1,7 @@
-import { AccountFormsStyleManager } from '$stylist/form/class/style-manager/account-forms';
-import type { AccountSettingsFormStateProps } from '$stylist/management/interface/recipe/account-settings-form';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeAccountSettingsForm } from '$stylist/management/interface/recipe/account-settings-form';
 
-export function createAccountSettingsFormState(props: AccountSettingsFormStateProps) {
+export function createAccountSettingsFormState(props: RecipeAccountSettingsForm) {
 	const name = $derived(props.name ?? 'John Doe');
 	const email = $derived(props.email ?? 'john@example.com');
 	const locale = $derived(props.locale ?? 'en-US');
@@ -12,10 +12,7 @@ export function createAccountSettingsFormState(props: AccountSettingsFormStatePr
 	const localeId = 'account-settings-locale';
 
 	const containerClasses = $derived(
-		AccountFormsStyleManager.root(
-			'c-account-settings-form border rounded-lg p-4 space-y-3',
-			className
-		)
+		mergeClassNames('c-account-settings-form border rounded-lg p-4 space-y-3', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -50,5 +47,3 @@ export function createAccountSettingsFormState(props: AccountSettingsFormStatePr
 		}
 	};
 }
-
-export default createAccountSettingsFormState;

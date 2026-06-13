@@ -1,24 +1,26 @@
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { AccessibilityToolbarRecipe } from '$stylist/control/interface/recipe/accessibility-toolbar';
-import { AccessibilityToolbarStyleManager } from '$stylist/control/class/style-manager/accessibility-toolbar';
+import type { RecipeAccessibilityToolbar } from '$stylist/control/interface/recipe/accessibility-toolbar';
 
-export function createAccessibilityToolbarState(props: AccessibilityToolbarRecipe) {
+export function createAccessibilityToolbarState(props: RecipeAccessibilityToolbar) {
 	const showFontSizeControls = $derived(props.showFontSizeControls ?? true);
 	const showScreenReaderTester = $derived(props.showScreenReaderTester ?? true);
-	const showFocusIndicatorToggle = $derived(props.showFocusIndicatorToggle ?? true);
-	const showAnimationToggle = $derived(props.showAnimationToggle ?? true);
+	const showFocusIndicatorToggle = $derived(
+		props.showFocusIndicatorToggle ?? props.showFocusIndicator ?? true
+	);
+	const showAnimationToggle = $derived(
+		props.showAnimationToggle ?? props.showTokenAnimationToggle ?? true
+	);
 	const variant = $derived((props.variant ?? 'default') as 'default' | 'minimal' | 'compact');
 	const size = $derived((props.size ?? 'md') as 'sm' | 'md' | 'lg');
 
-	const containerClass = $derived(AccessibilityToolbarStyleManager.getContainerClass(props.class));
+	const containerClass = $derived(['c-a11y-toolbar', props.class].filter(Boolean).join(' '));
 	const toolbarClass = $derived(
-		AccessibilityToolbarStyleManager.getToolbarClass(props.toolbarClass)
+		['c-a11y-toolbar__bar', props.toolbarClass].filter(Boolean).join(' ')
 	);
-	const buttonClass = $derived(AccessibilityToolbarStyleManager.getButtonClass(props.buttonClass));
-	const activeButtonClass = $derived(
-		AccessibilityToolbarStyleManager.getActiveButtonClass(props.buttonClass)
+	const buttonClass = $derived(
+		['c-a11y-toolbar__btn', props.buttonClass].filter(Boolean).join(' ')
 	);
-	const fontSizeDisplayClass = $derived(AccessibilityToolbarStyleManager.getFontSizeDisplayClass());
+	const activeButtonClass = 'c-a11y-toolbar__btn--active';
+	const fontSizeDisplayClass = 'c-a11y-toolbar__font-size';
 	let fontSizeScale = $state(1);
 	let screenReaderMode = $state(false);
 	let focusIndicator = $state(true);
@@ -26,20 +28,65 @@ export function createAccessibilityToolbarState(props: AccessibilityToolbarRecip
 
 	const restProps = $derived.by(() => {
 		const {
-			class: _class,
-			toolbarClass: _toolbarClass,
-			buttonClass: _buttonClass,
-			showFontSizeControls: _showFontSizeControls,
-			showScreenReaderTester: _showScreenReaderTester,
-			showFocusIndicatorToggle: _showFocusIndicatorToggle,
-			showAnimationToggle: _showAnimationToggle,
-			variant: _variant,
-			size: _size,
-			children: _children,
+			class: className,
+			toolbarClass: toolbarClassName,
+			buttonClass: buttonClassName,
+			showFontSizeControls: fontSizeControls,
+			showScreenReaderTester: screenReaderTester,
+			showFocusIndicator,
+			showTokenAnimationToggle,
+			showFocusIndicatorToggle: focusIndicatorToggle,
+			showAnimationToggle: animationToggle,
+			variant: variantName,
+			size: sizeName,
+			children,
 			...rest
 		} = props;
 		return rest;
 	});
+
+	function increaseFontSize() {
+		if (fontSizeScale < 1.5) {
+			fontSizeScale = Math.round((fontSizeScale + 0.1) * 10) / 10;
+			document.documentElement.style.fontSize = `${fontSizeScale * 16}px`;
+		}
+	}
+
+	function decreaseFontSize() {
+		if (fontSizeScale > 0.8) {
+			fontSizeScale = Math.round((fontSizeScale - 0.1) * 10) / 10;
+			document.documentElement.style.fontSize = `${fontSizeScale * 16}px`;
+		}
+	}
+
+	function toggleScreenReaderMode() {
+		screenReaderMode = !screenReaderMode;
+		alert(
+			screenReaderMode
+				? 'Screen reader mode activated. All visual elements will be described.'
+				: 'Screen reader mode deactivated.'
+		);
+	}
+
+	function toggleFocusIndicator() {
+		focusIndicator = !focusIndicator;
+		document.body.classList.toggle('no-focus-outline', !focusIndicator);
+	}
+
+	function toggleTokenAnimation() {
+		disableTokenAnimation = !disableTokenAnimation;
+
+		if (disableTokenAnimation) {
+			document.body.classList.add('reduce-motion');
+			document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+			document.documentElement.style.setProperty('--animation-iteration-count', '1');
+			return;
+		}
+
+		document.body.classList.remove('reduce-motion');
+		document.documentElement.style.removeProperty('--animation-duration');
+		document.documentElement.style.removeProperty('--animation-iteration-count');
+	}
 
 	return {
 		get showFontSizeControls() {
@@ -60,21 +107,6 @@ export function createAccessibilityToolbarState(props: AccessibilityToolbarRecip
 		get size() {
 			return size;
 		},
-		get containerClass() {
-			return containerClass;
-		},
-		get toolbarClass() {
-			return toolbarClass;
-		},
-		get buttonClass() {
-			return buttonClass;
-		},
-		get activeButtonClass() {
-			return activeButtonClass;
-		},
-		get fontSizeDisplayClass() {
-			return fontSizeDisplayClass;
-		},
 		get restProps() {
 			return restProps;
 		},
@@ -90,44 +122,21 @@ export function createAccessibilityToolbarState(props: AccessibilityToolbarRecip
 		get disableTokenAnimation() {
 			return disableTokenAnimation;
 		},
-		increaseFontSize() {
-			if (fontSizeScale < 1.5) {
-				fontSizeScale = Math.round((fontSizeScale + 0.1) * 10) / 10;
-				document.documentElement.style.fontSize = `${fontSizeScale * 16}px`;
-			}
+		get containerClass() {
+			return containerClass;
 		},
-		decreaseFontSize() {
-			if (fontSizeScale > 0.8) {
-				fontSizeScale = Math.round((fontSizeScale - 0.1) * 10) / 10;
-				document.documentElement.style.fontSize = `${fontSizeScale * 16}px`;
-			}
+		get toolbarClass() {
+			return toolbarClass;
 		},
-		toggleScreenReaderMode() {
-			screenReaderMode = !screenReaderMode;
-			alert(
-				screenReaderMode
-					? 'Screen reader mode activated. All visual elements will be described.'
-					: 'Screen reader mode deactivated.'
-			);
+		get buttonClass() {
+			return buttonClass;
 		},
-		toggleFocusIndicator() {
-			focusIndicator = !focusIndicator;
-			document.body.classList.toggle('no-focus-outline', !focusIndicator);
-		},
-		toggleTokenAnimation() {
-			disableTokenAnimation = !disableTokenAnimation;
-
-			if (disableTokenAnimation) {
-				document.body.classList.add('reduce-motion');
-				document.documentElement.style.setProperty('--animation-duration', '0.01ms');
-				document.documentElement.style.setProperty('--animation-iteration-count', '1');
-			} else {
-				document.body.classList.remove('reduce-motion');
-				document.documentElement.style.removeProperty('--animation-duration');
-				document.documentElement.style.removeProperty('--animation-iteration-count');
-			}
-		}
+		activeButtonClass,
+		fontSizeDisplayClass,
+		increaseFontSize,
+		decreaseFontSize,
+		toggleScreenReaderMode,
+		toggleFocusIndicator,
+		toggleTokenAnimation
 	};
 }
-
-export default createAccessibilityToolbarState;

@@ -64,7 +64,7 @@
 	description="A confirmation dialog component with different variants"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<DialogConfirm
 				isOpen={controlValues.isOpen}
 				title={controlValues.title}
@@ -79,3 +79,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

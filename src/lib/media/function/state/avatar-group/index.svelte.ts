@@ -1,8 +1,8 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { AvatarGroupProps } from '$stylist/media/type/struct/avatar-group/avatargroup-props';
+﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { RecipeAvatarGroup } from '$stylist/media/interface/recipe/avatar-group';
 
 export function createAvatarGroupState(
-	props: AvatarGroupProps & InformationHTMLAttributes<HTMLDivElement>
+	props: RecipeAvatarGroup & InformationHTMLAttributes<HTMLDivElement>
 ) {
 	const avatars = $derived(props.avatars ?? []);
 	const maxVisible = $derived(props.maxVisible ?? 5);
@@ -85,5 +85,3 @@ export function createAvatarGroupState(
 		}
 	};
 }
-
-export default createAvatarGroupState;

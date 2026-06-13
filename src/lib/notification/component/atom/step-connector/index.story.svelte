@@ -25,10 +25,22 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="flex items-center gap-3 text-xs font-medium text-[--color-text-secondary]">
+		<div class="_c1">
 			<span>Step 1</span>
 			<StepConnector status={values.status} class={values.class} />
 			<span>Step 2</span>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+</style>

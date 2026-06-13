@@ -1,12 +1,13 @@
-﻿/**
- * IconWrapper вЂ” РѕР±С‘СЂС‚РєР° РёРєРѕРЅРєРё..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * IconWrapper РІР‚вЂќ Р С•Р В±РЎвЂРЎР‚РЎвЂљР С”Р В° Р С‘Р С”Р С•Р Р…Р С”Р С‘..
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   IIconSlot        (information) вЂ” icon (Icon)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   IIconSlot        (information) РІР‚вЂќ icon (Icon)
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface IconWrapperRecipe
-	extends StructIntersectAll<[IIconSlot, ThemeAttributes<HTMLSpanElement>]> {}
+export interface RecipeIconWrapper
+	extends StructIntersectAll<[SlotTheme, IIconSlot, HTMLAttributes<HTMLSpanElement>]> {}

@@ -66,7 +66,7 @@
 		{/if}
 
 		{#if props.chat.unreadCount && props.chat.unreadCount > 0}
-			<Badge variant="default" size="sm" class="absolute top-2 right-2">
+			<Badge variant="default" size="sm" class="ci-badge">
 				{props.chat.unreadCount}
 			</Badge>
 		{/if}
@@ -144,5 +144,10 @@
 
 	.chat-item:hover .chat-actions {
 		opacity: var(--opacity-100);
+	}
+	.ci-badge {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
 	}
 </style>

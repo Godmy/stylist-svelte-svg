@@ -10,7 +10,7 @@
 	}
 </script>
 
-<ThemeSwitcher currentScheme={theme} themeMode="light" onSchemeChange={handleThemeChange} />
+<ThemeSwitcher themeScheme={theme} themeMode="light" onThemeSchemeChange={handleThemeChange} />
 
 <output data-testid="theme-switcher-value">{theme}</output>
 <output data-testid="theme-switcher-count">{changeCount}</output>

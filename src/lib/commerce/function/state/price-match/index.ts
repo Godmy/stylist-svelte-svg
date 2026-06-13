@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createPriceMatchState } from './createpricematchstate';
+export { createPriceMatchState } from './index.svelte';

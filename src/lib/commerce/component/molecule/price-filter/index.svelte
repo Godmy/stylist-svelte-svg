@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { PriceFilterProps } from '$stylist/commerce/interface/recipe/price-filter-props';
-	import createPriceFilterState from '$stylist/commerce/function/state/price-filter/createpricefilterstate/index.svelte';
+﻿<script lang="ts">
+	import type { RecipePriceFilter } from '$stylist/commerce/interface/recipe/price-filter';
+	import { createPriceFilterState } from '$stylist/commerce/function/state/price-filter/index.svelte';
 
-	let props: PriceFilterProps = $props();
+	let props: RecipePriceFilter = $props();
 	const state = createPriceFilterState(props);
 </script>
 
@@ -34,3 +34,43 @@
 		<span>{props.currency ?? '$'}{props.maxPrice ?? 1000}</span>
 	</div>
 </div>
+
+<style>
+	.price-filter {
+		padding: 1rem;
+	}
+
+	.price-filter__range-container {
+		margin-bottom: 1rem;
+	}
+
+	.price-filter__labels-container {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.25rem;
+	}
+
+	.price-filter__label {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+
+	.price-filter__slider {
+		width: 100%;
+		height: 0.5rem;
+		background-color: var(--color-background-secondary);
+		border-radius: 0.5rem;
+		appearance: none;
+		cursor: pointer;
+	}
+
+	.price-filter__second-slider {
+		margin-top: 1rem;
+	}
+
+	.price-filter__price-range {
+		display: flex;
+		justify-content: space-between;
+	}
+</style>

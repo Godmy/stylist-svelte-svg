@@ -1,28 +1,22 @@
-import type { Idef0FunctionBoxRecipe as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
-import { Idef0StyleManager } from '$stylist/science/class/style-manager/idef0';
+import type { RecipeIdef0FunctionBox as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
 
 export function createIdef0FunctionBoxState(props: Idef0FunctionBoxProps) {
 	const groupClasses = $derived(
-		Idef0StyleManager.getFunctionBoxGroupClasses(
-			typeof props.class === 'string' ? props.class : undefined
-		)
+		typeof props.class === 'string' ? `idef0-function-box ${props.class}` : 'idef0-function-box'
 	);
-	const rectClasses = $derived(Idef0StyleManager.getFunctionBoxRectClasses());
-	const titleClasses = $derived(Idef0StyleManager.getFunctionBoxTitleClasses());
-	const subtitleClasses = $derived(Idef0StyleManager.getFunctionBoxSubtitleClasses());
 
 	return {
 		get groupClasses() {
 			return groupClasses;
 		},
 		get rectClasses() {
-			return rectClasses;
+			return 'idef0-function-box__rect';
 		},
 		get titleClasses() {
-			return titleClasses;
+			return 'idef0-function-box__title';
 		},
 		get subtitleClasses() {
-			return subtitleClasses;
+			return 'idef0-function-box__subtitle';
 		}
 	};
 }

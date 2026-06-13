@@ -52,10 +52,10 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-language-selector p-4">
-			<h1 class="mb-4 text-lg font-semibold">LanguageSelector Component</h1>
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive LanguageSelector</h2>
+		<div class="sb-organisms-language-selector _c1">
+			<h1 class="_c2">LanguageSelector Component</h1>
+			<div class="_c3">
+				<h2 class="_c4">Interactive LanguageSelector</h2>
 				<LanguageSelector
 					{languages}
 					{currentLanguage}
@@ -68,11 +68,11 @@
 					size={values.size}
 				/>
 			</div>
-			<div class="rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">LanguageSelector Variants</h2>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="_c5">
+				<h2 class="_c4">LanguageSelector Variants</h2>
+				<div class="_c6">
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Subtle Variant</h3>
+						<h3 class="_c7">Subtle Variant</h3>
 						<LanguageSelector
 							{languages}
 							{currentLanguage}
@@ -82,7 +82,7 @@
 						/>
 					</div>
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Ghost Variant (No Flags)</h3>
+						<h3 class="_c7">Ghost Variant (No Flags)</h3>
 						<LanguageSelector
 							{languages}
 							{currentLanguage}
@@ -96,3 +96,50 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c6 {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		._c6 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	._c7 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+</style>

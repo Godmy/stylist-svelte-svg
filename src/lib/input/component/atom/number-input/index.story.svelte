@@ -21,7 +21,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-xs space-y-2">
+		<div class="_c1 max-w-xs">
 			<NumberInput
 				{value}
 				min={values.min}
@@ -31,7 +31,18 @@
 				readonly={values.readonly}
 				onValueChange={(next) => (value = next)}
 			/>
-			<p class="text-sm text-[--color-text-secondary]">Current value: {value}</p>
+			<p class="_c2">Current value: {value}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

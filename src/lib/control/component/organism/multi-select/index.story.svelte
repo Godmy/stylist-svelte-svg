@@ -36,8 +36,8 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-multi-select p-4">
-			<div class="max-w-md">
+		<div class="sb-organisms-multi-select _c1">
+			<div class="_c2">
 				<MultiSelect
 					{options}
 					disabled={typedProps.disabled}
@@ -49,3 +49,12 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		max-width: 28rem;
+	}
+</style>

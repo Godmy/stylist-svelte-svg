@@ -1,7 +1,9 @@
+﻿import type { SlotTagInput as Slot } from '$stylist/input/interface/slot/tag-input';
+import type { SlotTagInput as SlotTagInput } from '$stylist/input/interface/slot/tag-input';
 /**
- * Tag Input вЂ” РІРІРѕРґ С‚РµРіРѕРІ.
+ * Tag Input РІР‚вЂќ Р Р†Р Р†Р С•Р Т‘ РЎвЂљР ВµР С–Р С•Р Р†.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   ISelectable<string[]>     (interaction/selectable)
@@ -15,7 +17,7 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface TagInputRecipe
+export interface RecipeTagInput
 	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, ISelectable<string[]>, IFocusable, ISizable]
+		[Slot, SlotTagInput, ILabelSlot, ICaptionSlot, ISelectable<string[]>, IFocusable, ISizable]
 	> {}

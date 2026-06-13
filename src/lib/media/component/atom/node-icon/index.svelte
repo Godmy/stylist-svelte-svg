@@ -1,8 +1,8 @@
-<script lang="ts">
-	import createNodeIconState from '$stylist/media/function/state/node-icon/index.svelte';
-	import type { NodeIconProps } from '$stylist/media/interface/recipe/node-icon-node-icon-props';
+﻿<script lang="ts">
+	import type { RecipeNodeIcon } from '$stylist/media/interface/recipe/node-icon';
+	import { createNodeIconState } from '$stylist/media/function/state/node-icon/index.svelte';
 
-	let props: NodeIconProps = $props();
+	let props: RecipeNodeIcon = $props();
 	const state = createNodeIconState(props);
 </script>
 

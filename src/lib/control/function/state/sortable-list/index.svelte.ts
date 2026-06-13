@@ -2,6 +2,7 @@ import type { SlotSortableListItem as SortableListItem } from '$stylist/control/
 import type { SlotSortableList as SortableListProps } from '$stylist/control/interface/slot/sortable-list';
 
 export function createSortableListState(props: SortableListProps) {
+	const rootClass = $derived(['c-sortable-list', props.class].filter(Boolean).join(' '));
 	let dragged = $state<SortableListItem | null>(null);
 	let overIndex = $state<number | null>(null);
 
@@ -35,6 +36,9 @@ export function createSortableListState(props: SortableListProps) {
 	}
 
 	return {
+		get rootClass() {
+			return rootClass;
+		},
 		get dragged() {
 			return dragged;
 		},

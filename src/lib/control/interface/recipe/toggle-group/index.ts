@@ -15,7 +15,7 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface ToggleGroupRecipe
+export interface RecipeToggleGroup
 	extends StructIntersectAll<
 		[ILabelSlot, IIconSlot, ISelectable<string[]>, IFocusable, ISizable]
 	> {}

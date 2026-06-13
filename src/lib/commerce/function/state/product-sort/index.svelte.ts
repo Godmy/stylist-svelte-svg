@@ -1,17 +1,14 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-import type { ProductSortProps } from '$stylist/commerce/type/struct/product-sort-props';
+import type { RecipeProductSort } from '$stylist/commerce/interface/recipe/product-sort';
 
-export function createProductSortState(props: ProductSortProps) {
+export function createProductSortState(props: RecipeProductSort) {
 	const options = $derived(props.options);
 	const selectedOption = $derived(props.selectedOption ?? '');
 	const onValueChange = $derived.by(() => props.onValueChange || ((option: string) => {}));
-	const containerClasses = $derived(joinClassNames('c-product-sort', props.class ?? ''));
+	const containerClasses = $derived(mergeClassNames('c-product-sort', props.class));
 	const labelClasses = $derived('c-product-sort__label');
-	const selectClasses = $derived(
-		joinClassNames(InputStyleManager.getInputBaseClass(), 'c-product-sort__select')
-	);
+	const selectClasses = $derived(mergeClassNames('input__input-base', 'c-product-sort__select'));
 
 	return {
 		get options() {

@@ -56,7 +56,7 @@
 						title={tool.title}
 						aria-label={tool.title}
 					>
-						<BaseIcon name={tool.icon} class="h-4 w-4" />
+						<BaseIcon name={tool.icon} class="_c1" />
 					</button>
 				{/each}
 			</div>
@@ -65,7 +65,7 @@
 
 			<div class={state.toolbarGroupClass}>
 				<label class={state.colorLabelClass}>
-					<BaseIcon name={state.actionIcons.color} class="mr-1 h-4 w-4" />
+					<BaseIcon name={state.actionIcons.color} class="_c2" />
 					Color:
 					<input
 						type="color"
@@ -89,7 +89,7 @@
 					aria-label="Undo"
 					disabled={state.undoStack.length === 0}
 				>
-					<BaseIcon name={state.actionIcons.undo} class="h-4 w-4" />
+					<BaseIcon name={state.actionIcons.undo} class="_c1" />
 				</button>
 				<button
 					type="button"
@@ -99,7 +99,7 @@
 					aria-label="Redo"
 					disabled={state.redoStack.length === 0}
 				>
-					<BaseIcon name={state.actionIcons.redo} class="h-4 w-4" />
+					<BaseIcon name={state.actionIcons.redo} class="_c1" />
 				</button>
 				<button
 					type="button"
@@ -109,7 +109,7 @@
 					aria-label="Delete Selected"
 					disabled={state.localObjects.length === 0}
 				>
-					<BaseIcon name={state.actionIcons.delete} class="h-4 w-4" />
+					<BaseIcon name={state.actionIcons.delete} class="_c1" />
 				</button>
 				<button
 					type="button"
@@ -118,7 +118,7 @@
 					title="Export Canvas"
 					aria-label="Export Canvas"
 				>
-					<BaseIcon name={state.actionIcons.export} class="h-4 w-4" />
+					<BaseIcon name={state.actionIcons.export} class="_c1" />
 				</button>
 			</div>
 		</div>
@@ -342,5 +342,15 @@
 		margin-left: 0.25rem;
 		font-size: 0.75rem;
 		color: var(--color-text-tertiary, var(--color-text-secondary));
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
+	}
+	._c2 {
+		margin-right: 0.25rem;
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

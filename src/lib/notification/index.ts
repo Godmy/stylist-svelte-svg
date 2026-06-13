@@ -1,19 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	CardSkeletonStyleManager,
-	ErrorBoundaryStyleManager,
-	InteractionFeedbackStyleManager,
-	LoadingOverlayStyleManager,
-	ProgressBarStyleManager,
-	SkeletonCircleStyleManager,
-	SkeletonRectangleStyleManager,
-	SkeletonStyleManager,
-	SkeletonTableStyleManager,
-	SkeletonTextStyleManager,
-	SpinnerStyleManager,
-	ToastStyleManager
-} from './class';
-export {
 	AccountProgressTracker,
 	Alert,
 	AnimatedProgress,
@@ -109,21 +95,22 @@ export type {
 	TokenNotificationIcon
 } from './type';
 export type {
-	AlertRecipe,
-	CardSkeletonRecipe,
-	ErrorBoundaryRecipe,
-	ErrorMessageRecipe,
-	LoadingRecipe,
+	RecipeAlert,
+	RecipeCardSkeleton,
+	RecipeErrorBoundary,
+	RecipeErrorMessage,
 	RecipeProgressBarProps,
+	RecipeSkeleton,
+	RecipeSkeletonCircle,
 	RecipeSkeletonProps,
+	RecipeSkeletonRectangle,
+	RecipeSkeletonTable,
+	RecipeSkeletonText,
+	RecipeSpinner,
 	RecipeSpinnerProps,
+	RecipeToast,
 	RecipeToastProps,
-	SkeletonCircleRecipe,
-	SkeletonRecipe,
-	SkeletonRectangleRecipe,
 	SkeletonSpecificProps,
-	SkeletonTableRecipe,
-	SkeletonTextRecipe,
 	SlotAccountProgressTracker,
 	SlotAlert,
 	SlotBaseFeedback,
@@ -146,6 +133,5 @@ export type {
 	SlotStepConnector,
 	SlotStepIcon,
 	SlotTableSkeleton,
-	ToastAction,
-	ToastRecipe
+	ToastAction
 } from './interface';

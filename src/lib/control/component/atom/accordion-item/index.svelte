@@ -22,6 +22,24 @@
 	);
 </script>
 
-<div {...restProps} id={state.uniqueId} class={state.classes}>
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div
+	{...restProps}
+	id={state.uniqueId}
+	class="c-accordion-item"
+	data-expanded={state.expanded ? '' : undefined}
+>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-accordion-item {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		margin-bottom: var(--spacing-sm, 0.5rem);
+		overflow: hidden;
+	}
+
+	.c-accordion-item[data-expanded] {
+		background: var(--color-background-secondary);
+	}
+</style>

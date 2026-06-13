@@ -35,7 +35,7 @@
 				</span>
 			{:else}
 				<span class="c-language-selector__no-lang">
-					<BaseIcon name={Globe} class="mr-2 h-4 w-4" />
+					<BaseIcon name={Globe} class="_c1" />
 					Select Language
 				</span>
 			{/if}
@@ -314,5 +314,11 @@
 		padding: 0.5rem 1rem;
 		font-size: 0.75rem;
 		color: var(--color-text-secondary);
+	}
+
+	._c1 {
+		margin-right: 0.5rem;
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

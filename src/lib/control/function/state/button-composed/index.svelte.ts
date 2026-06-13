@@ -1,11 +1,11 @@
-import type { ButtonComposedRecipe } from '$stylist/control/interface/recipe/button-composed';
+import type { RecipeButtonComposed } from '$stylist/control/interface/recipe/button-composed';
 import createClickableState from '$stylist/interaction/function/state/clickable/index.svelte';
 import createFocusableState from '$stylist/interaction/function/state/focusable/index.svelte';
 import createBackgroundState from '$stylist/layout/function/state/background/index.svelte';
 import createBorderState from '$stylist/layout/function/state/border/index.svelte';
 import createContainerState from '$stylist/layout/function/state/container/index.svelte';
 
-export function createButtonComposedState(props: ButtonComposedRecipe) {
+export function createButtonComposedState(props: RecipeButtonComposed) {
 	const clickable = createClickableState(props as Parameters<typeof createClickableState>[0]);
 	const focusable = createFocusableState(props as Parameters<typeof createFocusableState>[0]);
 	const container = createContainerState(props);
@@ -26,12 +26,7 @@ export function createButtonComposedState(props: ButtonComposedRecipe) {
 
 	const classes = $derived.by(() => {
 		const classList = [
-			'inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-medium transition-colors',
-			'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-			props.block ? 'w-full' : undefined,
-			isDisabled ? 'pointer-events-none opacity-60' : undefined,
-			container.classes,
-			background.classes,
+			'c-button-composed',
 			border.classes,
 			clickable.classes,
 			focusable.classes,

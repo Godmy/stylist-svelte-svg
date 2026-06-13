@@ -52,7 +52,7 @@
 	description="Interactive filter panel with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<div class="max-w-xs">
 				<FilterPanel
 					showObjects={controlValues.showObjects}
@@ -65,3 +65,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

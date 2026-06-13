@@ -1,5 +1,4 @@
 import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
-import { ChatStyleManager } from '$stylist/chat/class/style-manager/chat';
 
 export const createUserStatusState = (props: {
 	user: User;
@@ -33,13 +32,13 @@ export const createUserStatusState = (props: {
 		}
 	});
 
-	const containerClasses = ChatStyleManager.getUserStatusContainerClasses();
+	const containerClasses = 'user-status inline-flex items-center gap-2.5';
 
-	const userInfoClasses = ChatStyleManager.getUserStatusInfoClasses();
+	const userInfoClasses = 'user-info flex min-w-0 flex-col gap-[2px]';
 
-	const userNameClasses = ChatStyleManager.getUserStatusNameClasses();
+	const userNameClasses = 'user-name truncate text-sm font-medium text-[var(--color-text-primary)]';
 
-	const statusTextClasses = ChatStyleManager.getUserStatusTextClasses();
+	const statusTextClasses = 'status-text text-xs leading-4 text-[var(--color-text-secondary)]';
 
 	return {
 		get showAvatar() {

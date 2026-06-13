@@ -59,8 +59,8 @@
 	description="A settings panel for configuring notification options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="mx-auto max-w-md p-6">
-			<h2 class="mb-6 text-xl font-semibold">Notification Settings</h2>
+		<div class="_c1">
+			<h2 class="_c2">Notification Settings</h2>
 			<NotificationSettings
 				showEmail={controlValues.showEmail}
 				showPush={controlValues.showPush}
@@ -71,3 +71,18 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+</style>

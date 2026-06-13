@@ -1,37 +1,16 @@
 <script lang="ts">
-	import type { SlotDropdownMenu as IDropdownMenuProps } from '$stylist/control/interface/slot/dropdown-menu';
-	import createDropdownMenuState from '$stylist/control/function/state/dropdown-menu/index.svelte';
+	import { PresetDropdownMenu } from '$stylist/control/const/preset/dropdown-menu';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import Icon from '$stylist/media/component/atom/icon/index.svelte';
+	import { createDropdownMenuState } from '$stylist/control/function/state/dropdown-menu/index.svelte';
+	import type { RecipeDropdownMenu } from '$stylist/control/interface/recipe/dropdown-menu';
+	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	/**
-	 * DropdownMenu component - A flexible dropdown menu component with various positions and states
-	 *
-	 * Following SOLID principles:
-	 * - Single Responsibility: Only handles dropdown menu rendering and state
-	 * - Open/Closed: Extendable through properties but closed for modification
-	 * - Liskov Substitution: Can be substituted with other menu components
-	 * - Interface Segregation: Small focused interface
-	 * - Dependency Inversion: Depends on abstractions (interfaces) rather than concretions
-	 *
-	 * @param label - The label for the dropdown button
-	 * @param position - Position of the dropdown menu ('left' | 'right' | 'center')
-	 * @param disabled - Whether the dropdown is disabled
-	 * @param children - Snippet content for the dropdown menu items
-	 * @returns An accessible, styled dropdown menu element
-	 */
-	let {
-		label,
-		position = 'left',
-		disabled = false,
-		class: className = '',
-		children,
-		...restProps
-	}: IDropdownMenuProps = $props();
-	const state = createDropdownMenuState({
-		position,
-		disabled,
-		class: className
+	let props: RecipeDropdownMenu = $props();
+	const state = createDropdownMenuState(props);
+
+	let restProps = $derived.by(() => {
+		const { label, position, disabled, class: className, children, ...rest } = props;
+		return rest;
 	});
 </script>
 
@@ -39,15 +18,21 @@
 	<div>
 		<Button
 			variant="ghost"
-			class="dropdown-button"
+			class="c-dropdown__trigger"
 			aria-expanded={state.isOpen}
 			aria-haspopup="true"
 			aria-controls="dropdown-menu"
-			{disabled}
+			disabled={props.disabled}
 			onclick={state.toggleDropdown}
 		>
-			{label}
-			<Icon name="chevron-down" class={state.chevronClass} aria-hidden="true" />
+			{props.label}
+			<span class={state.chevronClass} aria-hidden="true">
+				<BaseIcon
+					name={PresetDropdownMenu.ChevronDown}
+					style="width:1rem;height:1rem;"
+					aria-hidden="true"
+				/>
+			</span>
 		</Button>
 	</div>
 
@@ -60,9 +45,9 @@
 			aria-labelledby="menu-button"
 			tabindex="-1"
 		>
-			<div class="dropdown-content" role="none">
-				{#if children}
-					{@render children({ closeDropdown: state.closeDropdown })}
+			<div class="c-dropdown__content" role="none">
+				{#if props.children}
+					{@render props.children({ closeDropdown: state.closeDropdown })}
 				{/if}
 			</div>
 		</div>
@@ -70,49 +55,58 @@
 </div>
 
 <style>
-	/* Base dropdown styles */
-	.dropdown-base {
+	.c-dropdown {
 		position: relative;
 		display: inline-block;
 		text-align: left;
 	}
 
-	.dropdown-menu-base {
-		min-width: var(--size-14rem);
-		margin-top: var(--spacing-2);
-		padding: var(--spacing-1) 0;
+	.c-dropdown__menu {
+		position: absolute;
+		z-index: 10;
+		min-width: var(--size-14rem, 14rem);
+		margin-top: var(--spacing-2, 0.5rem);
+		padding: var(--spacing-1, 0.25rem) 0;
+		background: var(--color-background-primary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		box-shadow:
+			0 4px 6px -1px rgba(0, 0, 0, 0.1),
+			0 2px 4px -2px rgba(0, 0, 0, 0.1);
 	}
 
-	.dropdown-position-left {
+	.c-dropdown__menu--left {
 		left: 0;
 	}
 
-	.dropdown-position-right {
+	.c-dropdown__menu--right {
 		right: 0;
 	}
 
-	.dropdown-position-center {
+	.c-dropdown__menu--center {
 		left: 50%;
 		transform: translateX(-50%);
 	}
 
-	.dropdown-button {
+	.c-dropdown__trigger {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: var(--spacing-1);
+		gap: var(--spacing-1, 0.25rem);
 	}
 
-	.dropdown-content {
-		padding: var(--spacing-1) 0;
+	.c-dropdown__content {
+		padding: var(--spacing-1, 0.25rem) 0;
 	}
 
-	.dropdown-chevron {
-		margin-left: var(--spacing-1);
-		transition: transform var(--duration-200) var(--animation-ease-in-out);
+	.c-dropdown__chevron {
+		margin-left: var(--spacing-1, 0.25rem);
+		transition: transform var(--duration-200, 200ms) var(--animation-ease-in-out, ease-in-out);
+		display: inline-flex;
+		align-items: center;
 	}
 
-	.dropdown-chevron.rotated {
+	.c-dropdown__chevron--open {
 		transform: rotate(180deg);
 	}
 </style>

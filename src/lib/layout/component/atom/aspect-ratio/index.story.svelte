@@ -20,12 +20,10 @@
 	description="Maintains a consistent aspect ratio for content containers"
 >
 	{#snippet children(values: any)}
-		<div class="max-w-lg rounded border border-[var(--color-border-primary)] p-3">
+		<div class="_c1">
 			<AspectRatio ratio={Number(values.ratio) || 1}>
 				{#snippet children()}
-					<div
-						class="flex h-full w-full items-center justify-center rounded [background-image:var(--gradient-ocean)] text-sm font-semibold text-[var(--color-text-primary)]"
-					>
+					<div class="_c2 [background-image:var(--gradient-ocean)]">
 						ratio: {values.ratio}
 					</div>
 				{/snippet}
@@ -33,3 +31,26 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 32rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.75rem;
+	}
+	._c2 {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+</style>

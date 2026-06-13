@@ -1,55 +1,46 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { Props } from '$stylist/information/type/struct/props';
+import type { RecipeButton } from '$stylist/control/interface/recipe/button';
+import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-classes';
 import type { ButtonFactoryInput } from '$stylist/interaction/factory/button';
 import { createBasePreset } from '$stylist/interaction/preset/base';
-import { RECORD_ICON_SIZE } from '$stylist/media/const/record/icon-size';
-import type { Preset } from '$stylist/interaction/type/struct/preset/preset';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
-import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
-import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
-import { buildPresetClassNames } from '$stylist/interaction/function/script/build-preset-class-names';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
+import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
+import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
-interface ButtonStateProps<V extends string, S extends string>
-	extends Omit<Props, 'variant' | 'size'> {
-	variant?: V;
-	size?: S;
-}
-
-function createButtonPreset(): Preset<TokenAppearance, TokenSize> & {
-	loaderSize?: Record<string, string>;
-} {
-	return createBasePreset<TokenAppearance, TokenSize>(
-		InteractionStyleManager.getInteractiveVariants(),
+export function createButtonState(input: ButtonFactoryInput | RecipeButton) {
+	const preset = createBasePreset<TokenAppearance, TokenSize>(
+		Object.keys(VARIANT_CLASSES) as TokenAppearance[],
 		TOKEN_SIZE,
 		{
 			variant: 'primary',
 			size: 'md'
 		}
 	);
-}
 
-function createSharedButtonState<V extends string, S extends string>(
-	preset: Preset<V, S> & { loaderSize?: Record<string, string> },
-	props: ButtonStateProps<V, S> & HTMLButtonAttributes
-) {
-	const variant = $derived((props.variant ?? preset.defaults.variant) as V);
-	const size = $derived((props.size ?? preset.defaults.size) as S);
+	const props = $derived.by(() => {
+		if ('contract' in input && 'html' in input) {
+			return {
+				variant: input.contract.variant as TokenAppearance,
+				size: input.contract.size as TokenSize,
+				disabled: input.contract.disabled,
+				loading: input.contract.loading,
+				block: input.contract.block,
+				loadingLabel: input.contract.loadingLabel,
+				ariaLabel: input.contract.ariaLabel,
+				class: input.html.class
+			} satisfies RecipeButton;
+		}
+
+		return input;
+	});
+
+	const variant = $derived((props.variant ?? preset.defaults.variant) as TokenAppearance);
+	const size = $derived((props.size ?? preset.defaults.size) as TokenSize);
 	const disabled = $derived(props.disabled ?? preset.defaults.disabled);
 	const loading = $derived(props.loading ?? false);
 	const block = $derived(props.block ?? preset.defaults.block);
-
-	const classes = $derived(
-		buildPresetClassNames(preset, {
-			variant,
-			size,
-			disabled: typeof disabled === 'boolean' ? disabled : undefined,
-			loading: typeof loading === 'boolean' ? loading : undefined,
-			block: typeof block === 'boolean' ? block : undefined,
-			className: typeof props.class === 'string' ? props.class : undefined
-		})
-	);
+	const loadingLabel = $derived(props.loadingLabel ?? 'Loading...');
+	const classes = $derived('');
 
 	const ariaLabel = $derived(
 		resolveAriaLabel(
@@ -59,13 +50,7 @@ function createSharedButtonState<V extends string, S extends string>(
 		)
 	);
 
-	const loaderClasses = $derived.by(() => {
-		const sizeKey = size as keyof typeof RECORD_ICON_SIZE;
-		const loaderSize =
-			preset.loaderSize?.[size as string] ?? RECORD_ICON_SIZE[sizeKey] ?? 'w-4 h-4';
-		return `animate-spin ${loaderSize}`;
-	});
-
+	const loaderClasses = $derived('c-button-m__loader');
 	const isDisabled = $derived(disabled || loading);
 
 	const attrs = $derived({
@@ -75,21 +60,63 @@ function createSharedButtonState<V extends string, S extends string>(
 		disabled: typeof isDisabled === 'boolean' ? isDisabled : undefined
 	});
 
+	const restAttrs = $derived.by(() => {
+		const {
+			variant,
+			size,
+			disabled,
+			loading,
+			block,
+			loadingLabel: restLoadingLabel,
+			children,
+			class: className,
+			label,
+			icon,
+			iconLeft,
+			iconRight,
+			badge,
+			count,
+			dot,
+			showBadge,
+			background,
+			backgroundColor,
+			backgroundImage,
+			backgroundPosition,
+			backgroundSize,
+			backgroundRepeat,
+			gradient,
+			opacity,
+			borderStyle,
+			borderWidth,
+			borderColor,
+			borderRadius,
+			borderTop,
+			borderBottom,
+			borderLeft,
+			borderRight,
+			...rest
+		} = props;
+		return rest;
+	});
+
 	return {
 		get variant() {
-			return variant as V;
+			return variant;
 		},
 		get size() {
-			return size as S;
+			return size;
 		},
 		get disabled() {
-			return (disabled ?? false) as boolean | undefined;
+			return disabled;
 		},
 		get loading() {
 			return loading;
 		},
 		get block() {
 			return block;
+		},
+		get loadingLabel() {
+			return loadingLabel;
 		},
 		get classes() {
 			return classes;
@@ -105,55 +132,9 @@ function createSharedButtonState<V extends string, S extends string>(
 		},
 		get attrs() {
 			return attrs;
+		},
+		get restAttrs() {
+			return restAttrs;
 		}
 	};
 }
-
-function createButtonStateFromFactoryInput(input: ButtonFactoryInput) {
-	return createSharedButtonState(createButtonPreset(), {
-		get variant() {
-			return input.contract.variant as TokenAppearance;
-		},
-		get size() {
-			return input.contract.size as TokenSize;
-		},
-		get disabled() {
-			return input.contract.disabled as boolean | undefined;
-		},
-		get loading() {
-			return input.contract.loading;
-		},
-		get block() {
-			return input.contract.block;
-		},
-		get ariaLabel() {
-			return input.contract.ariaLabel;
-		},
-		get class() {
-			return input.html.class;
-		}
-	});
-}
-
-export function createButtonState<V extends string, S extends string>(
-	preset: Preset<V, S> & { loaderSize?: Record<string, string> },
-	props: ButtonStateProps<V, S> & HTMLButtonAttributes
-): ReturnType<typeof createSharedButtonState<V, S>>;
-export function createButtonState(
-	input: ButtonFactoryInput
-): ReturnType<typeof createButtonStateFromFactoryInput>;
-export function createButtonState<V extends string, S extends string>(
-	inputOrPreset: ButtonFactoryInput | (Preset<V, S> & { loaderSize?: Record<string, string> }),
-	props?: ButtonStateProps<V, S> & HTMLButtonAttributes
-) {
-	if (props) {
-		return createSharedButtonState(
-			inputOrPreset as Preset<V, S> & { loaderSize?: Record<string, string> },
-			props
-		);
-	}
-
-	return createButtonStateFromFactoryInput(inputOrPreset as ButtonFactoryInput);
-}
-
-export default createButtonState;

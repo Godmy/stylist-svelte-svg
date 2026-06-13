@@ -1,8 +1,8 @@
 <script lang="ts">
+	import type { RecipeTimeline } from '$stylist/calendar/interface/recipe/timeline';
 	import createTimelineState from '$stylist/calendar/function/state/timeline/index.svelte';
-	import type { TimelineProps } from '$stylist/calendar/type/struct/timeline';
 
-	let props: TimelineProps = $props();
+	let props: RecipeTimeline = $props();
 	const state = createTimelineState(props);
 </script>
 

@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { LocaleSwitcherStateProps } from '$stylist/localization/interface/recipe/locale-switcher';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import createLocaleSwitcherState from '$stylist/localization/function/state/locale-switcher/index.svelte';
-	import type { SlotLocaleSwitcher as LocaleSwitcherProps } from '$stylist/localization/interface/slot/locale-switcher';
+	import type { SlotLocaleSwitcher } from '$stylist/localization/interface/slot/locale-switcher';
 
-	let { onLocaleChange, onTimezoneChange, ...stateProps }: LocaleSwitcherProps = $props();
+	let { onLocaleChange, onTimezoneChange, ...stateProps }: LocaleSwitcherStateProps = $props();
 
 	const state = createLocaleSwitcherState(stateProps);
 </script>
@@ -11,7 +12,7 @@
 <div class={state.rootClass} {...state.restProps}>
 	<div class={state.headerClass}>
 		<div class="c-locale-switcher__header-inner">
-			<BaseIcon name={state.iconGlobe} class="mr-2 h-6 w-6 text-[var(--color-text-secondary)]" />
+			<BaseIcon name={state.iconGlobe} class="_c1" />
 			<h3 class="c-locale-switcher__title">Locale Switcher</h3>
 		</div>
 		<p class="c-locale-switcher__subtitle">Change language, region, and formatting preferences</p>
@@ -66,10 +67,7 @@
 				<div class="c-locale-switcher__preview-card">
 					{#if state.currentLocaleObj}
 						<div class="c-locale-switcher__preview-header">
-							<BaseIcon
-								name={state.iconGlobe}
-								class="mr-2 h-5 w-5 text-[var(--color-text-secondary)]"
-							/>
+							<BaseIcon name={state.iconGlobe} class="_c2" />
 							<span class="c-locale-switcher__preview-locale">
 								{state.currentLocaleObj.name}
 								{state.showRegional && state.currentLocaleObj.region
@@ -104,7 +102,7 @@
 						</div>
 
 						<div class="c-locale-switcher__timezone-row">
-							<BaseIcon name={state.iconClock} class="mr-1 h-4 w-4" />
+							<BaseIcon name={state.iconClock} class="_c3" />
 							<span>Timezone: {state.currentTimezone}</span>
 						</div>
 					{/if}
@@ -132,7 +130,7 @@
 	<div class={state.footerClass}>
 		<div class="c-locale-switcher__footer-inner">
 			<div class="c-locale-switcher__locale-info">
-				<BaseIcon name={state.iconUser} class="mr-1 h-4 w-4" />
+				<BaseIcon name={state.iconUser} class="_c3" />
 				<span>Locale: {state.currentLocale}</span>
 			</div>
 			<div class="c-locale-switcher__locale-count">
@@ -366,5 +364,23 @@
 	.c-locale-switcher__locale-count {
 		font-size: 0.875rem;
 		color: var(--color-text-secondary);
+	}
+
+	._c1 {
+		margin-right: 0.5rem;
+		height: 1.5rem;
+		width: 1.5rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		margin-right: 0.5rem;
+		height: 1.25rem;
+		width: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		margin-right: 0.25rem;
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

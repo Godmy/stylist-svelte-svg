@@ -1,7 +1,7 @@
 import type { TimelineStatus } from '$stylist/calendar/type/struct/timeline-status';
-import type { TimelineProps } from '$stylist/calendar/type/struct/timeline';
+import type { RecipeTimeline } from '$stylist/calendar/interface/recipe/timeline';
 
-export function createTimelineState(props: TimelineProps) {
+export function createTimelineState(props: RecipeTimeline) {
 	const items = $derived(props.items ?? []);
 	const orientation = $derived(props.orientation ?? 'vertical');
 	const className = $derived(props.class ?? '');

@@ -1,30 +1,30 @@
 <script lang="ts">
-	import type { CardWithImageRecipe } from '$stylist/commerce/interface/recipe/card-with-image';
+	import type { RecipeCardWithImage } from '$stylist/commerce/interface/recipe/card-with-image';
 	import createCardWithImageState from '$stylist/commerce/function/state/card-with-image/index.svelte';
 
-	let props: CardWithImageRecipe = $props();
+	let props: RecipeCardWithImage = $props();
 	const state = createCardWithImageState(props);
 </script>
 
-<div class={state.containerClasses} {...state.restProps}>
+<div class="card-with-image" {...state.restProps}>
 	{#if props.image}
-		<img src={props.image} alt="" class={state.imageClasses} />
+		<img src={props.image} alt="" class="card-with-image__image" />
 	{/if}
 
-	<div class={state.bodyClasses}>
+	<div class="card-with-image__body">
 		{#if props.title || props.subtitle}
-			<div class={state.headerClasses}>
+			<div class="card-with-image__header">
 				{#if props.title}
-					<h3 class={state.titleClasses}>{props.title}</h3>
+					<h3 class="card-with-image__title">{props.title}</h3>
 				{/if}
 				{#if props.subtitle}
-					<p class={state.subtitleClasses}>{props.subtitle}</p>
+					<p class="card-with-image__subtitle">{props.subtitle}</p>
 				{/if}
 			</div>
 		{/if}
 
 		{#if props.description}
-			<p class={state.descriptionClasses}>{props.description}</p>
+			<p class="card-with-image__description">{props.description}</p>
 		{/if}
 
 		{#if props.footer}
@@ -40,3 +40,47 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.card-with-image {
+		border-radius: 0.75rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		overflow: hidden;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+
+	.card-with-image__image {
+		height: 12rem;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.card-with-image__body {
+		padding: 1.5rem;
+	}
+
+	.card-with-image__header {
+		margin-bottom: 1rem;
+	}
+
+	.card-with-image__title {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.card-with-image__subtitle {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.card-with-image__description {
+		color: var(--color-text-primary);
+		margin-bottom: 1rem;
+	}
+</style>

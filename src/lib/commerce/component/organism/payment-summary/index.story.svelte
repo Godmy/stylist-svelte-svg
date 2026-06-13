@@ -46,12 +46,12 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-payment-summary p-4">
-			<h1 class="mb-4 text-lg font-semibold">PaymentSummary Component</h1>
+		<div class="sb-organisms-payment-summary _c1">
+			<h1 class="_c2">PaymentSummary Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive PaymentSummary</h2>
-				<div class="max-w-md">
+			<div class="_c3">
+				<h2 class="_c4">Interactive PaymentSummary</h2>
+				<div class="_c5">
 					<PaymentSummary
 						items={values.showItems ? items : []}
 						discounts={values.showDiscounts ? discounts : []}
@@ -65,3 +65,31 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 28rem;
+	}
+</style>

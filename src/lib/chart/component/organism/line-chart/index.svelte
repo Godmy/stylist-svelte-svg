@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import Tooltip from '$stylist/control/component/atom/tooltip/index.svelte';
-	import type { LineChartRecipe } from '$stylist/chart/interface/recipe/line-chart';
+	import type { RecipeLineChart } from '$stylist/chart/interface/recipe/line-chart';
 	import createLineChartState from '$stylist/chart/function/state/line-chart/index.svelte';
 	import { ObjectManagerLineChart } from '$stylist/chart/class/object-manager/line-chart';
 
-	let props: LineChartRecipe = $props();
+	let props: RecipeLineChart = $props();
 	const state = createLineChartState(props);
 </script>
 
@@ -151,6 +151,53 @@
 </div>
 
 <style>
+	.c-line-chart {
+		display: block;
+	}
+
+	.c-line-chart__title-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 0.5rem;
+	}
+
+	.c-line-chart__title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.c-line-chart__info-icon {
+		width: 1rem;
+		height: 1rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-line-chart__chart-container {
+		padding: 1rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+	}
+
+	.c-line-chart__legend {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.c-line-chart__legend-item {
+		display: flex;
+		align-items: center;
+	}
+
+	.c-line-chart__legend-label {
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+	}
+
 	.lc-svg {
 		overflow: visible;
 	}

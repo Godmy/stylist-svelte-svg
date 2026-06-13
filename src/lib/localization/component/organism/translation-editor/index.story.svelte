@@ -103,7 +103,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-4xl p-4">
+		<div class="_c1">
 			<TranslationEditor
 				{texts}
 				locales={localeCodes}
@@ -120,3 +120,10 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 56rem;
+		padding: 1rem;
+	}
+</style>

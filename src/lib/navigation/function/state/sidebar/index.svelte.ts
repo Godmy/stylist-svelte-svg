@@ -1,8 +1,7 @@
-import { SidebarStyleManager } from '$stylist/navigation/class/style-manager/sidebar';
 import type { NavItem } from '$stylist/navigation/type/struct/sidebar';
-import type { SidebarStateProps } from '$stylist/navigation/interface/recipe/sidebar-sidebar-state-props';
+import type { RecipeSidebar } from '$stylist/navigation/interface/recipe/sidebar';
 
-export function createSidebarState(props: SidebarStateProps) {
+export function createSidebarState(props: RecipeSidebar) {
 	// SlotState
 	let isMobile = $state(false);
 	let isSidebarOpen = $state(!props.collapsed);
@@ -43,39 +42,9 @@ export function createSidebarState(props: SidebarStateProps) {
 	});
 
 	// Computed classes
-	const hostClass = $derived(SidebarStyleManager.getHostClasses(props.class));
-	const mobileButtonClass = $derived(SidebarStyleManager.getMobileButtonClasses());
-	const overlayClass = $derived(SidebarStyleManager.getOverlayClasses());
-	const sidebarClass = $derived(
-		SidebarStyleManager.getSidebarClasses(isMobile, isSidebarOpen, width, mobileWidth)
-	);
 	const sidebarStyle = $derived(
-		SidebarStyleManager.getSidebarStyle(isMobile, isSidebarOpen, width, mobileWidth)
+		['sidebar__TODO', isMobile ? `sidebar__TODO--selected` : ''].filter(Boolean).join(' ')
 	);
-	const sidebarContainerClass = $derived(SidebarStyleManager.getSidebarContainerClasses());
-	const headerClass = $derived(SidebarStyleManager.getHeaderClasses(props.logoClass));
-	const logoWrapperClass = $derived(SidebarStyleManager.getLogoWrapperClasses());
-	const titleClassComputed = $derived(SidebarStyleManager.getTitleClasses(props.titleClass));
-	const navClassComputed = $derived(SidebarStyleManager.getNavClasses(props.navClass));
-	const navListClass = $derived(SidebarStyleManager.getNavListClasses());
-	const footerClassComputed = $derived(SidebarStyleManager.getFooterClasses(props.footerClass));
-	const contentAreaClass = $derived(
-		SidebarStyleManager.getContentAreaClasses(isSidebarOpen, isMobile)
-	);
-
-	function getNavItemClass(item: NavItem): string {
-		return SidebarStyleManager.getNavItemClasses(
-			item.active ?? false,
-			item.disabled ?? false,
-			props.itemClass,
-			props.activeItemClass,
-			props.disabledItemClass
-		);
-	}
-
-	const navItemIconWrapperClass = $derived(SidebarStyleManager.getNavItemIconWrapperClasses());
-	const navItemLabelClass = $derived(SidebarStyleManager.getNavItemLabelClasses());
-	const navItemBadgeClass = $derived(SidebarStyleManager.getNavItemBadgeClasses());
 
 	// Methods
 	function toggleSidebar(): void {
@@ -203,9 +172,6 @@ export function createSidebarState(props: SidebarStateProps) {
 			return restProps;
 		},
 		toggleSidebar,
-		handleClick,
-		getNavItemClass
+		handleClick
 	};
 }
-
-export default createSidebarState;

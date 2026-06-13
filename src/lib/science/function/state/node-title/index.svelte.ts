@@ -1,25 +1,24 @@
-import type { NodeTitleRecipe } from '$stylist/science/interface/recipe/node-title';
-import { NodeTitleStyleManager } from '$stylist/science/class/style-manager/node-title';
+import type { RecipeNodeTitle } from '$stylist/science/interface/recipe/node-title';
+const variantColorMap: Record<string, string> = {
+	default: '#f8fafc',
+	selected: '#60A5FA',
+	error: '#F44336',
+	warning: '#FF9800'
+};
 
-export function createNodeTitleState(props: NodeTitleRecipe) {
-	const variant = $derived((props.variant ?? 'default') as NonNullable<NodeTitleRecipe['variant']>);
-	const size = $derived((props.size ?? 'md') as NonNullable<NodeTitleRecipe['size']>);
+export function createNodeTitleState(props: RecipeNodeTitle) {
+	const variant = $derived((props.variant ?? 'default') as NonNullable<RecipeNodeTitle['variant']>);
+	const size = $derived((props.size ?? 'md') as NonNullable<RecipeNodeTitle['size']>);
 	const selected = $derived(Boolean(props.selected));
 	const editable = $derived(Boolean(props.editable));
 	const title = $derived(props.title ?? '');
 	const className = $derived(typeof props.class === 'string' ? props.class : undefined);
-	const defaultColor = $derived(
-		selected
-			? NodeTitleStyleManager.getVariantColor('selected')
-			: NodeTitleStyleManager.getVariantColor(variant)
-	);
+	const defaultColor = $derived(selected ? '#60A5FA' : (variantColorMap[variant] ?? '#f8fafc'));
 	const titleColor = $derived(props.color ?? defaultColor);
 	const classes = $derived(
-		`${NodeTitleStyleManager.getTitleClasses(variant, size, selected)} ${className ?? ''}`.trim()
+		`node-title node-title--${variant} node-title--${size}${selected ? ' node-title--selected' : ''}${className ? ` ${className}` : ''}`
 	);
-	const styles = $derived(
-		`${NodeTitleStyleManager.getTitleStyles(undefined)} ${NodeTitleStyleManager.getTitleStyles(titleColor)}`.trim()
-	);
+	const styles = $derived(titleColor ? `--node-title-color: ${titleColor};` : '');
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,
@@ -110,7 +109,7 @@ export function createNodeTitleState(props: NodeTitleRecipe) {
 			editValue = value;
 		},
 		get inputClass() {
-			return NodeTitleStyleManager.getInputClass();
+			return 'node-title__input';
 		},
 		get restProps() {
 			return restProps;

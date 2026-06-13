@@ -1,8 +1,7 @@
-import type { PerformanceMonitorRecipe } from '$stylist/management/interface/recipe/performance-monitor';
-import { PerformanceMonitorStyleManager } from '$stylist/management/class/style-manager/performance-monitor';
+import type { RecipePerformanceMonitor } from '$stylist/management/interface/recipe/performance-monitor';
 import { ObjectManagerPerformanceMonitor } from '$stylist/management/class/object-manager/performance-monitor';
 
-export function createPerformanceMonitorState(props: PerformanceMonitorRecipe) {
+export function createPerformanceMonitorState(props: RecipePerformanceMonitor) {
 	// Props with defaults
 	const label = $derived(props.label ?? '');
 	const value = $derived(props.value ?? 0);
@@ -23,14 +22,6 @@ export function createPerformanceMonitorState(props: PerformanceMonitorRecipe) {
 	const statusBarClass = $derived(ObjectManagerPerformanceMonitor.resolveStatusBarClass(status));
 
 	// CSS classes
-	const containerClasses = $derived(
-		PerformanceMonitorStyleManager.getContainerClasses(classNameStr)
-	);
-	const headerClasses = $derived(PerformanceMonitorStyleManager.getHeaderClasses());
-	const titleClasses = $derived(PerformanceMonitorStyleManager.getTitleClasses());
-	const valueClasses = $derived(PerformanceMonitorStyleManager.getValueClasses());
-	const trackClasses = $derived(PerformanceMonitorStyleManager.getTrackClasses());
-	const barClasses = $derived(PerformanceMonitorStyleManager.getBarClasses(statusBarClass));
 
 	return {
 		get label() {
@@ -68,24 +59,6 @@ export function createPerformanceMonitorState(props: PerformanceMonitorRecipe) {
 		},
 		get statusBarClass() {
 			return statusBarClass;
-		},
-		get containerClasses() {
-			return containerClasses;
-		},
-		get headerClasses() {
-			return headerClasses;
-		},
-		get titleClasses() {
-			return titleClasses;
-		},
-		get valueClasses() {
-			return valueClasses;
-		},
-		get trackClasses() {
-			return trackClasses;
-		},
-		get barClasses() {
-			return barClasses;
 		}
 	};
 }

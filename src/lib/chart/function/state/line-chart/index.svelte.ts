@@ -1,8 +1,8 @@
-import type { LineChartRecipe } from '$stylist/chart/interface/recipe/line-chart';
-import { LineChartStyleManager } from '$stylist/chart/class/style-manager/line-chart';
+import type { RecipeLineChart } from '$stylist/chart/interface/recipe/line-chart';
 import { ObjectManagerLineChart } from '$stylist/chart/class/object-manager/line-chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createLineChartState(props: LineChartRecipe) {
+export function createLineChartState(props: RecipeLineChart) {
 	const hostClass = $derived(typeof props.class === 'string' ? props.class : undefined);
 	const chartClass = $derived(typeof props.chartClass === 'string' ? props.chartClass : undefined);
 	const resolvedColorScheme = $derived(
@@ -10,18 +10,16 @@ export function createLineChartState(props: LineChartRecipe) {
 	);
 	let hoveredPoint = $state<{ seriesIndex: number; pointIndex: number } | null>(null);
 
-	const baseClasses = $derived(
-		`${LineChartStyleManager.getBaseClasses()} ${LineChartStyleManager.getVariantClasses(props.variant ?? 'default')} ${hostClass}`
-	);
-	const titleContainerClasses = $derived(LineChartStyleManager.getTitleContainerClasses());
-	const titleClasses = $derived(LineChartStyleManager.getTitleClasses());
+	const baseClasses = $derived(mergeClassNames('c-line-chart', hostClass));
+	const titleContainerClasses = $derived('c-line-chart__title-row');
+	const titleClasses = $derived('c-line-chart__title');
 	const chartContainerClasses = $derived(
-		`${LineChartStyleManager.getChartContainerClasses()} ${chartClass}`
+		mergeClassNames('c-line-chart__chart-container', chartClass)
 	);
-	const infoIconClasses = $derived(LineChartStyleManager.getInfoIconClasses());
-	const legendContainerClasses = $derived(LineChartStyleManager.getLegendContainerClasses());
-	const legendItemClasses = $derived(LineChartStyleManager.getLegendItemClasses());
-	const legendLabelClasses = $derived(LineChartStyleManager.getLegendLabelClasses());
+	const infoIconClasses = $derived('c-line-chart__info-icon');
+	const legendContainerClasses = $derived('c-line-chart__legend');
+	const legendItemClasses = $derived('c-line-chart__legend-item');
+	const legendLabelClasses = $derived('c-line-chart__legend-label');
 
 	const calculatedMaxValue = $derived(
 		ObjectManagerLineChart.resolveMaxValue(props.data ?? [], props.maxValue)

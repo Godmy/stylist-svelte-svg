@@ -1,6 +1,4 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { SlotCheckbox as CheckboxProps } from '$stylist/control/interface/slot/checkbox-toggles';
-import { StyleManagerState } from '$stylist/architecture/class/style-manager/state/index';
 
 export function createCheckboxState(props: CheckboxProps) {
 	const id = props.id;
@@ -10,29 +8,12 @@ export function createCheckboxState(props: CheckboxProps) {
 	const errors = props.errors ?? [];
 	const required = props.required ?? false;
 	const disabled = props.disabled ?? false;
+	const size = (props as { size?: string }).size ?? 'md';
 	const className = props.class ?? '';
 
 	const hasError = errors.length > 0;
 	const errorId = `${id}-error`;
-
-	const containerClasses = joinClassNames('flex items-start space-x-2', className);
-	const wrapperClasses = 'flex items-center h-5';
-	const checkboxWrapperClasses = '';
-	const checkboxClasses = joinClassNames(
-		'h-4 w-4 rounded border text-[--color-primary-500] focus:ring-[--color-primary-500]',
-		hasError
-			? 'border-[--color-danger-500] focus:ring-[--color-danger-500]'
-			: 'border-[--color-border-primary]',
-		disabled ? StyleManagerState.classes.disabled : ''
-	);
-	const labelWrapperClasses = 'ml-2';
-	const labelClasses = joinClassNames(
-		'block leading-5',
-		'text-sm font-medium',
-		disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
-	);
-	const descriptionClasses = 'block text-sm text-[--color-text-secondary]';
-	const errorClasses = 'mt-1 text-sm text-[--color-danger-500]';
+	const containerClass = ['c-checkbox', className].filter(Boolean).join(' ');
 
 	return {
 		id,
@@ -42,16 +23,10 @@ export function createCheckboxState(props: CheckboxProps) {
 		errors,
 		required,
 		disabled,
+		size,
 		hasError,
 		errorId,
-		containerClasses,
-		wrapperClasses,
-		checkboxWrapperClasses,
-		checkboxClasses,
-		labelWrapperClasses,
-		labelClasses,
-		descriptionClasses,
-		errorClasses
+		containerClass
 	};
 }
 

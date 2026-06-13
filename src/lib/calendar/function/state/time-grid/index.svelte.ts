@@ -2,7 +2,6 @@ import type { RecipeTimeGrid as TimeGridContract } from '$stylist/calendar/inter
 import type { SlotTimeGridEvent as SlotTimeGridEvent } from '$stylist/calendar/interface/slot/time-grid-event';
 import type { RecipeTimeGridExtendedTimeSlot as RecipeTimeGridExtendedTimeSlot } from '$stylist/calendar/interface/recipe/time-grid-extended-time-slot';
 import type { RecipeTimeGridDayTimeGrid as RecipeTimeGridDayTimeGrid } from '$stylist/calendar/interface/recipe/time-grid-day-time-grid';
-import { TimeGridStyleManager } from '$stylist/calendar/class/style-manager/time-grid';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { isToday } from '$stylist/calendar/function/script/date-check';
 import { isWeekend } from '$stylist/calendar/function/script/is-weekend';
@@ -28,13 +27,9 @@ export function createTimeGridState(props: TimeGridContract) {
 	const eventClass = $derived(props.eventClass ?? '');
 	const headerClassProp = $derived(props.headerClass ?? '');
 
-	const wrapperClasses = $derived(
-		mergeClassNames(TimeGridStyleManager.getWrapperClasses(), className)
-	);
-	const headerClasses = $derived(
-		mergeClassNames(TimeGridStyleManager.getHeaderClasses(), headerClassProp)
-	);
-	const timeGridClasses = $derived(TimeGridStyleManager.getTimeGridClasses());
+	const wrapperClasses = $derived(mergeClassNames('c-time-grid', className));
+	const headerClasses = $derived(mergeClassNames('c-time-grid__header', headerClassProp));
+	const timeGridClasses = $derived('c-time-grid__grid');
 
 	const timeGrid = $derived.by<RecipeTimeGridDayTimeGrid[]>(() => generateTimeGrid());
 
@@ -187,26 +182,31 @@ export function createTimeGridState(props: TimeGridContract) {
 	}
 
 	function getDayColumnClasses(date: Date): string {
-		return mergeClassNames(TimeGridStyleManager.getDayColumnClasses(isWeekend(date)));
+		return mergeClassNames(
+			'c-time-grid__day-col',
+			isWeekend(date) && 'c-time-grid__day-col--weekend'
+		);
 	}
 
 	function getDayHeaderClasses(date: Date): string {
 		return mergeClassNames(
-			TimeGridStyleManager.getDayHeaderClasses(isToday(date)),
+			'c-time-grid__day-header',
+			isToday(date) && 'c-time-grid__day-header--today',
 			headerClassProp
 		);
 	}
 
 	function getTimeIndicatorClasses(): string {
-		return TimeGridStyleManager.getTimeIndicatorClasses();
+		return 'c-time-grid__now-indicator';
 	}
 
 	function getEventClasses(color?: string): string {
-		return mergeClassNames(TimeGridStyleManager.getEventClasses(color, eventClass));
+		void color;
+		return mergeClassNames('c-time-grid__event', eventClass);
 	}
 
 	function getTimeSlotClasses(): string {
-		return mergeClassNames(TimeGridStyleManager.getTimeSlotClasses(), slotClass);
+		return mergeClassNames('c-time-grid__slot', slotClass);
 	}
 
 	function isTodayDate(date: Date): boolean {

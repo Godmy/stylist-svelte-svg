@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import { SecureFormStyleManager } from '$stylist/form/class/style-manager/secure-form-style-manager';
 	import SecureForm from './index.svelte';
 
 	type Props = {
@@ -39,15 +38,48 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class={SecureFormStyleManager.container('sb-organisms-secure-form p-4')}>
-			<h1 class="mb-4 text-lg font-semibold">SecureForm Component</h1>
+		<div class="sb-organisms-secure-form _c1">
+			<h1 class="_c2">SecureForm Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive SecureForm</h2>
-				<div class="max-w-md">
+			<div class="_c3">
+				<h2 class="_c4">Interactive SecureForm</h2>
+				<div class="_c5">
 					<SecureForm />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+		border-width: 2px;
+		border-style: solid;
+		border-color: var(--color-success-200);
+		border-radius: 0.5rem;
+		background-color: var(--color-success-50);
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 28rem;
+	}
+</style>

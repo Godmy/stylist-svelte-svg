@@ -1,13 +1,12 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import Button from '$stylist/control/component/atom/button/index.svelte';
 	import InputField from '$stylist/input/component/atom/input-field/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import Badge from '$stylist/information/component/atom/badge/index.svelte';
 	import TextArea from '$stylist/input/component/atom/text-area/index.svelte';
-	import createScrumBacklogState from '$stylist/management/function/state/scrum-backlog/index.svelte';
+	import { createScrumBacklogState } from '$stylist/management/function/state/scrum-backlog/index.svelte';
 	import type { SlotBacklogItem as BacklogItem } from '$stylist/management/interface/slot/backlog-item';
 	import type { SlotBacklogData as BacklogData } from '$stylist/management/interface/slot/backlog-data';
-	import { ScrumBacklogStyleManager } from '$stylist/management/class/style-manager/scrum-backlog';
 
 	const Plus = 'plus';
 	const Calendar = 'calendar';
@@ -39,7 +38,7 @@
 
 <div class={state.containerClass}>
 	<div class={state.headerClass}>
-		<div class={ScrumBacklogStyleManager.getHeaderFlexClass()}>
+		<div class="scrum-backlog__header-flex">
 			<h2 class={state.headerTitleClass}>Backlog</h2>
 			<Button
 				variant="primary"
@@ -211,7 +210,7 @@
 		{#if state.filteredItems.length === 0}
 			<div class={state.emptyStateContainerClass}>
 				<p class={state.emptyStateTextClass}>Backlog is empty</p>
-				<p class={ScrumBacklogStyleManager.getEmptyStateSubtextClass()}>
+				<p class="scrum-backlog__empty-state-subtext">
 					Add the first task or change the active filters
 				</p>
 			</div>
@@ -295,3 +294,212 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.scrum-backlog__header {
+		margin-bottom: 1.5rem;
+	}
+
+	.scrum-backlog__header-flex {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	.scrum-backlog__header-title {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.scrum-backlog__add-form-container {
+		margin-bottom: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		overflow: hidden;
+	}
+
+	.scrum-backlog__form-grid {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		.scrum-backlog__form-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	.scrum-backlog__form-col-span {
+		grid-column: span 2 / span 2;
+	}
+
+	.scrum-backlog__form-label {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+
+	.scrum-backlog__form-input {
+		width: 100%;
+	}
+
+	.scrum-backlog__form-textarea {
+		width: 100%;
+	}
+
+	.scrum-backlog__form-select {
+		width: 100%;
+		border-radius: 0.375rem;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.scrum-backlog__form-select:focus {
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 3px var(--color-primary-500);
+	}
+	@media (min-width: 640px) {
+		.scrum-backlog__form-select {
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+		}
+	}
+
+	.scrum-backlog__form-buttons-container {
+		margin-top: 1rem;
+		display: flex;
+		justify-content: flex-end;
+	}
+	.scrum-backlog__form-buttons-container > * + * {
+		margin-left: 0.5rem;
+	}
+
+	.scrum-backlog__filters-container {
+		margin-bottom: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		overflow: hidden;
+	}
+
+	.scrum-backlog__filters-grid {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		.scrum-backlog__filters-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.scrum-backlog__filter-label {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+
+	.scrum-backlog__empty-state-container {
+		text-align: center;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	.scrum-backlog__empty-state-text {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		color: var(--color-text-secondary);
+	}
+
+	.scrum-backlog__empty-state-subtext {
+		margin-top: 0.5rem;
+		color: var(--color-text-tertiary);
+	}
+
+	.scrum-backlog__items-grid {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		.scrum-backlog__items-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (min-width: 1024px) {
+		.scrum-backlog__items-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.scrum-backlog__item-card {
+		position: relative;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		overflow: hidden;
+	}
+
+	.scrum-backlog__item-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 0.5rem;
+	}
+
+	.scrum-backlog__item-title {
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.scrum-backlog__item-description {
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.scrum-backlog__item-badges-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.scrum-backlog__item-actions-container {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.scrum-backlog__item-actions-container > * + * {
+		margin-left: 0.5rem;
+	}
+
+	.scrum-backlog__icon {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 0.25rem;
+		display: inline;
+	}
+</style>

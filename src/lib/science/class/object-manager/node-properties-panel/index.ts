@@ -1,6 +1,6 @@
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { LiteGraphNodeProperty } from '$stylist/science/type/struct/litegraph-node-property';
-import type { NodePropertiesPanelRecipe as NodePropertiesPanelProps } from '$stylist/science/interface/recipe/node-properties-panel';
+import type { RecipeNodePropertiesPanel as NodePropertiesPanelProps } from '$stylist/science/interface/recipe/node-properties-panel';
 
 export class ObjectManagerNodePropertiesPanel {
 	static getRestProps(props: NodePropertiesPanelProps) {

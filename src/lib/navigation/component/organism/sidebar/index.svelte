@@ -1,9 +1,9 @@
-<script lang="ts">
-	import type { SidebarStateProps } from '$stylist/navigation/interface/recipe/sidebar-sidebar-state-props';
+﻿<script lang="ts">
+	import type { RecipeSidebar } from '$stylist/navigation/interface/recipe/sidebar';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import createSidebarState from '$stylist/navigation/function/state/sidebar/index.svelte';
+	import { createSidebarState } from '$stylist/navigation/function/state/sidebar/index.svelte';
 
-	let props: SidebarStateProps = $props();
+	let props: RecipeSidebar = $props();
 	const state = createSidebarState(props);
 </script>
 
@@ -63,7 +63,8 @@
 						<li>
 							<a
 								href={item.href || '#'}
-								class={state.getNavItemClass(item)}
+								class="sidebar__TODO"
+								data-TODO="was state.getNavItemClass(...)"
 								onclick={(e) => {
 									e.preventDefault();
 									state.handleClick(item);
@@ -104,3 +105,144 @@
 		<!-- Actual content would go here -->
 	</div>
 </div>
+
+<style>
+	.sidebar__host {
+		display: flex;
+	}
+
+	.sidebar__mobile-button {
+		position: absolute;
+		top: var(--spacing-4);
+		left: var(--spacing-4);
+		padding: var(--spacing-2);
+		border-radius: var(--radius-md);
+		color: var(--color-text-primary);
+	}
+	@media (min-width: 1024px) {
+		.sidebar__mobile-button {
+			display: none;
+		}
+	}
+
+	.sidebar__overlay {
+		position: fixed;
+		inset: 0;
+		background-color: var(--color-overlay-backdrop);
+	}
+	@media (min-width: 1024px) {
+		.sidebar__overlay {
+			display: none;
+		}
+	}
+
+	.sidebar__sidebar {
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 100vh;
+		background-color: var(--color-background-primary);
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transform: translateX(-100%);
+		margin-left: 0;
+	}
+	@media (min-width: 1024px) {
+		.sidebar__sidebar {
+			position: sticky;
+		}
+	}
+
+	.sidebar__sidebar-container {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+		border-right-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+
+	.sidebar__header {
+		display: flex;
+		align-items: center;
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: var(--spacing-4);
+	}
+
+	.sidebar__logo-wrapper {
+		margin-right: var(--spacing-3);
+	}
+
+	.sidebar__title {
+		color: var(--color-text-primary);
+	}
+
+	.sidebar__nav {
+		flex: 1 1 0%;
+		overflow-y: auto;
+		padding-top: var(--spacing-4);
+		padding-bottom: var(--spacing-4);
+	}
+
+	.sidebar__nav-list {
+		padding-left: var(--spacing-2);
+		padding-right: var(--spacing-2);
+	}
+	.sidebar__nav-list > * + * {
+		margin-top: var(--spacing-1);
+	}
+
+	.sidebar__nav-item {
+		display: flex;
+		align-items: center;
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-3);
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-primary-50);
+		color: var(--color-text-primary);
+		cursor: pointer;
+	}
+	.sidebar__nav-item:hover {
+		background-color: var(--color-background-hover);
+	}
+
+	.sidebar__nav-item-icon-wrapper {
+		margin-right: var(--spacing-3);
+	}
+
+	.sidebar__nav-item-label {
+		flex: 1 1 0%;
+		text-align: left;
+	}
+
+	.sidebar__nav-item-badge {
+		border-radius: 9999px;
+		background-color: var(--color-background-tertiary);
+		padding-left: var(--spacing-2);
+		padding-right: var(--spacing-2);
+		padding-top: var(--spacing-0.5);
+		padding-bottom: var(--spacing-0.5);
+		color: var(--color-text-primary);
+	}
+
+	.sidebar__footer {
+		margin-top: auto;
+		border-top-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: var(--spacing-4);
+	}
+
+	.sidebar__content-area {
+		flex: 1 1 0%;
+		transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	@media (min-width: 1024px) {
+		.sidebar__content-area {
+			margin-left: 0;
+		}
+	}
+</style>

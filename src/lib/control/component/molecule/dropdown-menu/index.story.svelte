@@ -31,42 +31,27 @@
 	description="A dropdown menu component for displaying action lists"
 >
 	{#snippet children(controlValues: any)}
-		<div class="flex h-40 items-center justify-center">
+		<div class="_c1">
 			<DropdownMenu
 				label="Options"
 				position={controlValues.position}
 				disabled={controlValues.disabled}
 			>
 				{#snippet children({ closeDropdown }: { closeDropdown: () => void })}
-					<button
-						class="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[--color-background-secondary]"
-						onclick={() => handleMenuItemClick('New', closeDropdown)}
-					>
+					<button class="_c2 _c1" onclick={() => handleMenuItemClick('New', closeDropdown)}>
 						New
 					</button>
-					<button
-						class="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[--color-background-secondary]"
-						onclick={() => handleMenuItemClick('Open', closeDropdown)}
-					>
+					<button class="_c2 _c1" onclick={() => handleMenuItemClick('Open', closeDropdown)}>
 						Open
 					</button>
-					<button
-						class="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[--color-background-secondary]"
-						onclick={() => handleMenuItemClick('Save', closeDropdown)}
-					>
+					<button class="_c2 _c1" onclick={() => handleMenuItemClick('Save', closeDropdown)}>
 						Save
 					</button>
-					<hr class="my-1 border-[--color-border-primary]" />
-					<button
-						class="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[--color-background-secondary]"
-						onclick={() => handleMenuItemClick('Settings', closeDropdown)}
-					>
+					<hr class="_c3" />
+					<button class="_c2 _c1" onclick={() => handleMenuItemClick('Settings', closeDropdown)}>
 						Settings
 					</button>
-					<button
-						class="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[--color-background-secondary]"
-						onclick={() => handleMenuItemClick('Help', closeDropdown)}
-					>
+					<button class="_c2 _c1" onclick={() => handleMenuItemClick('Help', closeDropdown)}>
 						Help
 					</button>
 				{/snippet}
@@ -74,3 +59,34 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		height: 10rem;
+		align-items: center;
+		justify-content: center;
+	}
+	._c2 {
+		display: block;
+		width: 100%;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		text-align: left;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+	}
+	._c3 {
+		margin-top: 0.25rem;
+		margin-bottom: 0.25rem;
+		border-color: var(--color-border-primary);
+	}
+
+	._c1:hover {
+		background-color: var(--color-background-secondary);
+	}
+</style>

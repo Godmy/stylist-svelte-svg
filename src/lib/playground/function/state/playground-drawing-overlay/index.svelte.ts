@@ -1,5 +1,5 @@
-import type { PlaygroundDrawingOverlayProps } from '$stylist/playground/type/struct/playground-drawing-overlay-props';
-export function createPlaygroundDrawingOverlayState(props: PlaygroundDrawingOverlayProps) {
+﻿import type { RecipePlaygroundDrawingOverlay } from '$stylist/playground/interface/recipe/playground-drawing-overlay';
+export function createPlaygroundDrawingOverlayState(props: RecipePlaygroundDrawingOverlay) {
 	const drawColor = $derived(props.drawColor ?? 'var(--color-error-500)');
 	const onClose = $derived(props.onClose);
 
@@ -69,5 +69,3 @@ export function createPlaygroundDrawingOverlayState(props: PlaygroundDrawingOver
 		}
 	};
 }
-
-export default createPlaygroundDrawingOverlayState;

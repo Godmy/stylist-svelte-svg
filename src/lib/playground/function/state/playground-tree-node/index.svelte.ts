@@ -1,10 +1,10 @@
-import type { PlaygroundTreeNodeProps } from '$stylist/playground/type/struct/playground-tree-node-props';
+﻿import type { RecipePlaygroundTreeNode } from '$stylist/playground/interface/recipe/playground-tree-node';
 const ChevronRight = 'chevron-right';
 const Folder = 'folder';
 const FolderOpen = 'folder-open';
 const FileCode = 'file-code';
 
-export function createPlaygroundTreeNodeState(props: PlaygroundTreeNodeProps) {
+export function createPlaygroundTreeNodeState(props: RecipePlaygroundTreeNode) {
 	const node = $derived(props.node);
 	const level = $derived(props.level);
 	const expandedNodes = $derived(props.expandedNodes);
@@ -105,5 +105,3 @@ export function createPlaygroundTreeNodeState(props: PlaygroundTreeNodeProps) {
 		}
 	};
 }
-
-export default createPlaygroundTreeNodeState;

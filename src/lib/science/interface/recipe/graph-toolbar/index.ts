@@ -1,16 +1,17 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all'; /**
- * GraphToolbar — тулбар графа..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { GraphToolbarItem } from '$stylist/science/type/struct/graph/graph-toolbar-item';
 
-export interface GraphToolbarRecipe extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeGraphToolbar
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	label?: string;
 	size?: TokenSize;
 	orientation?: 'horizontal' | 'vertical';
 	compact?: boolean;
 	showTooltips?: boolean;
+	items?: GraphToolbarItem[];
+	onItemClick?: (id: string) => void;
+	onValueChange?: (id: string, value: unknown) => void;
 }

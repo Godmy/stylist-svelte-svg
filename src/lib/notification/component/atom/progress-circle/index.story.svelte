@@ -39,18 +39,18 @@
 >
 	{#snippet children(values: any)}
 		{@const storyProps = values as Partial<Props>}
-		<div class="flex items-center space-x-4">
+		<div class="_c1">
 			<ProgressCircle
 				value={storyProps.progress ?? 60}
 				progress={storyProps.progress ?? 60}
 				strokeWidth={storyProps.strokeWidth ?? 4}
 				color={storyProps.color ?? 'primary'}
 			/>
-			<span class="text-[var(--color-text-primary)]">Task Progress</span>
+			<span class="_c2">Task Progress</span>
 		</div>
 
-		<h3 class="mt-8 mb-4 text-lg font-bold">Different Progress Values and Sizes</h3>
-		<div class="flex flex-wrap items-center gap-4">
+		<h3 class="_c3">Different Progress Values and Sizes</h3>
+		<div class="_c4">
 			<ProgressCircle value={25} progress={25} color="danger" />
 			<ProgressCircle value={50} progress={50} color="warning" />
 			<ProgressCircle value={75} progress={75} color="success" />
@@ -58,3 +58,29 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+	}
+	._c1 > * + * {
+		margin-left: 1rem;
+	}
+	._c2 {
+		color: var(--color-text-primary);
+	}
+	._c3 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+	._c4 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem;
+	}
+</style>

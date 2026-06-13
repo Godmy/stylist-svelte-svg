@@ -10,14 +10,7 @@ export type {
 	BehaviorSelectable,
 	BehaviorTooltipable
 } from './behavior';
-export type {
-	ButtonRecipe,
-	CheckboxRecipe,
-	DraggableItemRecipe,
-	IconButtonRecipe,
-	InteractionFeedbackRecipe,
-	SharedCanvasRecipe
-} from './recipe';
+export type { InteractionRecipe } from './recipe';
 export type {
 	ClickableStyleManagerOptions,
 	DraggableStyleManagerOptions,

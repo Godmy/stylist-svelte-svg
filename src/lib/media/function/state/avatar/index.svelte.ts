@@ -1,7 +1,7 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { AvatarSize } from '$stylist/media/type/alias/avatar-size';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
-import type { AvatarProps } from '$stylist/media/interface/recipe/avatar-avatar-props';
+import type { RecipeAvatar } from '$stylist/media/interface/recipe/avatar';
 
 const SIZE_CLASSES: Record<AvatarSize, string> = {
 	sm: 'w-6 h-6 text-sm',
@@ -10,7 +10,7 @@ const SIZE_CLASSES: Record<AvatarSize, string> = {
 	xl: 'w-12 h-12 text-xl'
 };
 
-export function createAvatarState(props: AvatarProps & InformationHTMLAttributes<HTMLDivElement>) {
+export function createAvatarState(props: RecipeAvatar & InformationHTMLAttributes<HTMLDivElement>) {
 	const name = $derived(props.name ?? '');
 	const status = $derived(props.status);
 	const showStatus = $derived(props.showStatus ?? false);
@@ -119,5 +119,3 @@ export function createAvatarState(props: AvatarProps & InformationHTMLAttributes
 		getStatusSizeClasses
 	};
 }
-
-export default createAvatarState;

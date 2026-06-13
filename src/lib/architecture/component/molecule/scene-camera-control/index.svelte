@@ -1,98 +1,43 @@
 <script lang="ts">
-	type Props = {
-		radius: number;
-		minRadius: number;
-		maxRadius: number;
-		sceneFitRadius: number;
-		targetX: number;
-		targetY: number;
-		onradiuschange?: (radius: number) => void;
-		ontargetchange?: (x: number, y: number) => void;
-	};
+	import type { RecipeSceneCameraControl } from '$stylist/architecture/interface/recipe/scene-camera-control';
+	import createSceneCameraControlState from '$stylist/architecture/function/state/scene-camera-control/index.svelte';
 
-	let props: Props = $props();
-	const targetRange = 10;
-	const zoomProgress = $derived(
-		((props.maxRadius - props.radius) / (props.maxRadius - props.minRadius)) * 100
-	);
-	const targetLeft = $derived(((props.targetX + targetRange) / (targetRange * 2)) * 100);
-	const targetTop = $derived(((targetRange - props.targetY) / (targetRange * 2)) * 100);
-
-	function clamp(value: number, min: number, max: number): number {
-		return Math.max(min, Math.min(max, value));
-	}
-
-	function updateRadius(event: Event): void {
-		const input = event.currentTarget as HTMLInputElement;
-		props.onradiuschange?.(Number(input.value));
-	}
-
-	function updateTarget(event: PointerEvent): void {
-		const pad = event.currentTarget as HTMLElement;
-		const rect = pad.getBoundingClientRect();
-		const ratioX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
-		const ratioY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
-
-		props.ontargetchange?.((ratioX * 2 - 1) * targetRange, (1 - ratioY * 2) * targetRange);
-	}
-
-	function startTargetDrag(event: PointerEvent): void {
-		event.preventDefault();
-		event.stopPropagation();
-		(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
-		updateTarget(event);
-	}
-
-	function dragTarget(event: PointerEvent): void {
-		if (!(event.currentTarget as HTMLElement).hasPointerCapture(event.pointerId)) {
-			return;
-		}
-
-		event.preventDefault();
-		event.stopPropagation();
-		updateTarget(event);
-	}
-
-	function stopTargetDrag(event: PointerEvent): void {
-		event.stopPropagation();
-
-		if ((event.currentTarget as HTMLElement).hasPointerCapture(event.pointerId)) {
-			(event.currentTarget as HTMLElement).releasePointerCapture(event.pointerId);
-		}
-	}
+	let props: RecipeSceneCameraControl = $props();
+	const state = createSceneCameraControlState(props);
 </script>
 
 <section
-	class="scene-camera-control"
+	class={state.containerClass}
 	aria-label="Camera zoom and movement"
-	onpointerdown={(event) => event.stopPropagation()}
-	onwheel={(event) => event.stopPropagation()}
+	{...state.restProps}
+	onpointerdown={state.stopPointerPropagation}
+	onwheel={state.stopWheelPropagation}
 >
 	<div class="scene-camera-control__map">
 		<div class="scene-camera-control__label-row">
 			<span>Camera plane</span>
-			<span>{Math.round(props.targetX)}, {Math.round(props.targetY)}</span>
+			<span>{state.roundedTargetX}, {state.roundedTargetY}</span>
 		</div>
 		<div
 			class="scene-camera-control__pad"
 			role="slider"
 			aria-label="Camera movement plane"
-			aria-valuetext={`x ${Math.round(props.targetX)}, y ${Math.round(props.targetY)}`}
+			aria-valuetext={`x ${state.roundedTargetX}, y ${state.roundedTargetY}`}
 			aria-valuenow={props.targetX}
 			aria-valuemin={-100}
 			aria-valuemax={100}
 			tabindex="0"
-			onpointerdown={startTargetDrag}
-			onpointermove={dragTarget}
-			onpointerup={stopTargetDrag}
-			onpointercancel={stopTargetDrag}
+			onpointerdown={state.startTargetDrag}
+			onpointermove={state.dragTarget}
+			onpointerup={state.stopTargetDrag}
+			onpointercancel={state.stopTargetDrag}
 		>
 			<span class="scene-camera-control__axis scene-camera-control__axis--x"></span>
 			<span class="scene-camera-control__axis scene-camera-control__axis--y"></span>
 			<span
 				class="scene-camera-control__target"
-				style:left={`${targetLeft}%`}
-				style:top={`${targetTop}%`}
+				style:left={`${state.targetLeft}%`}
+				style:top={`${state.targetTop}%`}
 			></span>
 		</div>
 	</div>
@@ -100,7 +45,7 @@
 	<div class="scene-camera-control__depth">
 		<div class="scene-camera-control__label-row">
 			<span>Zoom depth</span>
-			<span>{Math.round(zoomProgress)}%</span>
+			<span>{Math.round(state.zoomProgress)}%</span>
 		</div>
 		<div class="scene-camera-control__slider-row">
 			<input
@@ -111,17 +56,17 @@
 				step="0.1"
 				value={props.radius}
 				aria-label="Zoom depth"
-				oninput={updateRadius}
+				oninput={state.updateRadius}
 			/>
 			<div class="scene-camera-control__depth-readout">
 				<span>near</span>
-				<strong>{props.radius.toFixed(1)}</strong>
+				<strong>{state.radiusText}</strong>
 				<span>far</span>
 			</div>
 		</div>
 		<div class="scene-camera-control__fit">
 			<span>fit radius</span>
-			<span>{props.sceneFitRadius.toFixed(1)}</span>
+			<span>{state.sceneFitRadiusText}</span>
 		</div>
 	</div>
 </section>

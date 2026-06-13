@@ -40,7 +40,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="h-96">
+		<div class="_c1">
 			<MediaLibrary
 				{items}
 				allowUpload={values.allowUpload as boolean}
@@ -54,3 +54,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 24rem;
+	}
+</style>

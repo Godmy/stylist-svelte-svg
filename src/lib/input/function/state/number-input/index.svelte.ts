@@ -1,4 +1,4 @@
-import type { SlotNumberInput as INumberInputProps } from '$stylist/input/interface/slot/number-input';
+﻿import type { SlotNumberInput as INumberInputProps } from '$stylist/input/interface/slot/number-input';
 
 export const createNumberInputState = (props: INumberInputProps) => {
 	let currentValue = $state(props.value ?? 0);
@@ -12,26 +12,20 @@ export const createNumberInputState = (props: INumberInputProps) => {
 	const min = $derived(props.min ?? Number.MIN_SAFE_INTEGER);
 	const max = $derived(props.max ?? Number.MAX_SAFE_INTEGER);
 	const step = $derived(props.step ?? 1);
-	const containerClasses = $derived(
-		['relative inline-flex items-center', props.class ?? ''].join(' ').trim()
-	);
+	const containerClasses = $derived(['number-input', props.class ?? ''].filter(Boolean).join(' '));
 	const inputClasses = $derived(
-		[
-			'w-20 p-2 text-center border-y border-[var(--color-border-primary)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
-			disabled ? 'bg-[var(--color-background-secondary)]' : 'bg-[var(--color-background-primary)]',
-			props.inputClass ?? ''
-		]
+		['number-input__input', disabled ? 'number-input__input--disabled' : '', props.inputClass ?? '']
+			.filter(Boolean)
 			.join(' ')
-			.trim()
 	);
 	const buttonClasses = $derived(
 		[
-			'p-2 border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-tertiary)] disabled:opacity-[var(--opacity-50)] disabled:cursor-not-allowed',
-			props.buttonClass ?? '',
-			disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
+			'number-input__button',
+			disabled ? 'number-input__button--disabled' : '',
+			props.buttonClass ?? ''
 		]
+			.filter(Boolean)
 			.join(' ')
-			.trim()
 	);
 
 	function emitChange() {
@@ -106,10 +100,10 @@ export const createNumberInputState = (props: INumberInputProps) => {
 			return inputClasses;
 		},
 		get decrementButtonClasses() {
-			return `${buttonClasses} rounded-l-md border-r-0`;
+			return `${buttonClasses} number-input__button--decrement`;
 		},
 		get incrementButtonClasses() {
-			return `${buttonClasses} rounded-r-md border-l-0`;
+			return `${buttonClasses} number-input__button--increment`;
 		},
 		increment,
 		decrement,
@@ -117,5 +111,3 @@ export const createNumberInputState = (props: INumberInputProps) => {
 		emitChange
 	};
 };
-
-export default createNumberInputState;

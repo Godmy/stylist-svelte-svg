@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ChartNameRecipe as ChartNameProps } from '$stylist/chart/interface/recipe/chart-name';
+	import type { RecipeChartName as ChartNameProps } from '$stylist/chart/interface/recipe/chart-name';
 	import createChartNameState from '$stylist/chart/function/state/chart-name/index.svelte';
 
 	let props: ChartNameProps = $props();
@@ -14,3 +14,11 @@
 >
 	{props.text}
 </text>
+
+<style>
+	.c-chart-name {
+		fill: var(--color-text-primary);
+		font-size: 0.875rem;
+		font-weight: 600;
+	}
+</style>

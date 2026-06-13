@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import { ObjectManagerThemeModeToggle } from '$stylist/theme/class/object-manager/theme-mode-toggle';
-import { ObjectManagerThemeSettings } from '$stylist/theme/class/object-manager/theme-settings';
-import { ObjectManagerThemeSwitcher } from '$stylist/theme/class/object-manager/theme-switcher';
+import { ManagerThemeModeToggle } from '$stylist/theme/class/manager/theme-mode-toggle';
+import { ManagerThemeSettings } from '$stylist/theme/class/manager/theme-settings';
+import { ManagerThemeSwitcher } from '$stylist/theme/class/manager/theme-switcher';
 import { THEME_STORAGE_CONTRACT } from '$stylist/theme/const/record/theme-storage-contract';
 import ThemeModeToggleHarness from './theme-mode-toggle-harness.svelte';
 import ThemeSwitcherHarness from './theme-switcher-harness.svelte';
@@ -57,7 +57,7 @@ describe('theme component integration', () => {
 	});
 
 	it('publishes the theme settings defaults', () => {
-		const contract = ObjectManagerThemeSettings.createContract();
+		const contract = ManagerThemeSettings.createContract();
 
 		expect(contract.themeMode).toBe('default');
 		expect(contract.themeScheme).toBe('minimal');
@@ -66,7 +66,7 @@ describe('theme component integration', () => {
 	});
 
 	it('keeps the storage keys aligned with the object managers', () => {
-		expect(ObjectManagerThemeModeToggle.storageKey).toBe(THEME_STORAGE_CONTRACT.modeStorageKey);
-		expect(ObjectManagerThemeSwitcher.storageKey).toBe(THEME_STORAGE_CONTRACT.schemeStorageKey);
+		expect(ManagerThemeModeToggle.storageKey).toBe(THEME_STORAGE_CONTRACT.modeStorageKey);
+		expect(ManagerThemeSwitcher.storageKey).toBe(THEME_STORAGE_CONTRACT.schemeStorageKey);
 	});
 });

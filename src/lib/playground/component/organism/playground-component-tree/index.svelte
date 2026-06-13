@@ -1,9 +1,9 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundComponentTree } from '$stylist/playground/interface/recipe/playground-component-tree';
 	import RecipePlaygroundTreeNode from '../playground-tree-node/index.svelte';
-	import type { PlaygroundComponentTreeProps } from '$stylist/playground/type/struct/playground-component-tree-props';
-	import createPlaygroundComponentTreeState from '$stylist/playground/function/state/playground-component-tree/index.svelte';
+	import { createPlaygroundComponentTreeState } from '$stylist/playground/function/state/playground-component-tree/index.svelte';
 
-	let props: PlaygroundComponentTreeProps = $props();
+	let props: RecipePlaygroundComponentTree = $props();
 	const state = createPlaygroundComponentTreeState(props);
 </script>
 
@@ -24,7 +24,7 @@
 			</p>
 		</header>
 
-		<nav class="tree-shell__nav space-y-1">
+		<nav class="tree-shell__nav">
 			{#each state.tree as categoryNode}
 				<RecipePlaygroundTreeNode
 					node={categoryNode}
@@ -101,6 +101,12 @@
 		font-size: 0.88rem;
 		line-height: 1.5;
 		color: var(--color-text-secondary);
+	}
+
+	.tree-shell__nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
 	}
 
 	.tree-container:focus {

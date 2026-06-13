@@ -1,14 +1,14 @@
-import { SkeletonCircleStyleManager } from '$stylist/notification/class/style-manager/skeleton-circle';
-import type { SkeletonCircleProps } from '$stylist/notification/type/struct/skeleton-circle-props';
+﻿import type { RecipeSkeletonCircle } from '$stylist/notification/interface/recipe/skeleton-circle';
 
-export function createSkeletonCircleState(props: SkeletonCircleProps) {
+export function createSkeletonCircleState(props: RecipeSkeletonCircle) {
 	const content = $derived(props.content);
 	const restProps = $derived.by(() => {
 		const { class: _class, size: _size, content: _content, ...rest } = props;
 		return rest;
 	});
-	const rootClass = $derived(SkeletonCircleStyleManager.root(props.class));
-	const style = $derived(SkeletonCircleStyleManager.style(props.size ?? 40));
+	const size = $derived(props.size ?? 40);
+	const rootClass = $derived(`skeleton-container variant-circular ${props.class ?? ''}`.trim());
+	const style = $derived(`width: ${size}px; height: ${size}px;`);
 
 	return {
 		get content() {
@@ -25,5 +25,3 @@ export function createSkeletonCircleState(props: SkeletonCircleProps) {
 		}
 	};
 }
-
-export default createSkeletonCircleState;

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ChartAxisYProps } from '$stylist/chart/interface/recipe/chart-axis-y-props';
+	import type { RecipeChartAxisY } from '$stylist/chart/interface/recipe/chart-axis-y';
 	import createChartAxisYState from '$stylist/chart/function/state/chart-axis-y/index.svelte';
 
-	let props: ChartAxisYProps = $props();
+	let props: RecipeChartAxisY = $props();
 	const state = createChartAxisYState(props);
 </script>
 
@@ -62,3 +62,18 @@
 		{/if}
 	{/each}
 </g>
+
+<style>
+	.c-chart-axis {
+		color: var(--color-text-secondary);
+	}
+
+	.c-chart-axis__grid {
+		opacity: var(--opacity-40);
+	}
+
+	.c-chart-axis__label {
+		fill: var(--color-text-secondary);
+		font-size: 0.75rem;
+	}
+</style>

@@ -1,4 +1,4 @@
-import type { Props } from '$stylist/file/type/struct/zip-viewer/props/-props';
+﻿import type { Props } from '$stylist/file/type/struct/zip-viewer/props/-props';
 import type { SlotZipEntry } from '$stylist/file/type/struct/zip-viewer/entry';
 import { handleDownload as handleDownloadFn } from '$stylist/file/function/script/zip-viewer-handle-download';
 import { handleEntryClick as handleEntryClickFn } from '$stylist/file/function/script/zip-viewer-handle-entry-click';
@@ -177,5 +177,3 @@ export function createZipViewerState(props: Props) {
 		toggleFolder
 	};
 }
-
-export default createZipViewerState;

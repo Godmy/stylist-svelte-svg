@@ -1,22 +1,53 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeSecureForm } from '$stylist/management/interface/recipe/secure-form';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	const Lock = 'lock';
 
-	import createSecureFormState from '$stylist/management/function/state/secure-form/index.svelte';
-	import type { SlotSecureForm as SecureFormProps } from '$stylist/form/interface/slot/secure-form';
+	import { createSecureFormState } from '$stylist/management/function/state/secure-form/index.svelte';
 
-	let props: SecureFormProps = $props();
+	let props: RecipeSecureForm = $props();
 	const state = createSecureFormState(props);
 </script>
 
 <form class={state.containerClasses} {...state.restProps}>
-	<div class="flex items-center gap-2 text-sm text-[var(--color-text-primary)]">
-		<BaseIcon name={Lock} class="h-4 w-4" /> Secure Form
+	<div class="_c1">
+		<BaseIcon name={Lock} class="_c2" /> Secure Form
 	</div>
-	<input class="w-full rounded border px-2 py-1" type="password" placeholder="Sensitive value" />
+	<input class="_c3" type="password" placeholder="Sensitive value" />
 	<input type="hidden" value={state.token} />
-	<button
-		class="rounded bg-[var(--color-primary-600)] px-3 py-1 text-[var(--color-text-inverse)]"
-		type="submit">Submit securely</button
-	>
+	<button class="_c4" type="submit">Submit securely</button>
 </form>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-primary);
+	}
+	._c2 {
+		height: 1rem;
+		width: 1rem;
+	}
+	._c3 {
+		width: 100%;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+	._c4 {
+		border-radius: 0.25rem;
+		background-color: var(--color-primary-600);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		color: var(--color-text-inverse);
+	}
+</style>

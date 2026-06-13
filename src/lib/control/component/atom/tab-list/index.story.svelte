@@ -33,9 +33,7 @@
 				<Tab id="billing">Billing</Tab>
 				<Tab id="security">Security</Tab>
 			</TabList>
-			<TabPanels
-				class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-4"
-			>
+			<TabPanels class="_c1">
 				<TabPanel id="profile">Public profile and personal details.</TabPanel>
 				<TabPanel id="billing">Payment methods and invoices.</TabPanel>
 				<TabPanel id="security">Password, sessions, and 2FA.</TabPanel>
@@ -43,3 +41,14 @@
 		</Tabs>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+</style>

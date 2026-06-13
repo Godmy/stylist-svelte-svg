@@ -1,8 +1,8 @@
-import type { BarChartRecipe } from '$stylist/chart/interface/recipe/bar-chart';
-import { BarChartStyleManager } from '$stylist/chart/class/style-manager/bar-chart';
+import type { RecipeBarChart } from '$stylist/chart/interface/recipe/bar-chart';
 import { ObjectManagerBarChart } from '$stylist/chart/class/object-manager/bar-chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createBarChartState(props: BarChartRecipe) {
+export function createBarChartState(props: RecipeBarChart) {
 	let hoveredBar = $state<number | null>(null);
 	const containerHostClass = $derived(typeof props.class === 'string' ? props.class : undefined);
 	const resolvedColorScheme = $derived(
@@ -30,21 +30,24 @@ export function createBarChartState(props: BarChartRecipe) {
 	);
 	const yAxisValues = $derived(ObjectManagerBarChart.resolveYAxisValues(calculatedMaxValue));
 
-	const containerClasses = $derived(BarChartStyleManager.getContainerClasses(containerHostClass));
-	const titleContainerClasses = $derived(BarChartStyleManager.getTitleContainerClasses());
-	const titleClasses = $derived(BarChartStyleManager.getTitleClasses());
-	const infoIconClasses = $derived(BarChartStyleManager.getInfoIconClasses());
+	const containerClasses = $derived(mergeClassNames('bar-chart', containerHostClass));
+	const titleContainerClasses = $derived('bar-chart__title-row');
+	const titleClasses = $derived('bar-chart__title');
+	const infoIconClasses = $derived('bar-chart__info-icon');
 	const chartContainerClasses = $derived(
-		BarChartStyleManager.getChartContainerClasses(props.chartClass)
+		mergeClassNames('bar-chart__chart-container', props.chartClass)
 	);
-	const svgClasses = $derived(BarChartStyleManager.getSvgClasses());
+	const svgClasses = $derived('bar-chart__svg');
 	const barClasses = $derived((isHovered: boolean) =>
-		BarChartStyleManager.getBarClasses(isHovered)
+		mergeClassNames(
+			'bar-chart__bar',
+			isHovered ? 'bar-chart__bar--hovered' : 'bar-chart__bar--idle'
+		)
 	);
-	const legendClasses = $derived(BarChartStyleManager.getLegendClasses());
-	const legendItemClasses = $derived(BarChartStyleManager.getLegendItemClasses());
-	const legendTextClasses = $derived(BarChartStyleManager.getLegendTextClasses());
-	const legendValueClasses = $derived(BarChartStyleManager.getLegendValueClasses());
+	const legendClasses = $derived('bar-chart__legend');
+	const legendItemClasses = $derived('bar-chart__legend-item');
+	const legendTextClasses = $derived('bar-chart__legend-text');
+	const legendValueClasses = $derived('bar-chart__legend-value');
 
 	function handleBarFocus(index: number) {
 		hoveredBar = index;

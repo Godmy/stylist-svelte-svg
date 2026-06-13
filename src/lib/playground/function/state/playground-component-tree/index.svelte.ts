@@ -1,4 +1,4 @@
-import type { PlaygroundComponentTreeProps } from '$stylist/playground/type/struct/playground-component-tree-props';
+﻿import type { RecipePlaygroundComponentTree } from '$stylist/playground/interface/recipe/playground-component-tree';
 import type { PlaygroundComponentTreeGroupedStories } from '$stylist/playground/type/struct/playground-component-tree-grouped-stories';
 import type { PlaygroundComponentTreeTreeNodeData } from '$stylist/playground/type/struct/playground-component-tree-tree-node-data';
 import type { PlaygroundComponentTreeStory } from '$stylist/playground/type/struct/playground-component-tree-story';
@@ -8,7 +8,7 @@ import { playgroundComponentTreeAnnotateAutoSelectable } from '$stylist/playgrou
 import { playgroundComponentTreeFindNodeByPath } from '$stylist/playground/function/script/playground-component-tree-find-node-by-path';
 import { playgroundComponentTreeSortTreeNode } from '$stylist/playground/function/script/playground-component-tree';
 
-export function createPlaygroundComponentTreeState(props: PlaygroundComponentTreeProps) {
+export function createPlaygroundComponentTreeState(props: RecipePlaygroundComponentTree) {
 	const categoryConfig: Record<string, { icon: any; color: string; bg: string; border: string }> = {
 		Atoms: {
 			icon: TOKEN_DEVELOPMENT_ICON.find((icon) => icon === 'code') ?? 'code',
@@ -247,5 +247,3 @@ export function createPlaygroundComponentTreeState(props: PlaygroundComponentTre
 		handleKeyDown
 	};
 }
-
-export default createPlaygroundComponentTreeState;

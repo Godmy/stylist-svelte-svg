@@ -1,7 +1,7 @@
-import { BadgeStyleManager } from '$stylist/information/class/style-manager/badge';
-import type { BadgeGroupRecipe } from '$stylist/information/interface/recipe/badge-group';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeBadgeGroup } from '$stylist/information/interface/recipe/badge-group';
 
-export function createBadgeGroupState(props: BadgeGroupRecipe) {
+export function createBadgeGroupState(props: RecipeBadgeGroup) {
 	const badges = $derived(props.badges ?? []);
 	const maxVisible = $derived(props.maxVisible ?? 5);
 	const showOverflow = $derived(props.showOverflow ?? true);
@@ -9,12 +9,16 @@ export function createBadgeGroupState(props: BadgeGroupRecipe) {
 	const visibleBadges = $derived(badges.slice(0, maxVisible));
 	const overflowCount = $derived(Math.max(0, badges.length - maxVisible));
 	const containerClasses = $derived(
-		BadgeStyleManager.getBadgeGroupContainerClasses(
+		mergeClassNames(
+			'flex flex-wrap items-center gap-2',
 			typeof props.class === 'string' ? props.class : ''
 		)
 	);
 	const overflowClasses = $derived(
-		BadgeStyleManager.getBadgeGroupOverflowClasses(props.overflowClass ?? '')
+		mergeClassNames(
+			'inline-flex items-center rounded-full text-xs font-medium bg-[var(--color-neutral-100)] text-[var(--color-neutral-800)] px-2.5 py-0.5',
+			props.overflowClass ?? ''
+		)
 	);
 
 	return {

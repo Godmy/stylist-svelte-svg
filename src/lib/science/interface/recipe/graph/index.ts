@@ -1,11 +1,13 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { GraphEdgeRecipe } from '$stylist/science/interface/recipe/graph-edge';
-import type { GraphNodeRecipe } from '$stylist/science/interface/recipe/graph-node';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { RecipeGraphEdge } from '$stylist/science/interface/recipe/graph-edge';
+import type { RecipeGraphNode } from '$stylist/science/interface/recipe/graph-node';
 
-export interface GraphRecipe extends StructIntersectAll<[ThemeAttributes<SVGSVGElement>]> {
-	nodes?: GraphNodeRecipe[];
-	edges?: GraphEdgeRecipe[];
+export interface RecipeGraph
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<SVGSVGElement>]> {
+	nodes?: RecipeGraphNode[];
+	edges?: RecipeGraphEdge[];
 	label?: string;
 	badge?: string | number;
 }

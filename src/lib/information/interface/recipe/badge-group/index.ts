@@ -1,8 +1,10 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { BadgeGroupItem } from '$stylist/information/interface/slot/badge-group';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface BadgeGroupRecipe extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeBadgeGroup
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	badges?: BadgeGroupItem[];
 	maxVisible?: number;
 	showOverflow?: boolean;

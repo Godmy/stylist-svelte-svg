@@ -9,7 +9,6 @@ export type {
 	TokenArchitectureShaderVertex,
 	TokenComponentType,
 	TokenConnector,
-	TokenEasing,
 	TokenFunctionalTaxonomy,
 	TokenLineType,
 	TokenMarker,
@@ -24,7 +23,6 @@ export type {
 } from './enum';
 export type { FoundationCameraState, FoundationDepth, FoundationSemanticZoomStage } from './script';
 export type {
-	ArchitectureHTMLAttributes,
 	ArchitectureScene,
 	CameraState,
 	Position2D,

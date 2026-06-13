@@ -1,4 +1,3 @@
-import { OperationsHistoryStyleManager } from '$stylist/management/class/style-manager/operations-history';
 import type { SlotOperationsHistory as OperationsHistoryProps } from '$stylist/management/interface/slot/operations-history';
 import type { Operation } from '$stylist/management/interface/slot/operation';
 import type { BehaviorOperationsHistoryEvents } from '$stylist/management/interface/behavior/operations-history-events';
@@ -21,13 +20,6 @@ export function createOperationsHistoryState(
 		)
 	);
 
-	const baseClasses = $derived(OperationsHistoryStyleManager.getBaseClasses(className));
-	const toolbarClasses = $derived(OperationsHistoryStyleManager.getToolbarClasses());
-	const searchInputClasses = $derived(OperationsHistoryStyleManager.getSearchInputClasses());
-	const resultsContainerClasses = $derived(
-		OperationsHistoryStyleManager.getResultsContainerClasses()
-	);
-
 	function handleSelect(op: Operation): void {
 		selectedOperation = op;
 		props.onSelect?.(op);
@@ -45,7 +37,9 @@ export function createOperationsHistoryState(
 	function getStatusVariant(
 		status: Operation['status']
 	): 'success' | 'danger' | 'warning' | 'default' {
-		const variant = OperationsHistoryStyleManager.getStatusBadgeVariant(status);
+		const variant = ['operations-history__TODO', status ? `operations-history__TODO--selected` : '']
+			.filter(Boolean)
+			.join(' ');
 		switch (variant) {
 			case 'success':
 				return 'success';
@@ -86,18 +80,6 @@ export function createOperationsHistoryState(
 		},
 		get filteredOperations() {
 			return filteredOperations;
-		},
-		get baseClasses() {
-			return baseClasses;
-		},
-		get toolbarClasses() {
-			return toolbarClasses;
-		},
-		get searchInputClasses() {
-			return searchInputClasses;
-		},
-		get resultsContainerClasses() {
-			return resultsContainerClasses;
 		},
 		handleSelect,
 		handleDelete,

@@ -1,9 +1,3 @@
-/**
- * DiscountApplierContract вЂ” РїСЂРёРјРµРЅРµРЅРёРµ СЃРєРёРґРѕРє Рё РїСЂРѕРјРѕРєРѕРґРѕРІ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ThemeAttributes   (theme) вЂ” class, data-variant, data-tone
- */
 import type { DiscountType } from '$stylist/commerce/type/struct/discount-type';
 
 export interface SlotDiscountRule {

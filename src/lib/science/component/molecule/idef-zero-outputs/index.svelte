@@ -23,3 +23,6 @@
 		/>
 	{/each}
 </g>
+
+<style>
+</style>

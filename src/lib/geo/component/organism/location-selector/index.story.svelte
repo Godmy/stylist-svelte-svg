@@ -96,12 +96,12 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-location-selector p-4">
-			<h1 class="mb-4 text-lg font-semibold">LocationSelector Component</h1>
+		<div class="sb-organisms-location-selector _c1">
+			<h1 class="_c2">LocationSelector Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive LocationSelector</h2>
-				<div class="mx-auto max-w-3xl">
+			<div class="_c3">
+				<h2 class="_c4">Interactive LocationSelector</h2>
+				<div class="_c5">
 					<LocationSelector
 						{locations}
 						currentView={values.currentView}
@@ -124,50 +124,50 @@
 					/>
 				</div>
 
-				<div class="mt-4 flex flex-wrap gap-2">
+				<div class="_c6">
 					<div>
-						<label for="view-type" class="mb-1 block text-sm">View Type:</label>
-						<select id="view-type" bind:value={currentView} class="rounded border p-1">
+						<label for="view-type" class="_c7">View Type:</label>
+						<select id="view-type" bind:value={currentView} class="_c8">
 							<option value="list">List</option>
 							<option value="grid">Grid</option>
 						</select>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-search" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="show-search" class="_c10">
 							<input id="show-search" type="checkbox" bind:checked={showSearch} />
 							Show Search
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-category" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="show-category" class="_c10">
 							<input id="show-category" type="checkbox" bind:checked={showCategoryFilter} />
 							Show Category Filter
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-map-toggle" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="show-map-toggle" class="_c10">
 							<input id="show-map-toggle" type="checkbox" bind:checked={showMapToggle} />
 							Show View Toggle
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-distance" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="show-distance" class="_c10">
 							<input id="show-distance" type="checkbox" bind:checked={showDistance} />
 							Show Distance
 						</label>
 					</div>
 
 					<div>
-						<label for="max-locations" class="mb-1 block text-sm">Max Locations:</label>
+						<label for="max-locations" class="_c7">Max Locations:</label>
 						<input
 							id="max-locations"
 							type="number"
 							bind:value={maxLocations}
-							class="w-16 rounded border p-1"
+							class="_c11"
 							min="1"
 							max="50"
 						/>
@@ -175,12 +175,12 @@
 				</div>
 			</div>
 
-			<div class="rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">LocationSelector Variations</h2>
-				<div class="space-y-4">
+			<div class="_c12">
+				<h2 class="_c4">LocationSelector Variations</h2>
+				<div class="_c13">
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Grid View</h3>
-						<div class="mx-auto max-w-3xl">
+						<h3 class="_c14">Grid View</h3>
+						<div class="_c5">
 							<LocationSelector
 								{locations}
 								currentView="grid"
@@ -191,8 +191,8 @@
 						</div>
 					</div>
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Without Distance</h3>
-						<div class="mx-auto max-w-3xl">
+						<h3 class="_c14">Without Distance</h3>
+						<div class="_c5">
 							<LocationSelector
 								{locations}
 								currentView="list"
@@ -207,3 +207,82 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c10 {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	._c11 {
+		width: 4rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.25rem;
+	}
+	._c12 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c13 > * + * {
+		margin-top: 1rem;
+	}
+	._c14 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 48rem;
+	}
+	._c6 {
+		margin-top: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	._c7 {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c8 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.25rem;
+	}
+	._c9 {
+		display: flex;
+		align-items: flex-end;
+	}
+</style>

@@ -1,6 +1,6 @@
-import type { PlaygroundEnhancedExportPanelProps } from '$stylist/playground/type/struct/playground-enhanced-export-panel-props';
+﻿import type { RecipePlaygroundEnhancedExportPanel } from '$stylist/playground/interface/recipe/playground-enhanced-export-panel';
 export function createPlaygroundEnhancedExportPanelState(
-	props: PlaygroundEnhancedExportPanelProps
+	props: RecipePlaygroundEnhancedExportPanel
 ) {
 	const componentName = $derived(props.componentName ?? '');
 	const svelteCode = $derived(props.svelteCode ?? '');
@@ -122,5 +122,3 @@ export function createPlaygroundEnhancedExportPanelState(
 		openInStackBlitz
 	};
 }
-
-export default createPlaygroundEnhancedExportPanelState;

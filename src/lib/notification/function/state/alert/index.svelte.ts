@@ -1,7 +1,7 @@
-import type { AlertProps } from '$stylist/notification/type/struct/alert-props/alert-props';
+﻿import type { RecipeAlert } from '$stylist/notification/interface/recipe/alert';
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 
-export function createAlertState(props: AlertProps) {
+export function createAlertState(props: RecipeAlert) {
 	const iconMap = {
 		info: 'info',
 		success: 'check-circle',
@@ -73,5 +73,3 @@ export function createAlertState(props: AlertProps) {
 		handleClose
 	};
 }
-
-export default createAlertState;

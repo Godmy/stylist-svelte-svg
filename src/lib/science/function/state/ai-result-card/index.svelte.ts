@@ -1,18 +1,11 @@
 import type { RecipeAiResultCard as AiResultCardContract } from '$stylist/science/interface/recipe/ai-result-card';
-import { AiResultCardStyleManager } from '$stylist/science/class/style-manager/ai-result-card';
 
 export function createAiResultCardState(props: AiResultCardContract) {
 	const title = $derived(props.title ?? '');
 	const description = $derived(props.description ?? '');
 	const icon = $derived(props.icon ?? '');
 	const children = $derived(props.children);
-	const containerClass = $derived(AiResultCardStyleManager.getContainerClass(props.class ?? ''));
-	const contentWrapperClass = $derived(AiResultCardStyleManager.getContentWrapperClass());
-	const iconContainerClass = $derived(AiResultCardStyleManager.getIconContainerClass());
-	const iconClass = $derived(AiResultCardStyleManager.getIconClass());
-	const textContentWrapperClass = $derived(AiResultCardStyleManager.getTextContentWrapperClass());
-	const titleClass = $derived(AiResultCardStyleManager.getTitleClass());
-	const descriptionClass = $derived(AiResultCardStyleManager.getDescriptionClass());
+	const containerClass = $derived(props.class ? `ai-result-card ${props.class}` : 'ai-result-card');
 
 	return {
 		get title() {
@@ -31,22 +24,22 @@ export function createAiResultCardState(props: AiResultCardContract) {
 			return containerClass;
 		},
 		get contentWrapperClass() {
-			return contentWrapperClass;
+			return 'ai-result-card__content';
 		},
 		get iconContainerClass() {
-			return iconContainerClass;
+			return 'ai-result-card__icon';
 		},
 		get iconClass() {
-			return iconClass;
+			return 'ai-result-card__icon-img';
 		},
 		get textContentWrapperClass() {
-			return textContentWrapperClass;
+			return 'ai-result-card__text';
 		},
 		get titleClass() {
-			return titleClass;
+			return 'ai-result-card__title';
 		},
 		get descriptionClass() {
-			return descriptionClass;
+			return 'ai-result-card__description';
 		}
 	};
 }

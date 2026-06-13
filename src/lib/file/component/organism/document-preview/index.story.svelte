@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import { DocumentPreviewStyleManager } from '$stylist/chat/class/style-manager/document-preview-style-manager';
 	import DocumentPreview from './index.svelte';
 
 	type Props = {
@@ -71,15 +70,48 @@ This is a **markdown** document.
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class={DocumentPreviewStyleManager.root('sb-organisms-document-preview p-4')}>
-			<h1 class="mb-4 text-lg font-semibold">DocumentPreview Component</h1>
+		<div class="sb-organisms-document-preview _c1">
+			<h1 class="_c2">DocumentPreview Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive DocumentPreview</h2>
-				<div class="max-w-3xl">
+			<div class="_c3">
+				<h2 class="_c4">Interactive DocumentPreview</h2>
+				<div class="_c5">
 					<DocumentPreview content={getContentByFormat(values.format)} format={values.format} />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 48rem;
+	}
+</style>

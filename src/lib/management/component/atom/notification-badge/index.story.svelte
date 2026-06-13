@@ -55,27 +55,60 @@
 		{@const maxCount = typeof storyProps.maxCount === 'number' ? storyProps.maxCount : 99}
 		{@const marker = storyProps.marker ?? 'number'}
 		{@const appearance = storyProps.appearance ?? 'danger'}
-		<div class="p-6">
-			<h2 class="mb-6 text-xl font-semibold">Notification Badge</h2>
-			<div class="flex items-center justify-center space-x-8">
-				<div class="relative">
-					<div
-						class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-background-tertiary)]"
-					>
-						Icon
-					</div>
+		<div class="_c1">
+			<h2 class="_c2">Notification Badge</h2>
+			<div class="_c3">
+				<div class="_c4">
+					<div class="_c5">Icon</div>
 					<NotificationBadge {count} {maxCount} {marker} {appearance} />
 				</div>
 
-				<div class="relative">
-					<div
-						class="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-background-tertiary)]"
-					>
-						Button
-					</div>
+				<div class="_c4">
+					<div class="_c6">Button</div>
 					<NotificationBadge {count} {maxCount} marker="dot" appearance="danger" />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	._c3 > * + * {
+		margin-left: 2rem;
+	}
+	._c4 {
+		position: relative;
+	}
+	._c5 {
+		display: flex;
+		height: 2.5rem;
+		width: 2.5rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background-color: var(--color-background-tertiary);
+	}
+	._c6 {
+		display: flex;
+		height: 3rem;
+		width: 3rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.5rem;
+		background-color: var(--color-background-tertiary);
+	}
+</style>

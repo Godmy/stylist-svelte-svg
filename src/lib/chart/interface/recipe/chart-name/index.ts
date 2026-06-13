@@ -1,13 +1,15 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 /**
- * ChartName — название графика..
+ * ChartName РІР‚вЂќ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ Р С–РЎР‚Р В°РЎвЂћР С‘Р С”Р В°..
  *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
  */
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface ChartNameRecipe extends StructIntersectAll<[ThemeAttributes<HTMLHeadingElement>]> {
+export interface RecipeChartName
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLHeadingElement>]> {
 	label?: string;
 	text?: string;
 	x?: number;

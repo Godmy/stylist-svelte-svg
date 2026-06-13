@@ -1,50 +1,58 @@
 <script lang="ts">
+	import type { RecipeBurgerMenu } from '$stylist/control/interface/recipe/burger-menu';
 	import createBurgerMenuState from '$stylist/control/function/state/burger-menu/index.svelte';
-	import type { BurgerMenuProps } from '$stylist/control/type/struct/burger-menu-props';
 
-	let props: BurgerMenuProps = $props();
+	let props: RecipeBurgerMenu = $props();
 	const state = createBurgerMenuState(props);
-
-	const restProps = $derived.by(() => {
-		const {
-			class: _class,
-			open: _open,
-			size: _size,
-			color: _color,
-			activeColor: _activeColor,
-			onValueInput: _onValueInput,
-			onValueChange: _onValueChange,
-			onClick: _onClick,
-			...rest
-		} = props;
-		return rest;
-	});
 </script>
 
 <button
-	class={state.containerClasses}
+	class="c-burger-menu"
+	data-open={state.open || undefined}
+	type="button"
 	aria-label={state.ariaLabel}
 	aria-expanded={state.open}
-	tabindex="0"
-	onclick={state.handleClick}
-	{...restProps}
+	onclick={state.toggle}
+	{...state.restProps}
 >
-	<div class={state.iconClasses} role="img" aria-label="Menu toggle icon">
-		<!-- Hamburger lines -->
-		<span
-			class={state.lineClasses}
-			style={`top: calc(50% - 6px); background-color: ${state.open ? state.activeColor : state.color}; transform: ${state.open ? 'rotate(45deg) translate(0, 0)' : 'rotate(0) translate(0, 0)'};`}
-			aria-hidden="true"
-		></span>
-		<span
-			class={`${state.lineClasses} ${state.open ? 'opacity-[var(--opacity-0)]' : 'opacity-[var(--opacity-100)]'}`}
-			style={`top: 50%; transform: translateY(-50%); background-color: ${state.color};`}
-			aria-hidden="true"
-		></span>
-		<span
-			class={state.lineClasses}
-			style={`top: calc(50% + 6px); background-color: ${state.open ? state.activeColor : state.color}; transform: ${state.open ? 'rotate(-45deg) translate(0, 0)' : 'rotate(0) translate(0, 0)'};`}
-			aria-hidden="true"
-		></span>
-	</div>
+	<span class="c-burger-menu__bar"></span>
+	<span class="c-burger-menu__bar"></span>
+	<span class="c-burger-menu__bar"></span>
 </button>
+
+<style>
+	.c-burger-menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 1.5rem;
+		height: 1.125rem;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+	}
+
+	.c-burger-menu__bar {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: var(--color-text-primary);
+		border-radius: 1px;
+		transition:
+			transform var(--duration-200, 200ms),
+			opacity var(--duration-200, 200ms);
+	}
+
+	.c-burger-menu[data-open] .c-burger-menu__bar:nth-child(1) {
+		transform: translateY(0.5625rem) rotate(45deg);
+	}
+
+	.c-burger-menu[data-open] .c-burger-menu__bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.c-burger-menu[data-open] .c-burger-menu__bar:nth-child(3) {
+		transform: translateY(-0.5625rem) rotate(-45deg);
+	}
+</style>

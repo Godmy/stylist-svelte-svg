@@ -21,7 +21,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-3 rounded-xl bg-gray-50 p-6">
+		<div class="_c1">
 			<RecipePrivacySettings
 				settings={[
 					{
@@ -45,7 +45,23 @@
 				]}
 				onSave={() => (saveCount += 1)}
 			/>
-			<p class="text-sm text-gray-600">Saved: {saveCount} times</p>
+			<p class="_c2">Saved: {saveCount} times</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: #f9fafb;
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #4b5563;
+	}
+</style>

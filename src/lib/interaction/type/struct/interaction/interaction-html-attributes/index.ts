@@ -1,9 +1,9 @@
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { InteractionIntent } from '../interaction-intent';
 import type { InteractionFeedback } from '../interaction-feedback';
 
 export type InteractionHTMLAttributes<T extends HTMLElement = HTMLDivElement> =
-	ThemeAttributes<T> & {
+	HTMLAttributes<T> & {
 		interactionIntent?: InteractionIntent;
 		interactionFeedback?: InteractionFeedback;
 		interactionDelay?: number;

@@ -1,8 +1,8 @@
-<script lang="ts">
-	import createErrorMessageState from '$stylist/notification/function/state/error-message/index.svelte';
-	import type { SlotErrorMessage as ErrorMessageProps } from '$stylist/notification/interface/slot/error-message-error-message';
+﻿<script lang="ts">
+	import type { RecipeErrorMessage } from '$stylist/notification/interface/recipe/error-message';
+	import { createErrorMessageState } from '$stylist/notification/function/state/error-message/index.svelte';
 
-	let props: ErrorMessageProps = $props();
+	let props: RecipeErrorMessage = $props();
 
 	const state = createErrorMessageState(props);
 
@@ -34,3 +34,45 @@
 		{/if}
 	</div>
 {/if}
+
+<style>
+	.error-message {
+		border-radius: var(--border-radius-large, 0.5rem);
+		border: 1px solid var(--color-danger-200);
+		background-color: var(--color-danger-50);
+		padding: 1rem;
+		color: var(--color-danger-900);
+	}
+
+	.error-message__title {
+		font-size: 0.875rem;
+		font-weight: 600;
+	}
+
+	.error-message__text {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+	}
+
+	.error-message__actions {
+		margin-top: 0.75rem;
+	}
+
+	.error-message__retry-btn {
+		display: inline-flex;
+		align-items: center;
+		border-radius: var(--border-radius-base, 0.375rem);
+		background-color: var(--color-danger-600);
+		padding: 0.375rem 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-inverse);
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.15s ease;
+	}
+
+	.error-message__retry-btn:hover {
+		background-color: var(--color-danger-700);
+	}
+</style>

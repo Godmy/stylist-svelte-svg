@@ -1,4 +1,3 @@
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 import createInputTextState from '$stylist/input/function/state/input-text/index.svelte';
 import type { SlotInputLong as IInputLongProps } from '$stylist/input/interface/slot/input-long';
 
@@ -49,19 +48,19 @@ export const createInputLongState = (props: IInputLongProps) => {
 			return inputState.classes;
 		},
 		get containerClasses() {
-			return InputStyleManager.getContainerClass('');
+			return 'input-field-container';
 		},
 		get labelClasses() {
-			return InputStyleManager.getLabelClass('');
+			return 'input-field-label';
 		},
 		get helperTextClasses() {
-			return InputStyleManager.getHelperTextClass('');
+			return 'input-field-helper-text';
 		},
 		get errorTextClasses() {
-			return InputStyleManager.getErrorTextClass('');
+			return 'input-field-error-text';
 		},
 		get requiredIndicatorClasses() {
-			return InputStyleManager.getRequiredIndicatorClass('');
+			return 'input-field-required';
 		},
 		get showHelper() {
 			return showHelper;

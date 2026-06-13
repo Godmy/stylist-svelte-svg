@@ -1,15 +1,15 @@
-<script lang="ts">
-	import type { StylistProps } from '$stylist/development/type/struct/stylist-props';
+﻿<script lang="ts">
+	import type { RecipeStylist } from '$stylist/development/interface/recipe/stylist';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Tooltip from '$stylist/control/component/atom/tooltip/index.svelte';
 	import { categories } from '$stylist/development/const/record/stylist-categories';
-	import createStylistState from '$stylist/development/function/state/stylist/index.svelte';
+	import { createStylistState } from '$stylist/development/function/state/stylist/index.svelte';
 	import { panelId } from '$stylist/development/const/stylist/panel-id';
 
 	const Sparkles = 'sparkles';
 	const X = 'x';
 
-	let props: StylistProps = $props();
+	let props: RecipeStylist = $props();
 	const state = createStylistState(props);
 	let rootElement: HTMLElement;
 
@@ -37,7 +37,7 @@
 		type="button"
 		class:is-open={state.isOpen}
 		class="stylist-trigger"
-		aria-label="Открыть RecipeStylist"
+		aria-label="РћС‚РєСЂС‹С‚СЊ RecipeStylist"
 		aria-haspopup="dialog"
 		aria-expanded={state.isOpen}
 		aria-controls={panelId}
@@ -55,12 +55,12 @@
 			<div class="panel-header">
 				<div>
 					<p class="eyebrow">RecipeStylist</p>
-					<h3>Группа дополнительных настроек</h3>
+					<h3>Р“СЂСѓРїРїР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РЅР°СЃС‚СЂРѕРµРє</h3>
 				</div>
 				<button
 					type="button"
 					class="close-button"
-					aria-label="Закрыть RecipeStylist"
+					aria-label="Р—Р°РєСЂС‹С‚СЊ RecipeStylist"
 					onclick={state.closePanel}
 				>
 					<BaseIcon name={X} class="close-icon" />
@@ -68,11 +68,12 @@
 			</div>
 
 			<p class="panel-copy">
-				Выберите категорию свойств, затем уточняющую иконку. Компонент хранит выбор по каждой группе
-				отдельно.
+				Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ СЃРІРѕР№СЃС‚РІ, Р·Р°С‚РµРј СѓС‚РѕС‡РЅСЏСЋС‰СѓСЋ
+				РёРєРѕРЅРєСѓ. РљРѕРјРїРѕРЅРµРЅС‚ С…СЂР°РЅРёС‚ РІС‹Р±РѕСЂ РїРѕ РєР°Р¶РґРѕР№ РіСЂСѓРїРїРµ
+				РѕС‚РґРµР»СЊРЅРѕ.
 			</p>
 
-			<div class="category-list" role="tablist" aria-label="Категории RecipeStylist">
+			<div class="category-list" role="tablist" aria-label="РљР°С‚РµРіРѕСЂРёРё RecipeStylist">
 				{#each categories as category}
 					<button
 						type="button"
@@ -97,7 +98,7 @@
 			<section class="option-section" style={`--option-accent: ${state.activeCategory.accent};`}>
 				<div class="section-heading">
 					<div>
-						<p class="eyebrow">Активная группа</p>
+						<p class="eyebrow">РђРєС‚РёРІРЅР°СЏ РіСЂСѓРїРїР°</p>
 						<h4>{state.activeCategory.label}</h4>
 					</div>
 					<span class="section-pill">{state.activeOption.label}</span>
@@ -131,8 +132,8 @@
 			<section class="selection-summary">
 				<div class="section-heading compact">
 					<div>
-						<p class="eyebrow">Текущие решения</p>
-						<h4>Снимок выбора</h4>
+						<p class="eyebrow">РўРµРєСѓС‰РёРµ СЂРµС€РµРЅРёСЏ</p>
+						<h4>РЎРЅРёРјРѕРє РІС‹Р±РѕСЂР°</h4>
 					</div>
 				</div>
 

@@ -14,7 +14,7 @@
 	 * (РёРєРѕРЅРєР°, С‚РµРєСЃС‚, СЃС‚СЂРµР»РєР°) РІ СЃРѕСЃС‚Р°РІРЅРѕР№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РЅР°РІРёРіР°С†РёРё
 	 */
 
-	import type { LinkCardRecipe as LinkCardRecipe } from '$stylist/commerce/interface/recipe/link-card';
+	import type { RecipeLinkCard as RecipeLinkCard } from '$stylist/commerce/interface/recipe/link-card';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import { ObjectManagerLinkCard } from '$stylist/commerce/class/object-manager/link-card';
 	import createLinkCardState from '$stylist/commerce/function/state/link-card/index.svelte';
@@ -28,7 +28,7 @@
 		icon,
 		showArrow = true,
 		class: className = ''
-	}: LinkCardRecipe = $props();
+	}: RecipeLinkCard = $props();
 
 	// Р’С‹С‡РёСЃР»СЏРµРјС‹Рµ СЃС‚РёР»Рё С‡РµСЂРµР· derived РґР»СЏ РёР·РѕР»СЏС†РёРё Р»РѕРіРёРєРё СЃС‚РёР»РёР·Р°С†РёРё
 	const state = createLinkCardState({
@@ -47,29 +47,86 @@
 	// РћРїСЂРµРґРµР»СЏРµРј rel РґР»СЏ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РїСЂРё newTab
 </script>
 
-<a
-	{href}
-	target={state.target}
-	rel={state.rel}
-	class={state.containerClasses}
-	aria-label={state.ariaLabel}
->
-	<div class={state.contentClasses}>
+<a {href} target={state.target} rel={state.rel} class="link-card" aria-label={state.ariaLabel}>
+	<div class="link-card__content">
 		{#if icon}
-			<div class={state.iconContainerClasses} aria-hidden="true">
-				<span class={state.iconClasses}>{icon}</span>
+			<div class="link-card__icon-container" aria-hidden="true">
+				<span class="link-card__icon">{icon}</span>
 			</div>
 		{/if}
 
-		<div class={state.textContainerClasses}>
-			<h3 class={state.titleClasses}>{title}</h3>
+		<div class="link-card__text-container">
+			<h3 class="link-card__title">{title}</h3>
 			{#if description}
-				<p class={state.descriptionClasses}>{description}</p>
+				<p class="link-card__description">{description}</p>
 			{/if}
 		</div>
 
 		{#if showArrow}
-			<Icon name={ObjectManagerLinkCard.arrowIcon} class={state.arrowClasses} aria-hidden="true" />
+			<Icon name={ObjectManagerLinkCard.arrowIcon} class="link-card__arrow" aria-hidden="true" />
 		{/if}
 	</div>
 </a>
+
+<style>
+	.link-card {
+		display: block;
+		padding: 1.5rem;
+		transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		overflow: hidden;
+	}
+
+	.link-card__content {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.link-card__icon-container {
+		margin-right: 1rem;
+		margin-top: 0.125rem;
+		flex-shrink: 0;
+	}
+
+	.link-card__icon {
+		height: 1.5rem;
+		width: 1.5rem;
+		color: var(--color-text-tertiary);
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+	}
+
+	.link-card__text-container {
+		min-width: 0;
+		flex: 1 1 0%;
+	}
+
+	.link-card__title {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+	}
+
+	.link-card__description {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.link-card__arrow {
+		margin-left: 0.5rem;
+		flex-shrink: 0;
+		color: var(--color-text-tertiary);
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+	}
+</style>

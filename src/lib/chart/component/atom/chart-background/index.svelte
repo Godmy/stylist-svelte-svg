@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ChartBackgroundProps } from '$stylist/chart/interface/recipe/chart-background-props';
+	import type { RecipeChartBackground } from '$stylist/chart/interface/recipe/chart-background';
 	import createChartBackgroundState from '$stylist/chart/function/state/chart-background/index.svelte';
 
-	let props: ChartBackgroundProps = $props();
+	let props: RecipeChartBackground = $props();
 	const state = createChartBackgroundState(props);
 </script>
 
@@ -18,3 +18,10 @@
 	stroke={props.stroke ?? 'var(--color-border-primary)'}
 	stroke-width="1"
 />
+
+<style>
+	.c-chart-background {
+		fill: var(--color-background-secondary);
+		stroke: var(--color-border-primary);
+	}
+</style>

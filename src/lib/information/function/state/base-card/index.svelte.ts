@@ -1,6 +1,6 @@
-import type { BaseCardProps } from '$stylist/information/type/struct/base-card-props';
+﻿import type { RecipeBaseCard } from '$stylist/information/interface/recipe/base-card';
 
-export function createBaseCardState(props: BaseCardProps) {
+export function createBaseCardState(props: RecipeBaseCard) {
 	const containerClasses = $derived(
 		`base-card rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] ${props.class ?? ''}`.trim()
 	);
@@ -25,5 +25,3 @@ export function createBaseCardState(props: BaseCardProps) {
 		}
 	};
 }
-
-export default createBaseCardState;

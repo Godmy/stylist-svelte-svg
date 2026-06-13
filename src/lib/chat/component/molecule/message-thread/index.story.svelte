@@ -41,14 +41,34 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="h-96 space-y-3 rounded-xl bg-[var(--color-background-secondary)] p-4">
+		<div class="_c1">
 			<MessageThread
 				title={args.title}
 				messages={allMessages.slice(0, args.messageCount)}
 				loading={args.loading}
-				class="h-[320px]"
+				class="_c2"
 			/>
-			<p class="text-sm text-[var(--color-text-secondary)]">Last action: {lastAction}</p>
+			<p class="_c3">Last action: {lastAction}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 24rem;
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		height: 320px;
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

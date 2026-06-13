@@ -92,7 +92,7 @@
 				id="layout-select"
 				label="Select Layout"
 				value={state.currentLayout}
-				oninput={(e) => handleLayoutChange(e, state, onFilterChange)}
+				oninput={(event: Event) => handleLayoutChange(event, state, onFilterChange)}
 				options={[
 					{ value: 'force-directed', label: 'Force Directed' },
 					{ value: 'hierarchical', label: 'Hierarchical' },

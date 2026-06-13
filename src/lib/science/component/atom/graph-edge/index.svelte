@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { GraphEdgeRecipe } from '$stylist/science/interface/recipe/graph-edge';
+	import type { RecipeGraphEdge } from '$stylist/science/interface/recipe/graph-edge';
 	import createGraphEdgeState from '$stylist/science/function/state/graph-edge/index.svelte';
 
-	let props: GraphEdgeRecipe & { fromNodeId: string; toNodeId: string; label?: string } = $props();
+	let props: RecipeGraphEdge & { fromNodeId: string; toNodeId: string; label?: string } = $props();
 
 	const state = createGraphEdgeState(props);
 	const fromNodeId = $derived(props.fromNodeId);

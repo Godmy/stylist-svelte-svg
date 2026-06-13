@@ -13,7 +13,13 @@
 	component={CodeEditor}
 	category="Molecules/Development"
 >
-	{#snippet children()}<div class="p-4">
+	{#snippet children()}<div class="_c1">
 			<CodeEditor code={sample} language="javascript" />
 		</div>{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

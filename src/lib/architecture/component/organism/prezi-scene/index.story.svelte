@@ -197,7 +197,7 @@
 						onNodeSelect={(node) => {
 							selectedNodeId = node?.id ?? null;
 						}}
-						class="h-[42rem] rounded-[1.5rem]"
+						class="_c1"
 					/>
 				</div>
 			</section>
@@ -615,5 +615,10 @@
 		.viewport-shell {
 			height: 980px;
 		}
+	}
+
+	._c1 {
+		height: 42rem;
+		border-radius: 1.5rem;
 	}
 </style>

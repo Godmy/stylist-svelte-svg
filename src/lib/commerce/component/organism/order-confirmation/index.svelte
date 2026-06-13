@@ -1,273 +1,492 @@
 <script lang="ts">
-	import type { OrderConfirmationProps as Props } from '$stylist/commerce/type/struct/order-confirmation-props';
-	import createOrderConfirmationState from '$stylist/commerce/function/state/order-confirmation/index.svelte';
+	import type { RecipeOrderConfirmation } from '$stylist/commerce/interface/recipe/order-confirmation';
+	import { PresetOrderConfirmation } from '$stylist/commerce/const/preset/order-confirmation';
+	import { createOrderConfirmationState } from '$stylist/commerce/function/state/order-confirmation/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import { OrderConfirmationStyleManager } from '$stylist/commerce/class/style-manager/order-confirmation';
+	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 
-	const CheckCircle = 'check-circle';
-	const Package = 'package';
-	const Truck = 'truck';
-	const Calendar = 'calendar';
-	const CreditCard = 'credit-card';
-	const MapPin = 'map-pin';
-	const User = 'user';
-	const Mail = 'mail';
-	const Phone = 'phone';
-	const Download = 'download';
-	const Share2 = 'share-2';
-	const Home = 'home';
-	const X = 'x';
-
-	let props: Props = $props();
+	let props: RecipeOrderConfirmation = $props();
 	const state = createOrderConfirmationState(props);
 </script>
 
-<div
-	class={`c-order-confirmation ${OrderConfirmationStyleManager.getBaseClasses(props.class ?? '')}`}
-	{...props}
->
-	<div class={OrderConfirmationStyleManager.getContainerClasses()}>
-		<div class="text-center">
-			<div class="flex justify-center">
-				<div class="flex h-16 w-16 items-center justify-center rounded-full bg-[--color-green-100]">
-					<BaseIcon name={CheckCircle} class="h-10 w-10 text-[--color-green-600]" />
-				</div>
-			</div>
-
-			<h1 class={OrderConfirmationStyleManager.getHeaderClasses(props.headerClass ?? '')}>
-				Thank you for your order!
-			</h1>
-
-			<p class="mt-4 text-[--color-gray-600]">
-				Your order <span class="font-medium">#{props.orderId}</span> has been confirmed and is being
-				processed
-			</p>
+<div class={state.containerClass}>
+	<div class={state.successClass}>
+		<div class={state.successIconWrapClass}>
+			<Icon name={PresetOrderConfirmation.CheckCircle} class={state.successIconClass} />
 		</div>
 
-		<div class="mt-12">
-			<div class={OrderConfirmationStyleManager.getOrderContainerClasses()}>
-				<div class={OrderConfirmationStyleManager.getOrderHeaderClasses()}>
-					<div class="flex flex-wrap items-center justify-between gap-4">
-						<h3 class="text-lg leading-6 font-medium text-[--color-gray-900]">
-							SlotOrder #{props.orderId}
-						</h3>
+		<h1 class={state.headerClass}>Thank you for your order!</h1>
 
-						<span
-							class={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${state.orderStatusConfig.color}`}
-						>
-							<BaseIcon name={state.orderStatusConfig.icon} class="mr-1 h-4 w-4" />
-							{state.orderStatusConfig.text}
-						</span>
-					</div>
+		<p class={state.leadClass}>
+			Your order <span class={state.orderIdClass}>#{props.orderId}</span> has been confirmed and is being
+			processed.
+		</p>
+	</div>
 
-					<p class="mt-1 text-sm text-[--color-gray-500]">
-						Placed on {state.formattedOrderDate}
-					</p>
+	<div class={state.bodyClass}>
+		<div class={state.orderContainerClass}>
+			<div class={state.orderHeaderClass}>
+				<div class={state.orderHeaderRowClass}>
+					<h3 class={state.orderTitleClass}>Order #{props.orderId}</h3>
+
+					<span class={state.statusBadgeClass}>
+						<Icon name={state.statusIcon} class={state.statusIconClass} />
+						{state.statusText}
+					</span>
 				</div>
 
-				<div class={OrderConfirmationStyleManager.getOrderContentClasses()}>
-					<div class={OrderConfirmationStyleManager.getMainGridClasses()}>
-						<!-- SlotOrder items -->
-						<div class="md:col-span-2">
-							<h4 class="text-md mb-4 font-medium text-[--color-gray-900]">SlotOrder Items</h4>
+				<p class={state.mutedClass}>Placed on {state.formattedOrderDate}</p>
+			</div>
 
-							<div class="space-y-4">
-								{#each props.items as item}
-									<div class="flex items-center">
-										{#if item.thumbnail}
-											<img
-												src={item.thumbnail}
-												alt={item.name}
-												class="h-16 w-16 flex-shrink-0 rounded-md object-cover object-center"
-											/>
+			<div class={state.contentClass}>
+				<div class={state.mainGridClass}>
+					<div class={state.itemsSectionClass}>
+						<h4 class={state.sectionTitleClass}>Order Items</h4>
+
+						<div class={state.itemListClass}>
+							{#each props.items as item}
+								<div class={state.itemClass}>
+									{#if item.thumbnail}
+										<img src={item.thumbnail} alt={item.name} class={state.thumbnailClass} />
+									{/if}
+
+									<div class={state.itemBodyClass}>
+										<div class={state.itemRowClass}>
+											<h5 class={state.itemNameClass}>{item.name}</h5>
+											<p class={state.itemNameClass}>
+												{state.formatCurrency(item.price * item.quantity)}
+											</p>
+										</div>
+
+										{#if item.variant}
+											<p class={state.mutedClass}>{item.variant}</p>
 										{/if}
 
-										<div class="ml-4 flex-1">
-											<div class="flex items-baseline justify-between">
-												<h5 class="text-sm font-medium text-[--color-gray-900]">{item.name}</h5>
-												<p class="text-sm font-medium text-[--color-gray-900]">
-													{new Intl.NumberFormat(props.locale ?? 'en-US', {
-														style: 'currency',
-														currency: props.currency ?? 'USD'
-													}).format(item.price * item.quantity)}
-												</p>
-											</div>
-
-											{#if item.variant}
-												<p class="mt-1 text-sm text-[--color-gray-500]">{item.variant}</p>
-											{/if}
-
-											<p class="mt-1 text-sm text-[--color-gray-500]">Qty: {item.quantity}</p>
-										</div>
+										<p class={state.mutedClass}>Qty: {item.quantity}</p>
 									</div>
-								{/each}
-							</div>
-						</div>
-
-						<!-- SlotOrder summary -->
-						<div
-							class={OrderConfirmationStyleManager.getOrderDetailsClasses(props.summaryClass ?? '')}
-						>
-							<h4 class="text-md mb-4 font-medium text-[--color-gray-900]">SlotOrder Summary</h4>
-
-							<div class="space-y-3">
-								<div class="flex justify-between text-sm text-[--color-gray-600]">
-									<dt>Subtotal</dt>
-									<dd>{state.formattedSubtotal}</dd>
 								</div>
-
-								<div class="flex justify-between text-sm text-[--color-gray-600]">
-									<dt>Shipping</dt>
-									<dd>{state.formattedShipping}</dd>
-								</div>
-
-								<div class="flex justify-between text-sm text-[--color-gray-600]">
-									<dt>Tax</dt>
-									<dd>{state.formattedTax}</dd>
-								</div>
-
-								<div
-									class="flex justify-between border-t border-[--color-gray-200] pt-3 text-base font-medium text-[--color-gray-900]"
-								>
-									<dt>Total</dt>
-									<dd>{state.formattedTotal}</dd>
-								</div>
-							</div>
+							{/each}
 						</div>
 					</div>
 
-					<!-- Shipping and payment info -->
-					<div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-						<!-- Shipping address -->
-						<div>
-							<h4 class="text-md mb-4 flex items-center font-medium text-[--color-gray-900]">
-								<BaseIcon name={MapPin} class="mr-2 h-4 w-4" />
-								Shipping Address
-							</h4>
+					<div class={state.summaryClass}>
+						<h4 class={state.sectionTitleClass}>Order Summary</h4>
 
-							<div
-								class={OrderConfirmationStyleManager.getShippingAddressClasses(
-									props.addressClass ?? ''
-								)}
-							>
-								<p class="text-sm text-[--color-gray-900]">
-									{props.shippingAddress.firstName}
-									{props.shippingAddress.lastName}
-								</p>
-								<p class="text-sm text-[--color-gray-900]">{props.shippingAddress.address1}</p>
-								{#if props.shippingAddress.address2}
-									<p class="text-sm text-[--color-gray-900]">{props.shippingAddress.address2}</p>
-								{/if}
-								<p class="text-sm text-[--color-gray-900]">
-									{props.shippingAddress.city}, {props.shippingAddress.state}
-									{props.shippingAddress.zipCode}
-								</p>
-								<p class="text-sm text-[--color-gray-900]">{props.shippingAddress.country}</p>
+						<dl class={state.summaryRowsClass}>
+							<div class={state.summaryRowClass}>
+								<dt>Subtotal</dt>
+								<dd>{state.formattedSubtotal}</dd>
 							</div>
+
+							<div class={state.summaryRowClass}>
+								<dt>Shipping</dt>
+								<dd>{state.formattedShipping}</dd>
+							</div>
+
+							<div class={state.summaryRowClass}>
+								<dt>Tax</dt>
+								<dd>{state.formattedTax}</dd>
+							</div>
+
+							<div class={state.totalRowClass}>
+								<dt>Total</dt>
+								<dd>{state.formattedTotal}</dd>
+							</div>
+						</dl>
+					</div>
+				</div>
+
+				<div class={state.infoGridClass}>
+					<div>
+						<h4 class={state.infoTitleClass}>
+							<Icon name={PresetOrderConfirmation.MapPin} class={state.infoIconClass} />
+							Shipping Address
+						</h4>
+
+						<div class={state.addressClass}>
+							<p>{props.shippingAddress.firstName} {props.shippingAddress.lastName}</p>
+							<p>{props.shippingAddress.address1}</p>
+							{#if props.shippingAddress.address2}
+								<p>{props.shippingAddress.address2}</p>
+							{/if}
+							<p>
+								{props.shippingAddress.city}, {props.shippingAddress.state}
+								{props.shippingAddress.zipCode}
+							</p>
+							<p>{props.shippingAddress.country}</p>
 						</div>
+					</div>
 
-						<!-- Payment and delivery info -->
-						<div>
-							<h4 class="text-md mb-4 flex items-center font-medium text-[--color-gray-900]">
-								<BaseIcon name={CreditCard} class="mr-2 h-4 w-4" />
-								Payment & Delivery
-							</h4>
+					<div>
+						<h4 class={state.infoTitleClass}>
+							<Icon name={PresetOrderConfirmation.CreditCard} class={state.infoIconClass} />
+							Payment & Delivery
+						</h4>
 
-							<div class="space-y-3">
-								<div class="flex items-start">
-									<BaseIcon
-										name={CreditCard}
-										class="mt-0.5 h-5 w-5 flex-shrink-0 text-[--color-gray-400]"
-									/>
-									<div class="ml-3">
-										<p class="text-sm font-medium text-[--color-gray-900] capitalize">
-											{props.paymentInfo.method}
-										</p>
-										{#if props.paymentInfo.lastFour}
-											<p class="text-sm text-[--color-gray-500]">
-												Ending in {props.paymentInfo.lastFour}
-											</p>
-										{/if}
-										<span
-											class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-												props.paymentInfo.status === 'paid'
-													? OrderConfirmationStyleManager.getPaymentStatusClasses('paid')
-													: props.paymentInfo.status === 'pending'
-														? OrderConfirmationStyleManager.getPaymentStatusClasses('pending')
-														: OrderConfirmationStyleManager.getPaymentStatusClasses('failed')
-											}`}
-										>
-											{props.paymentInfo.status === 'paid'
-												? 'Paid'
-												: props.paymentInfo.status === 'pending'
-													? 'Pending'
-													: 'Failed'}
-										</span>
+						<div class={state.infoStackClass}>
+							<div class={state.infoRowClass}>
+								<Icon name={PresetOrderConfirmation.CreditCard} class={state.infoRowIconClass} />
+								<div class={state.infoRowBodyClass}>
+									<p class={state.strongTextClass}>{props.paymentInfo.method}</p>
+									{#if props.paymentInfo.lastFour}
+										<p class={state.mutedClass}>Ending in {props.paymentInfo.lastFour}</p>
+									{/if}
+									<span class={state.paymentStatusBadgeClass}>
+										{state.getPaymentStatusText(props.paymentInfo.status)}
+									</span>
+								</div>
+							</div>
+
+							{#if props.estimatedDelivery}
+								<div class={state.infoRowClass}>
+									<Icon name={PresetOrderConfirmation.Calendar} class={state.infoRowIconClass} />
+									<div class={state.infoRowBodyClass}>
+										<p class={state.strongTextClass}>Estimated Delivery</p>
+										<p class={state.mutedClass}>{state.formattedEstimatedDelivery}</p>
 									</div>
 								</div>
+							{/if}
 
-								{#if props.estimatedDelivery}
-									<div class="flex items-start">
-										<BaseIcon
-											name={Calendar}
-											class="mt-0.5 h-5 w-5 flex-shrink-0 text-[--color-gray-400]"
-										/>
-										<div class="ml-3">
-											<p class="text-sm font-medium text-[--color-gray-900]">Estimated Delivery</p>
-											<p class="text-sm text-[--color-gray-500]">
-												{state.formattedEstimatedDelivery}
-											</p>
-										</div>
+							{#if props.trackingNumber}
+								<div class={state.infoRowClass}>
+									<Icon name={PresetOrderConfirmation.Truck} class={state.infoRowIconClass} />
+									<div class={state.infoRowBodyClass}>
+										<p class={state.strongTextClass}>Tracking Number</p>
+										<p class={state.mutedClass}>{props.trackingNumber}</p>
 									</div>
-								{/if}
-
-								{#if props.trackingNumber}
-									<div class="flex items-start">
-										<BaseIcon
-											name={Truck}
-											class="mt-0.5 h-5 w-5 flex-shrink-0 text-[--color-gray-400]"
-										/>
-										<div class="ml-3">
-											<p class="text-sm font-medium text-[--color-gray-900]">Tracking Number</p>
-											<p class="text-sm text-[--color-gray-500]">{props.trackingNumber}</p>
-										</div>
-									</div>
-								{/if}
-							</div>
+								</div>
+							{/if}
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- Action buttons -->
-		<div class={OrderConfirmationStyleManager.getActionButtonsClasses(props.actionsClass ?? '')}>
-			<Button variant="primary" onclick={state.handleContinueShopping}>
-				<BaseIcon name={Home} class="mr-2 h-4 w-4" />
-				Continue Shopping
-			</Button>
-
-			{#if props.trackingNumber}
-				<Button variant="ghost" onclick={state.handleTrackOrder}>
-					<BaseIcon name={Truck} class="mr-2 h-4 w-4" />
-					Track SlotOrder
-				</Button>
-			{/if}
-
-			{#if props.showDownloadInvoice ?? true}
-				<Button variant="ghost" onclick={state.handleDownloadInvoice}>
-					<BaseIcon name={Download} class="mr-2 h-4 w-4" />
-					Download Invoice
-				</Button>
-			{/if}
-
-			{#if props.showShareOrder ?? true}
-				<Button variant="ghost" onclick={state.handleShareOrder}>
-					<BaseIcon name={Share2} class="mr-2 h-4 w-4" />
-					Share SlotOrder
-				</Button>
-			{/if}
 		</div>
 	</div>
+
+	<div class={state.actionsClass}>
+		<Button variant="primary" onclick={state.handleContinueShopping}>
+			<Icon name={PresetOrderConfirmation.Home} class={state.buttonIconClass} />
+			Continue Shopping
+		</Button>
+
+		{#if props.trackingNumber}
+			<Button variant="ghost" onclick={state.handleTrackOrder}>
+				<Icon name={PresetOrderConfirmation.Truck} class={state.buttonIconClass} />
+				Track Order
+			</Button>
+		{/if}
+
+		{#if props.showDownloadInvoice ?? true}
+			<Button variant="ghost" onclick={state.handleDownloadInvoice}>
+				<Icon name={PresetOrderConfirmation.Download} class={state.buttonIconClass} />
+				Download Invoice
+			</Button>
+		{/if}
+
+		{#if props.showShareOrder ?? true}
+			<Button variant="ghost" onclick={state.handleShareOrder}>
+				<Icon name={PresetOrderConfirmation.Share2} class={state.buttonIconClass} />
+				Share Order
+			</Button>
+		{/if}
+	</div>
 </div>
+
+<style>
+	.order-confirmation {
+		margin-right: auto;
+		margin-left: auto;
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+	}
+
+	.order-confirmation__success {
+		text-align: center;
+	}
+
+	.order-confirmation__success-icon-wrap {
+		display: flex;
+		justify-content: center;
+	}
+
+	.order-confirmation__success-icon-wrap > :global(*) {
+		display: flex;
+		width: 4rem;
+		height: 4rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background-color: var(--color-success-100);
+	}
+
+	.order-confirmation__success-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		color: var(--color-success-600);
+	}
+
+	.order-confirmation__heading {
+		margin-top: 1rem;
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__lead {
+		margin-top: 1rem;
+		color: var(--color-text-secondary);
+	}
+
+	.order-confirmation__order-id {
+		font-weight: 500;
+	}
+
+	.order-confirmation__body {
+		margin-top: 3rem;
+	}
+
+	.order-confirmation__order-container {
+		overflow: hidden;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+
+	.order-confirmation__order-header,
+	.order-confirmation__content {
+		padding: 1.5rem;
+	}
+
+	.order-confirmation__order-header {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.order-confirmation__order-header-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.order-confirmation__order-title {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__status-badge,
+	.order-confirmation__payment-badge {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 9999px;
+		font-weight: 500;
+	}
+
+	.order-confirmation__status-badge {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+
+	.order-confirmation__payment-badge {
+		padding: 0.125rem 0.625rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.order-confirmation__status-badge--delivered,
+	.order-confirmation__payment-badge--paid {
+		background-color: var(--color-success-100);
+		color: var(--color-success-800);
+	}
+
+	.order-confirmation__status-badge--pending,
+	.order-confirmation__status-badge--processing,
+	.order-confirmation__payment-badge--pending {
+		background-color: var(--color-warning-100);
+		color: var(--color-warning-800);
+	}
+
+	.order-confirmation__status-badge--shipped {
+		background-color: var(--color-info-100);
+		color: var(--color-info-800);
+	}
+
+	.order-confirmation__status-badge--cancelled,
+	.order-confirmation__payment-badge--failed {
+		background-color: var(--color-error-100);
+		color: var(--color-error-800);
+	}
+
+	.order-confirmation__status-icon,
+	.order-confirmation__button-icon {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 0.5rem;
+	}
+
+	.order-confirmation__muted {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.order-confirmation__main-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.order-confirmation__main-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.order-confirmation__items {
+			grid-column: span 2 / span 2;
+		}
+	}
+
+	.order-confirmation__section-title {
+		margin-bottom: 1rem;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__item-list > * + * {
+		margin-top: 1rem;
+	}
+
+	.order-confirmation__item {
+		display: flex;
+		align-items: center;
+	}
+
+	.order-confirmation__thumbnail {
+		width: 4rem;
+		height: 4rem;
+		flex-shrink: 0;
+		border-radius: 0.375rem;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.order-confirmation__item-body {
+		flex: 1 1 0%;
+		margin-left: 1rem;
+	}
+
+	.order-confirmation__item-row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+	}
+
+	.order-confirmation__item-name,
+	.order-confirmation__strong-text {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__summary {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+
+	.order-confirmation__summary-rows > * + * {
+		margin-top: 0.75rem;
+	}
+
+	.order-confirmation__summary-row {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.order-confirmation__summary-row--total {
+		border-top: 1px solid var(--color-border-primary);
+		padding-top: 0.75rem;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__info-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		.order-confirmation__info-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	.order-confirmation__info-title {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1rem;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__info-icon {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 0.5rem;
+	}
+
+	.order-confirmation__address {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-primary);
+	}
+
+	.order-confirmation__info-stack > * + * {
+		margin-top: 0.75rem;
+	}
+
+	.order-confirmation__info-row {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.order-confirmation__info-row-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		flex-shrink: 0;
+		margin-top: 0.125rem;
+		color: var(--color-text-tertiary);
+	}
+
+	.order-confirmation__info-row-body {
+		margin-left: 0.75rem;
+	}
+
+	.order-confirmation__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+</style>

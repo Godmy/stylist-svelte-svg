@@ -1,23 +1,6 @@
-/**
- * Switch / SlotToggle вЂ” Р±РёРЅР°СЂРЅС‹Р№ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot                (information/label-slot)
- *   ICaptionSlot              (information/caption-slot)
- *   IStatusSlot               (information/status-slot)
- *   ISelectable<boolean>      (interaction/selectable)
- *   IFocusable                (interaction/focusable)
- *   ISizable                  (architecture/sizable)
- */
+﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotSwitch } from '$stylist/control/interface/slot/switch';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
-import type { BehaviorSelectable as ISelectable } from '$stylist/interaction/interface/behavior/selectable';
-import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
-import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { SlotStatus as IStatusSlot } from '$stylist/information/interface/slot/status';
 
-export interface SwitchRecipe
-	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, IStatusSlot, ISelectable<boolean>, IFocusable, ISizable]
-	> {}
+export interface RecipeSwitch
+	extends StructIntersectAll<[SlotSwitch, InteractionHTMLAttributes<HTMLInputElement>]> {}

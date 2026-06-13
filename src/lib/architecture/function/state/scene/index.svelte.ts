@@ -1,5 +1,5 @@
 import { SceneObjectManager } from '$stylist/architecture/class/object-manager/scene/index';
-import { SceneStyleManager } from '$stylist/architecture/class/style-manager/scene/index';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { SceneProps } from '$stylist/architecture/type/struct/scene-props';
 import type { SceneDebugInfo } from '$stylist/architecture/type/struct/scene-debug-info';
 
@@ -54,14 +54,12 @@ export function createSceneState(props: SceneProps) {
 	const title = $derived(props.title ?? DEFAULT_SCENE_TITLE);
 	const rotateHint = $derived(props.rotateHint ?? DEFAULT_SCENE_ROTATE_HINT);
 	const zoomHint = $derived(props.zoomHint ?? DEFAULT_SCENE_ZOOM_HINT);
-	const containerClass = $derived(
-		SceneStyleManager.getContainerClass(props.class?.toString() ?? '')
-	);
+	const containerClass = $derived(mergeClassNames('scene', props.class?.toString() ?? ''));
 	const canvasClass = $derived(
-		SceneStyleManager.getCanvasClass(props.canvasClass?.toString() ?? '')
+		mergeClassNames('scene__canvas', props.canvasClass?.toString() ?? '')
 	);
 	const overlayClass = $derived(
-		SceneStyleManager.getOverlayClass(props.overlayClass?.toString() ?? '')
+		mergeClassNames('scene__overlay', props.overlayClass?.toString() ?? '')
 	);
 	const restProps = $derived.by(() => {
 		const {

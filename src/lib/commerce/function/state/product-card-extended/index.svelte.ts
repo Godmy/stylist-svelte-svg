@@ -1,28 +1,76 @@
-import type { ProductCardExtendedProps as Props } from '$stylist/commerce/type/struct/product-card-extended-props';
+import type { RecipeProductCardExtended } from '$stylist/commerce/interface/recipe/product-card-extended';
 
-const badgeStyles = {
-	default: 'bg-[var(--color-background-secondary)] text-[var(--color-text-primary)]',
-	new: 'bg-[var(--color-primary-100)] text-[var(--color-primary-700)]',
-	sale: 'bg-[var(--color-danger-100)] text-[var(--color-danger-700)]',
-	featured: 'bg-[var(--color-warning-100)] text-[var(--color-warning-700)]'
-} as const;
-
-export function createProductCardExtendedState(props: Props) {
-	const containerClass = $derived(
-		`bg-[var(--color-background-primary)] rounded-lg shadow-md overflow-hidden ${props.class ?? ''}`
-	);
-	const badgeClass = $derived(
-		badgeStyles[props.badge as keyof typeof badgeStyles] ?? badgeStyles.default
-	);
-
+export function createProductCardExtendedState(props: RecipeProductCardExtended) {
 	return {
 		get containerClass() {
-			return containerClass;
+			return ['product-card-extended', props.class].filter(Boolean).join(' ');
 		},
-		get badgeClass() {
-			return badgeClass;
+		get mediaClass() {
+			return 'product-card-extended__media';
+		},
+		get imageClass() {
+			return 'product-card-extended__image';
+		},
+		getBadgeClass() {
+			return [
+				'product-card-extended__badge',
+				props.badge
+					? `product-card-extended__badge--${props.badge}`
+					: 'product-card-extended__badge--default'
+			].join(' ');
+		},
+		get contentClass() {
+			return 'product-card-extended__content';
+		},
+		get titleClass() {
+			return 'product-card-extended__title';
+		},
+		get ratingRowClass() {
+			return 'product-card-extended__rating-row';
+		},
+		get ratingClass() {
+			return 'product-card-extended__rating';
+		},
+		get reviewCountClass() {
+			return 'product-card-extended__review-count';
+		},
+		get descriptionClass() {
+			return 'product-card-extended__description';
+		},
+		get featureListClass() {
+			return 'product-card-extended__feature-list';
+		},
+		get featureItemClass() {
+			return 'product-card-extended__feature-item';
+		},
+		get checkIconClass() {
+			return 'product-card-extended__check-icon';
+		},
+		get featureTextClass() {
+			return 'product-card-extended__feature-text';
+		},
+		get footerClass() {
+			return 'product-card-extended__footer';
+		},
+		get priceClass() {
+			return 'product-card-extended__price';
+		},
+		get actionsClass() {
+			return 'product-card-extended__actions';
+		},
+		get addButtonClass() {
+			return 'product-card-extended__button product-card-extended__button--add';
+		},
+		get wishlistButtonClass() {
+			return 'product-card-extended__button product-card-extended__button--wishlist';
+		},
+		get wishlistIconClass() {
+			return 'product-card-extended__wishlist-icon';
+		},
+		getStarClass(active: boolean) {
+			return active
+				? 'product-card-extended__star product-card-extended__star--active'
+				: 'product-card-extended__star product-card-extended__star--inactive';
 		}
 	};
 }
-
-export default createProductCardExtendedState;

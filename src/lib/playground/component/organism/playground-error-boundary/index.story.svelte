@@ -11,10 +11,23 @@
 	{#snippet children()}
 		<RecipePlaygroundErrorBoundary component={null}>
 			{#snippet children()}
-				<div class="rounded-lg border border-dashed border-gray-300 p-4 text-sm text-gray-700">
+				<div class="_c1">
 					Boundary active. Inject a runtime error in this area to test fallback UI.
 				</div>
 			{/snippet}
 		</RecipePlaygroundErrorBoundary>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: #d1d5db;
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #374151;
+	}
+</style>

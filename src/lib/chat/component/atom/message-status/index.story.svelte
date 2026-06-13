@@ -23,10 +23,8 @@
 	tags={['message', 'status', 'delivery']}
 >
 	{#snippet children(values: any)}
-		<div
-			class="flex items-center gap-3 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4"
-		>
-			<span class="text-sm text-[var(--color-text-secondary)]">Status:</span>
+		<div class="_c1">
+			<span class="_c2">Status:</span>
 			<MessageStatus
 				status={values.status as 'sent' | 'delivered' | 'read'}
 				size={values.size as 'sm' | 'md' | 'lg'}
@@ -34,3 +32,22 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

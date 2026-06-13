@@ -1,7 +1,9 @@
+﻿import type { SlotRangeInput as Slot } from '$stylist/input/interface/slot/range-input';
+import type { SlotRangeInput as SlotRangeInput } from '$stylist/input/interface/slot/range-input';
 /**
- * Range Input вЂ” РїРѕР»Р·СѓРЅРєРѕРІС‹Р№ РІРІРѕРґ РґРёР°РїР°Р·РѕРЅР°.
+ * Range Input РІР‚вЂќ Р С—Р С•Р В»Р В·РЎС“Р Р…Р С”Р С•Р Р†РЎвЂ№Р в„– Р Р†Р Р†Р С•Р Т‘ Р Т‘Р С‘Р В°Р С—Р В°Р В·Р С•Р Р…Р В°.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   ISelectable<number>       (interaction/selectable)
@@ -15,7 +17,7 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface RangeInputRecipe
+export interface RecipeRangeInput
 	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, ISelectable<number>, IFocusable, ISizable]
+		[Slot, SlotRangeInput, ILabelSlot, ICaptionSlot, ISelectable<number>, IFocusable, ISizable]
 	> {}

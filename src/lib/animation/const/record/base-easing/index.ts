@@ -1,11 +1,11 @@
-import type {
-	EasingFunction,
-	EasingType
-} from '$stylist/animation/type/script/get-easing-function';
+import { TOKEN_EASING } from '$stylist/animation/const/object/easing';
+import type { EasingFunction } from '$stylist/animation/type/script/get-easing-function';
 
-export const BASE_EASING: Record<EasingType, EasingFunction> = {
-	linear: (t) => t,
-	'ease-in': (t) => t * t,
-	'ease-out': (t) => t * (2 - t),
-	'ease-in-out': (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t)
+type EasingValue = (typeof TOKEN_EASING)[keyof typeof TOKEN_EASING];
+
+export const BASE_EASING: Partial<Record<EasingValue, EasingFunction>> = {
+	[TOKEN_EASING.LINEAR]: (t) => t,
+	[TOKEN_EASING.EASE_IN]: (t) => t * t,
+	[TOKEN_EASING.EASE_OUT]: (t) => t * (2 - t),
+	[TOKEN_EASING.EASE_IN_OUT]: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t)
 };

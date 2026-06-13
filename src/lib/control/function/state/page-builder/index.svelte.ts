@@ -68,9 +68,6 @@ export function createPageBuilderState(props: PageBuilderProps) {
 
 	const selectedElement = $derived(elements.find((el) => el.id === selectedElementId));
 	const className = $derived(props.class ?? '');
-	const toolbarClass = $derived(props.toolbarClass ?? '');
-	const canvasClass = $derived(props.canvasClass ?? '');
-	const elementClass = $derived(props.elementClass ?? '');
 	const showToolbar = $derived(props.showToolbar ?? true);
 	const editable = $derived(props.editable ?? true);
 	const restProps = $derived.by(() => {
@@ -118,15 +115,6 @@ export function createPageBuilderState(props: PageBuilderProps) {
 		},
 		get className() {
 			return className;
-		},
-		get toolbarClass() {
-			return toolbarClass;
-		},
-		get canvasClass() {
-			return canvasClass;
-		},
-		get elementClass() {
-			return elementClass;
 		},
 		get showToolbar() {
 			return showToolbar;

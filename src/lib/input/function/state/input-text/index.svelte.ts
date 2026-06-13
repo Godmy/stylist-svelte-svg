@@ -1,6 +1,5 @@
 import { createInputState as createBaseInputState } from '$stylist/interaction/preset/component/index';
 import { INPUT_FIELD_PRESET } from '$stylist/input/preset/input';
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 import type { InputTextStateOptions } from '$stylist/input/type/struct/input-text-state-options';
 
 export function createInputTextState(props: InputTextStateOptions) {
@@ -22,19 +21,19 @@ export function createInputTextState(props: InputTextStateOptions) {
 			return labelId;
 		},
 		get containerClasses() {
-			return InputStyleManager.getContainerClass('');
+			return 'input-field-container';
 		},
 		get labelClasses() {
-			return InputStyleManager.getLabelClass('');
+			return 'input-field-label';
 		},
 		get helperTextClasses() {
-			return InputStyleManager.getHelperTextClass('');
+			return 'input-field-helper-text';
 		},
 		get errorTextClasses() {
-			return InputStyleManager.getErrorTextClass('');
+			return 'input-field-error-text';
 		},
 		get requiredIndicatorClasses() {
-			return InputStyleManager.getRequiredIndicatorClass('');
+			return 'input-field-required';
 		},
 		get showHelper() {
 			return showHelper;

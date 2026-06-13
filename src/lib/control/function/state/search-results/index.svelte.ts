@@ -1,6 +1,5 @@
 import type { SearchResultItem } from '$stylist/control/type/struct/search-results-item';
 import type { SearchResultsProps } from '$stylist/control/type/struct/search-results-props';
-import { SearchResultsStyleManager } from '$stylist/control/class/style-manager/search-results';
 
 const Calendar = 'calendar';
 const MapPin = 'map-pin';
@@ -24,7 +23,7 @@ export function createSearchResultsState(props: SearchResultsProps) {
 		return Search;
 	}
 
-	const rootClass = $derived(SearchResultsStyleManager.root(className));
+	const rootClass = $derived(['c-search-results', props.class].filter(Boolean).join(' '));
 
 	return {
 		get results() {

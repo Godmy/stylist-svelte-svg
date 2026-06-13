@@ -26,7 +26,7 @@
 	description="Gesture wrapper for click, double click, and context menu interactions."
 >
 	{#snippet children(values: any)}
-		<div class="grid gap-4 rounded-3xl bg-slate-50 p-6">
+		<div class="_c1">
 			<Clickable
 				disabled={Boolean(values.disabled)}
 				hoverEffect={Boolean(values.hoverEffect)}
@@ -45,15 +45,52 @@
 				}}
 			>
 				{#snippet children()}
-					<div
-						class="flex min-h-28 items-center justify-between rounded-2xl border border-slate-200 bg-white px-5 py-4"
-					>
-						<span class="font-medium text-slate-900">Interactive story card</span>
-						<strong class="text-2xl text-sky-700">{count}</strong>
+					<div class="_c2">
+						<span class="_c3">Interactive story card</span>
+						<strong class="_c4">{count}</strong>
 					</div>
 				{/snippet}
 			</Clickable>
-			<p class="text-sm text-slate-500">Last event: {eventName}</p>
+			<p class="_c5">Last event: {eventName}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 1.5rem;
+		background-color: #f8fafc;
+		padding: 1.5rem;
+	}
+	._c2 {
+		display: flex;
+		min-height: 7rem;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	._c3 {
+		font-weight: 500;
+		color: #0f172a;
+	}
+	._c4 {
+		font-size: 1.5rem;
+		line-height: 2rem;
+		color: var(--color-sky-700, #sky-700);
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

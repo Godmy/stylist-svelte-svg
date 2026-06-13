@@ -1,16 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AccountFormsStyleManager,
-	FormFooterStyleManager,
-	FormHeaderStyleManager,
-	FormStyleManager,
-	InteractionFormsStyleManager,
-	ScreenReaderStyleManager,
-	SearchFormStyleManager,
-	SecureFormStyleManager,
-	ValidationStyleManager
-} from './class';
-export {
 	AddressForm,
 	FilterPanel,
 	FormFooter,
@@ -60,10 +49,10 @@ export type {
 	ValidationProps
 } from './type';
 export type {
-	AccountFormsRecipe,
-	FormFooterRecipe,
-	FormHeaderRecipe,
-	InteractionFormsRecipe,
+	RecipeAccountForms,
+	RecipeFormFooter,
+	RecipeFormHeader,
+	RecipeInteractionForms,
 	SlotAccountSettingsForm,
 	SlotAddressForm,
 	SlotAddressFormState,

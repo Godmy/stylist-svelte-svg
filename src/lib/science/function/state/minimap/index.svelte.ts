@@ -1,4 +1,3 @@
-import { MinimapStyleManager } from '$stylist/science/class/style-manager/minimap';
 import { resolveMinimapBounds } from '$stylist/science/function/script/minimap';
 import { resolveMinimapCanvasPoint } from '$stylist/science/function/script/resolve-minimap-canvas-point';
 import { resolveMinimapFitOffset } from '$stylist/science/function/script/resolve-minimap-fit-offset';
@@ -22,7 +21,7 @@ export function createMinimapState(props: MinimapProps) {
 	const viewportColor = $derived(props.viewportColor ?? 'var(--color-primary-500)');
 	const backgroundColor = $derived(props.backgroundColor ?? 'var(--color-background-primary)');
 	const gridColor = $derived(props.gridColor ?? 'var(--color-border-primary)');
-	const hostClass = $derived(MinimapStyleManager.getHostClass(props.class ?? ''));
+	const hostClass = $derived(props.class ? `minimap ${props.class}` : 'minimap');
 	const restProps = $derived.by(() => {
 		const {
 			nodes: _nodes,

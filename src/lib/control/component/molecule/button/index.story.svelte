@@ -26,7 +26,7 @@
 	description="Higher-level button assembled from container, background, border, and click states."
 >
 	{#snippet children(values: any)}
-		<div class="grid gap-4 rounded-2xl border border-slate-200 bg-white p-6">
+		<div class="_c1">
 			<Button
 				variant={values.variant as any}
 				size={values.size as any}
@@ -39,7 +39,25 @@
 			>
 				Launch review
 			</Button>
-			<p class="text-sm text-slate-500">Clicks recorded: {pressed}</p>
+			<p class="_c2">Clicks recorded: {pressed}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding: 1.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

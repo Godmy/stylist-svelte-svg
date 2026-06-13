@@ -27,7 +27,7 @@
 	description="A component to organize content into tabbed sections"
 >
 	{#snippet children(controlValues: any)}
-		<Tabs selectedId={controlValues.selectedId} onValueChange={handleTabChange} class="w-full">
+		<Tabs selectedId={controlValues.selectedId} onValueChange={handleTabChange} class="_c1">
 			<TabList>
 				<Tab id="tab1">Getting Started</Tab>
 				<Tab id="tab2">Documentation</Tab>
@@ -36,16 +36,16 @@
 			<TabPanels>
 				<TabPanel id="tab1">
 					<div>
-						<h3 class="mb-2 text-lg font-semibold">Main Tabs Content</h3>
+						<h3 class="_c2">Main Tabs Content</h3>
 						<p>This is the content for the first tab within the Tabs component.</p>
 						<p>The Tabs component manages the selected state and tab changes.</p>
 					</div>
 				</TabPanel>
 				<TabPanel id="tab2">
 					<div>
-						<h3 class="mb-2 text-lg font-semibold">Secondary Content</h3>
+						<h3 class="_c2">Secondary Content</h3>
 						<p>This is the content for the second tab.</p>
-						<div class="mt-2 rounded bg-[var(--color-secondary-100)] p-3">
+						<div class="_c3">
 							<p>
 								The Tabs component provides context to TabList, Tab, TabPanels, and TabPanel
 								components.
@@ -55,7 +55,7 @@
 				</TabPanel>
 				<TabPanel id="tab3">
 					<div>
-						<h3 class="mb-2 text-lg font-semibold">Additional Information</h3>
+						<h3 class="_c2">Additional Information</h3>
 						<p>This is the content for the third tab.</p>
 						<p>Tabs coordinate with all the other tab components to create a cohesive interface.</p>
 					</div>
@@ -64,3 +64,21 @@
 		</Tabs>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+	}
+	._c2 {
+		margin-bottom: 0.5rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-top: 0.5rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-secondary-100);
+		padding: 0.75rem;
+	}
+</style>

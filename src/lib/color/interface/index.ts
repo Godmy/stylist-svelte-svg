@@ -1,8 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { BehaviorColorToken } from './behavior';
 export type {
-	ThemeAdvancedColorPickerRecipe,
-	ThemeColorPaletteRecipe,
-	ThemeColorSwatchRecipe
+	RecipeThemeAdvancedColorPicker,
+	RecipeThemeColorPalette,
+	RecipeThemeColorSwatch
 } from './recipe';
 export type { ThemeColorPaletteItem } from './slot';

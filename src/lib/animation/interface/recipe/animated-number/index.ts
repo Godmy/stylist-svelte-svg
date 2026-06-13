@@ -1,17 +1,11 @@
-/**
- * AnimatedNumber represents an animated numeric value.
- *
- * Composition:
- *   SlotLabel        label content
- *   SlotBadge        badge content
- */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { SlotClass } from '$stylist/theme/interface/slot/class';
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
-export interface AnimatedNumberRecipe
-	extends StructIntersectAll<[ILabelSlot, IBadgeSlot, ThemeAttributes<HTMLSpanElement>]> {
+export interface RecipeAnimatedNumber
+	extends StructIntersectAll<[ILabelSlot, IBadgeSlot, SlotClass, SlotTheme]> {
 	value?: number;
 	format?: 'number' | 'currency' | 'percent';
 	prefix?: string;

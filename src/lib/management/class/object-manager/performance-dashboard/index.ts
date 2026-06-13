@@ -1,4 +1,4 @@
-import type { PerformanceDashboardRecipe } from '$stylist/management/interface/recipe/performance-dashboard';
+import type { RecipePerformanceDashboard } from '$stylist/management/interface/recipe/performance-dashboard';
 import type { TokenTimeRange } from '$stylist/management/type/enum/time-range/token-time-range';
 import { TOKEN_PERFORMANCE_RANGE } from '$stylist/management/const/enum/performance-range';
 import { TOKEN_PERFORMANCE_BARS } from '$stylist/management/const/enum/performance-bars';
@@ -25,7 +25,7 @@ export class ObjectManagerPerformanceDashboard {
 
 	static selectTimeRange(
 		range: TokenTimeRange,
-		onTimeRangeChange?: PerformanceDashboardRecipe['onTimeRangeChange']
+		onTimeRangeChange?: RecipePerformanceDashboard['onTimeRangeChange']
 	): TokenTimeRange {
 		onTimeRangeChange?.(range);
 		return range;

@@ -2,9 +2,9 @@ import type { RecipeScheduleCalendar as ScheduleCalendarContract } from '$stylis
 import type { SlotScheduleCalendarEvent as SlotScheduleCalendarEvent } from '$stylist/calendar/interface/slot/schedule-calendar-event';
 import type { RecipeScheduleCalendarTimeSlot as RecipeScheduleCalendarTimeSlot } from '$stylist/calendar/interface/recipe/schedule-calendar-time-slot';
 import type { RecipeScheduleCalendarDaySchedule as RecipeScheduleCalendarDaySchedule } from '$stylist/calendar/interface/recipe/schedule-calendar-day-schedule';
-import { ScheduleCalendarStyleManager } from '$stylist/calendar/class/style-manager/schedule-calendar';
 import { isToday } from '$stylist/calendar/function/script/date-check';
 import { isWeekend } from '$stylist/calendar/function/script/is-weekend';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createScheduleCalendarState(props: ScheduleCalendarContract) {
 	let viewStartDate = $state(new Date(props.startDate ?? new Date()));
@@ -23,9 +23,9 @@ export function createScheduleCalendarState(props: ScheduleCalendarContract) {
 	const eventClass = $derived(props.eventClass ?? '');
 	const headerClassProp = $derived(props.headerClass ?? '');
 
-	const wrapperClasses = $derived(ScheduleCalendarStyleManager.getWrapperClasses(className));
-	const headerClasses = $derived(ScheduleCalendarStyleManager.getHeaderClasses(headerClassProp));
-	const gridClasses = $derived(ScheduleCalendarStyleManager.getGridClasses());
+	const wrapperClasses = $derived(mergeClassNames('c-schedule-calendar', className));
+	const headerClasses = $derived(mergeClassNames('c-schedule-calendar__header', headerClassProp));
+	const gridClasses = $derived('c-schedule-calendar__grid');
 
 	const schedule = $derived.by<RecipeScheduleCalendarDaySchedule[]>(() => generateSchedule());
 
@@ -131,27 +131,38 @@ export function createScheduleCalendarState(props: ScheduleCalendarContract) {
 	}
 
 	function getDayColumnClasses(date: Date): string {
-		return ScheduleCalendarStyleManager.getDayColumnClasses(isWeekend(date));
+		return mergeClassNames(
+			'c-schedule-calendar__day-col',
+			isWeekend(date) && 'c-schedule-calendar__day-col--weekend'
+		);
 	}
 
 	function getDayHeaderClasses(date: Date): string {
-		return ScheduleCalendarStyleManager.getDayHeaderClasses(isToday(date), headerClassProp);
+		return mergeClassNames(
+			'c-schedule-calendar__day-header',
+			isToday(date) && 'c-schedule-calendar__day-header--today',
+			headerClassProp
+		);
 	}
 
 	function getTimeGutterClasses(): string {
-		return ScheduleCalendarStyleManager.getTimeGutterClasses();
+		return 'c-schedule-calendar__gutter';
 	}
 
 	function getTimeSlotClasses(): string {
-		return ScheduleCalendarStyleManager.getTimeSlotClasses();
+		return 'c-schedule-calendar__gutter-slot';
 	}
 
 	function getEventClasses(color?: string): string {
-		return ScheduleCalendarStyleManager.getEventClasses(color, eventClass);
+		void color;
+		return mergeClassNames('c-schedule-calendar__event', eventClass);
 	}
 
 	function getPriorityBadgeClasses(priority: string): string {
-		return ScheduleCalendarStyleManager.getPriorityBadgeClasses(priority);
+		return mergeClassNames(
+			'c-schedule-calendar__priority',
+			`c-schedule-calendar__priority--${priority}`
+		);
 	}
 
 	return {

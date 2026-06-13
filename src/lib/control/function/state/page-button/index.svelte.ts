@@ -1,16 +1,16 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { SlotPageButton as PageButtonProps } from '$stylist/control/interface/slot/page-button';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
+﻿import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { RecipePageButton } from '$stylist/control/interface/recipe/page-button';
+import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-classes';
 import { createBasePreset } from '$stylist/interaction/preset/base';
 import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 
-type PageButtonStateProps = PageButtonProps &
-	HTMLButtonAttributes & {
-		isActive?: boolean;
-	};
-
-export function createPageButtonState(props: PageButtonStateProps) {
-	const preset = createBasePreset(InteractionStyleManager.getInteractiveVariants(), TOKEN_SIZE, {
+export function createPageButtonState(
+	props: RecipePageButton &
+		HTMLButtonAttributes & {
+			isActive?: boolean;
+		}
+) {
+	const preset = createBasePreset(Object.keys(VARIANT_CLASSES), TOKEN_SIZE, {
 		variant: 'outline',
 		size: 'md'
 	});
@@ -23,20 +23,9 @@ export function createPageButtonState(props: PageButtonStateProps) {
 	const variant = $derived(actualVariant as string);
 	const size = $derived((props.size ?? preset.defaults.size) as string);
 
-	const classes = $derived(
-		[
-			preset.classes.variant[variant as keyof typeof preset.classes.variant],
-			preset.classes.size[size as keyof typeof preset.classes.size],
-			actualDisabled && preset.classes.state['disabled'],
-			loading && preset.classes.state['loading'],
-			'page-button',
-			props.class
-		]
-			.filter(Boolean)
-			.join(' ')
-	);
+	const classes = $derived('c-page-button');
 
-	const loaderClasses = $derived('animate-spin w-4 h-4');
+	const loaderClasses = $derived('c-page-button__loader');
 
 	const attrs = $derived({
 		'aria-busy': typeof loading === 'boolean' ? loading : undefined,
@@ -72,5 +61,3 @@ export function createPageButtonState(props: PageButtonStateProps) {
 		}
 	};
 }
-
-export default createPageButtonState;

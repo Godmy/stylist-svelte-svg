@@ -1,11 +1,16 @@
+﻿import type { PlaygroundCanvasShellProps as LegacyPlaygroundCanvasShellProps1 } from '$stylist/playground/type/struct/playground-canvas-shell-props';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { Snippet } from 'svelte';
-
 export interface RecipePlaygroundCanvasShell
-	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>]> {
+	extends StructIntersectAll<
+		[
+			LegacyPlaygroundCanvasShellProps1,
+			Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>,
+			SlotChildren
+		]
+	> {
 	/** Content snippet */
-	children?: Snippet;
 	/** Additional CSS class */
 	class?: string;
 }

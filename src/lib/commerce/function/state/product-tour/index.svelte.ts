@@ -1,6 +1,6 @@
-import type { ProductTourProps } from '$stylist/commerce/type/struct/product-tour-props';
+import type { RecipeProductTour } from '$stylist/commerce/interface/recipe/product-tour';
 
-export function createProductTourState(props: ProductTourProps) {
+export function createProductTourState(props: RecipeProductTour) {
 	let localCurrentStep = $state(props.currentStep ?? 0);
 	let localShowTour = $state(props.showTour ?? false);
 
@@ -15,6 +15,39 @@ export function createProductTourState(props: ProductTourProps) {
 		},
 		get showTour() {
 			return localShowTour;
+		},
+		get overlayClass() {
+			return 'product-tour__overlay';
+		},
+		get panelClass() {
+			return ['product-tour__panel', props.class].filter(Boolean).join(' ');
+		},
+		get closeButtonClass() {
+			return 'product-tour__close';
+		},
+		get closeIconClass() {
+			return 'product-tour__close-icon';
+		},
+		get titleClass() {
+			return 'product-tour__title';
+		},
+		get contentClass() {
+			return 'product-tour__content';
+		},
+		get footerClass() {
+			return 'product-tour__footer';
+		},
+		get stepClass() {
+			return 'product-tour__step';
+		},
+		get actionsClass() {
+			return 'product-tour__actions';
+		},
+		get previousButtonClass() {
+			return 'product-tour__button product-tour__button--previous';
+		},
+		get nextButtonClass() {
+			return 'product-tour__button product-tour__button--next';
 		},
 		nextStep() {
 			if (localCurrentStep < props.steps.length - 1) {
@@ -36,5 +69,3 @@ export function createProductTourState(props: ProductTourProps) {
 		}
 	};
 }
-
-export default createProductTourState;

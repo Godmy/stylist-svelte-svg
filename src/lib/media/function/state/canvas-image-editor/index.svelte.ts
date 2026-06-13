@@ -1,7 +1,5 @@
-import type { CanvasImageEditorRecipe } from '$stylist/media/interface/recipe/canvas-image-editor';
-import { CanvasImageEditorStyleManager } from '$stylist/media/class/style-manager/canvas-image-editor';
-
-export function createCanvasImageEditorState(props: CanvasImageEditorRecipe) {
+import type { RecipeCanvasImageEditor } from '$stylist/media/interface/recipe/canvas-image-editor';
+export function createCanvasImageEditorState(props: RecipeCanvasImageEditor) {
 	let canvasRef = $state<HTMLCanvasElement | null>(null);
 	let image = $state<HTMLImageElement | null>(null);
 	let imageLoaded = $state(false);
@@ -16,8 +14,6 @@ export function createCanvasImageEditorState(props: CanvasImageEditorRecipe) {
 	const contrast = $derived(props.contrast ?? 100);
 	const saturation = $derived(props.saturation ?? 100);
 	const hue = $derived(props.hue ?? 0);
-
-	const canvasClasses = $derived(CanvasImageEditorStyleManager.getCanvasClasses(props.class));
 
 	// Load image when src changes
 	$effect(() => {
@@ -148,9 +144,6 @@ export function createCanvasImageEditorState(props: CanvasImageEditorRecipe) {
 		},
 		get height() {
 			return height;
-		},
-		get canvasClasses() {
-			return canvasClasses;
 		},
 		get restProps() {
 			return restProps;

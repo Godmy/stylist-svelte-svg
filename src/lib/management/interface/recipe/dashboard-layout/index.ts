@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenDensity as DashboardLayoutVariant } from '$stylist/layout/type/enum/density';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { AuthGuardRecipe } from '$stylist/management/interface/recipe/auth-guard';
+	import type { RecipeAuthGuard } from '$stylist/management/interface/recipe/auth-guard';
 	import createAuthGuardState from '$stylist/chat/function/state/auth-guard/index.svelte';
 
-	export type AuthGuardProps = AuthGuardRecipe & {
+	export type AuthGuardProps = RecipeAuthGuard & {
 		class?: string;
 		fallback?: Snippet;
 		unauthorizedFallback?: Snippet;
@@ -61,3 +61,6 @@
 		{/if}
 	</div>
 {/if}
+
+<style>
+</style>

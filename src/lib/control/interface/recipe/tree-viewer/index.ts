@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TreeNodeItemNode } from '$stylist/control/type/struct/tree-node-item-node';
 
 export interface TreeViewerProps extends StructIntersectAll<[]> {

@@ -1,66 +1,71 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { SwitchStateProps } from '$stylist/control/type/alias/switch-state-props';
+import type { RecipeSwitch } from '$stylist/control/interface/recipe/switch';
 
-export function createSwitchState(props: SwitchStateProps) {
-	const className = props.class ?? '';
+export function createSwitchState(props: RecipeSwitch, checked: boolean) {
+	const id = $derived(props.id);
+	const label = $derived(props.label ?? '');
+	const description = $derived(props.description ?? '');
+	const size = $derived(props.size ?? 'md');
+	const disabled = $derived(props.disabled ?? false);
+	const required = $derived(props.required ?? false);
+	const name = $derived(props.name);
+	const ariaLabel = $derived(props.ariaLabel ?? props['aria-label'] ?? props.label);
+	const generatedId = $derived(id || `switch-${Math.random().toString(36).slice(2, 11)}`);
+	const descriptionId = $derived(description ? `${generatedId}-description` : undefined);
+	const restProps = $derived.by(() => {
+		const {
+			id: _id,
+			label: _label,
+			description: _description,
+			size: _size,
+			disabled: _disabled,
+			checked: _checked,
+			required: _required,
+			class: _class,
+			ariaLabel: _ariaLabel,
+			name: _name,
+			onchange: _onchange,
+			oninput: _oninput,
+			'aria-label': _ariaLabelAttr,
+			...rest
+		} = props;
 
-	const containerClasses = joinClassNames(
-		'flex items-start gap-3',
-		props.disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : '',
-		className
-	);
-
-	const sizeClasses: Record<string, string> = {
-		xs: 'w-8 h-4',
-		sm: 'w-9 h-5',
-		md: 'w-11 h-6',
-		lg: 'w-14 h-7',
-		xl: 'w-16 h-8'
-	};
-
-	const knobSizeClasses: Record<string, string> = {
-		xs: 'w-3 h-3',
-		sm: 'w-4 h-4',
-		md: 'w-5 h-5',
-		lg: 'w-6 h-6',
-		xl: 'w-7 h-7'
-	};
-
-	function getTrackClasses(checked: boolean, disabled: boolean): string {
-		return joinClassNames(
-			'relative rounded-full transition-colors duration-200',
-			sizeClasses[props.size ?? 'md'] ?? sizeClasses.md,
-			checked ? 'bg-[var(--color-primary-500)]' : 'bg-[var(--color-border-primary)]',
-			disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : 'cursor-pointer'
-		);
-	}
-
-	function getKnobClasses(checked: boolean, size: TokenSize): string {
-		return joinClassNames(
-			'absolute top-0.5 left-0.5 rounded-full bg-white shadow-md transition-transform duration-200',
-			checked ? 'translate-x-[var(--spacing-5)]' : 'translate-x-0',
-			knobSizeClasses[size] ?? knobSizeClasses.md
-		);
-	}
-
-	function getInputClasses(disabled: boolean): string {
-		return joinClassNames('sr-only', disabled ? 'cursor-not-allowed' : '');
-	}
-
-	function getLabelClasses(disabled: boolean): string {
-		return joinClassNames(
-			'text-sm font-medium leading-5 text-[var(--color-text-primary)]',
-			disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
-		);
-	}
+		return rest;
+	});
 
 	return {
-		containerClasses,
-		getTrackClasses,
-		getKnobClasses,
-		getInputClasses,
-		getLabelClasses
+		get label() {
+			return label;
+		},
+		get description() {
+			return description;
+		},
+		get size() {
+			return size;
+		},
+		get disabled() {
+			return disabled;
+		},
+		get checked() {
+			return checked;
+		},
+		get required() {
+			return required;
+		},
+		get generatedId() {
+			return generatedId;
+		},
+		get descriptionId() {
+			return descriptionId;
+		},
+		get name() {
+			return name;
+		},
+		get ariaLabel() {
+			return ariaLabel;
+		},
+		get restProps() {
+			return restProps;
+		}
 	};
 }
 

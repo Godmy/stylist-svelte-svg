@@ -1,14 +1,14 @@
 import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { SlotButtonElement as ButtonElementProps } from '$stylist/control/interface/slot/button-element';
+import type { SlotButtonElement } from '$stylist/control/interface/slot/button-element';
 
 export interface ButtonFactoryContractInput {
-	variant?: ButtonElementProps['variant'];
-	size?: ButtonElementProps['size'];
-	disabled?: ButtonElementProps['disabled'];
-	loading?: ButtonElementProps['loading'];
-	block?: ButtonElementProps['block'];
-	ariaLabel?: ButtonElementProps['ariaLabel'];
-	loadingLabel?: ButtonElementProps['loadingLabel'];
+	variant?: SlotButtonElement['variant'];
+	size?: SlotButtonElement['size'];
+	disabled?: SlotButtonElement['disabled'];
+	loading?: SlotButtonElement['loading'];
+	block?: SlotButtonElement['block'];
+	ariaLabel?: SlotButtonElement['ariaLabel'];
+	loadingLabel?: SlotButtonElement['loadingLabel'];
 }
 
 export interface ButtonFactoryHtmlInput {
@@ -29,7 +29,7 @@ export interface ButtonFactoryHtmlInput {
 }
 
 export interface ButtonFactorySlotsInput {
-	children?: ButtonElementProps['children'];
+	children?: SlotButtonElement['children'];
 }
 
 export interface ButtonFactoryInput {
@@ -39,7 +39,7 @@ export interface ButtonFactoryInput {
 }
 
 export function createButtonFactoryInput(
-	props: ButtonElementProps & HTMLButtonAttributes
+	props: SlotButtonElement & HTMLButtonAttributes
 ): ButtonFactoryInput {
 	const {
 		variant,

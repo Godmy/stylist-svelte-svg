@@ -1,11 +1,11 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import { formatTime } from '$stylist/media/function/script/format-time';
 import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
-import type { VideoPlayerProps } from '$stylist/media/interface/recipe/video-player-video-player-props';
+import type { RecipeVideoPlayer } from '$stylist/media/interface/recipe/video-player';
 
 type RestProps = Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>;
 
-export function createVideoPlayerState(props: VideoPlayerProps) {
+export function createVideoPlayerState(props: RecipeVideoPlayer) {
 	let videoRef = $state<HTMLVideoElement | null>(null);
 	let isPlaying = $state(false);
 	let isMuted = $state(props.muted ?? false);
@@ -185,5 +185,3 @@ export function createVideoPlayerState(props: VideoPlayerProps) {
 		formatTime
 	};
 }
-
-export default createVideoPlayerState;

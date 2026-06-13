@@ -1,14 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	Camera,
-	Matrix4,
-	PresenterNodeShellStyleManager,
-	PresenterSceneStyleManager,
-	SceneObjectManager,
-	SceneStyleManager,
-	StyleManagerBase,
-	StyleManagerState
-} from './class';
+export { Camera, Matrix4, SceneObjectManager } from './class';
 export {
 	Css3dCube,
 	PresentationWorkspace,
@@ -37,7 +28,6 @@ export {
 	TOKEN_ARCHITECTURE_SHADER_VERTEX,
 	TOKEN_COMPONENT_TYPE,
 	TOKEN_CONNECTOR,
-	TOKEN_EASING,
 	TOKEN_FOUNDATION_AXES,
 	TOKEN_FOUNDATION_AXIS_DIRECTIONS,
 	TOKEN_FOUNDATION_AXIS_ORIENTATIONS,
@@ -62,6 +52,7 @@ export {
 	compileSceneShader,
 	createCardStackMolecule,
 	createCoreSceneMolecule,
+	createCss3dCubeState,
 	createDashboardMolecule,
 	createDemoSceneGraph,
 	createFocusState,
@@ -80,6 +71,7 @@ export {
 	createSceneAtomBuffers,
 	createSceneBoxGeometry,
 	createSceneBuffers,
+	createSceneCameraControlState,
 	createSceneCubeGeometry,
 	createSceneProgram,
 	createSceneRoomGeometry,
@@ -122,7 +114,6 @@ export {
 	useSemanticZoom
 } from './function';
 export type {
-	ArchitectureHTMLAttributes,
 	ArchitectureScene,
 	CameraState,
 	FoundationAxis,
@@ -168,7 +159,6 @@ export type {
 	TokenArchitectureShaderVertex,
 	TokenComponentType,
 	TokenConnector,
-	TokenEasing,
 	TokenFunctionalTaxonomy,
 	TokenLineType,
 	TokenMarker,
@@ -191,7 +181,14 @@ export type {
 	PresentationState,
 	PreziCamera,
 	PreziSceneState,
+	RecipeCss3dCube,
+	RecipePresenterScene,
+	RecipePreziScene,
+	RecipeSceneCameraControl,
 	SelectedItem,
-	SelectionState
+	SelectionState,
+	SlotChildren,
+	SlotComposite,
+	SlotContent
 } from './interface';
 export type { FoundationDepthThreshold } from './type';

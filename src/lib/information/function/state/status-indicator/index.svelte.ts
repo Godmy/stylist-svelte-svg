@@ -1,9 +1,8 @@
-import { IndicatorsStyleManager } from '$stylist/interaction/class/style-manager/indicators';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import type { TokenAvailability } from '$stylist/interaction/type/record/availability';
-import type { StatusIndicatorRecipe } from '$stylist/information/interface/recipe/status-indicator';
+import type { RecipeStatusIndicator } from '$stylist/information/interface/recipe/status-indicator';
 
-export function createStatusIndicatorState(props: StatusIndicatorRecipe) {
+export function createStatusIndicatorState(props: RecipeStatusIndicator) {
 	const status = $derived((props.status ?? 'online') as TokenAvailability);
 	const appearance = $derived((props.appearance ?? 'neutral') as TokenAppearance);
 	const label = $derived(props.label ?? '');
@@ -14,35 +13,29 @@ export function createStatusIndicatorState(props: StatusIndicatorRecipe) {
 	const indicatorClass = $derived(props.indicatorClass ?? '');
 	const labelClass = $derived(props.labelClass ?? '');
 	const isSimpleMode = $derived(props.appearance === undefined && !props.customColor);
-	const classes = $derived(IndicatorsStyleManager.getStatusIndicatorContainerClasses(className));
+	const classes = $derived(['status-indicator', className].filter(Boolean).join(' '));
 	const dotClasses = $derived(
-		isSimpleMode
-			? IndicatorsStyleManager.getStatusIndicatorDotClasses(
-					status as Parameters<typeof IndicatorsStyleManager.getStatusIndicatorDotClasses>[0]
-				)
-			: ''
+		isSimpleMode ? `status-indicator__dot status-indicator__dot--${status}` : ''
 	);
 	const containerClasses = $derived(
 		isSimpleMode
 			? classes
-			: IndicatorsStyleManager.getStatusIndicatorWithLabelContainerClasses(className)
+			: ['status-indicator status-indicator--with-label', className].filter(Boolean).join(' ')
 	);
 	const indicatorClasses = $derived(
 		isSimpleMode
 			? dotClasses
-			: IndicatorsStyleManager.getStatusIndicatorWithLabelIndicatorClasses(
-					appearance,
-					size as Parameters<
-						typeof IndicatorsStyleManager.getStatusIndicatorWithLabelIndicatorClasses
-					>[1],
-					customColor,
+			: [
+					'status-indicator__indicator',
+					`status-indicator__indicator--${appearance}`,
+					`status-indicator__indicator--${size}`,
 					indicatorClass
-				)
+				]
+					.filter(Boolean)
+					.join(' ')
 	);
 	const indicatorStyle = $derived(customColor ? `background-color: ${customColor};` : '');
-	const labelClasses = $derived(
-		IndicatorsStyleManager.getStatusIndicatorWithLabelLabelClasses(labelClass)
-	);
+	const labelClasses = $derived(['status-indicator__label', labelClass].filter(Boolean).join(' '));
 
 	return {
 		get classes() {

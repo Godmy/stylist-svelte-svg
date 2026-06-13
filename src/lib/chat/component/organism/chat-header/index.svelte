@@ -31,7 +31,7 @@
 
 <div class={state.containerClasses}>
 	<div class={state.infoClasses}>
-		<div class="relative">
+		<div class="ch-avatar-wrap">
 			<Avatar
 				id={state.isGroupChat ? props.chat.id : state.otherUser?.id || props.chat.id}
 				name={state.isGroupChat ? props.chat.name || '' : state.otherUser?.name || ''}
@@ -103,5 +103,8 @@
 	.chat-actions {
 		display: flex;
 		gap: var(--spacing-2);
+	}
+	.ch-avatar-wrap {
+		position: relative;
 	}
 </style>

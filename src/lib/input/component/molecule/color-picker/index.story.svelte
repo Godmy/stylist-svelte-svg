@@ -35,7 +35,7 @@
 	description="Interactive color picker with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<ColorPicker
 				value={controlValues.value}
 				label={controlValues.label}
@@ -46,3 +46,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

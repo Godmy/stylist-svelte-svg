@@ -33,15 +33,30 @@
 			{(values as BadgeStoryProps).label || 'New'}
 		{/snippet}
 
-		<div class="flex flex-col gap-4">
+		<div class="_c1">
 			<Badge variant={(values as BadgeStoryProps).variant} size={(values as BadgeStoryProps).size}>
 				{@render badgeLabel()}
 			</Badge>
 
-			<div class="grid gap-2 text-sm text-[var(--color-text-secondary)]">
+			<div class="_c2">
 				<p>Variants demonstrate different semantic contexts.</p>
 				<p>Use size to match surrounding typography.</p>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	._c2 {
+		display: grid;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

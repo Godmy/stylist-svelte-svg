@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { useCamera } from './camera';
+export { createCss3dCubeState } from './css-3d-cube';
 export { useFocus } from './focus';
 export { createFocusState } from './focus-state';
 export { createFocusTarget } from './focus-target';
@@ -11,6 +12,7 @@ export { createPresenterNodeShellState } from './presenter-node-shell';
 export { createPresenterSceneState } from './presenter-scene';
 export { usePreziState } from './prezi-scene';
 export { createSceneState } from './scene';
+export { createSceneCameraControlState } from './scene-camera-control';
 export { createSelectedItem } from './selected-item';
 export { useSelection } from './selection';
 export { createSelectionMode } from './selection-mode';

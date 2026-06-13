@@ -1,11 +1,14 @@
+import type { Snippet } from 'svelte';
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { LiteGraphNodeProperty } from '$stylist/science/type/struct/litegraph-node-property';
 import type { LiteGraphPort } from '$stylist/science/type/struct/litegraph-port';
 import type { LitegraphNodePresentation } from '$stylist/science/type/struct/litegraph-node-presentation';
 
-export interface LitegraphNodeRecipe extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeLitegraphNode
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	id?: string;
 	title?: string;
 	x: number;
@@ -29,12 +32,23 @@ export interface LitegraphNodeRecipe extends StructIntersectAll<[ThemeAttributes
 	hidePorts?: boolean;
 	hideProperties?: boolean;
 	showActions?: boolean;
+	onNodeSelect?: (nodeId?: string) => void;
+	onNodeDrag?: (nodeId: string | undefined, position: { x: number; y: number }) => void;
+	onNodeResize?: (
+		nodeId: string | undefined,
+		size: { width?: number; height?: number | 'auto' }
+	) => void;
+	ondelete?: (nodeId?: string) => void;
+	onduplicate?: (nodeId?: string) => void;
+	onConnectionStart?: (port: LiteGraphPort, event: MouseEvent) => void;
+	onConnectionEnd?: (port: LiteGraphPort, event: MouseEvent) => void;
+	onPropertyChange?: (propertyId: string, value: unknown) => void;
 	worldDepth?: number;
 	cameraDepth?: number;
 	presentation?: LitegraphNodePresentation;
 	properties?: LiteGraphNodeProperty[];
 	inputs?: LiteGraphPort[];
 	outputs?: LiteGraphPort[];
-	headerContent?: string;
-	bodyContent?: string;
+	headerContent?: Snippet;
+	bodyContent?: Snippet;
 }

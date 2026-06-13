@@ -43,7 +43,7 @@
 	description="Slider with input component for value selection"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<SliderWithInput
 				min={controlValues.min}
 				max={controlValues.max}
@@ -54,3 +54,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

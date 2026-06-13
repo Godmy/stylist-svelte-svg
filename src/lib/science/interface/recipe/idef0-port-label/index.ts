@@ -1,15 +1,16 @@
-﻿/**
- * Idef0PortLabel вЂ” РјРµС‚РєР° РїРѕСЂС‚Р° IDEF0..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * Idef0PortLabel РІР‚вЂќ Р СР ВµРЎвЂљР С”Р В° Р С—Р С•РЎР‚РЎвЂљР В° IDEF0..
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface Idef0PortLabelRecipe
-	extends StructIntersectAll<[ILabelSlot, ThemeAttributes<HTMLSpanElement>]> {
+export interface RecipeIdef0PortLabel
+	extends StructIntersectAll<[SlotTheme, ILabelSlot, HTMLAttributes<HTMLSpanElement>]> {
 	text: string;
 	x: number;
 	y: number;

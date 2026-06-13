@@ -17,7 +17,7 @@
 			markerHeight="7"
 			refX="9"
 			refY="3.5"
-			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="blue" /></marker
+			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-info-500)" /></marker
 		>
 		<marker
 			id="arrowhead-equivalent"
@@ -26,9 +26,9 @@
 			refX="9"
 			refY="3.5"
 			orient="auto"
-			><polygon points="0 0, 10 3.5, 0 7" fill="purple" /><polygon
+			><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-secondary-500)" /><polygon
 				points="0 7, 10 3.5, 0 0"
-				fill="purple"
+				fill="var(--color-secondary-500)"
 			/></marker
 		>
 		<marker
@@ -37,7 +37,7 @@
 			markerHeight="7"
 			refX="9"
 			refY="3.5"
-			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="red" /></marker
+			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-danger-500)" /></marker
 		>
 		<marker
 			id="arrowhead-domain-range"
@@ -45,7 +45,7 @@
 			markerHeight="7"
 			refX="9"
 			refY="3.5"
-			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="green" /></marker
+			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-success-500)" /></marker
 		>
 		<marker
 			id="arrowhead-subproperty"
@@ -53,7 +53,7 @@
 			markerHeight="7"
 			refX="9"
 			refY="3.5"
-			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="yellow" /></marker
+			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-warning-500)" /></marker
 		>
 		<marker
 			id="arrowhead-default"
@@ -61,7 +61,7 @@
 			markerHeight="7"
 			refX="9"
 			refY="3.5"
-			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="gray" /></marker
+			orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--color-neutral-400)" /></marker
 		>
 	</defs>
 
@@ -70,9 +70,10 @@
 		y1={state.startY}
 		x2={state.endX}
 		y2={state.endY}
-		class="{state.style.color} {state.style.style}"
+		stroke={state.strokeColor}
+		stroke-dasharray={state.strokeDasharray}
 		stroke-width="2"
-		marker-end={state.style.marker}
+		marker-end={`url(#${state.markerId})`}
 	/>
 
 	{#if props.showLabel && props.edge.label}
@@ -80,7 +81,7 @@
 			x={(state.startX + state.endX) / 2}
 			y={(state.startY + state.endY) / 2 - 10}
 			text-anchor="middle"
-			class="fill-current text-xs font-medium"
+			class="ontology-edge-component__label"
 			fill="currentColor">{props.edge.label}</text
 		>
 	{/if}
@@ -90,8 +91,24 @@
 			x={(state.startX + state.endX) / 2}
 			y={(state.startY + state.endY) / 2 + 10}
 			text-anchor="middle"
-			class="fill-current text-xs font-medium"
+			class="ontology-edge-component__label"
 			fill="currentColor">{props.edge.cardinality}</text
 		>
 	{/if}
 </svg>
+
+<style>
+	:global(.ontology-edge-component) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	:global(.ontology-edge-component__label) {
+		font-size: 0.75rem;
+		font-weight: var(--font-weight-medium, 500);
+		fill: currentColor;
+	}
+</style>

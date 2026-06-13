@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
+	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 	import type { SlotDocumentPreview as DocumentPreviewProps } from '$stylist/form/interface/slot/document-preview';
 	import createDocumentPreviewState from '$stylist/file/function/state/document-preview/index.svelte';
 	let props: DocumentPreviewProps = $props();
@@ -7,7 +7,7 @@
 	const { title: _title, content: _content, format: _format, class: _class, ...restProps } = props;
 </script>
 
-<div class={InteractionFormsStyleManager.root('c-document-preview', state.classes)} {...restProps}>
+<div class={mergeClassNames('c-document-preview', state.classes)} {...restProps}>
 	<div class="dp-title">{props.title ?? 'Document Preview'}</div>
 	<div class="dp-format">Format: {props.format ?? 'text'}</div>
 	<pre class="dp-content">{props.content ?? 'No content'}</pre>

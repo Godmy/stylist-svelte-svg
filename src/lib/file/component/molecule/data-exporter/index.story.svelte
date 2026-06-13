@@ -28,24 +28,22 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-4 rounded-xl bg-[var(--color-background-secondary)] p-6">
-			<div
-				class="overflow-hidden rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]"
-			>
-				<table class="min-w-full text-sm">
-					<thead class="bg-[var(--color-background-secondary)] text-left">
+		<div class="_c1">
+			<div class="_c2">
+				<table class="_c3">
+					<thead class="_c4">
 						<tr
-							><th class="px-3 py-2">ID</th><th class="px-3 py-2">Customer</th><th class="px-3 py-2"
-								>Plan</th
-							><th class="px-3 py-2">MRR</th></tr
+							><th class="_c5">ID</th><th class="_c5">Customer</th><th class="_c5">Plan</th><th
+								class="_c5">MRR</th
+							></tr
 						>
 					</thead>
 					<tbody>
 						{#each dataset as row}
-							<tr class="border-t border-[var(--color-border-primary)]"
-								><td class="px-3 py-2">{row.id}</td><td class="px-3 py-2">{row.customer}</td><td
-									class="px-3 py-2">{row.plan}</td
-								><td class="px-3 py-2">${row.mrr}</td></tr
+							<tr class="_c6"
+								><td class="_c5">{row.id}</td><td class="_c5">{row.customer}</td><td class="_c5"
+									>{row.plan}</td
+								><td class="_c5">${row.mrr}</td></tr
 							>
 						{/each}
 					</tbody>
@@ -57,7 +55,51 @@
 				fileName={args.fileName}
 				disabled={args.disabled}
 			/>
-			<p class="text-sm text-[var(--color-text-secondary)]">Last export: {lastExport}</p>
+			<p class="_c7">Last export: {lastExport}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+	._c2 {
+		overflow: hidden;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+	._c3 {
+		min-width: 100%;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c4 {
+		background-color: var(--color-background-secondary);
+		text-align: left;
+	}
+	._c5 {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+	._c6 {
+		border-top-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c7 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

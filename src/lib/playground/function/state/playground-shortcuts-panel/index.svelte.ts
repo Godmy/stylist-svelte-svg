@@ -1,4 +1,4 @@
-import type { PlaygroundShortcutsPanelProps } from '$stylist/playground/type/struct/playground-shortcuts-panel-props';
+﻿import type { RecipePlaygroundShortcutsPanel } from '$stylist/playground/interface/recipe/playground-shortcuts-panel';
 import type { PlaygroundShortcutsPanelShortcut } from '$stylist/playground/type/struct/playground-shortcuts-panel-shortcut';
 const Keyboard = 'keyboard';
 const Command = 'command';
@@ -46,7 +46,7 @@ const shortcuts: PlaygroundShortcutsPanelShortcut[] = [
 	{ keys: ['Ctrl', 'E'], description: 'Export Component', category: 'Actions', icon: Code },
 	{
 		keys: ['Ctrl', 'R'],
-		description: 'Reset All PlaygroundShortcutsPanelProps',
+		description: 'Reset All RecipePlaygroundShortcutsPanel',
 		category: 'Actions',
 		icon: Zap
 	},
@@ -63,7 +63,7 @@ const shortcuts: PlaygroundShortcutsPanelShortcut[] = [
 	{ keys: ['Esc'], description: 'Close Modals/Panels', category: 'Misc', icon: Keyboard }
 ];
 
-export function createPlaygroundShortcutsPanelState(_props: PlaygroundShortcutsPanelProps) {
+export function createPlaygroundShortcutsPanelState(_props: RecipePlaygroundShortcutsPanel) {
 	const groupedShortcuts = $derived.by(() => {
 		const groups = new Map<string, PlaygroundShortcutsPanelShortcut[]>();
 		shortcuts.forEach((shortcut) => {
@@ -137,5 +137,3 @@ export function createPlaygroundShortcutsPanelState(_props: PlaygroundShortcutsP
 		getKeyColor
 	};
 }
-
-export default createPlaygroundShortcutsPanelState;

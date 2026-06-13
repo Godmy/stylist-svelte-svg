@@ -1,6 +1,6 @@
-<script lang="ts">
-	import type { DocumentationBlockProps } from '$stylist/development/type/struct/documentation-block-props';
-	import createDocumentationBlockState from '$stylist/development/function/state/documentation-block/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeDocumentationBlock } from '$stylist/development/interface/recipe/documentation-block';
+	import { createDocumentationBlockState } from '$stylist/development/function/state/documentation-block/index.svelte';
 	import CodeSection from '$stylist/development/component/molecule/code-section/index.svelte';
 	import Badge from '$stylist/information/component/atom/badge/index.svelte';
 	import Divider from '$stylist/layout/component/atom/divider/index.svelte';
@@ -13,7 +13,7 @@
 		tags = [],
 		class: className = '',
 		...restProps
-	}: DocumentationBlockProps = $props();
+	}: RecipeDocumentationBlock = $props();
 
 	const state = createDocumentationBlockState({
 		title,
@@ -64,3 +64,96 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-documentation-block {
+		overflow: hidden;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+	}
+
+	.c-documentation-block--info {
+		border-color: var(--color-info-200, var(--color-primary-200));
+		background: var(--color-info-50, var(--color-primary-50));
+	}
+
+	.c-documentation-block--warning {
+		border-color: var(--color-warning-200);
+		background: var(--color-warning-50);
+	}
+
+	.c-documentation-block--success {
+		border-color: var(--color-success-200);
+		background: var(--color-success-50);
+	}
+
+	.c-documentation-block--danger {
+		border-color: var(--color-danger-200);
+		background: var(--color-danger-50);
+	}
+
+	.c-documentation-block__header {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 0.75rem 1rem;
+		background: var(--color-background-secondary);
+	}
+
+	.c-documentation-block__header--info {
+		background: var(--color-info-100, var(--color-primary-100));
+	}
+
+	.c-documentation-block__header--warning {
+		background: var(--color-warning-100);
+	}
+
+	.c-documentation-block__header--success {
+		background: var(--color-success-100);
+	}
+
+	.c-documentation-block__header--danger {
+		background: var(--color-danger-100);
+	}
+
+	.c-documentation-block__header-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	.c-documentation-block__title {
+		margin: 0;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.c-documentation-block__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.c-documentation-block__tag {
+		font-size: 0.75rem;
+	}
+
+	.c-documentation-block__content {
+		max-width: none;
+		padding: 1rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-documentation-block__content :global(h1),
+	.c-documentation-block__content :global(h2),
+	.c-documentation-block__content :global(h3),
+	.c-documentation-block__content :global(strong) {
+		color: var(--color-text-primary);
+	}
+
+	.c-documentation-block__examples {
+		margin-top: 1.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+</style>

@@ -19,7 +19,7 @@
 		<div class={state.headerClasses}>
 			<div class="c-schedule-calendar__header-left">
 				<Button variant="ghost" size="sm" onclick={() => state.navigateWeek(-1)}>
-					<BaseIcon name={ChevronLeft} class="h-5 w-5" />
+					<BaseIcon name={ChevronLeft} class="_c1" />
 				</Button>
 				<Button
 					variant="ghost"
@@ -28,7 +28,7 @@
 					class="c-schedule-calendar__today-btn">Today</Button
 				>
 				<Button variant="ghost" size="sm" onclick={() => state.navigateWeek(1)}>
-					<BaseIcon name={ChevronRight} class="h-5 w-5" />
+					<BaseIcon name={ChevronRight} class="_c1" />
 				</Button>
 				<h2 class="c-schedule-calendar__title">
 					{state.viewStartDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
@@ -265,5 +265,10 @@
 	.c-schedule-calendar__priority--default {
 		background: var(--color-background-tertiary, var(--color-background-secondary));
 		color: var(--color-text-secondary);
+	}
+
+	._c1 {
+		height: 1.25rem;
+		width: 1.25rem;
 	}
 </style>

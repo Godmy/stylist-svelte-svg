@@ -31,7 +31,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-data-table-advanced p-4">
+		<div class="sb-organisms-data-table-advanced _c1">
 			<DataTableAdvanced
 				{data}
 				{columns}
@@ -42,3 +42,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

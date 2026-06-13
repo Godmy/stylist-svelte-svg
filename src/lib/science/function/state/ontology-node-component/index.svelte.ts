@@ -1,19 +1,30 @@
 import type { OntologyNodeComponentProps } from '$stylist/science/type/struct/ontology-node-component/ontologynodecomponent-props';
-import { OntologyNodeComponentStyleManager } from '$stylist/science/class/style-manager/ontology-node-component';
+
+const NODE_ICON_MAP: Record<string, string> = {
+	class: 'square',
+	'object-property': 'arrow-right',
+	'datatype-property': 'database',
+	datatype: 'type',
+	deprecated: 'x',
+	'equivalent-class': 'zap'
+};
 
 export function createOntologyNodeComponentState(props: OntologyNodeComponentProps) {
-	const style = $derived(OntologyNodeComponentStyleManager.getNodeStyle(props.node.type));
+	const nodeType = $derived(props.node.type);
 	const baseClasses = $derived(
-		OntologyNodeComponentStyleManager.getBaseClasses(props.node.type, props.class ?? '')
+		['ontology-node-component', `ontology-node-component--${nodeType}`, props.class ?? '']
+			.filter(Boolean)
+			.join(' ')
 	);
+	const iconName = $derived(NODE_ICON_MAP[nodeType] ?? 'circle');
 	const label = $derived(props.node.label || props.node.id);
 
 	return {
-		get style() {
-			return style;
-		},
 		get baseClasses() {
 			return baseClasses;
+		},
+		get iconName() {
+			return iconName;
 		},
 		get label() {
 			return label;

@@ -1,27 +1,29 @@
-import { HoverableStyleManager } from '$stylist/interaction/class/style-manager/hoverable';
 import type { SlotHoverable as HoverProps } from '$stylist/interaction/interface/slot/hoverable';
 
 export const createHoverableState = (props: HoverProps) => {
-	// SlotState
 	let isHovered = $state(false);
 
-	// Вычисляемые классы
-	const classes = $derived.by(() =>
-		HoverableStyleManager.getClasses({
-			hoverEffect: props.hoverEffect,
-			isHovered,
-			disabled: props.disabled,
-			class: props.class
-		})
-	);
+	const classes = $derived.by(() => {
+		const { hoverEffect = true, disabled = false, class: className = '' } = props;
 
-	// Извлечение rest props
+		if (disabled)
+			return ['c-hoverable', 'c-hoverable--disabled', className].filter(Boolean).join(' ');
+
+		return [
+			'c-hoverable',
+			hoverEffect && 'c-hoverable--hover-effect',
+			isHovered && 'c-hoverable--hovered',
+			className
+		]
+			.filter(Boolean)
+			.join(' ');
+	});
+
 	const restProps = $derived.by(() => {
 		const { class: _class, onMouseEnter, onMouseLeave, disabled, hoverEffect, ...rest } = props;
 		return rest;
 	});
 
-	// Обработчики
 	function handleMouseEnter(event: MouseEvent) {
 		if (!props.disabled) {
 			isHovered = true;
@@ -37,23 +39,18 @@ export const createHoverableState = (props: HoverProps) => {
 	}
 
 	return {
-		// SlotState getters
 		get isHovered() {
 			return isHovered;
 		},
 		get disabled() {
 			return props.disabled;
 		},
-
-		// SlotState
 		get classes() {
 			return classes;
 		},
 		get restProps() {
 			return restProps;
 		},
-
-		// Handlers
 		handleMouseEnter,
 		handleMouseLeave
 	};

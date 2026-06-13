@@ -55,7 +55,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-search-results p-4">
+		<div class="sb-organisms-search-results _c1">
 			<SearchResults
 				{results}
 				query="order"
@@ -65,3 +65,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

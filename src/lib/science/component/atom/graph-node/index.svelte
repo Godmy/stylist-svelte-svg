@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { GraphNodeRecipe } from '$stylist/science/interface/recipe/graph-node';
+	import type { RecipeGraphNode } from '$stylist/science/interface/recipe/graph-node';
 	import createGraphNodeState from '$stylist/science/function/state/graph-node/index.svelte';
 
-	let props: GraphNodeRecipe = $props();
+	let props: RecipeGraphNode = $props();
 
 	const state = createGraphNodeState(props);
 	const label = $derived(props.label ?? props.id);

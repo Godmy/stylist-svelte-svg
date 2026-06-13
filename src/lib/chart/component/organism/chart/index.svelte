@@ -1,25 +1,11 @@
 ﻿<script lang="ts">
-	import type { AnalyticsChartProps } from '$stylist/chart/type/struct/analytics-chart-props';
-	import type { ChartProps as InformationChartProps } from '$stylist/chart/interface/recipe/chart-props';
+	import type { RecipeChart } from '$stylist/chart/interface/recipe/chart';
 	import createChartState from '$stylist/chart/function/state/chart-function/index.svelte';
-	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 	import ChartCanvas from '$stylist/chart/component/molecule/chart-canvas/index.svelte';
 	import ChartLegend from '$stylist/chart/component/molecule/chart-legend/index.svelte';
-	import { ObjectManagerChart } from '$stylist/chart/class/object-manager/chart';
 
-	let props: AnalyticsChartProps = $props();
-	const state = createChartState({
-		width: props.width,
-		height: props.height,
-		showLegend: props.showLegend,
-		showGrid: props.showGrid,
-		showZAxis: props.showZAxis,
-		series: props.series,
-		class: mergeClassNames(props.class)
-	} as InformationChartProps);
-
-	const series = $derived(ObjectManagerChart.resolveSeries(props.series));
-	const legendItems = $derived(ObjectManagerChart.resolveLegendItems(series));
+	let props: RecipeChart = $props();
+	const state = createChartState(props);
 </script>
 
 <section class={state.containerClasses}>
@@ -27,7 +13,7 @@
 		width={state.width}
 		height={state.height}
 		title={props.title}
-		{series}
+		series={state.series}
 		xScale={props.xScale}
 		yScale={props.yScale}
 		xTickCount={props.xTickCount}
@@ -41,6 +27,14 @@
 		showAxisArrows={props.showAxisArrows}
 	/>
 	{#if state.showLegend}
-		<ChartLegend items={legendItems} />
+		<ChartLegend items={state.legendItems} />
 	{/if}
 </section>
+
+<style>
+	.c-chart {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+</style>

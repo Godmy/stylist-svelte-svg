@@ -1,7 +1,7 @@
-import type { PlaygroundCanvasShellProps } from '$stylist/playground/type/struct/playground-canvas-shell-props';
+﻿import type { RecipePlaygroundCanvasShell } from '$stylist/playground/interface/recipe/playground-canvas-shell';
 import type { PlaygroundCanvasShellViewportSize } from '$stylist/playground/type/struct/playground-canvas-shell-viewport-size';
 import type { PlaygroundCanvasShellBackgroundType } from '$stylist/playground/type/struct/playground-canvas-shell-background-type';
-export function createPlaygroundCanvasShellState(props: PlaygroundCanvasShellProps) {
+export function createPlaygroundCanvasShellState(props: RecipePlaygroundCanvasShell) {
 	const component = $derived(props.component);
 	const componentProps = $derived(props.props);
 	const children = $derived(props.children);
@@ -127,5 +127,3 @@ export function createPlaygroundCanvasShellState(props: PlaygroundCanvasShellPro
 		handleWheel
 	};
 }
-
-export default createPlaygroundCanvasShellState;

@@ -18,7 +18,7 @@
 	description="Compact taxonomy row for domain, cluster, joint, and family coordinates."
 >
 	{#snippet children(values: any)}
-		<div class="rounded-2xl border border-slate-200 bg-white">
+		<div class="_c1">
 			<FunctionalTaxonomy
 				domain={values.domain as string}
 				cluster={values.cluster as string}
@@ -28,3 +28,13 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+	}
+</style>

@@ -23,7 +23,7 @@
 	description="Modal text editor used by the domain page for backlog and notes editing."
 >
 	{#snippet children(values: any)}
-		<div class="relative min-h-[42rem] rounded-3xl bg-slate-900/70 p-4">
+		<div class="_c1 bg-slate-900/70">
 			<TextInputDialog
 				open={Boolean(values.open)}
 				title="Story Backlog"
@@ -38,7 +38,24 @@
 					saveCount += 1;
 				}}
 			/>
-			<p class="absolute bottom-4 left-6 text-sm text-slate-200">Save attempts: {saveCount}</p>
+			<p class="_c2">Save attempts: {saveCount}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		min-height: 42rem;
+		border-radius: 1.5rem;
+		padding: 1rem;
+	}
+	._c2 {
+		position: absolute;
+		bottom: 1rem;
+		left: 1.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #e2e8f0;
+	}
+</style>

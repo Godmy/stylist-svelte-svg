@@ -1,6 +1,6 @@
-import type { ChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
+import type { RecipeChartCanvas } from '$stylist/chart/interface/recipe/chart-canvas';
 
-export type AnalyticsChartCanvasProps = ChartCanvasRecipe & {
+export type AnalyticsChartCanvasProps = RecipeChartCanvas & {
 	xAxisLabel?: string;
 	yAxisLabel?: string;
 	zAxisLabel?: string;

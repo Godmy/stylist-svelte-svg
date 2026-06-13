@@ -1,18 +1,20 @@
 import type { ContractAnnouncementBanner as AnnouncementBannerContract } from '$stylist/media/interface/contract/announcement-banner';
-import { MediaStyleManager } from '$stylist/media/class/style-manager/media';
 
 export function createAnnouncementBannerState(props: AnnouncementBannerContract) {
 	const containerClasses = $derived(
-		MediaStyleManager.getAnnouncementBannerContainerClasses(props.class)
+		[
+			'announcement-banner__announcement-banner-container',
+			props.class ? `announcement-banner__announcement-banner-container--selected` : ''
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
-	const flexClasses = $derived(MediaStyleManager.getAnnouncementBannerFlexContainerClasses());
-	const iconClasses = $derived(MediaStyleManager.getAnnouncementBannerIconClasses());
-	const contentClasses = $derived(MediaStyleManager.getAnnouncementBannerContentClasses());
-	const titleClasses = $derived(MediaStyleManager.getAnnouncementBannerTitleClasses());
-	const descriptionClasses = $derived(MediaStyleManager.getAnnouncementBannerDescriptionClasses());
-	const childrenClasses = $derived(
-		MediaStyleManager.getAnnouncementBannerChildrenContainerClasses()
-	);
+	const flexClasses = $derived('announcement-banner__announcement-banner-flex-container');
+	const iconClasses = $derived('announcement-banner__announcement-banner-icon');
+	const contentClasses = $derived('announcement-banner__announcement-banner-content');
+	const titleClasses = $derived('announcement-banner__announcement-banner-title');
+	const descriptionClasses = $derived('announcement-banner__announcement-banner-description');
+	const childrenClasses = $derived('announcement-banner__announcement-banner-children-container');
 
 	return {
 		get containerClasses() {
@@ -38,5 +40,3 @@ export function createAnnouncementBannerState(props: AnnouncementBannerContract)
 		}
 	};
 }
-
-export default createAnnouncementBannerState;

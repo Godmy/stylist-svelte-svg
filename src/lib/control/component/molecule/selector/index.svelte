@@ -1,8 +1,10 @@
-<script lang="ts">
-	import type { SelectorProps } from '$stylist/control/type/struct/selector-props';
-	import createSelectorState from '$stylist/control/function/state/selector/index.svelte';
+﻿<script lang="ts">
+	import { PresetSelector } from '$stylist/control/const/preset/selector';
+	import type { RecipeSelector } from '$stylist/control/interface/recipe/selector';
+	import { createSelectorState } from '$stylist/control/function/state/selector/index.svelte';
+	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let props: SelectorProps = $props();
+	let props: RecipeSelector = $props();
 	const state = createSelectorState(props);
 
 	const restProps = $derived.by(() => {
@@ -29,7 +31,7 @@
 		<label id={state.labelId} for={state.nativeId} class={state.labelClass}>
 			{state.label}
 			{#if state.required}
-				<span class="text-[--color-danger-500]">*</span>
+				<span style="color:var(--color-danger-500)">*</span>
 			{/if}
 		</label>
 	{/if}
@@ -53,18 +55,11 @@
 				{/if}
 			</span>
 			<span class={state.chevronClass} aria-hidden="true">
-				<svg
-					width="16"
-					height="16"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<polyline points="6 9 12 15 18 9" />
-				</svg>
+				<BaseIcon
+					name={PresetSelector.ChevronDown}
+					style="width:1rem;height:1rem;"
+					aria-hidden="true"
+				/>
 			</span>
 		</button>
 
@@ -72,7 +67,7 @@
 		<select
 			id={state.nativeId}
 			bind:value={props.value}
-			class="absolute h-0 w-0 overflow-hidden opacity-[var(--opacity-0)]"
+			class="c-selector__native"
 			disabled={state.disabled}
 			required={state.required}
 			aria-hidden="true"
@@ -114,7 +109,7 @@
 		--select-option-border: color-mix(in srgb, var(--color-text-primary) 8%, transparent);
 	}
 
-	[data-theme='dark'],
+	[theme-mode='dark'],
 	.dark {
 		--select-option-bg: color-mix(in srgb, var(--color-background-secondary) 96%, transparent);
 		--select-option-color: var(--color-text-primary);
@@ -128,41 +123,104 @@
 		--select-option-border: color-mix(in srgb, var(--color-text-primary) 35%, transparent);
 	}
 
-	.select-native {
-		position: absolute;
-		inset: 0;
-		width: 1px;
-		height: 1px;
-		opacity: var(--opacity-0);
-		pointer-events: none;
+	.c-selector {
+		margin-bottom: 1rem;
 	}
 
-	.select-trigger {
+	.c-selector__label {
+		display: block;
+		font-size: 0.875rem;
+		font-weight: 500;
+		margin-bottom: 0.25rem;
+		color: var(--color-text-primary);
+	}
+
+	.c-selector__field {
+		position: relative;
+	}
+
+	.c-selector__trigger {
+		width: 100%;
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		background: var(--color-background-surface, var(--color-background-primary));
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		cursor: default;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		min-height: var(--size-2_875rem);
 		letter-spacing: var(--letter-spacing-narrow);
 		background-image: var(--gradient-custom12);
 		color-scheme: var(--theme, light);
 	}
 
-	.select-trigger:focus-visible {
+	.c-selector__trigger:focus-visible {
 		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-500);
+		border-color: var(--color-primary-500);
 	}
 
-	.select-dropdown {
+	.c-selector__trigger--error {
+		border-color: var(--color-danger-500);
+	}
+
+	.c-selector__trigger--disabled {
+		background: var(--color-background-disabled, var(--color-background-secondary));
+		cursor: not-allowed;
+	}
+
+	.c-selector__chevron {
+		margin-left: 0.75rem;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		padding-right: 0.5rem;
+		pointer-events: none;
+	}
+
+	.c-selector__error {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: var(--color-danger-500);
+	}
+
+	.c-selector__value {
+		color: var(--color-text-primary);
+	}
+
+	.c-selector__placeholder {
+		color: var(--color-text-secondary);
+	}
+
+	.c-selector__native {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.c-selector__dropdown {
 		background: color-mix(in srgb, var(--color-background-primary) 98%, transparent);
 		backdrop-filter: blur(18px);
 		-webkit-backdrop-filter: blur(18px);
 		animation: select-dropdown-appear var(--duration-180) var(--easing-ease-entrance);
 	}
 
-	.select-option,
-	.select-native option {
+	.c-selector__option,
+	.c-selector__native option {
 		background-color: var(--select-option-bg);
 		color: var(--select-option-color);
 		font-weight: var(--font-weight-medium);
 	}
 
-	.select-option {
+	.c-selector__option {
 		transition:
 			background var(--duration-150) var(--animation-ease),
 			color var(--duration-150) var(--animation-ease),
@@ -170,33 +228,33 @@
 		border: 1px solid transparent;
 	}
 
-	.select-option:hover:not(.is-selected) {
+	.c-selector__option:hover:not(.is-selected) {
 		background-color: var(--select-option-hover);
 		border-color: var(--select-option-border);
 		color: var(--color-text-primary);
 	}
 
-	.select-option.is-highlighted:not(.is-selected) {
+	.c-selector__option.is-highlighted:not(.is-selected) {
 		background-color: var(--select-option-hover);
 		border-color: var(--select-option-border);
 		color: var(--color-text-primary);
 	}
 
-	.select-option.is-selected {
+	.c-selector__option.is-selected {
 		background-color: var(--select-option-selected-bg);
 		color: var(--select-option-selected-color);
 		box-shadow: var(--shadow-custom23);
 	}
 
 	/* Native select fallback */
-	.select-native option:checked,
-	.select-native option:focus,
-	.select-native option:hover {
+	.c-selector__native option:checked,
+	.c-selector__native option:focus,
+	.c-selector__native option:hover {
 		background-color: var(--select-option-hover);
 		color: var(--select-option-color);
 	}
 
-	.select-native option:checked {
+	.c-selector__native option:checked {
 		background-color: var(--select-option-selected-bg);
 		color: var(--select-option-selected-color);
 	}

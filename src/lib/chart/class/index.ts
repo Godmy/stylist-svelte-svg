@@ -9,13 +9,3 @@ export {
 	ObjectManagerLineChart,
 	ObjectManagerPieChart
 } from './object-manager';
-export {
-	AnalyticsChartStyleManager,
-	BarChartStyleManager,
-	CanvasChartStyleManager,
-	ChartStyleManager,
-	HeatmapStyleManager,
-	LineChartStyleManager,
-	PieChartStyleManager,
-	ScatterPlotStyleManager
-} from './style-manager';

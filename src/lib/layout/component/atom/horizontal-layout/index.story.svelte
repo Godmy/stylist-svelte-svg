@@ -38,14 +38,29 @@
 	description="A flexible horizontal layout component"
 >
 	{#snippet children(values: any)}
-		<div class="rounded border border-[var(--color-border-primary)] p-3">
+		<div class="_c1">
 			<HorizontalLayout {...values}>
 				{#snippet children()}
-					<div class="rounded bg-[var(--color-background-secondary)] p-2">Item 1</div>
-					<div class="rounded bg-[var(--color-background-secondary)] p-2">Item 2</div>
-					<div class="rounded bg-[var(--color-background-secondary)] p-2">Item 3</div>
+					<div class="_c2">Item 1</div>
+					<div class="_c2">Item 2</div>
+					<div class="_c2">Item 3</div>
 				{/snippet}
 			</HorizontalLayout>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.75rem;
+	}
+	._c2 {
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding: 0.5rem;
+	}
+</style>

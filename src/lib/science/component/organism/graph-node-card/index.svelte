@@ -1,10 +1,10 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeGraphNodeCard } from '$stylist/science/interface/recipe/graph-node-card';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { GraphNodeCardProps } from '$stylist/science/type/struct/graph-node-card-props';
-	import createGraphNodeCardState from '$stylist/science/function/state/graph-node-card/index.svelte';
+	import { createGraphNodeCardState } from '$stylist/science/function/state/graph-node-card/index.svelte';
 
-	let props: GraphNodeCardProps = $props();
+	let props: RecipeGraphNodeCard = $props();
 	const state = createGraphNodeCardState(props);
 </script>
 
@@ -23,7 +23,7 @@
 		aria-expanded={state.isExpanded}
 		aria-label={`Graph node card for ${props.node.name}`}
 	>
-		<div class="mr-2">
+		<div class="graph-node-card__icon">
 			<Icon name={state.getIconName(props.node.type)} size="sm" />
 		</div>
 		<div class={state.titleClass}>{props.node.name}</div>
@@ -83,3 +83,105 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	:global(.graph-node-card) {
+		border-radius: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	}
+
+	:global(.graph-node-card--selected) {
+		box-shadow: 0 0 0 2px var(--color-primary-500);
+	}
+
+	:global(.graph-node-card--highlight) {
+		border-color: var(--color-primary-400);
+	}
+
+	:global(.graph-node-card--default) {
+		border-color: var(--color-border-primary);
+	}
+
+	:global(.graph-node-card__header) {
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		gap: 0.5rem;
+		border-bottom: 1px solid var(--color-border-primary);
+		padding: 0.75rem 1rem;
+	}
+
+	:global(.graph-node-card__icon) {
+		margin-right: 0.5rem;
+	}
+
+	:global(.graph-node-card__title) {
+		flex: 1;
+		font-size: 0.875rem;
+		font-weight: var(--font-weight-semibold, 600);
+		color: var(--color-text-primary);
+	}
+
+	:global(.graph-node-card__type) {
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding: 0.125rem 0.5rem;
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+
+	:global(.graph-node-card__content) {
+		padding: 0.75rem 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	:global(.graph-node-card__description) {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
+	:global(.graph-node-card__fields) {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	:global(.graph-node-card__field-item) {
+		display: flex;
+		cursor: pointer;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.25rem;
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 0.75rem;
+	}
+
+	:global(.graph-node-card__field-item:hover) {
+		background-color: var(--color-background-secondary);
+	}
+
+	:global(.graph-node-card__field-name) {
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+	}
+
+	:global(.graph-node-card__field-type) {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+
+	:global(.graph-node-card__field-required) {
+		margin-left: 0.125rem;
+		color: var(--color-danger-500);
+	}
+
+	:global(.graph-node-card__actions) {
+		display: flex;
+		gap: 0.5rem;
+		padding-top: 0.5rem;
+	}
+</style>

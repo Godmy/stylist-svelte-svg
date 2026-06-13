@@ -42,7 +42,7 @@
 	description="Group of toggle buttons for selection"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<ToggleButtonGroup
 				options={defaultOptions}
 				value={controlValues.value}
@@ -53,3 +53,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

@@ -15,3 +15,6 @@
 		{props.text ?? ''}
 	</p>
 {/if}
+
+<style>
+</style>

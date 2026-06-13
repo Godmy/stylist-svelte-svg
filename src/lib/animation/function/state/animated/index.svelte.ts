@@ -1,14 +1,14 @@
-import { ObjectManagerMotion } from '$stylist/animation/class/object-manager/motion';
-import type { SlotAnimate as AnimateProps } from '$stylist/animation/interface/slot/animate';
+import { ManagerMotion } from '$stylist/animation/class/manager/motion';
+import type { RecipeAnimated } from '$stylist/animation/interface/recipe/animated';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export const createAnimatedState = (props: AnimateProps) => {
+export const createAnimatedState = (props: RecipeAnimated) => {
 	// SlotState
 	let isAnimating = $state(false);
 	let currentValue = $state(props.from ?? 0);
 
 	// Нормализация props
-	const normalizedProps = $derived(ObjectManagerMotion.normalizeAnimateContract(props));
+	const normalizedProps = $derived(ManagerMotion.normalizeAnimateContract(props));
 
 	// Вычисляемые классы
 	const classes = $derived.by(() =>
@@ -26,23 +26,6 @@ export const createAnimatedState = (props: AnimateProps) => {
 			`animation: ${normalizedProps.animation} ${normalizedProps.duration} ${normalizedProps.easing} ${normalizedProps.delay}ms${normalizedProps.infinite ? ' infinite' : ''};`
 	);
 
-	// Извлечение rest props
-	const restProps = $derived.by(() => {
-		const {
-			class: _class,
-			from,
-			to,
-			format,
-			animation,
-			duration,
-			easing,
-			delay,
-			infinite,
-			...rest
-		} = props;
-		return rest;
-	});
-
 	// Форматирование значения
 	const formattedValue = $derived.by(() => {
 		if (props.format) {
@@ -50,6 +33,7 @@ export const createAnimatedState = (props: AnimateProps) => {
 		}
 		return currentValue.toString();
 	});
+	const children = $derived(props.children);
 
 	// Авто-запуск при изменении props.to
 	$effect(() => {
@@ -63,20 +47,20 @@ export const createAnimatedState = (props: AnimateProps) => {
 	// Запуск анимации
 	function startAnimation() {
 		isAnimating = true;
-		const duration = parseInt(normalizedProps.duration) || 300;
+		const durationValue = (normalizedProps.duration ?? '300ms').toString();
+		const duration = durationValue.endsWith('ms')
+			? Number.parseFloat(durationValue)
+			: durationValue.endsWith('s')
+				? Number.parseFloat(durationValue) * 1000
+				: Number.parseFloat(durationValue) || 300;
 		const startTime = Date.now();
-		const from = normalizedProps.from;
-		const to = normalizedProps.to;
+		const from = normalizedProps.from ?? 0;
+		const to = normalizedProps.to ?? 1;
 
 		function animate() {
 			const elapsed = Date.now() - startTime;
 			const progress = Math.min(elapsed / duration, 1);
-			currentValue = ObjectManagerMotion.interpolateValue(
-				from,
-				to,
-				progress,
-				normalizedProps.easing
-			);
+			currentValue = ManagerMotion.interpolateValue(from, to, progress, normalizedProps.easing);
 
 			if (progress < 1 || normalizedProps.infinite) {
 				requestAnimationFrame(animate);
@@ -97,7 +81,7 @@ export const createAnimatedState = (props: AnimateProps) => {
 	// Сброс анимации
 	function resetAnimation() {
 		isAnimating = false;
-		currentValue = normalizedProps.from;
+		currentValue = normalizedProps.from ?? 0;
 	}
 
 	return {
@@ -111,6 +95,9 @@ export const createAnimatedState = (props: AnimateProps) => {
 		get formattedValue() {
 			return formattedValue;
 		},
+		get children() {
+			return children;
+		},
 
 		// SlotState
 		get classes() {
@@ -118,9 +105,6 @@ export const createAnimatedState = (props: AnimateProps) => {
 		},
 		get inlineStyle() {
 			return inlineStyle;
-		},
-		get restProps() {
-			return restProps;
 		},
 
 		// Actions

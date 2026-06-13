@@ -40,8 +40,8 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-lg p-4">
-			<div class="mb-4">
+		<div class="_c1">
+			<div class="_c2">
 				<p>
 					Selected range: {selectedRange.start ? selectedRange.start.toLocaleString() : 'None'} - {selectedRange.end
 						? selectedRange.end.toLocaleString()
@@ -56,3 +56,13 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 32rem;
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+	}
+</style>

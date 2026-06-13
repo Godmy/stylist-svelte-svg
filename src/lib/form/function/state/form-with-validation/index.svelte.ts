@@ -1,5 +1,5 @@
 import type { SlotFormWithValidation as FormWithValidationProps } from '$stylist/form/interface/slot/form-with-validation';
-import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { SlotFormWithValidationState } from '$stylist/form/interface/slot/form-with-validation-state';
 
 export function createFormWithValidationState(
@@ -9,10 +9,7 @@ export function createFormWithValidationState(
 	const passwordValid = $derived((props.password?.length ?? 0) >= 8);
 
 	const rootClass = $derived(
-		InteractionFormsStyleManager.root(
-			'c-form-with-validation border rounded-lg p-4 space-y-2',
-			props.class ?? ''
-		)
+		mergeClassNames('c-form-with-validation border rounded-lg p-4 space-y-2', props.class ?? '')
 	);
 	const inputClass = $derived('w-full border rounded px-2 py-1');
 	const emailValidText = $derived(emailValid ? 'Valid email' : 'Enter valid email');

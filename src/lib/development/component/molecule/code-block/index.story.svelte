@@ -30,7 +30,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-4 rounded-xl bg-gray-50 p-4">
+		<div class="_c1">
 			<Code
 				code={args.code}
 				language={args.language}
@@ -46,3 +46,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: #f9fafb;
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+</style>

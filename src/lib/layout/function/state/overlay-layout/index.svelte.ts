@@ -1,4 +1,3 @@
-import { OverlayLayoutStyleManager } from '$stylist/layout/class/style-manager/overlay-layout';
 import type { OverlayLayoutAlign } from '$stylist/layout/type/enum/overlay-layout-align';
 import type { OverlayLayoutProps } from '$stylist/layout/type/struct/layout-extended/overlay-layout-props/overlaylayout-props';
 
@@ -6,11 +5,6 @@ export function createOverlayLayoutState(props: OverlayLayoutProps) {
 	const overlayAlign = $derived<OverlayLayoutAlign>(props.overlayAlign ?? 'fill');
 	const overlayZIndex = $derived(props.overlayZIndex ?? 10);
 	const overlayPointerEvents = $derived(props.overlayPointerEvents ?? false);
-
-	const baseClass = $derived(OverlayLayoutStyleManager.getBaseClass(props.class));
-	const overlayClass = $derived(
-		OverlayLayoutStyleManager.getOverlayClass(overlayAlign, overlayZIndex, overlayPointerEvents)
-	);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -35,12 +29,6 @@ export function createOverlayLayoutState(props: OverlayLayoutProps) {
 		},
 		get overlayPointerEvents() {
 			return overlayPointerEvents;
-		},
-		get baseClass() {
-			return baseClass;
-		},
-		get overlayClass() {
-			return overlayClass;
 		},
 		get restProps() {
 			return restProps;

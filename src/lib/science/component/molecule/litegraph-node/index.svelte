@@ -1,12 +1,12 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeLitegraphNode } from '$stylist/science/interface/recipe/litegraph-node';
 	import NodeHeader from '$stylist/science/component/molecule/node-header/index.svelte';
 	import NodeProperty from '$stylist/science/component/atom/node-property/index.svelte';
 	import PortGroup from '$stylist/science/component/molecule/port-group/index.svelte';
 	import type { LiteGraphPort } from '$stylist/science/type/struct/litegraph-port';
-	import type { LitegraphNodeProps } from '$stylist/science/type/struct/litegraph-node-props';
 	import createLiteGraphNodeState from '$stylist/science/function/state/litegraph-node/index.svelte';
 
-	let props: LitegraphNodeProps = $props();
+	let props: RecipeLitegraphNode = $props();
 	const state = createLiteGraphNodeState(props);
 	const indexedInputs = $derived(
 		state.inputs.map((port: LiteGraphPort, idx: number) => ({ ...port, index: idx }))
@@ -39,7 +39,7 @@
 					<div class={state.semanticTitleClasses}>{props.title}</div>
 					{#if state.presentation.showDescription}
 						<div class={state.semanticDescriptionClasses}>
-							{props.type ?? 'default'} � {state.presentation.stage} � {state.presentation.size}
+							{props.type ?? 'default'} пїЅ {state.presentation.stage} пїЅ {state.presentation.size}
 						</div>
 					{/if}
 				</div>

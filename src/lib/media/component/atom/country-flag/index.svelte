@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { CountryFlagProps } from '$stylist/media/type/struct/country-flag';
-	import createCountryFlagState from '$stylist/media/function/state/country-flag/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeCountryFlag } from '$stylist/media/interface/recipe/country-flag';
+	import { createCountryFlagState } from '$stylist/media/function/state/country-flag/index.svelte';
 
-	let props: CountryFlagProps = $props();
+	let props: RecipeCountryFlag = $props();
 	const state = createCountryFlagState(props);
 </script>
 

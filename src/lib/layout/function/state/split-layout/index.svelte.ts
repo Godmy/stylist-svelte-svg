@@ -1,4 +1,3 @@
-import { SplitLayoutStyleManager } from '$stylist/layout/class/style-manager/split-layout';
 import type { SplitLayoutDirection } from '$stylist/layout/type/enum/split-layout-direction';
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
 import type { SplitLayoutPanelSize } from '$stylist/layout/type/enum/split-layout-panel-size';
@@ -10,16 +9,6 @@ export function createSplitLayoutState(props: SplitLayoutProps) {
 	const primarySize = $derived<SplitLayoutPanelSize>(props.primarySize ?? '2/3');
 	const secondarySize = $derived<SplitLayoutPanelSize>(props.secondarySize ?? '1/3');
 	const responsive = $derived(props.responsive ?? true);
-
-	const classes = $derived(
-		SplitLayoutStyleManager.getHostClass(direction, gap, responsive, props.class)
-	);
-	const primaryClasses = $derived(
-		`flex-1 ${SplitLayoutStyleManager.getPanelSizeClass(primarySize, responsive)}`
-	);
-	const secondaryClasses = $derived(
-		`flex-1 ${SplitLayoutStyleManager.getPanelSizeClass(secondarySize, responsive)}`
-	);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -51,15 +40,6 @@ export function createSplitLayoutState(props: SplitLayoutProps) {
 		},
 		get responsive() {
 			return responsive;
-		},
-		get classes() {
-			return classes;
-		},
-		get primaryClasses() {
-			return primaryClasses;
-		},
-		get secondaryClasses() {
-			return secondaryClasses;
 		},
 		get restProps() {
 			return restProps;

@@ -1,9 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { BlockquoteRecipe } from './blockquote';
-export type { HeadingRecipe } from './heading';
-export type { ThemeInlineCodeRecipe } from './inline-code';
-export type { ThemeKbdRecipe } from './kbd';
-export type { ThemeLinkRecipe } from './link';
-export type { RichTextRecipe } from './rich-text';
-export type { TextRecipe } from './text';
-export type { TextAreaControlRecipe } from './text-area-control';
+export type { RecipeBlockquote } from './blockquote';
+export type { RecipeHeading } from './heading';
+export type { RecipeThemeInlineCode } from './inline-code';
+export type { RecipeThemeKbd } from './kbd';
+export type { RecipeThemeLink } from './link';
+export type { RecipeRichText } from './rich-text';
+export type { RecipeText } from './text';
+export type { RecipeTextAreaControl } from './text-area-control';

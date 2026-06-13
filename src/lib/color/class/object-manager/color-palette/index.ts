@@ -1,23 +1,23 @@
-import type { ThemeColorPaletteRecipe } from '$stylist/color/interface/recipe/color-palette';
+import type { RecipeThemeColorPalette } from '$stylist/color/interface/recipe/color-palette';
 
 export class ObjectManagerColorPalette {
-	static resolveColors(props: ThemeColorPaletteRecipe) {
+	static resolveColors(props: RecipeThemeColorPalette) {
 		return props.colors ?? [];
 	}
 
-	static resolveTitle(props: ThemeColorPaletteRecipe): string {
+	static resolveTitle(props: RecipeThemeColorPalette): string {
 		return props.title ?? 'Color Palette';
 	}
 
-	static resolveShowLabels(props: ThemeColorPaletteRecipe): boolean {
+	static resolveShowLabels(props: RecipeThemeColorPalette): boolean {
 		return props.showLabels ?? true;
 	}
 
-	static resolveShowValues(props: ThemeColorPaletteRecipe): boolean {
+	static resolveShowValues(props: RecipeThemeColorPalette): boolean {
 		return props.showValues ?? false;
 	}
 
-	static resolveColumns(props: ThemeColorPaletteRecipe): number {
+	static resolveColumns(props: RecipeThemeColorPalette): number {
 		return Math.max(1, Math.min(props.columns ?? 5, 6));
 	}
 }

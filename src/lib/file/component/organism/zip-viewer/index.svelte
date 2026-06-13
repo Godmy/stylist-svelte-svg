@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import { ZipViewerStyleManager } from '$stylist/file/class/style-manager/zip-viewer';
-	import createZipViewerState from '$stylist/file/function/state/zip-viewer/index.svelte';
+	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+	import { createZipViewerState } from '$stylist/file/function/state/zip-viewer/index.svelte';
 	import type { Props } from '$stylist/file/type/struct/zip-viewer/props/-props';
 	import { getEntryIcon } from '$stylist/file/function/script/zip-viewer-get-entry-icon';
 	import { formatFileSize } from '$stylist/file/function/script/zip-viewer-format-file-size';
@@ -11,8 +11,8 @@
 	const state = createZipViewerState(props);
 </script>
 
-<div class={ZipViewerStyleManager.getBaseClasses(state.classes)} {...state.restProps}>
-	<div class={ZipViewerStyleManager.getHeaderClasses(props.headerClass ?? '')}>
+<div class={mergeClassNames('c-zip-viewer', state.classes)} {...state.restProps}>
+	<div class={mergeClassNames('zv-header', props.headerClass ?? '')}>
 		<div class="zv-header-row">
 			<BaseIcon
 				name="archive"
@@ -34,7 +34,7 @@
 				</div>
 				<input
 					type="text"
-					class={ZipViewerStyleManager.getSearchClasses()}
+					class="_c1"
 					placeholder="Search in archive..."
 					value={state.searchQuery}
 					oninput={state.handleSearchInput}
@@ -54,8 +54,9 @@
 				{#each state.zipTree as entry}
 					{@const entryIcon = getEntryIcon(entry)}
 					<div
-						class={ZipViewerStyleManager.getEntryClasses(
-							entry.type === 'directory',
+						class={mergeClassNames(
+							'zv-entry',
+							entry.type === 'directory' && 'zv-entry--dir',
 							props.entryClass ?? ''
 						)}
 					>
@@ -83,7 +84,12 @@
 							{/if}
 						</button>
 
-						<BaseIcon name={entryIcon} class={ZipViewerStyleManager.getIconClasses(entry.type)} />
+						<BaseIcon
+							name={entryIcon}
+							class={entry.type === 'directory'
+								? 'zv-entry-icon zv-entry-icon--dir'
+								: 'zv-entry-icon'}
+						/>
 
 						<div class="zv-entry-info">
 							<div class="zv-entry-name-row">
@@ -97,7 +103,7 @@
 									<span>{formatFileSize(entry.size)}</span>
 								{/if}
 								{#if entry.modified}
-									<span class="zv-sep">•</span>
+									<span class="zv-sep">вЂў</span>
 									<span>{entry.modified.toLocaleDateString()}</span>
 								{/if}
 							</div>
@@ -172,7 +178,8 @@
 	.zv-search-icon {
 		pointer-events: none;
 		position: absolute;
-		inset-y: 0;
+		top: 0;
+		bottom: 0;
 		left: 0;
 		display: flex;
 		align-items: center;
@@ -258,5 +265,70 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	._c1 {
+		display: block;
+		width: 100%;
+		padding-left: 2.5rem;
+		padding-right: 0.75rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		border-radius: 0.375rem;
+		line-height: 1.25rem;
+		background-color: var(--color-background-primary);
+	}
+	@media (min-width: 640px) {
+		._c1 {
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+		}
+	}
+
+	._c1:focus {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 3px var(--color-blue-500);
+		border-color: var(--color-primary-500);
+	}
+
+	.c-zip-viewer {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+	.zv-header {
+		padding: 1rem;
+		background-color: var(--color-background-secondary);
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+	.zv-entry {
+		display: flex;
+		align-items: center;
+		padding: 0.75rem;
+	}
+	.zv-entry:hover {
+		background-color: var(--color-background-secondary);
+	}
+	.zv-entry--dir {
+		background-color: var(--color-background-secondary);
+	}
+	.zv-entry-icon {
+		height: 1.25rem;
+		width: 1.25rem;
+		margin-right: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	.zv-entry-icon--dir {
+		color: var(--color-primary-500);
+	}
+	._c1::placeholder {
+		color: rgb(107 114 128);
+	}
+	._c1:focus::placeholder {
+		color: rgb(156 163 175);
 	}
 </style>

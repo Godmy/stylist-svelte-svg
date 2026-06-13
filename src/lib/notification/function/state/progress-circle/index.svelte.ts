@@ -13,12 +13,8 @@ export function createProgressCircleState(props: ProgressCircleProps) {
 
 	const containerClass = $derived(joinClassNames('progress-circle-container', props.class ?? ''));
 	const svgClass = $derived('progress-circle-svg');
-	const backgroundCircleClass = $derived(
-		joinClassNames('progress-circle', `stroke-[${strokeWidth}px]`, `variant-${color}`)
-	);
-	const progressCircleClass = $derived(
-		joinClassNames('progress-circle-fill', `stroke-[${strokeWidth}px]`, `variant-${color}`)
-	);
+	const backgroundCircleClass = $derived(joinClassNames('progress-circle__bg', `variant-${color}`));
+	const progressCircleClass = $derived(joinClassNames('progress-circle__fill', `variant-${color}`));
 	const labelClass = $derived('progress-circle-label');
 
 	return {

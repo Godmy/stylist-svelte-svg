@@ -45,6 +45,5 @@ export type {
 	PlaygroundTreeNodeProps,
 	PlaygroundTreeNodeStory,
 	PlaygroundTreeNodeTreeNodeData,
-	PropDefinition,
-	PropsEditorProps
+	PropDefinition
 } from './struct';

@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createProductGalleryState } from './createproductgallerystate';
+export { createProductGalleryState } from './index.svelte';

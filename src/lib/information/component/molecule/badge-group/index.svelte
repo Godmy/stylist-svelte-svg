@@ -1,9 +1,9 @@
 <script lang="ts">
 	import createBadgeGroupState from '$stylist/information/function/state/badge-group/index.svelte';
-	import type { BadgeGroupRecipe } from '$stylist/information/interface/recipe/badge-group';
+	import type { RecipeBadgeGroup } from '$stylist/information/interface/recipe/badge-group';
 	import Badge from '../../atom/badge/index.svelte';
 
-	let props: BadgeGroupRecipe = $props();
+	let props: RecipeBadgeGroup = $props();
 
 	const state = createBadgeGroupState(props);
 
@@ -48,3 +48,6 @@
 		</span>
 	{/if}
 </div>
+
+<style>
+</style>

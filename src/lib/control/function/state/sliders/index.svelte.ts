@@ -1,5 +1,5 @@
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { SliderRecipe as SliderProps } from '$stylist/control/interface/recipe/slider';
+import type { RecipeSlider as SliderProps } from '$stylist/control/interface/recipe/slider';
 
 type SliderStateProps = SliderProps & {
 	min?: number;

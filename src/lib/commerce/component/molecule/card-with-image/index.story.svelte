@@ -29,8 +29,16 @@
 			image={values.image}
 		>
 			{#snippet footer()}
-				<div class="text-xs text-[--color-text-secondary]">Updated 2 hours ago</div>
+				<div class="_c1">Updated 2 hours ago</div>
 			{/snippet}
 		</CardWithImage>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+</style>

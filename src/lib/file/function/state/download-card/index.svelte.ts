@@ -1,4 +1,4 @@
-import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
+﻿import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export function createDownloadCardState(
 	props: {
@@ -23,5 +23,3 @@ export function createDownloadCardState(
 		}
 	};
 }
-
-export default createDownloadCardState;

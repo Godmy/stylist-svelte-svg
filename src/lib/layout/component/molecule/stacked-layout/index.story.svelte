@@ -40,10 +40,20 @@
 			justifyContent={values.justifyContent}
 		>
 			{#snippet children()}
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Item A</div>
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Item B</div>
-				<div class="rounded-lg border border-[--color-border-primary] p-3">Item C</div>
+				<div class="_c1">Item A</div>
+				<div class="_c1">Item B</div>
+				<div class="_c1">Item C</div>
 			{/snippet}
 		</StackedLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.75rem;
+	}
+</style>

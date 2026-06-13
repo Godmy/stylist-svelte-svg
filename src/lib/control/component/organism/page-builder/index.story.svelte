@@ -26,11 +26,31 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-page-builder p-6">
-			<h2 class="mb-6 text-xl font-semibold">{typedProps.title}</h2>
-			<div class="mx-auto max-w-4xl rounded-lg border">
+		<div class="sb-organisms-page-builder _c1">
+			<h2 class="_c2">{typedProps.title}</h2>
+			<div class="_c3">
 				<PageBuilder showToolbar={typedProps.showToolbar} editable={typedProps.editable} />
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 56rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

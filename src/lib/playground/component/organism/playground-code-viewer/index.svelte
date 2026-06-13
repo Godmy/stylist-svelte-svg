@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundCodeViewer } from '$stylist/playground/interface/recipe/playground-code-viewer';
 	import { onMount } from 'svelte';
-	import createPlaygroundCodeViewerState from '$stylist/playground/function/state/playground-code-viewer/index.svelte';
-	import type { PlaygroundCodeViewerProps } from '$stylist/playground/type/struct/playground-code-viewer-props';
-	let props: PlaygroundCodeViewerProps = $props();
+	import { createPlaygroundCodeViewerState } from '$stylist/playground/function/state/playground-code-viewer/index.svelte';
+	let props: RecipePlaygroundCodeViewer = $props();
 	const state = createPlaygroundCodeViewerState(props);
 	let highlightSequence = 0;
 
@@ -33,56 +33,161 @@
 	});
 </script>
 
-<div class="code-viewer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-	<div
-		class="code-tabs flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-2 dark:border-gray-700 dark:bg-gray-800"
-	>
-		<div class="flex items-center gap-2">
-			<span
-				class="rounded bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
-			>
-				Svelte 5
-			</span>
-			<span class="text-xs text-gray-500 dark:text-gray-400"> Component Code </span>
+<div class="pcv-wrap">
+	<div class="pcv-tabs">
+		<div class="pcv-tabs-left">
+			<span class="pcv-lang-badge">Svelte 5</span>
+			<span class="pcv-lang-label">Component Code</span>
 		</div>
 	</div>
 
-	<div
-		class="code-toolbar flex items-center justify-between border-b border-gray-200 bg-gray-100 p-2 dark:border-gray-700 dark:bg-gray-800"
-	>
-		<div class="text-xs text-gray-500 dark:text-gray-400">
-			{state.currentLanguage} • {state.generatedCode.split('\n').length} lines
+	<div class="pcv-toolbar">
+		<div class="pcv-toolbar-info">
+			{state.currentLanguage} вЂў {state.generatedCode.split('\n').length} lines
 			{#if state.componentName}
-				• Dynamic generation
+				вЂў Dynamic generation
 			{/if}
 		</div>
-		<div class="flex space-x-2">
-			<button
-				onclick={state.copyCode}
-				class="rounded bg-gray-200 px-2 py-1 text-xs text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-				title="Copy code"
-			>
-				Copy
-			</button>
-			<button
-				onclick={state.downloadCode}
-				class="rounded bg-gray-200 px-2 py-1 text-xs text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-				title="Download file"
-			>
-				Download
-			</button>
+		<div class="pcv-toolbar-btns">
+			<button onclick={state.copyCode} class="pcv-btn" title="Copy code">Copy</button>
+			<button onclick={state.downloadCode} class="pcv-btn" title="Download file">Download</button>
 		</div>
 	</div>
 
-	<div class="code-content max-h-96 overflow-auto">
+	<div class="pcv-content">
 		{#if state.isLoading}
-			<div class="p-4 text-center text-gray-500 dark:text-gray-400">
-				Loading highlighted code...
-			</div>
+			<div class="pcv-loading">Loading highlighted code...</div>
 		{:else if state.highlightedCode}
 			{@html state.highlightedCode}
 		{:else}
-			<div class="p-4 text-gray-500 dark:text-gray-400">No code to display</div>
+			<div class="pcv-empty">No code to display</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+	.pcv-wrap {
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border: 1px solid #e5e7eb;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-wrap {
+			border-color: #374151;
+		}
+	}
+	.pcv-tabs {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid #e5e7eb;
+		background: #f9fafb;
+		padding: 0.5rem 1rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-tabs {
+			border-color: #374151;
+			background: #1f2937;
+		}
+	}
+	.pcv-tabs-left {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pcv-lang-badge {
+		border-radius: 0.25rem;
+		background: #ffedd5;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: #c2410c;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-lang-badge {
+			background: rgb(124 45 18 / 0.3);
+			color: #fb923c;
+		}
+	}
+	.pcv-lang-label {
+		font-size: 0.75rem;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-lang-label {
+			color: #9ca3af;
+		}
+	}
+	.pcv-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid #e5e7eb;
+		background: #f3f4f6;
+		padding: 0.5rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-toolbar {
+			border-color: #374151;
+			background: #1f2937;
+		}
+	}
+	.pcv-toolbar-info {
+		font-size: 0.75rem;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-toolbar-info {
+			color: #9ca3af;
+		}
+	}
+	.pcv-toolbar-btns {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.pcv-btn {
+		border-radius: 0.25rem;
+		background: #e5e7eb;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		color: #1f2937;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.15s;
+	}
+	.pcv-btn:hover {
+		background: #d1d5db;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-btn {
+			background: #374151;
+			color: #e5e7eb;
+		}
+		.pcv-btn:hover {
+			background: #4b5563;
+		}
+	}
+	.pcv-content {
+		max-height: 24rem;
+		overflow: auto;
+	}
+	.pcv-loading {
+		padding: 1rem;
+		text-align: center;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-loading {
+			color: #9ca3af;
+		}
+	}
+	.pcv-empty {
+		padding: 1rem;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcv-empty {
+			color: #9ca3af;
+		}
+	}
+</style>

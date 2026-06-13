@@ -1,4 +1,3 @@
-import { IconStyleManager } from '$stylist/media/class/style-manager/icons';
 import { TOKEN_ICON_REGISTRY } from '$stylist/media/const/record/icon-registry';
 import type { IconProps } from '$stylist/media/interface/recipe/icon-icon-props';
 
@@ -48,37 +47,24 @@ export function createIconState(props: IconProps) {
 		effectiveName === 'chevron-left' ||
 		effectiveName === 'chevron-right' ||
 		effectiveName === 'chevron'
-			? IconStyleManager.getIconChevronClasses({
-					size: typeof size === 'number' ? 'md' : size,
-					direction,
-					variant,
-					disabled,
-					className
-				})
-			: IconStyleManager.getIconClasses(typeof size === 'number' ? 'md' : size, className)
+			? 'icon__icon-chevron'
+			: 'icon__icon'
 	);
 
 	const containerClasses = $derived.by(() => {
 		if (container === 'circle') {
-			return IconStyleManager.getIconCircleClasses({
-				variant: (color !== 'default' ? color : variant) as Parameters<
-					typeof IconStyleManager.getIconCircleClasses
-				>[0]['variant'],
-				size: containerSize,
-				filled,
-				disabled,
-				className: containerClass
-			});
+			return [
+				'icon__icon-circle',
+				filled ? 'icon__icon-circle--filled' : '',
+				disabled ? 'icon__icon-circle--disabled' : '',
+				`icon__icon-circle--${containerSize}`,
+				containerClass
+			]
+				.filter(Boolean)
+				.join(' ');
 		}
 		if (container === 'wrapper') {
-			return IconStyleManager.getIconWrapperClasses({
-				size: containerSize,
-				variant,
-				shape,
-				color: color as Parameters<typeof IconStyleManager.getIconWrapperClasses>[0]['color'],
-				disabled,
-				className: containerClass
-			});
+			return 'icon__icon-wrapper';
 		}
 		return containerClass;
 	});

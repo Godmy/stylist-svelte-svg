@@ -7,8 +7,6 @@ import { addABTestVariant } from '$stylist/marketing/function/script/add-ab-test
 import { removeABTestVariant } from '$stylist/marketing/function/script/remove-ab-test-variant';
 import { updateABTestVariantWeight } from '$stylist/marketing/function/script/update-ab-test-variant-weight';
 import { toggleABTestVariantStatus } from '$stylist/marketing/function/script/toggle-ab-test-variant-status';
-import { ABTestConfiguratorStyleManager } from '$stylist/marketing/class/style-manager/abtest-configurator';
-
 export function createABTestConfiguratorState(
 	props: IABTestConfiguratorProps & {
 		class?: string;
@@ -68,19 +66,6 @@ export function createABTestConfiguratorState(
 	let errors = $state<Record<string, string>>({});
 
 	const totalWeight = $derived(calculateABTestTotalWeight(test.variants));
-
-	const containerClasses = $derived(
-		`${ABTestConfiguratorStyleManager.getContainerClass(className)}`.trim()
-	);
-	const headerClasses = $derived(
-		`${ABTestConfiguratorStyleManager.getHeaderClass(headerClassName)}`.trim()
-	);
-	const formClasses = $derived(
-		`${ABTestConfiguratorStyleManager.getFormClass(formClassName)}`.trim()
-	);
-	const footerClasses = $derived(
-		`${ABTestConfiguratorStyleManager.getFooterClass(footerClassName)}`.trim()
-	);
 
 	function saveTest(): void {
 		const validationErrors = validateABTest(test);

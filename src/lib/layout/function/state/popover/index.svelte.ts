@@ -1,4 +1,3 @@
-import { PopoverStyleManager } from '$stylist/layout/class/style-manager/popover';
 import type { PopoverPosition } from '$stylist/layout/type/enum/popover-position';
 import type { PopoverProps } from '$stylist/layout/interface/recipe/popover';
 
@@ -9,9 +8,6 @@ export function createPopoverState(props: PopoverProps) {
 
 	const position = $derived<PopoverPosition>(props.position ?? 'bottom');
 	const popoverId = $derived(props.id ?? `popover-${Math.random().toString(36).slice(2, 9)}`);
-	const rootClass = $derived(PopoverStyleManager.getRootClass(props.class));
-	const popoverClass = $derived(PopoverStyleManager.getPopoverClass(position, props.class));
-	const titleClass = $derived(PopoverStyleManager.getTitleClass());
 
 	$effect(() => {
 		if (props.open !== undefined) {
@@ -46,17 +42,11 @@ export function createPopoverState(props: PopoverProps) {
 		set popoverElement(value: HTMLElement | null) {
 			popoverElement = value;
 		},
+		get position() {
+			return position;
+		},
 		get popoverId() {
 			return popoverId;
-		},
-		get rootClass() {
-			return rootClass;
-		},
-		get popoverClass() {
-			return popoverClass;
-		},
-		get titleClass() {
-			return titleClass;
 		},
 		setOpen,
 		toggleOpen

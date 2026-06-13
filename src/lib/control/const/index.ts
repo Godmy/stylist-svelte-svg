@@ -9,6 +9,22 @@ export {
 } from './enum';
 export { CONTROL_BUTTON_ICON, PAGE_BUILDER_ICON, TOKEN_ICON_PATHS } from './map';
 export {
+	PresetAccessibilityToolbar,
+	PresetAccordion,
+	PresetAdvancedAccordion,
+	PresetCloseButton,
+	PresetCombobox,
+	PresetCopyButton,
+	PresetDropdownMenu,
+	PresetFollowButton,
+	PresetMultiSelect,
+	PresetPageButton,
+	PresetQuantitySelector,
+	PresetSelector,
+	PresetSortableTableHeader,
+	PresetZoomToolbar
+} from './preset';
+export {
 	ACCORDION_HEADER_CONTEXT,
 	ACCORDION_HEADER_PADDING_CLASSES,
 	ACCORDION_ITEM_CONTEXT,

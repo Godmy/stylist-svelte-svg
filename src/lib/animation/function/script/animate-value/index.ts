@@ -10,7 +10,14 @@ export function animateValue({
 	onUpdate,
 	onFinish
 }: AnimateValueOptions): () => void {
-	if (duration <= 0 || typeof window === 'undefined') {
+	const durationValue = duration.toString();
+	const durationMs = durationValue.endsWith('ms')
+		? Number.parseFloat(durationValue)
+		: durationValue.endsWith('s')
+			? Number.parseFloat(durationValue) * 1000
+			: Number.parseFloat(durationValue);
+
+	if (durationMs <= 0 || typeof window === 'undefined') {
 		onUpdate(to);
 		onFinish?.();
 		return () => {};
@@ -18,7 +25,7 @@ export function animateValue({
 
 	const easingFunction = getEasingFunction(easing);
 	const startDelay = Math.max(delay, 0);
-	const targetDuration = Math.max(duration, 0);
+	const targetDuration = Math.max(durationMs, 0);
 	const startTime = (window.performance?.now() ?? Date.now()) + startDelay;
 	const endTime = startTime + targetDuration;
 	let frameId: number;

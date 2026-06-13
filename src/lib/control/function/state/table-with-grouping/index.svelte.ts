@@ -1,14 +1,11 @@
 import { ObjectManagerTableControls } from '$stylist/control/class/object-manager/table-controls';
-import { TableExtendedStyleManager } from '$stylist/control/class/style-manager/table-extended';
 import type { SlotTableWithGrouping as TableWithGroupingProps } from '$stylist/control/interface/slot/table-with-grouping';
 
 export function createTableWithGroupingState(props: TableWithGroupingProps) {
 	const groups = $derived(
 		ObjectManagerTableControls.groupRows(props.data ?? [], props.groupBy ?? 'group')
 	);
-	const rootClass = $derived(
-		TableExtendedStyleManager.root('c-table-with-grouping', props.class ?? '')
-	);
+	const rootClass = $derived(['c-table-grouping', props.class].filter(Boolean).join(' '));
 
 	return {
 		get groups() {

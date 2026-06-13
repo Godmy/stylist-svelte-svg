@@ -1,4 +1,3 @@
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 import createInputTextState from '$stylist/input/function/state/input-text/index.svelte';
 import type { SlotInputDouble as IInputDoubleProps } from '$stylist/input/interface/slot/input-double';
 
@@ -27,12 +26,10 @@ export const createInputDoubleState = (props: IInputDoubleProps) => {
 			class: props.class
 		})
 	);
-	const containerClasses = $derived(
-		InputStyleManager.getInputDoubleContainerClass(props.class ?? '')
-	);
-	const labelClasses = $derived(InputStyleManager.getLabelClass(''));
-	const errorTextClasses = $derived(InputStyleManager.getErrorTextClass(''));
-	const requiredIndicatorClasses = $derived(InputStyleManager.getRequiredIndicatorClass(''));
+	const containerClasses = $derived('input-double-container');
+	const labelClasses = $derived('input-field-label');
+	const errorTextClasses = $derived('input-field-error-text');
+	const requiredIndicatorClasses = $derived('input-field-required');
 
 	return {
 		get hasError1() {

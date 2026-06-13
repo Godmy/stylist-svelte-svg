@@ -19,7 +19,7 @@
 	description="Applies transform contracts and optional hover or press motion."
 >
 	{#snippet children(values: any)}
-		<div class="rounded-3xl bg-[linear-gradient(135deg,#e0f2fe,#f8fafc)] p-8">
+		<div class="_c1">
 			<Transformable
 				scale={Number(values.scale)}
 				rotate={Number(values.rotate)}
@@ -30,15 +30,50 @@
 				transformOrigin="center center"
 				animateOnHover={Boolean(values.animateOnHover)}
 				animateOnClick={Boolean(values.animateOnClick)}
-				class="mx-auto max-w-72 rounded-2xl border border-sky-200 bg-white p-6 shadow-lg"
+				class="_c2"
 			>
 				{#snippet children()}
-					<div class="grid gap-2 text-center">
-						<strong class="text-slate-900">Hover the card</strong>
-						<p class="text-sm text-slate-500">Use the controls to change the motion contract.</p>
+					<div class="_c3">
+						<strong class="_c4">Hover the card</strong>
+						<p class="_c5">Use the controls to change the motion contract.</p>
 					</div>
 				{/snippet}
 			</Transformable>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1.5rem;
+		background-color: linear-gradient(135deg, #e0f2fe, #f8fafc);
+		padding: 2rem;
+	}
+	._c2 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 18rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-sky-200);
+		background-color: #ffffff;
+		padding: 1.5rem;
+		box-shadow:
+			0 10px 15px -3px rgb(0 0 0 / 0.1),
+			0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+	._c3 {
+		display: grid;
+		gap: 0.5rem;
+		text-align: center;
+	}
+	._c4 {
+		color: #0f172a;
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

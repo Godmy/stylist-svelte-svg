@@ -1,13 +1,13 @@
-﻿import type { ScatterPlotRecipe } from '$stylist/chart/interface/recipe/scatter-plot';
+import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
 import type { ScatterPlotDataPoint } from '$stylist/chart/type/struct/scatter-plot-point';
-import { ScatterPlotStyleManager } from '$stylist/chart/class/style-manager/scatter-plot';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createScatterPlotState(props: ScatterPlotRecipe) {
+export function createScatterPlotState(props: RecipeScatterPlot) {
 	const maxX = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.x), 100));
 	const maxY = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.y), 100));
 	const chartWidth = $derived((props.width ?? 700) - 70);
 	const chartHeight = $derived((props.height ?? 420) - 40);
-	const rootClass = $derived(ScatterPlotStyleManager.root(String(props.class ?? '')));
+	const rootClass = $derived(mergeClassNames('c-scatter-plot', String(props.class ?? '')));
 
 	return {
 		get maxX() {

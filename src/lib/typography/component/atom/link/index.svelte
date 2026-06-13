@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ThemeLinkRecipe } from '$stylist/typography/interface/recipe/link';
+	import type { RecipeThemeLink } from '$stylist/typography/interface/recipe/link';
 	import createLinkState from '$stylist/typography/function/state/link/index.svelte';
 
-	let props: ThemeLinkRecipe = $props();
+	let props: RecipeThemeLink = $props();
 
 	const state = createLinkState(props);
 	const children = $derived(props.children);

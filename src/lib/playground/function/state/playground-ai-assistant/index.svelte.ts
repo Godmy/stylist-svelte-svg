@@ -1,9 +1,7 @@
 import { onMount } from 'svelte';
-import type { PlaygroundAiAssistantProps } from '$stylist/playground/type/struct/playground-ai-assistant-props';
+import type { RecipePlaygroundAiAssistant } from '$stylist/playground/interface/recipe/playground-ai-assistant';
 import type { PlaygroundAiAssistantChatMessage } from '$stylist/playground/type/struct/playground-ai-assistant-chat-message';
 import type { PlaygroundAiAssistantAIClientLike } from '$stylist/playground/type/struct/playground-ai-assistant-ai-client-like';
-import { PlaygroundAiAssistantStyleManager } from '$stylist/playground/class/style-manager/playground-ai-assistant';
-
 const fallbackCreateAIClient = (): PlaygroundAiAssistantAIClientLike => ({
 	chat: async () => {
 		throw new Error('AI client is not configured');
@@ -19,7 +17,7 @@ const providerNames: Record<string, string> = {
 	codex: 'Codex'
 };
 
-export function createPlaygroundAiAssistantState(props: PlaygroundAiAssistantProps) {
+export function createPlaygroundAiAssistantState(props: RecipePlaygroundAiAssistant) {
 	const X = 'x';
 	const Send = 'send';
 	const Trash2 = 'trash-2';
@@ -40,20 +38,10 @@ export function createPlaygroundAiAssistantState(props: PlaygroundAiAssistantPro
 	const aiClient = $derived(createAIClient(providerId));
 	const currentProviderName = $derived(providerNames[providerId]);
 
-	const containerClass = $derived(PlaygroundAiAssistantStyleManager.getContainerClasses());
-	const headerClass = $derived(PlaygroundAiAssistantStyleManager.getHeaderClasses());
-	const messagesContainerClass = $derived(
-		PlaygroundAiAssistantStyleManager.getMessagesContainerClasses()
-	);
 	const messageClass = (role: 'user' | 'assistant') =>
-		PlaygroundAiAssistantStyleManager.getMessageClasses(role);
-	const inputContainerClass = $derived(
-		PlaygroundAiAssistantStyleManager.getInputContainerClasses()
-	);
-	const errorBannerClass = $derived(PlaygroundAiAssistantStyleManager.getErrorBannerClasses());
-	const loadingIndicatorClass = $derived(
-		PlaygroundAiAssistantStyleManager.getLoadingIndicatorClasses()
-	);
+		['playground-ai-assistant__message', role ? `playground-ai-assistant__message--selected` : '']
+			.filter(Boolean)
+			.join(' ');
 
 	// Send message to AI
 	async function sendMessage() {
@@ -130,7 +118,7 @@ export function createPlaygroundAiAssistantState(props: PlaygroundAiAssistantPro
 		messages = [
 			{
 				role: 'assistant',
-				content: `Здравствуйте! Я ${currentProviderName} AI Assistant. Чем могу помочь?`,
+				content: `Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ! РЇ ${currentProviderName} AI Assistant. Р§РµРј РјРѕРіСѓ РїРѕРјРѕС‡СЊ?`,
 				timestamp: Date.now()
 			}
 		];
@@ -210,5 +198,3 @@ export function createPlaygroundAiAssistantState(props: PlaygroundAiAssistantPro
 		scrollToBottom
 	};
 }
-
-export default createPlaygroundAiAssistantState;

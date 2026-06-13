@@ -37,7 +37,7 @@
 	description="File tab strip with preview mode actions for the domain workspace."
 >
 	{#snippet children(values: any)}
-		<div class="grid gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+		<div class="_c1">
 			<JointTabButtons
 				{files}
 				{markdownFile}
@@ -60,7 +60,25 @@
 					actionLabel = 'json-tree';
 				}}
 			/>
-			<p class="text-sm text-slate-500">Last action: {actionLabel}</p>
+			<p class="_c2">Last action: {actionLabel}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding: 1rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

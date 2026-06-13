@@ -17,7 +17,7 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotStatus as IStatusSlot } from '$stylist/information/interface/slot/status';
 
-export interface TogglesRecipe
+export interface RecipeToggles
 	extends StructIntersectAll<
 		[ILabelSlot, ICaptionSlot, IStatusSlot, ISelectable<boolean>, IFocusable, ISizable]
 	> {}

@@ -1,14 +1,14 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { BehaviorTypography } from './behavior';
 export type {
-	BlockquoteRecipe,
-	HeadingRecipe,
-	RichTextRecipe,
-	TextAreaControlRecipe,
-	TextRecipe,
-	ThemeInlineCodeRecipe,
-	ThemeKbdRecipe,
-	ThemeLinkRecipe
+	RecipeBlockquote,
+	RecipeHeading,
+	RecipeRichText,
+	RecipeText,
+	RecipeTextAreaControl,
+	RecipeThemeInlineCode,
+	RecipeThemeKbd,
+	RecipeThemeLink
 } from './recipe';
 export type {
 	SlotAbbr,

@@ -16,12 +16,8 @@
 	description="Token control node that opens a contextual editor inside the orbit shell."
 >
 	{#snippet children(values: any)}
-		<div
-			class="relative h-72 overflow-hidden rounded-3xl bg-[radial-gradient(circle_at_center,#dbeafe,#eff6ff_60%,#e2e8f0)]"
-		>
-			<div
-				class="absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-200/80"
-			></div>
+		<div class="_c1">
+			<div class="_c2 _c1 border-sky-200/80"></div>
 			<OrbitTokenNode
 				id="controls"
 				icon="controls"
@@ -33,3 +29,27 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		height: 18rem;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		background-color: radial-gradient(circle at center, #dbeafe, #eff6ff 60%, #e2e8f0);
+	}
+	._c2 {
+		position: absolute;
+		height: 11rem;
+		width: 11rem;
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+	}
+
+	._c1 {
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%);
+	}
+</style>

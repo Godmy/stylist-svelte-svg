@@ -1,9 +1,7 @@
-import type { ThemeBackgroundRecipe } from '$stylist/layout/interface/recipe/background';
+import type { RecipeThemeBackground } from '$stylist/layout/interface/recipe/background';
 import { ObjectManagerBackground } from '$stylist/layout/class/object-manager/background';
-import { StyleManagerBackground } from '$stylist/layout/class/style-manager/background';
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createBackgroundState(props: ThemeBackgroundRecipe) {
+export function createBackgroundState(props: RecipeThemeBackground) {
 	const background = $derived(ObjectManagerBackground.resolveBackground(props));
 	const backgroundColor = $derived(ObjectManagerBackground.resolveBackgroundColor(props));
 	const backgroundImage = $derived(ObjectManagerBackground.resolveBackgroundImage(props));
@@ -12,17 +10,6 @@ export function createBackgroundState(props: ThemeBackgroundRecipe) {
 	const backgroundRepeat = $derived(ObjectManagerBackground.resolveBackgroundRepeat(props));
 	const gradient = $derived(ObjectManagerBackground.resolveGradient(props));
 	const opacity = $derived(ObjectManagerBackground.resolveOpacity(props));
-	const variant = $derived(ObjectManagerBackground.resolveVariant(props));
-
-	const classes = $derived(
-		StyleManagerBackground.root(
-			background,
-			variant,
-			!!gradient,
-			!!backgroundImage,
-			mergeClassNames(props.class)
-		)
-	);
 
 	const styles = $derived(
 		ObjectManagerBackground.createInlineStyles({
@@ -36,7 +23,13 @@ export function createBackgroundState(props: ThemeBackgroundRecipe) {
 			opacity
 		})
 	);
-	const inlineStyle = $derived(StyleManagerBackground.inlineStyle(styles));
+
+	const inlineStyle = $derived(
+		Object.entries(styles as Record<string, string | number>)
+			.map(([k, v]) => `${k}: ${v};`)
+			.join(' ')
+	);
+
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,
@@ -57,9 +50,6 @@ export function createBackgroundState(props: ThemeBackgroundRecipe) {
 	return {
 		get background() {
 			return background;
-		},
-		get classes() {
-			return classes;
 		},
 		get styles() {
 			return styles;

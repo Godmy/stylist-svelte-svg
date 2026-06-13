@@ -6,15 +6,24 @@
 	const state = createPopoverState(props);
 </script>
 
-<div class={state.rootClass}>
-	<div bind:this={state.triggerElement}>
+<div class={['layout-popover', props.class].filter(Boolean).join(' ')}>
+	<div bind:this={state.triggerElement} class="layout-popover__trigger">
 		{@render props.trigger()}
 	</div>
 
 	{#if state.isVisible}
-		<div bind:this={state.popoverElement} class={state.popoverClass}>
+		<div
+			bind:this={state.popoverElement}
+			class={[
+				'layout-popover__content',
+				`layout-popover__content--${state.popoverId ? 'visible' : ''}`
+			]
+				.filter(Boolean)
+				.join(' ')}
+			data-position={props.position ?? 'bottom'}
+		>
 			{#if props.title}
-				<h3 class={state.titleClass}>{props.title}</h3>
+				<h3 class="layout-popover__title">{props.title}</h3>
 			{/if}
 			<div>
 				{@render props.content()}
@@ -22,3 +31,56 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.layout-popover {
+		position: relative;
+		display: inline-block;
+	}
+
+	.layout-popover__trigger {
+		display: contents;
+	}
+
+	.layout-popover__content {
+		position: absolute;
+		z-index: var(--z-index-docked, 40);
+		background-color: var(--color-background-primary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		box-shadow:
+			0 4px 6px rgba(0, 0, 0, 0.07),
+			0 10px 15px rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+		min-width: 200px;
+	}
+
+	.layout-popover__content[data-position='bottom'] {
+		top: 100%;
+		left: 0;
+		margin-top: 0.5rem;
+	}
+
+	.layout-popover__content[data-position='top'] {
+		bottom: 100%;
+		left: 0;
+		margin-bottom: 0.5rem;
+	}
+
+	.layout-popover__content[data-position='left'] {
+		right: 100%;
+		top: 0;
+		margin-right: 0.5rem;
+	}
+
+	.layout-popover__content[data-position='right'] {
+		left: 100%;
+		top: 0;
+		margin-left: 0.5rem;
+	}
+
+	.layout-popover__title {
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+</style>

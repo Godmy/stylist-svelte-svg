@@ -1,8 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { BlockquoteRecipe } from '$stylist/typography/interface/recipe/blockquote';
+import type { RecipeBlockquote } from '$stylist/typography/interface/recipe/blockquote';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createBlockquoteState(props: BlockquoteRecipe) {
+export function createBlockquoteState(props: RecipeBlockquote) {
 	const citeUrl = $derived.by(() => {
 		if (props.citeUrl) {
 			return props.citeUrl;

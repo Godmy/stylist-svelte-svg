@@ -48,13 +48,8 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-dialog p-4">
-			<button
-				class="mb-4 rounded bg-[var(--color-primary-600)] px-4 py-2 text-[var(--color-text-inverse)]"
-				onclick={handleOpen}
-			>
-				Open Dialog
-			</button>
+		<div class="sb-organisms-dialog _c1">
+			<button class="_c2" onclick={handleOpen}> Open Dialog </button>
 			<Dialog
 				open={isOpen}
 				title={values.title}
@@ -64,3 +59,19 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-primary-600);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		color: var(--color-text-inverse);
+	}
+</style>

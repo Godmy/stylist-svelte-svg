@@ -1,10 +1,10 @@
-import type { TableRecipe as TableRecipe } from '$stylist/information/interface/recipe/table';
-import type { TableSectionRecipe as TableSectionRecipe } from '$stylist/information/interface/recipe/table-section';
-import type { TableRowRecipe as TableRowRecipe } from '$stylist/information/interface/recipe/table-row';
-import type { TableCellRecipe as TableCellRecipe } from '$stylist/information/interface/recipe/table-cell';
+import type { RecipeTable as RecipeTable } from '$stylist/information/interface/recipe/table';
+import type { RecipeTableSection as RecipeTableSection } from '$stylist/information/interface/recipe/table-section';
+import type { RecipeTableRow as RecipeTableRow } from '$stylist/information/interface/recipe/table-row';
+import type { RecipeTableCell as RecipeTableCell } from '$stylist/information/interface/recipe/table-cell';
 
 export class ObjectManagerTable {
-	static getTableRestProps(props: TableRecipe) {
+	static getTableRestProps(props: RecipeTable) {
 		const {
 			class: _class,
 			content: _content,
@@ -18,18 +18,18 @@ export class ObjectManagerTable {
 		return rest;
 	}
 
-	static getSectionRestProps(props: TableSectionRecipe) {
+	static getSectionRestProps(props: RecipeTableSection) {
 		const { class: _class, content: _content, ...rest } = props;
 		return rest;
 	}
 
-	static getRowRestProps(props: TableRowRecipe) {
+	static getRowRestProps(props: RecipeTableRow) {
 		const { class: _class, content: _content, striped: _striped, active: _active, ...rest } = props;
 
 		return rest;
 	}
 
-	static getCellRestProps(props: TableCellRecipe) {
+	static getCellRestProps(props: RecipeTableCell) {
 		const { align: _align, class: _class, content: _content, ...rest } = props;
 		return rest;
 	}

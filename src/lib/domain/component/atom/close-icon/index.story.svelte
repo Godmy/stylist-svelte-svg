@@ -17,11 +17,9 @@
 	description="Floating close affordance for expanded orbit cards."
 >
 	{#snippet children(values: any)}
-		<div class="relative h-40 overflow-hidden rounded-3xl bg-slate-100 p-8">
-			<div
-				class="absolute top-8 left-8 h-24 w-64 rounded-[28px] border border-slate-200 bg-white"
-			></div>
-			<div class="absolute top-[32px] left-[232px]">
+		<div class="_c1">
+			<div class="_c2"></div>
+			<div class="_c3">
 				<CloseIcon
 					expanded={Boolean(values.expanded)}
 					onClick={() => {
@@ -29,7 +27,43 @@
 					}}
 				/>
 			</div>
-			<p class="absolute bottom-4 left-6 text-sm text-slate-500">Clicks: {clicks}</p>
+			<p class="_c4">Clicks: {clicks}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		height: 10rem;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		background-color: #f1f5f9;
+		padding: 2rem;
+	}
+	._c2 {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		height: 6rem;
+		width: 16rem;
+		border-radius: 28px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+	}
+	._c3 {
+		position: absolute;
+		top: 32px;
+		left: 232px;
+	}
+	._c4 {
+		position: absolute;
+		bottom: 1rem;
+		left: 1.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

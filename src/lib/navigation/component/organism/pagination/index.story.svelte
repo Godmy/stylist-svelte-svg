@@ -48,8 +48,8 @@
 	tags={['pagination', 'navigation', 'pages', 'paging']}
 >
 	{#snippet children(values: any)}
-		<div class="p-6">
-			<div class="mx-auto max-w-md">
+		<div class="_c1">
+			<div class="_c2">
 				<Pagination
 					currentPage={values.currentPage}
 					totalPages={values.totalPages}
@@ -62,3 +62,14 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+	}
+</style>

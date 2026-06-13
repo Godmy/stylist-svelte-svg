@@ -16,6 +16,5 @@ export type {
 	PresenceStatus,
 	RealTimePresenceStatus,
 	RecipeExtendedTimeSlot,
-	TimelineProps,
 	TimelineStatus
 } from './struct';

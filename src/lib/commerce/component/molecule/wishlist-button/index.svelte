@@ -1,39 +1,94 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { WishlistButtonRecipe } from '$stylist/commerce/interface/recipe/wishlist-button';
+	import type { RecipeWishlistButton } from '$stylist/commerce/interface/recipe/wishlist-button';
 	import createWishlistButtonState from '$stylist/commerce/function/state/wishlist-button/index.svelte';
 
-	let props: WishlistButtonRecipe = $props();
+	let props: RecipeWishlistButton = $props();
 	const state = createWishlistButtonState(props);
 </script>
 
-<div class={state.containerClass}>
+<div class="wishlist-button__TODO-containerClass">
 	<button
 		type="button"
-		class={state.buttonClass}
+		class="wishlist-button__TODO-buttonClass"
 		onclick={() => state.toggleWishlist()}
 		disabled={props.disabled || state.isLoading}
 		aria-pressed={state.inWishlist}
 	>
 		{#if state.isLoading}
-			<div class="mr-2 h-4 w-4 animate-spin rounded-full border-b-2 border-current"></div>
+			<div class="wb-spinner _c1"></div>
 		{:else if state.inWishlist}
-			<BaseIcon name="check" class="mr-2 h-4 w-4" />
+			<BaseIcon name="check" class="_c2" />
 		{:else}
-			<BaseIcon name="heart" class="mr-2 h-4 w-4" />
+			<BaseIcon name="heart" class="_c2" />
 		{/if}
 		{#if props.showLabel}<span>{state.inWishlist ? 'In Wishlist' : 'Add to Wishlist'}</span>{/if}
 	</button>
 
 	{#if state.showMessage}
-		<div
-			class="fixed right-4 bottom-4 z-[var(--z-index-modal)] flex items-center gap-2 rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-3 py-2 shadow-lg"
-		>
-			<BaseIcon name="check-circle" class="h-4 w-4 text-[var(--color-success-500)]" />
-			<span class="text-sm">{state.message}</span>
+		<div class="_c3 z-[var(--z-index-modal)]">
+			<BaseIcon name="check-circle" class="_c4" />
+			<span class="_c5">{state.message}</span>
 			<button type="button" onclick={() => state.hideMessage()}>
-				<BaseIcon name="x" class="h-4 w-4" />
+				<BaseIcon name="x" class="_c6" />
 			</button>
 		</div>
 	{/if}
 </div>
+
+<style>
+	._c1 {
+		margin-right: 0.5rem;
+		height: 1rem;
+		width: 1rem;
+		border-radius: 9999px;
+	}
+	._c2 {
+		margin-right: 0.5rem;
+		height: 1rem;
+		width: 1rem;
+	}
+	._c3 {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		box-shadow:
+			0 10px 15px -3px rgb(0 0 0 / 0.1),
+			0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+	._c4 {
+		height: 1rem;
+		width: 1rem;
+		color: var(--color-success-500);
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c6 {
+		height: 1rem;
+		width: 1rem;
+	}
+
+	.wb-spinner {
+		animation: spin 1s linear infinite;
+		border-bottom: 2px solid currentColor;
+	}
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+</style>

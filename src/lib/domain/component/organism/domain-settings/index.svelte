@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThemeSettings from '$stylist/theme/component/organism/theme-settings/index.svelte';
-	import { ObjectManagerThemeSettings } from '$stylist/theme/class/object-manager/theme-settings';
+	import { ManagerThemeSettings } from '$stylist/theme/class/manager/theme-settings';
 
 	interface DomainSettingsProps {
 		open?: boolean;
@@ -10,7 +10,7 @@
 
 	let { open = false, onClose, class: className = '' }: DomainSettingsProps = $props();
 
-	const settingsContract = ObjectManagerThemeSettings.createContract({
+	const settingsRecipe = ManagerThemeSettings.createContract({
 		modeSection: {
 			show: true,
 			title: '',
@@ -44,7 +44,7 @@
 		<div class="panel-body">
 			<div class="settings-offset">
 				<ThemeSettings
-					contract={settingsContract}
+					{...settingsRecipe}
 					class="domain-settings-panel"
 					switcherProps={{ compact: false, showHeader: false, showLabels: false }}
 				/>

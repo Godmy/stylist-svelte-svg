@@ -42,19 +42,30 @@
 			responsive={values.responsive}
 		>
 			{#snippet primary()}
-				<div
-					class="rounded-xl border border-[--color-border-primary] bg-[--color-background-secondary] p-4"
-				>
-					Primary pane
-				</div>
+				<div class="_c1">Primary pane</div>
 			{/snippet}
 			{#snippet secondary()}
-				<div
-					class="rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-4"
-				>
-					Secondary pane
-				</div>
+				<div class="_c2">Secondary pane</div>
 			{/snippet}
 		</SplitLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c2 {
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+</style>

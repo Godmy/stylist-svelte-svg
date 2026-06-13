@@ -1,6 +1,6 @@
-import type { CanvasChartRecipe } from '$stylist/chart/interface/recipe/canvas-chart';
+import type { RecipeCanvasChart } from '$stylist/chart/interface/recipe/canvas-chart';
 
-export const PRESET_CANVAS_CHART: CanvasChartRecipe = {
+export const PRESET_CANVAS_CHART: RecipeCanvasChart = {
 	width: 800,
 	height: 600,
 	type: 'line',

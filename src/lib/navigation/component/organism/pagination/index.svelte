@@ -1,9 +1,9 @@
-<script lang="ts">
-	import type { PaginationStateProps } from '$stylist/navigation/interface/recipe/pagination-pagination-state-props';
+﻿<script lang="ts">
+	import type { RecipePagination } from '$stylist/navigation/interface/recipe/pagination';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import createPaginationState from '$stylist/navigation/function/state/pagination/index.svelte';
+	import { createPaginationState } from '$stylist/navigation/function/state/pagination/index.svelte';
 
-	let props: PaginationStateProps = $props();
+	let props: RecipePagination = $props();
 	const state = createPaginationState(props);
 </script>
 
@@ -106,3 +106,94 @@
 		{/if}
 	</nav>
 </div>
+
+<style>
+	.pagination__pagination {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.pagination__page-item {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		border-radius: 0.375rem;
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+		background-color: var(--color-primary-600);
+		color: var(--color-text-primary);
+		cursor: pointer;
+		pointer-events: none;
+	}
+	.pagination__page-item:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 3px var(--color-primary-500);
+	}
+	.pagination__page-item:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.pagination__pagination-ellipsis {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.pagination__pagination-prev {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		border-radius: 0.375rem;
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+		height: 2.25rem;
+		width: 2.25rem;
+		color: var(--color-text-primary);
+		cursor: pointer;
+		pointer-events: none;
+	}
+	.pagination__pagination-prev:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 3px var(--color-primary-500);
+	}
+	.pagination__pagination-prev:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.pagination__pagination-next {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		border-radius: 0.375rem;
+		transition-property: color, background-color, border-color;
+		transition-duration: 150ms;
+		height: 2.25rem;
+		width: 2.25rem;
+		color: var(--color-text-primary);
+		cursor: pointer;
+		pointer-events: none;
+	}
+	.pagination__pagination-next:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 3px var(--color-primary-500);
+	}
+	.pagination__pagination-next:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.pagination__pagination-container {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+</style>

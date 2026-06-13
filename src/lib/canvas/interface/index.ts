@@ -1,5 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { CanvasImageEditorRecipe, ConnectionLineRecipe } from './recipe';
+export type { RecipeCanvasImageEditor, RecipeConnectionLine } from './recipe';
 export type {
 	CanvasToolbarDrawingOptions,
 	ConnectionPathResult,

@@ -1,20 +1,17 @@
-<script lang="ts">
-	import { InteractionInputStyleManager } from '$stylist/input/class/style-manager/interaction-input';
-	import type { SlotRangeInput as RangeInputProps } from '$stylist/input/interface/slot/range-input';
-	import createRangeInputState from '$stylist/input/function/state/range-input/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeRangeInput } from '$stylist/input/interface/recipe/range-input';
+	import { createRangeInputState } from '$stylist/input/function/state/range-input/index.svelte';
 
-	let props: RangeInputProps = $props();
+	let props: RecipeRangeInput = $props();
 	const state = createRangeInputState(props);
 </script>
 
-<div class={InteractionInputStyleManager.root('c-range-input w-full', state.className)}>
-	<div class="relative h-8">
-		<div
-			class={`absolute top-1/2 h-2 w-full -translate-y-1/2 rounded bg-[var(--color-background-tertiary)] ${state.rangeClass}`}
-		></div>
+<div class={`c-range-input ${state.className}`.trim()}>
+	<div class="c-range-input__track-wrap">
+		<div class={`c-range-input__track ${state.rangeClass}`}></div>
 		<input
 			type="range"
-			class="absolute w-full"
+			class="c-range-input__range"
 			min={state.min}
 			max={state.max}
 			step={state.step}
@@ -25,7 +22,7 @@
 		/>
 		<input
 			type="range"
-			class="absolute w-full"
+			class="c-range-input__range"
 			min={state.min}
 			max={state.max}
 			step={state.step}
@@ -37,17 +34,17 @@
 	</div>
 
 	{#if state.showInputFields}
-		<div class="mt-3 flex justify-between gap-3">
+		<div class="c-range-input__fields">
 			<input
 				type="number"
-				class={InteractionInputStyleManager.input(`w-24 px-2 py-1 ${state.inputClass}`)}
+				class={`c-range-input__number ${state.inputClass}`}
 				bind:value={state.minVal}
 				oninput={(e) => state.update('min', Number((e.target as HTMLInputElement).value))}
 				onchange={state.commit}
 			/>
 			<input
 				type="number"
-				class={InteractionInputStyleManager.input(`w-24 px-2 py-1 ${state.inputClass}`)}
+				class={`c-range-input__number ${state.inputClass}`}
 				bind:value={state.maxVal}
 				oninput={(e) => state.update('max', Number((e.target as HTMLInputElement).value))}
 				onchange={state.commit}
@@ -55,3 +52,57 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-range-input {
+		width: 100%;
+	}
+
+	.c-range-input__track-wrap {
+		position: relative;
+		height: 2rem;
+	}
+
+	.c-range-input__track {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 0.5rem;
+		width: 100%;
+		border-radius: 9999px;
+		background-color: var(--color-background-tertiary);
+	}
+
+	.c-range-input__range {
+		position: absolute;
+		width: 100%;
+		appearance: none;
+		background: transparent;
+		pointer-events: none;
+	}
+
+	.c-range-input__range::-webkit-slider-thumb {
+		pointer-events: all;
+		appearance: none;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 9999px;
+		background-color: var(--color-primary-500);
+		cursor: pointer;
+	}
+
+	.c-range-input__fields {
+		margin-block-start: 0.75rem;
+		display: flex;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	.c-range-input__number {
+		width: 6rem;
+		padding: 0.25rem 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: var(--border-radius-base, 0.375rem);
+		background-color: var(--color-background-primary);
+	}
+</style>

@@ -1,5 +1,5 @@
-<script lang="ts">
-	import createFileInputState from '$stylist/file/function/state/file-input/index.svelte';
+﻿<script lang="ts">
+	import { createFileInputState } from '$stylist/file/function/state/file-input/index.svelte';
 	import type { Props } from '$stylist/file/type/struct/file-input';
 
 	let props: Props = $props();

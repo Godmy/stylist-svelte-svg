@@ -6,8 +6,10 @@ export {
 	getEasingFunction
 } from './script';
 export {
+	createAnimatedBackgroundState,
 	createAnimatedNumberState,
 	createAnimatedState,
+	createLayoutTransformationState,
 	createNumberFlowState,
 	createTransformableState,
 	createTransformationState

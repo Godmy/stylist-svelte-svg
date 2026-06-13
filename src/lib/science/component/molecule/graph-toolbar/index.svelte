@@ -1,10 +1,10 @@
-<script lang="ts">
-	import type { GraphToolbarProps } from '$stylist/science/type/struct/graph/graph-toolbar-props';
-	import createGraphToolbarState from '$stylist/science/function/state/graph-toolbar/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeGraphToolbar } from '$stylist/science/interface/recipe/graph-toolbar';
+	import { createGraphToolbarState } from '$stylist/science/function/state/graph-toolbar/index.svelte';
 	import IconButton from '$stylist/control/component/atom/icon-button/index.svelte';
 	import Separator from '$stylist/layout/component/atom/separator/index.svelte';
 
-	let props: GraphToolbarProps = $props();
+	let props: RecipeGraphToolbar = $props();
 	const state = createGraphToolbarState(props);
 </script>
 

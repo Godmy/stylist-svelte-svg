@@ -51,9 +51,7 @@
 >
 	{#snippet children(args)}
 		<section class="sb-organisms-bulk-order-form">
-			<div
-				class="mx-auto max-w-4xl rounded-[2.5rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
+			<div class="_c1">
 				<BulkOrderForm
 					products={sampleProducts}
 					showTotal={args.showTotal as boolean}
@@ -66,11 +64,11 @@
 				/>
 
 				{#if orderItems.length > 0}
-					<div class="mt-6 rounded-lg bg-[--color-background-secondary] p-4">
-						<h3 class="font-medium text-[--color-text-primary]">Submitted SlotOrder Items:</h3>
-						<ul class="mt-2 space-y-1">
+					<div class="_c2">
+						<h3 class="_c3">Submitted SlotOrder Items:</h3>
+						<ul class="_c4">
 							{#each orderItems as item}
-								<li class="text-sm text-[--color-text-secondary]">
+								<li class="_c5">
 									Product ID: {item.productId}, Quantity: {item.quantity}
 								</li>
 							{/each}
@@ -81,3 +79,39 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 56rem;
+		border-radius: 2.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c2 {
+		margin-top: 1.5rem;
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c3 {
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	._c4 {
+		margin-top: 0.5rem;
+	}
+	._c4 > * + * {
+		margin-top: 0.25rem;
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

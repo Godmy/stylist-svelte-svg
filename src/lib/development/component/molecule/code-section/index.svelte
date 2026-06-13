@@ -36,3 +36,6 @@
 
 	<CodeEditor {...editorProps} />
 </div>
+
+<style>
+</style>

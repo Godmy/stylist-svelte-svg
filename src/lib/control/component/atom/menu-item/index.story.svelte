@@ -54,7 +54,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<MenuItem
 				active={values.active}
 				variant={values.variant}
@@ -69,7 +69,7 @@
 	{/snippet}
 
 	{#snippet variants()}
-		<div class="grid grid-cols-1 gap-4 p-4">
+		<div class="_c2">
 			<MenuItem active={true} variant="default">Active Item</MenuItem>
 			<MenuItem active={false} variant="default" disabled={true}>Disabled Item</MenuItem>
 			<MenuItem active={false} variant="default" external={true} href="#">External Link</MenuItem>
@@ -79,3 +79,15 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+		padding: 1rem;
+	}
+</style>

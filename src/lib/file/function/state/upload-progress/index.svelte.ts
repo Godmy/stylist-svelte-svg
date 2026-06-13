@@ -1,4 +1,4 @@
-import type { SlotUploadFile as IUploadFile } from '$stylist/file/interface/slot/upload-file-upload-progress-2';
+﻿import type { SlotUploadFile as IUploadFile } from '$stylist/file/interface/slot/upload-file-upload-progress-2';
 import type { SlotUploadProgress as IUploadProgressProps } from '$stylist/file/interface/slot/upload-progress-upload-progress-2';
 
 import { handleCancel as handleCancelFn } from '$stylist/file/function/script/upload-progress-handle-cancel';
@@ -119,5 +119,3 @@ export function createUploadProgressState(props: IUploadProgressProps) {
 		handleRemove
 	};
 }
-
-export default createUploadProgressState;

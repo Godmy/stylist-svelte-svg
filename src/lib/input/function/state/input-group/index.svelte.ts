@@ -1,4 +1,3 @@
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
 import createInputTextState from '$stylist/input/function/state/input-text/index.svelte';
 import type { SlotInputGroup as IInputGroupProps } from '$stylist/input/interface/slot/input-group';
 
@@ -42,28 +41,28 @@ export const createInputGroupState = (props: IInputGroupProps) => {
 			return inputState.classes;
 		},
 		get containerClasses() {
-			return InputStyleManager.getContainerClass('');
+			return 'input-field-container';
 		},
 		get labelClasses() {
-			return InputStyleManager.getLabelClass('');
+			return 'input-field-label';
 		},
 		get helperTextClasses() {
-			return InputStyleManager.getHelperTextClass('');
+			return 'input-field-helper-text';
 		},
 		get errorTextClasses() {
-			return InputStyleManager.getErrorTextClass('');
+			return 'input-field-error-text';
 		},
 		get requiredIndicatorClasses() {
-			return InputStyleManager.getRequiredIndicatorClass('');
+			return 'input-field-required';
 		},
 		get groupContainerClasses() {
-			return InputStyleManager.getInputGroupContainerClass('flex items-stretch');
+			return 'input-group-container';
 		},
 		get groupInputClasses() {
-			return InputStyleManager.getInputGroupInputClass('');
+			return 'input-group-input';
 		},
 		get groupButtonClasses() {
-			return InputStyleManager.getInputGroupButtonClass('');
+			return 'input-group-button';
 		},
 		get showHelper() {
 			return showHelper;

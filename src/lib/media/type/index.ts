@@ -7,7 +7,6 @@ export type {
 	IconShape,
 	IconSize,
 	IconVariant,
-	PictureToolbarProps,
 	PictureToolbarTool,
 	PromoBannerVariant
 } from './alias';

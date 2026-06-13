@@ -2,7 +2,6 @@
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import type { AccountSettings } from '$stylist/management/type/struct/settings/account-settings';
-	import { AccountSettingsStyleManager } from '$stylist/interaction/class/style-manager/account-settings';
 	import AccountSettingsForm from './index.svelte';
 
 	type Props = {
@@ -44,15 +43,47 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class={AccountSettingsStyleManager.form('sb-organisms-account-settings-form p-4')}>
-			<h1 class="mb-4 text-lg font-semibold">AccountSettingsForm Component</h1>
+		<div class="sb-organisms-account-settings-form _c1">
+			<h1 class="_c1">AccountSettingsForm Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive AccountSettingsForm</h2>
-				<div class="max-w-lg">
+			<div class="_c2">
+				<h2 class="_c3">Interactive AccountSettingsForm</h2>
+				<div class="_c4">
 					<AccountSettingsForm />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c3 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c4 {
+		max-width: 32rem;
+	}
+
+	._c1 {
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 1.5rem;
+	}
+</style>

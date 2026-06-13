@@ -1,10 +1,10 @@
 import type { SlotScreenReader as ScreenReaderProps } from '$stylist/form/interface/slot/screen-reader';
-import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { SlotScreenReaderState } from '$stylist/form/interface/slot/screen-reader-state';
 
 export function createScreenReaderState(props: ScreenReaderProps): SlotScreenReaderState {
 	const rootClass = $derived(
-		InteractionFormsStyleManager.root('c-screen-reader border rounded-lg p-4', props.class ?? '')
+		mergeClassNames('c-screen-reader border rounded-lg p-4', props.class ?? '')
 	);
 	const titleClass = $derived('font-semibold');
 	const contentClass = $derived('text-sm text-[var(--color-text-primary)]');

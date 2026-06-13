@@ -37,15 +37,11 @@
 	{#snippet children(values: any)}
 		{@const count = Number(values.count)}
 		{@const max = Number(values.max)}
-		<div class="space-y-8">
-			<div
-				class="flex items-center gap-3 rounded-2xl border border-[var(--color-border-primary)]/80 bg-[var(--color-background-primary)]/70 p-4 shadow-sm dark:border-[var(--color-border-primary)]/80 dark:bg-[var(--color-neutral-900)]/40"
-			>
-				<button
-					class="relative rounded-xl bg-[var(--color-neutral-900)] px-4 py-2 text-sm font-semibold text-[var(--color-text-inverse)]"
-				>
+		<div class="_c1">
+			<div class="_c2">
+				<button class="_c3">
 					Messages
-					<span class="absolute -top-2 -right-2">
+					<span class="_c4 _c1">
 						<CountBadge
 							count={Number.isNaN(count) ? 12 : count}
 							max={Number.isNaN(max) ? 99 : max}
@@ -55,15 +51,11 @@
 				</button>
 			</div>
 
-			<div
-				class="rounded-2xl border border-[var(--color-border-primary)]/80 bg-[var(--color-background-primary)]/80 p-4 shadow-sm dark:border-[var(--color-border-primary)] dark:bg-[var(--color-neutral-900)]/40"
-			>
-				<ul class="divide-y divide-gray-100 text-sm dark:divide-gray-800">
+			<div class="_c5 _c2">
+				<ul class="_c6">
 					{#each inboxViews as view}
-						<li class="flex items-center justify-between py-3">
-							<span class="text-[var(--color-text-primary)] dark:text-[var(--color-neutral-200)]"
-								>{view.label}</span
-							>
+						<li class="_c7">
+							<span class="_c8 _c3">{view.label}</span>
 							<CountBadge
 								count={view.label === 'Inbox' ? (Number.isNaN(count) ? 12 : count) : view.count}
 								max={Number.isNaN(max) ? 99 : max}
@@ -76,3 +68,79 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 2rem;
+	}
+	._c2 {
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		position: relative;
+		border-radius: 0.75rem;
+		background-color: var(--color-neutral-900);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-inverse);
+	}
+	._c4 {
+		position: absolute;
+	}
+	._c5 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c6 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c6 > * + * {
+		border-top-width: 1px;
+		border-style: solid;
+	}
+	._c7 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+	._c8 {
+		color: var(--color-text-primary);
+	}
+
+	._c1 {
+		top: -0.5rem;
+		right: -0.5rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		._c2 {
+			border-color: var(--color-border-primary);
+			background-color: var(--color-background-primary);
+			border-color: var(--color-border-primary);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		._c3 {
+			color: var(--color-neutral-200);
+		}
+	}
+</style>

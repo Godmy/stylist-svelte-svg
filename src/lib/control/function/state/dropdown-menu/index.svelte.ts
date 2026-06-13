@@ -1,21 +1,18 @@
-import { DropdownMenuStyleManager } from '$stylist/control/class/style-manager/dropdown-menu';
-import type { DropdownMenuStateProps } from '$stylist/control/type/alias/dropdown-menu-state-props';
+﻿import type { RecipeDropdownMenu } from '$stylist/control/interface/recipe/dropdown-menu';
 
-export function createDropdownMenuState(props: DropdownMenuStateProps) {
+export function createDropdownMenuState(props: RecipeDropdownMenu) {
 	const normalizedPosition = $derived(
 		props.position === 'right' ? 'right' : props.position === 'center' ? 'center' : 'left'
 	);
 	let isOpen = $state(false);
 	const dropdownId = $derived(`dropdown-${Math.random().toString(36).substr(2, 9)}`);
-	const classes = $derived(
-		DropdownMenuStyleManager.getAllClasses(
-			normalizedPosition,
-			props.disabled ?? false,
-			props.class ?? ''
-		)
+	const classes = $derived(['c-dropdown', props.class].filter(Boolean).join(' '));
+	const menuClasses = $derived(
+		['c-dropdown__menu', `c-dropdown__menu--${normalizedPosition}`].join(' ')
 	);
-	const menuClasses = $derived(DropdownMenuStyleManager.getMenuClasses(normalizedPosition));
-	const chevronClass = $derived(`dropdown-chevron ${isOpen ? 'rotated' : ''}`);
+	const chevronClass = $derived(
+		['c-dropdown__chevron', isOpen ? 'c-dropdown__chevron--open' : ''].filter(Boolean).join(' ')
+	);
 
 	$effect(() => {
 		const handleClickOutside = (event: Event) => {
@@ -61,5 +58,3 @@ export function createDropdownMenuState(props: DropdownMenuStateProps) {
 		closeDropdown
 	};
 }
-
-export default createDropdownMenuState;

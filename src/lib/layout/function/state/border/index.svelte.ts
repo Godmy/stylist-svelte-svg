@@ -1,7 +1,7 @@
-import type { BorderRecipe as BorderRecipe } from '$stylist/layout/interface/recipe/border';
+import type { RecipeBorder as RecipeBorder } from '$stylist/layout/interface/recipe/border';
 import { clsx } from 'clsx';
 
-export function createBorderState(props: BorderRecipe) {
+export function createBorderState(props: RecipeBorder) {
 	const borderStyle = $derived(props.borderStyle ?? 'solid');
 	const borderWidth = $derived(props.borderWidth ?? '1px');
 	const borderColor = $derived(props.borderColor ?? '');

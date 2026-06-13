@@ -1,17 +1,30 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import { DropZoneStyleManager } from '$stylist/file/class/style-manager/drop-zone';
-	import createDropZoneState from '$stylist/file/function/state/drop-zone/index.svelte';
+	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+	import { createDropZoneState } from '$stylist/file/function/state/drop-zone/index.svelte';
 	import { formatFileSize } from '$stylist/file/function/script/drop-zone-format-file-size';
 	import type { Props } from '$stylist/file/type/struct/drop-zone/props/-props';
 
 	let props: Props = $props();
 	const state = createDropZoneState(props);
+	const rootClasses = $derived(
+		mergeClassNames(
+			'c-drop-zone border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors',
+			state.isDragOver
+				? 'border-[var(--color-primary-500)] bg-[var(--color-primary-50)]'
+				: 'border-[var(--color-border-primary)] hover:border-[var(--color-border-primary)]',
+			state.disabled && 'opacity-[var(--opacity-50)] cursor-not-allowed',
+			state.classes
+		)
+	);
+	const listClasses = 'space-y-2 max-h-60 overflow-y-auto';
+	const itemClasses =
+		'flex items-center justify-between p-3 bg-[var(--color-background-primary)] border border-[var(--color-border-primary)] rounded-md';
 </script>
 
 <div
-	class={DropZoneStyleManager.getBaseClasses(state.isDragOver, state.disabled, state.classes)}
+	class={rootClasses}
 	ondragover={state.handleDragOver}
 	ondragleave={state.handleDragLeave}
 	ondrop={state.handleDrop}
@@ -58,9 +71,9 @@
 				</Button>
 			</div>
 
-			<div class={DropZoneStyleManager.getListClasses()}>
+			<div class={listClasses}>
 				{#each state.items as item}
-					<div class={DropZoneStyleManager.getItemClasses()}>
+					<div class={itemClasses}>
 						<div class="dz-item-info">
 							<div
 								style="width:1.25rem;height:1.25rem;flex-shrink:0;color:var(--color-primary-500)"
@@ -69,7 +82,7 @@
 							</div>
 							<div class="dz-item-meta">
 								<p class="dz-item-name">{item.name}</p>
-								<p class="dz-item-desc">{item.type} • {formatFileSize(item.size || 0)}</p>
+								<p class="dz-item-desc">{item.type} вЂў {formatFileSize(item.size || 0)}</p>
 							</div>
 						</div>
 

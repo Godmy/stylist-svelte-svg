@@ -1,14 +1,15 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all'; /**
- * SlotGraphEdge — ребро графа..
+ * SlotGraphEdge РІР‚вЂќ РЎР‚Р ВµР В±РЎР‚Р С• Р С–РЎР‚Р В°РЎвЂћР В°..
  *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
  */
 import type { TokenTrajectory } from '$stylist/architecture/type/enum/trajectory';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface GraphEdgeRecipe
-	extends StructIntersectAll<[Omit<ThemeAttributes<SVGPathElement>, 'style'>]> {
+export interface RecipeGraphEdge
+	extends StructIntersectAll<[SlotTheme, Omit<HTMLAttributes<SVGPathElement>, 'style'>]> {
 	directed?: boolean;
 	type?: TokenTrajectory;
 	active?: boolean;

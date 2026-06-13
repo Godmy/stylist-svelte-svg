@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { GraphvizDirectedEdgeRecipe } from '$stylist/science/interface/recipe/graphviz-directed-edge';
+	import type { RecipeGraphvizDirectedEdge } from '$stylist/science/interface/recipe/graphviz-directed-edge';
 	import createGraphvizDirectedEdgeState from '$stylist/science/function/state/graphviz-directed-edge/index.svelte';
 
-	let props: GraphvizDirectedEdgeRecipe = $props();
+	let props: RecipeGraphvizDirectedEdge = $props();
 	const state = createGraphvizDirectedEdgeState(props);
 </script>
 
@@ -38,7 +38,19 @@
 			text-anchor="middle"
 			fill={state.color}
 			font-size="12"
-			class="pointer-events-none select-none">{state.label}</text
+			class="graphviz-directed-edge__label">{state.label}</text
 		>
 	{/if}
 </svg>
+
+<style>
+	:global(.graphviz-directed-edge) {
+		position: absolute;
+		inset: 0;
+	}
+
+	:global(.graphviz-directed-edge__label) {
+		pointer-events: none;
+		user-select: none;
+	}
+</style>

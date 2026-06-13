@@ -1,16 +1,14 @@
-import type { ChartAxisXRecipe as ChartAxisXProps } from '$stylist/chart/interface/recipe/chart-axis-x';
-import { ChartStyleManager } from '$stylist/chart/class/style-manager/chart';
+import type { RecipeChartAxisX as ChartAxisXProps } from '$stylist/chart/interface/recipe/chart-axis-x';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
 export function createChartAxisXState(props: ChartAxisXProps) {
-	const axisClasses = $derived(
-		ChartStyleManager.getChartAxisClasses(resolveClassName(props.class))
-	);
-	const gridClasses = $derived(ChartStyleManager.getChartAxisGridClasses());
-	const labelClasses = $derived(ChartStyleManager.getChartAxisLabelClasses());
+	const axisClasses = $derived(mergeClassNames('c-chart-axis', resolveClassName(props.class)));
+	const gridClasses = $derived('c-chart-axis__grid');
+	const labelClasses = $derived('c-chart-axis__label');
 
 	return {
 		get axisClasses() {

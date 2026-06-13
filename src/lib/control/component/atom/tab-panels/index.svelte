@@ -14,6 +14,16 @@
 	);
 </script>
 
-<div {...restProps} class={state.classes}>
-	{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+<div {...restProps} class="c-tab-panels" data-disabled={state.disabled ? '' : undefined}>
+	{#if props.children}{@render props.children()}{/if}
 </div>
+
+<style>
+	.c-tab-panels {
+		margin-top: 1rem;
+	}
+
+	.c-tab-panels[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+	}
+</style>

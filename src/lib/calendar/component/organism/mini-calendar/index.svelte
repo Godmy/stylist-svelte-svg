@@ -14,7 +14,7 @@
 <div class={state.wrapperClasses} {...state.restProps}>
 	<div class={state.headerClasses}>
 		<Button variant="ghost" size="sm" onclick={() => state.navigateMonth(-1)}>
-			<BaseIcon name={ChevronLeft} class="h-4 w-4" />
+			<BaseIcon name={ChevronLeft} class="_c1" />
 		</Button>
 		<div class="c-mini-calendar__month-year">{state.monthYear}</div>
 		<div class="c-mini-calendar__header-right">
@@ -24,7 +24,7 @@
 				</Button>
 			{/if}
 			<Button variant="ghost" size="sm" onclick={() => state.navigateMonth(1)}>
-				<BaseIcon name={ChevronRight} class="h-4 w-4" />
+				<BaseIcon name={ChevronRight} class="_c1" />
 			</Button>
 		</div>
 	</div>
@@ -177,6 +177,8 @@
 		color: var(--color-text-secondary);
 	}
 
-	.c-mini-calendar__week-num-header {
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

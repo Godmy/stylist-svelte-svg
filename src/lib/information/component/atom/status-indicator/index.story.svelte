@@ -30,49 +30,25 @@
 	tags={['status', 'indicator', 'presence', 'collaboration']}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-8">
-			<div
-				class="flex items-center justify-between rounded-2xl border border-[var(--color-border-primary)]/80 bg-[var(--color-background-primary)]/70 p-4 shadow-sm dark:border-[var(--color-border-primary)]/80 dark:bg-[var(--color-neutral-900)]/40"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				<div>
-					<p
-						class="text-sm font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-inverse)]"
-					>
-						Current selection
-					</p>
-					<p
-						class="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-tertiary)]"
-					>
-						Combine label overrides with semantic states.
-					</p>
+					<p class="_c3 _c1">Current selection</p>
+					<p class="_c4 _c2">Combine label overrides with semantic states.</p>
 				</div>
-				<StatusIndicator
-					status={values.status}
-					label={values.label}
-					class="text-sm font-medium text-[var(--color-text-primary)] dark:text-[var(--color-neutral-100)]"
-				/>
+				<StatusIndicator status={values.status} label={values.label} class="_c5 _c3" />
 			</div>
 
-			<div
-				class="rounded-2xl border border-[var(--color-border-primary)]/80 bg-[var(--color-background-primary)]/80 p-4 shadow-sm dark:border-[var(--color-border-primary)] dark:bg-[var(--color-neutral-900)]/40"
-			>
-				<p
-					class="mb-4 text-sm font-semibold text-[var(--color-text-primary)] dark:text-[var(--color-text-inverse)]"
-				>
-					Team presence
-				</p>
-				<ul class="divide-y divide-gray-100 text-sm dark:divide-gray-800">
+			<div class="_c6 _c4">
+				<p class="_c7 _c1">Team presence</p>
+				<ul class="_c8">
 					{#each team as member}
-						<li class="flex items-center justify-between py-3">
+						<li class="_c9">
 							<div>
-								<p
-									class="font-medium text-[var(--color-text-primary)] dark:text-[var(--color-text-inverse)]"
-								>
+								<p class="_c10 _c1">
 									{member.name}
 								</p>
-								<p
-									class="text-xs text-[var(--color-text-secondary)] dark:text-[var(--color-text-tertiary)]"
-								>
+								<p class="_c11 _c2">
 									{member.role}
 								</p>
 							</div>
@@ -84,3 +60,95 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 2rem;
+	}
+	._c10 {
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	._c11 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c4 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	._c6 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c7 {
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c8 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c8 > * + * {
+		border-top-width: 1px;
+		border-style: solid;
+	}
+	._c9 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		._c1 {
+			color: var(--color-text-inverse);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		._c2 {
+			color: var(--color-text-tertiary);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		._c3 {
+			color: var(--color-neutral-100);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		._c4 {
+			border-color: var(--color-border-primary);
+		}
+	}
+</style>

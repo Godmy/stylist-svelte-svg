@@ -1,39 +1,58 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { SlotRadio as RadioProps } from '$stylist/control/interface/slot/radio-toggles';
-import { StyleManagerState } from '$stylist/architecture/class/style-manager/state/index';
+import type { RecipeRadio } from '$stylist/control/interface/recipe/radio';
 
-export const createRadioState = (props: RadioProps) => {
-	const id = props.id;
-	const name = props.name;
-	const value = props.value;
-	const checked = props.checked ?? false;
-	const label = props.label;
-	const disabled = props.disabled ?? false;
-	const required = props.required ?? false;
-	const className = props.class ?? '';
+export const createRadioState = (props: RecipeRadio) => {
+	const checked = $derived(props.checked ?? false);
+	const disabled = $derived(props.disabled ?? false);
+	const size = $derived(props.size ?? 'md');
+	const ariaLabel = $derived(props['aria-label'] ?? props.label);
+	const restProps = $derived.by(() => {
+		const {
+			id: _id,
+			name: _name,
+			value: _value,
+			checked: _checked,
+			disabled: _disabled,
+			label: _label,
+			required: _required,
+			class: _class,
+			size: _size,
+			...rest
+		} = props;
 
-	const containerClasses = joinClassNames('flex items-center space-x-2', className);
-	const radioClasses = joinClassNames(
-		'h-4 w-4 text-[--color-primary-500] focus:ring-[--color-primary-500]',
-		'border-[--color-border-primary] focus:ring-offset-0',
-		disabled ? StyleManagerState.classes.disabled : ''
-	);
-	const labelClasses = joinClassNames(
-		'block text-sm font-medium leading-5',
-		disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
-	);
+		return rest;
+	});
 
 	return {
-		id,
-		name,
-		value,
-		checked,
-		label,
-		disabled,
-		required,
-		containerClasses,
-		radioClasses,
-		labelClasses,
+		get id() {
+			return props.id;
+		},
+		get name() {
+			return props.name;
+		},
+		get value() {
+			return props.value;
+		},
+		get checked() {
+			return checked;
+		},
+		get disabled() {
+			return disabled;
+		},
+		get label() {
+			return props.label;
+		},
+		get required() {
+			return props.required;
+		},
+		get size() {
+			return size;
+		},
+		get ariaLabel() {
+			return ariaLabel;
+		},
+		get restProps() {
+			return restProps;
+		},
 		handleChange(event: Event) {
 			const target = event.target as HTMLInputElement;
 			if (target.checked && props.onchange) {

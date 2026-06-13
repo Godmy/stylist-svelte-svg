@@ -57,8 +57,8 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-md p-4">
-			<div class="mb-4">
+		<div class="_c1">
+			<div class="_c2">
 				<p>Current range: {currentValues.min} - {currentValues.max}</p>
 			</div>
 			<RangeInput
@@ -72,3 +72,13 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 28rem;
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+	}
+</style>

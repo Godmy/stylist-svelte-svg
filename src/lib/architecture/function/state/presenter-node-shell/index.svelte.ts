@@ -1,5 +1,5 @@
-import { PresenterNodeShellStyleManager } from '$stylist/architecture/class/style-manager/presenter-node-shell';
 import { useSemanticZoom } from '$stylist/architecture/function/script/use-semantic-zoom';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { PresenterNodeShellProps } from '$stylist/architecture/type/struct/presenter-node-shell';
 
 export function createPresenterNodeShellState(props: PresenterNodeShellProps) {
@@ -13,22 +13,25 @@ export function createPresenterNodeShellState(props: PresenterNodeShellProps) {
 	const presentation = $derived.by(() => zoom.presentation);
 	const projectedScale = $derived.by(() => presentation.scale * props.camera.zoom);
 	const hostClass = $derived(
-		PresenterNodeShellStyleManager.getHostClass(
-			presentation,
-			props.selected ?? false,
+		mergeClassNames(
+			'presenter-node-shell',
+			`presenter-node-shell--stage-${presentation.stage}`,
+			`presenter-node-shell--architecture-${presentation.architecture}`,
+			`presenter-node-shell--layer-${presentation.layer}`,
+			(props.selected ?? false) && 'presenter-node-shell--selected',
 			props.class ?? ''
 		)
 	);
 	const hostStyle = $derived.by(() =>
-		PresenterNodeShellStyleManager.getHostStyle(
-			props.node.position.x,
-			props.node.position.y,
-			presentation.width,
-			presentation.height,
-			presentation.scale,
-			props.node.accent,
-			props.selected ?? false
-		)
+		[
+			`left:${props.node.position.x}px`,
+			`top:${props.node.position.y}px`,
+			`width:${presentation.width}px`,
+			`min-height:${presentation.height}px`,
+			`transform:translate(-50%, -50%) scale(${presentation.scale})`,
+			`border-color:${props.node.accent}`,
+			`box-shadow:${props.selected ? `0 0 0 2px ${props.node.accent}` : 'none'}`
+		].join(';')
 	);
 	const showCard = $derived.by(
 		() =>

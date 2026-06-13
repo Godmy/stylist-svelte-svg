@@ -79,44 +79,44 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-virtual-tree p-4">
-			<h1 class="mb-4 text-lg font-semibold">VirtualTree Component</h1>
+		<div class="sb-organisms-virtual-tree _c1">
+			<h1 class="_c2">VirtualTree Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive VirtualTree</h2>
-				<div class="max-w-md">
+			<div class="_c3">
+				<h2 class="_c4">Interactive VirtualTree</h2>
+				<div class="_c5">
 					<TreeView {nodes} />
 				</div>
 
-				<div class="mt-4 flex flex-wrap gap-4">
-					<div class="flex items-end">
-						<label for="expandable" class="flex items-center gap-1">
+				<div class="_c6">
+					<div class="_c7">
+						<label for="expandable" class="_c8">
 							<input id="expandable" type="checkbox" bind:checked={values.expandable} />
 							Expandable
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="selectable" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="selectable" class="_c8">
 							<input id="selectable" type="checkbox" bind:checked={values.selectable} />
 							Selectable
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="show-icons" class="flex items-center gap-1">
+					<div class="_c7">
+						<label for="show-icons" class="_c8">
 							<input id="show-icons" type="checkbox" bind:checked={values.showIcons} />
 							Show Icons
 						</label>
 					</div>
 
 					<div>
-						<label for="indent-size" class="mb-1 block text-sm">Indent Size:</label>
+						<label for="indent-size" class="_c9">Indent Size:</label>
 						<input
 							id="indent-size"
 							type="number"
 							bind:value={values.indentSize}
-							class="w-16 rounded border p-1"
+							class="_c10"
 							min="10"
 							max="40"
 							step="5"
@@ -127,3 +127,59 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c10 {
+		width: 4rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.25rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 28rem;
+	}
+	._c6 {
+		margin-top: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	._c7 {
+		display: flex;
+		align-items: flex-end;
+	}
+	._c8 {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	._c9 {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

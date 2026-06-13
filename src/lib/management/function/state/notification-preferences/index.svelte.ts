@@ -1,17 +1,14 @@
-import { InteractionFeedbackStyleManager } from '$stylist/notification/class/style-manager/interaction-feedback';
-import type { NotificationPreferencesStateProps } from '$stylist/management/interface/recipe/notification-preferences';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeNotificationPreferences } from '$stylist/management/interface/recipe/notification-preferences';
 
-export function createNotificationPreferencesState(props: NotificationPreferencesStateProps) {
+export function createNotificationPreferencesState(props: RecipeNotificationPreferences) {
 	const email = $derived(props.email ?? true);
 	const push = $derived(props.push ?? true);
 	const sms = $derived(props.sms ?? false);
 	const className = $derived(props.class ?? '');
 
 	const containerClasses = $derived(
-		InteractionFeedbackStyleManager.root(
-			'c-notification-preferences border rounded-lg p-4',
-			className != null ? String(className) : ''
-		)
+		mergeClassNames('c-notification-preferences border rounded-lg p-4', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -44,5 +41,3 @@ export function createNotificationPreferencesState(props: NotificationPreference
 		}
 	};
 }
-
-export default createNotificationPreferencesState;

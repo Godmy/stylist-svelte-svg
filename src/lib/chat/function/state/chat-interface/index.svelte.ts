@@ -1,6 +1,6 @@
 import type { AIProvider } from '$stylist/chat/type/struct/chat-interface/ai-provider';
 import type { ChatInterfaceProps } from '$stylist/chat/type/struct/chat-interface-props';
-import { ChatInterfaceStyleManager } from '$stylist/chat/class/style-manager/chat-interface';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 const Send = 'send';
 const Bot = 'bot';
@@ -13,40 +13,69 @@ export const createChatInterfaceState = (props: ChatInterfaceProps) => {
 	let selectedProvider = $state(props.currentProvider ?? '');
 
 	const containerClass = $derived(
-		ChatInterfaceStyleManager.getContainerClass(`c-chat-interface ${props.class ?? ''}`)
+		mergeClassNames(
+			'c-chat-interface flex flex-col h-[--dimension-height-chat-container] overflow-hidden rounded-[1.5rem] border border-[--color-border-primary] bg-[--color-background-primary] shadow-custom40',
+			'c-chat-interface',
+			props.class ?? ''
+		)
 	);
 	const headerClassComputed = $derived(
-		ChatInterfaceStyleManager.getHeaderClass(props.headerClass ?? '')
+		mergeClassNames(
+			'flex items-center justify-between border-b border-[--color-border-primary] bg-[--color-background-primary] px-[--spacing-lg] py-[--spacing-md]',
+			props.headerClass ?? ''
+		)
 	);
 	const messageListContainerClass = $derived(
-		ChatInterfaceStyleManager.getMessagesContainerClass(props.messageListClass ?? '')
+		mergeClassNames(
+			'flex-1 overflow-y-auto bg-[--color-background-secondary] p-[--spacing-md] space-y-[--spacing-md]',
+			props.messageListClass ?? ''
+		)
 	);
 	const userMessageClass = $derived(
-		ChatInterfaceStyleManager.getMessageClass(true, props.messageClass ?? '')
+		mergeClassNames(
+			'max-w-[80%] rounded-[1.25rem] px-[--spacing-md] py-[--spacing-md] shadow-custom28 bg-[--color-primary-500] text-[--color-text-inverse] rounded-br-none ml-auto',
+			props.messageClass ?? ''
+		)
 	);
 	const aiMessageClass = $derived(
-		ChatInterfaceStyleManager.getMessageClass(false, props.messageClass ?? '')
+		mergeClassNames(
+			'max-w-[80%] rounded-[1.25rem] px-[--spacing-md] py-[--spacing-md] shadow-custom28 bg-[--color-background-primary] text-[--color-text-primary] rounded-bl-none',
+			props.messageClass ?? ''
+		)
 	);
-	const messageContentWrapperClass = $derived(
-		ChatInterfaceStyleManager.getMessageContentWrapperClass()
-	);
-	const botIconClass = $derived(ChatInterfaceStyleManager.getBotIconClass());
-	const userIconClass = $derived(ChatInterfaceStyleManager.getUserIconClass());
-	const timestampClass = $derived(ChatInterfaceStyleManager.getTimestampClass(false));
-	const userTimestampClass = $derived(ChatInterfaceStyleManager.getTimestampClass(true));
+	const messageContentWrapperClass = $derived('flex items-start space-x-[--spacing-sm]');
+	const botIconClass = $derived('h-4 w-4 mt-0.5 text-[--color-text-secondary] flex-shrink-0');
+	const userIconClass = $derived('h-4 w-4 mt-0.5 text-[--color-primary-200] flex-shrink-0');
+	const timestampClass = $derived('text-xs mt-[--spacing-xs] text-[--color-text-secondary]');
+	const userTimestampClass = $derived('text-xs mt-[--spacing-xs] text-[--color-primary-200]');
 	const inputAreaClass = $derived(
-		ChatInterfaceStyleManager.getInputAreaClass(props.footerClass ?? '')
+		mergeClassNames(
+			'border-t border-[--color-border-primary] bg-[--color-background-primary] p-[--spacing-lg]',
+			props.footerClass ?? ''
+		)
 	);
 	const messageInputClass = $derived(
-		ChatInterfaceStyleManager.getMessageInputClass(props.inputClass ?? '')
+		mergeClassNames(
+			'w-full resize-none rounded-[1rem] border border-transparent bg-[--color-background-secondary] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[--color-primary-500] focus:border-[--color-primary-500]',
+			props.inputClass ?? ''
+		)
 	);
 	const sendButtonClass = $derived(
-		ChatInterfaceStyleManager.getSendButtonClass(!newMessage.trim())
+		mergeClassNames(
+			'flex-shrink-0 h-11 w-11 flex items-center justify-center rounded-full bg-[--color-primary-500] text-[--color-text-inverse] hover:bg-[--color-primary-600] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[--color-primary-500]',
+			!newMessage.trim() && 'opacity-[var(--opacity-50)] cursor-not-allowed'
+		)
 	);
-	const sendIconClass = $derived(ChatInterfaceStyleManager.getSendIconClass());
-	const providerSelectorClass = $derived(ChatInterfaceStyleManager.getProviderSelectorClass());
-	const settingsButtonClass = $derived(ChatInterfaceStyleManager.getSettingsButtonClass());
-	const moreOptionsButtonClass = $derived(ChatInterfaceStyleManager.getMoreOptionsButtonClass());
+	const sendIconClass = $derived('h-5 w-5');
+	const providerSelectorClass = $derived(
+		'rounded-full border border-[--color-border-primary] bg-[--color-background-secondary] px-[--spacing-md] py-[--spacing-xs] text-sm text-[--color-text-primary]'
+	);
+	const settingsButtonClass = $derived(
+		'inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent text-[--color-text-secondary] transition-colors hover:border-[--color-border-primary] hover:bg-[--color-background-secondary] hover:text-[--color-text-primary]'
+	);
+	const moreOptionsButtonClass = $derived(
+		'inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent text-[--color-text-secondary] transition-colors hover:border-[--color-border-primary] hover:bg-[--color-background-secondary] hover:text-[--color-text-primary]'
+	);
 
 	const showSettings = $derived(props.showSettings ?? true);
 	const showProviderSelector = $derived(props.showProviderSelector ?? true);

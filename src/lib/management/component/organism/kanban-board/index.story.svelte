@@ -52,10 +52,8 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-3 rounded-xl bg-[var(--color-background-secondary)] p-4">
-			<div
-				class="h-[560px] rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				<KanbanBoard
 					{board}
 					controlled={args.controlled as boolean}
@@ -71,9 +69,33 @@
 					}}
 				/>
 			</div>
-			<p class="text-sm text-[var(--color-text-secondary)]">
+			<p class="_c3">
 				Actions: move {moves}, add column {newColumns}, add card {newCards}, external sync {externalUpdates}
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		height: 560px;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

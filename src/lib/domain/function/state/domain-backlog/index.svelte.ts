@@ -566,3 +566,5 @@ export function createDomainBacklogState(input: {
 		save
 	};
 }
+
+export default createDomainBacklogState;

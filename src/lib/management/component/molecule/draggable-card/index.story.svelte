@@ -31,7 +31,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="max-w-md rounded-xl bg-[var(--color-background-secondary)] p-4">
+		<div class="_c1">
 			<DraggableCard
 				{data}
 				draggable={args.draggable as boolean}
@@ -44,3 +44,12 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 28rem;
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

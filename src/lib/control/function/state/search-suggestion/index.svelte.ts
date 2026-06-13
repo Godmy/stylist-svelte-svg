@@ -1,12 +1,17 @@
-import { SearchSuggestionStyleManager } from '$stylist/control/class/style-manager/search-suggestion';
 import type { SlotSearchSuggestion as SearchSuggestionProps } from '$stylist/control/interface/slot/search-suggestion';
 
 export function createSearchSuggestionState(props: SearchSuggestionProps) {
 	const displayedSuggestions = $derived(
 		(props.suggestions ?? []).slice(0, props.maxSuggestions ?? 5)
 	);
-	const rootClass = $derived(SearchSuggestionStyleManager.root(props.class ?? ''));
-	const buttonClass = $derived(SearchSuggestionStyleManager.button(props.suggestionClass ?? ''));
+	const rootClass = $derived(
+		('search-suggestions' + (props.class ? ` ${props.class}` : '')).trim()
+	);
+	const buttonClass = $derived(
+		(
+			'search-suggestion__button' + (props.suggestionClass ? ` ${props.suggestionClass}` : '')
+		).trim()
+	);
 
 	return {
 		get displayedSuggestions() {

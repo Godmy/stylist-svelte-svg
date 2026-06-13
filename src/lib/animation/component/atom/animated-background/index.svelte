@@ -1,11 +1,13 @@
 <script lang="ts">
+	import type { RecipeAnimatedBackground } from '$stylist/animation/interface/recipe/animated-background';
+	import createAnimatedBackgroundState from '$stylist/animation/function/state/animated-background/index.svelte';
 	import Background from '$stylist/layout/component/atom/background/index.svelte';
 
-	let { children, class: className = '', ...restProps } = $props();
-	const particleIndices = Array.from({ length: 12 }, (_, index) => index + 1);
+	let props: RecipeAnimatedBackground = $props();
+	const state = createAnimatedBackgroundState(props);
 </script>
 
-<div class={`c-animated-background ambient-bg ${className}`} {...restProps}>
+<div class={state.containerClasses}>
 	<Background class="ambient-bg__wash" aria-hidden="true" />
 
 	<div class="ambient-bg__shape s1" aria-hidden="true"></div>
@@ -19,7 +21,7 @@
 	<div class="ambient-bg__orb o5" aria-hidden="true"></div>
 
 	<div class="ambient-bg__particles" aria-hidden="true">
-		{#each particleIndices as particleIndex}
+		{#each state.particleIndices as particleIndex}
 			<span class={`ambient-bg__particle p${particleIndex}`}></span>
 		{/each}
 	</div>
@@ -40,8 +42,8 @@
 	</svg>
 
 	<div class="animated-background__content">
-		{#if children}
-			{@render children()}
+		{#if state.children}
+			{@render state.children()}
 		{/if}
 	</div>
 </div>

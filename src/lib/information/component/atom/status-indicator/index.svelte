@@ -1,8 +1,8 @@
 <script lang="ts">
 	import createStatusIndicatorState from '$stylist/information/function/state/status-indicator/index.svelte';
-	import type { StatusIndicatorRecipe } from '$stylist/information/interface/recipe/status-indicator';
+	import type { RecipeStatusIndicator } from '$stylist/information/interface/recipe/status-indicator';
 
-	let props: StatusIndicatorRecipe = $props();
+	let props: RecipeStatusIndicator = $props();
 
 	const state = createStatusIndicatorState(props);
 
@@ -39,3 +39,6 @@
 		{/if}
 	</div>
 {/if}
+
+<style>
+</style>

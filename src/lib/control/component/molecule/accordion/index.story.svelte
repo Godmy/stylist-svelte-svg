@@ -33,7 +33,7 @@
 	description="A component that allows users to expand and collapse sections of content"
 >
 	{#snippet children(controlValues: any)}
-		<div class="mx-auto max-w-md p-6">
+		<div class="_c1">
 			<Accordion
 				items={[
 					{
@@ -46,3 +46,12 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+		padding: 1.5rem;
+	}
+</style>

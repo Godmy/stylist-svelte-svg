@@ -1,4 +1,4 @@
-import type { LitegraphNodeProps } from '$stylist/science/type/struct/litegraph-node-props';
+﻿import type { RecipeLitegraphNode } from '$stylist/science/interface/recipe/litegraph-node';
 import type { LiteGraphPort } from '$stylist/science/type/struct/litegraph-port';
 import type { TokenInteration } from '$stylist/interaction/type/record/interaction';
 import type { TokenSeverity } from '$stylist/interaction/type/record/sevetity';
@@ -6,9 +6,8 @@ import type { TokenNodeType } from '$stylist/architecture/type/enum/node-type';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { SemanticZoomPresentation } from '$stylist/architecture/type/struct/semantic-zoom';
 import { resolveSemanticZoomPresentation } from '$stylist/architecture/function/script/semantic-zoom/index';
-import { LiteGraphNodeStyleManager } from '$stylist/science/class/style-manager/litegraph-node';
 
-export function createLiteGraphNodeState(props: LitegraphNodeProps) {
+export function createLiteGraphNodeState(props: RecipeLitegraphNode) {
 	const id = $derived(props.id);
 	const title = $derived(props.title ?? '');
 	let isDragging = $state(false);
@@ -56,42 +55,36 @@ export function createLiteGraphNodeState(props: LitegraphNodeProps) {
 			resolvedPresentation.stage === 'compact'
 	);
 
-	const classes = $derived(
-		LiteGraphNodeStyleManager.getNodeClasses(
-			type as any,
-			mode,
-			status,
-			size,
-			selected,
-			resolvedPresentation
-		)
-	);
-	const styles = $derived.by(() =>
-		Object.entries(
-			LiteGraphNodeStyleManager.getNodeStyles({
-				x: props.x,
-				y: props.y,
-				width,
-				minWidth,
-				height,
-				color,
-				headerColor,
-				presentation: resolvedPresentation
-			})
-		)
-			.map(([key, value]) => `${key}: ${value}`)
-			.join('; ')
-	);
-	const bodyClasses = $derived(LiteGraphNodeStyleManager.getBodyClasses());
-	const portsClasses = $derived(LiteGraphNodeStyleManager.getPortsClasses());
-	const propertiesClasses = $derived(LiteGraphNodeStyleManager.getPropertiesClasses());
-	const contentClasses = $derived(LiteGraphNodeStyleManager.getContentClasses());
-	const semanticShellClasses = $derived(LiteGraphNodeStyleManager.getSemanticShellClasses());
-	const semanticIconClasses = $derived(LiteGraphNodeStyleManager.getSemanticIconClasses());
-	const semanticTitleClasses = $derived(LiteGraphNodeStyleManager.getSemanticTitleClasses());
-	const semanticDescriptionClasses = $derived(
-		LiteGraphNodeStyleManager.getSemanticDescriptionClasses()
-	);
+	const classes = $derived.by(() => {
+		const parts = ['litegraph-node'];
+		if (type) parts.push(`litegraph-node--${type}`);
+		if (size) parts.push(`litegraph-node--${size}`);
+		if (selected) parts.push('litegraph-node--selected');
+		if (mode) parts.push(`litegraph-node--${mode}`);
+		if (status) parts.push(`litegraph-node--${status}`);
+		return parts.join(' ');
+	});
+	const styles = $derived.by(() => {
+		const parts: string[] = [];
+		if (props.x !== undefined) parts.push(`left: ${props.x}px`);
+		if (props.y !== undefined) parts.push(`top: ${props.y}px`);
+		if (width !== undefined)
+			parts.push(`width: ${typeof width === 'number' ? `${width}px` : width}`);
+		if (minWidth) parts.push(`minWidth: ${minWidth}px`);
+		if (height !== undefined)
+			parts.push(`height: ${typeof height === 'number' ? `${height}px` : height}`);
+		if (color) parts.push(`--node-color: ${color}`);
+		if (headerColor) parts.push(`--header-color: ${headerColor}`);
+		return parts.join('; ');
+	});
+	const bodyClasses = 'litegraph-node__body';
+	const portsClasses = 'litegraph-node__ports';
+	const propertiesClasses = 'litegraph-node__properties';
+	const contentClasses = 'litegraph-node__content';
+	const semanticShellClasses = 'litegraph-node__semantic-shell';
+	const semanticIconClasses = 'litegraph-node__semantic-icon';
+	const semanticTitleClasses = 'litegraph-node__semantic-title';
+	const semanticDescriptionClasses = 'litegraph-node__semantic-description';
 	const inputs = $derived(props.inputs ?? []);
 	const outputs = $derived(props.outputs ?? []);
 	const properties = $derived(props.properties ?? []);

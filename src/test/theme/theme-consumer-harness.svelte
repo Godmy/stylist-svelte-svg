@@ -3,7 +3,7 @@
 	import { ThemeProvider } from '$stylist/theme/component/atom/theme-provider';
 </script>
 
-<ThemeProvider initialMode="dark">
+<ThemeProvider themeMode="dark">
 	<ThemeConsumer>
 		{#snippet children(themeContext)}
 			<div

@@ -43,7 +43,7 @@
 				onclick={() => state.formatText('bold')}
 				title="Bold"
 			>
-				<BaseIcon name={state.Bold} class="h-4 w-4" />
+				<BaseIcon name={state.Bold} class="_c1" />
 			</button>
 			<button
 				type="button"
@@ -51,7 +51,7 @@
 				onclick={() => state.formatText('italic')}
 				title="Italic"
 			>
-				<BaseIcon name={state.Italic} class="h-4 w-4" />
+				<BaseIcon name={state.Italic} class="_c1" />
 			</button>
 			<button
 				type="button"
@@ -59,7 +59,7 @@
 				onclick={() => state.formatText('underline')}
 				title="Underline"
 			>
-				<BaseIcon name={state.Underline} class="h-4 w-4" />
+				<BaseIcon name={state.Underline} class="_c1" />
 			</button>
 			<div class={state.toolbarSeparatorClasses}></div>
 			<button
@@ -68,7 +68,7 @@
 				onclick={() => state.formatText('justifyLeft')}
 				title="Align Left"
 			>
-				<BaseIcon name={state.AlignLeft} class="h-4 w-4" />
+				<BaseIcon name={state.AlignLeft} class="_c1" />
 			</button>
 			<button
 				type="button"
@@ -76,7 +76,7 @@
 				onclick={() => state.formatText('justifyCenter')}
 				title="Align Center"
 			>
-				<BaseIcon name={state.AlignCenter} class="h-4 w-4" />
+				<BaseIcon name={state.AlignCenter} class="_c1" />
 			</button>
 			<button
 				type="button"
@@ -84,7 +84,7 @@
 				onclick={() => state.formatText('justifyRight')}
 				title="Align Right"
 			>
-				<BaseIcon name={state.AlignRight} class="h-4 w-4" />
+				<BaseIcon name={state.AlignRight} class="_c1" />
 			</button>
 			<div class={state.toolbarSeparatorClasses}></div>
 			<button
@@ -93,7 +93,7 @@
 				onclick={() => state.formatText('insertUnorderedList')}
 				title="Bullet List"
 			>
-				<BaseIcon name={state.List} class="h-4 w-4" />
+				<BaseIcon name={state.List} class="_c1" />
 			</button>
 			<button
 				type="button"
@@ -101,7 +101,7 @@
 				onclick={() => state.formatText('insertOrderedList')}
 				title="Numbered List"
 			>
-				<BaseIcon name={state.ListOrdered} class="h-4 w-4" />
+				<BaseIcon name={state.ListOrdered} class="_c1" />
 			</button>
 			<div class={state.toolbarSeparatorClasses}></div>
 			<button
@@ -110,7 +110,7 @@
 				onclick={state.insertComment}
 				title="Insert Comment"
 			>
-				<BaseIcon name={state.MessageCircle} class="h-4 w-4" />
+				<BaseIcon name={state.MessageCircle} class="_c1" />
 			</button>
 		</div>
 	{/if}
@@ -131,7 +131,7 @@
 		{#if state.showUserList && state.users.length > 0}
 			<div class={state.userListClasses}>
 				<div class={state.userListHeaderClasses}>
-					<BaseIcon name={state.Users} class="mr-1 h-4 w-4" />
+					<BaseIcon name={state.Users} class="_c2" />
 					Collaborators ({state.users.length})
 				</div>
 				<div class="c-collaborative-editor__user-entries">
@@ -298,5 +298,15 @@
 		margin-left: 0.25rem;
 		font-size: 0.75rem;
 		color: var(--color-text-secondary);
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
+	}
+	._c2 {
+		margin-right: 0.25rem;
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

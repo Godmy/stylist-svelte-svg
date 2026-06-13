@@ -95,15 +95,43 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-table-with-grouping p-4">
-			<h1 class="mb-4 text-lg font-semibold">TableWithGrouping Component</h1>
+		<div class="sb-organisms-table-with-grouping _c1">
+			<h1 class="_c2">TableWithGrouping Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive TableWithGrouping</h2>
-				<div class="max-w-4xl">
+			<div class="_c3">
+				<h2 class="_c4">Interactive TableWithGrouping</h2>
+				<div class="_c5">
 					<TableWithGrouping {data} groupBy={values.groupBy} />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 56rem;
+	}
+</style>

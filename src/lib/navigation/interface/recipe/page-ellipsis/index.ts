@@ -1,11 +1,12 @@
-﻿/**
- * PageEllipsis — многоточие страницы..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * PageEllipsis вЂ” РјРЅРѕРіРѕС‚РѕС‡РёРµ СЃС‚СЂР°РЅРёС†С‹..
  *
- * LEGO-состав:
+ * LEGO-СЃРѕСЃС‚Р°РІ:
 
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface PageEllipsisRecipe
-	extends StructIntersectAll<[ThemeAttributes<HTMLSpanElement>]> {}
+export interface RecipePageEllipsis
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLSpanElement>]> {}

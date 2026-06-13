@@ -1,8 +1,8 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { Snippet } from 'svelte';
 import type { SlotModelOption } from '$stylist/science/interface/slot/model-option';
 
-export interface RecipeModelSelector extends StructIntersectAll<[]> {
+export interface RecipeModelSelector extends StructIntersectAll<[SlotChildren]> {
 	models?: SlotModelOption[];
 	selectedModel?: string;
 	onModelSelect?: (modelId: string) => void;
@@ -13,5 +13,4 @@ export interface RecipeModelSelector extends StructIntersectAll<[]> {
 	dropdownClass?: string;
 	modelItemClass?: string;
 	headerClass?: string;
-	children?: Snippet;
 }

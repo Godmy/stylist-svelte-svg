@@ -1,4 +1,4 @@
-import type { Idef0PortLabelRecipe as Idef0PortLabelProps } from '$stylist/science/interface/recipe/idef0-port-label';
+import type { RecipeIdef0PortLabel as Idef0PortLabelProps } from '$stylist/science/interface/recipe/idef0-port-label';
 
 export function createIdef0PortLabelState(props: Idef0PortLabelProps) {
 	const label = $derived(props.label ?? '');

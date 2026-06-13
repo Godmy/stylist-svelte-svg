@@ -1,9 +1,9 @@
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { GraphToolbarItem } from '$stylist/science/type/struct/graph/graph-toolbar-item';
-import type { GraphToolbarProps } from '$stylist/science/type/struct/graph/graph-toolbar-props';
+import type { RecipeGraphToolbar } from '$stylist/science/interface/recipe/graph-toolbar';
 
-export function createGraphToolbarState(props: GraphToolbarProps) {
+export function createGraphToolbarState(props: RecipeGraphToolbar) {
 	const items = $derived(props.items ?? []);
 	const size = $derived((props.size ?? 'md') as TokenSize);
 	const orientation = $derived(props.orientation ?? 'horizontal');
@@ -69,5 +69,3 @@ export function createGraphToolbarState(props: GraphToolbarProps) {
 		handleValueChange
 	};
 }
-
-export default createGraphToolbarState;

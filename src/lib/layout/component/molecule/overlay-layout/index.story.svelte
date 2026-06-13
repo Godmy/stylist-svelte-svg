@@ -35,14 +35,38 @@
 		<OverlayLayout
 			overlayAlign={values.overlayAlign}
 			overlayPointerEvents={values.overlayPointerEvents}
-			class="h-48 w-full"
+			class="_c1"
 		>
 			{#snippet base()}
-				<div class="h-full w-full rounded-lg bg-[--color-background-secondary]"></div>
+				<div class="_c2"></div>
 			{/snippet}
 			{#snippet overlay()}
-				<div class="rounded-md bg-[--color-primary-500] px-2 py-1 text-xs text-white">Overlay</div>
+				<div class="_c3">Overlay</div>
 			{/snippet}
 		</OverlayLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 12rem;
+		width: 100%;
+	}
+	._c2 {
+		height: 100%;
+		width: 100%;
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+	}
+	._c3 {
+		border-radius: 0.375rem;
+		background-color: var(--color-primary-500);
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: #ffffff;
+	}
+</style>

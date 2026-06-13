@@ -1,4 +1,4 @@
-import type { Idef0InputsRecipe as Idef0InputsProps } from '$stylist/science/interface/recipe/idef0-inputs';
+import type { RecipeIdef0Inputs as Idef0InputsProps } from '$stylist/science/interface/recipe/idef0-inputs';
 import type { Idef0Port } from '$stylist/science/type/struct/idef-zero/idef0port';
 
 function calculatePortPositions(ports: Idef0Port[], top: number, height: number) {

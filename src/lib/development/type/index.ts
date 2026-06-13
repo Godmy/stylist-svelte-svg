@@ -1,5 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { ComponentPreviewProps, Props } from './alias';
+export type { Props } from './alias';
 export type {
 	ErrorLogSource,
 	TokenCodeLanguage,
@@ -35,7 +35,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	DocumentationBlockProps,
 	DocumentationBlockVariant,
 	ErrorLogEntry,
 	ErrorLogPayload,

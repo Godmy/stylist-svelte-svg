@@ -1,9 +1,9 @@
-<script lang="ts">
-	import type { NodeHeaderProps } from '$stylist/science/type/struct/node-header-props';
-	import createNodeHeaderState from '$stylist/science/function/state/node-header/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeNodeHeader } from '$stylist/science/interface/recipe/node-header';
+	import { createNodeHeaderState } from '$stylist/science/function/state/node-header/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let props: NodeHeaderProps = $props();
+	let props: RecipeNodeHeader = $props();
 	const state = createNodeHeaderState(props);
 </script>
 

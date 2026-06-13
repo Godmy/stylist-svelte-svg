@@ -1,11 +1,10 @@
+﻿import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { KanbanBoardType } from '$stylist/management/type/struct/kanban-board/kanbanboardtype';
 import type { KanbanBoardAction } from '$stylist/management/type/struct/kanban-board/kanbanboardaction';
 import type { KanbanColumnType } from '$stylist/management/type/struct/kanban-column';
 import type { KanbanCardType } from '$stylist/management/type/struct/kanban-card/kanbancardtype';
-import type { Snippet } from 'svelte';
-
-export interface KanbanBoardStateProps extends StructIntersectAll<[]> {
+export interface RecipeKanbanBoard extends StructIntersectAll<[SlotContent]> {
 	board: KanbanBoardType;
 	controlled?: boolean;
 	allowReordering?: boolean;
@@ -23,5 +22,4 @@ export interface KanbanBoardStateProps extends StructIntersectAll<[]> {
 	onCardArchive?: (columnId: string, cardId: string) => void;
 	onCardDelete?: (columnId: string, cardId: string) => void;
 	onBoardChange?: (nextBoard: KanbanBoardType, action: KanbanBoardAction) => void;
-	content?: Snippet;
 }

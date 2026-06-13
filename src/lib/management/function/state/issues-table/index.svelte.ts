@@ -1,4 +1,3 @@
-import { IssuesTableStyleManager } from '$stylist/management/class/style-manager/issues-table';
 import type { SlotIssueMessage as IssueMessage } from '$stylist/management/interface/slot/issue-message';
 
 export function createIssuesTableState(input: {
@@ -72,45 +71,11 @@ export function createIssuesTableState(input: {
 		get selectedItems() {
 			return selectedItems;
 		},
-		get containerClass() {
-			return IssuesTableStyleManager.getContainerClass();
-		},
-		get toolbarClass() {
-			return IssuesTableStyleManager.getToolbarClass();
-		},
-		get toolbarMetaClass() {
-			return IssuesTableStyleManager.getToolbarMetaClass();
-		},
-		get actionsClass() {
-			return IssuesTableStyleManager.getActionsClass();
-		},
-		get tableWrapClass() {
-			return IssuesTableStyleManager.getTableWrapClass();
-		},
-		get tableClass() {
-			return IssuesTableStyleManager.getTableClass();
-		},
-		get headRowClass() {
-			return IssuesTableStyleManager.getHeadRowClass();
-		},
-		get headCellClass() {
-			return IssuesTableStyleManager.getHeadCellClass();
-		},
-		get bodyCellClass() {
-			return IssuesTableStyleManager.getBodyCellClass();
-		},
-		get mutedTextClass() {
-			return IssuesTableStyleManager.getMutedTextClass();
-		},
-		get messageTextClass() {
-			return IssuesTableStyleManager.getMessageTextClass();
-		},
-		get checkboxClass() {
-			return IssuesTableStyleManager.getCheckboxClass();
-		},
 		getIssueKey,
 		getBodyRowClass(selected: boolean) {
-			return IssuesTableStyleManager.getBodyRowClass(selected);
+			return ['issues-table__body-row', selected ? `issues-table__body-row--selected` : '']
+				.filter(Boolean)
+				.join(' ');
 		},
 		toggleSelection,
 		toggleAllVisible,

@@ -171,9 +171,6 @@
 </div>
 
 <style>
-	.c-social-login {
-	}
-
 	.c-social-login__card {
 		max-width: 28rem;
 		margin: 0 auto;

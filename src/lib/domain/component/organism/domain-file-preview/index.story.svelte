@@ -35,7 +35,7 @@
 	{#snippet children(values: any)}
 		{@const previewMode = values.previewMode as 'file' | 'markdown' | 'story' | 'json-tree'}
 		{@const previewKind = values.previewKind as 'text' | 'json' | 'svg'}
-		<div class="h-[32rem] overflow-hidden rounded-2xl border border-slate-200 bg-white">
+		<div class="_c1">
 			<DomainFilePreview
 				{previewMode}
 				previewKind={previewMode === 'markdown' ? 'text' : previewKind}
@@ -51,3 +51,15 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 32rem;
+		overflow: hidden;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+	}
+</style>

@@ -1,17 +1,19 @@
-import { FormFooterStyleManager } from '$stylist/form/class/style-manager/form-footer';
-import type { SlotFormFooter as FormFooterProps } from '$stylist/form/interface/slot/form-footer';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { SlotFormFooter as RecipeFormFooter } from '$stylist/form/interface/slot/form-footer';
 
-export function createFormFooterState(props: FormFooterProps) {
-	const rootClass = $derived(FormFooterStyleManager.root(props.class ?? ''));
+export function createFormFooterState(props: RecipeFormFooter) {
+	const rootClass = $derived(mergeClassNames('c-form-footer', props.class ?? ''));
 	const secondaryButtonClass = $derived(
-		FormFooterStyleManager.secondaryButton(
-			props.secondaryButtonDisabled ?? false,
+		mergeClassNames(
+			'c-form-footer__secondary-btn',
+			(props.secondaryButtonDisabled ?? false) && 'c-form-footer__btn--disabled',
 			props.secondaryButtonClass ?? ''
 		)
 	);
 	const primaryButtonClass = $derived(
-		FormFooterStyleManager.primaryButton(
-			props.primaryButtonDisabled ?? false,
+		mergeClassNames(
+			'c-form-footer__primary-btn',
+			(props.primaryButtonDisabled ?? false) && 'c-form-footer__btn--disabled',
 			props.primaryButtonClass ?? ''
 		)
 	);
@@ -28,5 +30,3 @@ export function createFormFooterState(props: FormFooterProps) {
 		}
 	};
 }
-
-export default createFormFooterState;

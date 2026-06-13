@@ -22,11 +22,7 @@
 	tags={['chart', 'axis', 'x']}
 >
 	{#snippet children(values: any)}
-		<svg
-			width="400"
-			height="90"
-			class="rounded border border-[--color-border-primary] bg-[--color-background-primary]"
-		>
+		<svg width="400" height="90" class="_c1">
 			<ChartAxisX
 				y={48}
 				startX={20}
@@ -41,3 +37,13 @@
 		</svg>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+</style>

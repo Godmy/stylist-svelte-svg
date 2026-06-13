@@ -1,10 +1,12 @@
+﻿import type { SlotFileInput as Slot } from '$stylist/file/interface/slot/file-input';
+import type { SlotFileInput as SlotFileInput } from '$stylist/file/interface/slot/file-input';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { HTMLInputAttributes } from 'svelte/elements';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export interface RecipeFileInput
-	extends StructIntersectAll<[Omit<HTMLInputAttributes, 'size' | 'class'>]> {
+	extends StructIntersectAll<[Slot, SlotFileInput, Omit<HTMLInputAttributes, 'size' | 'class'>]> {
 	/** Selected file(s) */
 	value?: File | File[];
 	/** Multiple files allowed */

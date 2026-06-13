@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { BaseCardProps } from '$stylist/information/type/struct/base-card-props';
-	import createBaseCardState from '$stylist/information/function/state/base-card/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeBaseCard } from '$stylist/information/interface/recipe/base-card';
+	import { createBaseCardState } from '$stylist/information/function/state/base-card/index.svelte';
 
-	let props: BaseCardProps = $props();
+	let props: RecipeBaseCard = $props();
 	const state = createBaseCardState(props);
 </script>
 

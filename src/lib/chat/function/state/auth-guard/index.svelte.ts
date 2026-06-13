@@ -1,5 +1,4 @@
 import { resolveAuthGuardState } from '$stylist/chat/function/script/resolve-auth-guard-state';
-import { AuthGuardStyleManager } from '$stylist/chat/class/style-manager/auth-guard';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { AuthGuardProps } from '$stylist/chat/type/alias/auth-guard-props';
 
@@ -12,15 +11,28 @@ export const createAuthGuardState = (props: AuthGuardProps) => {
 	const showLoadingState = $derived(props.showLoadingState ?? false);
 
 	const loading = $derived(showLoadingState);
-	const rootClasses = $derived(
-		AuthGuardStyleManager.getRootClasses(mergeClassNames(props.class ?? ''))
-	);
+	const rootClasses = $derived(mergeClassNames('c-auth-guard', props.class ?? ''));
 	const sectionClasses = $derived(
-		AuthGuardStyleManager.getSectionClasses(props.fallbackClass ?? '')
+		mergeClassNames(
+			'flex flex-col items-center justify-center gap-[--spacing-sm] rounded-[1.5rem] border border-[--color-border-primary] bg-[--color-background-primary] px-6 py-7 text-center shadow-custom28',
+			props.fallbackClass ?? ''
+		)
 	);
-	const titleClasses = $derived(AuthGuardStyleManager.getTitleClasses(props.contentClass ?? ''));
-	const textClasses = $derived(AuthGuardStyleManager.getTextClasses(props.contentClass ?? ''));
-	const actionLinkClasses = $derived(AuthGuardStyleManager.getActionLinkClasses());
+	const titleClasses = $derived(
+		mergeClassNames(
+			'text-lg font-semibold tracking-[0.01em] text-[--color-text-primary]',
+			props.contentClass ?? ''
+		)
+	);
+	const textClasses = $derived(
+		mergeClassNames(
+			'max-w-[40ch] text-sm leading-6 text-[--color-text-secondary]',
+			props.contentClass ?? ''
+		)
+	);
+	const actionLinkClasses = $derived(
+		'inline-flex items-center rounded-full bg-[--color-primary-600] px-4 py-2 text-sm font-medium text-[--color-text-inverse] transition-colors hover:bg-[--color-primary-700]'
+	);
 
 	const resolved = $derived(
 		resolveAuthGuardState({

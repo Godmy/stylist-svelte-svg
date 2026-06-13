@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import InputText from '../input-text/index.svelte';
 	import type { SlotInputField as IInputFieldProps } from '$stylist/input/interface/slot/input-field';
-	import createInputFieldState from '$stylist/input/function/state/input-field/index.svelte';
+	import { createInputFieldState } from '$stylist/input/function/state/input-field/index.svelte';
 
 	let props: IInputFieldProps = $props();
 	const state = createInputFieldState(props);

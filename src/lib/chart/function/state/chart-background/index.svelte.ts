@@ -1,14 +1,12 @@
-import type { ChartBackgroundProps as ChartBackgroundRecipe } from '$stylist/chart/interface/recipe/chart-background-props';
-import { ChartStyleManager } from '$stylist/chart/class/style-manager/chart';
+import type { RecipeChartBackground } from '$stylist/chart/interface/recipe/chart-background';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartBackgroundState(props: ChartBackgroundRecipe) {
-	const classes = $derived(
-		ChartStyleManager.getChartBackgroundClasses(resolveClassName(props.class))
-	);
+export function createChartBackgroundState(props: RecipeChartBackground) {
+	const classes = $derived(mergeClassNames('c-chart-background', resolveClassName(props.class)));
 
 	return {
 		get classes() {

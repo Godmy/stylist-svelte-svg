@@ -1,17 +1,18 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 /**
- * NodePropertiesPanel — панель свойств узла..
+ * NodePropertiesPanel РІР‚вЂќ Р С—Р В°Р Р…Р ВµР В»РЎРЉ РЎРѓР Р†Р С•Р в„–РЎРѓРЎвЂљР Р† РЎС“Р В·Р В»Р В°..
  *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   ILabelSlot        (information) РІР‚вЂќ label (Label)
  */
 import type { ChildrenProp } from '$stylist/information/type/struct/children-prop';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { LiteGraphNodeProperty } from '$stylist/science/type/struct/litegraph-node-property';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface NodePropertiesPanelRecipe
-	extends StructIntersectAll<[ChildrenProp, ThemeAttributes<HTMLElement>]> {
+export interface RecipeNodePropertiesPanel
+	extends StructIntersectAll<[SlotTheme, ChildrenProp, HTMLAttributes<HTMLElement>]> {
 	nodeId?: string;
 	title?: string;
 	visible?: boolean;

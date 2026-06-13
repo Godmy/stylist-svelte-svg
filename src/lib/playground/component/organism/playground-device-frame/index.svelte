@@ -1,112 +1,88 @@
-<script lang="ts">
-	import createPlaygroundDeviceFrameState from '$stylist/playground/function/state/playground-device-frame/index.svelte';
-	import type { PlaygroundDeviceFrameProps } from '$stylist/playground/type/struct/playground-device-frame-props';
-	let props: PlaygroundDeviceFrameProps = $props();
+﻿<script lang="ts">
+	import type { RecipePlaygroundDeviceFrame } from '$stylist/playground/interface/recipe/playground-device-frame';
+	import { createPlaygroundDeviceFrameState } from '$stylist/playground/function/state/playground-device-frame/index.svelte';
+	let props: RecipePlaygroundDeviceFrame = $props();
 	const state = createPlaygroundDeviceFrameState(props);
 </script>
 
 {#if state.showFrame}
-	<div class="flex items-center justify-center p-8">
-		<!-- Device Frame -->
-		<div class="relative flex flex-col items-center">
-			<!-- Device Name Badge -->
-			<div
-				class="mb-4 rounded-full bg-gradient-to-r px-4 py-2 {state.spec
-					.color} text-xs font-bold text-white shadow-lg"
-			>
+	<div class="pdf-outer">
+		<div class="pdf-device">
+			<div class={`pdf-badge ${state.spec.color}`}>
 				{state.spec.name} | {state.spec.width}px x {state.spec.height}px
 			</div>
 
-			<!-- Frame Container -->
-			<div class="relative">
+			<div class="pdf-frame-wrap">
 				{#if state.device === 'mobile'}
-					<!-- Mobile Phone Frame -->
-					<div class="relative">
-						<!-- Phone body -->
+					<div class="pdf-phone">
 						<div
-							class="bg-gradient-to-br {state.spec.color} rounded-[3rem] p-3 shadow-2xl"
+							class={`pdf-phone-body ${state.spec.color}`}
 							style="width: {state.spec.width + 24}px;"
 						>
-							<!-- Notch (iPhone style) -->
-							<div class="mb-2 flex justify-center">
-								<div class="flex h-6 w-32 items-center justify-center gap-2 rounded-full bg-black">
-									<div class="h-1 w-12 rounded-full bg-gray-800"></div>
-									<div class="h-2 w-2 rounded-full bg-gray-800"></div>
+							<div class="pdf-notch-row">
+								<div class="pdf-notch">
+									<div class="pdf-notch-pill"></div>
+									<div class="pdf-notch-dot"></div>
 								</div>
 							</div>
 
-							<!-- Screen -->
 							<div
-								class="overflow-hidden rounded-[2.5rem] bg-white shadow-inner dark:bg-gray-900"
+								class="pdf-screen pdf-screen--mobile"
 								style="width: {state.spec.width}px; height: {state.spec.height}px;"
 							>
-								<div class="h-full w-full overflow-auto">
+								<div class="pdf-screen-inner">
 									{#if state.children}
 										{#if state.children}{@render state.children()}{/if}
 									{/if}
 								</div>
 							</div>
 
-							<!-- Home indicator (iPhone style) -->
-							<div class="mt-2 flex justify-center">
-								<div class="h-1 w-32 rounded-full bg-gray-600"></div>
+							<div class="pdf-home-row">
+								<div class="pdf-home-bar"></div>
 							</div>
 						</div>
 
-						<!-- Volume buttons -->
-						<div class="absolute top-24 left-0 h-12 w-1 rounded-l-full bg-gray-800"></div>
-						<div class="absolute top-40 left-0 h-12 w-1 rounded-l-full bg-gray-800"></div>
-
-						<!-- Power button -->
-						<div class="absolute top-32 right-0 h-16 w-1 rounded-r-full bg-gray-800"></div>
+						<div class="pdf-vol-btn pdf-vol-btn--1"></div>
+						<div class="pdf-vol-btn pdf-vol-btn--2"></div>
+						<div class="pdf-power-btn"></div>
 					</div>
 				{:else if state.device === 'tablet'}
-					<!-- Tablet Frame -->
-					<div class="relative">
-						<!-- Tablet body -->
+					<div class="pdf-tablet">
 						<div
-							class="bg-gradient-to-br {state.spec.color} rounded-[2rem] p-4 shadow-2xl"
+							class={`pdf-tablet-body ${state.spec.color}`}
 							style="width: {state.spec.width + 32}px;"
 						>
-							<!-- Camera -->
-							<div class="mb-2 flex justify-center">
-								<div class="h-3 w-3 rounded-full bg-gray-900"></div>
+							<div class="pdf-camera-row">
+								<div class="pdf-camera-dot"></div>
 							</div>
 
-							<!-- Screen -->
 							<div
-								class="overflow-hidden rounded-[1.5rem] bg-white shadow-inner dark:bg-gray-900"
+								class="pdf-screen pdf-screen--tablet"
 								style="width: {state.spec.width}px; height: {state.spec.height}px;"
 							>
-								<div class="h-full w-full overflow-auto">
+								<div class="pdf-screen-inner">
 									{#if state.children}
 										{#if state.children}{@render state.children()}{/if}
 									{/if}
 								</div>
 							</div>
 
-							<!-- Home button -->
-							<div class="mt-2 flex justify-center">
-								<div class="h-12 w-12 rounded-full border-2 border-gray-700 bg-gray-900"></div>
+							<div class="pdf-tablet-home-row">
+								<div class="pdf-tablet-home-btn"></div>
 							</div>
 						</div>
 
-						<!-- Volume buttons -->
-						<div class="absolute top-32 right-0 h-16 w-1 rounded-r-full bg-gray-800"></div>
+						<div class="pdf-tablet-vol-btn"></div>
 					</div>
 				{:else if state.device === 'desktop'}
-					<!-- Desktop Monitor Frame -->
-					<div class="relative flex flex-col items-center">
-						<!-- Monitor -->
-						<div class="bg-gradient-to-br {state.spec.color} rounded-2xl p-4 shadow-2xl">
-							<!-- Bezel -->
-							<div class="rounded-xl bg-black p-6">
-								<!-- Screen -->
+					<div class="pdf-desktop">
+						<div class={`pdf-monitor-body ${state.spec.color}`}>
+							<div class="pdf-bezel">
 								<div
-									class="overflow-hidden rounded-lg bg-white shadow-inner dark:bg-gray-900"
+									class="pdf-screen pdf-screen--desktop"
 									style="width: {state.spec.width}px; height: {state.spec.height}px;"
 								>
-									<div class="h-full w-full overflow-auto">
+									<div class="pdf-screen-inner">
 										{#if state.children}
 											{#if state.children}{@render state.children()}{/if}
 										{/if}
@@ -114,23 +90,20 @@
 								</div>
 							</div>
 
-							<!-- Monitor logo/light -->
-							<div class="mt-2 flex justify-center">
-								<div class="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+							<div class="pdf-logo-row">
+								<div class="pdf-led"></div>
 							</div>
 						</div>
 
-						<!-- Stand -->
-						<div class="h-2 w-32 bg-gradient-to-r {state.spec.color} mt-2 rounded-full"></div>
-						<div class="h-3 w-48 bg-gradient-to-r {state.spec.color} mt-1 rounded-full"></div>
+						<div class={`pdf-stand-neck ${state.spec.color}`}></div>
+						<div class={`pdf-stand-base ${state.spec.color}`}></div>
 					</div>
 				{/if}
 			</div>
 		</div>
 	</div>
 {:else}
-	<!-- Fullscreen mode - no frame -->
-	<div class="h-full w-full">
+	<div class="pdf-fullscreen">
 		{#if state.children}
 			{#if state.children}{@render state.children()}{/if}
 		{/if}
@@ -138,8 +111,225 @@
 {/if}
 
 <style>
-	/* Add smooth scrolling */
 	:global(.device-content) {
 		scroll-behavior: smooth;
+	}
+
+	@keyframes pdf-pulse {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.5;
+		}
+	}
+
+	.pdf-outer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+	.pdf-device {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.pdf-badge {
+		margin-bottom: 1rem;
+		border-radius: 9999px;
+		padding: 0.5rem 1rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.pdf-frame-wrap {
+		position: relative;
+	}
+	.pdf-fullscreen {
+		height: 100%;
+		width: 100%;
+	}
+
+	/* Mobile */
+	.pdf-phone {
+		position: relative;
+	}
+	.pdf-phone-body {
+		border-radius: 3rem;
+		padding: 0.75rem;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	.pdf-notch-row {
+		margin-bottom: 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+	.pdf-notch {
+		display: flex;
+		height: 1.5rem;
+		width: 8rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		border-radius: 9999px;
+		background: black;
+	}
+	.pdf-notch-pill {
+		height: 0.25rem;
+		width: 3rem;
+		border-radius: 9999px;
+		background: #1f2937;
+	}
+	.pdf-notch-dot {
+		height: 0.5rem;
+		width: 0.5rem;
+		border-radius: 9999px;
+		background: #1f2937;
+	}
+	.pdf-screen {
+		overflow: hidden;
+		background: white;
+		box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pdf-screen {
+			background: #111827;
+		}
+	}
+	.pdf-screen--mobile {
+		border-radius: 2.5rem;
+	}
+	.pdf-screen--tablet {
+		border-radius: 1.5rem;
+	}
+	.pdf-screen--desktop {
+		border-radius: 0.5rem;
+	}
+	.pdf-screen-inner {
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+	}
+	.pdf-home-row {
+		margin-top: 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+	.pdf-home-bar {
+		height: 0.25rem;
+		width: 8rem;
+		border-radius: 9999px;
+		background: #4b5563;
+	}
+	.pdf-vol-btn {
+		position: absolute;
+		left: 0;
+		height: 3rem;
+		width: 0.25rem;
+		border-radius: 0 9999px 9999px 0;
+		background: #1f2937;
+	}
+	.pdf-vol-btn--1 {
+		top: 6rem;
+	}
+	.pdf-vol-btn--2 {
+		top: 10rem;
+	}
+	.pdf-power-btn {
+		position: absolute;
+		top: 8rem;
+		right: 0;
+		height: 4rem;
+		width: 0.25rem;
+		border-radius: 9999px 0 0 9999px;
+		background: #1f2937;
+	}
+
+	/* Tablet */
+	.pdf-tablet {
+		position: relative;
+	}
+	.pdf-tablet-body {
+		border-radius: 2rem;
+		padding: 1rem;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	.pdf-camera-row {
+		margin-bottom: 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+	.pdf-camera-dot {
+		height: 0.75rem;
+		width: 0.75rem;
+		border-radius: 9999px;
+		background: #111827;
+	}
+	.pdf-tablet-home-row {
+		margin-top: 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+	.pdf-tablet-home-btn {
+		height: 3rem;
+		width: 3rem;
+		border-radius: 9999px;
+		border: 2px solid #374151;
+		background: #111827;
+	}
+	.pdf-tablet-vol-btn {
+		position: absolute;
+		top: 8rem;
+		right: 0;
+		height: 4rem;
+		width: 0.25rem;
+		border-radius: 9999px 0 0 9999px;
+		background: #1f2937;
+	}
+
+	/* Desktop */
+	.pdf-desktop {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.pdf-monitor-body {
+		border-radius: 1rem;
+		padding: 1rem;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	.pdf-bezel {
+		border-radius: 0.75rem;
+		background: black;
+		padding: 1.5rem;
+	}
+	.pdf-logo-row {
+		margin-top: 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+	.pdf-led {
+		height: 0.5rem;
+		width: 0.5rem;
+		border-radius: 9999px;
+		background: #22c55e;
+		animation: pdf-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+	.pdf-stand-neck {
+		margin-top: 0.5rem;
+		height: 0.5rem;
+		width: 8rem;
+		border-radius: 9999px;
+	}
+	.pdf-stand-base {
+		margin-top: 0.25rem;
+		height: 0.75rem;
+		width: 12rem;
+		border-radius: 9999px;
 	}
 </style>

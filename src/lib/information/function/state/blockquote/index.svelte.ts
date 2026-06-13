@@ -1,4 +1,4 @@
-import type { BlockquoteRecipe } from '$stylist/typography/interface/recipe/blockquote';
+import type { RecipeBlockquote } from '$stylist/typography/interface/recipe/blockquote';
 import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 
 /**
@@ -8,7 +8,7 @@ import { joinClassNames } from '$stylist/layout/function/script/join-class-names
  * @param props - Blockquote component props
  * @returns Reactive state object with classes and computed values
  */
-export function createBlockquoteState(props: BlockquoteRecipe) {
+export function createBlockquoteState(props: RecipeBlockquote) {
 	const cite = $derived(props.cite ?? '');
 	const withBorder = $derived(props.withBorder ?? false);
 	const withBackground = $derived(props.withBackground ?? false);

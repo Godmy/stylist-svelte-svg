@@ -1,16 +1,16 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundCanvasShell } from '$stylist/playground/interface/recipe/playground-canvas-shell';
 	import RecipePlaygroundDeviceFrame from '../playground-device-frame/index.svelte';
 	import RecipePlaygroundErrorBoundary from '../playground-error-boundary/index.svelte';
-	import createPlaygroundCanvasShellState from '$stylist/playground/function/state/playground-canvas-shell/index.svelte';
-	import type { PlaygroundCanvasShellProps } from '$stylist/playground/type/struct/playground-canvas-shell-props';
-	let props: PlaygroundCanvasShellProps = $props();
+	import { createPlaygroundCanvasShellState } from '$stylist/playground/function/state/playground-canvas-shell/index.svelte';
+	let props: RecipePlaygroundCanvasShell = $props();
 	const state = createPlaygroundCanvasShellState(props);
 </script>
 
-<div class="canvas-container flex flex-1 flex-col overflow-hidden">
+<div class="canvas-container">
 	<div
 		bind:this={state.canvasContainer}
-		class="relative flex flex-1 overflow-auto p-8"
+		class="cs-canvas-area"
 		class:panning={state.isPanning}
 		onpointerdown={state.handlePointerDown}
 		onpointermove={state.handlePointerMove}
@@ -25,7 +25,7 @@
 			{/if}
 		</div>
 
-		<div class="flex min-h-full w-full items-center justify-center">
+		<div class="cs-canvas-center">
 			<div
 				class="canvas-zoom"
 				style="transform: translate({state.panX}px, {state.panY}px) scale({state.zoom}); transform-origin: center; transition: {state.isPanning
@@ -34,13 +34,11 @@
 			>
 				{#if state.showDeviceFrame && state.viewport !== 'fullscreen'}
 					<RecipePlaygroundDeviceFrame device={state.viewport}>
-						<div class="relative h-full w-full {state.backgroundClass}">
+						<div class="cs-device-content {state.backgroundClass}">
 							{#if state.showGrid}
-								<div
-									class="grid-overlay pointer-events-none absolute inset-0 rounded-[2.5rem]"
-								></div>
+								<div class="grid-overlay _c1"></div>
 							{/if}
-							<div class="relative z-[var(--z-index-docked)] p-8">
+							<div class="cs-inner-content">
 								<RecipePlaygroundErrorBoundary
 									component={state.component}
 									props={state.componentProps}
@@ -54,13 +52,13 @@
 					</RecipePlaygroundDeviceFrame>
 				{:else}
 					<div
-						class="canvas-frame relative overflow-hidden rounded-2xl shadow-2xl {state.backgroundClass} pointer-events-auto border-2 border-gray-200/50 dark:border-gray-700/50"
+						class="canvas-frame {state.backgroundClass}"
 						style="width: {state.currentViewportWidth}; min-height: 400px;"
 					>
 						{#if state.showGrid}
-							<div class="grid-overlay pointer-events-none absolute inset-0 rounded-2xl"></div>
+							<div class="grid-overlay _c2"></div>
 						{/if}
-						<div class="relative z-[var(--z-index-docked)] p-8">
+						<div class="cs-inner-content">
 							<RecipePlaygroundErrorBoundary
 								component={state.component}
 								props={state.componentProps}
@@ -97,7 +95,35 @@
 		will-change: transform;
 	}
 
+	.cs-canvas-area {
+		position: relative;
+		display: flex;
+		flex: 1;
+		overflow: auto;
+		padding: 2rem;
+	}
+	.cs-canvas-center {
+		display: flex;
+		min-height: 100%;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+	.cs-device-content {
+		position: relative;
+		height: 100%;
+		width: 100%;
+	}
+	.cs-inner-content {
+		position: relative;
+		z-index: var(--z-index-docked);
+		padding: 2rem;
+	}
 	.canvas-container {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		overflow: hidden;
 		background:
 			radial-gradient(
 				circle at top right,
@@ -126,6 +152,12 @@
 	}
 
 	.canvas-frame {
+		position: relative;
+		overflow: hidden;
+		border-radius: 1rem;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+		pointer-events: auto;
+		border: 2px solid rgb(229 231 235 / 0.5);
 		transition: all var(--duration-300) var(--easing-ease-standard);
 		background-image: linear-gradient(
 			180deg,
@@ -138,6 +170,11 @@
 		box-shadow: var(--shadow-custom30);
 	}
 
+	@media (prefers-color-scheme: dark) {
+		.canvas-frame {
+			border-color: rgb(55 65 81 / 0.5);
+		}
+	}
 	:global(.dark) .canvas-frame:hover {
 		box-shadow: var(--shadow-custom31);
 	}
@@ -179,5 +216,18 @@
 
 	.canvas-chip--accent {
 		color: var(--playground-accent, var(--color-warning-600));
+	}
+
+	._c1 {
+		pointer-events: none;
+		position: absolute;
+		inset: 0;
+		border-radius: 2.5rem;
+	}
+	._c2 {
+		pointer-events: none;
+		position: absolute;
+		inset: 0;
+		border-radius: 1rem;
 	}
 </style>

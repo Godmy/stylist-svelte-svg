@@ -1,8 +1,8 @@
-import { untrack } from 'svelte';
+﻿import { untrack } from 'svelte';
 import type { LocationSelectorLocation } from '$stylist/geo/type/struct/location-selector/locationselectorlocation';
-import type { LocationSelectorStateProps } from '$stylist/geo/interface/recipe/location-selector';
+import type { RecipeLocationSelector } from '$stylist/geo/interface/recipe/location-selector';
 
-export function createLocationSelectorState(props: LocationSelectorStateProps) {
+export function createLocationSelectorState(props: RecipeLocationSelector) {
 	const locations = $derived(props.locations ?? []);
 	const currentView = $derived(props.currentView ?? 'list');
 	const showSearch = $derived(props.showSearch ?? true);
@@ -160,5 +160,3 @@ export function createLocationSelectorState(props: LocationSelectorStateProps) {
 		}
 	};
 }
-
-export default createLocationSelectorState;

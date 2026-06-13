@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import createStoreLocatorState from '$stylist/geo/function/state/store-locator/index.svelte';
+	import { createStoreLocatorState } from '$stylist/geo/function/state/store-locator/index.svelte';
 
 	let props = $props();
 	const state = createStoreLocatorState(props);
@@ -196,14 +196,14 @@
 											size="sm"
 											onclick={() => state.handleCallStore(store)}
 										>
-											<BaseIcon name="phone" class="h-4 w-4" />
+											<BaseIcon name="phone" class="_c1" />
 										</Button>
 										<Button
 											variant="outline"
 											size="sm"
 											onclick={() => state.handleGetDirections(store)}
 										>
-											<BaseIcon name="navigation" class="h-4 w-4" />
+											<BaseIcon name="navigation" class="_c1" />
 										</Button>
 									</div>
 								</div>
@@ -264,8 +264,6 @@
 		}
 	}
 
-	.c-store-locator__sidebar {
-	}
 	@media (min-width: 1024px) {
 		.c-store-locator__sidebar {
 			width: 25%;
@@ -629,5 +627,10 @@
 		text-align: center;
 		font-size: 0.875rem;
 		color: var(--color-text-secondary);
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

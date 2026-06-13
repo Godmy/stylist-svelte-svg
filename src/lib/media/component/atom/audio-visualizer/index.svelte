@@ -1,8 +1,8 @@
-<script lang="ts">
-	import createAudioVisualizerState from '$stylist/media/function/state/audio-visualizer/index.svelte';
-	import type { AudioVisualizerProps } from '$stylist/media/type/struct/audio-visualizer';
+﻿<script lang="ts">
+	import type { RecipeAudioVisualizer } from '$stylist/media/interface/recipe/audio-visualizer';
+	import { createAudioVisualizerState } from '$stylist/media/function/state/audio-visualizer/index.svelte';
 
-	let props: AudioVisualizerProps = $props();
+	let props: RecipeAudioVisualizer = $props();
 	const state = createAudioVisualizerState(props);
 </script>
 

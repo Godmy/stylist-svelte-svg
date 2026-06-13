@@ -41,21 +41,47 @@
 	description="SVG grid overlay with configurable size, opacity, and color."
 >
 	{#snippet children(values: any)}
-		<div
-			class="relative h-[360px] w-full overflow-hidden rounded border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)]"
-		>
+		<div class="_c1">
 			<Grid
 				zoom={Number(values.zoom) || 1}
 				gridSize={Number(values.gridSize) || 50}
 				visible={Boolean(values.visible)}
 				color={values.color || 'var(--color-border-subtle, #e0e0e0)'}
-				class="absolute inset-0 h-full w-full"
+				class="_c2"
 			/>
-			<div
-				class="absolute inset-0 flex items-center justify-center text-sm text-[var(--color-text-secondary)]"
-			>
+			<div class="_c3">
 				zoom: {values.zoom}, gridSize: {values.gridSize}
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		height: 360px;
+		width: 100%;
+		overflow: hidden;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+	}
+	._c2 {
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		width: 100%;
+	}
+	._c3 {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

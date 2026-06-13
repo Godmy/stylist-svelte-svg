@@ -1,21 +1,25 @@
 import { ObjectManagerMetricBar } from '$stylist/information/class/object-manager/metric-bar';
-import { MetricBarStyleManager } from '$stylist/information/class/style-manager/metric-bar';
-import type { MetricBarRecipe } from '$stylist/information/interface/recipe/metric-bar';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeMetricBar } from '$stylist/information/interface/recipe/metric-bar';
 
-export function createMetricBarState(props: MetricBarRecipe) {
+export function createMetricBarState(props: RecipeMetricBar) {
 	const label = $derived(props.label ?? '');
 	const percentage = $derived(ObjectManagerMetricBar.resolvePercentage(props));
 	const valueLabel = $derived(ObjectManagerMetricBar.resolveValueLabel(props));
 	const color = $derived(props.color ?? 'var(--color-primary-500)');
 	const trackColor = $derived(props.trackColor ?? 'var(--color-neutral-200)');
 	const containerClasses = $derived(
-		MetricBarStyleManager.getContainerClasses(props.class == null ? '' : String(props.class))
+		mergeClassNames('flex flex-col gap-2', props.class == null ? '' : String(props.class))
 	);
-	const headerClasses = $derived(MetricBarStyleManager.getHeaderClasses());
-	const labelClasses = $derived(MetricBarStyleManager.getLabelClasses());
-	const valueClasses = $derived(MetricBarStyleManager.getValueClasses());
-	const trackClasses = $derived(MetricBarStyleManager.getTrackClasses());
-	const fillClasses = $derived(MetricBarStyleManager.getFillClasses());
+	const headerClasses = $derived('flex items-center justify-between gap-3');
+	const labelClasses = $derived('text-sm font-medium text-[var(--color-text-primary)]');
+	const valueClasses = $derived('text-sm tabular-nums text-[var(--color-text-secondary)]');
+	const trackClasses = $derived(
+		'h-2 overflow-hidden rounded-full bg-[var(--metric-bar-track-color,var(--color-neutral-200))]'
+	);
+	const fillClasses = $derived(
+		'h-full rounded-full bg-[var(--metric-bar-color,var(--color-primary-500))] transition-[width] duration-300 ease-out'
+	);
 	const widthStyle = $derived(`width: ${percentage}%;`);
 	const cssVariables = $derived(
 		`--metric-bar-color: ${color}; --metric-bar-track-color: ${trackColor};`

@@ -1,16 +1,9 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/**
- * GraphNodeCard — карточка узла графа..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- *   ICaptionSlot        (information) — caption (Caption)
- *   IBadgeSlot        (information) — badge (Badge)
- *   IStatusSlot        (information) — status (Status)
- */
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface GraphNodeCardRecipe extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeGraphNodeCard
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	label?: string;
 	caption?: string;
 	badge?: string | number;

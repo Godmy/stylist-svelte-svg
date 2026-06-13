@@ -10,7 +10,7 @@
 	description="Slider tick mark component"
 >
 	{#snippet children(values: any)}
-		<div class="relative h-10 w-full border border-dashed border-[--color-border-secondary] px-2">
+		<div class="_c1">
 			<Tick
 				value={values.value ?? 50}
 				position={values.position ?? 50}
@@ -20,3 +20,16 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		height: 2.5rem;
+		width: 100%;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-secondary);
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+</style>

@@ -83,7 +83,7 @@
 	description="Table component for comparing product features"
 >
 	{#snippet children(controlValues: any)}
-		<div class="overflow-x-auto p-4">
+		<div class="_c1">
 			<ComparisonTable
 				{features}
 				{products}
@@ -93,3 +93,10 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		overflow-x: auto;
+		padding: 1rem;
+	}
+</style>

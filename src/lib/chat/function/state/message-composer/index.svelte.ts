@@ -1,5 +1,5 @@
 import type { SlotMessageComposer as IMessageComposerProps } from '$stylist/chat/interface/slot/message-composer';
-import { MessageComposerStyleManager } from '$stylist/chat/class/style-manager/message-composer';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export const createMessageComposerState = (props: IMessageComposerProps) => {
 	let messageText = $state(props.value ?? '');
@@ -9,27 +9,31 @@ export const createMessageComposerState = (props: IMessageComposerProps) => {
 	});
 
 	const containerClasses = $derived(
-		MessageComposerStyleManager.getContainerClasses(String(props.class ?? ''))
+		mergeClassNames(
+			'message-composer rounded-[1.15rem] border border-[--color-border-primary] bg-[--color-background-primary] p-2 shadow-custom28',
+			String(props.class ?? '')
+		)
 	);
 
-	const formClasses = $derived(MessageComposerStyleManager.getFormClasses());
+	const formClasses = $derived('flex flex-1 items-end gap-2');
 
-	const attachmentButtonClasses = $derived(
-		MessageComposerStyleManager.getAttachmentButtonClasses()
-	);
+	const attachmentButtonClasses = $derived('shrink-0');
 
-	const inputContainerClasses = $derived(MessageComposerStyleManager.getInputContainerClasses());
+	const inputContainerClasses = $derived('relative flex-1');
 
 	const inputClasses = $derived(
-		MessageComposerStyleManager.getInputClasses(props.inputClass ?? '')
+		mergeClassNames(
+			'w-full resize-none rounded-[1rem] border border-transparent bg-[--color-background-secondary] px-4 py-3 pr-10 text-[--color-text-primary] focus:border-[--color-primary-500] focus:outline-none focus:ring-2 focus:ring-[--color-primary-500] max-h-32',
+			props.inputClass ?? ''
+		)
 	);
 
 	const sendButtonClasses = $derived(
-		MessageComposerStyleManager.getSendButtonClasses(props.buttonClass ?? '')
+		mergeClassNames('shrink-0 rounded-full', props.buttonClass ?? '')
 	);
 
 	const voiceButtonClasses = $derived(
-		MessageComposerStyleManager.getVoiceButtonClasses(props.buttonClass ?? '')
+		mergeClassNames('shrink-0 rounded-full', props.buttonClass ?? '')
 	);
 
 	const showSendButton = $derived(messageText.trim().length > 0);

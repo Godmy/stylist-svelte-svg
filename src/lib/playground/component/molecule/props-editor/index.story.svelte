@@ -37,7 +37,13 @@
 	component={PropsEditor}
 	category="Molecules/Development/Playground"
 >
-	{#snippet children()}<div class="p-4">
+	{#snippet children()}<div class="_c1">
 			<PropsEditor propDefinitions={defs} propValues={values} />
 		</div>{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

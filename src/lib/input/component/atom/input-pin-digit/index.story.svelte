@@ -24,7 +24,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="flex gap-2">
+		<div class="_c1">
 			<PinInputDigit
 				id="pin-1"
 				value={values.value}
@@ -39,3 +39,10 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		gap: 0.5rem;
+	}
+</style>

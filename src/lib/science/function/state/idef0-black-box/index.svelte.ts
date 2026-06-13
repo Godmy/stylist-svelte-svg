@@ -1,4 +1,4 @@
-import type { Idef0BlackBoxRecipe as Idef0BlackBoxProps } from '$stylist/science/interface/recipe/idef0-black-box';
+import type { RecipeIdef0BlackBox as Idef0BlackBoxProps } from '$stylist/science/interface/recipe/idef0-black-box';
 
 export function createIdef0BlackBoxState(props: Idef0BlackBoxProps) {
 	const width = $derived(props.width ?? 920);

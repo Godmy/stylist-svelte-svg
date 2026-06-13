@@ -1,7 +1,10 @@
+﻿import type { RecipeNumberInputProps as LegacyNumberInputProps1 } from '$stylist/input/interface/recipe/number-input-props';
+import type { SlotNumberInput as Slot } from '$stylist/input/interface/slot/number-input';
+import type { SlotNumberInput as SlotNumberInput } from '$stylist/input/interface/slot/number-input';
 /**
- * Number Input вЂ” РІРІРѕРґ С‡РёСЃР»Р°.
+ * Number Input РІР‚вЂќ Р Р†Р Р†Р С•Р Т‘ РЎвЂЎР С‘РЎРѓР В»Р В°.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   ICaptionSlot              (information/caption-slot)
  *   IIconSlot                 (information/icon-slot)
@@ -15,5 +18,16 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface NumberInputRecipe
-	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IIconSlot, IFocusable, ISizable]> {}
+export interface RecipeNumberInput
+	extends StructIntersectAll<
+		[
+			LegacyNumberInputProps1,
+			Slot,
+			SlotNumberInput,
+			ILabelSlot,
+			ICaptionSlot,
+			IIconSlot,
+			IFocusable,
+			ISizable
+		]
+	> {}

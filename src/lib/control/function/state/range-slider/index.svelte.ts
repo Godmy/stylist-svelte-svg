@@ -23,22 +23,24 @@ export function createRangeSliderState(props: RangeSliderProps) {
 			: `left: 0%; width: ${maxPercentage}%`
 	);
 
-	const containerClass = $derived(`mb-4 ${props.class ?? ''}`);
-	const labelContainerClass = $derived('flex justify-between items-center mb-2');
-	const labelClass = $derived('text-sm font-medium text-[--color-text-primary]');
-	const valueDisplayClass = $derived('text-sm text-[--color-text-secondary]');
-	const trackContainerClass = $derived('relative h-2');
-	const trackClass = $derived('w-full h-2 bg-[--color-border-secondary] rounded-full');
+	const containerClass = $derived(['c-range-slider', props.class].filter(Boolean).join(' '));
+	const labelContainerClass = 'c-range-slider__header';
+	const labelClass = 'c-range-slider__label';
+	const valueDisplayClass = 'c-range-slider__value';
+	const trackContainerClass = 'c-range-slider__track-wrap';
+	const trackClass = 'c-range-slider__track';
 	const fillClass = $derived(
-		`absolute h-2 bg-[--color-primary-500] rounded-full ${disabled ? 'bg-[--color-border-secondary]' : ''}`
+		['c-range-slider__fill', disabled ? 'c-range-slider__fill--disabled' : '']
+			.filter(Boolean)
+			.join(' ')
 	);
 	const thumbClass = $derived(
-		`w-4 h-4 rounded-full ${disabled ? 'bg-[--color-text-tertiary]' : 'bg-[--color-primary-600]'} cursor-pointer appearance-none absolute top-1/2 -translate-y-1/2`
+		['c-range-slider__thumb', disabled ? 'c-range-slider__thumb--disabled' : '']
+			.filter(Boolean)
+			.join(' ')
 	);
-	const minMaxLabelClass = $derived(
-		'flex justify-between text-xs text-[--color-text-secondary] mt-1'
-	);
-	const descriptionClass = $derived('text-xs text-[--color-text-secondary] mt-1');
+	const minMaxLabelClass = 'c-range-slider__minmax';
+	const descriptionClass = 'c-range-slider__description';
 
 	return {
 		get isRange() {

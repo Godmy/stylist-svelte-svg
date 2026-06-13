@@ -1,20 +1,18 @@
-/**
- * MetricCard — карточка метрики..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- *   ICaptionSlot        (information) — caption (Caption)
- *   IBadgeSlot        (information) — badge (Badge)
- *   IStatusSlot        (information) — status (Status)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { SlotClass } from '$stylist/theme/interface/slot/class';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
-import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { SlotStatus as IStatusSlot } from '$stylist/information/interface/slot/status';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { SlotBadge } from '$stylist/information/interface/slot/badge';
+import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
+import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotStatus } from '$stylist/information/interface/slot/status';
+import type { BehaviorMetricValue } from '$stylist/information/interface/behavior/metric-value';
+import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
-export interface MetricCardRecipe
+export interface RecipeMetricCard
 	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, IBadgeSlot, IStatusSlot, ThemeAttributes<HTMLDivElement>]
-	> {}
+		[SlotTheme, SlotClass, SlotLabel, SlotCaption, SlotBadge, SlotStatus, BehaviorMetricValue]
+	> {
+	description?: string;
+	variant?: TokenAppearance;
+	showProgressBar?: boolean;
+}

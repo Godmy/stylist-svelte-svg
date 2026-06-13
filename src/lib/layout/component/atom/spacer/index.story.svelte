@@ -28,15 +28,13 @@
 >
 	{#snippet children(values: any)}
 		{#if values.axis === 'vertical'}
-			<div
-				class="inline-flex flex-col items-center rounded bg-[var(--color-background-secondary)] p-2"
-			>
-				<span class="text-xs text-[var(--color-text-secondary)]">Top</span>
+			<div class="_c1">
+				<span class="_c2">Top</span>
 				<Spacer {...values} />
-				<span class="text-xs text-[var(--color-text-secondary)]">Bottom</span>
+				<span class="_c2">Bottom</span>
 			</div>
 		{:else}
-			<div class="flex items-center rounded bg-[var(--color-background-secondary)] p-2">
+			<div class="_c3">
 				<span>Left</span>
 				<Spacer {...values} />
 				<span>Right</span>
@@ -44,3 +42,26 @@
 		{/if}
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding: 0.5rem;
+	}
+	._c2 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		display: flex;
+		align-items: center;
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding: 0.5rem;
+	}
+</style>

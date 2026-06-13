@@ -1,7 +1,9 @@
+﻿import type { SlotReactionPicker as Slot } from '$stylist/input/interface/slot/reaction-picker';
+import type { SlotReactionPicker as SlotReactionPicker } from '$stylist/input/interface/slot/reaction-picker';
 /**
- * Reaction Picker вЂ” РІС‹Р±РѕСЂ СЂРµР°РєС†РёРё.
+ * Reaction Picker РІР‚вЂќ Р Р†РЎвЂ№Р В±Р С•РЎР‚ РЎР‚Р ВµР В°Р С”РЎвЂ Р С‘Р С‘.
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
  *   ILabelSlot                (information/label-slot)
  *   IIconSlot                 (information/icon-slot)
  *   ISelectable<string>       (interaction/selectable)
@@ -15,5 +17,7 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface ReactionPickerRecipe
-	extends StructIntersectAll<[ILabelSlot, IIconSlot, ISelectable<string>, IFocusable, ISizable]> {}
+export interface RecipeReactionPicker
+	extends StructIntersectAll<
+		[Slot, SlotReactionPicker, ILabelSlot, IIconSlot, ISelectable<string>, IFocusable, ISizable]
+	> {}

@@ -1,8 +1,8 @@
 import type { Snippet } from 'svelte';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { DrawerPosition } from '../drawerposition';
 
-export type DrawerProps = ThemeAttributes<HTMLDivElement> & {
+export type DrawerProps = HTMLAttributes<HTMLDivElement> & {
 	open?: boolean;
 	position?: DrawerPosition;
 	size?: string;

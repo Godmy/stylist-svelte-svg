@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte';
-import type { GraphToolbarRecipe } from '$stylist/science/interface/recipe/graph-toolbar';
+import type { RecipeGraphToolbar } from '$stylist/science/interface/recipe/graph-toolbar';
 import type { GraphEditorNodeData } from '$stylist/science/type/struct/graph-editor-node-data';
 import type { GraphEditorConnectionData } from '$stylist/science/type/struct/graph-editor-connection-data';
 import type { GraphEditorPaletteNode } from '$stylist/science/type/struct/graph-editor-palette-node';
@@ -16,7 +16,7 @@ export type GraphEditorProps = {
 	showPropertiesPanel?: boolean;
 	showGrid?: boolean;
 	palettePosition?: { x: number; y: number };
-	toolbarItems?: readonly GraphToolbarRecipe[];
+	toolbarItems?: readonly RecipeGraphToolbar[];
 	paletteNodes?: GraphEditorPaletteNode[];
 	onNodeSelect?: (nodeId: string) => void;
 	onNodeDrag?: (nodeId: string, position: { x: number; y: number }) => void;

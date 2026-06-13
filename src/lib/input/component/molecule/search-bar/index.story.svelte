@@ -45,7 +45,7 @@
 	description="Search bar component with debounce and clear functionality"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<SearchBar
 				placeholder={controlValues.placeholder}
 				value={controlValues.value}
@@ -57,3 +57,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

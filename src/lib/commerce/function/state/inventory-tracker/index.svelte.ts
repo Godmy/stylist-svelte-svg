@@ -1,8 +1,6 @@
 import type { InventoryItemStatus } from '$stylist/commerce/type/struct/inventory-item-status';
 import type { RecipeInventoryTracker as InventoryTrackerContract } from '$stylist/commerce/interface/recipe/inventory-tracker';
 import type { SlotInventoryItem as InventoryItemContract } from '$stylist/commerce/interface/slot/inventory-item';
-import { InventoryTrackerStyleManager } from '$stylist/commerce/class/style-manager/inventory-tracker';
-
 export function createInventoryTrackerState(props: InventoryTrackerContract) {
 	let searchQuery = $state('');
 
@@ -18,35 +16,6 @@ export function createInventoryTrackerState(props: InventoryTrackerContract) {
 				)
 			: items
 	);
-
-	const containerClasses = $derived(
-		InventoryTrackerStyleManager.getContainerClasses(String(props.class ?? ''))
-	);
-	const headerClasses = $derived(InventoryTrackerStyleManager.getHeaderClasses());
-	const titleClasses = $derived(InventoryTrackerStyleManager.getTitleClasses());
-	const filtersContainerClasses = $derived(
-		InventoryTrackerStyleManager.getFiltersContainerClasses()
-	);
-	const searchInputClasses = $derived(InventoryTrackerStyleManager.getSearchInputClasses());
-	const itemsContainerClasses = $derived(InventoryTrackerStyleManager.getItemsContainerClasses());
-	const itemClasses = $derived(InventoryTrackerStyleManager.getItemClasses());
-	const itemThumbnailClasses = $derived(InventoryTrackerStyleManager.getItemThumbnailClasses());
-	const itemInfoClasses = $derived(InventoryTrackerStyleManager.getItemInfoClasses());
-	const itemNameClasses = $derived(InventoryTrackerStyleManager.getItemNameClasses());
-	const itemSkuClasses = $derived(InventoryTrackerStyleManager.getItemSkuClasses());
-	const stockLevelClasses = $derived(InventoryTrackerStyleManager.getStockLevelClasses());
-	const progressBarClasses = $derived(InventoryTrackerStyleManager.getProgressBarClasses());
-	const actionsContainerClasses = $derived(
-		InventoryTrackerStyleManager.getActionsContainerClasses()
-	);
-	const actionButtonClasses = $derived(InventoryTrackerStyleManager.getActionButtonClasses());
-	const alertBadgeClasses = $derived(InventoryTrackerStyleManager.getAlertBadgeClasses());
-	const alertsContainerClasses = $derived(InventoryTrackerStyleManager.getAlertsContainerClasses());
-	const alertItemClasses = $derived(InventoryTrackerStyleManager.getAlertItemClasses());
-
-	function getStatusBadgeClasses(status: InventoryItemStatus) {
-		return InventoryTrackerStyleManager.getStatusBadgeClasses(status);
-	}
 
 	function getStockProgress(item: InventoryItemContract) {
 		if (!item.maxStock) return 100;
@@ -69,61 +38,6 @@ export function createInventoryTrackerState(props: InventoryTrackerContract) {
 		get filteredItems() {
 			return filteredItems;
 		},
-		get containerClasses() {
-			return containerClasses;
-		},
-		get headerClasses() {
-			return headerClasses;
-		},
-		get titleClasses() {
-			return titleClasses;
-		},
-		get filtersContainerClasses() {
-			return filtersContainerClasses;
-		},
-		get searchInputClasses() {
-			return searchInputClasses;
-		},
-		get itemsContainerClasses() {
-			return itemsContainerClasses;
-		},
-		get itemClasses() {
-			return itemClasses;
-		},
-		get itemThumbnailClasses() {
-			return itemThumbnailClasses;
-		},
-		get itemInfoClasses() {
-			return itemInfoClasses;
-		},
-		get itemNameClasses() {
-			return itemNameClasses;
-		},
-		get itemSkuClasses() {
-			return itemSkuClasses;
-		},
-		get stockLevelClasses() {
-			return stockLevelClasses;
-		},
-		get progressBarClasses() {
-			return progressBarClasses;
-		},
-		get actionsContainerClasses() {
-			return actionsContainerClasses;
-		},
-		get actionButtonClasses() {
-			return actionButtonClasses;
-		},
-		get alertBadgeClasses() {
-			return alertBadgeClasses;
-		},
-		get alertsContainerClasses() {
-			return alertsContainerClasses;
-		},
-		get alertItemClasses() {
-			return alertItemClasses;
-		},
-		getStatusBadgeClasses,
 		getStockProgress
 	};
 }

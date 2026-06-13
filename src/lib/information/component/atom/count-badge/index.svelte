@@ -1,8 +1,8 @@
 <script lang="ts">
 	import createCountBadgeState from '$stylist/information/function/state/count-badge/index.svelte';
-	import type { CountBadgeRecipe } from '$stylist/information/interface/recipe/count-badge';
+	import type { RecipeCountBadge } from '$stylist/information/interface/recipe/count-badge';
 
-	let props: CountBadgeRecipe = $props();
+	let props: RecipeCountBadge = $props();
 
 	const state = createCountBadgeState(props);
 
@@ -19,3 +19,6 @@
 		{state.displayCount}
 	</span>
 {/if}
+
+<style>
+</style>

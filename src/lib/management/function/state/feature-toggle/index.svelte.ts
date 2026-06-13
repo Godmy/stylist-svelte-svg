@@ -1,8 +1,7 @@
-import { untrack } from 'svelte';
-import { FeatureToggleStyleManager } from '$stylist/management/class/style-manager/feature-toggle';
-import type { FeatureToggleStateProps } from '$stylist/management/interface/recipe/feature-toggle';
+﻿import { untrack } from 'svelte';
+import type { RecipeFeatureToggle } from '$stylist/management/interface/recipe/feature-toggle';
 
-export function createFeatureToggleState(props: FeatureToggleStateProps) {
+export function createFeatureToggleState(props: RecipeFeatureToggle) {
 	const label = $derived(props.label ?? 'Feature toggle');
 	const description = $derived(props.description ?? 'Enable optional capability');
 	const checked = $derived(props.checked ?? false);
@@ -10,8 +9,6 @@ export function createFeatureToggleState(props: FeatureToggleStateProps) {
 	const className = $derived(props.class ?? '');
 
 	let isChecked = $state(untrack(() => checked));
-
-	const containerClasses = $derived(FeatureToggleStyleManager.root(className));
 
 	function handleChange(): void {
 		isChecked = !isChecked;
@@ -56,5 +53,3 @@ export function createFeatureToggleState(props: FeatureToggleStateProps) {
 		handleChange
 	};
 }
-
-export default createFeatureToggleState;

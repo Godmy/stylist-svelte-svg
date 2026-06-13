@@ -1,4 +1,14 @@
+import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ContractAudioVisualizer } from '$stylist/media/interface/contract/audio-visualizer';
 
-export interface AudioVisualizerRecipe extends StructIntersectAll<[ContractAudioVisualizer]> {}
+export interface RecipeAudioVisualizer
+	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>]> {
+	src?: string;
+	type?: 'bars' | 'wave' | 'circular';
+	alt?: string;
+	author?: string;
+	duration?: number;
+	isPlaying?: boolean;
+	onPlayToggle?: (isPlaying: boolean) => void;
+	class?: string;
+}

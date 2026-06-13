@@ -1,6 +1,6 @@
 ﻿import type { HTMLAttributes } from 'svelte/elements';
 import type { Preset } from '$stylist/interaction/type/struct/preset/preset';
-import type { PriceAlertStateProps } from '$stylist/commerce/interface/recipe/price-alert-state-props';
+import type { RecipePriceAlert } from '$stylist/commerce/interface/recipe/price-alert';
 import { buildPresetClassNames } from '$stylist/interaction/function/script/build-preset-class-names';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
 
@@ -14,11 +14,24 @@ import { resolveAriaLabel } from '$stylist/information/function/script/resolve-a
  */
 export function createPriceAlertState<V extends string, S extends string>(
 	preset: Preset<V, S>,
-	props: PriceAlertStateProps & HTMLAttributes<HTMLDivElement>
+	props: RecipePriceAlert & HTMLAttributes<HTMLDivElement>
 ) {
+	const currentPrice = $derived(props.currentPrice ?? 0);
+	const targetPrice = $derived(props.targetPrice ?? 0);
+	const currency = $derived(props.currency ?? '$');
+	const productName = $derived(props.productName ?? '');
 	const variant = $derived((props.variant ?? preset.defaults.variant) as V);
 	const size = $derived((props.size ?? preset.defaults.size) as S);
 	const disabled = $derived(props.disabled ?? preset.defaults.disabled);
+	const isTargetReached = $derived(currentPrice <= targetPrice);
+	const statusMsg = $derived(
+		isTargetReached
+			? `Target price of ${currency}${targetPrice} reached!`
+			: `Waiting for price to reach ${currency}${targetPrice}`
+	);
+	const statusBadgeTypeClass = $derived(
+		isTargetReached ? 'price-alert__status-badge--success' : 'price-alert__status-badge--monitoring'
+	);
 
 	const classes = $derived(
 		buildPresetClassNames(preset, {
@@ -43,8 +56,42 @@ export function createPriceAlertState<V extends string, S extends string>(
 		disabled: typeof disabled === 'boolean' ? disabled : undefined
 	});
 
+	const restProps = $derived.by(() => {
+		const {
+			currentPrice: _currentPrice,
+			targetPrice: _targetPrice,
+			currency: _currency,
+			productName: _productName,
+			status: _status,
+			variant: _variant,
+			size: _size,
+			disabled: _disabled,
+			onStatusChange: _onStatusChange,
+			...rest
+		} = props;
+		return rest;
+	});
+
 	// Использовать геттеры для избежания захвата начальных значений вне реактивного контекста
 	return {
+		get currentPrice() {
+			return currentPrice;
+		},
+		get targetPrice() {
+			return targetPrice;
+		},
+		get currency() {
+			return currency;
+		},
+		get productName() {
+			return productName;
+		},
+		get statusMsg() {
+			return statusMsg;
+		},
+		get statusBadgeTypeClass() {
+			return statusBadgeTypeClass;
+		},
 		get variant() {
 			return variant;
 		},
@@ -62,8 +109,9 @@ export function createPriceAlertState<V extends string, S extends string>(
 		},
 		get attrs() {
 			return attrs;
+		},
+		get restProps() {
+			return restProps;
 		}
 	};
 }
-
-export default createPriceAlertState;

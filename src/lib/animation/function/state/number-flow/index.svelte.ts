@@ -1,4 +1,4 @@
-import type { NumberFlowRecipe as NumberFlowProps } from '$stylist/animation/interface/recipe/number-flow';
+import type { RecipeNumberFlow as NumberFlowProps } from '$stylist/animation/interface/recipe/number-flow';
 import { formatNumberFlowValue } from '$stylist/animation/function/script/format-number-flow-value';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
@@ -31,6 +31,18 @@ export function createNumberFlowState(props: NumberFlowProps) {
 			format ?? undefined
 		)
 	);
+	const restProps = $derived.by(() => {
+		const {
+			class: _class,
+			value: _value,
+			locales: _locales,
+			format: _format,
+			prefix: _prefix,
+			suffix: _suffix,
+			...rest
+		} = props;
+		return rest;
+	});
 
 	return {
 		get value() {
@@ -47,6 +59,9 @@ export function createNumberFlowState(props: NumberFlowProps) {
 		},
 		get classes() {
 			return classes;
+		},
+		get restProps() {
+			return restProps;
 		}
 	};
 }

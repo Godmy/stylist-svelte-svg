@@ -1,3 +1,5 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
@@ -5,22 +7,21 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotStatus as IStatusSlot } from '$stylist/information/interface/slot/status';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { InputSpecificProps } from '$stylist/input/type/struct/input-specific-props';
 
 /**
- * InputRecipe пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+ * RecipeInput Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦.
  *
- * LEGO-пїЅпїЅпїЅпїЅпїЅпїЅ:
- *   ILabelSlot                (information) пїЅ label
- *   ICaptionSlot              (information) пїЅ helperText, caption, error
- *   IIconSlot                 (information) пїЅ iconLeft, iconRight
- *   IStatusSlot               (information) пїЅ error, disabled
- *   IFocusable                (interaction) пїЅ onFocus, onBlur, tabIndex
- *   ISizable                  (architecture) пїЅ size, density
- *   ThemeAttributes           (theme)       пїЅ variant, tone
+ * LEGO-Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦:
+ *   ILabelSlot                (information) Р С—РЎвЂ”Р вЂ¦ label
+ *   ICaptionSlot              (information) Р С—РЎвЂ”Р вЂ¦ helperText, caption, error
+ *   IIconSlot                 (information) Р С—РЎвЂ”Р вЂ¦ iconLeft, iconRight
+ *   IStatusSlot               (information) Р С—РЎвЂ”Р вЂ¦ error, disabled
+ *   IFocusable                (interaction) Р С—РЎвЂ”Р вЂ¦ onFocus, onBlur, tabIndex
+ *   ISizable                  (architecture) Р С—РЎвЂ”Р вЂ¦ size, density
+ *   ThemeAttributes           (theme)       Р С—РЎвЂ”Р вЂ¦ variant, tone
  *
- * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+ * Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦:
  *   - Input: type='text'
  *   - Email: type='email'
  *   - Password: type='password', showPasswordToggle
@@ -30,16 +31,17 @@ import type { InputSpecificProps } from '$stylist/input/type/struct/input-specif
  *   - Phone: type='tel'
  *   - Search: type='search', onSearch
  */
-export interface InputRecipe
+export interface RecipeInput
 	extends StructIntersectAll<
 			[
+				SlotTheme,
 				ILabelSlot,
 				ICaptionSlot,
 				IIconSlot,
 				IStatusSlot,
 				IFocusable,
 				ISizable,
-				ThemeAttributes<HTMLInputElement>
+				HTMLAttributes<HTMLInputElement>
 			]
 		>,
 		InputSpecificProps {}

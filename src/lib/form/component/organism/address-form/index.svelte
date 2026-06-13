@@ -16,3 +16,6 @@
 		<input class={state.gridItemClass} placeholder="SlotCountry" value={props.country} />
 	</div>
 </form>
+
+<style>
+</style>

@@ -1,12 +1,18 @@
-import type { Snippet } from 'svelte';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { Props } from '$stylist/information/type/struct/props';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
 
 export interface SlotPriceAlertElement
-	extends Omit<Props, 'variant' | 'size' | 'onclick' | 'class'>,
-		Omit<InformationHTMLAttributes<HTMLDivElement>, 'variant' | 'size' | 'onclick'> {
+	extends StructIntersectAll<
+		[
+			Omit<Props, 'variant' | 'size' | 'onclick' | 'class'>,
+			Omit<InformationHTMLAttributes<HTMLDivElement>, 'variant' | 'size' | 'onclick'>,
+			SlotChildren
+		]
+	> {
 	class?: string;
 	variant?: TokenMonitoringType;
 	size?: TokenSize;
@@ -17,5 +23,4 @@ export interface SlotPriceAlertElement
 	status?: TokenMonitoringType;
 	productName?: string;
 	onStatusChange?: (status: TokenMonitoringType) => void;
-	children?: Snippet;
 }

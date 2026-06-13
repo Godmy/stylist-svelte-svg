@@ -179,23 +179,13 @@
 	{#snippet children(values: any)}
 		{@const activeText = createPresetText(values)}
 		{@const activeMarks = createPresetMarks(values)}
-		<section class="grid w-full gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)]">
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-7 shadow-sm"
-			>
-				<p class="text-xs font-semibold tracking-[0.24em] text-[--color-text-tertiary] uppercase">
-					Display-Only Range Formatting
-				</p>
-				<h3 class="mt-2 text-xl font-semibold text-[--color-text-primary]">
-					Word-like display renderer
-				</h3>
-				<p class="mt-2 text-[--color-text-secondary]">
-					One text node, multiple overlapping modifiers.
-				</p>
+		<section class="_c1">
+			<div class="_c2">
+				<p class="_c3 tracking-[0.24em]">Display-Only Range Formatting</p>
+				<h3 class="_c4">Word-like display renderer</h3>
+				<p class="_c5">One text node, multiple overlapping modifiers.</p>
 
-				<div
-					class="mt-6 rounded-[1.5rem] border border-dashed border-[--color-border-primary] bg-[--color-background-secondary] p-5"
-				>
+				<div class="_c6">
 					<RichText
 						text={activeText}
 						marks={activeMarks}
@@ -209,9 +199,7 @@
 					/>
 				</div>
 
-				<div
-					class="mt-6 grid gap-3 rounded-[1.5rem] bg-[--color-background-secondary] p-4 text-sm text-[--color-text-secondary] sm:grid-cols-2"
-				>
+				<div class="_c7">
 					<p>preset: {values.preset}</p>
 					<p>fontSize: {values.fontSize}</p>
 					<p>fontWeight: {values.fontWeight}</p>
@@ -219,31 +207,27 @@
 				</div>
 			</div>
 
-			<div class="grid gap-6">
-				<div
-					class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-				>
-					<h3 class="text-base font-semibold text-[--color-text-primary]">Range Recipe Gallery</h3>
-					<p class="text-sm text-[--color-text-secondary]">
+			<div class="_c8">
+				<div class="_c9">
+					<h3 class="_c10">Range Recipe Gallery</h3>
+					<p class="_c11">
 						Links, emphasis, code, and highlight can live in one renderer without nesting separate
 						typography atoms.
 					</p>
 
-					<div class="mt-5 grid gap-4 rounded-[1.5rem] bg-[--color-background-primary] p-5">
-						<div class="rounded-xl bg-[--color-background-secondary] p-4">
+					<div class="_c12">
+						<div class="_c13">
 							<RichText text={documentText} marks={documentMarks} tone="primary" block />
 						</div>
-						<div class="rounded-xl bg-[--color-background-secondary] p-4">
+						<div class="_c13">
 							<RichText text={numericText} marks={numericMarks} tone="accent" block />
 						</div>
 					</div>
 				</div>
 
-				<div
-					class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-				>
-					<h3 class="text-base font-semibold text-[--color-text-primary]">Usage Note</h3>
-					<p class="mt-3 text-[--color-text-secondary]">
+				<div class="_c14">
+					<h3 class="_c10">Usage Note</h3>
+					<p class="_c15">
 						`RichText` is for display-only annotated text. Keep editing, selection logic, and
 						document mutation out of this domain and in a separate input/editor surface.
 					</p>
@@ -252,3 +236,118 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		width: 100%;
+		gap: 2rem;
+	}
+	@media (min-width: 1280px) {
+		._c1 {
+			grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+		}
+	}
+	._c10 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c11 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c12 {
+		margin-top: 1.25rem;
+		display: grid;
+		gap: 1rem;
+		border-radius: 1.5rem;
+		background-color: var(--color-background-primary);
+		padding: 1.25rem;
+	}
+	._c13 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c14 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c15 {
+		margin-top: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.75rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+	}
+	._c4 {
+		margin-top: 0.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c5 {
+		margin-top: 0.5rem;
+		color: var(--color-text-secondary);
+	}
+	._c6 {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.25rem;
+	}
+	._c7 {
+		margin-top: 1.5rem;
+		display: grid;
+		gap: 0.75rem;
+		border-radius: 1.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	@media (min-width: 640px) {
+		._c7 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	._c8 {
+		display: grid;
+		gap: 1.5rem;
+	}
+	._c9 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+</style>

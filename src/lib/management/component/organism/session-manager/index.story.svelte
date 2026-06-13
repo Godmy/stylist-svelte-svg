@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { Session } from '$stylist/management/type/struct/settings-session';
-	import { SettingsStyleManager } from '$stylist/interaction/class/style-manager/settings';
 	import SessionManager from './index.svelte';
 
 	const activeSessions: Session[] = [
@@ -41,15 +40,47 @@
 	tags={['session', 'security', 'manager', 'devices']}
 >
 	{#snippet children(values: any)}
-		<div class={SettingsStyleManager.container('sb-organisms-session-manager p-4')}>
-			<h1 class="mb-4 text-lg font-semibold">SessionManager Component</h1>
+		<div class="sb-organisms-session-manager _c1">
+			<h1 class="_c1">SessionManager Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive SessionManager</h2>
-				<div class="max-w-2xl">
+			<div class="_c2">
+				<h2 class="_c3">Interactive SessionManager</h2>
+				<div class="_c4">
 					<SessionManager activeSessions={activeSessions.length} />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c3 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c4 {
+		max-width: 42rem;
+	}
+
+	._c1 {
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 1.5rem;
+	}
+</style>

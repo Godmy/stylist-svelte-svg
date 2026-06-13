@@ -50,7 +50,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-payment-info p-4">
+		<div class="sb-organisms-payment-info _c1">
 			<PaymentInfo
 				methods={paymentMethods}
 				showMethods={typedProps.showMethods}
@@ -60,3 +60,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

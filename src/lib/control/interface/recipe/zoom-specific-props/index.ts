@@ -1,35 +1,35 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** Специфичные свойства для зум-контролов */
+/** РЎРїРµС†РёС„РёС‡РЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РґР»СЏ Р·СѓРј-РєРѕРЅС‚СЂРѕР»РѕРІ */
 import type { Snippet } from 'svelte';
 
-export interface ZoomSpecificProps extends StructIntersectAll<[]> {
-	/** Тип зум-контрола */
+export interface ZoomSpecificProps extends StructIntersectAll<[SlotChildren]> {
+	/** РўРёРї Р·СѓРј-РєРѕРЅС‚СЂРѕР»Р° */
 	type?: 'controls' | 'toolbar';
 
-	/** Текущий уровень зума */
+	/** РўРµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ Р·СѓРјР° */
 	zoom?: number;
 
-	/** Минимальный зум */
+	/** РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р·СѓРј */
 	minZoom?: number;
 
-	/** Максимальный зум */
+	/** РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р·СѓРј */
 	maxZoom?: number;
 
-	/** Шаг зума */
+	/** РЁР°Рі Р·СѓРјР° */
 	zoomStep?: number;
 
-	/** Обработчик зума */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє Р·СѓРјР° */
 	onZoom?: (zoom: number) => void;
 
-	/** Обработчик зума в */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє Р·СѓРјР° РІ */
 	onZoomIn?: () => void;
 
-	/** Обработчик зума out */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє Р·СѓРјР° out */
 	onZoomOut?: () => void;
 
-	/** Обработчик fit to screen */
+	/** РћР±СЂР°Р±РѕС‚С‡РёРє fit to screen */
 	onFit?: () => void;
 
-	/** children как Snippet */
-	children?: Snippet;
+	/** children РєР°Рє Snippet */
 }

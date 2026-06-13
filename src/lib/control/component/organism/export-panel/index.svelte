@@ -1,22 +1,14 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import Button from '$stylist/control/component/atom/button/index.svelte';
-	import type { ExportFormat } from '$stylist/control/type/alias/export-format';
-	import createExportPanelState from '$stylist/control/function/state/export-panel/index.svelte';
+	import { createExportPanelState } from '$stylist/control/function/state/export-panel/index.svelte';
+	import type { RecipeExportPanel } from '$stylist/control/interface/recipe/export-panel';
 
-	let props = $props<{
-		onExport?: (detail: {
-			format: ExportFormat;
-			includeLegend: boolean;
-			includeFilters: boolean;
-		}) => void;
-	}>();
+	let props: RecipeExportPanel = $props();
 
-	const state = createExportPanelState({
-		dispatch: (_type, detail) => props.onExport?.(detail)
-	});
+	const state = createExportPanelState(props);
 </script>
 
-<div class="c-export-panel">
+<div class={['c-export-panel', props.class].filter(Boolean).join(' ')}>
 	<div class="panel-header">Export Visualization</div>
 
 	<div class="panel-section">
@@ -73,12 +65,18 @@
 		</div>
 	</div>
 
-	<Button variant="primary" class="mt-2" onclick={state.handleExport}>
-		Export {state.exportFormat.toUpperCase()}
-	</Button>
+	<div class="c-export-panel__footer">
+		<Button variant="primary" onclick={state.handleExport}>
+			Export {state.exportFormat.toUpperCase()}
+		</Button>
+	</div>
 </div>
 
 <style>
+	.c-export-panel__footer {
+		margin-top: 0.5rem;
+	}
+
 	.c-export-panel {
 		display: flex;
 		flex-direction: column;

@@ -1,5 +1,5 @@
-import type { PlaygroundGenericCodeViewerProps } from '$stylist/playground/type/struct/playground-generic-code-viewer-props';
-export function createPlaygroundGenericCodeViewerState(props: PlaygroundGenericCodeViewerProps) {
+﻿import type { RecipePlaygroundGenericCodeViewer } from '$stylist/playground/interface/recipe/playground-generic-code-viewer';
+export function createPlaygroundGenericCodeViewerState(props: RecipePlaygroundGenericCodeViewer) {
 	const code = $derived(props.code ?? '');
 	const language = $derived(props.language ?? 'svelte');
 
@@ -51,5 +51,3 @@ export function createPlaygroundGenericCodeViewerState(props: PlaygroundGenericC
 		copyCode
 	};
 }
-
-export default createPlaygroundGenericCodeViewerState;

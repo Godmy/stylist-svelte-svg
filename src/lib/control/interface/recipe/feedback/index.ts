@@ -1,4 +1,4 @@
-﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { FeedbackSpecificProps } from '$stylist/control/interface/recipe/feedback-specific-props';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
@@ -12,7 +12,7 @@ import type { BehaviorShapeable as IShapeable } from '$stylist/layout/interface/
 import type { BehaviorSized as ISized } from '$stylist/layout/interface/behavior/sized';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
-export interface FeedbackRecipe
+export interface RecipeFeedback
 	extends StructIntersectAll<
 			[
 				ILabelSlot,

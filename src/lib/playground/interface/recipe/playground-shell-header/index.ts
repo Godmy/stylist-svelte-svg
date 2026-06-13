@@ -1,8 +1,11 @@
+﻿import type { PlaygroundShellHeaderProps as LegacyPlaygroundShellHeaderProps1 } from '$stylist/playground/type/struct/playground-shell-header-props';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 
 export interface RecipePlaygroundShellHeader
-	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLElement>, 'class'>]> {
+	extends StructIntersectAll<
+		[LegacyPlaygroundShellHeaderProps1, Omit<InformationHTMLAttributes<HTMLElement>, 'class'>]
+	> {
 	/** Header title */
 	title?: string;
 	/** Show navigation */

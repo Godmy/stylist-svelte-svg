@@ -55,7 +55,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<ColorPalette
 				title={values.title as string}
 				showLabels={values.showLabels as boolean}
@@ -68,9 +68,9 @@
 	{/snippet}
 
 	{#snippet variants()}
-		<div class="grid grid-cols-1 gap-8 p-4">
+		<div class="_c2">
 			<div>
-				<h3 class="mb-4 text-lg font-semibold">With Labels</h3>
+				<h3 class="_c3">With Labels</h3>
 				<ColorPalette
 					colors={defaultColors}
 					title="Palette with Labels"
@@ -80,7 +80,7 @@
 				/>
 			</div>
 			<div>
-				<h3 class="mb-4 text-lg font-semibold">With Values</h3>
+				<h3 class="_c3">With Values</h3>
 				<ColorPalette
 					colors={defaultColors}
 					title="Palette with Values"
@@ -90,7 +90,7 @@
 				/>
 			</div>
 			<div>
-				<h3 class="mb-4 text-lg font-semibold">Compact View</h3>
+				<h3 class="_c3">Compact View</h3>
 				<ColorPalette
 					colors={defaultColors.slice(0, 4)}
 					title="Compact Palette"
@@ -102,3 +102,21 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 2rem;
+		padding: 1rem;
+	}
+	._c3 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+</style>

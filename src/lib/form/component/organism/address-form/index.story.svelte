@@ -2,7 +2,6 @@
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import type { AddressData } from '$stylist/form/type/struct/forms/address-data';
-	import { FormStyleManager } from '$stylist/form/class/style-manager/forms';
 	import AddressForm from './index.svelte';
 
 	type Props = {
@@ -47,15 +46,46 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class={FormStyleManager.container('sb-organisms-address-form p-4')}>
-			<h1 class="mb-4 text-lg font-semibold">AddressForm Component</h1>
+		<div class="sb-organisms-address-form _c1">
+			<h1 class="_c2">AddressForm Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive AddressForm</h2>
-				<div class="max-w-lg">
+			<div class="_c3">
+				<h2 class="_c4">Interactive AddressForm</h2>
+				<div class="_c5">
 					<AddressForm />
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		max-width: 32rem;
+	}
+</style>

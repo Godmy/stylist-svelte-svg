@@ -15,7 +15,7 @@
 	<div class="{state.headerClasses} {state.headerClassProp}">
 		<div class="c-event-calendar__header-left">
 			<Button variant="ghost" size="sm" onclick={() => state.navigateCurrent(-1)}>
-				<Icon name={ChevronLeft} class="h-5 w-5" />
+				<Icon name={ChevronLeft} class="_c1" />
 			</Button>
 			<Button
 				variant="ghost"
@@ -24,7 +24,7 @@
 				class="c-event-calendar__today-btn">Today</Button
 			>
 			<Button variant="ghost" size="sm" onclick={() => state.navigateCurrent(1)}>
-				<Icon name={ChevronRight} class="h-5 w-5" />
+				<Icon name={ChevronRight} class="_c1" />
 			</Button>
 			<h2 class="c-event-calendar__title">{state.displayTitle}</h2>
 		</div>
@@ -375,5 +375,10 @@
 	.c-event-calendar__modal-actions {
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	._c1 {
+		height: 1.25rem;
+		width: 1.25rem;
 	}
 </style>

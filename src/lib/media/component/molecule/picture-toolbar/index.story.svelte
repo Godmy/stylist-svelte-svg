@@ -28,7 +28,7 @@
 	description="Toolbar component for image editing tools"
 >
 	{#snippet children(controlValues: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<PictureToolbar
 				{tools}
 				activeTool={controlValues.activeTool}
@@ -37,3 +37,11 @@
 		</div>
 	{/snippet}</Story
 >
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+</style>

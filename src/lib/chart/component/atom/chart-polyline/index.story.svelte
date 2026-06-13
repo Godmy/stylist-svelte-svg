@@ -25,11 +25,7 @@
 	tags={['chart', 'polyline', 'function']}
 >
 	{#snippet children(values: any)}
-		<svg
-			width="420"
-			height="240"
-			class="rounded border border-[--color-border-primary] bg-[--color-background-primary]"
-		>
+		<svg width="420" height="240" class="_c1">
 			<ChartPolyline
 				{points}
 				width={420}
@@ -40,3 +36,13 @@
 		</svg>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+</style>

@@ -1,7 +1,7 @@
-<script lang="ts">
-	import createPlaygroundScreenshotSelectorState from '$stylist/playground/function/state/playground-screenshot-selector/index.svelte';
-	import type { PlaygroundScreenshotSelectorProps } from '$stylist/playground/type/struct/playground-screenshot-selector-props';
-	let props: PlaygroundScreenshotSelectorProps = $props();
+﻿<script lang="ts">
+	import type { RecipePlaygroundScreenshotSelector } from '$stylist/playground/interface/recipe/playground-screenshot-selector';
+	import { createPlaygroundScreenshotSelectorState } from '$stylist/playground/function/state/playground-screenshot-selector/index.svelte';
+	let props: RecipePlaygroundScreenshotSelector = $props();
 	const state = createPlaygroundScreenshotSelectorState(props);
 
 	$effect(() => {

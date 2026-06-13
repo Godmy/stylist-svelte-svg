@@ -51,8 +51,8 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
-			<h3 class="mb-2 text-lg font-semibold">Current Tags: {currentTags.join(', ')}</h3>
+		<div class="_c1">
+			<h3 class="_c2">Current Tags: {currentTags.join(', ')}</h3>
 			<TagInput
 				tags={currentTags}
 				placeholder={values.placeholder}
@@ -64,3 +64,15 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 0.5rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+</style>

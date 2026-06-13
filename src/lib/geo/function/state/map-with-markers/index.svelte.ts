@@ -1,9 +1,9 @@
-import { untrack } from 'svelte';
+﻿import { untrack } from 'svelte';
 import type { MapWithMarkersMarker } from '$stylist/geo/type/struct/map-with-markers/mapwithmarkersmarker';
 import type { MapWithMarkersView } from '$stylist/geo/type/struct/map-with-markers/mapwithmarkersview';
-import type { MapWithMarkersStateProps } from '$stylist/geo/interface/recipe/map-with-markers';
+import type { RecipeMapWithMarkers } from '$stylist/geo/interface/recipe/map-with-markers';
 
-export function createMapWithMarkersState(props: MapWithMarkersStateProps) {
+export function createMapWithMarkersState(props: RecipeMapWithMarkers) {
 	const markers = $derived(props.markers ?? []);
 	const initialView = $derived(
 		props.initialView ?? { center: { lat: 51.505, lng: -0.09 }, zoom: 13 }
@@ -249,5 +249,3 @@ export function createMapWithMarkersState(props: MapWithMarkersStateProps) {
 		}
 	};
 }
-
-export default createMapWithMarkersState;

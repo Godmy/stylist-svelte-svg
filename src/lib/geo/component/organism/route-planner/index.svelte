@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { RoutePlannerStateProps } from '$stylist/geo/interface/recipe/route-planner';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Button from '$stylist/control/component/atom/button/index.svelte';
 	import createRoutePlannerState from '$stylist/geo/function/state/route-planner/index.svelte';
 
-	let props = $props();
+	let props: RoutePlannerStateProps = $props();
 	const state = createRoutePlannerState(props);
 </script>
 
@@ -76,7 +77,7 @@
 
 				<div class="c-route-planner__input-group">
 					<div class="c-route-planner__waypoints-head">
-						<label class="c-route-planner__label">Waypoints</label>
+						<label for="waypoint-location-input" class="c-route-planner__label">Waypoints</label>
 						<button
 							type="button"
 							class="c-route-planner__add-link"
@@ -109,6 +110,7 @@
 					{/if}
 					<div class="c-route-planner__input-row">
 						<input
+							id="waypoint-location-input"
 							type="text"
 							class="c-route-planner__input {props.inputClass ?? ''}"
 							placeholder="Add waypoint..."
@@ -232,19 +234,19 @@
 					{/if}
 					<div class="c-route-planner__controls">
 						<Button variant="secondary" size="sm" onclick={state.handleZoomIn} aria-label="Zoom in"
-							><BaseIcon name="plus" class="h-4 w-4" /></Button
+							><BaseIcon name="plus" class="_c1" /></Button
 						>
 						<Button
 							variant="secondary"
 							size="sm"
 							onclick={state.handleZoomOut}
-							aria-label="Zoom out"><BaseIcon name="minus" class="h-4 w-4" /></Button
+							aria-label="Zoom out"><BaseIcon name="minus" class="_c1" /></Button
 						>
 						<Button
 							variant="secondary"
 							size="sm"
 							onclick={state.handleResetView}
-							aria-label="Reset view"><BaseIcon name="rotate-ccw" class="h-4 w-4" /></Button
+							aria-label="Reset view"><BaseIcon name="rotate-ccw" class="_c1" /></Button
 						>
 					</div>
 				</div>
@@ -694,5 +696,10 @@
 		font-size: 0.875rem;
 		color: var(--color-text-secondary);
 		margin: 0.25rem 0 0 0.75rem;
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

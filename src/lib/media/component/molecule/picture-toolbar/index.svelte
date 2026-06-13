@@ -1,8 +1,8 @@
-<script lang="ts">
-	import createPictureToolbarState from '$stylist/media/function/state/picture-toolbar/index.svelte';
-	import type { PictureToolbarProps } from '$stylist/media/type/alias/picture-toolbar-props';
+﻿<script lang="ts">
+	import type { RecipePictureToolbar } from '$stylist/media/interface/recipe/picture-toolbar';
+	import { createPictureToolbarState } from '$stylist/media/function/state/picture-toolbar/index.svelte';
 
-	let props: PictureToolbarProps = $props();
+	let props: RecipePictureToolbar = $props();
 	const state = createPictureToolbarState(props);
 </script>
 

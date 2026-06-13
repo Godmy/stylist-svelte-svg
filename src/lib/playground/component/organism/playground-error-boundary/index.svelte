@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundErrorBoundary } from '$stylist/playground/interface/recipe/playground-error-boundary';
 	import { onMount } from 'svelte';
-	import createPlaygroundErrorBoundaryState from '$stylist/playground/function/state/playground-error-boundary/index.svelte';
-	import type { PlaygroundErrorBoundaryProps } from '$stylist/playground/type/struct/playground-error-boundary-props';
-	let props: PlaygroundErrorBoundaryProps = $props();
+	import { createPlaygroundErrorBoundaryState } from '$stylist/playground/function/state/playground-error-boundary/index.svelte';
+	let props: RecipePlaygroundErrorBoundary = $props();
 	const state = createPlaygroundErrorBoundaryState(props);
 
 	onMount(() => {
@@ -22,12 +22,10 @@
 </script>
 
 {#if state.error}
-	<div class="flex flex-col items-center justify-center gap-4 p-8 text-center">
-		<div
-			class="flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20"
-		>
+	<div class="peb-error-wrap">
+		<div class="peb-icon-wrap">
 			<svg
-				class="h-8 w-8 text-red-600 dark:text-red-400"
+				style="width:2rem;height:2rem;color:#dc2626"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
@@ -41,18 +39,14 @@
 			</svg>
 		</div>
 		<div>
-			<h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-				Component render error
-			</h3>
-			<p class="max-w-md text-sm text-gray-600 dark:text-gray-400">
-				{state.error}
-			</p>
+			<h3 class="peb-error-title">Component render error</h3>
+			<p class="peb-error-desc">{state.error}</p>
 		</div>
 		<button
 			onclick={() => {
 				state.clearError();
 			}}
-			class="mt-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
+			class="peb-close-btn"
 		>
 			Close
 		</button>
@@ -63,3 +57,65 @@
 {:else if state.children}
 	{#if state.children}{@render state.children()}{/if}
 {/if}
+
+<style>
+	.peb-error-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		padding: 2rem;
+		text-align: center;
+	}
+	.peb-icon-wrap {
+		display: flex;
+		width: 4rem;
+		height: 4rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background: #fee2e2;
+	}
+	@media (prefers-color-scheme: dark) {
+		.peb-icon-wrap {
+			background: rgb(153 27 27 / 0.2);
+		}
+	}
+	.peb-error-title {
+		margin-bottom: 0.5rem;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.peb-error-title {
+			color: white;
+		}
+	}
+	.peb-error-desc {
+		max-width: 28rem;
+		font-size: 0.875rem;
+		color: #4b5563;
+	}
+	@media (prefers-color-scheme: dark) {
+		.peb-error-desc {
+			color: #9ca3af;
+		}
+	}
+	.peb-close-btn {
+		margin-top: 0.5rem;
+		border-radius: 0.5rem;
+		background: #dc2626;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: white;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+	.peb-close-btn:hover {
+		background: #b91c1c;
+	}
+</style>

@@ -33,13 +33,11 @@
 	description="Dropdown flyout used by breadcrumb items with hidden siblings."
 >
 	{#snippet children(values: any)}
-		<div class="relative min-h-64 rounded-3xl bg-slate-50 p-6">
-			<div
-				class="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-500"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				Active branch: {selected}
 			</div>
-			<div class="absolute top-20 left-6">
+			<div class="_c3">
 				<BreadcrumbDropdown
 					open={Boolean(values.open)}
 					{items}
@@ -51,3 +49,33 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		position: relative;
+		min-height: 16rem;
+		border-radius: 1.5rem;
+		background-color: #f8fafc;
+		padding: 1.5rem;
+	}
+	._c2 {
+		display: inline-flex;
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+	._c3 {
+		position: absolute;
+		top: 5rem;
+		left: 1.5rem;
+	}
+</style>

@@ -30,11 +30,24 @@
 		<PageHeader title={values.title} description={values.description} {breadcrumbs}>
 			{#snippet actions()}
 				{#if values.withActions}
-					<button class="rounded-md border border-[--color-border-primary] px-3 py-1.5 text-sm"
-						>Export</button
-					>
+					<button class="_c1">Export</button>
 				{/if}
 			{/snippet}
 		</PageHeader>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.375rem;
+		padding-bottom: 0.375rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

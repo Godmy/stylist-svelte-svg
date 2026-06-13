@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { CommentSystemStyleManager, CommentThreadStyleManager, RatingStyleManager } from './class';
 export {
 	CommentSystem,
 	CommentThread,
@@ -69,7 +68,7 @@ export type {
 } from './type';
 export type {
 	ContractSocial,
-	RatingRecipe,
+	RecipeRating,
 	SlotCommentItem,
 	SlotCommentSystem,
 	SlotCommentThread,

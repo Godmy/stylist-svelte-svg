@@ -25,28 +25,47 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="flex items-center rounded-md border border-[--color-border-primary]">
+		<div class="_c1">
 			{#if values.position === 'left'}
 				<InputAddon position="left" variant={values.variant}>
-					{#if values.withIcon}<BaseIcon
-							name="search"
-							class="h-4 w-4"
-						/>{:else}{values.addonText}{/if}
+					{#if values.withIcon}<BaseIcon name="search" class="_c2" />{:else}{values.addonText}{/if}
 				</InputAddon>
 			{/if}
-			<input
-				type="text"
-				placeholder={values.placeholder}
-				class="flex-1 border-0 bg-transparent px-3 py-2 focus:outline-none"
-			/>
+			<input type="text" placeholder={values.placeholder} class="_c3 _c1" />
 			{#if values.position === 'right'}
 				<InputAddon position="right" variant={values.variant}>
-					{#if values.withIcon}<BaseIcon
-							name="search"
-							class="h-4 w-4"
-						/>{:else}{values.addonText}{/if}
+					{#if values.withIcon}<BaseIcon name="search" class="_c2" />{:else}{values.addonText}{/if}
 				</InputAddon>
 			{/if}
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		border-radius: 0.375rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c2 {
+		height: 1rem;
+		width: 1rem;
+	}
+	._c3 {
+		flex: 1 1 0%;
+		border-width: 0;
+		background-color: transparent;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+
+	._c1:focus {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
+</style>

@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { ContentElement } from '$stylist/input/interface/slot/content-element';
 
 export interface ContentEditorStateProps extends StructIntersectAll<[]> {

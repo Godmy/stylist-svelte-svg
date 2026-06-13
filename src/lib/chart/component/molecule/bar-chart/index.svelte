@@ -2,9 +2,9 @@
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Tooltip from '$stylist/control/component/atom/tooltip/index.svelte';
 	import createBarChartState from '$stylist/chart/function/state/bar-chart/index.svelte';
-	import type { BarChartRecipe } from '$stylist/chart/interface/recipe/bar-chart';
+	import type { RecipeBarChart } from '$stylist/chart/interface/recipe/bar-chart';
 
-	let props: BarChartRecipe = $props();
+	let props: RecipeBarChart = $props();
 	const state = createBarChartState(props);
 </script>
 
@@ -135,9 +135,80 @@
 </div>
 
 <style>
+	.bar-chart {
+		display: block;
+	}
+
+	.bar-chart__title-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 0.5rem;
+	}
+
+	.bar-chart__title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.bar-chart__info-icon {
+		width: 1rem;
+		height: 1rem;
+		color: var(--color-text-secondary);
+	}
+
+	.bar-chart__chart-container {
+		padding: 1rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+	}
+
+	.bar-chart__svg {
+		overflow: visible;
+	}
+
 	.bc-bar-group {
 		cursor: pointer;
 	}
+
+	.bar-chart__bar {
+		transform-origin: bottom;
+		transition: all var(--duration-200) ease-in-out;
+	}
+
+	.bar-chart__bar--hovered {
+		transform: scaleY(1.05);
+	}
+
+	.bar-chart__bar--idle {
+		transform: scaleY(1);
+	}
+
+	.bar-chart__legend {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.bar-chart__legend-item {
+		display: flex;
+		align-items: center;
+	}
+
+	.bar-chart__legend-text {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
+	.bar-chart__legend-value {
+		margin-left: 0.25rem;
+		font-size: 0.875rem;
+		color: var(--color-text-tertiary);
+	}
+
 	.bc-legend-dot {
 		margin-right: 0.5rem;
 		width: 1rem;

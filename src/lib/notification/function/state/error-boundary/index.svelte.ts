@@ -1,26 +1,15 @@
-import type { ErrorBoundaryProps } from '$stylist/notification/type/struct/error-boundary-props';
-import { ErrorBoundaryStyleManager } from '$stylist/notification/class/style-manager/error-boundary';
+﻿import type { RecipeErrorBoundary } from '$stylist/notification/interface/recipe/error-boundary';
 
-export function createErrorBoundaryState(props: ErrorBoundaryProps) {
-	const themedClasses = $derived(
-		`${ErrorBoundaryStyleManager.getThemedClasses()} ${props.class ?? ''}`
-	);
-	const contentClasses = $derived(
-		`${ErrorBoundaryStyleManager.getContentClasses()} ${props.contentClass ?? ''}`
-	);
-	const headerClasses = $derived(
-		`${ErrorBoundaryStyleManager.getHeaderClasses()} ${props.headerClass ?? ''}`
-	);
-	const bodyClasses = $derived(
-		`${ErrorBoundaryStyleManager.getBodyClasses()} ${props.bodyClass ?? ''}`
-	);
-	const footerClasses = $derived(
-		`${ErrorBoundaryStyleManager.getFooterClasses()} ${props.footerClass ?? ''}`
-	);
-	const detailsClasses = $derived(ErrorBoundaryStyleManager.getDetailsClasses());
-	const detailsTextClasses = $derived(ErrorBoundaryStyleManager.getDetailsTextClasses());
-	const iconClasses = $derived(ErrorBoundaryStyleManager.getIconClasses());
-	const summaryClasses = $derived(ErrorBoundaryStyleManager.getSummaryClasses());
+export function createErrorBoundaryState(props: RecipeErrorBoundary) {
+	const themedClasses = $derived(`error-boundary ${props.class ?? ''}`.trim());
+	const contentClasses = $derived(`error-boundary__content ${props.contentClass ?? ''}`.trim());
+	const headerClasses = $derived(`error-boundary__header ${props.headerClass ?? ''}`.trim());
+	const bodyClasses = $derived(`error-boundary__body ${props.bodyClass ?? ''}`.trim());
+	const footerClasses = $derived(`error-boundary__footer ${props.footerClass ?? ''}`.trim());
+	const detailsClasses = $derived('error-boundary__details');
+	const detailsTextClasses = $derived('error-boundary__details-pre');
+	const iconClasses = $derived('error-boundary__icon');
+	const summaryClasses = $derived('error-boundary__summary');
 
 	function handleReset(reset: () => void) {
 		reset();
@@ -58,5 +47,3 @@ export function createErrorBoundaryState(props: ErrorBoundaryProps) {
 		handleReset
 	};
 }
-
-export default createErrorBoundaryState;

@@ -1,39 +1,39 @@
-<script lang="ts">
-	import type { DevelopmentErrorBoundaryProps } from '$stylist/development/type/struct/development-error-boundary-props';
-	import createDevelopmentErrorBoundaryState from '$stylist/development/function/state/development-error-boundary/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
+	import { createDevelopmentErrorBoundaryState } from '$stylist/development/function/state/development-error-boundary/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let { ...props }: DevelopmentErrorBoundaryProps = $props();
+	let { ...props }: RecipeDevelopmentErrorBoundary = $props();
 	const state = createDevelopmentErrorBoundaryState(props);
 </script>
 
 {#if state.hasError}
 	<div class={state.fallbackContainerClass}>
 		<div class={state.headerComputedClass}>
-			<div class="flex-shrink-0">
-				<BaseIcon name={state.Bug} class="h-6 w-6 text-red-500" />
+			<div class="deb-icon-wrap">
+				<BaseIcon name={state.Bug} style="width:1.5rem;height:1.5rem;color:#ef4444" />
 			</div>
-			<div class="ml-3">
-				<h3 class="text-lg font-medium text-red-800">{state.title}</h3>
-				<p class="mt-1 text-sm text-red-700">{state.message}</p>
+			<div class="deb-content">
+				<h3 class="deb-error-title">{state.title}</h3>
+				<p class="deb-error-msg">{state.message}</p>
 			</div>
 		</div>
 
 		{#if state.showDetails && state.error}
 			<div class={state.detailsComputedClass}>
-				<h4 class="flex items-center text-sm font-medium text-gray-900">
-					<BaseIcon name={state.FileText} class="mr-1 h-4 w-4" />
+				<h4 class="deb-details-title">
+					<BaseIcon name={state.FileText} style="width:1rem;height:1rem;margin-right:0.25rem" />
 					Error Details
 				</h4>
-				<div class="mt-2">
-					<p class="font-mono text-sm break-words text-red-600">{state.error.message}</p>
+				<div class="deb-error-body">
+					<p class="deb-error-text">{state.error.message}</p>
 
 					{#if state.errorInfo?.componentStack}
-						<details class="mt-3">
-							<summary class="cursor-pointer text-xs text-gray-500">Component Stack Trace</summary>
-							<pre class="mt-2 overflow-x-auto rounded bg-gray-100 p-3 text-xs">
-                {state.errorInfo.componentStack}
-              </pre>
+						<details class="deb-stack-details">
+							<summary class="deb-stack-summary">Component Stack Trace</summary>
+							<pre class="deb-stack-pre">
+              {state.errorInfo.componentStack}
+            </pre>
 						</details>
 					{/if}
 				</div>
@@ -42,25 +42,17 @@
 
 		<div class={state.actionsComputedClass}>
 			{#if state.showReload}
-				<button
-					type="button"
-					class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none"
-					onclick={state.resetError}
-				>
-					<BaseIcon name={state.RotateCcw} class="mr-1 h-4 w-4" />
+				<button type="button" class="deb-btn deb-btn--danger" onclick={state.resetError}>
+					<BaseIcon name={state.RotateCcw} style="width:1rem;height:1rem;margin-right:0.25rem" />
 					Reload Page
 				</button>
 			{/if}
 
 			{#if state.showCopyError}
-				<button
-					type="button"
-					class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none"
-					onclick={state.copyError}
-				>
+				<button type="button" class="deb-btn deb-btn--secondary" onclick={state.copyError}>
 					{#if state.copied}
 						<svg
-							class="mr-1 h-4 w-4 text-green-500"
+							style="width:1rem;height:1rem;margin-right:0.25rem;color:#22c55e"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -74,7 +66,7 @@
 						</svg>
 						Copied!
 					{:else}
-						<BaseIcon name={state.Copy} class="mr-1 h-4 w-4" />
+						<BaseIcon name={state.Copy} style="width:1rem;height:1rem;margin-right:0.25rem" />
 						Copy Error
 					{/if}
 				</button>
@@ -85,9 +77,9 @@
 					href={state.reportUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none"
+					class="deb-btn deb-btn--primary"
 				>
-					<BaseIcon name={state.ExternalLink} class="mr-1 h-4 w-4" />
+					<BaseIcon name={state.ExternalLink} style="width:1rem;height:1rem;margin-right:0.25rem" />
 					Report Issue
 				</a>
 			{/if}
@@ -100,3 +92,91 @@
 		{/if}
 	</div>
 {/if}
+
+<style>
+	.deb-icon-wrap {
+		flex-shrink: 0;
+	}
+	.deb-content {
+		margin-left: 0.75rem;
+	}
+	.deb-error-title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: #991b1b;
+	}
+	.deb-error-msg {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: #b91c1c;
+	}
+	.deb-details-title {
+		display: flex;
+		align-items: center;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: #111827;
+	}
+	.deb-error-body {
+		margin-top: 0.5rem;
+	}
+	.deb-error-text {
+		font-family: monospace;
+		font-size: 0.875rem;
+		word-break: break-words;
+		color: #dc2626;
+	}
+	.deb-stack-details {
+		margin-top: 0.75rem;
+	}
+	.deb-stack-summary {
+		cursor: pointer;
+		font-size: 0.75rem;
+		color: #6b7280;
+	}
+	.deb-stack-pre {
+		margin-top: 0.5rem;
+		overflow-x: auto;
+		border-radius: 0.25rem;
+		background: #f3f4f6;
+		padding: 0.75rem;
+		font-size: 0.75rem;
+	}
+	.deb-btn {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 0.375rem;
+		border: 1px solid transparent;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		cursor: pointer;
+	}
+	.deb-btn:focus {
+		outline: none;
+	}
+	.deb-btn--danger {
+		background: #dc2626;
+		color: white;
+	}
+	.deb-btn--danger:hover {
+		background: #b91c1c;
+	}
+	.deb-btn--secondary {
+		border-color: #d1d5db;
+		background: white;
+		color: #374151;
+	}
+	.deb-btn--secondary:hover {
+		background: #f9fafb;
+	}
+	.deb-btn--primary {
+		background: #2563eb;
+		color: white;
+		text-decoration: none;
+	}
+	.deb-btn--primary:hover {
+		background: #1d4ed8;
+	}
+</style>

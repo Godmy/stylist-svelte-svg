@@ -164,13 +164,13 @@
 			{#if state.showControls}
 				<div class="c-geo-jsonviewer__controls">
 					<Button variant="secondary" size="sm" onclick={state.handleZoomIn}>
-						<BaseIcon name={Plus} class="h-4 w-4" />
+						<BaseIcon name={Plus} class="_c1" />
 					</Button>
 					<Button variant="secondary" size="sm" onclick={state.handleZoomOut}>
-						<BaseIcon name={Minus} class="h-4 w-4" />
+						<BaseIcon name={Minus} class="_c1" />
 					</Button>
 					<Button variant="secondary" size="sm" onclick={state.handleResetView}>
-						<BaseIcon name={RotateCcw} class="h-4 w-4" />
+						<BaseIcon name={RotateCcw} class="_c1" />
 					</Button>
 				</div>
 			{/if}
@@ -181,7 +181,7 @@
 				<div class="c-geo-jsonviewer__feature-head">
 					<h3 class="c-geo-jsonviewer__feature-title">Selected Feature</h3>
 					<Button variant="ghost" size="sm" onclick={() => (state.selectedFeature = null)}>
-						<BaseIcon name={X} class="h-4 w-4" />
+						<BaseIcon name={X} class="_c1" />
 					</Button>
 				</div>
 				<div class="c-geo-jsonviewer__feature-grid">
@@ -390,5 +390,10 @@
 	.c-geo-jsonviewer__feature-value {
 		font-size: 0.875rem;
 		color: var(--color-text-primary);
+	}
+
+	._c1 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

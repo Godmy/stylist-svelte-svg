@@ -10,7 +10,7 @@
 	category="Molecules/Ontology"
 >
 	{#snippet children()}
-		<div class="rounded border p-4" style="height: 220px; position: relative;">
+		<div class="_c1" style="height: 220px; position: relative;">
 			<GraphvizDirectedEdge
 				id="edge-a"
 				sourceX={40}
@@ -24,3 +24,12 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+</style>

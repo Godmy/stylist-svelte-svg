@@ -2,10 +2,7 @@
 export {
 	ObjectManagerAdvancedColorPicker,
 	ObjectManagerColorPalette,
-	ObjectManagerColorSwatch,
-	StyleManagerAdvancedColorPicker,
-	StyleManagerColorPalette,
-	StyleManagerColorSwatch
+	ObjectManagerColorSwatch
 } from './class';
 export { ColorPalette, ColorPicker, ColorSwatch } from './component';
 export {
@@ -18,18 +15,19 @@ export {
 	COLORS_SCALES_SLATE,
 	COLORS_SCALES_TEAL,
 	TOKEN_COLOR,
-	TOKEN_COLOR_ICON
+	TOKEN_COLOR_ICON,
+	TOKEN_COLOR_TONE
 } from './const';
 export {
 	createAdvancedColorPickerState,
 	createColorPaletteState,
 	createColorSwatchState
 } from './function';
-export type { TokenColor, TokenColorIcon } from './type';
+export type { TokenColor, TokenColorIcon, TokenColorTone } from './type';
 export type {
 	BehaviorColorToken,
-	ThemeAdvancedColorPickerRecipe,
-	ThemeColorPaletteItem,
-	ThemeColorPaletteRecipe,
-	ThemeColorSwatchRecipe
+	RecipeThemeAdvancedColorPicker,
+	RecipeThemeColorPalette,
+	RecipeThemeColorSwatch,
+	ThemeColorPaletteItem
 } from './interface';

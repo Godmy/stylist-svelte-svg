@@ -2,7 +2,6 @@
 export {
 	BulkOrderFormModel,
 	createAlertCardState,
-	createAlertCardStoryState,
 	createArticleCardState,
 	createBillingSummaryState,
 	createCardWithImageState,

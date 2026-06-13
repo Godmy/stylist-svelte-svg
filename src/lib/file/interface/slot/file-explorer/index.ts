@@ -1,4 +1,4 @@
-import type { SlotFileSystemItem } from '$stylist/file/type/struct/file-explorer/file-system-item';
+import type { SlotFileSystemItem } from '$stylist/file/interface/slot/file-system-item';
 import type { ViewMode } from '$stylist/file/type/struct/file-explorer/view-mode';
 
 export interface SlotFileExplorer {

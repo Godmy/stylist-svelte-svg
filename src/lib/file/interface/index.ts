@@ -29,8 +29,8 @@ export type {
 	RecipeFileInput,
 	RecipeFileListItem,
 	RecipeFileUpload,
-	RecipeZipViewer,
-	UploadProgressStateProps
+	RecipeUploadProgress,
+	RecipeZipViewer
 } from './recipe';
 export type {
 	SlotAttachment,

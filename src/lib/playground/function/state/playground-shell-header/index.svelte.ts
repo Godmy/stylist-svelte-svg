@@ -1,4 +1,4 @@
-import type { PlaygroundShellHeaderProps } from '$stylist/playground/type/struct/playground-shell-header-props';
+﻿import type { RecipePlaygroundShellHeader } from '$stylist/playground/interface/recipe/playground-shell-header';
 import type { PlaygroundShellHeaderViewportSize } from '$stylist/playground/type/struct/playground-shell-header-viewport-size';
 const ZoomIn = 'zoom-in';
 const ZoomOut = 'zoom-out';
@@ -11,7 +11,7 @@ const Sparkles = 'sparkles';
 const Pencil = 'pencil';
 const X = 'x';
 
-export function createPlaygroundShellHeaderState(props: PlaygroundShellHeaderProps) {
+export function createPlaygroundShellHeaderState(props: RecipePlaygroundShellHeader) {
 	const showComponentTree = $derived(props.showComponentTree ?? false);
 	const showAIPanel = $derived(props.showAIPanel ?? false);
 	const drawingMode = $derived(props.drawingMode ?? false);
@@ -208,5 +208,3 @@ export function createPlaygroundShellHeaderState(props: PlaygroundShellHeaderPro
 		}
 	};
 }
-
-export default createPlaygroundShellHeaderState;

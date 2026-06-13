@@ -16,14 +16,41 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div
-			class="flex items-center gap-4 rounded-xl border border-[--color-border-primary] bg-[--color-background-primary] p-4"
-		>
+		<div class="_c1">
 			<SkeletonCircle size={values.size} class={values.class} />
-			<div class="space-y-2">
-				<div class="h-3 w-28 rounded bg-[--color-skeleton]"></div>
-				<div class="h-3 w-20 rounded bg-[--color-skeleton]"></div>
+			<div class="_c2">
+				<div class="_c3"></div>
+				<div class="_c4"></div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		border-radius: 0.75rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+	._c2 > * + * {
+		margin-top: 0.5rem;
+	}
+	._c3 {
+		height: 0.75rem;
+		width: 7rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-skeleton);
+	}
+	._c4 {
+		height: 0.75rem;
+		width: 5rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-skeleton);
+	}
+</style>

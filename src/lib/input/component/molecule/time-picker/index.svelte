@@ -9,16 +9,12 @@
 	const state = createTimePickerState(props);
 </script>
 
-<div class={`relative ${state.className}`.trim()}>
-	<div class="relative">
+<div class={`time-picker ${state.className}`.trim()}>
+	<div class="time-picker__input-wrap">
 		<input
 			use:state.timeInputAction
 			type="text"
-			class={`w-full rounded-md border border-[var(--color-border-primary)] p-2 pr-10 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none ${
-				state.disabled
-					? 'cursor-not-allowed bg-[var(--color-background-secondary)] text-[var(--color-text-tertiary)]'
-					: 'cursor-pointer'
-			}`}
+			class={`time-picker__input ${state.disabled ? 'time-picker__input--disabled' : 'time-picker__input--active'}`}
 			readonly
 			value={state.selectedTime}
 			onclick={state.toggleDropdown}
@@ -27,18 +23,21 @@
 		/>
 		<button
 			type="button"
-			class="absolute top-0 right-0 h-full rounded-r-md px-3 hover:bg-[var(--color-background-secondary)]"
+			class="time-picker__icon-btn"
 			onclick={state.toggleDropdown}
 			disabled={state.disabled}
 		>
-			<BaseIcon name={Clock} class="h-4 w-4 text-[var(--color-text-secondary)]" />
+			<BaseIcon
+				name={Clock}
+				style="width: 1rem; height: 1rem; color: var(--color-text-secondary)"
+			/>
 		</button>
 	</div>
 
 	{#if state.isOpen}
 		<div
 			use:state.timePickerAction
-			class={`absolute z-[var(--z-index-docked)] mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-2 shadow-lg ${state.dropdownClass}`}
+			class={`time-picker__dropdown ${state.dropdownClass}`}
 			onclick={(e: Event) => e.stopPropagation()}
 			onkeydown={(e: KeyboardEvent) => e.stopPropagation()}
 			role="dialog"
@@ -46,9 +45,7 @@
 		>
 			{#each state.timeOptions as time}
 				<div
-					class={`cursor-pointer p-2 hover:bg-[var(--color-background-secondary)] ${
-						state.selectedTime === time ? 'bg-[var(--color-primary-100)]' : ''
-					}`}
+					class={`time-picker__option ${state.selectedTime === time ? 'time-picker__option--selected' : ''}`}
 					onclick={() => {
 						state.selectedTime = time;
 						state.updateValue();
@@ -72,3 +69,79 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.time-picker {
+		position: relative;
+	}
+
+	.time-picker__input-wrap {
+		position: relative;
+	}
+
+	.time-picker__input {
+		width: 100%;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+	}
+
+	.time-picker__input:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-200);
+	}
+
+	.time-picker__input--active {
+		cursor: pointer;
+	}
+
+	.time-picker__input--disabled {
+		cursor: not-allowed;
+		background-color: var(--color-background-secondary);
+		color: var(--color-text-tertiary);
+	}
+
+	.time-picker__icon-btn {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: 0;
+		border-start-end-radius: var(--border-radius-base, 0.375rem);
+		border-end-end-radius: var(--border-radius-base, 0.375rem);
+		padding-inline: 0.75rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.time-picker__icon-btn:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.time-picker__dropdown {
+		position: absolute;
+		z-index: var(--z-index-docked);
+		margin-block-start: 0.25rem;
+		max-height: 15rem;
+		width: 100%;
+		overflow-y: auto;
+		border-radius: var(--border-radius-base, 0.375rem);
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.5rem;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	}
+
+	.time-picker__option {
+		cursor: pointer;
+		padding: 0.5rem;
+		border-radius: var(--border-radius-sm, 0.25rem);
+	}
+
+	.time-picker__option:hover {
+		background-color: var(--color-background-secondary);
+	}
+
+	.time-picker__option--selected {
+		background-color: var(--color-primary-100);
+	}
+</style>

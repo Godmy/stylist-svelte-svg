@@ -26,7 +26,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-md space-y-2">
+		<div class="_c1">
 			<SearchSuggestion
 				{suggestions}
 				query={values.query}
@@ -34,7 +34,21 @@
 				maxSuggestions={values.maxSuggestions}
 				onValueChange={(item) => (picked = item.text)}
 			/>
-			<p class="text-sm text-[--color-text-secondary]">Picked: {picked || 'none'}</p>
+			<p class="_c2">Picked: {picked || 'none'}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		max-width: 28rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

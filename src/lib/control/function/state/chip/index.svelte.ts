@@ -1,44 +1,33 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { ChipRecipe } from '$stylist/control/interface/recipe/chip';
+import type { RecipeChip } from '$stylist/control/interface/recipe/chip';
+import type { TokenSize } from '$stylist/layout/type/enum/size';
 
-type ChipProps = ChipRecipe & {
-	text?: string;
-	icon?: unknown;
-	content?: unknown;
-	class?: unknown;
-};
-
-// Define reactive state for the chip component.
-export function createChipState(props: ChipProps) {
-	const classes = joinClassNames(
-		'chip',
-		`variant-${props.variant ?? 'default'}`,
-		`size-${props.size ?? 'md'}`,
-		props.disabled ? 'disabled' : '',
-		props.closable ? 'closable' : '',
-		(props.class as string | null | undefined) ?? ''
-	);
-
-	const closeButtonClasses = joinClassNames(
-		'chip-close-button',
-		`size-${props.size ?? 'md'}`,
-		props.disabled ? 'disabled' : ''
-	);
-
-	const closeButtonIconClasses = joinClassNames('chip-close-icon', `size-${props.size ?? 'sm'}`);
+export function createChipState(props: RecipeChip) {
+	const variant = $derived((props.variant ?? 'default') as string);
+	const size = $derived((props.size ?? 'md') as TokenSize);
+	const disabled = $derived(props.disabled ?? false);
+	const closable = $derived(props.closable ?? false);
+	const label = $derived(props.label);
 
 	return {
-		classes,
-		variant: props.variant ?? 'default',
-		size: props.size ?? 'md',
-		closable: props.closable ?? false,
-		disabled: props.disabled ?? false,
-		label: props.label,
-		text: props.text,
-		icon: props.icon,
-		content: props.content,
-		closeButtonClasses,
-		closeButtonIconClasses
+		get variant() {
+			return variant;
+		},
+		get size() {
+			return size;
+		},
+		get disabled() {
+			return disabled;
+		},
+		get closable() {
+			return closable;
+		},
+		get label() {
+			return label;
+		},
+		handleClose() {
+			if (disabled) return;
+			props.onClose?.();
+		}
 	};
 }
 

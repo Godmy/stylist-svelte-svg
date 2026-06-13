@@ -2,7 +2,7 @@ import type { RecipeEventCalendar as EventCalendarContract } from '$stylist/cale
 import type { SlotEventCalendarEvent as SlotEventCalendarEvent } from '$stylist/calendar/interface/slot/event-calendar-event';
 import type { RecipeEventCalendarDay as RecipeEventCalendarDay } from '$stylist/calendar/interface/recipe/event-calendar-day';
 import type { TokenTimeMeasure } from '$stylist/calendar/type/enum/time-measure';
-import { EventCalendarStyleManager } from '$stylist/calendar/class/style-manager/event-calendar';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createEventCalendarState(props: EventCalendarContract) {
 	let currentDate = $state(new Date(props.initialDate ?? new Date()));
@@ -18,8 +18,8 @@ export function createEventCalendarState(props: EventCalendarContract) {
 	const showAllDayEvents = $derived(props.showAllDayEvents ?? true);
 	const showEventDuration = $derived(props.showEventDuration ?? true);
 
-	const wrapperClasses = $derived(EventCalendarStyleManager.getWrapperClasses(currentViewMode));
-	const headerClasses = $derived(EventCalendarStyleManager.getHeaderClasses());
+	const wrapperClasses = $derived('c-event-calendar');
+	const headerClasses = $derived('c-event-calendar__header');
 
 	const days = $derived.by<RecipeEventCalendarDay[]>(() => {
 		if (currentViewMode === 'month') return getDaysInMonth(currentDate);
@@ -211,43 +211,55 @@ export function createEventCalendarState(props: EventCalendarContract) {
 	}
 
 	function getWeekdayHeaderClasses(): string {
-		return EventCalendarStyleManager.getWeekdayHeaderClasses();
+		return 'c-event-calendar__weekday';
 	}
 
 	function getGridClasses(): string {
-		return EventCalendarStyleManager.getGridClasses();
+		return 'c-event-calendar__grid';
 	}
 
 	function getDateHeaderClasses(isTodayDate: boolean): string {
-		return EventCalendarStyleManager.getDateHeaderClasses(isTodayDate);
+		return mergeClassNames(
+			'c-event-calendar__date-header',
+			isTodayDate && 'c-event-calendar__date-header--today'
+		);
 	}
 
 	function getDayCellClasses(isTodayDate: boolean, isCurrentMonth: boolean): string {
-		return EventCalendarStyleManager.getDayCellClasses(isTodayDate, isCurrentMonth);
+		return mergeClassNames(
+			'c-event-calendar__day',
+			isTodayDate && 'c-event-calendar__day--today',
+			!isCurrentMonth && 'c-event-calendar__day--other'
+		);
 	}
 
 	function getDateNumberClasses(isTodayDate: boolean): string {
-		return EventCalendarStyleManager.getDateNumberClasses(isTodayDate);
+		return mergeClassNames(
+			'c-event-calendar__date-num',
+			isTodayDate && 'c-event-calendar__date-num--today'
+		);
 	}
 
 	function getEventClasses(hasColor: boolean, color?: string): string {
-		return EventCalendarStyleManager.getEventClasses(hasColor, color);
+		void hasColor;
+		void color;
+		return 'c-event-calendar__event';
 	}
 
 	function getModalOverlayClasses(): string {
-		return EventCalendarStyleManager.getModalOverlayClasses();
+		return 'c-event-calendar__modal-overlay';
 	}
 
 	function getModalContentClasses(): string {
-		return EventCalendarStyleManager.getModalContentClasses();
+		return 'c-event-calendar__modal';
 	}
 
 	function getModalHeaderClasses(): string {
-		return EventCalendarStyleManager.getModalHeaderClasses();
+		return 'c-event-calendar__modal-header';
 	}
 
 	function getModalFooterClasses(): string {
-		return EventCalendarStyleManager.getModalFooterClasses();
+		return 'c-event-calendar__modal-footer';
 	}
 
 	return {

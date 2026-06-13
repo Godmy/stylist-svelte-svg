@@ -1,10 +1,10 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import Switch from '$stylist/control/component/atom/switch/index.svelte';
 	import Tag from '$stylist/control/component/atom/tag/index.svelte';
-	import type { FilterBarProps } from '$stylist/control/type/struct/filter-bar-props';
-	import createFilterBarState from '$stylist/control/function/state/filter-bar/index.svelte';
+	import type { RecipeFilterBar } from '$stylist/control/interface/recipe/filter-bar';
+	import { createFilterBarState } from '$stylist/control/function/state/filter-bar/index.svelte';
 
-	let props: FilterBarProps = $props();
+	let props: RecipeFilterBar = $props();
 	const state = createFilterBarState(props);
 
 	const restProps = $derived.by(() => {
@@ -20,7 +20,7 @@
 	});
 </script>
 
-<section class={`c-filter-bar ${state.className}`} {...restProps}>
+<section class={['c-filter-bar', state.className].filter(Boolean).join(' ')} {...restProps}>
 	<div class="filter-head">
 		<h3 class="filter-title">Filters</h3>
 		{#if state.hasActiveFilters}

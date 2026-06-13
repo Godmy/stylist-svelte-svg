@@ -38,17 +38,33 @@
 >
 	{#snippet children(values: any)}
 		{#if values.orientation === 'horizontal'}
-			<div
-				class="rounded border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-			>
+			<div class="_c1">
 				<Divider {...values} />
 			</div>
 		{:else}
-			<div
-				class="h-32 rounded border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-			>
+			<div class="_c2">
 				<Divider {...values} />
 			</div>
 		{/if}
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c2 {
+		height: 8rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

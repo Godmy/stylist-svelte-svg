@@ -220,20 +220,14 @@
 >
 	{#snippet children(values: any)}
 		{@const nodeSize = (values.size as GraphNodeSize) ?? 'md'}
-		<div
-			class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4 shadow-sm"
-		>
-			<div class="mb-3 flex flex-wrap gap-2 text-xs text-[var(--color-text-secondary)]">
-				<span
-					class="rounded-full border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] px-2 py-1"
-				>
-					click to select, drag to move
-				</span>
+		<div class="_c1">
+			<div class="_c2">
+				<span class="_c3"> click to select, drag to move </span>
 			</div>
 
 			<div
 				data-graph-canvas="node-story"
-				class="relative overflow-hidden rounded border border-[var(--color-border-primary)] [background-size:20px_20px]"
+				class="_c4 [background-size:20px_20px]"
 				style={`--gradient-inner: var(--color-border-primary); --gradient-outer: transparent; background-image: var(--gradient-radial-center); width:${CANVAS_WIDTH}px;height:${CANVAS_HEIGHT}px;`}
 				onpointermove={(event) => dragNode(event, Boolean(values.snapToGrid), nodeSize)}
 				onpointerup={stopDrag}
@@ -272,56 +266,46 @@
 				{/each}
 			</div>
 
-			<div class="mt-3 text-xs text-[var(--color-text-secondary)]">
-				selected: <span class="font-semibold text-[var(--color-text-primary)]"
-					>{selectedNodeId}</span
-				>
+			<div class="_c5">
+				selected: <span class="_c6">{selectedNodeId}</span>
 				{#if values.snapToGrid}
-					<span class="ml-2 rounded bg-[var(--color-background-secondary)] px-2 py-0.5"
-						>snap: {GRID_SIZE}px</span
-					>
+					<span class="_c7">snap: {GRID_SIZE}px</span>
 				{/if}
 			</div>
 		</div>
 	{/snippet}
 
 	{#snippet variants()}
-		<div
-			class="grid gap-4 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4 shadow-sm"
-		>
+		<div class="_c8">
 			<div>
-				<h3 class="mb-3 text-sm font-semibold text-[var(--color-text-primary)]">Size Ladder</h3>
-				<div
-					class="grid grid-cols-6 gap-4 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-				>
-					<div class="relative h-20">
+				<h3 class="_c9">Size Ladder</h3>
+				<div class="_c10">
+					<div class="_c11">
 						<SlotGraphNode id="size-xs" x={12} y={18} label="XS" size="xs" color="#0f766e" />
 					</div>
-					<div class="relative h-20">
+					<div class="_c11">
 						<SlotGraphNode id="size-sm" x={10} y={16} label="SM" size="sm" color="#0f766e" />
 					</div>
-					<div class="relative h-20">
+					<div class="_c11">
 						<SlotGraphNode id="size-md" x={6} y={12} label="MD" size="md" color="#0f766e" />
 					</div>
-					<div class="relative h-20">
+					<div class="_c11">
 						<SlotGraphNode id="size-lg" x={2} y={8} label="LG" size="lg" color="#0f766e" />
 					</div>
-					<div class="relative h-20">
+					<div class="_c11">
 						<SlotGraphNode id="size-xl" x={0} y={4} label="XL" size="xl" color="#0f766e" />
 					</div>
-					<div class="relative h-20">
+					<div class="_c11">
 						<SlotGraphNode id="size-2xl" x={0} y={0} label="2XL" size="2xl" color="#0f766e" />
 					</div>
 				</div>
 			</div>
 
 			<div>
-				<h3 class="mb-3 text-sm font-semibold text-[var(--color-text-primary)]">Type Gallery</h3>
-				<div
-					class="grid grid-cols-3 gap-4 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-4"
-				>
-					<div class="grid gap-2 rounded-lg bg-white p-4 text-center">
-						<div class="relative mx-auto h-16 w-16">
+				<h3 class="_c9">Type Gallery</h3>
+				<div class="_c12">
+					<div class="_c13">
+						<div class="_c14">
 							<SlotGraphNode
 								id="type-source"
 								x={0}
@@ -332,11 +316,11 @@
 								color="#0f766e"
 							/>
 						</div>
-						<strong class="text-sm">Source</strong>
-						<span class="text-xs text-[var(--color-text-secondary)]">solid border</span>
+						<strong class="_c15">Source</strong>
+						<span class="_c16">solid border</span>
 					</div>
-					<div class="grid gap-2 rounded-lg bg-white p-4 text-center">
-						<div class="relative mx-auto h-16 w-16">
+					<div class="_c13">
+						<div class="_c14">
 							<SlotGraphNode
 								id="type-gateway"
 								x={0}
@@ -348,11 +332,11 @@
 								selected={true}
 							/>
 						</div>
-						<strong class="text-sm">Gateway</strong>
-						<span class="text-xs text-[var(--color-text-secondary)]">dashed border</span>
+						<strong class="_c15">Gateway</strong>
+						<span class="_c16">dashed border</span>
 					</div>
-					<div class="grid gap-2 rounded-lg bg-white p-4 text-center">
-						<div class="relative mx-auto h-16 w-16">
+					<div class="_c13">
+						<div class="_c14">
 							<SlotGraphNode
 								id="type-target"
 								x={0}
@@ -363,11 +347,138 @@
 								color="#1d4ed8"
 							/>
 						</div>
-						<strong class="text-sm">Target</strong>
-						<span class="text-xs text-[var(--color-text-secondary)]">output marker</span>
+						<strong class="_c15">Target</strong>
+						<span class="_c16">output marker</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c10 {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 1rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c11 {
+		position: relative;
+		height: 5rem;
+	}
+	._c12 {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c13 {
+		display: grid;
+		gap: 0.5rem;
+		border-radius: 0.5rem;
+		background-color: #ffffff;
+		padding: 1rem;
+		text-align: center;
+	}
+	._c14 {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		height: 4rem;
+		width: 4rem;
+	}
+	._c15 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c16 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c2 {
+		margin-bottom: 0.75rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+	._c4 {
+		position: relative;
+		overflow: hidden;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c5 {
+		margin-top: 0.75rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c6 {
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c7 {
+		margin-left: 0.5rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.125rem;
+		padding-bottom: 0.125rem;
+	}
+	._c8 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c9 {
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+</style>

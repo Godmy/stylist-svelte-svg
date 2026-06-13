@@ -1,13 +1,16 @@
-import type { MotionContract } from '$stylist/animation/type/struct/motion/motion-contract';
+import type { TokenAnimation } from '$stylist/animation/type/enum/animation';
+import type { TokenDuration } from '$stylist/animation/type/enum/duration';
+import type { TokenEasing } from '$stylist/animation/type/enum/easing';
 
-/**
- * Прото-интерфейс для анимированных элементов
- */
-export interface BehaviorAnimate extends Partial<MotionContract> {
-	/** Начальное значение */
+export interface BehaviorAnimate {
+	animation?: TokenAnimation;
+	duration?: TokenDuration;
+	easing?: TokenEasing;
+	delay?: number;
+	infinite?: boolean;
+	direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+	iterations?: number | 'infinite';
 	from?: number;
-	/** Конечное значение */
 	to?: number;
-	/** Форматирование значения */
 	format?: (value: number) => string;
 }

@@ -1,36 +1,29 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeTagInput } from '$stylist/input/interface/recipe/tag-input';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { SlotTagInput as TagInputProps } from '$stylist/input/interface/slot/tag-input';
-	import createTagInputState from '$stylist/input/function/state/tag-input/index.svelte';
-	import { InteractionInputStyleManager } from '$stylist/input/class/style-manager/interaction-input';
+	import { createTagInputState } from '$stylist/input/function/state/tag-input/index.svelte';
 	const X = 'x';
 
-	let props: TagInputProps = $props();
+	let props: RecipeTagInput = $props();
 	const state = createTagInputState(props);
 </script>
 
-<div
-	class={InteractionInputStyleManager.root(
-		'c-tag-input flex flex-wrap items-center gap-2',
-		state.className
-	)}
-	{...props}
->
+<div class={`c-tag-input ${state.className}`} {...props}>
 	{#each state.currentTags as tag, index}
-		<span
-			class={`inline-flex items-center rounded-full bg-[var(--color-primary-100)] px-3 py-1 text-sm text-[var(--color-primary-800)] ${state.tagClass}`}
-		>
+		<span class={`c-tag-input__tag ${state.tagClass}`}>
 			{tag}
 			<button
 				type="button"
-				class={`ml-2 ${state.removeButtonClass}`}
-				onclick={() => state.removeTag(index)}><BaseIcon name={X} class="h-4 w-4" /></button
+				class={`c-tag-input__remove ${state.removeButtonClass}`}
+				onclick={() => state.removeTag(index)}
 			>
+				<BaseIcon name={X} style="width: 1rem; height: 1rem;" />
+			</button>
 		</span>
 	{/each}
 
 	<input
-		class={InteractionInputStyleManager.input(`min-w-[180px] px-3 py-2 ${state.inputClass}`)}
+		class={`c-tag-input__input ${state.inputClass}`}
 		placeholder={state.placeholder}
 		value={state.inputText}
 		disabled={state.disabled}
@@ -38,3 +31,47 @@
 		onkeydown={state.handleKeyDown}
 	/>
 </div>
+
+<style>
+	.c-tag-input {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: var(--border-radius-base, 0.375rem);
+		padding: 0.5rem;
+		background-color: var(--color-background-primary);
+	}
+
+	.c-tag-input__tag {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 9999px;
+		background-color: var(--color-primary-100);
+		padding-block: 0.25rem;
+		padding-inline: 0.75rem;
+		font-size: var(--text-size-sm, 0.875rem);
+		color: var(--color-primary-800);
+	}
+
+	.c-tag-input__remove {
+		margin-inline-start: 0.5rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		color: inherit;
+	}
+
+	.c-tag-input__input {
+		flex: 1;
+		min-width: 11.25rem;
+		padding: 0.5rem 0.75rem;
+		border: none;
+		outline: none;
+		background: transparent;
+	}
+</style>

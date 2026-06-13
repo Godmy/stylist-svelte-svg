@@ -1,4 +1,4 @@
-import type { ExpandableCardRecipe as ExpandableCardRecipe } from '$stylist/commerce/interface/recipe/expandable-card';
+import type { RecipeExpandableCard as RecipeExpandableCard } from '$stylist/commerce/interface/recipe/expandable-card';
 
 export class ObjectManagerExpandableCard {
 	static readonly chevronIcon = 'chevron-down';
@@ -9,7 +9,7 @@ export class ObjectManagerExpandableCard {
 	}
 
 	static getContainerClasses(
-		props: Pick<ExpandableCardRecipe, 'variant' | 'class'>,
+		props: Pick<RecipeExpandableCard, 'variant' | 'class'>,
 		baseClasses: string,
 		themedClasses: string
 	): string {

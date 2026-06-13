@@ -1,5 +1,5 @@
 import type { ChatRoomProps } from '$stylist/chat/type/alias/chat-room-props';
-import { ChatStyleManager } from '$stylist/chat/class/style-manager/chat';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export function createChatRoomState(props: ChatRoomProps) {
 	let messageText = $state('');
@@ -14,20 +14,43 @@ export function createChatRoomState(props: ChatRoomProps) {
 		)[props.variant ?? 'default']
 	);
 
-	const containerClasses = $derived(ChatStyleManager.getRoomContainerClasses(props.class ?? ''));
-
-	const headerClasses = $derived(ChatStyleManager.getRoomHeaderClasses(props.headerClass ?? ''));
-
-	const messagesAreaClasses = $derived(
-		ChatStyleManager.getRoomMessagesAreaClasses(variantClass, props.messagesClass ?? '')
+	const containerClasses = $derived(
+		mergeClassNames(
+			'chat-room flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] shadow-custom40',
+			props.class ?? ''
+		)
 	);
 
-	const footerClasses = $derived(ChatStyleManager.getRoomFooterClasses(props.footerClass ?? ''));
+	const headerClasses = $derived(
+		mergeClassNames(
+			'flex items-center justify-between border-b border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-4 py-4',
+			props.headerClass ?? ''
+		)
+	);
+
+	const messagesAreaClasses = $derived(
+		mergeClassNames(
+			'flex-1 overflow-y-auto bg-[var(--color-background-secondary)] px-4 py-4',
+			variantClass,
+			props.messagesClass ?? ''
+		)
+	);
+
+	const footerClasses = $derived(
+		mergeClassNames(
+			'border-t border-[var(--color-border-primary)] bg-[var(--color-background-primary)] p-4',
+			props.footerClass ?? ''
+		)
+	);
 
 	const participantAvatarClasses = (index: number) =>
-		ChatStyleManager.getRoomParticipantAvatarClasses(index);
+		mergeClassNames(
+			'h-8 w-8 overflow-hidden rounded-full ring-2 ring-[var(--color-background-primary)]',
+			index > 0 ? '-ml-2' : 'ml-0'
+		);
 
-	const participantOverflowClasses = ChatStyleManager.getRoomOverflowBadgeClasses();
+	const participantOverflowClasses =
+		'flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-background-secondary)] text-xs font-semibold text-[var(--color-text-secondary)] ring-2 ring-[var(--color-background-primary)]';
 
 	const loadingClasses = 'flex h-full items-center justify-center';
 

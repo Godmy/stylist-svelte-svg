@@ -35,7 +35,7 @@
 		</label>
 	{/if}
 
-	<div class="relative flex items-stretch">
+	<div class="input-password__wrapper">
 		<input
 			id={props.id}
 			type={state.currentType}
@@ -69,9 +69,9 @@
 				aria-label={props.showPassword ? 'Hide password' : 'Show password'}
 			>
 				{#if props.showPassword}
-					<BaseIcon name={EyeOff} class="h-5 w-5" />
+					<BaseIcon name={EyeOff} class="_c1" />
 				{:else}
-					<BaseIcon name={Eye} class="h-5 w-5" />
+					<BaseIcon name={Eye} class="_c1" />
 				{/if}
 			</button>
 		{/if}
@@ -88,23 +88,93 @@
 	{/if}
 
 	{#if props.showPasswordStrength && state.passwordStrength}
-		<div class="mt-2">
-			<div class="flex items-center gap-2">
-				<div class="h-2 flex-1 overflow-hidden rounded-full bg-[var(--color-background-tertiary)]">
+		<div class="input-password__strength">
+			<div class="input-password__strength-row">
+				<div class="input-password__strength-track">
 					<div
-						class={`h-full transition-all duration-[var(--duration-300)] ${state.passwordStrength.color}`}
+						class={`input-password__strength-fill ${state.passwordStrength.color}`}
 						style={`width: ${state.passwordStrength.percentage}%`}
 					></div>
 				</div>
-				<span class="text-xs text-[var(--color-text-secondary)]"
-					>{state.passwordStrength.label}</span
-				>
+				<span class="input-password__strength-label">{state.passwordStrength.label}</span>
 			</div>
 		</div>
 	{/if}
 </div>
 
 <style>
+	.input-field-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.input-password__wrapper {
+		position: relative;
+		display: flex;
+		align-items: stretch;
+	}
+
+	.input-password-toggle {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: 0;
+		display: flex;
+		align-items: center;
+		padding: 0 0.5rem;
+		border-start-end-radius: inherit;
+		border-end-end-radius: inherit;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.input-password__strength {
+		margin-block-start: 0.5rem;
+	}
+
+	.input-password__strength-row {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.input-password__strength-track {
+		flex: 1;
+		height: 0.5rem;
+		overflow: hidden;
+		border-radius: 9999px;
+		background-color: var(--color-background-tertiary);
+	}
+
+	.input-password__strength-fill {
+		height: 100%;
+		border-radius: 9999px;
+		transition: width 0.3s ease;
+	}
+
+	.input-password__strength-fill.ps-danger {
+		background-color: var(--color-danger-500);
+	}
+	.input-password__strength-fill.ps-orange {
+		background-color: #f97316;
+	}
+	.input-password__strength-fill.ps-yellow {
+		background-color: #eab308;
+	}
+	.input-password__strength-fill.ps-lime {
+		background-color: #84cc16;
+	}
+	.input-password__strength-fill.ps-success {
+		background-color: var(--color-success-500);
+	}
+
+	.input-password__strength-label {
+		font-size: var(--text-size-xs, 0.75rem);
+		color: var(--color-text-secondary);
+		white-space: nowrap;
+	}
+
 	.input-field-label {
 		display: block;
 		margin-block-end: 0.25rem;
@@ -163,5 +233,10 @@
 		margin-block-start: 0.25rem;
 		font-size: var(--text-size-xs, 0.75rem);
 		color: var(--color-danger-600);
+	}
+
+	._c1 {
+		height: 1.25rem;
+		width: 1.25rem;
 	}
 </style>

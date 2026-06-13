@@ -1,3 +1,4 @@
+﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { Snippet } from 'svelte';
 import type { SlotGraphToolbarItem } from '$stylist/science/interface/slot/graph-toolbar-item';
@@ -7,7 +8,7 @@ import type { SlotLitegraphConnection } from '$stylist/science/interface/slot/li
 import type { GraphGridMode } from '$stylist/science/type/struct/graph-grid-mode';
 import type { GraphPanMode } from '$stylist/science/type/struct/graph-pan-mode';
 
-export interface RecipeLitegraphCanvas extends StructIntersectAll<[]> {
+export interface RecipeLitegraphCanvas extends StructIntersectAll<[SlotChildren]> {
 	nodes?: ContractLitegraphNode[];
 	connections?: SlotLitegraphConnection[];
 	selectedNodeIds?: string[];
@@ -35,6 +36,5 @@ export interface RecipeLitegraphCanvas extends StructIntersectAll<[]> {
 	onExport?: () => void;
 	onImport?: (data: unknown) => void;
 	class?: string;
-	children?: Snippet;
 	toolbarContent?: Snippet;
 }

@@ -1,4 +1,4 @@
-import type { ResourceOptimizerProps } from '$stylist/development/type/struct/resource-optimizer-props';
+﻿import type { RecipeResourceOptimizer } from '$stylist/development/interface/recipe/resource-optimizer';
 import type { ResourceOptimizerResourceType } from '$stylist/development/type/struct/resource-optimizer-resource-type';
 const HardDrive = 'hard-drive';
 const Zap = 'zap';
@@ -9,7 +9,7 @@ const Upload = 'upload';
 const Download = 'download';
 const Settings = 'settings';
 
-export function createResourceOptimizerState(props: ResourceOptimizerProps) {
+export function createResourceOptimizerState(props: RecipeResourceOptimizer) {
 	const resources = $derived(props.resources ?? []);
 	const suggestions = $derived(props.suggestions ?? []);
 	const showResourceDetails = $derived(props.showResourceDetails ?? true);
@@ -175,5 +175,3 @@ export function createResourceOptimizerState(props: ResourceOptimizerProps) {
 		}
 	};
 }
-
-export default createResourceOptimizerState;

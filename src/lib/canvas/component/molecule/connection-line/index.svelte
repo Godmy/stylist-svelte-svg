@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ConnectionLineRecipe } from '$stylist/canvas/interface/recipe/connection-line';
+	import type { RecipeConnectionLine } from '$stylist/canvas/interface/recipe/connection-line';
 	import createConnectionLineState from '$stylist/canvas/function/state/connection-line/index.svelte';
 
-	let props: ConnectionLineRecipe = $props();
+	let props: RecipeConnectionLine = $props();
 	const state = createConnectionLineState(props);
 </script>
 
@@ -15,7 +15,7 @@
 
 	<path
 		d={`M ${state.startX} ${state.startY} C ${state.startX + 50} ${state.startY}, ${state.endX - 50} ${state.endY}, ${state.endX} ${state.endY}`}
-		class={state.pathClasses}
+		class="connection-line__TODO-pathClasses"
 		fill="none"
 		stroke={state.color}
 		stroke-width={state.width}
@@ -36,7 +36,7 @@
 
 	<path
 		d={`M ${state.startX} ${state.startY} C ${state.startX + 50} ${state.startY}, ${state.endX - 50} ${state.endY}, ${state.endX} ${state.endY}`}
-		class={state.hitAreaClasses}
+		class="connection-line__TODO-hitAreaClasses"
 		fill="none"
 		stroke="transparent"
 		stroke-width="calc(var(--connection-stroke-width) + 10px)"

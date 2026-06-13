@@ -1,27 +1,38 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import type { SlotNotificationBadge as INotificationBadgeProps } from '$stylist/notification/interface/slot/notification-badge';
-	import createNotificationBadgeState from '$stylist/management/function/state/notification-badge/index.svelte';
+	import { createNotificationBadgeState } from '$stylist/management/function/state/notification-badge/index.svelte';
 
 	let props: INotificationBadgeProps = $props();
 	const state = createNotificationBadgeState(props);
 </script>
 
 {#if state.shouldShow}
-	<div class={state.containerClasses} {...state.restProps}>
+	<div class="notification-badge" {...state.restProps}>
 		{#if props.children}
 			{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
 		{/if}
 
-		<span class={state.badgeClasses}>
+		<span class="notification-badge__badge">
 			{#if !state.showDot && (state.count > 0 || state.showZero)}
 				{state.badgeContent}
 			{/if}
 		</span>
 	</div>
 {:else}
-	<div class={`inline-block ${props.class ?? ''}`} {...state.restProps}>
+	<div class="${props.class ?? ''} _c1" {...state.restProps}>
 		{#if props.children}
 			{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
 		{/if}
 	</div>
 {/if}
+
+<style>
+	.notification-badge {
+		position: relative;
+		display: inline-flex;
+	}
+
+	._c1 {
+		display: inline-block;
+	}
+</style>

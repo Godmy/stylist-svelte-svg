@@ -1,8 +1,8 @@
 <script lang="ts">
 	import createColorPaletteState from '$stylist/color/function/state/color-palette/index.svelte';
-	import type { ThemeColorPaletteRecipe } from '$stylist/color/interface/recipe/color-palette';
+	import type { RecipeThemeColorPalette } from '$stylist/color/interface/recipe/color-palette';
 
-	let props: ThemeColorPaletteRecipe = $props();
+	let props: RecipeThemeColorPalette = $props();
 
 	const state = createColorPaletteState(props);
 </script>

@@ -1,7 +1,5 @@
 import type { ConversionFunnelProps } from '$stylist/marketing/type/struct/conversion-funnel/conversionfunnel-props';
 import type { FunnelStep } from '$stylist/marketing/type/struct/conversion-funnel/funnelstep';
-import { ConversionFunnelStyleManager } from '$stylist/marketing/class/style-manager/conversion-funnel';
-
 function getConversionRate(steps: FunnelStep[], stepIndex: number): number {
 	if (stepIndex === 0 || steps.length <= stepIndex) return 100;
 	const current = steps[stepIndex].value;
@@ -27,8 +25,6 @@ export function createConversionFunnelState(props: ConversionFunnelProps) {
 	const className = $derived(props.class ?? '');
 	const headerClassName = $derived(props.headerClass ?? '');
 	const maxValue = $derived(Math.max(...steps.map((s) => s.value), 100));
-	const containerClasses = $derived(ConversionFunnelStyleManager.getContainerClass(className));
-	const headerClasses = $derived(ConversionFunnelStyleManager.getHeaderClass(headerClassName));
 
 	const restProps = $derived.by(() => {
 		const { class: _class, headerClass: _headerClass, ...rest } = props;

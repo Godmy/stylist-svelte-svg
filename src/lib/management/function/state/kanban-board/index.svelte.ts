@@ -1,8 +1,7 @@
-import { KanbanBoardStyleManager } from '$stylist/management/class/style-manager/kanban-board';
-import { untrack } from 'svelte';
+﻿import { untrack } from 'svelte';
 import type { KanbanBoardType } from '$stylist/management/type/struct/kanban-board/kanbanboardtype';
 import type { KanbanBoardAction } from '$stylist/management/type/struct/kanban-board/kanbanboardaction';
-import type { KanbanBoardStateProps } from '$stylist/management/interface/recipe/kanban-board';
+import type { RecipeKanbanBoard } from '$stylist/management/interface/recipe/kanban-board';
 import { addKanbanCard } from '$stylist/management/function/script/kanban-board-add-card';
 import { addKanbanColumn } from '$stylist/management/function/script/kanban-board-add-column';
 import { archiveKanbanCard } from '$stylist/management/function/script/kanban-board-archive-card';
@@ -14,7 +13,7 @@ import { renameKanbanColumn } from '$stylist/management/function/script/kanban-b
 
 const Plus = 'plus';
 
-export function createKanbanBoardState(props: KanbanBoardStateProps) {
+export function createKanbanBoardState(props: RecipeKanbanBoard) {
 	// Props with defaults
 	const board = $derived(props.board);
 	const controlled = $derived(props.controlled ?? false);
@@ -139,12 +138,6 @@ export function createKanbanBoardState(props: KanbanBoardStateProps) {
 	}
 
 	// CSS classes
-	const containerClass = $derived(KanbanBoardStyleManager.getContainerClass());
-	const columnContainerClass = $derived(KanbanBoardStyleManager.getColumnContainerClass());
-	const buttonContainerClass = $derived(KanbanBoardStyleManager.getButtonContainerClass());
-	const addButtonClass = $derived(KanbanBoardStyleManager.getAddButtonClass());
-	const iconClass = $derived(KanbanBoardStyleManager.getIconClass());
-	const contentContainerClass = $derived(KanbanBoardStyleManager.getContentContainerClass());
 
 	return {
 		get boardState() {
@@ -180,24 +173,6 @@ export function createKanbanBoardState(props: KanbanBoardStateProps) {
 		get plusIcon() {
 			return plusIcon;
 		},
-		get containerClass() {
-			return containerClass;
-		},
-		get columnContainerClass() {
-			return columnContainerClass;
-		},
-		get buttonContainerClass() {
-			return buttonContainerClass;
-		},
-		get addButtonClass() {
-			return addButtonClass;
-		},
-		get iconClass() {
-			return iconClass;
-		},
-		get contentContainerClass() {
-			return contentContainerClass;
-		},
 		handleCardDrop,
 		handleAddCard,
 		handleAddColumn,
@@ -207,5 +182,3 @@ export function createKanbanBoardState(props: KanbanBoardStateProps) {
 		handleCardDelete
 	};
 }
-
-export default createKanbanBoardState;

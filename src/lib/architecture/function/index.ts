@@ -51,6 +51,7 @@ export {
 	useSemanticZoom
 } from './script';
 export {
+	createCss3dCubeState,
 	createFocusState,
 	createFocusTarget,
 	createPresentationFrame,
@@ -58,6 +59,7 @@ export {
 	createPresentationState,
 	createPresenterNodeShellState,
 	createPresenterSceneState,
+	createSceneCameraControlState,
 	createSceneState,
 	createSelectedItem,
 	createSelectionMode,

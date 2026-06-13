@@ -1,10 +1,14 @@
-import type { TableSectionRecipe as TableSectionRecipe } from '$stylist/information/interface/recipe/table-section';
+import type { RecipeTableSection as RecipeTableSection } from '$stylist/information/interface/recipe/table-section';
 import { ObjectManagerTable } from '$stylist/information/class/object-manager/table';
-import { TableStyleManager } from '$stylist/information/class/style-manager/table';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import { TABLE_CLASSES } from '$stylist/information/const/record/table-classes';
 
-export function createTableBodyState(props: TableSectionRecipe) {
+export function createTableBodyState(props: RecipeTableSection) {
 	const classes = $derived(
-		TableStyleManager.getBodyClasses(typeof props.class === 'string' ? props.class : undefined)
+		mergeClassNames(
+			...TABLE_CLASSES.body,
+			typeof props.class === 'string' ? props.class : undefined
+		)
 	);
 	const restProps = $derived(ObjectManagerTable.getSectionRestProps(props));
 

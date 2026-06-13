@@ -19,7 +19,7 @@
 	description="Selectable item in the domain explorer entity list."
 >
 	{#snippet children(values: any)}
-		<div class="grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+		<div class="_c1">
 			<DomainEntity
 				name={values.name as string}
 				path={`/src/lib/commerce/component/molecule/${values.name as string}`}
@@ -29,7 +29,25 @@
 					selectedPath = path;
 				}}
 			/>
-			<p class="text-sm text-slate-500">Selected path: {selectedPath || 'none'}</p>
+			<p class="_c2">Selected path: {selectedPath || 'none'}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		gap: 1rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #f8fafc;
+		padding: 1rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #64748b;
+	}
+</style>

@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	PropsEditorRecipe,
 	RecipePlaygroundAiAssistant,
 	RecipePlaygroundAiChat,
 	RecipePlaygroundAiPanel,
@@ -19,5 +18,6 @@ export type {
 	RecipePlaygroundScreenshotSelector,
 	RecipePlaygroundShellHeader,
 	RecipePlaygroundShortcutsPanel,
-	RecipePlaygroundTreeNode
+	RecipePlaygroundTreeNode,
+	RecipePropsEditor
 } from './recipe';

@@ -1,15 +1,12 @@
-import { InteractionFeedbackStyleManager } from '$stylist/notification/class/style-manager/interaction-feedback';
-import type { ScheduledNotificationStateProps } from '$stylist/management/interface/recipe/scheduled-notification';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeScheduledNotification } from '$stylist/management/interface/recipe/scheduled-notification';
 
-export function createScheduledNotificationState(props: ScheduledNotificationStateProps) {
+export function createScheduledNotificationState(props: RecipeScheduledNotification) {
 	const notifications = $derived(props.notifications ?? []);
 	const className = $derived(props.class ?? '');
 
 	const containerClasses = $derived(
-		InteractionFeedbackStyleManager.root(
-			'c-scheduled-notification border rounded-lg p-4',
-			className != null ? String(className) : ''
-		)
+		mergeClassNames('c-scheduled-notification border rounded-lg p-4', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -29,5 +26,3 @@ export function createScheduledNotificationState(props: ScheduledNotificationSta
 		}
 	};
 }
-
-export default createScheduledNotificationState;

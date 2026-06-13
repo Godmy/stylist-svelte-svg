@@ -1,12 +1,9 @@
-import { LayoutStyleManager } from '$stylist/layout/class/style-manager/layout';
 import type { HorizontalLayoutProps } from '$stylist/layout/type/struct/layout-extended/horizontal-layout-props';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
 import type { TokenJustification } from '$stylist/layout/type/enum/justification';
 
 export function createHorizontalLayoutState(props: HorizontalLayoutProps) {
-	const gap = $derived(
-		(props.gap ?? 16) as Parameters<typeof LayoutStyleManager.getHorizontalLayoutClasses>[0]
-	);
+	const gap = $derived(props.gap ?? 16);
 	const alignItems = $derived<TokenAlignment>(
 		(props.alignItems as TokenAlignment | undefined) ?? 'center'
 	);
@@ -14,15 +11,6 @@ export function createHorizontalLayoutState(props: HorizontalLayoutProps) {
 		(props.justifyContent as TokenJustification | undefined) ?? 'justify'
 	);
 	const wrap = $derived(props.wrap ?? true);
-	const classes = $derived(
-		LayoutStyleManager.getHorizontalLayoutClasses(
-			gap,
-			alignItems,
-			justifyContent,
-			wrap,
-			props.class
-		)
-	);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -49,9 +37,6 @@ export function createHorizontalLayoutState(props: HorizontalLayoutProps) {
 		},
 		get wrap() {
 			return wrap;
-		},
-		get classes() {
-			return classes;
 		},
 		get restProps() {
 			return restProps;

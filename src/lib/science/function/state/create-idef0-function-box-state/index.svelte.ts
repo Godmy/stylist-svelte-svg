@@ -1,4 +1,4 @@
-import type { Idef0FunctionBoxRecipe as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
+import type { RecipeIdef0FunctionBox as Idef0FunctionBoxProps } from '$stylist/science/interface/recipe/idef0-function-box';
 
 export function createIdef0FunctionBoxState(props: Idef0FunctionBoxProps) {
 	const x = $derived(props.x ?? 0);

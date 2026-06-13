@@ -19,7 +19,7 @@ export {
 	TOKEN_TIER_CONTENT,
 	TOKEN_TRAJECTORY
 } from './enum';
-export { TOKEN_EASING, TOKEN_OPACITY } from './map';
+export { TOKEN_OPACITY } from './map';
 export { TOKEN_ZOOM } from './preset';
 export {
 	MATERIAL_PALETTE,

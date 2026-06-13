@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ChartPolylineRecipe as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
+	import type { RecipeChartPolyline as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
 	import createChartPolylineState from '$stylist/chart/function/state/chart-polyline/index.svelte';
 
 	let props: ChartPolylineProps = $props();
@@ -15,3 +15,10 @@
 	stroke-linejoin="round"
 	fill="none"
 />
+
+<style>
+	.c-chart-polyline {
+		fill: none;
+		transition: stroke var(--duration-200) ease;
+	}
+</style>

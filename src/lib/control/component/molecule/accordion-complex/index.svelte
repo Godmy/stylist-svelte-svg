@@ -34,3 +34,11 @@
 		{@render props.content()}
 	{/if}
 </div>
+
+<style>
+	.c-accordion-complex {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+</style>

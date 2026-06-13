@@ -1,7 +1,7 @@
-import type { AnalyticsChartRecipe } from '$stylist/chart/interface/recipe/analytics-chart';
-import { AnalyticsChartStyleManager } from '$stylist/chart/class/style-manager/analytics-chart';
+import type { RecipeAnalyticsChart } from '$stylist/chart/interface/recipe/analytics-chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createAnalyticsChartState(props: AnalyticsChartRecipe) {
+export function createAnalyticsChartState(props: RecipeAnalyticsChart) {
 	const classNameStr = $derived(typeof props.class === 'string' ? props.class : undefined);
 	const chartClassStr = $derived(
 		typeof props.chartClass === 'string' ? props.chartClass : undefined
@@ -10,24 +10,29 @@ export function createAnalyticsChartState(props: AnalyticsChartRecipe) {
 		typeof props.legendClass === 'string' ? props.legendClass : undefined
 	);
 
-	const containerClasses = $derived(AnalyticsChartStyleManager.getContainerClass(classNameStr));
-	const headerClasses = $derived(AnalyticsChartStyleManager.getHeaderClass());
-	const titleContainerClasses = $derived(AnalyticsChartStyleManager.getTitleContainerClass());
-	const titleClasses = $derived(AnalyticsChartStyleManager.getTitleClass());
-	const subtitleClasses = $derived(AnalyticsChartStyleManager.getSubtitleClass());
+	const containerClasses = $derived(mergeClassNames('c-analytics-chart', classNameStr));
+	const headerClasses = $derived('c-analytics-chart__header');
+	const titleContainerClasses = $derived('c-analytics-chart__title-row');
+	const titleClasses = $derived('c-analytics-chart__title');
+	const subtitleClasses = $derived('c-analytics-chart__subtitle');
 	const trendContainerClasses = $derived(
-		AnalyticsChartStyleManager.getTrendContainerClass(props.trendValue ?? 0)
+		mergeClassNames(
+			'c-analytics-chart__trend',
+			(props.trendValue ?? 0) >= 0
+				? 'c-analytics-chart__trend--positive'
+				: 'c-analytics-chart__trend--negative'
+		)
 	);
 	const chartContainerClasses = $derived(
-		AnalyticsChartStyleManager.getChartContainerClass(chartClassStr)
+		mergeClassNames('c-analytics-chart__chart', chartClassStr)
 	);
 	const legendContainerClasses = $derived(
-		AnalyticsChartStyleManager.getLegendContainerClass(legendClassStr)
+		mergeClassNames('c-analytics-chart__legend', legendClassStr)
 	);
-	const legendItemClasses = $derived(AnalyticsChartStyleManager.getLegendItemClass());
-	const legendColorClasses = $derived(AnalyticsChartStyleManager.getLegendColorClass());
-	const legendLabelClasses = $derived(AnalyticsChartStyleManager.getLegendLabelClass());
-	const legendValueClasses = $derived(AnalyticsChartStyleManager.getLegendValueClass());
+	const legendItemClasses = $derived('c-analytics-chart__legend-item');
+	const legendColorClasses = $derived('c-analytics-chart__legend-color');
+	const legendLabelClasses = $derived('c-analytics-chart__legend-label');
+	const legendValueClasses = $derived('c-analytics-chart__legend-value');
 
 	return {
 		get classNameStr() {

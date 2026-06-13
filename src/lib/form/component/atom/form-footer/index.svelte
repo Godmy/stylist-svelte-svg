@@ -1,6 +1,6 @@
-<script lang="ts">
-	import createFormFooterState from '$stylist/form/function/state/form-footer/index.svelte';
-	import type { SlotFormFooter as FormFooterProps } from '$stylist/form/interface/slot/form-footer';
+﻿<script lang="ts">
+	import type { RecipeFormFooter } from '$stylist/form/interface/recipe/form-footer';
+	import { createFormFooterState } from '$stylist/form/function/state/form-footer/index.svelte';
 
 	let {
 		primaryButtonLabel = 'Submit',
@@ -15,7 +15,7 @@
 		secondaryButtonClass = '',
 		actionsClass = '',
 		...restProps
-	}: FormFooterProps = $props();
+	}: RecipeFormFooter = $props();
 
 	const state = createFormFooterState({
 		primaryButtonLabel,

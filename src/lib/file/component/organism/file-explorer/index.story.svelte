@@ -78,12 +78,12 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-file-explorer p-4">
-			<h1 class="mb-4 text-lg font-semibold">FileExplorer Component</h1>
+		<div class="sb-organisms-file-explorer _c1">
+			<h1 class="_c2">FileExplorer Component</h1>
 
-			<div class="mb-6 rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">Interactive FileExplorer</h2>
-				<div class="h-[500px]">
+			<div class="_c3">
+				<h2 class="_c4">Interactive FileExplorer</h2>
+				<div class="_c5">
 					<FileExplorer
 						{items}
 						currentPath={values.currentPath}
@@ -113,31 +113,31 @@
 					/>
 				</div>
 
-				<div class="mt-4 flex flex-wrap gap-2">
+				<div class="_c6">
 					<div>
-						<label for="explorer-view-mode" class="mb-1 block text-sm">View Mode:</label>
-						<select id="explorer-view-mode" bind:value={viewMode} class="rounded border p-1">
+						<label for="explorer-view-mode" class="_c7">View Mode:</label>
+						<select id="explorer-view-mode" bind:value={viewMode} class="_c8">
 							<option value="grid">Grid</option>
 							<option value="list">List</option>
 						</select>
 					</div>
 
-					<div class="flex items-end">
-						<label for="explorer-searchable" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="explorer-searchable" class="_c10">
 							<input id="explorer-searchable" type="checkbox" bind:checked={searchable} />
 							Searchable
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="explorer-show-path" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="explorer-show-path" class="_c10">
 							<input id="explorer-show-path" type="checkbox" bind:checked={showPath} />
 							Show Path
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="explorer-enable-selection" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="explorer-enable-selection" class="_c10">
 							<input
 								id="explorer-enable-selection"
 								type="checkbox"
@@ -147,8 +147,8 @@
 						</label>
 					</div>
 
-					<div class="flex items-end">
-						<label for="explorer-multiselect" class="flex items-center gap-1">
+					<div class="_c9">
+						<label for="explorer-multiselect" class="_c10">
 							<input id="explorer-multiselect" type="checkbox" bind:checked={multiselect} />
 							Multiselect
 						</label>
@@ -156,18 +156,18 @@
 				</div>
 			</div>
 
-			<div class="rounded border p-4">
-				<h2 class="text-md mb-2 font-semibold">FileExplorer Variations</h2>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="_c11">
+				<h2 class="_c4">FileExplorer Variations</h2>
+				<div class="_c12">
 					<div>
-						<h3 class="mb-2 text-sm font-medium">List View</h3>
-						<div class="h-[300px]">
+						<h3 class="_c13">List View</h3>
+						<div class="_c14">
 							<FileExplorer {items} viewMode="list" currentPath="/documents" />
 						</div>
 					</div>
 					<div>
-						<h3 class="mb-2 text-sm font-medium">Grid View (No Search)</h3>
-						<div class="h-[300px]">
+						<h3 class="_c13">Grid View (No Search)</h3>
+						<div class="_c14">
 							<FileExplorer {items} viewMode="grid" currentPath="/projects" searchable={false} />
 						</div>
 					</div>
@@ -176,3 +176,83 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c10 {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	._c11 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c12 {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		._c12 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	._c13 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+	._c14 {
+		height: 300px;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-bottom: 1.5rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 1rem;
+	}
+	._c4 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+	._c5 {
+		height: 500px;
+	}
+	._c6 {
+		margin-top: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	._c7 {
+		margin-bottom: 0.25rem;
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c8 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		padding: 0.25rem;
+	}
+	._c9 {
+		display: flex;
+		align-items: flex-end;
+	}
+</style>

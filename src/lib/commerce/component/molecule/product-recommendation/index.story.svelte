@@ -45,15 +45,29 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<ProductRecommendation
 				products={sampleProducts}
 				title={values.title}
-				onProductClick={(id) => (selectedProduct = id)}
+				onProductClick={(id: string) => (selectedProduct = id)}
 			/>
-			<p class="mt-3 text-sm text-[var(--color-text-secondary)]">
+			<p class="_c2">
 				Clicked product id: {selectedProduct}
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		margin-top: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

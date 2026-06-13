@@ -1,20 +1,34 @@
-<script lang="ts">
-	import createSecuritySettingsState from '$stylist/management/function/state/security-settings/index.svelte';
-	import type { SlotSecuritySettings as SecuritySettingsProps } from '$stylist/form/interface/slot/security-settings';
+﻿<script lang="ts">
+	import type { RecipeSecuritySettings } from '$stylist/management/interface/recipe/security-settings';
+	import { createSecuritySettingsState } from '$stylist/management/function/state/security-settings/index.svelte';
 
-	let props: SecuritySettingsProps = $props();
+	let props: RecipeSecuritySettings = $props();
 	const state = createSecuritySettingsState(props);
 </script>
 
 <form class={state.containerClasses} {...state.restProps}>
-	<label class="flex items-center gap-2 text-sm"
+	<label class="_c1"
 		><input type="checkbox" checked={state.twoFactor} /> Two-factor authentication</label
 	>
-	<label class="flex items-center gap-2 text-sm"
-		><input type="checkbox" checked={state.loginAlerts} /> Login alerts</label
-	>
-	<button
-		class="rounded bg-[var(--color-primary-600)] px-3 py-1 text-[var(--color-text-inverse)]"
-		type="submit">Save security settings</button
-	>
+	<label class="_c1"><input type="checkbox" checked={state.loginAlerts} /> Login alerts</label>
+	<button class="_c2" type="submit">Save security settings</button>
 </form>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c2 {
+		border-radius: 0.25rem;
+		background-color: var(--color-primary-600);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		color: var(--color-text-inverse);
+	}
+</style>

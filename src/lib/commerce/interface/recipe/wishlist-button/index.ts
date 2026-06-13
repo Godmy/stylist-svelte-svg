@@ -1,20 +1,13 @@
-/**
- * WishlistButton — кнопка избранного..
- *
- * LEGO-состав:
- *   ILabelSlot        (information) — label (Label)
- *   IIconSlot        (information) — icon (Icon)
- *   IBadgeSlot        (information) — badge (Badge)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface WishlistButtonRecipe
+export interface RecipeWishlistButton
 	extends StructIntersectAll<
-		[ILabelSlot, IIconSlot, IBadgeSlot, ThemeAttributes<HTMLButtonElement>]
+		[SlotTheme, ILabelSlot, IIconSlot, IBadgeSlot, HTMLAttributes<HTMLButtonElement>]
 	> {
 	inWishlist?: boolean;
 	buttonClass?: string;

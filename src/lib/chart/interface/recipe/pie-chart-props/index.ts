@@ -1,4 +1,4 @@
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all'; /** Props для pie-chart компонента */
-import type { PieChartRecipe } from '$stylist/chart/interface/recipe/pie-chart';
+import type { RecipePieChart } from '$stylist/chart/interface/recipe/pie-chart';
 
-export interface PieChartProps extends StructIntersectAll<[PieChartRecipe]> {}
+export interface PieChartProps extends StructIntersectAll<[RecipePieChart]> {}

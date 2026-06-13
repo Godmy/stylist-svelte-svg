@@ -26,31 +26,52 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div
-			class="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] p-6"
-		>
+		<div class="_c1">
 			{#if values.useCustomFallback}
 				<PermissionGate hasPermission={values.hasPermission as boolean}>
 					{#snippet children()}
-						<div class="rounded border border-emerald-300 bg-emerald-50 p-4 text-emerald-900">
-							Visible content for allowed users.
-						</div>
+						<div class="_c2">Visible content for allowed users.</div>
 					{/snippet}
 					{#snippet fallback()}
-						<div class="rounded border border-amber-300 bg-amber-50 p-4 text-amber-900">
-							Custom fallback: access is restricted.
-						</div>
+						<div class="_c3">Custom fallback: access is restricted.</div>
 					{/snippet}
 				</PermissionGate>
 			{:else}
 				<PermissionGate hasPermission={values.hasPermission as boolean}>
 					{#snippet children()}
-						<div class="rounded border border-emerald-300 bg-emerald-50 p-4 text-emerald-900">
-							Visible content for allowed users.
-						</div>
+						<div class="_c2">Visible content for allowed users.</div>
 					{/snippet}
 				</PermissionGate>
 			{/if}
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c2 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-emerald-300);
+		background-color: var(--color-emerald-50);
+		padding: 1rem;
+		color: var(--color-emerald-900, #emerald-900);
+	}
+	._c3 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-amber-300);
+		background-color: var(--color-amber-50);
+		padding: 1rem;
+		color: var(--color-amber-900, #amber-900);
+	}
+</style>

@@ -25,7 +25,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded-xl bg-gray-50 p-4">
+		<div class="_c1">
 			<CodeEditor
 				code={args.code}
 				language={args.language}
@@ -35,3 +35,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: #f9fafb;
+		padding: 1rem;
+	}
+</style>

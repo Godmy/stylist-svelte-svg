@@ -1,6 +1,6 @@
-import type { CodeEditorRecipe } from '$stylist/development/interface/recipe/code-editor';
+import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
 
-export type CodeEditorProps = CodeEditorRecipe & {
+export type CodeEditorProps = RecipeCodeEditor & {
 	class?: string;
 	showCopyButton?: boolean;
 };

@@ -1,8 +1,8 @@
-import type { MapSelectorLocation } from '$stylist/geo/type/struct/map-selector/mapselectorlocation';
-import type { MapSelectorStateProps } from '$stylist/geo/interface/recipe/map-selector';
+﻿import type { MapSelectorLocation } from '$stylist/geo/type/struct/map-selector/mapselectorlocation';
+import type { RecipeMapSelector } from '$stylist/geo/interface/recipe/map-selector';
 import { untrack } from 'svelte';
 
-export function createMapSelectorState(props: MapSelectorStateProps) {
+export function createMapSelectorState(props: RecipeMapSelector) {
 	// Props with defaults
 	const locations = $derived(props.locations ?? []);
 	const initialCenter = $derived(props.initialCenter ?? { lat: 51.505, lng: -0.09 });
@@ -259,5 +259,3 @@ export function createMapSelectorState(props: MapSelectorStateProps) {
 		handleMarkerKeyDown
 	};
 }
-
-export default createMapSelectorState;

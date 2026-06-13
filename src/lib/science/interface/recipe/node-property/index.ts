@@ -1,11 +1,12 @@
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface NodePropertyRecipe
-	extends StructIntersectAll<[Omit<ThemeAttributes<HTMLDivElement>, 'onchange'>]> {
+export interface RecipeNodeProperty
+	extends StructIntersectAll<[SlotTheme, Omit<HTMLAttributes<HTMLDivElement>, 'onchange'>]> {
 	id?: string;
 	name: string;
 	type?: TokenPropertyType;

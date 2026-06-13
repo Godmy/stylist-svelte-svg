@@ -16,6 +16,8 @@ export interface SlotSwitch extends Omit<InteractionHTMLAttributes<HTMLInputElem
 	description?: string;
 	/** Whether the switch is required */
 	required?: boolean;
+	name?: string;
+	ariaLabel?: string;
 	/** Custom class name */
 	class?: string;
 	/** Callback when switch changes */

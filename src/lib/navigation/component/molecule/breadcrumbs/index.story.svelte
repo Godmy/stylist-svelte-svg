@@ -12,6 +12,10 @@
 	description="Breadcrumb trail with hover dropdown transitions."
 >
 	{#snippet children()}
-		<Breadcrumbs crumbs={BREADCRUMB_TEMPLATE} {activeId} onNavigate={(id) => (activeId = id)} />
+		<Breadcrumbs
+			crumbs={BREADCRUMB_TEMPLATE}
+			{activeId}
+			onNavigate={(id: string) => (activeId = id)}
+		/>
 	{/snippet}
 </Story>

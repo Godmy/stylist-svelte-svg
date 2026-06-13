@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 	import type { SlotNumberInput as INumberInputProps } from '$stylist/input/interface/slot/number-input';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import createNumberInputState from '$stylist/input/function/state/number-input/index.svelte';
+	import { createNumberInputState } from '$stylist/input/function/state/number-input/index.svelte';
 
 	const Minus = 'minus';
 	const Plus = 'plus';
@@ -18,7 +18,7 @@
 		onclick={state.decrement}
 		disabled={state.disabled || state.readonly || state.currentValue <= state.min}
 	>
-		<BaseIcon name={Minus} class="h-4 w-4" />
+		<BaseIcon name={Minus} style="width: 1rem; height: 1rem;" />
 	</button>
 
 	<input
@@ -40,6 +40,61 @@
 		onclick={state.increment}
 		disabled={state.disabled || state.readonly || state.currentValue >= state.max}
 	>
-		<BaseIcon name={Plus} class="h-4 w-4" />
+		<BaseIcon name={Plus} style="width: 1rem; height: 1rem;" />
 	</button>
 </div>
+
+<style>
+	.number-input {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.number-input__input {
+		width: 5rem;
+		padding: 0.5rem;
+		text-align: center;
+		border-block: 1px solid var(--color-border-primary);
+		border-inline: none;
+		background-color: var(--color-background-primary);
+	}
+
+	.number-input__input--disabled {
+		background-color: var(--color-background-secondary);
+	}
+
+	.number-input__input:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-500);
+	}
+
+	.number-input__button {
+		padding: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		cursor: pointer;
+	}
+
+	.number-input__button:hover {
+		background-color: var(--color-background-tertiary);
+	}
+
+	.number-input__button:disabled,
+	.number-input__button--disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.number-input__button--decrement {
+		border-start-start-radius: var(--border-radius-base, 0.375rem);
+		border-end-start-radius: var(--border-radius-base, 0.375rem);
+		border-inline-end: none;
+	}
+
+	.number-input__button--increment {
+		border-start-end-radius: var(--border-radius-base, 0.375rem);
+		border-end-end-radius: var(--border-radius-base, 0.375rem);
+		border-inline-start: none;
+	}
+</style>

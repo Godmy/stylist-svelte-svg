@@ -1,6 +1,6 @@
-import type { SlotTagInput as TagInputProps } from '$stylist/input/interface/slot/tag-input';
+﻿import type { SlotTagInput as RecipeTagInput } from '$stylist/input/interface/slot/tag-input';
 
-export const createTagInputState = (props: TagInputProps) => {
+export const createTagInputState = (props: RecipeTagInput) => {
 	let currentTags = $state<string[]>([...(props.tags ?? [])]);
 	let inputText = $state('');
 
@@ -87,5 +87,3 @@ export const createTagInputState = (props: TagInputProps) => {
 		handleKeyDown
 	};
 };
-
-export default createTagInputState;

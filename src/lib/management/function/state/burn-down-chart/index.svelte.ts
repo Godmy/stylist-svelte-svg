@@ -1,6 +1,5 @@
-import { BurnDownChartStyleManager } from '$stylist/management/class/style-manager/burn-down-chart';
-import { BURN_DOWN_CHART_DEFAULT_MARGINS } from '$stylist/management/const/map/burn-down-chart-default-margins';
-import type { BurnDownChartStateProps } from '$stylist/management/interface/recipe/burn-down-chart';
+﻿import { BURN_DOWN_CHART_DEFAULT_MARGINS } from '$stylist/management/const/map/burn-down-chart-default-margins';
+import type { RecipeBurnDownChart } from '$stylist/management/interface/recipe/burn-down-chart';
 
 import { getBurnDownMinMaxValues } from '$stylist/management/function/script/get-burn-down-min-max-values';
 import { generateBurnDownIdealPath } from '$stylist/management/function/script/generate-burn-down-ideal-path';
@@ -8,7 +7,7 @@ import { generateBurnDownActualPath } from '$stylist/management/function/script/
 import { generateBurnDownXLabels } from '$stylist/management/function/script/generate-burn-down-x-labels';
 import { generateBurnDownYLabels } from '$stylist/management/function/script/generate-burn-down-y-labels';
 
-export function createBurnDownChartState(props: BurnDownChartStateProps) {
+export function createBurnDownChartState(props: RecipeBurnDownChart) {
 	// Props with defaults
 	const data = $derived(props.data);
 	const width = $derived(props.width ?? 600);
@@ -31,19 +30,6 @@ export function createBurnDownChartState(props: BurnDownChartStateProps) {
 	const yLabels = $derived(generateBurnDownYLabels(data.points, margins, innerHeight, margins.top));
 
 	// CSS classes
-	const containerClass = $derived(BurnDownChartStyleManager.getContainerClass());
-	const titleClass = $derived(BurnDownChartStyleManager.getTitleClass());
-	const svgClass = $derived(BurnDownChartStyleManager.getSvgClass());
-	const gridLineClass = $derived(BurnDownChartStyleManager.getGridLineClass());
-	const axisClass = $derived(BurnDownChartStyleManager.getAxisClass());
-	const idealLineClass = $derived(BurnDownChartStyleManager.getIdealLineClass());
-	const actualLineClass = $derived(BurnDownChartStyleManager.getActualLineClass());
-	const dataPointClass = $derived(BurnDownChartStyleManager.getDataPointClass());
-	const xAxisLabelClass = $derived(BurnDownChartStyleManager.getXAxisLabelClass());
-	const yAxisLabelClass = $derived(BurnDownChartStyleManager.getYAxisLabelClass());
-	const legendContainerClass = $derived(BurnDownChartStyleManager.getLegendContainerClass());
-	const legendLineClass = $derived(BurnDownChartStyleManager.getLegendLineClass());
-	const legendTextClass = $derived(BurnDownChartStyleManager.getLegendTextClass());
 
 	return {
 		get data() {
@@ -81,47 +67,6 @@ export function createBurnDownChartState(props: BurnDownChartStateProps) {
 		},
 		get yLabels() {
 			return yLabels;
-		},
-		get containerClass() {
-			return containerClass;
-		},
-		get titleClass() {
-			return titleClass;
-		},
-		get svgClass() {
-			return svgClass;
-		},
-		get gridLineClass() {
-			return gridLineClass;
-		},
-		get axisClass() {
-			return axisClass;
-		},
-		get idealLineClass() {
-			return idealLineClass;
-		},
-		get actualLineClass() {
-			return actualLineClass;
-		},
-		get dataPointClass() {
-			return dataPointClass;
-		},
-		get xAxisLabelClass() {
-			return xAxisLabelClass;
-		},
-		get yAxisLabelClass() {
-			return yAxisLabelClass;
-		},
-		get legendContainerClass() {
-			return legendContainerClass;
-		},
-		get legendLineClass() {
-			return legendLineClass;
-		},
-		get legendTextClass() {
-			return legendTextClass;
 		}
 	};
 }
-
-export default createBurnDownChartState;

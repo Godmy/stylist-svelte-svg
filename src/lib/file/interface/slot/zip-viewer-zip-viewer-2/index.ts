@@ -1,8 +1,9 @@
-import type { Snippet } from 'svelte';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { SlotZipEntry } from '$stylist/file/type/struct/zip-viewer/entry';
 
 // ZipViewer props interface
-export interface SlotZipViewer {
+export interface SlotZipViewer extends StructIntersectAll<[SlotChildren]> {
 	entries: SlotZipEntry[];
 	archiveName?: string;
 	class?: string;
@@ -17,5 +18,4 @@ export interface SlotZipViewer {
 	enableFiltering?: boolean;
 	defaultExpanded?: boolean;
 	disabled?: boolean;
-	children?: Snippet;
 }

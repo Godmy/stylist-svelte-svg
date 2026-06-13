@@ -1,23 +1,14 @@
-/**
- * PriceFilterContract вЂ” С„РёР»СЊС‚СЂ РїРѕ РґРёР°РїР°Р·РѕРЅСѓ С†РµРЅ.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ThemeAttributes   (theme) вЂ” class, data-variant, data-tone
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface RecipePriceFilter extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
-	/** Minimum price value */
+export interface RecipePriceFilter
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	minPrice?: number;
-	/** Maximum price value */
 	maxPrice?: number;
-	/** Current minimum selected */
 	currentMin?: number;
-	/** Current maximum selected */
 	currentMax?: number;
-	/** SlotCurrency symbol */
 	currency?: string;
-	/** Price change callback */
+	class?: string;
 	onPriceChange?: (min: number, max: number) => void;
 }

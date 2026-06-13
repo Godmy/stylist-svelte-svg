@@ -1,7 +1,6 @@
-import type { NodePropertiesPanelRecipe as NodePropertiesPanelProps } from '$stylist/science/interface/recipe/node-properties-panel';
+import type { RecipeNodePropertiesPanel as NodePropertiesPanelProps } from '$stylist/science/interface/recipe/node-properties-panel';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import { ObjectManagerNodePropertiesPanel } from '$stylist/science/class/object-manager/node-properties-panel';
-import { NodePropertiesPanelStyleManager } from '$stylist/science/class/style-manager/node-properties-panel';
 
 export function createNodePropertiesPanelState(props: NodePropertiesPanelProps) {
 	const size = $derived((props.size ?? 'md') as TokenSize);
@@ -17,7 +16,7 @@ export function createNodePropertiesPanelState(props: NodePropertiesPanelProps) 
 	);
 
 	const classes = $derived(
-		NodePropertiesPanelStyleManager.getPanelClasses(size, compact, showHeader)
+		`node-properties-panel node-properties-panel--size-${size}${compact ? ' node-properties-panel--compact' : ''}${showHeader ? ' node-properties-panel--with-header' : ''}`
 	);
 
 	function handlePropertyChange(propertyId: string, value: unknown) {

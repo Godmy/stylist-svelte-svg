@@ -1,8 +1,8 @@
-<script lang="ts">
-	import createAudioSliderState from '$stylist/media/function/state/audio-slider/index.svelte';
-	import type { AudioSliderProps } from '$stylist/media/type/struct/audio-slider';
+﻿<script lang="ts">
+	import type { RecipeAudioSlider } from '$stylist/media/interface/recipe/audio-slider';
+	import { createAudioSliderState } from '$stylist/media/function/state/audio-slider/index.svelte';
 
-	let props: AudioSliderProps = $props();
+	let props: RecipeAudioSlider = $props();
 	const state = createAudioSliderState(props);
 </script>
 

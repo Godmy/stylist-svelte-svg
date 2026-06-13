@@ -23,9 +23,22 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="flex items-center space-x-3">
+		<div class="_c1">
 			<Dot color={values.color} size={values.size} />
-			<span class="text-[--color-text-primary]">Status Indicator</span>
+			<span class="_c2">Status Indicator</span>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: flex;
+		align-items: center;
+	}
+	._c1 > * + * {
+		margin-left: 0.75rem;
+	}
+	._c2 {
+		color: var(--color-text-primary);
+	}
+</style>

@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from 'svelte/elements';
+﻿import type { HTMLAttributes } from 'svelte/elements';
 import { formatTime } from '$stylist/media/function/script/format-time';
 import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
-import type { AudioPlayerProps } from '$stylist/media/interface/recipe/audio-player-audio-player-props';
+import type { RecipeAudioPlayer } from '$stylist/media/interface/recipe/audio-player';
 
 type RestProps = Omit<HTMLAttributes<HTMLDivElement>, 'class'>;
 
-export function createAudioPlayerState(props: AudioPlayerProps) {
+export function createAudioPlayerState(props: RecipeAudioPlayer) {
 	let audioRef = $state<HTMLAudioElement | null>(null);
 	let isPlaying = $state(false);
 	let isMuted = $state(props.muted ?? false);
@@ -161,5 +161,3 @@ export function createAudioPlayerState(props: AudioPlayerProps) {
 		formatTime
 	};
 }
-
-export default createAudioPlayerState;

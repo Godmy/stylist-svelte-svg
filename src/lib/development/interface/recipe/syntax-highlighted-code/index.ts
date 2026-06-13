@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenCodeView } from '$stylist/development/type/enum/code-view';
 
-export interface ThemeSyntaxHighlightedCodeRecipe
+export interface RecipeThemeSyntaxHighlightedCode
 	extends StructIntersectAll<[HTMLAttributes<HTMLDivElement>]> {
 	class?: string;
 	code?: string;

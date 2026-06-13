@@ -109,7 +109,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="sb-organisms-mock-data-selector p-4">
+		<div class="sb-organisms-mock-data-selector _c1">
 			<h1>MockDataSelector Story</h1>
 			<MockDataSelector
 				{schemas}
@@ -122,8 +122,18 @@
 				allowCustomCount={values.allowCustomCount}
 				showSearch={values.showSearch}
 				showTagsFilter={values.showTagsFilter}
-				class="my-2"
+				class="_c2"
 			/>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+</style>

@@ -19,47 +19,13 @@
 			primaryLabel?: string;
 		};
 
-	/**
-	 * SplitButton component - A button with a primary action and a dropdown menu for additional actions
-	 * Uses the same props as Button for consistency (SOLID - Liskov Substitution)
-	 *
-	 * @param variant - Visual style of the button
-	 * @param size - Size of the button
-	 * @param disabled - Whether the button is disabled
-	 * @param loading - Whether the button is in loading state
-	 * @param items - Array of items for the dropdown menu
-	 * @param primaryAction - Function to execute when the primary button is clicked
-	 * @param primaryLabel - Label for the primary button
-	 * @param class - Additional CSS classes
-	 * @returns A split button with primary action and dropdown menu
-	 */
 	let props: ISplitButtonElementProps = $props();
-	const state = createSplitButtonState({
-		...props,
-		class: `${props.class ?? ''} split-button__button`.trim()
-	} as any);
+	const state = createSplitButtonState(props as any);
 
-	// Extract div-specific attributes to avoid type conflicts
 	let divAttributes = $derived.by(() => {
 		const allProps = props as Record<string, any>;
 		const divCompatibleProps: Record<string, any> = {};
-
-		// List of attributes that are compatible with div elements
-		const divAllowedAttrs = [
-			'id',
-			'class',
-			'style',
-			'title',
-			'role',
-			'tabindex',
-			'hidden',
-			'data-*',
-			'aria-*' // wildcard patterns would be handled separately
-		];
-
-		// Copy only the div-compatible attributes
 		for (const [key, value] of Object.entries(allProps)) {
-			// Include standard div attributes and data/aria attributes
 			if (
 				key.startsWith('data-') ||
 				key.startsWith('aria-') ||
@@ -92,49 +58,56 @@
 				divCompatibleProps[key] = value;
 			}
 		}
-
 		return divCompatibleProps;
 	});
 	const restProps = $derived(divAttributes);
 </script>
 
-<div {...restProps} class={String(state.wrapperClasses ?? '')} id={state.buttonId}>
+<div
+	{...restProps}
+	class="c-split-button"
+	data-variant={state.variant}
+	data-size={state.size}
+	data-disabled={state.isDisabled || undefined}
+	data-loading={state.loading || undefined}
+	id={state.buttonId}
+>
 	<button
-		type={props.type ?? 'button'}
-		disabled={typeof props.disabled === 'boolean' ? props.disabled : undefined}
+		type={'button' as any}
+		disabled={Boolean(state.isDisabled)}
 		aria-busy={typeof props.loading === 'boolean' ? props.loading : undefined}
 		aria-live={typeof props.loading === 'boolean' && props.loading ? 'polite' : undefined}
-		class={String(state.primaryButtonClasses ?? '')}
+		class="c-split-button__primary"
 		aria-label={typeof props.ariaLabel === 'string'
 			? props.ariaLabel
 			: props.primaryLabel || undefined}
 		onclick={props.primaryAction}
 	>
 		{#if props.children}
-			{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+			{@render props.children()}
 		{:else}
 			{props.primaryLabel ?? 'Action'}
 		{/if}
 	</button>
 	<button
-		type={props.type ?? 'button'}
-		disabled={(typeof props.disabled === 'boolean' ? props.disabled : false) ||
-			(typeof props.loading === 'boolean' ? props.loading : false)}
-		class={state.toggleButtonClasses}
+		type={'button' as any}
+		disabled={Boolean(state.isDisabled)}
+		class="c-split-button__toggle"
 		onclick={state.toggleDropdown}
 		aria-haspopup="true"
 		aria-expanded={state.isOpen}
 		aria-label="Show more options"
 	>
-		<BaseIcon name={ChevronDown} class="h-4 w-4" aria-hidden="true" />
+		<BaseIcon name={ChevronDown} style="width:1rem;height:1rem;" aria-hidden="true" />
 	</button>
 
 	{#if state.isOpen}
-		<div class={state.menuClasses} role="menu" aria-orientation="vertical" tabindex="-1">
-			<div class="flex flex-col gap-1 p-1" role="none">
-				{#each props.items as item, i}
+		<div class="c-split-button__menu" role="menu" aria-orientation="vertical" tabindex="-1">
+			<div class="c-split-button__menu-inner" role="none">
+				{#each props.items as item}
 					<button
-						class={`${state.menuItemBaseClasses} ${item.disabled ? state.menuItemDisabledClasses : ''}`.trim()}
+						class="c-split-button__menu-item"
+						data-disabled={item.disabled || undefined}
 						onclick={() => state.handleItemClick(item.onClick)}
 						disabled={item.disabled}
 						role="menuitem"
@@ -146,3 +119,183 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-split-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		border-radius: 0.375rem;
+		overflow: hidden;
+	}
+
+	.c-split-button__primary,
+	.c-split-button__toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.875rem;
+		font-weight: 500;
+		cursor: pointer;
+		transition: background-color var(--duration-120, 120ms);
+		border: 1px solid transparent;
+	}
+
+	.c-split-button__primary {
+		padding: 0 1rem;
+		height: 2.25rem;
+		border-radius: 0;
+		border-right-width: 0;
+	}
+
+	.c-split-button__toggle {
+		padding: 0 0.5rem;
+		height: 2.25rem;
+		border-radius: 0;
+		border-left-width: 0;
+	}
+
+	/* Size variants */
+	.c-split-button[data-size='xs'] .c-split-button__primary,
+	.c-split-button[data-size='xs'] .c-split-button__toggle {
+		height: 1.5rem;
+	}
+	.c-split-button[data-size='xs'] .c-split-button__primary {
+		padding: 0 0.5rem;
+		font-size: 0.75rem;
+	}
+	.c-split-button[data-size='sm'] .c-split-button__primary,
+	.c-split-button[data-size='sm'] .c-split-button__toggle {
+		height: 2rem;
+	}
+	.c-split-button[data-size='sm'] .c-split-button__primary {
+		padding: 0 0.75rem;
+	}
+	.c-split-button[data-size='lg'] .c-split-button__primary,
+	.c-split-button[data-size='lg'] .c-split-button__toggle {
+		height: 2.75rem;
+	}
+	.c-split-button[data-size='lg'] .c-split-button__primary {
+		padding: 0 1.5rem;
+		font-size: 1rem;
+	}
+	.c-split-button[data-size='xl'] .c-split-button__primary,
+	.c-split-button[data-size='xl'] .c-split-button__toggle {
+		height: 3rem;
+	}
+
+	/* Appearance variants */
+	.c-split-button[data-variant='default'] .c-split-button__primary,
+	.c-split-button[data-variant='default'] .c-split-button__toggle {
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+		border-color: var(--color-border-primary);
+	}
+	.c-split-button[data-variant='default'] .c-split-button__primary:hover:not(:disabled),
+	.c-split-button[data-variant='default'] .c-split-button__toggle:hover:not(:disabled) {
+		background: var(--color-background-secondary);
+	}
+	.c-split-button[data-variant='primary'] .c-split-button__primary,
+	.c-split-button[data-variant='primary'] .c-split-button__toggle {
+		background: var(--color-primary-600);
+		color: var(--color-text-inverse);
+	}
+	.c-split-button[data-variant='primary'] .c-split-button__primary:hover:not(:disabled),
+	.c-split-button[data-variant='primary'] .c-split-button__toggle:hover:not(:disabled) {
+		background: var(--color-primary-700);
+	}
+	.c-split-button[data-variant='secondary'] .c-split-button__primary,
+	.c-split-button[data-variant='secondary'] .c-split-button__toggle {
+		background: var(--color-secondary-600);
+		color: var(--color-text-inverse);
+		border-color: var(--color-secondary-700);
+	}
+	.c-split-button[data-variant='danger'] .c-split-button__primary,
+	.c-split-button[data-variant='danger'] .c-split-button__toggle {
+		background: var(--color-danger-600);
+		color: var(--color-text-inverse);
+	}
+	.c-split-button[data-variant='ghost'] .c-split-button__primary,
+	.c-split-button[data-variant='ghost'] .c-split-button__toggle {
+		background: transparent;
+		color: var(--color-text-primary);
+	}
+	.c-split-button[data-variant='ghost'] .c-split-button__primary:hover:not(:disabled),
+	.c-split-button[data-variant='ghost'] .c-split-button__toggle:hover:not(:disabled) {
+		background: var(--color-background-secondary);
+	}
+	.c-split-button[data-variant='outline'] .c-split-button__primary,
+	.c-split-button[data-variant='outline'] .c-split-button__toggle {
+		background: transparent;
+		color: var(--color-text-primary);
+		border-color: var(--color-neutral-400);
+	}
+
+	/* Disabled */
+	.c-split-button[data-disabled] .c-split-button__primary,
+	.c-split-button[data-disabled] .c-split-button__toggle {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	/* Divider between primary and toggle */
+	.c-split-button__toggle {
+		border-left: 1px solid rgba(255, 255, 255, 0.25);
+	}
+	.c-split-button[data-variant='default'] .c-split-button__toggle,
+	.c-split-button[data-variant='ghost'] .c-split-button__toggle,
+	.c-split-button[data-variant='outline'] .c-split-button__toggle {
+		border-left-color: var(--color-border-primary);
+	}
+
+	/* Dropdown menu */
+	.c-split-button__menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: var(--z-index-docked, 100);
+		margin-top: 0.25rem;
+		width: 12rem;
+		border-radius: 0.375rem;
+		border: 1px solid var(--color-border-primary);
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+		box-shadow:
+			0 10px 15px -3px rgba(0, 0, 0, 0.1),
+			0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		outline: none;
+	}
+
+	.c-split-button__menu-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 0.25rem;
+	}
+
+	.c-split-button__menu-item {
+		width: 100%;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		text-align: left;
+		border-radius: 0.375rem;
+		background: transparent;
+		color: inherit;
+		border: none;
+		cursor: pointer;
+		transition: background-color var(--duration-120, 120ms);
+	}
+	.c-split-button__menu-item:hover:not([data-disabled]) {
+		background: var(--color-background-secondary);
+	}
+	.c-split-button__menu-item:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+	}
+	.c-split-button__menu-item[data-disabled] {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+</style>

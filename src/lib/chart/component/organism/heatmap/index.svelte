@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { HeatmapRecipe } from '$stylist/chart/interface/recipe/heatmap';
+	import type { RecipeHeatmap } from '$stylist/chart/interface/recipe/heatmap';
 	import Tooltip from '$stylist/control/component/atom/tooltip/index.svelte';
 	import createHeatmapState from '$stylist/chart/function/state/heatmap/index.svelte';
 	import { ObjectManagerHeatmap } from '$stylist/chart/class/object-manager/heatmap';
 
-	let props: HeatmapRecipe = $props();
+	let props: RecipeHeatmap = $props();
 	const state = createHeatmapState(props);
 </script>
 
@@ -153,6 +153,81 @@
 </div>
 
 <style>
+	.c-heatmap {
+		position: relative;
+	}
+
+	.c-heatmap__title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.c-heatmap__chart-container {
+		padding: 1rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background: var(--color-background-primary);
+	}
+
+	.c-heatmap__svg {
+		overflow: visible;
+	}
+
+	.c-heatmap__axis {
+		stroke: var(--color-border-primary);
+	}
+
+	.c-heatmap__axis-text {
+		font-size: 0.75rem;
+		fill: var(--color-text-secondary);
+		color: var(--color-text-secondary);
+	}
+
+	.c-heatmap__cell {
+		cursor: pointer;
+		transition: all var(--duration-200) ease-in-out;
+	}
+
+	.c-heatmap__cell--hovered {
+		opacity: var(--opacity-80);
+	}
+
+	.c-heatmap__cell--idle {
+		opacity: var(--opacity-100);
+	}
+
+	.c-heatmap__legend {
+		margin-top: 1rem;
+	}
+
+	.c-heatmap__legend-labels {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.25rem;
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-heatmap__legend-gradient {
+		width: 100%;
+		height: 1rem;
+		border-radius: 9999px;
+	}
+
+	.c-heatmap__legend-title {
+		margin-top: 0.25rem;
+		text-align: center;
+		font-size: 0.75rem;
+		color: var(--color-text-primary);
+	}
+
+	.c-heatmap__tooltip-button {
+		width: 1rem;
+		height: 1rem;
+		color: var(--color-text-tertiary);
+	}
+
 	.hm-title-row {
 		margin-bottom: 0.5rem;
 		display: flex;

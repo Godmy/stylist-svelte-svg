@@ -1,10 +1,9 @@
-import type { GraphCanvasPosition } from '$stylist/science/type/struct/graph-canvas-position';
+﻿import type { GraphCanvasPosition } from '$stylist/science/type/struct/graph-canvas-position';
 import type { GraphCanvasViewport } from '$stylist/science/type/struct/graph-canvas-viewport';
 import { DEFAULT_GRAPH_CANVAS } from '$stylist/science/const/record/graph-canvas';
-import { GraphCanvasStyleManager } from '$stylist/science/class/style-manager/graph-canvas';
-import type { GraphCanvasProps } from '$stylist/science/type/struct/graph-canvas/graph-canvas-props';
+import type { RecipeGraphCanvas } from '$stylist/science/interface/recipe/graph-canvas';
 
-export function createGraphCanvasState(props: GraphCanvasProps) {
+export function createGraphCanvasState(props: RecipeGraphCanvas) {
 	let isPanning = $state(false);
 	let panStart = $state({ x: 0, y: 0 });
 	let panOffsetStart = $state({ x: 0, y: 0 });
@@ -23,13 +22,13 @@ export function createGraphCanvasState(props: GraphCanvasProps) {
 	const snapToGrid = $derived(props.snapToGrid ?? false);
 
 	const containerClass = $derived(
-		GraphCanvasStyleManager.getContainerClass(props.class == null ? undefined : String(props.class))
+		props.class != null ? `graph-canvas ${String(props.class)}` : 'graph-canvas'
 	);
 	const gridClass = $derived(
-		GraphCanvasStyleManager.getGridClass(gridMode, props.gridClass ?? undefined)
+		`graph-canvas__grid graph-canvas__grid--${gridMode}${props.gridClass ? ` ${props.gridClass}` : ''}`
 	);
 	const contentClass = $derived(
-		GraphCanvasStyleManager.getContentClass(props.contentClass ?? undefined)
+		`graph-canvas__content${props.contentClass ? ` ${props.contentClass}` : ''}`
 	);
 
 	const transformStyle = $derived(
@@ -44,7 +43,7 @@ export function createGraphCanvasState(props: GraphCanvasProps) {
 	});
 
 	const gridStyles = $derived(
-		GraphCanvasStyleManager.getGridStyles(gridSize, gridColor, backgroundColor)
+		`--grid-size: ${gridSize}px; --grid-color: ${gridColor};${backgroundColor ? ` --background-color: ${backgroundColor};` : ''}`
 	);
 	const minZoom = $derived(props.minZoom ?? DEFAULT_GRAPH_CANVAS.minZoom);
 	const maxZoom = $derived(props.maxZoom ?? DEFAULT_GRAPH_CANVAS.maxZoom);
@@ -263,5 +262,3 @@ export function createGraphCanvasState(props: GraphCanvasProps) {
 		}
 	};
 }
-
-export default createGraphCanvasState;

@@ -1,4 +1,3 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { SlotTabIndicator as TabIndicatorProps } from '$stylist/control/interface/slot/tab-indicator';
 
 export const createTabIndicatorState = (props: TabIndicatorProps) => {
@@ -6,22 +5,6 @@ export const createTabIndicatorState = (props: TabIndicatorProps) => {
 	const disabled = $derived(props.disabled ?? false);
 	const width = $derived(`${props.width ?? 0}px`);
 	const left = $derived(`${props.left ?? 0}px`);
-	const classes = $derived(
-		joinClassNames(
-			'absolute bottom-0 h-0.5 transition-all',
-			color === 'secondary'
-				? 'bg-[--color-secondary-500]'
-				: color === 'success'
-					? 'bg-[--color-success-500]'
-					: color === 'warning'
-						? 'bg-[--color-warning-500]'
-						: color === 'danger'
-							? 'bg-[--color-danger-500]'
-							: 'bg-[--color-primary-500]',
-			disabled ? 'opacity-[var(--opacity-50)]' : '',
-			props.class
-		)
-	);
 	const style = $derived(`width: ${width}; left: ${left};`);
 
 	return {
@@ -30,9 +13,6 @@ export const createTabIndicatorState = (props: TabIndicatorProps) => {
 		},
 		get disabled() {
 			return disabled;
-		},
-		get classes() {
-			return classes;
 		},
 		get style() {
 			return style;

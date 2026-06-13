@@ -9,8 +9,19 @@
 	description="Expandable ribbon launcher for primary stylist sections."
 >
 	{#snippet children()}
-		<div class="rounded-3xl border border-slate-200 bg-white p-8">
+		<div class="_c1">
 			<StylistRibbonMenu />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 1.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e8f0;
+		background-color: #ffffff;
+		padding: 2rem;
+	}
+</style>

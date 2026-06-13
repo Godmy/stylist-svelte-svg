@@ -487,3 +487,5 @@ export function createDomainPageState(input: DomainPageInput) {
 		saveIssue
 	};
 }
+
+export default createDomainPageState;

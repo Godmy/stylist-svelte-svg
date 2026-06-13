@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
-	import type { BreadcrumbLinkRecipe } from '$stylist/navigation/interface/recipe/breadcrumb-link';
+	import type { RecipeBreadcrumbLink } from '$stylist/navigation/interface/recipe/breadcrumb-link';
 	import createBreadcrumbLinkState from '$stylist/navigation/function/state/breadcrumb-link/index.svelte';
 
-	type BreadcrumbLinkProps = BreadcrumbLinkRecipe &
+	type BreadcrumbLinkProps = RecipeBreadcrumbLink &
 		InteractionHTMLAttributes<HTMLAnchorElement> & {
 			current?: boolean;
 			href?: string;
@@ -36,3 +36,6 @@
 		{/if}
 	</a>
 {/if}
+
+<style>
+</style>

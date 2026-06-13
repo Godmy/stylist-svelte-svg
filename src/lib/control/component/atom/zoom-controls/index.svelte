@@ -1,8 +1,8 @@
 <script lang="ts">
-	import createZoomControlsState from '$stylist/control/function/state/zoom-controls/index.svelte';
-	import type { SlotZoomControls as ZoomControlsProps } from '$stylist/control/interface/slot/zoom-controls';
+	import type { RecipeZoomControls } from '$stylist/control/interface/recipe/zoom-controls';
+	import { createZoomControlsState } from '$stylist/control/function/state/zoom-controls/index.svelte';
 
-	let props: ZoomControlsProps = $props();
+	let props: RecipeZoomControls = $props();
 	const state = createZoomControlsState(props);
 </script>
 

@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundComponentCatalog } from '$stylist/playground/interface/recipe/playground-component-catalog';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import createPlaygroundComponentCatalogState from '$stylist/playground/function/state/playground-component-catalog/index.svelte';
+	import { createPlaygroundComponentCatalogState } from '$stylist/playground/function/state/playground-component-catalog/index.svelte';
 	import type { PlaygroundComponentCatalogSortBy } from '$stylist/playground/type/struct/playground-component-catalog-sort-by';
-	import type { PlaygroundComponentCatalogProps } from '$stylist/playground/type/struct/playground-component-catalog-props';
 	const Search = 'search';
 	const Filter = 'filter';
 	const Grid = 'grid';
@@ -16,20 +16,18 @@
 	const ArrowRight = 'arrow-right';
 	const Sparkles = 'sparkles';
 
-	let props: PlaygroundComponentCatalogProps = $props();
+	let props: RecipePlaygroundComponentCatalog = $props();
 	const state = createPlaygroundComponentCatalogState(props);
 </script>
 
-<div
-	class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
->
-	<div class="mx-auto max-w-[1800px] px-4 py-8 sm:px-6 lg:px-8">
-		<div class="mb-6 space-y-4">
-			<div class="flex items-center gap-4">
-				<div class="relative flex-1">
+<div class="pcc-wrap">
+	<div class="pcc-inner">
+		<div class="pcc-controls">
+			<div class="pcc-top-row">
+				<div class="pcc-search-wrap">
 					<BaseIcon
 						name={Search}
-						class="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-orange-400"
+						style="position:absolute;top:50%;left:1rem;transform:translateY(-50%);width:1.25rem;height:1.25rem;color:#fb923c"
 					/>
 					<input
 						type="text"
@@ -37,106 +35,76 @@
 						oninput={(event) =>
 							state.onSearchQueryChange((event.currentTarget as HTMLInputElement).value)}
 						placeholder="Search components... (try 'button', 'input', 'card')"
-						class="w-full rounded-lg border-2 border-gray-200 bg-white py-3 pr-4 pl-12 text-gray-900 placeholder-gray-400 shadow-sm transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-200 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:focus:border-orange-400 dark:focus:ring-orange-900/50"
+						class="pcc-search-input"
 					/>
 					{#if state.searchQuery}
-						<button
-							onclick={() => state.onSearchQueryChange('')}
-							class="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1.5 text-gray-400 transition-all hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400"
-						>
-							<BaseIcon name={X} class="h-4 w-4" />
+						<button onclick={() => state.onSearchQueryChange('')} class="pcc-clear-btn">
+							<BaseIcon name={X} style="width:1rem;height:1rem" />
 						</button>
 					{/if}
 				</div>
 
-				<div
-					class="flex items-center gap-1 rounded-lg border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-red-50 p-1.5 shadow-sm dark:border-gray-700 dark:from-gray-800 dark:to-gray-900"
-				>
+				<div class="pcc-view-toggle">
 					<button
 						onclick={() => state.onViewModeChange('grid')}
-						class="rounded-md px-3 py-2 transition-all duration-[var(--duration-200)] {state.viewMode ===
-						'grid'
-							? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg'
-							: 'text-gray-400 hover:bg-white/50 hover:text-orange-600 dark:text-gray-500 dark:hover:bg-gray-700/50 dark:hover:text-orange-400'}"
+						class="pcc-view-btn {state.viewMode === 'grid' ? 'pcc-view-btn--active' : ''}"
 						title="Grid view"
 					>
-						<BaseIcon name={Grid} class="h-5 w-5" />
+						<BaseIcon name={Grid} style="width:1.25rem;height:1.25rem" />
 					</button>
 					<button
 						onclick={() => state.onViewModeChange('list')}
-						class="rounded-md px-3 py-2 transition-all duration-[var(--duration-200)] {state.viewMode ===
-						'list'
-							? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg'
-							: 'text-gray-400 hover:bg-white/50 hover:text-orange-600 dark:text-gray-500 dark:hover:bg-gray-700/50 dark:hover:text-orange-400'}"
+						class="pcc-view-btn {state.viewMode === 'list' ? 'pcc-view-btn--active' : ''}"
 						title="List view"
 					>
-						<BaseIcon name={List} class="h-5 w-5" />
+						<BaseIcon name={List} style="width:1.25rem;height:1.25rem" />
 					</button>
 				</div>
 
-				<div class="relative">
+				<div class="pcc-sort-wrap">
 					<select
 						value={state.sortBy}
 						onchange={(event) =>
 							state.onSortByChange(
 								(event.currentTarget as HTMLSelectElement).value as PlaygroundComponentCatalogSortBy
 							)}
-						class="min-w-[180px] cursor-pointer appearance-none rounded-lg border-2 border-gray-200 bg-white py-3 pr-12 pl-4 text-gray-900 shadow-sm transition-colors hover:border-orange-400 focus:border-orange-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-orange-500 dark:focus:border-orange-400"
+						class="pcc-sort-select"
 						style="color-scheme: light dark;"
 					>
-						<option value="name" class="bg-white text-gray-900 dark:bg-gray-800 dark:text-white"
-							>Sort by Name</option
-						>
-						<option value="category" class="bg-white text-gray-900 dark:bg-gray-800 dark:text-white"
-							>Sort by Category</option
-						>
-						<option value="recent" class="bg-white text-gray-900 dark:bg-gray-800 dark:text-white"
-							>Recently Updated</option
-						>
+						<option value="name">Sort by Name</option>
+						<option value="category">Sort by Category</option>
+						<option value="recent">Recently Updated</option>
 					</select>
-					<div class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">
-						<BaseIcon name={SortAsc} class="h-4 w-4 text-gray-400" />
+					<div class="pcc-sort-icon">
+						<BaseIcon name={SortAsc} style="width:1rem;height:1rem;color:#9ca3af" />
 					</div>
 				</div>
 
 				<button
 					onclick={state.onToggleFilters}
-					class="rounded-lg border-2 px-4 py-3 shadow-sm transition-all {state.showFilters
-						? 'border-orange-500 bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg'
-						: 'border-gray-200 bg-white text-gray-500 hover:border-orange-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-orange-500'}"
+					class="pcc-filter-btn {state.showFilters ? 'pcc-filter-btn--active' : ''}"
 					title={state.showFilters ? 'Hide filters' : 'Show filters'}
 				>
-					<BaseIcon name={Filter} class="h-5 w-5" />
+					<BaseIcon name={Filter} style="width:1.25rem;height:1.25rem" />
 				</button>
 			</div>
 
 			{#if state.showFilters}
-				<div
-					class="space-y-6 rounded-xl border-2 border-orange-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800"
-				>
+				<div class="pcc-filter-panel">
 					<div>
-						<h3 class="mb-3 text-sm font-semibold text-gray-900 dark:text-white">Categories</h3>
-						<div class="flex flex-wrap gap-3">
+						<h3 class="pcc-filter-title">Categories</h3>
+						<div class="pcc-categories">
 							{#each state.categories as category}
 								{@const colors = state.getCategoryColor(category)}
 								{@const isSelected = state.selectedCategories.has(category)}
 								<button
 									onclick={() => state.onToggleCategory(category)}
-									class="rounded-xl border-2 px-5 py-2.5 text-sm font-bold shadow-sm transition-all hover:scale-105 {isSelected
-										? 'border-orange-500 bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg ring-4 ring-orange-200 dark:ring-orange-900/50'
-										: colors.bg +
-											' ' +
-											colors.text +
-											' ' +
-											colors.border +
-											' hover:border-orange-400 hover:shadow-md dark:hover:border-orange-500'}"
+									class="pcc-cat-btn {isSelected
+										? 'pcc-cat-btn--active'
+										: `${colors.bg} ${colors.text} ${colors.border}`}"
 								>
 									{category}
-									<span
-										class="ml-2 {isSelected
-											? 'opacity-[var(--opacity-90)]'
-											: 'opacity-[var(--opacity-70)]'} text-xs"
-									>
+									<span class="pcc-cat-count" style="opacity:{isSelected ? 0.9 : 0.7}">
 										({state.categoryCounts[category] ?? 0})
 									</span>
 								</button>
@@ -145,17 +113,15 @@
 					</div>
 
 					<div>
-						<h3 class="mb-3 text-sm font-semibold text-gray-900 dark:text-white">Tags</h3>
-						<div class="flex flex-wrap gap-2">
+						<h3 class="pcc-filter-title">Tags</h3>
+						<div class="pcc-tags">
 							{#each state.tags.slice(0, 20) as tag}
 								{@const isSelected = state.selectedTags.has(tag)}
 								<button
 									onclick={() => state.onToggleTag(tag)}
-									class="flex items-center gap-1.5 rounded-lg border-2 px-3 py-2 text-sm font-bold shadow-sm transition-all {isSelected
-										? 'border-purple-500 bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg ring-4 ring-purple-200 dark:ring-purple-900/50'
-										: 'border-gray-300 bg-gray-100 text-gray-700 hover:scale-105 hover:border-purple-400 hover:shadow-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:border-purple-500'}"
+									class="pcc-tag-btn {isSelected ? 'pcc-tag-btn--active' : ''}"
 								>
-									<BaseIcon name={Tag} class="h-3.5 w-3.5" />
+									<BaseIcon name={Tag} style="width:0.875rem;height:0.875rem" />
 									{tag}
 								</button>
 							{/each}
@@ -163,12 +129,9 @@
 					</div>
 
 					{#if state.hasActiveFilters}
-						<div class="border-t border-gray-200 pt-4 dark:border-gray-700">
-							<button
-								onclick={state.onClearFilters}
-								class="flex items-center gap-2 rounded-xl border-2 border-red-400 bg-gradient-to-r from-red-500 to-pink-600 px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:scale-105 hover:shadow-xl hover:shadow-red-500/50"
-							>
-								<BaseIcon name={X} class="h-4 w-4" />
+						<div class="pcc-filter-footer">
+							<button onclick={state.onClearFilters} class="pcc-clear-all-btn">
+								<BaseIcon name={X} style="width:1rem;height:1rem" />
 								Clear all filters
 							</button>
 						</div>
@@ -177,92 +140,60 @@
 			{/if}
 		</div>
 
-		<div
-			class="mb-6 rounded-lg border-l-4 border-orange-500 bg-gradient-to-r from-orange-50 to-red-50 px-4 py-3 text-sm text-gray-700 shadow-sm dark:from-gray-800 dark:to-gray-900 dark:text-gray-300"
-		>
-			Showing <span class="font-bold text-orange-600 dark:text-orange-400"
-				>{state.stats.filtered}</span
-			>
-			of <span class="font-bold text-orange-600 dark:text-orange-400">{state.stats.total}</span> components
+		<div class="pcc-stats">
+			Showing <span class="pcc-stats-highlight">{state.stats.filtered}</span>
+			of <span class="pcc-stats-highlight">{state.stats.total}</span> components
 		</div>
 
 		{#if state.viewMode === 'grid'}
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+			<div class="pcc-grid">
 				{#each state.stories as story}
 					{@const colors = state.getCategoryColor(story.category)}
-					<button
-						onclick={() => state.onOpenStory(story.id)}
-						class="group relative rounded-2xl border-2 border-gray-200 bg-white p-6 text-left shadow-md transition-all hover:-translate-y-2 hover:scale-105 hover:border-orange-400 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:border-orange-500"
-					>
-						<div
-							class="mb-6 h-32 w-full rounded-xl bg-gradient-to-br {colors.bg} border-2 {colors.border} relative flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105"
-						>
-							<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+					<button onclick={() => state.onOpenStory(story.id)} class="pcc-card group">
+						<div class="pcc-card-preview bg-gradient-to-br {colors.bg} {colors.border} _c1">
+							<div class="pcc-card-preview-overlay"></div>
 							<BaseIcon
 								name={state.getCategoryIcon(story.category)}
-								class="h-16 w-16 {colors.text} opacity-[var(--opacity-30)] transition-opacity group-hover:opacity-[var(--opacity-50)]"
+								style="width:4rem;height:4rem;opacity:0.3;transition:opacity 0.15s"
+								class={colors.text}
 							/>
-							<div
-								class="absolute right-2 bottom-2 rounded bg-white/90 px-2 py-1 text-xs font-semibold dark:bg-gray-900/90 {colors.text}"
-							>
-								Preview
-							</div>
+							<div class="pcc-preview-label {colors.text}">Preview</div>
 						</div>
 
-						<div class="mb-3 flex items-start justify-between">
-							<div
-								class="h-10 w-10 rounded-lg {colors.bg} border-2 {colors.border} flex items-center justify-center shadow-sm"
-							>
+						<div class="pcc-card-meta">
+							<div class="pcc-card-icon-wrap {colors.bg} {colors.border} _c1">
 								<BaseIcon
 									name={state.getCategoryIcon(story.category)}
-									class="h-5 w-5 {colors.text}"
+									style="width:1.25rem;height:1.25rem"
+									class={colors.text}
 								/>
 							</div>
-							<span
-								class="rounded-full bg-orange-500 px-2.5 py-1 text-xs font-bold text-white capitalize shadow-sm"
-							>
-								{story.category}
-							</span>
+							<span class="pcc-cat-badge">{story.category}</span>
 						</div>
 
-						<h3
-							class="mb-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400"
-						>
-							{story.componentName}
-						</h3>
+						<h3 class="pcc-card-title">{story.componentName}</h3>
+						<p class="pcc-card-desc">{state.getComponentDescription(story)}</p>
 
-						<p class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-							{state.getComponentDescription(story)}
-						</p>
-
-						<div class="mb-4 flex flex-wrap items-center gap-2">
+						<div class="pcc-card-tags">
 							{#if story.subcategory}
-								<div
-									class="flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300"
-								>
-									<BaseIcon name={Tag} class="h-3 w-3" />
-									<span class="capitalize">{story.subcategory}</span>
+								<div class="pcc-subcat-chip">
+									<BaseIcon name={Tag} style="width:0.75rem;height:0.75rem" />
+									<span style="text-transform:capitalize">{story.subcategory}</span>
 								</div>
 							{/if}
-							<div
-								class="flex items-center gap-1 rounded-md bg-green-100 px-2 py-1 text-xs font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400"
-							>
-								<BaseIcon name={Sparkles} class="h-3 w-3" />
+							<div class="pcc-ai-chip">
+								<BaseIcon name={Sparkles} style="width:0.75rem;height:0.75rem" />
 								AI-Generated
 							</div>
 						</div>
 
-						<div
-							class="flex items-center justify-between border-t-2 border-gray-100 pt-3 dark:border-gray-700"
-						>
-							<span class="text-xs text-gray-400">Svelte 5</span>
-							<div
-								class="flex items-center gap-1 text-sm font-semibold text-orange-600 opacity-[var(--opacity-0)] transition-opacity group-hover:opacity-[var(--opacity-100)] dark:text-orange-400"
-							>
+						<div class="pcc-card-footer">
+							<span class="pcc-svelte-version">Svelte 5</span>
+							<div class="pcc-open-link">
 								<span>Open</span>
 								<BaseIcon
 									name={ArrowRight}
-									class="h-4 w-4 transition-transform group-hover:translate-x-1"
+									style="width:1rem;height:1rem;transition:transform 0.15s"
 								/>
 							</div>
 						</div>
@@ -270,59 +201,41 @@
 				{/each}
 			</div>
 		{:else}
-			<div class="space-y-4">
+			<div class="pcc-list">
 				{#each state.stories as story}
 					{@const colors = state.getCategoryColor(story.category)}
-					<button
-						onclick={() => state.onOpenStory(story.id)}
-						class="group flex w-full items-center gap-6 rounded-2xl border-2 border-gray-200 bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:scale-[1.02] hover:border-orange-400 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:border-orange-500"
-					>
-						<div
-							class="h-20 w-20 rounded-xl bg-gradient-to-br {colors.bg} border-2 {colors.border} flex flex-shrink-0 items-center justify-center shadow-md transition-all group-hover:scale-110 group-hover:shadow-lg"
-						>
+					<button onclick={() => state.onOpenStory(story.id)} class="pcc-list-card group">
+						<div class="pcc-list-icon bg-gradient-to-br {colors.bg} {colors.border} _c1">
 							<BaseIcon
 								name={state.getCategoryIcon(story.category)}
-								class="h-10 w-10 {colors.text}"
+								style="width:2.5rem;height:2.5rem"
+								class={colors.text}
 							/>
 						</div>
 
-						<div class="flex-1 text-left">
-							<h3
-								class="mb-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400"
-							>
-								{story.componentName}
-							</h3>
-							<p class="mb-3 text-sm text-gray-600 dark:text-gray-400">
+						<div class="pcc-list-info">
+							<h3 class="pcc-card-title">{story.componentName}</h3>
+							<p class="pcc-card-desc" style="margin-bottom:0.75rem">
 								{state.getComponentDescription(story)}
 							</p>
-							<div class="flex flex-wrap items-center gap-2">
-								<span
-									class="rounded-full bg-orange-500 px-3 py-1.5 text-xs font-bold text-white capitalize shadow-sm"
-								>
-									{story.category}
-								</span>
+							<div class="pcc-card-tags">
+								<span class="pcc-cat-badge">{story.category}</span>
 								{#if story.subcategory}
-									<div
-										class="flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300"
-									>
-										<BaseIcon name={Tag} class="h-3 w-3" />
-										<span class="capitalize">{story.subcategory}</span>
+									<div class="pcc-subcat-chip">
+										<BaseIcon name={Tag} style="width:0.75rem;height:0.75rem" />
+										<span style="text-transform:capitalize">{story.subcategory}</span>
 									</div>
 								{/if}
-								<div
-									class="flex items-center gap-1 rounded-md bg-green-100 px-2 py-1 text-xs font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400"
-								>
-									<BaseIcon name={Sparkles} class="h-3 w-3" />
+								<div class="pcc-ai-chip">
+									<BaseIcon name={Sparkles} style="width:0.75rem;height:0.75rem" />
 									AI-Generated
 								</div>
-								<span class="ml-auto text-xs text-gray-400">Svelte 5</span>
+								<span style="margin-left:auto;font-size:0.75rem;color:#9ca3af">Svelte 5</span>
 							</div>
 						</div>
 
-						<div
-							class="flex-shrink-0 text-gray-300 transition-all group-hover:translate-x-3 group-hover:text-orange-600 dark:text-gray-600 dark:group-hover:text-orange-400"
-						>
-							<BaseIcon name={ArrowRight} class="h-8 w-8" />
+						<div class="pcc-list-arrow">
+							<BaseIcon name={ArrowRight} style="width:2rem;height:2rem" />
 						</div>
 					</button>
 				{/each}
@@ -330,25 +243,724 @@
 		{/if}
 
 		{#if state.stories.length === 0}
-			<div
-				class="rounded-3xl border-2 border-dashed border-orange-300 bg-gradient-to-br from-orange-50 to-red-50 py-24 text-center shadow-inner dark:border-gray-700 dark:from-gray-800 dark:to-gray-900"
-			>
-				<div
-					class="mb-8 inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-100 to-red-100 shadow-lg dark:bg-gray-700"
-				>
-					<BaseIcon name={Search} class="h-12 w-12 text-orange-500 dark:text-orange-400" />
+			<div class="pcc-empty">
+				<div class="pcc-empty-icon">
+					<BaseIcon name={Search} style="width:3rem;height:3rem;color:#f97316" />
 				</div>
-				<h3 class="mb-3 text-3xl font-black text-gray-900 dark:text-white">No components found</h3>
-				<p class="mb-8 text-lg text-gray-600 dark:text-gray-400">
-					Try adjusting your search or filters
-				</p>
-				<button
-					onclick={state.onClearFilters}
-					class="rounded-xl bg-gradient-to-r from-orange-600 to-red-600 px-8 py-4 font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50"
-				>
-					Clear all filters
-				</button>
+				<h3 class="pcc-empty-title">No components found</h3>
+				<p class="pcc-empty-text">Try adjusting your search or filters</p>
+				<button onclick={state.onClearFilters} class="pcc-empty-btn">Clear all filters</button>
 			</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+	.pcc-wrap {
+		min-height: 100vh;
+		background: linear-gradient(to bottom right, #f9fafb, white, #f3f4f6);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-wrap {
+			background: linear-gradient(to bottom right, #111827, #1f2937, #111827);
+		}
+	}
+	.pcc-inner {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 112.5rem;
+		padding: 2rem 1rem;
+	}
+	@media (min-width: 640px) {
+		.pcc-inner {
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+		}
+	}
+	@media (min-width: 1024px) {
+		.pcc-inner {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+	}
+	.pcc-controls {
+		margin-bottom: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.pcc-top-row {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.pcc-search-wrap {
+		position: relative;
+		flex: 1;
+	}
+	.pcc-search-input {
+		width: 100%;
+		border-radius: 0.5rem;
+		border: 2px solid #e5e7eb;
+		background: white;
+		padding: 0.75rem 1rem 0.75rem 3rem;
+		color: #111827;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: all 0.15s;
+		font-size: 0.875rem;
+	}
+	.pcc-search-input::placeholder {
+		color: #9ca3af;
+	}
+	.pcc-search-input:focus {
+		outline: none;
+		border-color: #f97316;
+		box-shadow: 0 0 0 2px #fed7aa;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-search-input {
+			border-color: #374151;
+			background: #1f2937;
+			color: white;
+		}
+		.pcc-search-input:focus {
+			border-color: #fb923c;
+			box-shadow: 0 0 0 2px rgb(124 45 18 / 0.5);
+		}
+	}
+	.pcc-clear-btn {
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+		border-radius: 9999px;
+		padding: 0.375rem;
+		color: #9ca3af;
+		transition: all 0.15s;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+	.pcc-clear-btn:hover {
+		background: #fee2e2;
+		color: #dc2626;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-clear-btn:hover {
+			background: rgb(153 27 27 / 0.3);
+			color: #f87171;
+		}
+	}
+	.pcc-view-toggle {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		border-radius: 0.5rem;
+		border: 2px solid #fed7aa;
+		background: linear-gradient(to right, #fff7ed, #fef2f2);
+		padding: 0.375rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-view-toggle {
+			border-color: #374151;
+			background: linear-gradient(to right, #1f2937, #111827);
+		}
+	}
+	.pcc-view-btn {
+		border-radius: 0.375rem;
+		padding: 0.5rem 0.75rem;
+		color: #9ca3af;
+		transition: all 0.15s;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+	.pcc-view-btn:hover {
+		background: rgb(255 255 255 / 0.5);
+		color: #ea580c;
+	}
+	.pcc-view-btn--active {
+		background: linear-gradient(to right, #ea580c, #dc2626);
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-view-btn:hover {
+			background: rgb(55 65 81 / 0.5);
+			color: #fb923c;
+		}
+	}
+	.pcc-sort-wrap {
+		position: relative;
+	}
+	.pcc-sort-select {
+		min-width: 11.25rem;
+		cursor: pointer;
+		appearance: none;
+		border-radius: 0.5rem;
+		border: 2px solid #e5e7eb;
+		background: white;
+		padding: 0.75rem 3rem 0.75rem 1rem;
+		color: #111827;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: border-color 0.15s;
+		font-size: 0.875rem;
+	}
+	.pcc-sort-select:hover {
+		border-color: #fb923c;
+	}
+	.pcc-sort-select:focus {
+		outline: none;
+		border-color: #f97316;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-sort-select {
+			border-color: #374151;
+			background: #1f2937;
+			color: white;
+		}
+		.pcc-sort-select:hover {
+			border-color: #f97316;
+		}
+	}
+	.pcc-sort-icon {
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+	}
+	.pcc-filter-btn {
+		border-radius: 0.5rem;
+		border: 2px solid #e5e7eb;
+		background: white;
+		padding: 0.75rem 1rem;
+		color: #6b7280;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: all 0.15s;
+		cursor: pointer;
+	}
+	.pcc-filter-btn:hover {
+		border-color: #fb923c;
+	}
+	.pcc-filter-btn--active {
+		border-color: #f97316;
+		background: linear-gradient(to right, #ea580c, #dc2626);
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-filter-btn {
+			border-color: #374151;
+			background: #1f2937;
+			color: #9ca3af;
+		}
+		.pcc-filter-btn:hover {
+			border-color: #f97316;
+		}
+	}
+	.pcc-filter-panel {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		border-radius: 0.75rem;
+		border: 2px solid #fed7aa;
+		background: white;
+		padding: 1.5rem;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-filter-panel {
+			border-color: #374151;
+			background: #1f2937;
+		}
+	}
+	.pcc-filter-title {
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-filter-title {
+			color: white;
+		}
+	}
+	.pcc-categories {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+	.pcc-cat-btn {
+		border-radius: 0.75rem;
+		border: 2px solid;
+		padding: 0.625rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: all 0.15s;
+		cursor: pointer;
+	}
+	.pcc-cat-btn:hover {
+		transform: scale(1.05);
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.pcc-cat-btn--active {
+		border-color: #f97316;
+		background: linear-gradient(to right, #ea580c, #dc2626);
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		outline: 4px solid #fed7aa;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-cat-btn--active {
+			outline-color: rgb(124 45 18 / 0.5);
+		}
+	}
+	.pcc-cat-count {
+		margin-left: 0.5rem;
+		font-size: 0.75rem;
+	}
+	.pcc-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.pcc-tag-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		border-radius: 0.5rem;
+		border: 2px solid #d1d5db;
+		background: #f3f4f6;
+		padding: 0.5rem 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: #374151;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: all 0.15s;
+		cursor: pointer;
+	}
+	.pcc-tag-btn:hover {
+		transform: scale(1.05);
+		border-color: #a855f7;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.pcc-tag-btn--active {
+		border-color: #a855f7;
+		background: linear-gradient(to right, #9333ea, #db2777);
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		outline: 4px solid #e9d5ff;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-tag-btn {
+			border-color: #4b5563;
+			background: #374151;
+			color: #d1d5db;
+		}
+		.pcc-tag-btn:hover {
+			border-color: #a855f7;
+		}
+		.pcc-tag-btn--active {
+			outline-color: rgb(88 28 135 / 0.5);
+		}
+	}
+	.pcc-filter-footer {
+		border-top: 1px solid #e5e7eb;
+		padding-top: 1rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-filter-footer {
+			border-color: #374151;
+		}
+	}
+	.pcc-clear-all-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-radius: 0.75rem;
+		border: 2px solid #f87171;
+		background: linear-gradient(to right, #ef4444, #ec4899);
+		padding: 0.75rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+		cursor: pointer;
+	}
+	.pcc-clear-all-btn:hover {
+		transform: scale(1.05);
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+	}
+	.pcc-stats {
+		margin-bottom: 1.5rem;
+		border-radius: 0.5rem;
+		border-left: 4px solid #f97316;
+		background: linear-gradient(to right, #fff7ed, #fef2f2);
+		padding: 0.75rem 1rem;
+		font-size: 0.875rem;
+		color: #374151;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-stats {
+			background: linear-gradient(to right, #1f2937, #111827);
+			color: #d1d5db;
+		}
+	}
+	.pcc-stats-highlight {
+		font-weight: 700;
+		color: #ea580c;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-stats-highlight {
+			color: #fb923c;
+		}
+	}
+	.pcc-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+	@media (min-width: 768px) {
+		.pcc-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media (min-width: 1024px) {
+		.pcc-grid {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+	.pcc-card {
+		position: relative;
+		border-radius: 1rem;
+		border: 2px solid #e5e7eb;
+		background: white;
+		padding: 1.5rem;
+		text-align: left;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+		cursor: pointer;
+	}
+	.pcc-card:hover {
+		transform: translateY(-0.5rem) scale(1.05);
+		border-color: #fb923c;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-card {
+			border-color: #374151;
+			background: #1f2937;
+		}
+		.pcc-card:hover {
+			border-color: #f97316;
+		}
+	}
+	.pcc-card-preview {
+		margin-bottom: 1.5rem;
+		position: relative;
+		height: 8rem;
+		width: 100%;
+		border-radius: 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		transition: transform 0.15s;
+	}
+	.pcc-card:hover .pcc-card-preview {
+		transform: scale(1.05);
+	}
+	.pcc-card-preview-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to bottom right, rgb(255 255 255 / 0.2), transparent);
+	}
+	.pcc-preview-label {
+		position: absolute;
+		right: 0.5rem;
+		bottom: 0.5rem;
+		border-radius: 0.25rem;
+		background: rgb(255 255 255 / 0.9);
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-preview-label {
+			background: rgb(17 24 39 / 0.9);
+		}
+	}
+	.pcc-card-meta {
+		margin-bottom: 0.75rem;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+	.pcc-card-icon-wrap {
+		display: flex;
+		height: 2.5rem;
+		width: 2.5rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.pcc-cat-badge {
+		border-radius: 9999px;
+		background: #f97316;
+		padding: 0.25rem 0.625rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: white;
+		text-transform: capitalize;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.pcc-card-title {
+		margin-bottom: 0.5rem;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: #111827;
+		transition: color 0.15s;
+	}
+	.pcc-card:hover .pcc-card-title {
+		color: #ea580c;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-card-title {
+			color: white;
+		}
+		.pcc-card:hover .pcc-card-title {
+			color: #fb923c;
+		}
+	}
+	.pcc-card-desc {
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		color: #4b5563;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-card-desc {
+			color: #9ca3af;
+		}
+	}
+	.pcc-card-tags {
+		margin-bottom: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pcc-subcat-chip {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		border-radius: 0.375rem;
+		background: #f3f4f6;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		color: #4b5563;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-subcat-chip {
+			background: #374151;
+			color: #d1d5db;
+		}
+	}
+	.pcc-ai-chip {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		border-radius: 0.375rem;
+		background: #dcfce7;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: #15803d;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-ai-chip {
+			background: rgb(20 83 45 / 0.3);
+			color: #4ade80;
+		}
+	}
+	.pcc-card-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-top: 2px solid #f3f4f6;
+		padding-top: 0.75rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-card-footer {
+			border-color: #374151;
+		}
+	}
+	.pcc-svelte-version {
+		font-size: 0.75rem;
+		color: #9ca3af;
+	}
+	.pcc-open-link {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #ea580c;
+		opacity: 0;
+		transition: opacity 0.15s;
+	}
+	.pcc-card:hover .pcc-open-link {
+		opacity: 1;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-open-link {
+			color: #fb923c;
+		}
+	}
+	.pcc-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.pcc-list-card {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		gap: 1.5rem;
+		border-radius: 1rem;
+		border: 2px solid #e5e7eb;
+		background: white;
+		padding: 1.5rem;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+		cursor: pointer;
+		text-align: left;
+	}
+	.pcc-list-card:hover {
+		transform: translateY(-0.25rem) scale(1.02);
+		border-color: #fb923c;
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-list-card {
+			border-color: #374151;
+			background: #1f2937;
+		}
+		.pcc-list-card:hover {
+			border-color: #f97316;
+		}
+	}
+	.pcc-list-icon {
+		display: flex;
+		height: 5rem;
+		width: 5rem;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.75rem;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+	}
+	.pcc-list-card:hover .pcc-list-icon {
+		transform: scale(1.1);
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.pcc-list-info {
+		flex: 1;
+		text-align: left;
+	}
+	.pcc-list-arrow {
+		flex-shrink: 0;
+		color: #d1d5db;
+		transition: all 0.15s;
+	}
+	.pcc-list-card:hover .pcc-list-arrow {
+		transform: translateX(0.75rem);
+		color: #ea580c;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-list-arrow {
+			color: #4b5563;
+		}
+		.pcc-list-card:hover .pcc-list-arrow {
+			color: #fb923c;
+		}
+	}
+	.pcc-empty {
+		border-radius: 1.5rem;
+		border: 2px dashed #fdba74;
+		background: linear-gradient(to bottom right, #fff7ed, #fef2f2);
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+		text-align: center;
+		box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-empty {
+			border-color: #374151;
+			background: linear-gradient(to bottom right, #1f2937, #111827);
+		}
+	}
+	.pcc-empty-icon {
+		margin-bottom: 2rem;
+		display: inline-flex;
+		height: 6rem;
+		width: 6rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background: linear-gradient(to bottom right, #ffedd5, #fce7f3);
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-empty-icon {
+			background: #374151;
+		}
+	}
+	.pcc-empty-title {
+		margin-bottom: 0.75rem;
+		font-size: 1.875rem;
+		font-weight: 900;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-empty-title {
+			color: white;
+		}
+	}
+	.pcc-empty-text {
+		margin-bottom: 2rem;
+		font-size: 1.125rem;
+		color: #4b5563;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pcc-empty-text {
+			color: #9ca3af;
+		}
+	}
+	.pcc-empty-btn {
+		border-radius: 0.75rem;
+		background: linear-gradient(to right, #ea580c, #dc2626);
+		padding: 1rem 2rem;
+		font-weight: 700;
+		color: white;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		transition: all 0.15s;
+		border: none;
+		cursor: pointer;
+	}
+	.pcc-empty-btn:hover {
+		transform: scale(1.05);
+		box-shadow: 0 25px 50px -12px rgb(249 115 22 / 0.5);
+	}
+
+	._c1 {
+		border-width: 2px;
+		border-style: solid;
+	}
+</style>

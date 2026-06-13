@@ -1,21 +1,13 @@
-import { CardStyleManager } from '$stylist/layout/class/style-manager/card';
-import type { LayoutShape } from '$stylist/layout/type/struct/item-layout-shape';
+﻿import type { LayoutShape } from '$stylist/layout/type/struct/item-layout-shape';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { CardProps } from '$stylist/layout/type/struct/layout-extended/card-props';
+import type { RecipeCard } from '$stylist/layout/interface/recipe/card';
 
-export function createCardState(props: CardProps) {
+export function createCardState(props: RecipeCard) {
 	const shape = $derived<LayoutShape>(props.shape ?? 'rounded');
 	const size = $derived<TokenSize>((props.size as TokenSize | undefined) ?? 'md');
 	const elevation = $derived(props.elevation ?? 1);
 	const clickable = $derived(props.clickable ?? false);
 	const fullWidth = $derived(props.fullWidth ?? false);
-
-	const classes = $derived(
-		CardStyleManager.getHostClass(shape, size, elevation, clickable, fullWidth, props.class)
-	);
-	const mediaClass = $derived(CardStyleManager.getMediaClass());
-	const bodyClass = $derived(CardStyleManager.getBodyClass());
-	const footerClass = $derived(CardStyleManager.getFooterClass());
 
 	const restProps = $derived.by(() => {
 		const {
@@ -50,22 +42,8 @@ export function createCardState(props: CardProps) {
 		get fullWidth() {
 			return fullWidth;
 		},
-		get classes() {
-			return classes;
-		},
-		get mediaClass() {
-			return mediaClass;
-		},
-		get bodyClass() {
-			return bodyClass;
-		},
-		get footerClass() {
-			return footerClass;
-		},
 		get restProps() {
 			return restProps;
 		}
 	};
 }
-
-export default createCardState;

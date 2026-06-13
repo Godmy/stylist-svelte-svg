@@ -11,3 +11,6 @@
 	<input class={state.inputClass} type="password" placeholder="Password" value={props.password} />
 	<div class={state.passwordValidClass}>{state.passwordValidText}</div>
 </form>
+
+<style>
+</style>

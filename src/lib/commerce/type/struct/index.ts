@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { Address } from './address';
-export type { AlertCardStoryProps } from './alert-card-story-props';
 export type {
 	BulkOrderFormItem,
 	BulkOrderFormProduct,
@@ -15,11 +14,9 @@ export type { CartSummaryPromotion } from './cart-summary-promotion';
 export type { CatalogProduct } from './catalog-product';
 export type { CheckoutFormProps } from './checkout-form-props';
 export type { CheckoutStep } from './checkout-step';
-export type { ComparisonCardProps } from './comparison-card-props';
 export type { ComparisonColumn } from './comparison-column';
 export type { ComparisonItem } from './comparison-item';
 export type { DiscountType } from './discount-type';
-export type { ExtendedQuoteRequestProps } from './extended-quote-request-props';
 export type { InventoryItemStatus } from './inventory-item-status';
 export type { Layout } from './layout';
 export type { OrderConfirmationProps } from './order-confirmation-props';
@@ -35,15 +32,9 @@ export type { PaymentSummaryItem } from './payment-summary-item';
 export type { PaymentSummaryProps } from './payment-summary-props';
 export type { PaymentSummaryTax } from './payment-summary-tax';
 export type { PricingTablePlan } from './pricing-table-plan';
-export type { ProductCardExtendedProps } from './product-card-extended-props';
 export type { ProductCarouselProduct } from './product-carousel-product';
-export type { ProductCatalogProps } from './product-catalog-props';
 export type { ProductReviewItem } from './product-review-item';
-export type { ProductReviewsProps } from './product-reviews-props';
 export type { ProductSortOption } from './product-sort-option';
-export type { ProductSortProps } from './product-sort-props';
-export type { ProductSortingProps } from './product-sorting-props';
-export type { ProductTourProps } from './product-tour-props';
 export type { SlotProductTourStep } from './product-tour-step';
 export type { ReturnPolicyStoryProps } from './return-policy-story-props';
 export type { RFQFormData } from './rfq-form-data';

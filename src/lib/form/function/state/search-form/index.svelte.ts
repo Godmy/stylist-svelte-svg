@@ -1,10 +1,10 @@
 import type { SlotSearchForm as SearchFormProps } from '$stylist/form/interface/slot/search-form';
-import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { SlotSearchFormState } from '$stylist/form/interface/slot/search-form-state';
 
 export function createSearchFormState(props: SearchFormProps): SlotSearchFormState {
 	const rootClass = $derived(
-		InteractionFormsStyleManager.root(
+		mergeClassNames(
 			'c-search-form border rounded-lg p-3 flex items-center gap-2',
 			props.class ?? ''
 		)

@@ -47,7 +47,7 @@
 	description="A component to display performance metrics with visual indicators"
 >
 	{#snippet children(controlValues: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<PerformanceMonitor
 				label={controlValues.label}
 				value={controlValues.value}
@@ -58,3 +58,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+</style>

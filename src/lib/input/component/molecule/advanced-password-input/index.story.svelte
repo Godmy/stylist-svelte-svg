@@ -25,10 +25,10 @@
 	description="A password input field with strength indicator and visibility toggle"
 >
 	{#snippet children(controlValues: any)}
-		<div class="mx-auto max-w-md p-6">
-			<div class="mb-6">
-				<h2 class="text-xl font-semibold">Password Input</h2>
-				<p class="text-[var(--color-text-secondary)]">Password field with strength indicator</p>
+		<div class="_c1">
+			<div class="_c2">
+				<h2 class="_c3">Password Input</h2>
+				<p class="_c4">Password field with strength indicator</p>
 			</div>
 			<AdvancedPasswordInput
 				placeholder={controlValues.placeholder}
@@ -37,3 +37,23 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+	}
+	._c3 {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c4 {
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -1,10 +1,11 @@
-﻿import type { Snippet } from 'svelte';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
-export interface BorderRecipe
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
+export interface RecipeBorder
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>, SlotChildren]> {
 	borderStyle?: 'solid' | 'dashed' | 'dotted' | 'double' | 'bold' | 'none' | 'invisible';
 	borderWidth?: string;
 	borderColor?: string;
@@ -14,5 +15,4 @@ export interface BorderRecipe
 	borderLeft?: boolean;
 	borderRight?: boolean;
 	animated?: boolean;
-	children?: Snippet;
 }

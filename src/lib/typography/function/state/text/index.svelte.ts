@@ -1,7 +1,7 @@
-import type { TextRecipe } from '$stylist/typography/interface/recipe/text';
+import type { RecipeText } from '$stylist/typography/interface/recipe/text';
 import createTextPresenterState from '$stylist/typography/function/state/text-presenter/index.svelte';
 
-export function createTextState(props: TextRecipe) {
+export function createTextState(props: RecipeText) {
 	return createTextPresenterState(props, 'c-typography-text');
 }
 

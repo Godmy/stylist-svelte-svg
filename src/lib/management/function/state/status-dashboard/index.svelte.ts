@@ -1,4 +1,3 @@
-import { StatusDashboardStyleManager } from '$stylist/management/class/style-manager/status-dashboard';
 import { ObjectManagerStatusDashboard } from '$stylist/management/class/object-manager/status-dashboard';
 import type { StatusDashboardStateProps } from '$stylist/management/interface/recipe/status-dashboard-status-dashboard-state-props';
 
@@ -18,23 +17,15 @@ export function createStatusDashboardState(props: StatusDashboardStateProps) {
 	const headerClassStr = $derived(headerClass == null ? undefined : String(headerClass));
 	const itemClassStr = $derived(itemClass == null ? undefined : String(itemClass));
 
-	const containerClass = $derived(
-		StatusDashboardStyleManager.getContainerClass(variant, size, classNameStr)
-	);
-	const headerClassComputed = $derived(StatusDashboardStyleManager.getHeaderClass(headerClassStr));
-	const titleClass = StatusDashboardStyleManager.getTitleClass();
-	const subtitleClass = StatusDashboardStyleManager.getSubtitleClass();
-	const itemsGridClass = $derived(StatusDashboardStyleManager.getItemsGridClass(layout));
-	const itemCardClass = $derived(StatusDashboardStyleManager.getItemCardClass(itemClassStr));
-	const itemContentClass = StatusDashboardStyleManager.getItemContentClass();
-	const itemHeaderClass = StatusDashboardStyleManager.getItemHeaderClass();
-	const itemTitleClass = $derived(StatusDashboardStyleManager.getItemTitleClass(size));
-	const itemValueClass = StatusDashboardStyleManager.getItemValueClass();
-	const itemDescriptionClass = $derived(StatusDashboardStyleManager.getItemDescriptionClass(size));
-	const itemFooterClass = StatusDashboardStyleManager.getItemFooterClass();
-	const itemActionsClass = StatusDashboardStyleManager.getItemActionsClass();
-	const statusIconWrapperClass = StatusDashboardStyleManager.getStatusIconWrapperClass();
-	const statusIconClass = StatusDashboardStyleManager.getStatusIconClass();
+	const titleClass = 'status-dashboard__title';
+	const subtitleClass = 'status-dashboard__subtitle';
+	const itemContentClass = 'status-dashboard__item-content';
+	const itemHeaderClass = 'status-dashboard__item-header';
+	const itemValueClass = 'status-dashboard__item-value';
+	const itemFooterClass = 'status-dashboard__item-footer';
+	const itemActionsClass = 'status-dashboard__item-actions';
+	const statusIconWrapperClass = 'status-dashboard__status-icon-wrapper';
+	const statusIconClass = 'status-dashboard__status-icon';
 
 	const restProps = $derived.by(() => {
 		const {
@@ -71,50 +62,8 @@ export function createStatusDashboardState(props: StatusDashboardStateProps) {
 		get variant() {
 			return variant;
 		},
-		get containerClass() {
-			return containerClass;
-		},
 		get headerClassComputed() {
 			return headerClassComputed;
-		},
-		get titleClass() {
-			return titleClass;
-		},
-		get subtitleClass() {
-			return subtitleClass;
-		},
-		get itemsGridClass() {
-			return itemsGridClass;
-		},
-		get itemCardClass() {
-			return itemCardClass;
-		},
-		get itemContentClass() {
-			return itemContentClass;
-		},
-		get itemHeaderClass() {
-			return itemHeaderClass;
-		},
-		get itemTitleClass() {
-			return itemTitleClass;
-		},
-		get itemValueClass() {
-			return itemValueClass;
-		},
-		get itemDescriptionClass() {
-			return itemDescriptionClass;
-		},
-		get itemFooterClass() {
-			return itemFooterClass;
-		},
-		get itemActionsClass() {
-			return itemActionsClass;
-		},
-		get statusIconWrapperClass() {
-			return statusIconWrapperClass;
-		},
-		get statusIconClass() {
-			return statusIconClass;
 		},
 		get restProps() {
 			return restProps;

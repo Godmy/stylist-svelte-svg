@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { NotificationItem } from '$stylist/chat/type/struct/notification-item';
-	import { NotificationStyleManager } from '$stylist/chat/class/style-manager/notifications';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 
@@ -51,7 +50,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class={NotificationStyleManager.preferences('p-4')}>
+		<div class="_c1">
 			<NotificationCenter
 				{notifications}
 				showUnreadCount={values.showUnreadCount}
@@ -75,3 +74,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

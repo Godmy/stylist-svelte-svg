@@ -1,59 +1,59 @@
-import type { ThemeBackgroundRecipe } from '$stylist/layout/interface/recipe/background';
+import type { RecipeThemeBackground } from '$stylist/layout/interface/recipe/background';
 
 export class ObjectManagerBackground {
 	static resolveBackground(
-		props: ThemeBackgroundRecipe
-	): NonNullable<ThemeBackgroundRecipe['background']> {
+		props: RecipeThemeBackground
+	): NonNullable<RecipeThemeBackground['background']> {
 		return props.background ?? 'default';
 	}
 
-	static resolveBackgroundColor(props: ThemeBackgroundRecipe): string {
+	static resolveBackgroundColor(props: RecipeThemeBackground): string {
 		return props.backgroundColor ?? '';
 	}
 
-	static resolveBackgroundImage(props: ThemeBackgroundRecipe): string {
+	static resolveBackgroundImage(props: RecipeThemeBackground): string {
 		return props.backgroundImage ?? '';
 	}
 
 	static resolveBackgroundPosition(
-		props: ThemeBackgroundRecipe
-	): NonNullable<ThemeBackgroundRecipe['backgroundPosition']> {
+		props: RecipeThemeBackground
+	): NonNullable<RecipeThemeBackground['backgroundPosition']> {
 		return props.backgroundPosition ?? 'center';
 	}
 
 	static resolveBackgroundSize(
-		props: ThemeBackgroundRecipe
-	): NonNullable<ThemeBackgroundRecipe['backgroundSize']> {
+		props: RecipeThemeBackground
+	): NonNullable<RecipeThemeBackground['backgroundSize']> {
 		return props.backgroundSize ?? 'cover';
 	}
 
 	static resolveBackgroundRepeat(
-		props: ThemeBackgroundRecipe
-	): NonNullable<ThemeBackgroundRecipe['backgroundRepeat']> {
+		props: RecipeThemeBackground
+	): NonNullable<RecipeThemeBackground['backgroundRepeat']> {
 		return props.backgroundRepeat ?? 'no-repeat';
 	}
 
-	static resolveGradient(props: ThemeBackgroundRecipe): string {
+	static resolveGradient(props: RecipeThemeBackground): string {
 		return props.gradient ?? '';
 	}
 
-	static resolveOpacity(props: ThemeBackgroundRecipe): number {
+	static resolveOpacity(props: RecipeThemeBackground): number {
 		return props.opacity ?? 1;
 	}
 
 	static resolveVariant(
-		props: ThemeBackgroundRecipe
-	): NonNullable<ThemeBackgroundRecipe['variant']> {
+		props: RecipeThemeBackground
+	): NonNullable<RecipeThemeBackground['variant']> {
 		return props.variant ?? 'default';
 	}
 
 	static createInlineStyles(input: {
-		background: NonNullable<ThemeBackgroundRecipe['background']>;
+		background: NonNullable<RecipeThemeBackground['background']>;
 		backgroundColor: string;
 		backgroundImage: string;
-		backgroundPosition: NonNullable<ThemeBackgroundRecipe['backgroundPosition']>;
-		backgroundSize: NonNullable<ThemeBackgroundRecipe['backgroundSize']>;
-		backgroundRepeat: NonNullable<ThemeBackgroundRecipe['backgroundRepeat']>;
+		backgroundPosition: NonNullable<RecipeThemeBackground['backgroundPosition']>;
+		backgroundSize: NonNullable<RecipeThemeBackground['backgroundSize']>;
+		backgroundRepeat: NonNullable<RecipeThemeBackground['backgroundRepeat']>;
 		gradient: string;
 		opacity: number;
 	}): Record<string, string | number> {

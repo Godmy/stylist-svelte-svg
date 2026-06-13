@@ -1,9 +1,17 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { PreziCamera } from '$stylist/architecture/interface/slot/prezi-camera/index';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
 
 export interface PreziSceneState extends StructIntersectAll<[]> {
 	camera: PreziCamera;
+	nodeCamera: {
+		x: number;
+		y: number;
+		zoom: number;
+		depth: number;
+		viewportWidth: number;
+		viewportHeight: number;
+	};
 	viewportWidth: number;
 	viewportHeight: number;
 	selectedNode: SceneNode | null;
@@ -22,5 +30,6 @@ export interface PreziSceneState extends StructIntersectAll<[]> {
 	minZoom: number;
 	maxZoom: number;
 	nodes: readonly SceneNode[];
+	worldStyle: string;
 	restProps: Record<string, unknown>;
 }

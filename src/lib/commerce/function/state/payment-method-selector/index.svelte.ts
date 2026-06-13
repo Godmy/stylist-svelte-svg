@@ -1,4 +1,3 @@
-import { PaymentMethodSelectorStyleManager } from '$stylist/commerce/class/style-manager/payment-method-selector-style-manager';
 import type { PaymentMethodSelectorProps } from '$stylist/commerce/type/struct/payment-method-selector-props';
 import type { PaymentMethod } from '$stylist/commerce/type/struct/payment-method';
 
@@ -9,14 +8,9 @@ export function createPaymentMethodSelectorState(props: PaymentMethodSelectorPro
 		selectedMethodId = props.selectedMethod;
 	});
 
-	const rootClass = $derived(PaymentMethodSelectorStyleManager.root(props.class ?? ''));
-
 	return {
 		get selectedMethodId() {
 			return selectedMethodId;
-		},
-		get rootClass() {
-			return rootClass;
 		},
 		select(method: PaymentMethod) {
 			if (props.disabled) return;

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { DrawingSurfaceStyleManager } from '$stylist/canvas/class/style-manager/drawing-surface';
 	import createDrawingSurfaceState from '$stylist/canvas/function/state/drawing-surface/index.svelte';
 	import type { DrawingSurfaceContract } from '$stylist/canvas/type/struct/drawing-surface/drawing-surface-contract';
 	import type { DrawingSurfaceCanvasClearedEvent } from '$stylist/canvas/type/struct/drawing-surface/drawing-surface-canvas-cleared-event';
@@ -28,7 +27,7 @@
 	bind:this={canvasRef}
 	width={state.width}
 	height={state.height}
-	class={DrawingSurfaceStyleManager.getCanvasClass(contract.class)}
+	class={state.canvasClass}
 	onmousedown={(event) => state.startDrawing(event, canvasRef)}
 	onmousemove={(event) => state.draw(event, canvasRef)}
 	onmouseup={() => state.stopDrawing(canvasRef)}

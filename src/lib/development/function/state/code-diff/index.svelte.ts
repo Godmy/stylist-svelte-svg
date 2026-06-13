@@ -1,47 +1,55 @@
-import type { CodeDiffProps } from '$stylist/development/type/struct/code-diff-props';
+import type { RecipeCodeDiff } from '$stylist/development/interface/recipe/code-diff';
 import type { CodeDiffDiffLine } from '$stylist/development/type/struct/code-diff-diff-line';
-import { CodeDiffStyleManager } from '$stylist/development/class/style-manager/code-diff';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-function computeDiffLines(original: string, modified: string): CodeDiffDiffLine[] {
-	const originalLines = original.split('\n');
-	const modifiedLines = modified.split('\n');
-	const lines: CodeDiffDiffLine[] = [];
-	const maxLines = Math.max(originalLines.length, modifiedLines.length);
+export function createCodeDiffState(props: RecipeCodeDiff) {
+	function computeDiffLines(original: string, modified: string): CodeDiffDiffLine[] {
+		const originalLines = original.split('\n');
+		const modifiedLines = modified.split('\n');
+		const lines: CodeDiffDiffLine[] = [];
+		const maxLines = Math.max(originalLines.length, modifiedLines.length);
 
-	for (let i = 0; i < maxLines; i++) {
-		const origLine = i < originalLines.length ? originalLines[i] : null;
-		const modLine = i < modifiedLines.length ? modifiedLines[i] : null;
+		for (let index = 0; index < maxLines; index++) {
+			const originalLine = index < originalLines.length ? originalLines[index] : null;
+			const modifiedLine = index < modifiedLines.length ? modifiedLines[index] : null;
 
-		if (origLine === modLine) {
-			lines.push({ type: 'unchanged', original: origLine, modified: modLine, lineNumber: i + 1 });
-		} else {
-			lines.push({
-				type: origLine === null ? 'added' : modLine === null ? 'removed' : 'changed',
-				original: origLine,
-				modified: modLine,
-				lineNumber: i + 1
-			});
+			if (originalLine === modifiedLine) {
+				lines.push({
+					type: 'unchanged',
+					original: originalLine,
+					modified: modifiedLine,
+					lineNumber: index + 1
+				});
+			} else {
+				lines.push({
+					type: originalLine === null ? 'added' : modifiedLine === null ? 'removed' : 'changed',
+					original: originalLine,
+					modified: modifiedLine,
+					lineNumber: index + 1
+				});
+			}
 		}
-	}
-	return lines;
-}
 
-export function createCodeDiffState(props: CodeDiffProps) {
+		return lines;
+	}
+
 	const diffLines = $derived(computeDiffLines(props.original ?? '', props.modified ?? ''));
-	const containerClass = $derived(CodeDiffStyleManager.getContainerClass(props.class ?? ''));
+	const containerClass = $derived(mergeClassNames('c-code-diff', props.class ?? ''));
 	const headerClassComputed = $derived(
-		CodeDiffStyleManager.getHeaderClass(props.headerClass ?? '')
+		mergeClassNames('c-code-diff__header', props.headerClass ?? '')
 	);
-	const mainContentClass = $derived(CodeDiffStyleManager.getMainContentClass());
-	const lineNumbersContainerClass = $derived(CodeDiffStyleManager.getLineNumbersContainerClass());
-	const lineNumberItemClass = $derived(CodeDiffStyleManager.getLineNumberItemClass());
+	const mainContentClass = 'c-code-diff__main';
+	const lineNumbersContainerClass = 'c-code-diff__line-numbers';
+	const lineNumberItemClass = 'c-code-diff__line-number';
 	const contentContainerClass = $derived(
-		CodeDiffStyleManager.getContentContainerClass(props.contentClass ?? '')
+		mergeClassNames('c-code-diff__content', props.contentClass ?? '')
 	);
-	const diffLineClass = (type: string) => CodeDiffStyleManager.getDiffLineClass(type);
-	const diffSpanClass = (type: string) => CodeDiffStyleManager.getDiffSpanClass(type);
-	const getDiffContentClass = $derived(CodeDiffStyleManager.getDiffContentClass());
-	const getChangedContainerClass = $derived(CodeDiffStyleManager.getChangedContainerClass());
+	const diffLineClass = (type: string) =>
+		mergeClassNames('c-code-diff__line', `c-code-diff__line--${type}`);
+	const diffSpanClass = (type: string) =>
+		mergeClassNames('c-code-diff__text', `c-code-diff__text--${type}`);
+	const getDiffContentClass = 'c-code-diff__body';
+	const getChangedContainerClass = 'c-code-diff__changed';
 
 	return {
 		get diffLines() {
@@ -75,5 +83,3 @@ export function createCodeDiffState(props: CodeDiffProps) {
 		}
 	};
 }
-
-export default createCodeDiffState;

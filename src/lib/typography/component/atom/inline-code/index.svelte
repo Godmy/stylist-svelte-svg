@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ThemeInlineCodeRecipe } from '$stylist/typography/interface/recipe/inline-code';
+	import type { RecipeThemeInlineCode } from '$stylist/typography/interface/recipe/inline-code';
 	import createInlineCodeState from '$stylist/typography/function/state/inline-code/index.svelte';
 
-	let props: ThemeInlineCodeRecipe = $props();
+	let props: RecipeThemeInlineCode = $props();
 
 	const state = createInlineCodeState(props);
 	const children = $derived(props.children);

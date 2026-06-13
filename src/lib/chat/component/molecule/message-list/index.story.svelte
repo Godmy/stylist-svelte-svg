@@ -56,10 +56,8 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-3 rounded-xl bg-[var(--color-background-secondary)] p-4">
-			<div
-				class="h-80 overflow-hidden rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)]"
-			>
+		<div class="_c1">
+			<div class="_c2">
 				<MessageList
 					messages={(args.includeAttachments ? messagesWithAttachments : messages).slice(
 						0,
@@ -69,7 +67,32 @@
 					onMessageAction={(action, message) => (lastAction = `${action}:${message.id}`)}
 				/>
 			</div>
-			<p class="text-sm text-[var(--color-text-secondary)]">Last action: {lastAction}</p>
+			<p class="_c3">Last action: {lastAction}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		height: 20rem;
+		overflow: hidden;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

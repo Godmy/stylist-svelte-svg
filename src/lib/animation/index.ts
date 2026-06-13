@@ -1,5 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { ObjectManagerMotion } from './class';
+export { ManagerMotion } from './class';
 export {
 	Animated,
 	AnimatedBackground,
@@ -18,8 +18,10 @@ export {
 } from './const';
 export {
 	animateValue,
+	createAnimatedBackgroundState,
 	createAnimatedNumberState,
 	createAnimatedState,
+	createLayoutTransformationState,
 	createNumberFlowState,
 	createTransformableState,
 	createTransformationState,
@@ -28,25 +30,26 @@ export {
 	getEasingFunction
 } from './function';
 export type {
-	AnimateContract,
 	EasingFunction,
-	EasingType,
-	MotionContract,
 	TokenAnimation,
 	TokenAnimationIcon,
 	TokenDuration,
 	TokenEasing,
-	TokenTransition,
-	TransformContract
+	TokenTransition
 } from './type';
 export type {
 	AnimateValueOptions,
-	AnimatedNumberRecipe,
 	BehaviorAnimate,
+	BehaviorMotion,
 	BehaviorMotionPreset,
-	BehaviorMotionToken,
+	BehaviorTransform,
 	BehaviorTransformable,
-	NumberFlowRecipe,
+	RecipeAnimated,
+	RecipeAnimatedBackground,
+	RecipeAnimatedNumber,
+	RecipeLayoutTransformation,
+	RecipeNumberFlow,
+	RecipeTransformable,
 	SlotAnimate,
 	SlotTransformable,
 	SlotTransformation

@@ -28,3 +28,6 @@
 	{onSelect}
 	class="c-cluster-toolbar {className}"
 />
+
+<style>
+</style>

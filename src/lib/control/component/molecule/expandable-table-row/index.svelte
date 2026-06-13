@@ -29,17 +29,17 @@
 </script>
 
 <!-- Main row -->
-<tr class={`border-b border-[var(--color-border-primary)] ${hostClass}`} {...restProps}>
-	<td class={`px-6 py-4 text-sm font-medium text-[var(--color-text-primary)] ${headerCellClass}`}>
-		<button
-			type="button"
-			class="flex items-center text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] focus:outline-none"
-			onclick={() => state.toggleExpanded()}
-		>
+<tr
+	class={['c-exp-row', hostClass].filter(Boolean).join(' ')}
+	data-expanded={state.expanded || undefined}
+	{...restProps}
+>
+	<td class="c-exp-row__toggle-cell">
+		<button type="button" class="c-exp-row__toggle-btn" onclick={() => state.toggleExpanded()}>
 			{#if state.expanded}
-				<BaseIcon name={ChevronDown} class="h-5 w-5 text-[var(--color-text-tertiary)]" />
+				<BaseIcon name={ChevronDown} style="width:1.25rem;height:1.25rem;" />
 			{:else}
-				<BaseIcon name={ChevronRight} class="h-5 w-5 text-[var(--color-text-tertiary)]" />
+				<BaseIcon name={ChevronRight} style="width:1.25rem;height:1.25rem;" />
 			{/if}
 		</button>
 	</td>
@@ -48,9 +48,48 @@
 
 <!-- Expanded content row -->
 {#if state.expanded}
-	<tr class={`border-b border-[var(--color-border-primary)] ${hostClass}`}>
-		<td class={`px-6 py-4 text-sm text-[var(--color-text-secondary)] ${cellClass}`} colspan="999">
+	<tr class={['c-exp-row c-exp-row--expanded', hostClass].filter(Boolean).join(' ')}>
+		<td class="c-exp-row__content-cell" colspan="999">
 			{@render expandableContent()}
 		</td>
 	</tr>
 {/if}
+
+<style>
+	.c-exp-row {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-exp-row__toggle-cell {
+		padding: 1rem 1.5rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.c-exp-row__toggle-btn {
+		display: flex;
+		align-items: center;
+		color: var(--color-text-secondary);
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+	}
+
+	.c-exp-row__toggle-btn:hover {
+		color: var(--color-text-primary);
+	}
+
+	.c-exp-row__toggle-btn:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
+		border-radius: 0.25rem;
+	}
+
+	.c-exp-row__content-cell {
+		padding: 1rem 1.5rem;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+</style>

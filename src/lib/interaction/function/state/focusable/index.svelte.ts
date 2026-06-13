@@ -1,27 +1,29 @@
-import { FocusableStyleManager } from '$stylist/interaction/class/style-manager/focusable';
 import type { SlotFocusable as FocusProps } from '$stylist/interaction/interface/slot/focusable';
 
 export const createFocusableState = (props: FocusProps) => {
-	// SlotState
 	let isFocused = $state(false);
 
-	// Вычисляемые классы
-	const classes = $derived.by(() =>
-		FocusableStyleManager.getClasses({
-			focusEffect: props.focusEffect,
-			isFocused,
-			disabled: props.disabled,
-			class: props.class
-		})
-	);
+	const classes = $derived.by(() => {
+		const { focusEffect = true, disabled = false, class: className = '' } = props;
 
-	// Извлечение rest props
+		if (disabled)
+			return ['c-focusable', 'c-focusable--disabled', className].filter(Boolean).join(' ');
+
+		return [
+			'c-focusable',
+			focusEffect && 'c-focusable--focus-ring',
+			isFocused && 'c-focusable--focused',
+			className
+		]
+			.filter(Boolean)
+			.join(' ');
+	});
+
 	const restProps = $derived.by(() => {
 		const { class: _class, onFocus, onBlur, disabled, focusEffect, ...rest } = props;
 		return rest;
 	});
 
-	// Обработчики
 	function handleFocus(event: FocusEvent) {
 		if (!props.disabled) {
 			isFocused = true;
@@ -37,23 +39,18 @@ export const createFocusableState = (props: FocusProps) => {
 	}
 
 	return {
-		// SlotState getters
 		get isFocused() {
 			return isFocused;
 		},
 		get disabled() {
 			return props.disabled;
 		},
-
-		// SlotState
 		get classes() {
 			return classes;
 		},
 		get restProps() {
 			return restProps;
 		},
-
-		// Handlers
 		handleFocus,
 		handleBlur
 	};

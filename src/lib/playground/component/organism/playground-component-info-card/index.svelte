@@ -1,7 +1,7 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundComponentInfoCard } from '$stylist/playground/interface/recipe/playground-component-info-card';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import createPlaygroundComponentInfoCardState from '$stylist/playground/function/state/playground-component-info-card/index.svelte';
-	import type { PlaygroundComponentInfoCardProps } from '$stylist/playground/type/struct/playground-component-info-card-props';
+	import { createPlaygroundComponentInfoCardState } from '$stylist/playground/function/state/playground-component-info-card/index.svelte';
 
 	const X = 'x';
 	const Package = 'package';
@@ -15,13 +15,13 @@
 	const Calendar = 'calendar';
 	const User = 'user';
 
-	let props: PlaygroundComponentInfoCardProps = $props();
+	let props: RecipePlaygroundComponentInfoCard = $props();
 	const state = createPlaygroundComponentInfoCardState(props);
 </script>
 
 {#if state.isOpen}
 	<div
-		class="animate-fade-in fixed inset-0 z-[var(--z-index-overlay)] bg-black/50 backdrop-blur-sm"
+		class="pic-backdrop pic-backdrop--anim"
 		onclick={state.handleClose}
 		onkeydown={(e) => e.key === 'Escape' && state.handleClose()}
 		role="button"
@@ -29,11 +29,9 @@
 		aria-label="Close component info"
 	></div>
 
-	<div
-		class="pointer-events-none fixed inset-0 z-[var(--z-index-modal)] flex items-center justify-center p-4"
-	>
+	<div class="pic-modal-pos">
 		<div
-			class="info-card-modal animate-scale-in pointer-events-auto w-full max-w-3xl overflow-hidden"
+			class="info-card-modal info-card-modal--anim"
 			onclick={(e) => e.stopPropagation()}
 			onkeydown={(e) => {
 				if (e.key === 'Escape') {
@@ -46,19 +44,19 @@
 			aria-labelledby="component-info-title"
 			tabindex="-1"
 		>
-			<div class="info-card-modal__hero relative p-7">
-				<div class="info-card-modal__heroGlow absolute inset-0"></div>
-				<div class="relative flex items-start justify-between gap-4">
-					<div class="flex-1">
-						<div class="mb-2 flex items-center gap-2">
-							<BaseIcon name={Package} class="h-5 w-5 text-white" />
-							<h2 id="component-info-title" class="text-3xl font-black tracking-tight text-white">
+			<div class="info-card-modal__hero">
+				<div class="info-card-modal__heroGlow"></div>
+				<div class="pic-hero-row">
+					<div class="pic-hero-info">
+						<div class="pic-title-row">
+							<BaseIcon name={Package} style="width:1.25rem;height:1.25rem;color:white" />
+							<h2 id="component-info-title" class="pic-comp-title">
 								{state.componentName || 'Component Info'}
 							</h2>
 						</div>
 
 						{#if state.category || state.subcategory}
-							<div class="flex flex-wrap items-center gap-2">
+							<div class="pic-badges">
 								{#if state.category}
 									<span class="info-card-modal__badge">{state.category}</span>
 								{/if}
@@ -69,86 +67,78 @@
 						{/if}
 					</div>
 
-					<button
-						onclick={state.handleClose}
-						class="group rounded-xl p-2 transition-all hover:scale-110 hover:bg-white/20 active:scale-95"
-						title="Close"
-					>
-						<BaseIcon name={X} class="h-5 w-5 text-white" />
+					<button onclick={state.handleClose} class="pic-close-btn" title="Close">
+						<BaseIcon name={X} style="width:1.25rem;height:1.25rem;color:white" />
 					</button>
 				</div>
 			</div>
 
-			<div class="max-h-[65vh] overflow-y-auto p-7">
-				<div class="mb-7">
-					<div class="mb-3 flex items-center gap-2">
+			<div class="pic-body">
+				<div class="pic-section">
+					<div class="pic-section-header">
 						<BaseIcon
 							name={Info}
-							class="h-4 w-4 text-[var(--playground-accent,var(--color-primary-600))]"
+							style="width:1rem;height:1rem;color:var(--playground-accent,var(--color-primary-600))"
 						/>
-						<h3 class="text-sm font-bold text-[var(--color-text-primary)]">Description</h3>
+						<h3 class="pic-section-title">Description</h3>
 					</div>
-					<p class="max-w-3xl text-sm leading-7 text-[var(--color-text-secondary)]">
-						{state.description}
-					</p>
+					<p class="pic-desc">{state.description}</p>
 				</div>
 
-				<div class="mb-7 grid grid-cols-1 gap-4 md:grid-cols-2">
+				<div class="pic-stats-grid">
 					<div class="stat-card stat-card--indigo">
-						<div class="mb-2 flex items-center gap-2">
-							<BaseIcon name={Layers} class="h-4 w-4 text-indigo-600" />
-							<span class="text-xs font-semibold text-indigo-900">Props</span>
+						<div class="pic-stat-header">
+							<BaseIcon name={Layers} style="width:1rem;height:1rem;color:#4f46e5" />
+							<span style="font-size:0.75rem;font-weight:600;color:#312e81">Props</span>
 						</div>
-						<p class="text-2xl font-black text-indigo-600">{state.propsCount}</p>
+						<p style="font-size:1.5rem;font-weight:900;color:#4f46e5">{state.propsCount}</p>
 					</div>
 
 					<div class="stat-card stat-card--green">
-						<div class="mb-2 flex items-center gap-2">
-							<BaseIcon name={Tag} class="h-4 w-4 text-green-600" />
-							<span class="text-xs font-semibold text-green-900">Version</span>
+						<div class="pic-stat-header">
+							<BaseIcon name={Tag} style="width:1rem;height:1rem;color:#16a34a" />
+							<span style="font-size:0.75rem;font-weight:600;color:#14532d">Version</span>
 						</div>
-						<p class="font-mono text-2xl font-black text-green-600">{state.version}</p>
+						<p style="font-family:monospace;font-size:1.5rem;font-weight:900;color:#16a34a">
+							{state.version}
+						</p>
 					</div>
 
 					<div class="stat-card stat-card--purple">
-						<div class="mb-2 flex items-center gap-2">
-							<BaseIcon name={User} class="h-4 w-4 text-purple-600" />
-							<span class="text-xs font-semibold text-purple-900">Author</span>
+						<div class="pic-stat-header">
+							<BaseIcon name={User} style="width:1rem;height:1rem;color:#9333ea" />
+							<span style="font-size:0.75rem;font-weight:600;color:#581c87">Author</span>
 						</div>
-						<p class="text-sm font-bold text-purple-600">{state.author}</p>
+						<p style="font-size:0.875rem;font-weight:700;color:#9333ea">{state.author}</p>
 					</div>
 
 					<div class="stat-card stat-card--orange">
-						<div class="mb-2 flex items-center gap-2">
-							<BaseIcon name={Calendar} class="h-4 w-4 text-orange-600" />
-							<span class="text-xs font-semibold text-orange-900">Updated</span>
+						<div class="pic-stat-header">
+							<BaseIcon name={Calendar} style="width:1rem;height:1rem;color:#ea580c" />
+							<span style="font-size:0.75rem;font-weight:600;color:#7c2d12">Updated</span>
 						</div>
-						<p class="text-sm font-bold text-orange-600">{state.lastUpdated}</p>
+						<p style="font-size:0.875rem;font-weight:700;color:#ea580c">{state.lastUpdated}</p>
 					</div>
 				</div>
 
 				{#if state.npmPackage}
-					<div class="mb-7">
-						<div class="mb-3 flex items-center gap-2">
+					<div class="pic-section">
+						<div class="pic-section-header">
 							<BaseIcon
 								name={Package}
-								class="h-4 w-4 text-[var(--playground-accent,var(--color-primary-600))]"
+								style="width:1rem;height:1rem;color:var(--playground-accent,var(--color-primary-600))"
 							/>
-							<h3 class="text-sm font-bold text-[var(--color-text-primary)]">Installation</h3>
+							<h3 class="pic-section-title">Installation</h3>
 						</div>
-						<div class="relative">
-							<div class="rounded-2xl border border-gray-800 bg-gray-950 p-4">
-								<code class="font-mono text-sm text-green-400">npm install {state.npmPackage}</code>
+						<div class="pic-npm-wrap">
+							<div class="pic-npm-block">
+								<code class="pic-npm-code">npm install {state.npmPackage}</code>
 							</div>
-							<button
-								onclick={state.copyNpmCommand}
-								class="absolute top-2 right-2 rounded-lg bg-gray-800 p-2 transition-all hover:scale-110 hover:bg-gray-700 active:scale-95"
-								title="Copy command"
-							>
+							<button onclick={state.copyNpmCommand} class="pic-npm-copy-btn" title="Copy command">
 								{#if state.copySuccess}
-									<BaseIcon name={CheckCircle} class="h-4 w-4 text-green-400" />
+									<BaseIcon name={CheckCircle} style="width:1rem;height:1rem;color:#4ade80" />
 								{:else}
-									<BaseIcon name={Copy} class="h-4 w-4 text-gray-400 hover:text-white" />
+									<BaseIcon name={Copy} style="width:1rem;height:1rem;color:#9ca3af" />
 								{/if}
 							</button>
 						</div>
@@ -156,49 +146,44 @@
 				{/if}
 
 				{#if state.examples && state.examples.length > 0}
-					<div class="mb-7">
-						<div class="mb-3 flex items-center gap-2">
+					<div class="pic-section">
+						<div class="pic-section-header">
 							<BaseIcon
 								name={FileCode}
-								class="h-4 w-4 text-[var(--playground-accent,var(--color-primary-600))]"
+								style="width:1rem;height:1rem;color:var(--playground-accent,var(--color-primary-600))"
 							/>
-							<h3 class="text-sm font-bold text-[var(--color-text-primary)]">Usage Examples</h3>
+							<h3 class="pic-section-title">Usage Examples</h3>
 						</div>
-						<ul class="space-y-2">
+						<ul class="pic-examples-list">
 							{#each state.examples as example}
 								<li class="info-card-modal__example">
 									<span class="info-card-modal__bullet"></span>
-									<span class="text-sm text-[var(--color-text-secondary)]">{example}</span>
+									<span style="font-size:0.875rem;color:var(--color-text-secondary)">{example}</span
+									>
 								</li>
 							{/each}
 						</ul>
 					</div>
 				{/if}
 
-				<div class="flex flex-col gap-3 sm:flex-row">
+				<div class="pic-actions">
 					<a
 						href="https://www.npmjs.com/package/{state.npmPackage}"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="group flex flex-1 items-center justify-center gap-2 rounded-2xl border border-red-200 bg-gradient-to-r from-red-50 to-orange-50 px-4 py-3 text-sm font-semibold text-red-700 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md active:scale-[0.99]"
+						class="pic-action-link pic-action-link--npm"
 					>
-						<BaseIcon name={Package} class="h-4 w-4" />
+						<BaseIcon name={Package} style="width:1rem;height:1rem" />
 						NPM Package
-						<BaseIcon
-							name={ExternalLink}
-							class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-						/>
+						<BaseIcon name={ExternalLink} style="width:0.875rem;height:0.875rem" />
 					</a>
 					<a
 						href="/docs/components/{state.componentName}"
-						class="group flex flex-1 items-center justify-center gap-2 rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 px-4 py-3 text-sm font-semibold text-indigo-700 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md active:scale-[0.99]"
+						class="pic-action-link pic-action-link--docs"
 					>
-						<BaseIcon name={FileCode} class="h-4 w-4" />
+						<BaseIcon name={FileCode} style="width:1rem;height:1rem" />
 						Documentation
-						<BaseIcon
-							name={ExternalLink}
-							class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-						/>
+						<BaseIcon name={ExternalLink} style="width:0.875rem;height:0.875rem" />
 					</a>
 				</div>
 			</div>
@@ -207,6 +192,210 @@
 {/if}
 
 <style>
+	.pic-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: var(--z-index-overlay);
+		background: rgb(0 0 0 / 0.5);
+		backdrop-filter: blur(4px);
+	}
+	.pic-modal-pos {
+		pointer-events: none;
+		position: fixed;
+		inset: 0;
+		z-index: var(--z-index-modal);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+	}
+	.info-card-modal {
+		pointer-events: auto;
+		width: 100%;
+		max-width: 48rem;
+		overflow: hidden;
+	}
+	.info-card-modal__hero {
+		position: relative;
+		padding: 1.75rem;
+	}
+	.info-card-modal__heroGlow {
+		position: absolute;
+		inset: 0;
+	}
+	.pic-hero-row {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.pic-hero-info {
+		flex: 1;
+	}
+	.pic-title-row {
+		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pic-comp-title {
+		font-size: 1.875rem;
+		font-weight: 900;
+		letter-spacing: -0.025em;
+		color: white;
+	}
+	.pic-badges {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pic-close-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.75rem;
+		padding: 0.5rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+	.pic-close-btn:hover {
+		transform: scale(1.1);
+		background: rgb(255 255 255 / 0.2);
+	}
+	.pic-close-btn:active {
+		transform: scale(0.95);
+	}
+	.pic-body {
+		max-height: 65vh;
+		overflow-y: auto;
+		padding: 1.75rem;
+	}
+	.pic-section {
+		margin-bottom: 1.75rem;
+	}
+	.pic-section-header {
+		margin-bottom: 0.75rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pic-section-title {
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+	.pic-desc {
+		max-width: 48rem;
+		font-size: 0.875rem;
+		line-height: 1.75;
+		color: var(--color-text-secondary);
+	}
+	.pic-stats-grid {
+		margin-bottom: 1.75rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		.pic-stats-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	.pic-stat-header {
+		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pic-npm-wrap {
+		position: relative;
+	}
+	.pic-npm-block {
+		border-radius: 1rem;
+		border: 1px solid #1f2937;
+		background: #030712;
+		padding: 1rem;
+	}
+	.pic-npm-code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 0.875rem;
+		color: #4ade80;
+	}
+	.pic-npm-copy-btn {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.5rem;
+		background: #1f2937;
+		padding: 0.5rem;
+		transition: all 0.15s;
+		border: none;
+		cursor: pointer;
+	}
+	.pic-npm-copy-btn:hover {
+		transform: scale(1.1);
+		background: #374151;
+	}
+	.pic-npm-copy-btn:active {
+		transform: scale(0.95);
+	}
+	.pic-examples-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.pic-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	@media (min-width: 640px) {
+		.pic-actions {
+			flex-direction: row;
+		}
+	}
+	.pic-action-link {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		border-radius: 1rem;
+		padding: 0.75rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		transition: all 0.15s;
+		border: 1px solid;
+	}
+	.pic-action-link:hover {
+		transform: scale(1.02);
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.pic-action-link:active {
+		transform: scale(0.99);
+	}
+	.pic-action-link--npm {
+		border-color: #fecaca;
+		background: linear-gradient(to right, #fef2f2, #fff7ed);
+		color: #b91c1c;
+	}
+	.pic-action-link--docs {
+		border-color: #c7d2fe;
+		background: linear-gradient(to right, #eef2ff, #f5f3ff);
+		color: #4338ca;
+	}
 	@keyframes fade-in {
 		from {
 			opacity: var(--opacity-0);
@@ -330,5 +519,30 @@
 	.stat-card--orange {
 		border-color: rgb(254 215 170);
 		background: linear-gradient(135deg, rgb(255 247 237), rgb(255 251 235));
+	}
+
+	.pic-backdrop--anim {
+		animation: fadeIn 0.2s ease-out;
+	}
+	.info-card-modal--anim {
+		animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes scaleIn {
+		from {
+			opacity: 0;
+			transform: scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 </style>

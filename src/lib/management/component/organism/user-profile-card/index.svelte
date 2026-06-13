@@ -1,18 +1,39 @@
-<script lang="ts">
-	import createUserProfileCardState from '$stylist/management/function/state/user-profile-card/index.svelte';
-	import type { SlotUserProfileCard as UserProfileCardProps } from '$stylist/form/interface/slot/user-profile-card';
+﻿<script lang="ts">
+	import type { RecipeUserProfileCard } from '$stylist/management/interface/recipe/user-profile-card';
+	import { createUserProfileCardState } from '$stylist/management/function/state/user-profile-card/index.svelte';
 
-	let props: UserProfileCardProps = $props();
+	let props: RecipeUserProfileCard = $props();
 	const state = createUserProfileCardState(props);
 </script>
 
 <div class={state.containerClasses} {...state.restProps}>
-	<div
-		class="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary-100)] font-semibold text-[var(--color-primary-700)]"
-	>
+	<div class="_c1">
 		{state.initial}
 	</div>
-	<div class="mt-2 font-semibold">{state.name}</div>
-	<div class="text-sm text-[var(--color-text-secondary)]">{state.role}</div>
-	<div class="text-sm text-[var(--color-text-secondary)]">{state.email}</div>
+	<div class="_c2">{state.name}</div>
+	<div class="_c3">{state.role}</div>
+	<div class="_c3">{state.email}</div>
 </div>
+
+<style>
+	._c1 {
+		display: flex;
+		height: 3rem;
+		width: 3rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background-color: var(--color-primary-100);
+		font-weight: 600;
+		color: var(--color-primary-700);
+	}
+	._c2 {
+		margin-top: 0.5rem;
+		font-weight: 600;
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

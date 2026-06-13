@@ -1,7 +1,7 @@
 import type { HTMLButtonAttributes } from 'svelte/elements';
 import type { SlotButtonElement as ButtonElementProps } from '$stylist/control/interface/slot/button-element';
 import { createButtonFactoryInput } from '$stylist/interaction/factory/button';
-import createOriginalButtonState from '$stylist/control/function/state/button/index.svelte';
+import { createButtonState as createOriginalButtonState } from '$stylist/control/function/state/button/index.svelte';
 
 export function createButtonState(props: ButtonElementProps & HTMLButtonAttributes) {
 	const factoryInput = $derived(createButtonFactoryInput(props));
@@ -25,6 +25,18 @@ export function createButtonState(props: ButtonElementProps & HTMLButtonAttribut
 		},
 		get loaderClasses() {
 			return state.loaderClasses;
+		},
+		get variant() {
+			return state.variant;
+		},
+		get size() {
+			return state.size;
+		},
+		get isDisabled() {
+			return state.isDisabled;
+		},
+		get block() {
+			return state.block;
 		}
 	};
 }

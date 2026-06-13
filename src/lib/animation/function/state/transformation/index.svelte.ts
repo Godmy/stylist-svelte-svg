@@ -52,8 +52,9 @@ export function createTransformationState(props: TransformationProps) {
 		if (transforms.length > 0) result.transform = transforms.join(' ');
 		if (transformOrigin) result['transform-origin'] = transformOrigin;
 
-		if (!disabled && (duration > 0 || animateOnHover || animateOnClick)) {
-			result.transition = `transform ${typeof duration === 'number' ? duration : 300}ms ${easing} ${delay}ms`;
+		const durationMs = typeof duration === 'number' ? duration : Number(duration) || 300;
+		if (!disabled && (durationMs > 0 || animateOnHover || animateOnClick)) {
+			result.transition = `transform ${durationMs}ms ${easing} ${delay}ms`;
 		}
 
 		return result;

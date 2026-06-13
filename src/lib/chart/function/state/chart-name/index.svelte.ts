@@ -1,12 +1,12 @@
-import type { ChartNameRecipe as ChartNameProps } from '$stylist/chart/interface/recipe/chart-name';
-import { ChartStyleManager } from '$stylist/chart/class/style-manager/chart';
+import type { RecipeChartName as ChartNameProps } from '$stylist/chart/interface/recipe/chart-name';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
 export function createChartNameState(props: ChartNameProps) {
-	const classes = $derived(ChartStyleManager.getChartNameClasses(resolveClassName(props.class)));
+	const classes = $derived(mergeClassNames('c-chart-name', resolveClassName(props.class)));
 
 	return {
 		get classes() {

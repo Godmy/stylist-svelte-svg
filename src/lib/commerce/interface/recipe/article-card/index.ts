@@ -1,30 +1,26 @@
-/**
- * ArticleCard вЂ” РєР°СЂС‚РѕС‡РєР° СЃС‚Р°С‚СЊРё СЃ Р·Р°РіРѕР»РѕРІРєРѕРј, РѕРїРёСЃР°РЅРёРµРј Рё РјРµС‚Р°РґР°РЅРЅС‹РјРё..
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot        (information) вЂ” label (Label)
- *   ICaptionSlot        (information) вЂ” caption (Caption)
- *   IMediaSlot        (information) вЂ” media (Media)
- *   IBadgeSlot        (information) вЂ” badge (Badge)
- *   IIconSlot        (information) вЂ” icon (Icon)
- */
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotMedia as IMediaSlot } from '$stylist/media/interface/slot/media';
-import type { Snippet } from 'svelte';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { ArticleCardAction } from '$stylist/commerce/interface/slot/article-card-action';
 
-export interface ArticleCardRecipe
+export interface RecipeArticleCard
 	extends StructIntersectAll<
-		[ILabelSlot, ICaptionSlot, IMediaSlot, IBadgeSlot, IIconSlot, ThemeAttributes<HTMLElement>]
+		[
+			SlotTheme,
+			StructIntersectAll<
+				[ILabelSlot, ICaptionSlot, IMediaSlot, IBadgeSlot, IIconSlot, HTMLAttributes<HTMLElement>]
+			>,
+			SlotChildren
+		]
 	> {
 	title?: string;
 	subtitle?: string;
 	image?: string;
 	actions?: ArticleCardAction[];
-	children?: Snippet;
 }

@@ -1,4 +1,4 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/architecture/type/struct/item-architecture-html-attributes';
+import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
 import type { Step } from '../step';
 
 export type StepperProps = ArchitectureHTMLAttributes<HTMLDivElement> & {

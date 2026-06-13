@@ -1,8 +1,6 @@
-import type { PlaygroundAiChatProps } from '$stylist/playground/type/struct/playground-ai-chat-props';
+import type { RecipePlaygroundAiChat } from '$stylist/playground/interface/recipe/playground-ai-chat';
 import type { PlaygroundAiChatChatMessage } from '$stylist/playground/type/struct/playground-ai-chat-chat-message';
-import { PlaygroundAiChatStyleManager } from '$stylist/playground/class/style-manager/playground-ai-chat';
-
-export function createPlaygroundAiChatState(props: PlaygroundAiChatProps) {
+export function createPlaygroundAiChatState(props: RecipePlaygroundAiChat) {
 	const X = 'x';
 	const Send = 'send';
 
@@ -11,20 +9,16 @@ export function createPlaygroundAiChatState(props: PlaygroundAiChatProps) {
 		{
 			role: 'assistant',
 			content:
-				'Здравствуйте! Я помогу вам с анализом скриншота. Опишите, что вы хотите узнать или обсудить.'
+				'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ! РЇ РїРѕРјРѕРіСѓ РІР°Рј СЃ Р°РЅР°Р»РёР·РѕРј СЃРєСЂРёРЅС€РѕС‚Р°. РћРїРёС€РёС‚Рµ, С‡С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СѓР·РЅР°С‚СЊ РёР»Рё РѕР±СЃСѓРґРёС‚СЊ.'
 		}
 	]);
 
 	const onClose = $derived(props.onClose);
 
-	const containerClass = $derived(PlaygroundAiChatStyleManager.getContainerClasses());
-	const headerClass = $derived(PlaygroundAiChatStyleManager.getHeaderClasses());
-	const messagesContainerClass = $derived(
-		PlaygroundAiChatStyleManager.getMessagesContainerClasses()
-	);
 	const messageClass = (role: 'user' | 'assistant') =>
-		PlaygroundAiChatStyleManager.getMessageClasses(role);
-	const inputContainerClass = $derived(PlaygroundAiChatStyleManager.getInputContainerClasses());
+		['playground-ai-chat__message', role ? `playground-ai-chat__message--selected` : '']
+			.filter(Boolean)
+			.join(' ');
 
 	function sendMessage() {
 		if (!inputMessage.trim()) return;
@@ -38,7 +32,7 @@ export function createPlaygroundAiChatState(props: PlaygroundAiChatProps) {
 		setTimeout(() => {
 			messages.push({
 				role: 'assistant',
-				content: `Вы написали: "${userMsg}". Это демонстрационный ответ. В реальной версии здесь будет настоящий ответ от AI модели.`
+				content: `Р’С‹ РЅР°РїРёСЃР°Р»Рё: "${userMsg}". Р­С‚Рѕ РґРµРјРѕРЅСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РѕС‚РІРµС‚. Р’ СЂРµР°Р»СЊРЅРѕР№ РІРµСЂСЃРёРё Р·РґРµСЃСЊ Р±СѓРґРµС‚ РЅР°СЃС‚РѕСЏС‰РёР№ РѕС‚РІРµС‚ РѕС‚ AI РјРѕРґРµР»Рё.`
 			});
 		}, 500);
 	}
@@ -86,5 +80,3 @@ export function createPlaygroundAiChatState(props: PlaygroundAiChatProps) {
 		handleKeyPress
 	};
 }
-
-export default createPlaygroundAiChatState;

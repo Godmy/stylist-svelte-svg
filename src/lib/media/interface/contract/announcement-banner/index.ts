@@ -1,8 +1,10 @@
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { Snippet } from 'svelte';
-
 export interface ContractAnnouncementBanner
-	extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+	extends StructIntersectAll<
+		[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>, SlotChildren]
+	> {
 	/** Banner title */
 	title?: string;
 	/** Banner description */
@@ -10,7 +12,6 @@ export interface ContractAnnouncementBanner
 	/** Icon name */
 	icon?: string;
 	/** Slot content */
-	children?: Snippet;
 	/** Additional CSS class */
 	class?: string;
 }

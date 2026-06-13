@@ -51,10 +51,10 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
-			<div class="mb-4 flex items-center gap-4">
-				<div class="flex items-center gap-2">
-					<div class="h-8 w-8 rounded border" style="background-color: {selectedColor};"></div>
+		<div class="_c1">
+			<div class="_c2">
+				<div class="_c3">
+					<div class="_c4" style="background-color: {selectedColor};"></div>
 					<span>Selected color: {selectedColor}</span>
 				</div>
 			</div>
@@ -68,3 +68,27 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	._c3 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	._c4 {
+		height: 2rem;
+		width: 2rem;
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+	}
+</style>

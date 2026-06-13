@@ -1,13 +1,23 @@
 <script lang="ts">
-	import type { ThemeBackgroundRecipe } from '$stylist/layout/interface/recipe/background';
+	import type { RecipeThemeBackground } from '$stylist/layout/interface/recipe/background';
 	import createBackgroundState from '$stylist/layout/function/state/background/index.svelte';
 
-	let props: ThemeBackgroundRecipe = $props();
+	let props: RecipeThemeBackground = $props();
 	const state = createBackgroundState(props);
 </script>
 
-<div class={state.classes} style={state.inlineStyle} {...state.restProps}>
+<div
+	class={['layout-bg', props.class].filter(Boolean).join(' ')}
+	style={state.inlineStyle}
+	{...state.restProps}
+>
 	{#if props.children}
-		{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
+		{@render props.children()}
 	{/if}
 </div>
+
+<style>
+	.layout-bg {
+		position: relative;
+	}
+</style>

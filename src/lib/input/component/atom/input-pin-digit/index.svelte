@@ -39,8 +39,15 @@
 		class: props.class
 	});
 	const classes = $derived(
-		[state.classes, props.focused ? 'ring-2 ring-blue-500' : ''].filter(Boolean).join(' ')
+		[state.classes, props.focused ? 'input-pin-digit--focused' : ''].filter(Boolean).join(' ')
 	);
 </script>
 
 <input class={classes} maxLength={1} value={props.value} />
+
+<style>
+	.input-pin-digit--focused {
+		outline: 2px solid #3b82f6;
+		outline-offset: 2px;
+	}
+</style>

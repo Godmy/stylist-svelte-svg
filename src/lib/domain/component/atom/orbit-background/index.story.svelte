@@ -15,18 +15,39 @@
 	description="Concentric orbit stage used to host token control nodes."
 >
 	{#snippet children(values: any)}
-		<div
-			class="grid place-items-center rounded-3xl bg-[linear-gradient(180deg,#e0f2fe,#f8fafc)] p-10"
-		>
+		<div class="_c1">
 			<OrbitBackground opened={Boolean(values.opened)}>
 				{#snippet children()}
-					<div
-						class="grid place-items-center rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700"
-					>
-						Orbit center
-					</div>
+					<div class="_c2">Orbit center</div>
 				{/snippet}
 			</OrbitBackground>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		place-items: center;
+		display: grid;
+		border-radius: 1.5rem;
+		background-color: linear-gradient(180deg, #e0f2fe, #f8fafc);
+		padding: 2.5rem;
+	}
+	._c2 {
+		place-items: center;
+		background-color: rgba(255, 255, 255, 0.8);
+		display: grid;
+		border-radius: 9999px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-sky-200);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		color: #334155;
+	}
+</style>

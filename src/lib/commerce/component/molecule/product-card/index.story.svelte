@@ -42,7 +42,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-4 rounded-xl bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
 			<ProductCard
 				variant={args.variant}
 				title={args.title}
@@ -55,21 +55,59 @@
 				description={args.description}
 			>
 				{#snippet actions()}
-					<div class="flex gap-2">
-						<button
-							class="rounded bg-[var(--color-primary-600)] px-3 py-1.5 text-sm text-[var(--color-text-inverse)]"
-							onclick={() => (cartClicks += 1)}>Add to cart</button
-						>
-						<button
-							class="rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-3 py-1.5 text-sm"
-							onclick={() => (detailsClicks += 1)}>Details</button
-						>
+					<div class="_c2">
+						<button class="_c3" onclick={() => (cartClicks += 1)}>Add to cart</button>
+						<button class="_c4" onclick={() => (detailsClicks += 1)}>Details</button>
 					</div>
 				{/snippet}
 			</ProductCard>
-			<div class="text-sm text-[var(--color-text-secondary)]">
+			<div class="_c5">
 				Actions: cart {cartClicks}, details {detailsClicks}
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 1rem;
+	}
+	._c2 {
+		display: flex;
+		gap: 0.5rem;
+	}
+	._c3 {
+		border-radius: 0.25rem;
+		background-color: var(--color-primary-600);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.375rem;
+		padding-bottom: 0.375rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-inverse);
+	}
+	._c4 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.375rem;
+		padding-bottom: 0.375rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c5 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -1,14 +1,20 @@
 <script lang="ts">
 	import type { GridLayoutProps } from '$stylist/layout/type/struct/layout/grid-layout-props';
 	import createGridLayoutState from '$stylist/layout/function/state/grid-layout/index.svelte';
-	import { LayoutStyleManager } from '$stylist/layout/class/style-manager/layout';
 
 	let props: GridLayoutProps = $props();
 	const state = createGridLayoutState(props);
+
+	const itemColSpanStyle = (colSpan?: number, rowSpan?: number): string => {
+		let style = '';
+		if (colSpan) style += `grid-column: span ${colSpan};`;
+		if (rowSpan) style += `grid-row: span ${rowSpan};`;
+		return style;
+	};
 </script>
 
 <div
-	class={state.containerClass}
+	class={['layout-grid-layout', props.class].filter(Boolean).join(' ')}
 	style={state.layoutStyle}
 	role="grid"
 	aria-label={props['aria-label'] ?? 'Grid layout'}
@@ -16,8 +22,8 @@
 >
 	{#each state.items as item}
 		<div
-			class={LayoutStyleManager.getGridLayoutItemClass(item.class ?? '', props.itemClass ?? '')}
-			style={LayoutStyleManager.getGridItemStyle(item.colSpan, item.rowSpan)}
+			class={['layout-grid-layout__item', item.class, props.itemClass].filter(Boolean).join(' ')}
+			style={itemColSpanStyle(item.colSpan, item.rowSpan)}
 			role="gridcell"
 		>
 			{#if typeof item.content === 'string'}
@@ -28,3 +34,16 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+	.layout-grid-layout {
+		display: grid;
+	}
+
+	.layout-grid-layout__item {
+		padding: 1rem;
+		background-color: var(--color-background-primary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+	}
+</style>

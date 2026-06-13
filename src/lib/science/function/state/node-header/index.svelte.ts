@@ -1,8 +1,7 @@
-import type { NodeHeaderProps } from '$stylist/science/type/struct/node-header-props';
+﻿import type { RecipeNodeHeader } from '$stylist/science/interface/recipe/node-header';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
-import { NodeHeaderStyleManager } from '$stylist/science/class/style-manager/node-header';
 
-export function createNodeHeaderState(props: NodeHeaderProps) {
+export function createNodeHeaderState(props: RecipeNodeHeader) {
 	let isEditing = $state(false);
 	const size = $derived((props.size ?? 'md') as TokenSize);
 	const selected = $derived(Boolean(props.selected));
@@ -40,8 +39,10 @@ export function createNodeHeaderState(props: NodeHeaderProps) {
 		return rest;
 	});
 
-	const classes = $derived(NodeHeaderStyleManager.getHeaderClasses(size, selected));
-	const styles = $derived(NodeHeaderStyleManager.getHeaderStyles(color));
+	const classes = $derived(
+		`node-header node-header--size-${size}${selected ? ' node-header--selected' : ''}`
+	);
+	const styles = $derived(color ? `--node-header-color: ${color};` : '');
 
 	function handleDoubleClick() {
 		if (!props.editable) return;
@@ -114,5 +115,3 @@ export function createNodeHeaderState(props: NodeHeaderProps) {
 		handleKeydown
 	};
 }
-
-export default createNodeHeaderState;

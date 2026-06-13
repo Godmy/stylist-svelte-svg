@@ -19,7 +19,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="space-y-3">
+		<div class="_c1">
 			<ToggleGroupRoot
 				type={values.type}
 				onValueChange={(e) =>
@@ -29,7 +29,18 @@
 				<ToggleGroupItem value="italic" disabled={values.disabled}>Italic</ToggleGroupItem>
 				<ToggleGroupItem value="underline" disabled={values.disabled}>Underline</ToggleGroupItem>
 			</ToggleGroupRoot>
-			<p class="text-sm text-[--color-text-secondary]">Selected: {selected || 'none'}</p>
+			<p class="_c2">Selected: {selected || 'none'}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

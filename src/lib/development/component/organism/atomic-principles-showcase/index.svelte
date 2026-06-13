@@ -1,9 +1,9 @@
-<script lang="ts">
-	import type { AtomicPrinciplesShowcaseProps } from '$stylist/development/type/struct/atomic-principles-showcase-props';
-	import createAtomicPrinciplesShowcaseState from '$stylist/development/function/state/atomic-principles-showcase/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeAtomicPrinciplesShowcase } from '$stylist/development/interface/recipe/atomic-principles-showcase';
+	import { createAtomicPrinciplesShowcaseState } from '$stylist/development/function/state/atomic-principles-showcase/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let { ...props }: AtomicPrinciplesShowcaseProps = $props();
+	let { ...props }: RecipeAtomicPrinciplesShowcase = $props();
 	const state = createAtomicPrinciplesShowcaseState(props);
 </script>
 
@@ -23,62 +23,40 @@
 		</div>
 
 		<div class={state.gridClass}>
-			<div
-				class="group rounded-3xl border-2 border-blue-300 bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:scale-105 hover:border-blue-500 hover:shadow-2xl dark:border-blue-700 dark:bg-gray-800 dark:hover:border-blue-400"
-			>
-				<div
-					class="float-animation mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg"
-				>
-					<BaseIcon name={state.Code} class="h-12 w-12 text-white" />
+			<div class="aps-card aps-card--blue">
+				<div class="aps-icon-box aps-icon-box--blue float-animation">
+					<BaseIcon name={state.Code} style="width:3rem;height:3rem;color:white" />
 				</div>
-				<h3 class="mb-4 text-3xl font-black text-gray-900 dark:text-white">Atoms</h3>
-				<p class="mb-6 min-h-[60px] text-gray-600 dark:text-gray-400">
-					Basic building blocks - buttons, inputs, labels, icons
-				</p>
-				<div class="text-5xl font-black text-blue-600 dark:text-blue-400">
+				<h3 class="aps-card-title">Atoms</h3>
+				<p class="aps-card-desc">Basic building blocks - buttons, inputs, labels, icons</p>
+				<div class="aps-count aps-count--blue">
 					{state.stats?.atoms ?? 0}
 				</div>
-				<p class="mt-2 text-sm font-semibold text-gray-500 dark:text-gray-400">components</p>
+				<p class="aps-count-label">components</p>
 			</div>
 
-			<div
-				class="group rounded-3xl border-2 border-purple-300 bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:scale-105 hover:border-purple-500 hover:shadow-2xl dark:border-purple-700 dark:bg-gray-800 dark:hover:border-purple-400"
-				style="animation-delay: 0.1s"
-			>
-				<div
-					class="float-animation mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg"
-					style="animation-delay: 1s"
-				>
-					<BaseIcon name={state.Layers} class="h-12 w-12 text-white" />
+			<div class="aps-card aps-card--purple" style="animation-delay: 0.1s">
+				<div class="aps-icon-box aps-icon-box--purple float-animation" style="animation-delay: 1s">
+					<BaseIcon name={state.Layers} style="width:3rem;height:3rem;color:white" />
 				</div>
-				<h3 class="mb-4 text-3xl font-black text-gray-900 dark:text-white">Molecules</h3>
-				<p class="mb-6 min-h-[60px] text-gray-600 dark:text-gray-400">
-					Combined atoms - search bars, cards, form fields
-				</p>
-				<div class="text-5xl font-black text-purple-600 dark:text-purple-400">
+				<h3 class="aps-card-title">Molecules</h3>
+				<p class="aps-card-desc">Combined atoms - search bars, cards, form fields</p>
+				<div class="aps-count aps-count--purple">
 					{state.stats?.molecules ?? 0}
 				</div>
-				<p class="mt-2 text-sm font-semibold text-gray-500 dark:text-gray-400">components</p>
+				<p class="aps-count-label">components</p>
 			</div>
 
-			<div
-				class="group rounded-3xl border-2 border-green-300 bg-white p-10 shadow-lg transition-all hover:-translate-y-2 hover:scale-105 hover:border-green-500 hover:shadow-2xl dark:border-green-700 dark:bg-gray-800 dark:hover:border-green-400"
-				style="animation-delay: 0.2s"
-			>
-				<div
-					class="float-animation mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 shadow-lg"
-					style="animation-delay: 2s"
-				>
-					<BaseIcon name={state.Package} class="h-12 w-12 text-white" />
+			<div class="aps-card aps-card--green" style="animation-delay: 0.2s">
+				<div class="aps-icon-box aps-icon-box--green float-animation" style="animation-delay: 2s">
+					<BaseIcon name={state.Package} style="width:3rem;height:3rem;color:white" />
 				</div>
-				<h3 class="mb-4 text-3xl font-black text-gray-900 dark:text-white">Organisms</h3>
-				<p class="mb-6 min-h-[60px] text-gray-600 dark:text-gray-400">
-					Complex components - headers, forms, modals
-				</p>
-				<div class="text-5xl font-black text-green-600 dark:text-green-400">
+				<h3 class="aps-card-title">Organisms</h3>
+				<p class="aps-card-desc">Complex components - headers, forms, modals</p>
+				<div class="aps-count aps-count--green">
 					{state.stats?.organisms ?? 0}
 				</div>
-				<p class="mt-2 text-sm font-semibold text-gray-500 dark:text-gray-400">components</p>
+				<p class="aps-count-label">components</p>
 			</div>
 		</div>
 	</div>
@@ -96,5 +74,137 @@
 	}
 	.float-animation {
 		animation: float var(--duration-s6) var(--animation-ease-in-out) infinite;
+	}
+	.aps-card {
+		border-radius: 1.5rem;
+		border-width: 2px;
+		border-style: solid;
+		background: white;
+		padding: 2.5rem;
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease,
+			border-color 0.3s ease;
+	}
+	.aps-card:hover {
+		transform: translateY(-0.5rem) scale(1.05);
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	}
+	.aps-card--blue {
+		border-color: #93c5fd;
+	}
+	.aps-card--blue:hover {
+		border-color: #3b82f6;
+	}
+	.aps-card--purple {
+		border-color: #d8b4fe;
+	}
+	.aps-card--purple:hover {
+		border-color: #a855f7;
+	}
+	.aps-card--green {
+		border-color: #86efac;
+	}
+	.aps-card--green:hover {
+		border-color: #22c55e;
+	}
+	@media (prefers-color-scheme: dark) {
+		.aps-card {
+			background: #1f2937;
+		}
+		.aps-card--blue {
+			border-color: #1d4ed8;
+		}
+		.aps-card--blue:hover {
+			border-color: #60a5fa;
+		}
+		.aps-card--purple {
+			border-color: #7e22ce;
+		}
+		.aps-card--purple:hover {
+			border-color: #c084fc;
+		}
+		.aps-card--green {
+			border-color: #15803d;
+		}
+		.aps-card--green:hover {
+			border-color: #4ade80;
+		}
+	}
+	.aps-icon-box {
+		margin-bottom: 2rem;
+		display: flex;
+		width: 6rem;
+		height: 6rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1rem;
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+	}
+	.aps-icon-box--blue {
+		background: linear-gradient(to bottom right, #3b82f6, #06b6d4);
+	}
+	.aps-icon-box--purple {
+		background: linear-gradient(to bottom right, #a855f7, #ec4899);
+	}
+	.aps-icon-box--green {
+		background: linear-gradient(to bottom right, #22c55e, #10b981);
+	}
+	.aps-card-title {
+		margin-bottom: 1rem;
+		font-size: 1.875rem;
+		font-weight: 900;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.aps-card-title {
+			color: white;
+		}
+	}
+	.aps-card-desc {
+		margin-bottom: 1.5rem;
+		min-height: 3.75rem;
+		color: #4b5563;
+	}
+	@media (prefers-color-scheme: dark) {
+		.aps-card-desc {
+			color: #9ca3af;
+		}
+	}
+	.aps-count {
+		font-size: 3rem;
+		font-weight: 900;
+	}
+	.aps-count--blue {
+		color: #2563eb;
+	}
+	.aps-count--purple {
+		color: #9333ea;
+	}
+	.aps-count--green {
+		color: #16a34a;
+	}
+	@media (prefers-color-scheme: dark) {
+		.aps-count--blue {
+			color: #60a5fa;
+		}
+		.aps-count--purple {
+			color: #c084fc;
+		}
+		.aps-count--green {
+			color: #4ade80;
+		}
+	}
+	.aps-count-label {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.aps-count-label {
+			color: #9ca3af;
+		}
 	}
 </style>

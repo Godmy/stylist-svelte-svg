@@ -15,5 +15,5 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface SplitButtonRecipe
+export interface RecipeSplitButton
 	extends StructIntersectAll<[ILabelSlot, IIconSlot, IClickable, IFocusable, ISizable]> {}

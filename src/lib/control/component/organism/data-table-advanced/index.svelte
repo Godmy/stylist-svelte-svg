@@ -35,21 +35,22 @@
 </script>
 
 <div class={state.rootClass} {...restProps}>
-	<div class="mb-3 flex items-center justify-between gap-3">
-		<h3 class="text-lg font-semibold">{title}</h3>
-		<div class="flex items-center gap-2">
+	<div class="c-data-table-adv__header">
+		<h3 class="c-data-table-adv__title">{title}</h3>
+		<div class="c-data-table-adv__controls">
 			{#if showSearch}
 				<input
-					class="rounded border px-3 py-1"
+					class="c-data-table-adv__search"
 					placeholder={searchPlaceholder}
 					value={state.searchTerm}
 					oninput={(event) => state.setSearchTerm((event.target as HTMLInputElement).value)}
 				/>
 			{/if}
-			{#if showExport}<button class="rounded border px-3 py-1" onclick={onExport}>Export</button
-				>{/if}
+			{#if showExport}
+				<button class="c-data-table-adv__export-btn" onclick={onExport}>Export</button>
+			{/if}
 			<select
-				class="rounded border px-2 py-1"
+				class="c-data-table-adv__page-size"
 				value={state.pageSize}
 				onchange={(event) => state.setPageSize(Number((event.target as HTMLSelectElement).value))}
 			>
@@ -58,33 +59,24 @@
 		</div>
 	</div>
 
-	<div class="overflow-x-auto rounded-lg border">
+	<div class="c-data-table-adv__table-wrap">
 		{#if loading}
-			<div class="p-6 text-center">Loading...</div>
+			<div class="c-data-table-adv__loading">Loading...</div>
 		{:else}
-			<table class="min-w-full">
-				<thead class="bg-[var(--color-background-secondary)]"
-					><tr
-						>{#each columns as c}<th class="px-3 py-2 text-left text-xs uppercase">{c.header}</th
-							>{/each}</tr
-					></thead
-				>
+			<table class="c-data-table-adv__table">
+				<thead class="c-data-table-adv__head">
+					<tr>
+						{#each columns as c}<th class="c-data-table-adv__th">{c.header}</th>{/each}
+					</tr>
+				</thead>
 				<tbody>
 					{#if state.pageData.length === 0}
-						<tr
-							><td
-								colspan={columns.length}
-								class="px-3 py-4 text-center text-sm text-[var(--color-text-secondary)]">No data</td
-							></tr
-						>
+						<tr><td class="c-data-table-adv__empty" colspan={columns.length}>No data</td></tr>
 					{:else}
 						{#each state.pageData as row}
-							<tr
-								class="border-t hover:bg-[var(--color-background-secondary)]"
-								onclick={() => onRowClick?.(row)}
-							>
+							<tr class="c-data-table-adv__row" onclick={() => onRowClick?.(row)}>
 								{#each columns as c}
-									<td class="px-3 py-2 text-sm">{state.getCellValue(row, c)}</td>
+									<td class="c-data-table-adv__td">{state.getCellValue(row, c)}</td>
 								{/each}
 							</tr>
 						{/each}
@@ -94,19 +86,119 @@
 		{/if}
 	</div>
 
-	<div class="mt-3 flex items-center justify-between text-sm">
+	<div class="c-data-table-adv__pagination">
 		<span>Page {state.currentPage} of {state.totalPages}</span>
-		<div class="flex gap-2">
+		<div class="c-data-table-adv__pagination-btns">
 			<button
-				class="rounded border px-2 py-1"
+				class="c-data-table-adv__page-btn"
 				disabled={state.currentPage <= 1}
 				onclick={state.goPrev}>Prev</button
 			>
 			<button
-				class="rounded border px-2 py-1"
+				class="c-data-table-adv__page-btn"
 				disabled={state.currentPage >= state.totalPages}
 				onclick={state.goNext}>Next</button
 			>
 		</div>
 	</div>
 </div>
+
+<style>
+	.c-data-table-adv__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin-bottom: 0.75rem;
+	}
+	.c-data-table-adv__title {
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+	.c-data-table-adv__controls {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.c-data-table-adv__search {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.75rem;
+		font-size: 0.875rem;
+	}
+	.c-data-table-adv__export-btn {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.75rem;
+		background: none;
+		cursor: pointer;
+		font-size: 0.875rem;
+	}
+	.c-data-table-adv__page-size {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+	}
+	.c-data-table-adv__table-wrap {
+		overflow-x: auto;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+	}
+	.c-data-table-adv__loading {
+		padding: 1.5rem;
+		text-align: center;
+	}
+	.c-data-table-adv__table {
+		min-width: 100%;
+		border-collapse: collapse;
+	}
+	.c-data-table-adv__head {
+		background: var(--color-background-secondary);
+	}
+	.c-data-table-adv__th {
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+	}
+	.c-data-table-adv__empty {
+		padding: 1rem 0.75rem;
+		text-align: center;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+	.c-data-table-adv__row {
+		border-top: 1px solid var(--color-border-primary);
+		cursor: pointer;
+	}
+	.c-data-table-adv__row:hover {
+		background: var(--color-background-secondary);
+	}
+	.c-data-table-adv__td {
+		padding: 0.5rem 0.75rem;
+		font-size: 0.875rem;
+	}
+	.c-data-table-adv__pagination {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 0.875rem;
+		margin-top: 0.75rem;
+	}
+	.c-data-table-adv__pagination-btns {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.c-data-table-adv__page-btn {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		padding: 0.25rem 0.5rem;
+		background: none;
+		cursor: pointer;
+	}
+	.c-data-table-adv__page-btn:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+</style>

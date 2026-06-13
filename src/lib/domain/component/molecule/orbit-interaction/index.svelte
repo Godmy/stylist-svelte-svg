@@ -33,3 +33,6 @@
 		/>
 	{/each}
 {/if}
+
+<style>
+</style>

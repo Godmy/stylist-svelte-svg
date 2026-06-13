@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { DesignTokensProps } from '$stylist/development/type/struct/design-tokens-props';
-	import createDesignTokensState from '$stylist/development/function/state/design-tokens/index.svelte';
+﻿<script lang="ts">
+	import type { RecipeDesignTokens } from '$stylist/development/interface/recipe/design-tokens';
+	import { createDesignTokensState } from '$stylist/development/function/state/design-tokens/index.svelte';
 
-	let { ...props }: DesignTokensProps = $props();
+	let { ...props }: RecipeDesignTokens = $props();
 	const state = createDesignTokensState(props);
 </script>
 
@@ -33,15 +33,15 @@
 		{#if state.showSpacing}
 			<section class={state.sectionContainerClass}>
 				<h3 class={state.sectionTitleClass}>Spacing</h3>
-				<div class="flex flex-wrap gap-2">
+				<div class="dt-token-row">
 					{#each Object.entries(state.layoutTokens.spacing ?? {}) as [tokenName, tokenValue]}
 						<div class={state.tokenCardClass}>
 							<div
 								class={state.previewCellClass}
 								style="width: {tokenValue}; height: {tokenValue}"
 							></div>
-							<span class="font-mono text-xs">{tokenName}</span>
-							<span class="text-xs">{tokenValue}</span>
+							<span class="dt-mono-sm">{tokenName}</span>
+							<span class="dt-text-sm">{tokenValue}</span>
 						</div>
 					{/each}
 				</div>
@@ -51,10 +51,10 @@
 		{#if state.showTypography}
 			<section class={state.sectionContainerClass}>
 				<h3 class={state.sectionTitleClass}>Typography</h3>
-				<div class="space-y-2">
+				<div class="dt-section-list">
 					{#each Object.entries(state.currentTheme.typography.fontSize) as [tokenName, tokenValue]}
 						<div class={state.tokenCardClass}>
-							<span class="font-mono text-sm">{tokenName}</span>
+							<span class="dt-mono-md">{tokenName}</span>
 							<span style="font-size: {tokenValue}">Aa Bb Cc</span>
 						</div>
 					{/each}
@@ -65,15 +65,15 @@
 		{#if state.showBorderRadius}
 			<section class={state.sectionContainerClass}>
 				<h3 class={state.sectionTitleClass}>Border Radius</h3>
-				<div class="flex flex-wrap items-end gap-4">
+				<div class="dt-token-row dt-token-row--end">
 					{#each Object.entries(state.layoutTokens.borderRadius ?? {}) as [tokenName, tokenValue]}
 						<div class={state.tokenCardClass}>
 							<div
 								class={state.previewCellClass}
 								style="width: var(--border-radius-full); height: var(--spacing-16); border-radius: {tokenValue}"
 							></div>
-							<span class="mt-2 font-mono text-xs">{tokenName}</span>
-							<span class="text-xs">{tokenValue}</span>
+							<span class="dt-mono-sm dt-mono-sm--mt">{tokenName}</span>
+							<span class="dt-text-sm">{tokenValue}</span>
 						</div>
 					{/each}
 				</div>
@@ -83,15 +83,15 @@
 		{#if state.showShadows}
 			<section class={state.sectionContainerClass}>
 				<h3 class={state.sectionTitleClass}>Shadows</h3>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<div class="dt-shadow-grid">
 					{#each Object.entries(state.layoutTokens.boxShadow ?? {}) as [tokenName, tokenValue]}
 						{#if tokenValue !== 'none'}
 							<div
 								class={state.tokenCardClass}
 								style={`box-shadow: var(--shadow-${tokenName}, ${tokenValue})`}
 							>
-								<div class="mb-2 font-mono text-sm">{tokenName}</div>
-								<div class="font-mono text-xs">{tokenValue}</div>
+								<div class="dt-shadow-name">{tokenName}</div>
+								<div class="dt-mono-sm">{tokenValue}</div>
 							</div>
 						{/if}
 					{/each}
@@ -101,6 +101,60 @@
 	{/if}
 
 	{#if !state.showTokens}
-		<p class="text-[--color-text-secondary]">Design tokens are hidden.</p>
+		<p class="dt-hidden-msg">Design tokens are hidden.</p>
 	{/if}
 </div>
+
+<style>
+	.dt-token-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.dt-token-row--end {
+		align-items: flex-end;
+		gap: 1rem;
+	}
+	.dt-section-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.dt-shadow-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		.dt-shadow-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (min-width: 1024px) {
+		.dt-shadow-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.dt-mono-sm {
+		font-family: monospace;
+		font-size: 0.75rem;
+	}
+	.dt-mono-sm--mt {
+		margin-top: 0.5rem;
+	}
+	.dt-text-sm {
+		font-size: 0.75rem;
+	}
+	.dt-mono-md {
+		font-family: monospace;
+		font-size: 0.875rem;
+	}
+	.dt-shadow-name {
+		margin-bottom: 0.5rem;
+		font-family: monospace;
+		font-size: 0.875rem;
+	}
+	.dt-hidden-msg {
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -1,12 +1,11 @@
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 /**
  * RealTimePresence types and interfaces following SOLID principles
  */
 
-import type { Snippet } from 'svelte';
-
-export interface SlotRealTimePresence {
+export interface SlotRealTimePresence extends StructIntersectAll<[SlotChildren]> {
 	class?: string;
 	users?: Array<{ id: string; name: string; status: 'online' | 'away' | 'offline' }>;
-	children?: Snippet;
 	onpresencechange?: (event: CustomEvent) => void;
 }

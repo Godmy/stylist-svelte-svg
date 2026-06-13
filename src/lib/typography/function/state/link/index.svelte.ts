@@ -1,9 +1,9 @@
-import type { ThemeLinkRecipe } from '$stylist/typography/interface/recipe/link';
+import type { RecipeThemeLink } from '$stylist/typography/interface/recipe/link';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
-export function createLinkState(props: ThemeLinkRecipe) {
+export function createLinkState(props: RecipeThemeLink) {
 	const variant = $derived(props.variant ?? 'default');
 	const size = $derived(props.size ?? 'md');
 	const disabled = $derived(props.disabled ?? false);

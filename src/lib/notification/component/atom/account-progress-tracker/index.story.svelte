@@ -31,8 +31,8 @@
 	{#snippet children(values: any)}
 		{@const currentStep = typeof values.currentStep === 'number' ? values.currentStep : 0}
 		{@const className = typeof values.class === 'string' ? values.class : undefined}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
-			<h2 class="mb-4 text-xl font-bold">AccountProgressTracker Story</h2>
+		<div class="_c1">
+			<h2 class="_c2">AccountProgressTracker Story</h2>
 			<AccountProgressTracker
 				steps={['Account Info', 'Verification', 'Preferences', 'Complete']}
 				{currentStep}
@@ -41,3 +41,17 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+</style>

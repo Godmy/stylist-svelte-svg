@@ -44,7 +44,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<BurgerMenu
 				size={values.size}
 				color={values.color}
@@ -56,23 +56,42 @@
 	{/snippet}
 
 	{#snippet variants()}
-		<div class="grid grid-cols-1 gap-4 p-4">
-			<div class="flex items-center space-x-4">
+		<div class="_c2">
+			<div class="_c3">
 				<span>Closed:</span>
 				<BurgerMenu open={false} size="md" />
 			</div>
-			<div class="flex items-center space-x-4">
+			<div class="_c3">
 				<span>Open:</span>
 				<BurgerMenu open={true} size="md" />
 			</div>
-			<div class="flex items-center space-x-4">
+			<div class="_c3">
 				<span>Small:</span>
 				<BurgerMenu open={false} size="sm" />
 			</div>
-			<div class="flex items-center space-x-4">
+			<div class="_c3">
 				<span>Large:</span>
 				<BurgerMenu open={false} size="lg" />
 			</div>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 1rem;
+		padding: 1rem;
+	}
+	._c3 {
+		display: flex;
+		align-items: center;
+	}
+	._c3 > * + * {
+		margin-left: 1rem;
+	}
+</style>

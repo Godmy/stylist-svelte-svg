@@ -1,37 +1,23 @@
 <script lang="ts">
-	import type { ProductReviewsProps } from '$stylist/commerce/type/struct/product-reviews-props';
-	import createProductReviewsState from '$stylist/commerce/function/state/product-reviews/index.svelte';
+	import type { RecipeProductReviews } from '$stylist/commerce/interface/recipe/product-reviews';
+	import { createProductReviewsState } from '$stylist/commerce/function/state/product-reviews/index.svelte';
 
-	let {
-		reviews = [],
-		averageRating = 0,
-		totalReviews = 0,
-		showAddReview = false,
-		onAddReview = (review: { title: string; content: string; rating: number }) => {},
-		class: className = ''
-	}: ProductReviewsProps = $props();
-
-	const state = createProductReviewsState({
-		reviews,
-		averageRating,
-		totalReviews,
-		showAddReview,
-		onAddReview,
-		class: className
-	});
+	let props: RecipeProductReviews = $props();
+	const state = createProductReviewsState(props);
 </script>
 
-<div class={`rounded-lg bg-[var(--color-background-primary)] p-4 shadow ${className}`}>
-	<div class="mb-6">
-		<h2 class="mb-2 text-xl font-bold">Customer Reviews</h2>
-		<div class="flex items-center">
-			<div class="mr-4 text-3xl font-bold">{averageRating.toFixed(1)}</div>
+<div class={state.containerClass}>
+	<div class={state.summaryClass}>
+		<h2 class={state.titleClass}>Customer Reviews</h2>
+		<div class={state.scoreRowClass}>
+			<div class={state.scoreClass}>{(props.averageRating ?? 0).toFixed(1)}</div>
 			<div>
-				<div class="flex text-yellow-400">
-					{#each Array(5) as _, i}
+				<div class={state.ratingClass}>
+					{#each Array(5) as _, index}
 						<svg
-							class={`h-5 w-5 ${i < Math.floor(averageRating) ? 'fill-current' : 'fill-gray-300'}`}
+							class={state.getStarClass(index < Math.floor(props.averageRating ?? 0), 'lg')}
 							viewBox="0 0 24 24"
+							aria-hidden="true"
 						>
 							<path
 								d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -39,26 +25,27 @@
 						</svg>
 					{/each}
 				</div>
-				<div class="text-sm text-[var(--color-text-secondary)]">{totalReviews} reviews</div>
+				<div class={state.totalClass}>{props.totalReviews ?? 0} reviews</div>
 			</div>
 		</div>
 	</div>
 
-	{#if showAddReview}
-		<div class="mb-8 rounded-lg border bg-[var(--color-background-secondary)] p-4">
-			<h3 class="mb-3 font-bold">Write a SlotReview</h3>
-			<div class="mb-3">
-				<label class="mb-1 block text-sm font-medium" for="rating">Rating</label>
-				<div class="flex">
-					{#each Array(5) as _, i}
+	{#if props.showAddReview}
+		<div class={state.formClass}>
+			<h3 class={state.formTitleClass}>Write a Review</h3>
+			<div class={state.fieldClass}>
+				<label class={state.labelClass} for="rating">Rating</label>
+				<div class={state.ratingInputClass}>
+					{#each Array(5) as _, index}
 						<button
-							onclick={() => state.setRating(i + 1)}
-							class="mr-1"
-							aria-label={`Rate ${i + 1} out of 5 stars`}
+							onclick={() => state.setRating(index + 1)}
+							class={state.ratingButtonClass}
+							aria-label={`Rate ${index + 1} out of 5 stars`}
 						>
 							<svg
-								class={`h-6 w-6 ${i < state.newReview.rating ? 'fill-current text-yellow-400' : 'text-[var(--color-text-tertiary)]'}`}
+								class={state.getStarClass(index < state.newReview.rating, 'lg')}
 								viewBox="0 0 24 24"
+								aria-hidden="true"
 							>
 								<path
 									d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -68,53 +55,48 @@
 					{/each}
 				</div>
 			</div>
-			<div class="mb-3">
-				<label for="review-title" class="mb-1 block text-sm font-medium">SlotReview Title</label>
+			<div class={state.fieldClass}>
+				<label for="review-title" class={state.labelClass}>Review Title</label>
 				<input
 					id="review-title"
 					type="text"
 					bind:value={state.newReview.title}
-					class="w-full rounded border border-[var(--color-border-primary)] p-2"
+					class={state.inputClass}
 					placeholder="Summarize your review"
 				/>
 			</div>
-			<div class="mb-3">
-				<label for="review-content" class="mb-1 block text-sm font-medium">SlotReview</label>
+			<div class={state.fieldClass}>
+				<label for="review-content" class={state.labelClass}>Review</label>
 				<textarea
 					id="review-content"
 					bind:value={state.newReview.content}
-					class="w-full rounded border border-[var(--color-border-primary)] p-2"
+					class={state.inputClass}
 					rows="3"
 					placeholder="Share your experience"
 				></textarea>
 			</div>
-			<button
-				onclick={() => state.submitReview()}
-				class="rounded bg-[var(--color-primary-500)] px-4 py-2 text-[var(--color-text-inverse)] hover:bg-[var(--color-primary-600)]"
-			>
-				Submit SlotReview
+			<button onclick={() => state.submitReview()} class={state.submitButtonClass}>
+				Submit Review
 			</button>
 		</div>
 	{/if}
 
-	<div class="space-y-4">
-		{#each reviews as review}
-			<div class="border-b pb-4 last:border-b-0 last:pb-0">
-				<div class="mb-1 flex justify-between">
-					<div class="font-bold">{review.title}</div>
+	<div class={state.listClass}>
+		{#each props.reviews as review}
+			<div class={state.reviewClass}>
+				<div class={state.reviewHeaderClass}>
+					<div class={state.reviewTitleClass}>{review.title}</div>
 					{#if review.verified}
-						<span
-							class="rounded bg-[var(--color-success-100)] px-2 py-1 text-xs text-[var(--color-success-800)]"
-							>Verified Purchase</span
-						>
+						<span class={state.verifiedClass}>Verified Purchase</span>
 					{/if}
 				</div>
-				<div class="mb-2 flex items-center">
-					<div class="flex text-yellow-400">
-						{#each Array(5) as _, i}
+				<div class={state.reviewMetaClass}>
+					<div class={state.ratingClass}>
+						{#each Array(5) as _, index}
 							<svg
-								class={`h-4 w-4 ${i < Math.floor(review.rating) ? 'fill-current' : 'fill-gray-300'}`}
+								class={state.getStarClass(index < Math.floor(review.rating), 'sm')}
 								viewBox="0 0 24 24"
+								aria-hidden="true"
 							>
 								<path
 									d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -122,11 +104,174 @@
 							</svg>
 						{/each}
 					</div>
-					<span class="ml-2 text-sm text-[var(--color-text-secondary)]">{review.date}</span>
+					<span class={state.dateClass}>{review.date}</span>
 				</div>
-				<div class="text-[var(--color-text-primary)]">{review.content}</div>
-				<div class="mt-1 text-sm text-[var(--color-text-secondary)]">By {review.author}</div>
+				<div class={state.contentClass}>{review.content}</div>
+				<div class={state.authorClass}>By {review.author}</div>
 			</div>
 		{/each}
 	</div>
 </div>
+
+<style>
+	.product-reviews {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+		box-shadow:
+			0 1px 3px 0 rgb(0 0 0 / 0.1),
+			0 1px 2px -1px rgb(0 0 0 / 0.1);
+	}
+
+	.product-reviews__summary {
+		margin-bottom: 1.5rem;
+	}
+
+	.product-reviews__title {
+		margin-bottom: 0.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+	}
+
+	.product-reviews__score-row,
+	.product-reviews__review-meta {
+		display: flex;
+		align-items: center;
+	}
+
+	.product-reviews__score {
+		margin-right: 1rem;
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+		font-weight: 700;
+	}
+
+	.product-reviews__rating,
+	.product-reviews__rating-input {
+		display: flex;
+	}
+
+	.product-reviews__star {
+		fill: currentColor;
+	}
+
+	.product-reviews__star--sm {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.product-reviews__star--md,
+	.product-reviews__star--lg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.product-reviews__star--active {
+		color: var(--color-warning-500, #facc15);
+	}
+
+	.product-reviews__star--inactive {
+		color: var(--color-text-tertiary);
+	}
+
+	.product-reviews__total,
+	.product-reviews__date,
+	.product-reviews__author {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+
+	.product-reviews__form {
+		margin-bottom: 2rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+
+	.product-reviews__form-title {
+		margin-bottom: 0.75rem;
+		font-weight: 700;
+	}
+
+	.product-reviews__field {
+		margin-bottom: 0.75rem;
+	}
+
+	.product-reviews__label {
+		display: block;
+		margin-bottom: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+	}
+
+	.product-reviews__rating-button {
+		margin-right: 0.25rem;
+	}
+
+	.product-reviews__input {
+		width: 100%;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		padding: 0.5rem;
+	}
+
+	.product-reviews__submit {
+		border-radius: 0.25rem;
+		background-color: var(--color-primary-500);
+		padding: 0.5rem 1rem;
+		color: var(--color-text-inverse);
+	}
+
+	.product-reviews__submit:hover {
+		background-color: var(--color-primary-600);
+	}
+
+	.product-reviews__list > * + * {
+		margin-top: 1rem;
+	}
+
+	.product-reviews__review {
+		border-bottom: 1px solid var(--color-border-primary);
+		padding-bottom: 1rem;
+	}
+
+	.product-reviews__review:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.product-reviews__review-header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.25rem;
+	}
+
+	.product-reviews__review-title {
+		font-weight: 700;
+	}
+
+	.product-reviews__verified {
+		border-radius: 0.25rem;
+		background-color: var(--color-success-100);
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-success-800);
+	}
+
+	.product-reviews__date {
+		margin-left: 0.5rem;
+	}
+
+	.product-reviews__content {
+		color: var(--color-text-primary);
+	}
+
+	.product-reviews__author {
+		margin-top: 0.25rem;
+	}
+</style>

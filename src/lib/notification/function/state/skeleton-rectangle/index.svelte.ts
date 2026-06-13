@@ -1,16 +1,15 @@
-import { SkeletonRectangleStyleManager } from '$stylist/notification/class/style-manager/skeleton-rectangle';
-import type { SkeletonRectangleProps } from '$stylist/notification/type/struct/skeleton-rectangle-props';
+﻿import type { RecipeSkeletonRectangle } from '$stylist/notification/interface/recipe/skeleton-rectangle';
 
-export function createSkeletonRectangleState(props: SkeletonRectangleProps) {
+export function createSkeletonRectangleState(props: RecipeSkeletonRectangle) {
 	const content = $derived(props.content);
 	const restProps = $derived.by(() => {
 		const { class: _class, width: _width, height: _height, content: _content, ...rest } = props;
 		return rest;
 	});
-	const rootClass = $derived(SkeletonRectangleStyleManager.root(props.class));
-	const style = $derived(
-		SkeletonRectangleStyleManager.style(props.width ?? 120, props.height ?? 80)
-	);
+	const w = $derived(props.width ?? 120);
+	const h = $derived(props.height ?? 80);
+	const rootClass = $derived(`skeleton-container variant-rectangular ${props.class ?? ''}`.trim());
+	const style = $derived(`width: ${w}px; height: ${h}px;`);
 
 	return {
 		get content() {
@@ -27,5 +26,3 @@ export function createSkeletonRectangleState(props: SkeletonRectangleProps) {
 		}
 	};
 }
-
-export default createSkeletonRectangleState;

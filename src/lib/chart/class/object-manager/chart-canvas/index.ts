@@ -1,4 +1,4 @@
-﻿import type { ChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
+import type { RecipeChartCanvas } from '$stylist/chart/interface/recipe/chart-canvas';
 import type { ChartSeries } from '$stylist/chart/type/struct/chart-series';
 
 export class ObjectManagerChartCanvas {
@@ -30,7 +30,7 @@ export class ObjectManagerChartCanvas {
 	}
 
 	static resolveScale(
-		providedScale: ChartCanvasRecipe['xScale'] | ChartCanvasRecipe['yScale'] | undefined,
+		providedScale: RecipeChartCanvas['xScale'] | RecipeChartCanvas['yScale'] | undefined,
 		fallbackStart: number,
 		fallbackEnd: number
 	): [number, number] {

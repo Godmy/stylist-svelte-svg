@@ -1,8 +1,8 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { ObjectManagerAdvancedColorPicker } from '$stylist/color/class/object-manager/advanced-color-picker';
-import type { ThemeAdvancedColorPickerRecipe } from '$stylist/color/interface/recipe/advanced-color-picker';
+import type { RecipeThemeAdvancedColorPicker } from '$stylist/color/interface/recipe/advanced-color-picker';
 
-export function createAdvancedColorPickerState(props: ThemeAdvancedColorPickerRecipe) {
+export function createAdvancedColorPickerState(props: RecipeThemeAdvancedColorPicker) {
 	let isOpen = $state(false);
 	let internalValue = $state(ObjectManagerAdvancedColorPicker.resolveValue(props.value));
 

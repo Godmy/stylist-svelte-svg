@@ -1,4 +1,4 @@
-import type { Props } from '$stylist/file/type/struct/file-upload/props';
+﻿import type { Props } from '$stylist/file/type/struct/file-upload/props';
 
 export function createFileUploadState(props: Props) {
 	const accept = $derived(props.accept ?? '.pdf,.doc,.docx,.xls,.xlsx,.txt');
@@ -8,7 +8,7 @@ export function createFileUploadState(props: Props) {
 	const file = $derived(props.file ?? null);
 	const children = $derived(props.children);
 	const disabled = $derived(props.disabled ?? false);
-	const uploadText = $derived(props.uploadText ?? 'или перетащить сюда');
+	const uploadText = $derived(props.uploadText ?? 'РёР»Рё РїРµСЂРµС‚Р°С‰РёС‚СЊ СЃСЋРґР°');
 	const className = $derived(props.class ?? '');
 
 	const restProps = $derived.by(() => {
@@ -98,5 +98,3 @@ export function createFileUploadState(props: Props) {
 		clearFile
 	};
 }
-
-export default createFileUploadState;

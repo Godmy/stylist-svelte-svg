@@ -57,9 +57,7 @@
 >
 	{#snippet children(args)}
 		<section class="sb-organisms-checkout-form">
-			<div
-				class="mx-auto max-w-6xl rounded-[2.5rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
+			<div class="_c1 max-w-6xl">
 				<CheckoutForm
 					{cartItems}
 					{subtotal}
@@ -76,3 +74,17 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 2.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+</style>

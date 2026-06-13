@@ -1,9 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { ThemeBackgroundRecipe } from './background';
-export type { BorderRecipe } from './border';
-export type { CardRecipe } from './card';
-export type { ThemeGradientBackgroundRecipe } from './gradient-background';
+export type { RecipeThemeBackground } from './background';
+export type { RecipeBorder } from './border';
+export type { RecipeCard } from './card';
+export type { RecipeThemeGradientBackground } from './gradient-background';
 export type { NodeDotProps } from './node-dot';
 export type { PopoverProps } from './popover';
 export type { StackedLayoutProps } from './stacked-layout';
-export type { ThemeSurfaceRecipe } from './theme-surface';
+export type { RecipeThemeSurface } from './theme-surface';

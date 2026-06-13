@@ -1,58 +1,13 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
-import type { SwitchWithLabelStateProps } from '$stylist/control/type/alias/switch-with-label-state-props';
+﻿import type { RecipeSwitchWithLabel } from '$stylist/control/interface/recipe/switch-with-label';
 
-export function createSwitchWithLabelState(props: SwitchWithLabelStateProps) {
-	const className = props.class ?? '';
-	const switchClassName = props.switchClass ?? '';
-	const labelClassName = props.labelClass ?? '';
-	const disabled = props.disabled ?? false;
+export function createSwitchWithLabelState(props: RecipeSwitchWithLabel) {
+	const disabled = $derived(props.disabled ?? false);
+	const labelPosition = $derived(props.labelPosition ?? 'right');
 	let checked = $state(props.checked ?? false);
-	const label = props.label ?? '';
-	const labelPosition = props.labelPosition ?? 'right';
 
 	$effect(() => {
 		checked = props.checked ?? false;
 	});
-
-	const containerClasses = $derived(
-		joinClassNames(
-			'flex items-center gap-2',
-			(props.labelPosition ?? 'right') === 'left' ? 'flex-row-reverse' : 'flex-row',
-			props.class ?? ''
-		)
-	);
-
-	const switchClasses = $derived(
-		joinClassNames(
-			'relative inline-flex items-center h-6 w-11 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)] focus:ring-offset-2',
-			checked ? 'bg-[var(--color-primary-500)]' : 'bg-[var(--color-border-primary)]',
-			(props.disabled ?? false)
-				? 'opacity-[var(--opacity-50)] cursor-not-allowed'
-				: 'cursor-pointer',
-			props.switchClass ?? ''
-		)
-	);
-
-	const handleClasses = $derived(
-		joinClassNames(
-			'inline-block h-5 w-5 rounded-full bg-white shadow-md transform transition-transform duration-200',
-			checked ? 'translate-x-5' : 'translate-x-0.5'
-		)
-	);
-
-	const labelClasses = $derived(
-		joinClassNames(
-			'text-sm font-medium text-[var(--color-text-primary)]',
-			(props.disabled ?? false)
-				? 'opacity-[var(--opacity-50)] cursor-not-allowed'
-				: 'cursor-pointer',
-			props.labelClass ?? ''
-		)
-	);
-
-	const labelPositionClass = $derived(
-		(props.labelPosition ?? 'right') === 'left' ? 'order-first' : 'order-last'
-	);
 
 	function handleToggle() {
 		if (props.disabled) return;
@@ -73,7 +28,7 @@ export function createSwitchWithLabelState(props: SwitchWithLabelStateProps) {
 
 	return {
 		get disabled() {
-			return props.disabled ?? false;
+			return disabled;
 		},
 		get checked() {
 			return checked;
@@ -82,26 +37,9 @@ export function createSwitchWithLabelState(props: SwitchWithLabelStateProps) {
 			return props.label ?? '';
 		},
 		get labelPosition() {
-			return props.labelPosition ?? 'right';
-		},
-		get containerClasses() {
-			return containerClasses;
-		},
-		get switchClasses() {
-			return switchClasses;
-		},
-		get handleClasses() {
-			return handleClasses;
-		},
-		get labelClasses() {
-			return labelClasses;
-		},
-		get labelPositionClass() {
-			return labelPositionClass;
+			return labelPosition;
 		},
 		handleToggle,
 		handleKeyDown
 	};
 }
-
-export default createSwitchWithLabelState;

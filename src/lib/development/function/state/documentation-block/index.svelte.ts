@@ -1,63 +1,21 @@
-import type { DocumentationBlockProps } from '$stylist/development/type/struct/documentation-block-props';
-import { DocumentationBlockStyleManager } from '$stylist/development/class/style-manager/documentation-block';
+import type { RecipeDocumentationBlock } from '$stylist/development/interface/recipe/documentation-block';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createDocumentationBlockState(props: DocumentationBlockProps) {
-	const variantClasses = $derived(
-		{
-			default: 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900',
-			info: 'border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20',
-			warning: 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20',
-			success: 'border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20',
-			danger: 'border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20'
-		}[
-			props.variant as keyof {
-				default: string;
-				info: string;
-				warning: string;
-				success: string;
-				danger: string;
-			}
-		]
-	);
-
-	const variantHeaderClasses = $derived(
-		{
-			default: 'bg-gray-50 dark:bg-gray-800',
-			info: 'bg-blue-100 dark:bg-blue-800/30',
-			warning: 'bg-yellow-100 dark:bg-yellow-800/30',
-			success: 'bg-green-100 dark:bg-green-800/30',
-			danger: 'bg-red-100 dark:bg-red-800/30'
-		}[
-			props.variant as keyof {
-				default: string;
-				info: string;
-				warning: string;
-				success: string;
-				danger: string;
-			}
-		]
-	);
-
+export function createDocumentationBlockState(props: RecipeDocumentationBlock) {
+	const variant = $derived(props.variant ?? 'default');
 	const containerClass = $derived(
-		DocumentationBlockStyleManager.getContainerClass(
-			variantClasses,
-			typeof props.class === 'string' ? props.class : undefined
-		)
+		mergeClassNames('c-documentation-block', `c-documentation-block--${variant}`, props.class)
 	);
 	const headerContainerClass = $derived(
-		DocumentationBlockStyleManager.getHeaderContainerClass(variantHeaderClasses)
+		mergeClassNames('c-documentation-block__header', `c-documentation-block__header--${variant}`)
 	);
-	const headerContentClass = $derived(DocumentationBlockStyleManager.getHeaderContentClass());
-	const titleClass = $derived(DocumentationBlockStyleManager.getTitleClass());
-	const tagsContainerClass = $derived(DocumentationBlockStyleManager.getTagsContainerClass());
-	const tagClass = $derived(DocumentationBlockStyleManager.getTagClass());
-	const contentClass = $derived(DocumentationBlockStyleManager.getContentClass());
-	const codeExamplesContainerClass = $derived(
-		DocumentationBlockStyleManager.getCodeExamplesContainerClass()
-	);
-	const codeExampleDividerClass = $derived(
-		DocumentationBlockStyleManager.getCodeExampleDividerClass()
-	);
+	const headerContentClass = 'c-documentation-block__header-content';
+	const titleClass = 'c-documentation-block__title';
+	const tagsContainerClass = 'c-documentation-block__tags';
+	const tagClass = 'c-documentation-block__tag';
+	const contentClass = 'c-documentation-block__content';
+	const codeExamplesContainerClass = 'c-documentation-block__examples';
+	const codeExampleDividerClass = 'c-documentation-block__divider';
 
 	return {
 		get containerClass() {
@@ -89,5 +47,3 @@ export function createDocumentationBlockState(props: DocumentationBlockProps) {
 		}
 	};
 }
-
-export default createDocumentationBlockState;

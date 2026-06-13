@@ -1,5 +1,4 @@
-import type { NodePropertyRecipe as NodePropertyProps } from '$stylist/science/interface/recipe/node-property';
-import { NodePropertyStyleManager } from '$stylist/science/class/style-manager/node-property';
+import type { RecipeNodeProperty as NodePropertyProps } from '$stylist/science/interface/recipe/node-property';
 
 export function createNodePropertyState(props: NodePropertyProps) {
 	const type = $derived((props.type ?? 'string') as NonNullable<NodePropertyProps['type']>);
@@ -44,7 +43,7 @@ export function createNodePropertyState(props: NodePropertyProps) {
 	}
 
 	const classes = $derived(
-		NodePropertyStyleManager.getPropertyClasses(type, size, { error, editable })
+		`node-property node-property--type-${type} node-property--${size}${error ? ' node-property--error' : ''}${editable === false ? ' node-property--readonly' : ''}`
 	);
 	const restProps = $derived.by(() => {
 		const {

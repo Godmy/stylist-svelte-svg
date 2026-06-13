@@ -48,7 +48,10 @@
 				disabled={state.disabled}
 				class={state.attachmentButtonClasses}
 			>
-				<BaseIcon name={Paperclip} class="h-5 w-5 text-[--color-text-secondary]" />
+				<BaseIcon
+					name={Paperclip}
+					style="width:1.25rem;height:1.25rem;color:var(--color-text-secondary)"
+				/>
 			</Button>
 		{/if}
 
@@ -71,7 +74,7 @@
 				disabled={state.disabled}
 				class={state.sendButtonClasses}
 			>
-				<BaseIcon name={Send} class="h-5 w-5" />
+				<BaseIcon name={Send} style="width:1.25rem;height:1.25rem" />
 			</Button>
 		{:else if state.showVoiceButton}
 			<Button
@@ -82,8 +85,14 @@
 				disabled={state.disabled}
 				class={state.voiceButtonClasses}
 			>
-				<BaseIcon name={Mic} class="h-5 w-5 text-[--color-text-secondary]" />
+				<BaseIcon
+					name={Mic}
+					style="width:1.25rem;height:1.25rem;color:var(--color-text-secondary)"
+				/>
 			</Button>
 		{/if}
 	</form>
 </div>
+
+<style>
+</style>

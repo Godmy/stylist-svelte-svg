@@ -1,4 +1,4 @@
-import type { SlotReactionPicker as IReactionPickerProps } from '$stylist/input/interface/slot/reaction-picker';
+﻿import type { SlotReactionPicker as IReactionPickerProps } from '$stylist/input/interface/slot/reaction-picker';
 
 type ReactionType =
 	| 'like'
@@ -161,5 +161,3 @@ export const createReactionPickerState = (props: IReactionPickerProps) => {
 		togglePicker
 	};
 };
-
-export default createReactionPickerState;

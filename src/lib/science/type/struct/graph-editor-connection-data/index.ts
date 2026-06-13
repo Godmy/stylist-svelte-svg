@@ -1,3 +1,3 @@
-import type { ConnectionLineRecipe } from '$stylist/science/interface/recipe/connection-line';
+import type { RecipeConnectionLine } from '$stylist/science/interface/recipe/connection-line';
 
-export type GraphEditorConnectionData = ConnectionLineRecipe;
+export type GraphEditorConnectionData = RecipeConnectionLine;

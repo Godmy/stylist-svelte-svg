@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { TextRecipe } from '$stylist/typography/interface/recipe/text';
+	import type { RecipeText } from '$stylist/typography/interface/recipe/text';
 	import createTextState from '$stylist/typography/function/state/text/index.svelte';
 
-	let props: TextRecipe = $props();
+	let props: RecipeText = $props();
 	const state = createTextState(props);
 </script>
 

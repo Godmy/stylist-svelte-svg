@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { createAlertCardState } from './alert-card';
-export { createAlertCardStoryState } from './alert-card-story';
 export { createArticleCardState } from './article-card';
 export { createBillingSummaryState } from './billing-summary';
 export { BulkOrderFormModel } from './bulk-order-form';

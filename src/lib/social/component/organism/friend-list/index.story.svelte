@@ -70,18 +70,12 @@
 
 <Story {id} {title} {description} component={FriendList} category="Organisms" {controls}>
 	{#snippet children(values: any)}
-		<section class="sb-organisms-friend-list grid w-full gap-8 lg:grid-cols-[1fr_1fr]">
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
-				<p class="text-sm font-semibold tracking-wide text-[--color-text-secondary] uppercase">
-					Primary Friend List Example
-				</p>
-				<p class="mt-1 text-[--color-text-primary]">
-					Interactive friend list with customizable options.
-				</p>
+		<section class="sb-organisms-friend-list _c1">
+			<div class="_c2">
+				<p class="_c3">Primary Friend List Example</p>
+				<p class="_c4">Interactive friend list with customizable options.</p>
 
-				<div class="mx-auto mt-6 max-w-md">
+				<div class="_c5">
 					<FriendList
 						{friends}
 						showStatus={values.showStatus}
@@ -96,29 +90,21 @@
 				</div>
 			</div>
 
-			<div
-				class="rounded-[2rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-			>
-				<h3 class="text-base font-semibold text-[--color-text-primary]">Friend List Variations</h3>
-				<p class="text-sm text-[--color-text-secondary]">
-					Different friend list configurations with various options.
-				</p>
+			<div class="_c6">
+				<h3 class="_c7">Friend List Variations</h3>
+				<p class="_c8">Different friend list configurations with various options.</p>
 
-				<div class="mt-5 space-y-4">
-					<article
-						class="rounded-2xl border border-dashed border-[--color-border-primary] bg-[--color-background-primary] p-4"
-					>
-						<p class="mb-2 text-sm font-semibold text-[--color-text-primary]">Grouped by Status</p>
-						<div class="mx-auto max-w-md">
+				<div class="_c9">
+					<article class="_c10">
+						<p class="_c11">Grouped by Status</p>
+						<div class="_c12">
 							<FriendList {friends} groupByStatus={true} onFriendSelect={handleFriendSelect} />
 						</div>
 					</article>
 
-					<article
-						class="rounded-2xl border border-dashed border-[--color-border-primary] bg-[--color-background-primary] p-4"
-					>
-						<p class="mb-2 text-sm font-semibold text-[--color-text-primary]">Without Tags</p>
-						<div class="mx-auto max-w-md">
+					<article class="_c10">
+						<p class="_c11">Without Tags</p>
+						<div class="_c12">
 							<FriendList
 								{friends}
 								showTags={false}
@@ -132,3 +118,89 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		width: 100%;
+		gap: 2rem;
+	}
+	@media (min-width: 1024px) {
+		._c1 {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	._c10 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+	._c11 {
+		margin-bottom: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c12 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+	}
+	._c2 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		letter-spacing: 0.025em;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+	}
+	._c4 {
+		margin-top: 0.25rem;
+		color: var(--color-text-primary);
+	}
+	._c5 {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 1.5rem;
+		max-width: 28rem;
+	}
+	._c6 {
+		border-radius: 2rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c7 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c8 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c9 {
+		margin-top: 1.25rem;
+	}
+	._c9 > * + * {
+		margin-top: 1rem;
+	}
+</style>

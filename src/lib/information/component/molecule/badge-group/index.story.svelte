@@ -19,9 +19,9 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="p-6">
-			<h2 class="mb-6 text-xl font-semibold">Badge Group</h2>
-			<div class="mx-auto max-w-md">
+		<div class="_c1">
+			<h2 class="_c2">Badge Group</h2>
+			<div class="_c3">
 				<BadgeGroup
 					badges={[
 						{ id: '1', label: 'Primary', variant: 'primary', size: 'md' },
@@ -38,3 +38,20 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1.5rem;
+	}
+	._c2 {
+		margin-bottom: 1.5rem;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 600;
+	}
+	._c3 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 28rem;
+	}
+</style>

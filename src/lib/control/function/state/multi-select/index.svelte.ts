@@ -1,12 +1,9 @@
 import { untrack } from 'svelte';
-import type { SlotMultiSelect as MultiSelectProps } from '$stylist/control/interface/slot/multi-select';
+import { PresetMultiSelect } from '$stylist/control/const/preset/multi-select';
+import type { RecipeMultiSelect } from '$stylist/control/interface/recipe/multi-select';
 import type { SlotMultiSelectOption as MultiSelectOption } from '$stylist/control/interface/slot/multi-select-option';
-import { MultiSelectStyleManager } from '$stylist/control/class/style-manager/multi-select';
 
-const ChevronDown = 'chevron-down';
-const X = 'x';
-
-export function createMultiSelectState(props: MultiSelectProps) {
+export function createMultiSelectState(props: RecipeMultiSelect) {
 	const options = $derived(props.options ?? []);
 	const value = $derived(props.value ?? []);
 	const placeholder = $derived(props.placeholder ?? 'Select options...');
@@ -15,9 +12,6 @@ export function createMultiSelectState(props: MultiSelectProps) {
 	const maxSelections = $derived(props.maxSelections ?? 0);
 	const className = $derived(props.class ?? '');
 	const dropdownClass = $derived(props.dropdownClass ?? '');
-	const selectedClass = $derived(props.selectedClass ?? '');
-	const optionClass = $derived(props.optionClass ?? '');
-	const placeholderClass = $derived(props.placeholderClass ?? '');
 	const searchInputClass = $derived(props.searchInputClass ?? '');
 
 	let isOpen = $state(false);
@@ -63,7 +57,7 @@ export function createMultiSelectState(props: MultiSelectProps) {
 	}
 
 	function selectOption(optionValue: string): void {
-		if (disabled || options.find((o) => o.value === optionValue)?.disabled) return;
+		if (disabled || options.find((option) => option.value === optionValue)?.disabled) return;
 		if (!selectedValues.includes(optionValue)) {
 			if (maxSelections <= 0 || selectedValues.length < maxSelections) {
 				selectedValues = [...selectedValues, optionValue];
@@ -77,7 +71,7 @@ export function createMultiSelectState(props: MultiSelectProps) {
 
 	function removeOption(optionValue: string): void {
 		if (disabled) return;
-		selectedValues = selectedValues.filter((v) => v !== optionValue);
+		selectedValues = selectedValues.filter((valueItem) => valueItem !== optionValue);
 		emitChange([...selectedValues]);
 	}
 
@@ -93,34 +87,30 @@ export function createMultiSelectState(props: MultiSelectProps) {
 		}
 	}
 
-	const containerClasses = $derived(MultiSelectStyleManager.getContainerClasses(className));
-	const selectDisplayClasses = $derived(
-		MultiSelectStyleManager.getSelectDisplayClasses(disabled, isOpen)
+	const containerClasses = $derived(['c-multiselect', className].filter(Boolean).join(' '));
+	const selectDisplayClasses = 'c-multiselect__display';
+	const placeholderClasses = 'c-multiselect__placeholder';
+	const selectedValueContainerClasses = 'c-multiselect__tag';
+	const removeButtonClasses = 'c-multiselect__tag-remove';
+	const clearButtonClasses = 'c-multiselect__clear-btn';
+	const chevronClasses = 'c-multiselect__chevron';
+	const dropdownClasses = $derived(
+		['c-multiselect__dropdown', dropdownClass].filter(Boolean).join(' ')
 	);
-	const placeholderClasses = $derived(
-		MultiSelectStyleManager.getPlaceholderClasses(placeholderClass)
-	);
-	const selectedValueContainerClasses = $derived(
-		MultiSelectStyleManager.getSelectedValueContainerClasses(selectedClass)
-	);
-	const removeButtonClasses = $derived(MultiSelectStyleManager.getRemoveButtonClasses());
-	const clearButtonClasses = $derived(
-		MultiSelectStyleManager.getClearButtonClasses(disabled, selectedValues.length > 0)
-	);
-	const chevronClasses = $derived(MultiSelectStyleManager.getChevronClasses(isOpen));
-	const dropdownClasses = $derived(MultiSelectStyleManager.getDropdownClasses(dropdownClass));
-	const searchContainerClasses = $derived(MultiSelectStyleManager.getSearchContainerClasses());
+	const searchContainerClasses = 'c-multiselect__search';
 	const searchInputClasses = $derived(
-		MultiSelectStyleManager.getSearchInputClasses(searchInputClass)
+		['c-multiselect__search-input', searchInputClass].filter(Boolean).join(' ')
 	);
-	const noOptionsMessageClasses = $derived(MultiSelectStyleManager.getNoOptionsMessageClasses());
+	const noOptionsMessageClasses = 'c-multiselect__empty';
 
 	function getOptionClasses(option: MultiSelectOption): string {
-		return MultiSelectStyleManager.getOptionClasses(
-			optionClass,
-			selectedValues.includes(option.value),
-			!!option.disabled
-		);
+		return [
+			'c-multiselect__option',
+			selectedValues.includes(option.value) ? 'c-multiselect__option--selected' : '',
+			option.disabled ? 'c-multiselect__option--disabled' : ''
+		]
+			.filter(Boolean)
+			.join(' ');
 	}
 
 	return {
@@ -200,10 +190,10 @@ export function createMultiSelectState(props: MultiSelectProps) {
 			return noOptionsMessageClasses;
 		},
 		get ChevronDown() {
-			return ChevronDown;
+			return PresetMultiSelect.ChevronDown;
 		},
 		get X() {
-			return X;
+			return PresetMultiSelect.X;
 		},
 		get getFilteredOptions() {
 			return getFilteredOptions;
@@ -225,5 +215,3 @@ export function createMultiSelectState(props: MultiSelectProps) {
 		}
 	};
 }
-
-export default createMultiSelectState;

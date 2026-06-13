@@ -4,7 +4,6 @@
 	import createChatInterfaceState from '$stylist/chat/function/state/chat-interface/index.svelte';
 
 	let props: ChatInterfaceProps = $props();
-
 	const state = createChatInterfaceState(props);
 
 	$effect(() => {
@@ -15,13 +14,14 @@
 <div class={state.containerClass} {...props}>
 	<!-- Header -->
 	<div class={state.headerClassComputed}>
-		<div class="flex items-center">
-			<BaseIcon name={state.Bot} class="mr-2 h-6 w-6 text-[--color-primary-500]" />
-			<h2 class="text-lg font-semibold text-[--color-text-primary]">
-				{state.currentProviderName}
-			</h2>
+		<div class="ci-header-left">
+			<BaseIcon
+				name={state.Bot}
+				style="width:1.5rem;height:1.5rem;margin-right:0.5rem;color:var(--color-primary-500)"
+			/>
+			<h2 class="ci-title">{state.currentProviderName}</h2>
 		</div>
-		<div class="flex items-center space-x-2">
+		<div class="ci-header-right">
 			{#if state.showProviderSelector && props.aiProviders && props.aiProviders.length > 1}
 				<select class={state.providerSelectorClass} bind:value={state.selectedProvider}>
 					{#each props.aiProviders as provider}
@@ -31,11 +31,11 @@
 			{/if}
 			{#if state.showSettings}
 				<button type="button" class={state.settingsButtonClass}>
-					<BaseIcon name={state.Settings} class="h-5 w-5" />
+					<BaseIcon name={state.Settings} style="width:1.25rem;height:1.25rem" />
 				</button>
 			{/if}
 			<button type="button" class={state.moreOptionsButtonClass}>
-				<BaseIcon name={state.MoreVertical} class="h-5 w-5" />
+				<BaseIcon name={state.MoreVertical} style="width:1.25rem;height:1.25rem" />
 			</button>
 		</div>
 	</div>
@@ -43,11 +43,9 @@
 	<!-- Messages -->
 	<div class={state.messageListContainerClass}>
 		{#each props.messages as message}
-			<div class={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+			<div class={`ci-msg-row ${message.sender === 'user' ? 'ci-msg-row--user' : ''}`}>
 				<div
-					class={`max-w-[80%] rounded-lg p-3 ${
-						message.sender === 'user' ? state.userMessageClass : state.aiMessageClass
-					}`}
+					class={`ci-msg-bubble ${message.sender === 'user' ? state.userMessageClass : state.aiMessageClass}`}
 				>
 					<div class={state.messageContentWrapperClass}>
 						{#if message.sender === 'ai'}
@@ -56,9 +54,7 @@
 						<div>
 							<p>{message.content}</p>
 							<div
-								class={`mt-1 text-xs ${
-									message.sender === 'user' ? state.userTimestampClass : state.timestampClass
-								}`}
+								class={`ci-msg-time ${message.sender === 'user' ? state.userTimestampClass : state.timestampClass}`}
 							>
 								{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
 								{#if message.status}
@@ -77,7 +73,7 @@
 						{#if message.sender === 'user'}
 							<BaseIcon
 								name={state.User}
-								class="mt-0.5 h-4 w-4 flex-shrink-0 text-[--color-primary-200]"
+								style="width:1rem;height:1rem;flex-shrink:0;margin-top:0.125rem;color:var(--color-primary-200)"
 							/>
 						{/if}
 					</div>
@@ -88,8 +84,8 @@
 
 	<!-- Input Area -->
 	<div class={state.inputAreaClass}>
-		<div class="flex items-end space-x-2">
-			<div class="relative flex-1">
+		<div class="ci-input-row">
+			<div class="ci-input-wrap">
 				<textarea
 					class={state.messageInputClass}
 					placeholder={state.placeholder}
@@ -109,3 +105,44 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.ci-header-left {
+		display: flex;
+		align-items: center;
+	}
+	.ci-title {
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	.ci-header-right {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.ci-msg-row {
+		display: flex;
+	}
+	.ci-msg-row--user {
+		justify-content: flex-end;
+	}
+	.ci-msg-bubble {
+		max-width: 80%;
+		border-radius: 0.5rem;
+		padding: 0.75rem;
+	}
+	.ci-msg-time {
+		margin-top: 0.25rem;
+		font-size: 0.75rem;
+	}
+	.ci-input-row {
+		display: flex;
+		align-items: flex-end;
+		gap: 0.5rem;
+	}
+	.ci-input-wrap {
+		position: relative;
+		flex: 1;
+	}
+</style>

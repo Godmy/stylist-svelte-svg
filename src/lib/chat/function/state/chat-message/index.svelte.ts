@@ -1,5 +1,5 @@
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import { MessageStyleManager } from '$stylist/chat/class/style-manager/message';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 type MessageStatus = 'sent' | 'delivered' | 'read';
 
@@ -49,26 +49,40 @@ export const createChatMessageState = (props: {
 	);
 
 	const containerClasses = $derived(
-		MessageStyleManager.getChatMessageContainerClasses(!!props.isOwn, props.class ?? '')
+		mergeClassNames(`flex ${props.isOwn ? 'justify-end' : 'justify-start'}`, props.class ?? '')
 	);
 
 	const contentClasses = $derived(
-		MessageStyleManager.getChatMessageContentClasses(props.contentClass ?? '')
+		mergeClassNames('max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl', props.contentClass ?? '')
 	);
 
 	const headerClasses = $derived(
-		MessageStyleManager.getChatMessageHeaderClasses(props.headerClass ?? '')
+		mergeClassNames(
+			'mb-1 flex items-center text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]',
+			props.headerClass ?? ''
+		)
 	);
 
 	const footerClasses = $derived(
-		MessageStyleManager.getChatMessageFooterClasses(props.footerClass ?? '')
+		mergeClassNames(
+			'mt-1 flex items-center justify-end text-[11px] text-[var(--color-text-secondary)]',
+			props.footerClass ?? ''
+		)
 	);
 
 	const bubbleClasses = $derived(
-		MessageStyleManager.getChatMessageBubbleShellClasses(!!props.isOwn, stateVariantClass(), '')
+		mergeClassNames(
+			'rounded-[1.25rem] px-4 py-3 shadow-custom28',
+			props.isOwn
+				? 'rounded-br-md bg-[var(--color-primary-500)] text-[var(--color-text-inverse)]'
+				: `rounded-bl-md ${stateVariantClass()}`,
+			!props.isOwn &&
+				!stateVariantClass() &&
+				'bg-[var(--color-background-secondary)] text-[var(--color-text-primary)]'
+		)
 	);
 
-	const textClasses = $derived(MessageStyleManager.getChatMessageTextClasses());
+	const textClasses = $derived('text-sm leading-6');
 
 	function stateVariantClass() {
 		return props.isOwn ? '' : variantClass;

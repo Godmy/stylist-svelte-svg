@@ -1,14 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	CollaborativeEditorStyleManager,
-	ConnectionLineStyleManager,
-	DrawingSurfaceStyleManager,
-	GraphStyleManager,
-	ObjectManagerSharedCanvas,
-	StageStyleManager,
-	StyleManagerSharedCanvas,
-	ViewportStyleManager
-} from './class';
+export { ObjectManagerSharedCanvas } from './class';
 export {
 	CanvasToolbar,
 	CollaborativeEditor,
@@ -75,10 +66,10 @@ export type {
 	ViewportProps
 } from './type';
 export type {
-	CanvasImageEditorRecipe,
 	CanvasToolbarDrawingOptions,
-	ConnectionLineRecipe,
 	ConnectionPathResult,
+	RecipeCanvasImageEditor,
+	RecipeConnectionLine,
 	SlotSharedCanvas,
 	SlotViewportInput,
 	SlotViewportState,

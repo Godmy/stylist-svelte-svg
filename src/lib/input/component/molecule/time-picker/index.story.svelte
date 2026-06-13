@@ -35,7 +35,7 @@
 	description="Time picker component with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<TimePicker
 				value={controlValues.value}
 				showSeconds={controlValues.showSeconds}
@@ -45,3 +45,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

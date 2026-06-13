@@ -1,8 +1,8 @@
-<script lang="ts">
-	import type { PrivacySettingsProps } from '$stylist/development/type/struct/privacy-settings-props';
-	import createPrivacySettingsState from '$stylist/development/function/state/privacy-settings/index.svelte';
+﻿<script lang="ts">
+	import type { RecipePrivacySettings } from '$stylist/development/interface/recipe/privacy-settings';
+	import { createPrivacySettingsState } from '$stylist/development/function/state/privacy-settings/index.svelte';
 
-	let { settings = [], onSave = () => {}, class: className = '' }: PrivacySettingsProps = $props();
+	let { settings = [], onSave = () => {}, class: className = '' }: RecipePrivacySettings = $props();
 
 	const state = createPrivacySettingsState({ settings, onSave, class: className });
 </script>

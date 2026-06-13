@@ -1,9 +1,9 @@
-import { onMount } from 'svelte';
-import type { ComponentLibraryStatsProps } from '$stylist/development/type/struct/component-library-stats-props';
+﻿import { onMount } from 'svelte';
+import type { RecipeComponentLibraryStats } from '$stylist/development/interface/recipe/component-library-stats';
 import type { ComponentLibraryStatsComponentStats } from '$stylist/development/type/struct/component-library-stats-component-stats';
-import { ComponentLibraryStatsStyleManager } from '$stylist/development/class/style-manager/component-library-stats';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createComponentLibraryStatsState(props: ComponentLibraryStatsProps) {
+export function createComponentLibraryStatsState(props: RecipeComponentLibraryStats) {
 	let animatedStats = $state<ComponentLibraryStatsComponentStats>({
 		totalComponents: 0,
 		atoms: 0,
@@ -19,13 +19,18 @@ export function createComponentLibraryStatsState(props: ComponentLibraryStatsPro
 	const stats = $derived(props.stats);
 	const className = $derived(props.class == null ? '' : String(props.class));
 
-	const containerClass = $derived(ComponentLibraryStatsStyleManager.getContainerClasses(className));
-	const statsGridClass = $derived(ComponentLibraryStatsStyleManager.getStatsGridClasses());
+	const containerClass = $derived(
+		mergeClassNames(
+			'bg-[--color-background-primary] rounded-lg border border-[--color-border-primary] p-6',
+			className
+		)
+	);
+	const statsGridClass = $derived('grid grid-cols-2 md:grid-cols-4 gap-4');
 	const getStatCardClass = (_colorTheme: 'orange' | 'blue' | 'purple' | 'green') =>
-		ComponentLibraryStatsStyleManager.getStatCardClasses();
+		'text-center p-4 rounded-lg bg-[--color-background-secondary]';
 	const getStatValueClass = (_colorTheme: 'orange' | 'blue' | 'purple' | 'green') =>
-		ComponentLibraryStatsStyleManager.getStatValueClasses();
-	const getStatLabelClass = $derived(ComponentLibraryStatsStyleManager.getStatLabelClasses());
+		'text-3xl font-bold text-[--color-primary-600]';
+	const getStatLabelClass = $derived('mt-2 text-sm text-[--color-text-secondary]');
 
 	function animateStats() {
 		const safeSteps = Math.max(1, steps);
@@ -117,5 +122,3 @@ export function createComponentLibraryStatsState(props: ComponentLibraryStatsPro
 		}
 	};
 }
-
-export default createComponentLibraryStatsState;

@@ -1,34 +1,30 @@
-import { ZoomToolbarStyleManager } from '$stylist/control/class/style-manager/zoom-toolbar';
-import type { SlotZoomToolbar as ZoomToolbarProps } from '$stylist/control/interface/slot/zoom-toolbar';
+import type { RecipeZoomToolbar } from '$stylist/control/interface/recipe/zoom-toolbar';
 
-export function createZoomToolbarState(props: ZoomToolbarProps) {
+export function createZoomToolbarState(props: RecipeZoomToolbar) {
 	let currentZoom = $state(props.zoomLevel ?? 100);
 
 	$effect(() => {
 		currentZoom = props.zoomLevel ?? 100;
 	});
 
-	const emit = (zoom: number) => {
+	function emit(zoom: number) {
 		currentZoom = zoom;
 		props.onZoomChange?.(zoom);
-	};
+	}
 
-	const zoomIn = () => {
+	function zoomIn() {
 		emit(Math.min(currentZoom + (props.step ?? 10), props.maxZoom ?? 200));
-	};
+	}
 
-	const zoomOut = () => {
+	function zoomOut() {
 		emit(Math.max(currentZoom - (props.step ?? 10), props.minZoom ?? 50));
-	};
+	}
 
-	const resetZoom = () => {
+	function resetZoom() {
 		emit(100);
-	};
+	}
 
-	const rootClass = $derived(ZoomToolbarStyleManager.root(props.class ?? ''));
-	const firstButtonClass = $derived(ZoomToolbarStyleManager.firstButton(props.buttonClass ?? ''));
-	const buttonClass = $derived(ZoomToolbarStyleManager.button(props.buttonClass ?? ''));
-	const percentageClass = $derived(ZoomToolbarStyleManager.percentage());
+	const rootClass = $derived(['c-zoom-toolbar', props.class].filter(Boolean).join(' '));
 
 	return {
 		get currentZoom() {
@@ -37,19 +33,8 @@ export function createZoomToolbarState(props: ZoomToolbarProps) {
 		get rootClass() {
 			return rootClass;
 		},
-		get firstButtonClass() {
-			return firstButtonClass;
-		},
-		get buttonClass() {
-			return buttonClass;
-		},
-		get percentageClass() {
-			return percentageClass;
-		},
 		zoomIn,
 		zoomOut,
 		resetZoom
 	};
 }
-
-export default createZoomToolbarState;

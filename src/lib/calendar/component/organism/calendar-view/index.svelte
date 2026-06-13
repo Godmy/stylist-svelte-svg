@@ -21,7 +21,7 @@
 				class={state.navigationButtonClasses}
 				onclick={() => state.navigateMonth(-1)}
 			>
-				<Icon name={ChevronLeft} class="h-5 w-5" />
+				<Icon name={ChevronLeft} class="_c1" />
 			</Button>
 			<Button
 				variant="ghost"
@@ -37,7 +37,7 @@
 				class={state.navigationButtonClasses}
 				onclick={() => state.navigateMonth(1)}
 			>
-				<Icon name={ChevronRight} class="h-5 w-5" />
+				<Icon name={ChevronRight} class="_c1" />
 			</Button>
 			<h2 class="c-calendar-view__month-year">{state.monthYear}</h2>
 		</div>
@@ -97,7 +97,7 @@
 								state.handleAddEvent(day.date);
 							}}
 						>
-							<Icon name={Plus} class="h-4 w-4" />
+							<Icon name={Plus} class="_c2" />
 						</button>
 					</div>
 					<div class="c-calendar-view__events">
@@ -307,5 +307,14 @@
 
 	.c-calendar-view__content {
 		padding: 1rem;
+	}
+
+	._c1 {
+		height: 1.25rem;
+		width: 1.25rem;
+	}
+	._c2 {
+		height: 1rem;
+		width: 1rem;
 	}
 </style>

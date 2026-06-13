@@ -1,5 +1,5 @@
-<script lang="ts">
-	import createToastState from '$stylist/notification/function/state/toast/index.svelte';
+﻿<script lang="ts">
+	import { createToastState } from '$stylist/notification/function/state/toast/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 
 	const props = $props();
@@ -30,47 +30,53 @@
 {/if}
 
 <style>
-	.toast-base {
+	.toast {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
+		border: 1px solid transparent;
+		border-radius: var(--border-radius-base, 0.375rem);
+		padding: 1rem;
+		margin-bottom: 0.5rem;
+		transition: opacity 0.3s ease;
 	}
 
-	.toast-hidden {
-		opacity: var(--opacity-0);
-		max-height: var(--size-0);
+	.toast--hidden {
+		opacity: 0;
+		max-height: 0;
 		overflow: hidden;
 		margin: 0;
 	}
 
-	.toast-visible {
-		opacity: var(--opacity-100);
+	.toast--visible {
+		opacity: 1;
 		max-height: 300px;
 	}
 
-	.toast-variant-info {
-		background-color: var(--color-info-50) !important;
-		border-color: var(--color-info-200) !important;
-		color: var(--color-info-700) !important;
+	.toast--info,
+	.toast--silent {
+		background-color: var(--color-info-50);
+		border-color: var(--color-info-200);
+		color: var(--color-info-700);
 	}
 
-	.toast-variant-success {
-		background-color: var(--color-success-50) !important;
-		border-color: var(--color-success-200) !important;
-		color: var(--color-success-700) !important;
+	.toast--success {
+		background-color: var(--color-success-50);
+		border-color: var(--color-success-200);
+		color: var(--color-success-700);
 	}
 
-	.toast-variant-warning {
-		background-color: var(--color-warning-50) !important;
-		border-color: var(--color-warning-200) !important;
-		color: var(--color-warning-700) !important;
+	.toast--warning {
+		background-color: var(--color-warning-50);
+		border-color: var(--color-warning-200);
+		color: var(--color-warning-700);
 	}
 
-	.toast-variant-error {
-		background-color: var(--color-danger-50) !important;
-		border-color: var(--color-danger-200) !important;
-		color: var(--color-danger-700) !important;
+	.toast--error {
+		background-color: var(--color-danger-50);
+		border-color: var(--color-danger-200);
+		color: var(--color-danger-700);
 	}
 
 	.toast-close-button {
@@ -78,8 +84,8 @@
 		border: none;
 		color: var(--color-text-secondary);
 		cursor: pointer;
-		padding: var(--spacing-1);
-		border-radius: var(--border-radius-base);
+		padding: var(--spacing-1, 0.25rem);
+		border-radius: var(--border-radius-base, 0.375rem);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -92,15 +98,15 @@
 
 	.toast-content {
 		flex: 1;
-		min-width: var(--size-0);
+		min-width: 0;
 	}
 
 	.toast-title {
-		font-weight: var(--font-weight-semibold);
-		margin-bottom: var(--spacing-1);
+		font-weight: var(--font-weight-semibold, 600);
+		margin-bottom: var(--spacing-1, 0.25rem);
 	}
 
 	.toast-description {
-		font-size: var(--font-size-3);
+		font-size: var(--font-size-3, 0.875rem);
 	}
 </style>

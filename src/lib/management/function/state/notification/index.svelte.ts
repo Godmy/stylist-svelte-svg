@@ -1,4 +1,3 @@
-import { NotificationAtomStyleManager } from '$stylist/management/class/style-manager/notification';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import type { NotificationStateProps } from '$stylist/management/interface/recipe/notification';
 
@@ -47,18 +46,6 @@ export function createNotificationState(props: NotificationStateProps) {
 
 	const iconComponent = $derived(iconMap[type] ?? 'info');
 	const visualType = $derived<TokenAppearance>(type === 'silent' ? 'info' : type);
-
-	const containerClasses = $derived(
-		NotificationAtomStyleManager.getBaseClasses(visualType, position, props.class ?? '')
-	);
-	const contentClasses = $derived(
-		NotificationAtomStyleManager.getContentClasses(props.contentClass ?? '')
-	);
-	const headerClasses = $derived(
-		NotificationAtomStyleManager.getHeaderClasses(props.headerClass ?? '')
-	);
-	const bodyClasses = $derived(NotificationAtomStyleManager.getBodyClasses(props.bodyClass ?? ''));
-	const closeButtonClasses = $derived(NotificationAtomStyleManager.getCloseButtonClasses());
 
 	// Methods
 	function handleClose(): void {
@@ -124,18 +111,6 @@ export function createNotificationState(props: NotificationStateProps) {
 		},
 		get containerClasses() {
 			return containerClasses;
-		},
-		get contentClasses() {
-			return contentClasses;
-		},
-		get headerClasses() {
-			return headerClasses;
-		},
-		get bodyClasses() {
-			return bodyClasses;
-		},
-		get closeButtonClasses() {
-			return closeButtonClasses;
 		},
 		get restProps() {
 			return restProps;

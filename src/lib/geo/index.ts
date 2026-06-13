@@ -1,15 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	GeoJSONViewerStyleManager,
-	LocationPickerStyleManager,
-	LocationSelectorStyleManager,
-	MapMarkerStyleManager,
-	MapSelectorStyleManager,
-	MapWithMarkersStyleManager,
-	RoutePlannerStyleManager,
-	StoreLocatorStyleManager
-} from './class';
-export {
 	GeoJsonviewer,
 	LocationPicker,
 	LocationSelector,
@@ -100,13 +90,14 @@ export type {
 	BehaviorLocationProto,
 	BehaviorMarkerProto,
 	GeoJSONViewerStateProps,
-	IMapSettingsRecipe,
-	IRouteRecipe,
-	LocationPickerStateProps,
-	LocationSelectorStateProps,
-	MapMarkerStateProps,
-	MapSelectorStateProps,
-	MapWithMarkersStateProps,
+	RecipeIMapSettings,
+	RecipeIRoute,
+	RecipeLocationPicker,
+	RecipeLocationSelector,
+	RecipeMapMarker,
+	RecipeMapSelector,
+	RecipeMapWithMarkers,
+	RecipeStoreLocator,
 	RoutePlannerStateProps,
 	SlotContactInfo,
 	SlotCoordinates,
@@ -131,6 +122,5 @@ export type {
 	SlotRoutePlanner,
 	SlotRoutePlannerLocation,
 	SlotStore,
-	SlotStoreLocator,
-	StoreLocatorStateProps
+	SlotStoreLocator
 } from './interface';

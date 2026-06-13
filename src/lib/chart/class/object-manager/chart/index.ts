@@ -1,7 +1,7 @@
 import type { ChartFunctionPoint } from '$stylist/chart/type/struct/chart-point';
 import type { ChartSeries } from '$stylist/chart/type/struct/chart-series';
-import type { ChartAxisYProps } from '$stylist/chart/interface/recipe/chart-axis-y-props';
-import type { ChartPolylineRecipe as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
+import type { RecipeChartAxisY } from '$stylist/chart/interface/recipe/chart-axis-y';
+import type { RecipeChartPolyline as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
 import type { PieChartProps } from '$stylist/chart/interface/recipe/pie-chart-props';
 import type { AnalyticsChartDataPoint } from '$stylist/chart/type/struct/analytics-chart-data-point';
 import type { ChartLegendItem } from '$stylist/navigation/type/struct/chart-legend-item';
@@ -22,7 +22,7 @@ export class ObjectManagerChart {
 		}));
 	}
 
-	static getAxisYMetrics(props: ChartAxisYProps): ChartAxisYMetrics {
+	static getAxisYMetrics(props: RecipeChartAxisY): ChartAxisYMetrics {
 		const x = props.x ?? 0;
 		const startY = props.startY ?? 0;
 		const endY = props.endY ?? 100;

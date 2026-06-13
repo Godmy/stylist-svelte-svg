@@ -39,7 +39,7 @@
 	description="File upload component with drag and drop support"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-8">
+		<div class="_c1">
 			<FileUpload
 				accept={controlValues.accept}
 				maxSize={controlValues.maxSize}
@@ -50,3 +50,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 2rem;
+	}
+</style>

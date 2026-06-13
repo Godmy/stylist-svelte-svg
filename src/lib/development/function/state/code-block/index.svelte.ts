@@ -1,25 +1,30 @@
-import type { CodeBlockProps } from '$stylist/development/type/struct/code-block-props';
+import type { RecipeCodeBlock } from '$stylist/development/interface/recipe/code-block';
 import { copyToClipboard } from '$stylist/development/function/script/code-block';
-import { CodeStyleManager } from '$stylist/development/class/style-manager/code-block';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createCodeBlockState(props: CodeBlockProps) {
+export function createCodeBlockState(props: RecipeCodeBlock) {
 	let copied = $state(false);
 	const codeLines = $derived(props.code?.split('\n') ?? []);
 	const languageClass = $derived(`language-${props.language ?? 'text'}`);
-	const containerClass = $derived(CodeStyleManager.getContainerClass(props.class ?? ''));
-	const headerClassComputed = $derived(CodeStyleManager.getHeaderClass(props.headerClass ?? ''));
+	const containerClass = $derived(mergeClassNames('c-code-block', props.class ?? ''));
+	const headerClassComputed = $derived(
+		mergeClassNames('c-code-block__header', props.headerClass ?? '')
+	);
 	const lineNumbersContainerClass = $derived(
-		CodeStyleManager.getLineNumbersContainerClass(props.lineNumberClass ?? '')
+		mergeClassNames('c-code-block__line-numbers', props.lineNumberClass ?? '')
 	);
 	const lineNumberItemClass = (isHighlighted: boolean) =>
-		CodeStyleManager.getLineNumberItemClass(isHighlighted);
+		mergeClassNames(
+			'c-code-block__line-number',
+			isHighlighted ? 'c-code-block__line-number--highlighted' : ''
+		);
 	const contentContainerClass = $derived(
-		CodeStyleManager.getContentContainerClass(props.contentClass ?? '')
+		mergeClassNames('c-code-block__content', props.contentClass ?? '')
 	);
-	const preClass = $derived(CodeStyleManager.getPreClass(props.codeClass ?? ''));
-	const copyButtonContainerClass = $derived(CodeStyleManager.getCopyButtonContainerClass());
-	const iconClass = $derived(CodeStyleManager.getIconClass());
-	const getMainContentClass = $derived(CodeStyleManager.getMainContentClass());
+	const preClass = $derived(mergeClassNames('c-code-block__pre', props.codeClass ?? ''));
+	const copyButtonContainerClass = 'c-code-block__copy';
+	const iconClass = 'c-code-block__icon';
+	const getMainContentClass = 'c-code-block__main';
 
 	function handleCopy() {
 		copyToClipboard(props.code ?? '', (copiedValue) => {
@@ -65,5 +70,3 @@ export function createCodeBlockState(props: CodeBlockProps) {
 		handleCopy
 	};
 }
-
-export default createCodeBlockState;

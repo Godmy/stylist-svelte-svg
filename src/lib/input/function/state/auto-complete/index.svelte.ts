@@ -1,7 +1,7 @@
-import type { AutoCompleteOption } from '$stylist/input/type/struct/interaction-input/auto-complete-option';
-import type { SlotAutoComplete as AutoCompleteProps } from '$stylist/input/interface/slot/auto-complete';
+﻿import type { AutoCompleteOption } from '$stylist/input/type/struct/interaction-input/auto-complete-option';
+import type { SlotAutoComplete as RecipeAutoComplete } from '$stylist/input/interface/slot/auto-complete';
 
-export const createAutoCompleteState = (props: AutoCompleteProps) => {
+export const createAutoCompleteState = (props: RecipeAutoComplete) => {
 	let filteredOptions = $state<AutoCompleteOption[]>([]);
 	let isOpen = $state(false);
 	let highlightedIndex = $state(-1);
@@ -97,5 +97,3 @@ export const createAutoCompleteState = (props: AutoCompleteProps) => {
 		close
 	};
 };
-
-export default createAutoCompleteState;

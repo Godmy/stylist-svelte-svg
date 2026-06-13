@@ -24,63 +24,57 @@
 </script>
 
 <div class={state.containerClass} {...restProps}>
-	<table class="min-w-full divide-y divide-gray-200">
+	<table class="c-comparison-table__table">
 		<thead class={state.headerClass}>
 			<tr>
-				<th
-					class="bg-[var(--color-background-secondary)] px-6 py-3 text-left text-xs font-medium tracking-wider text-[var(--color-text-secondary)] uppercase"
-				>
-					Features
-				</th>
+				<th class="c-comparison-table__th c-comparison-table__th--feature">Features</th>
 				{#each state.products as product}
 					<th
-						class={`bg-[var(--color-background-secondary)] px-6 py-3 text-center text-xs font-medium tracking-wider text-[var(--color-text-secondary)] uppercase ${
-							product.primary ? state.primaryProductClass : ''
-						} ${state.productClass}`}
+						class={[
+							'c-comparison-table__th',
+							product.primary ? 'c-comparison-table__th--primary' : ''
+						]
+							.filter(Boolean)
+							.join(' ')}
 					>
-						<div class="flex flex-col items-center">
+						<div class="c-comparison-table__product-header">
 							<span>{product.name}</span>
 							{#if state.showDescription && product.description}
-								<span class="mt-1 text-xs text-[var(--color-text-tertiary)]"
-									>{product.description}</span
-								>
+								<span class="c-comparison-table__product-desc">{product.description}</span>
 							{/if}
 						</div>
 					</th>
 				{/each}
 			</tr>
 		</thead>
-		<tbody class="divide-y divide-gray-200 bg-[var(--color-background-primary)]">
+		<tbody class="c-comparison-table__body">
 			{#each state.features as feature}
-				<tr>
-					<td
-						class={`px-6 py-4 text-sm font-medium whitespace-nowrap text-[var(--color-text-primary)] ${state.featureClass}`}
-					>
+				<tr class="c-comparison-table__row">
+					<td class="c-comparison-table__feature-cell">
 						<div>
-							<div>{feature.name}</div>
+							<div class="c-comparison-table__feature-name">{feature.name}</div>
 							{#if state.showDescription && feature.description}
-								<div class="text-xs text-[var(--color-text-secondary)]">{feature.description}</div>
+								<div class="c-comparison-table__feature-desc">{feature.description}</div>
 							{/if}
 						</div>
 					</td>
 					{#each state.products as product}
 						<td
-							class={`px-6 py-4 text-center text-sm whitespace-nowrap text-[var(--color-text-secondary)] ${state.valueClass} ${
-								product.primary ? state.primaryProductClass : ''
-							} ${state.productClass}`}
+							class={[
+								'c-comparison-table__value-cell',
+								product.primary ? 'c-comparison-table__value-cell--primary' : ''
+							]
+								.filter(Boolean)
+								.join(' ')}
 						>
 							{#if typeof product.features[feature.id] === 'boolean'}
 								{#if product.features[feature.id]}
-									<span
-										class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-success-100)] text-[var(--color-success-800)]"
-									>
-										?
+									<span class="c-comparison-table__badge c-comparison-table__badge--yes">
+										&#10003;
 									</span>
 								{:else}
-									<span
-										class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-background-secondary)] text-[var(--color-text-primary)]"
-									>
-										?
+									<span class="c-comparison-table__badge c-comparison-table__badge--no">
+										&#8212;
 									</span>
 								{/if}
 							{:else if typeof product.features[feature.id] === 'string' || typeof product.features[feature.id] === 'number'}
@@ -95,3 +89,110 @@
 		</tbody>
 	</table>
 </div>
+
+<style>
+	.c-comparison-table {
+		overflow-x: auto;
+	}
+
+	.c-comparison-table__table {
+		min-width: 100%;
+		border-collapse: collapse;
+	}
+
+	.c-comparison-table__head {
+		border-bottom: 2px solid var(--color-border-primary);
+	}
+
+	.c-comparison-table__th {
+		padding: 0.75rem 1.5rem;
+		text-align: center;
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--color-text-secondary);
+		background: var(--color-background-secondary);
+	}
+
+	.c-comparison-table__th--feature {
+		text-align: left;
+	}
+
+	.c-comparison-table__th--primary {
+		background: var(--color-primary-50, var(--color-background-secondary));
+		color: var(--color-primary-700, var(--color-text-primary));
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: -2px;
+	}
+
+	.c-comparison-table__product-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.c-comparison-table__product-desc {
+		margin-top: 0.25rem;
+		font-size: 0.75rem;
+		color: var(--color-text-tertiary);
+	}
+
+	.c-comparison-table__body {
+		background: var(--color-background-primary);
+	}
+
+	.c-comparison-table__row {
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-comparison-table__feature-cell {
+		padding: 1rem 1.5rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		white-space: nowrap;
+		color: var(--color-text-primary);
+	}
+
+	.c-comparison-table__feature-name {
+		font-weight: 500;
+	}
+
+	.c-comparison-table__feature-desc {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+		margin-top: 0.125rem;
+	}
+
+	.c-comparison-table__value-cell {
+		padding: 1rem 1.5rem;
+		text-align: center;
+		font-size: 0.875rem;
+		white-space: nowrap;
+		color: var(--color-text-secondary);
+	}
+
+	.c-comparison-table__value-cell--primary {
+		background: var(--color-primary-50, transparent);
+	}
+
+	.c-comparison-table__badge {
+		display: inline-flex;
+		width: 1.5rem;
+		height: 1.5rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		font-size: 0.875rem;
+	}
+
+	.c-comparison-table__badge--yes {
+		background: var(--color-success-100);
+		color: var(--color-success-800);
+	}
+
+	.c-comparison-table__badge--no {
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
+	}
+</style>

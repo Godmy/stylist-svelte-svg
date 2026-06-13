@@ -1,8 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipePlaygroundMarkdownRenderer } from '$stylist/playground/interface/recipe/playground-markdown-renderer';
 	import { marked } from 'marked';
-	import createPlaygroundMarkdownRendererState from '$stylist/playground/function/state/playground-markdown-renderer/index.svelte';
-	import type { PlaygroundMarkdownRendererProps } from '$stylist/playground/type/struct/playground-markdown-renderer-props';
-	let props: PlaygroundMarkdownRendererProps = $props();
+	import { createPlaygroundMarkdownRendererState } from '$stylist/playground/function/state/playground-markdown-renderer/index.svelte';
+	let props: RecipePlaygroundMarkdownRenderer = $props();
 	const state = createPlaygroundMarkdownRendererState(props);
 
 	// Configure marked for safe rendering
@@ -21,7 +21,7 @@
 	});
 </script>
 
-<div class={`markdown-content prose prose-sm dark:prose-invert max-w-none ${state.hostClass}`}>
+<div class={`markdown-content ${state.hostClass}`}>
 	{@html state.html}
 </div>
 

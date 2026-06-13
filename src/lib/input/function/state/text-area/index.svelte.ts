@@ -1,5 +1,4 @@
-import { createInputState as createBaseInputState } from '$stylist/interaction/preset/component/index';
-import { InputStyleManager } from '$stylist/input/class/style-manager/input';
+﻿import { createInputState as createBaseInputState } from '$stylist/interaction/preset/component/index';
 import { TEXTAREA_PRESET } from '$stylist/input/preset/input';
 import type { TextAreaStateOptions } from '$stylist/input/type/struct/text-area-state-options';
 
@@ -45,19 +44,19 @@ export const createTextareaState = (props: TextAreaStateOptions) => {
 			return remainingChars;
 		},
 		get containerClasses() {
-			return InputStyleManager.getContainerClass('');
+			return 'input-field-container';
 		},
 		get labelClasses() {
-			return InputStyleManager.getLabelClass('');
+			return 'input-field-label';
 		},
 		get helperTextClasses() {
-			return InputStyleManager.getHelperTextClass('');
+			return 'input-field-helper-text';
 		},
 		get errorTextClasses() {
-			return InputStyleManager.getErrorTextClass('');
+			return 'input-field-error-text';
 		},
 		get requiredIndicatorClasses() {
-			return InputStyleManager.getRequiredIndicatorClass('');
+			return 'input-field-required';
 		},
 		get showHelper() {
 			return showHelper;

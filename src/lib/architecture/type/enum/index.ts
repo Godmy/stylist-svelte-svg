@@ -4,7 +4,6 @@ export type { FoundationAxisDirection } from './axes-axis-direction';
 export type { FoundationAxisOrientation } from './axes-axis-orientation';
 export type { TokenComponentType } from './component-type';
 export type { TokenConnector } from './connector';
-export type { TokenEasing } from './easing';
 export type { TokenFunctionalTaxonomy } from './functional-taxonomy';
 export type { TokenArchitectureIcon } from './icon';
 export type { TokenLineType } from './line-type';

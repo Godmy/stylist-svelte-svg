@@ -1,13 +1,15 @@
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotContent } from '$stylist/architecture/interface/slot/content';
 import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { Snippet } from 'svelte';
-
-export interface ContractFavicon extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+export interface ContractFavicon
+	extends StructIntersectAll<
+		[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>, SlotContent]
+	> {
 	/** Size in pixels */
 	size?: number;
 	/** Favicon URL */
 	url?: string;
 	/** Slot content (fallback) */
-	content?: Snippet;
 	/** Additional CSS class */
 	class?: string;
 	/** Error state */

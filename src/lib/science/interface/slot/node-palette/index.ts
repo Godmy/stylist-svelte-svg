@@ -1,8 +1,10 @@
-import type { Snippet } from 'svelte';
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { SlotNodePaletteItem } from '$stylist/science/interface/slot/node-palette-item';
 
-export interface SlotNodePalette extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotNodePalette
+	extends StructIntersectAll<[InteractionHTMLAttributes<HTMLDivElement>, SlotChildren]> {
 	items?: readonly SlotNodePaletteItem[];
 	isOpen?: boolean;
 	x?: number;
@@ -19,6 +21,5 @@ export interface SlotNodePalette extends InteractionHTMLAttributes<HTMLDivElemen
 	onClose?: () => void;
 	onViewModeChange?: (mode: 'grid' | 'list') => void;
 	onCategorySelect?: (category: string) => void;
-	children?: Snippet;
 	class?: string;
 }

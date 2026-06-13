@@ -1,8 +1,7 @@
-import type { Snippet } from 'svelte';
-
+import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 // MapSelector props interface
-export interface SlotMapSelector {
+export interface SlotMapSelector extends StructIntersectAll<[SlotChildren]> {
 	class?: string;
-	children?: Snippet;
 	onValueChange?: (event: CustomEvent) => void;
 }

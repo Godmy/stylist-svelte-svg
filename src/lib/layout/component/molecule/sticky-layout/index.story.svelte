@@ -21,31 +21,74 @@
 			headerShadow={values.headerShadow}
 			footerShadow={values.footerShadow}
 			fillHeight={values.fillHeight}
-			class="h-64 overflow-hidden rounded-lg border border-[--color-border-primary]"
+			class="_c1"
 		>
 			{#snippet header()}
-				<div
-					class="border-b border-[--color-border-primary] bg-[--color-background-primary] px-4 py-3 text-sm font-semibold"
-				>
-					Sticky Header
-				</div>
+				<div class="_c2">Sticky Header</div>
 			{/snippet}
 			{#snippet children()}
-				<div class="space-y-3 p-4">
+				<div class="_c3">
 					{#each Array(10) as _, i}
-						<div class="rounded border border-[--color-border-primary] p-2 text-sm">
+						<div class="_c4">
 							Scrollable item {i + 1}
 						</div>
 					{/each}
 				</div>
 			{/snippet}
 			{#snippet footer()}
-				<div
-					class="border-t border-[--color-border-primary] bg-[--color-background-primary] px-4 py-3 text-sm"
-				>
-					Sticky Footer
-				</div>
+				<div class="_c5">Sticky Footer</div>
 			{/snippet}
 		</StickyLayout>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		height: 16rem;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+	}
+	._c2 {
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+	}
+	._c3 {
+		padding: 1rem;
+	}
+	._c3 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c4 {
+		border-radius: 0.25rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		padding: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+	._c5 {
+		border-top-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

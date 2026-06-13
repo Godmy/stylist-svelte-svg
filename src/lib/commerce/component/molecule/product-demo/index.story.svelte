@@ -36,7 +36,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="rounded-lg bg-[var(--color-background-secondary)] p-8">
+		<div class="_c1">
 			<ProductDemo
 				title={values.title}
 				description={values.description}
@@ -44,12 +44,29 @@
 				onDemo={() => (demoClicks += 1)}
 			>
 				{#snippet demoContent()}
-					<div class="text-[var(--color-text-secondary)] italic">Interactive demo area</div>
+					<div class="_c2 italic">Interactive demo area</div>
 				{/snippet}
 			</ProductDemo>
-			<p class="mt-3 text-sm text-[var(--color-text-secondary)]">
+			<p class="_c3">
 				Demo started: {demoClicks} times
 			</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.5rem;
+		background-color: var(--color-background-secondary);
+		padding: 2rem;
+	}
+	._c2 {
+		color: var(--color-text-secondary);
+	}
+	._c3 {
+		margin-top: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

@@ -28,3 +28,6 @@
 		{/each}
 	</svg>
 </div>
+
+<style>
+</style>

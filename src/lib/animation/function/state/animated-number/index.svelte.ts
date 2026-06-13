@@ -1,8 +1,8 @@
-import type { AnimatedNumberRecipe as AnimatedNumberProps } from '$stylist/animation/interface/recipe/animated-number';
+import type { RecipeAnimatedNumber } from '$stylist/animation/interface/recipe/animated-number';
 import { formatAnimatedValue } from '$stylist/animation/function/script/format-animated-value';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createAnimatedNumberState(props: AnimatedNumberProps) {
+export function createAnimatedNumberState(props: RecipeAnimatedNumber) {
 	const value = $derived(props.value ?? 0);
 	const prefix = $derived(props.prefix ?? '');
 	const suffix = $derived(props.suffix ?? '');

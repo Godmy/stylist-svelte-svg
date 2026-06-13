@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { ThemeSyntaxHighlightedCodeRecipe } from '$stylist/development/interface/recipe/syntax-highlighted-code';
+	import type { RecipeThemeSyntaxHighlightedCode } from '$stylist/development/interface/recipe/syntax-highlighted-code';
 	import createSyntaxHighlightedCodeState from '$stylist/development/function/state/syntax-highlighted-code/index.svelte';
 	import Code from '$stylist/development/component/molecule/code-block/index.svelte';
 
-	let props: ThemeSyntaxHighlightedCodeRecipe = $props();
+	let props: RecipeThemeSyntaxHighlightedCode = $props();
 
 	const state = createSyntaxHighlightedCodeState(props);
 </script>
@@ -16,3 +16,6 @@
 		class={state.containerClasses}
 	/>
 </div>
+
+<style>
+</style>

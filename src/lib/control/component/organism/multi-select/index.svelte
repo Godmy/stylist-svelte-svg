@@ -1,9 +1,9 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import type { RecipeMultiSelect } from '$stylist/control/interface/recipe/multi-select';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { SlotMultiSelect as MultiSelectProps } from '$stylist/control/interface/slot/multi-select';
-	import createMultiSelectState from '$stylist/control/function/state/multi-select/index.svelte';
+	import { createMultiSelectState } from '$stylist/control/function/state/multi-select/index.svelte';
 
-	let props: MultiSelectProps = $props();
+	let props: RecipeMultiSelect = $props();
 	const state = createMultiSelectState(props);
 
 	const restProps = $derived.by(() => {
@@ -58,7 +58,7 @@
 							}}
 							aria-label={`Remove ${foundOption.label}`}
 						>
-							<BaseIcon name={state.X} class="h-3 w-3" />
+							<BaseIcon name={state.X} style="width:0.75rem;height:0.75rem;" />
 						</button>
 					</span>
 				{/if}
@@ -74,11 +74,13 @@
 			}}
 			disabled={state.disabled || state.selectedValues.length === 0}
 		>
-			<BaseIcon name={state.X} class="h-4 w-4" />
+			<BaseIcon name={state.X} style="width:1rem;height:1rem;" />
 		</button>
-		<div class="ml-2">
-			<BaseIcon name={state.ChevronDown} class={state.chevronClasses} />
-		</div>
+		<BaseIcon
+			name={state.ChevronDown}
+			class={state.chevronClasses}
+			style="width:1rem;height:1rem;"
+		/>
 	</div>
 
 	{#if state.isOpen}
@@ -136,3 +138,139 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.c-multiselect {
+		position: relative;
+	}
+
+	.c-multiselect__display {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		padding: 0.375rem 0.5rem;
+		background: var(--color-background-primary);
+		cursor: pointer;
+		min-height: 2.5rem;
+	}
+
+	.c-multiselect__display:focus {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
+	}
+
+	.c-multiselect__placeholder {
+		color: var(--color-text-secondary);
+		font-size: 0.875rem;
+	}
+
+	.c-multiselect__tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		background: var(--color-primary-100);
+		color: var(--color-primary-700);
+		border-radius: 0.25rem;
+		padding: 0.125rem 0.375rem;
+		font-size: 0.75rem;
+		font-weight: 500;
+	}
+
+	.c-multiselect__tag-remove {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		color: var(--color-primary-600);
+		border-radius: 0.125rem;
+	}
+
+	.c-multiselect__tag-remove:hover {
+		color: var(--color-primary-800);
+	}
+
+	.c-multiselect__clear-btn {
+		margin-left: 0.5rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		color: var(--color-text-secondary);
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.c-multiselect__clear-btn:hover {
+		color: var(--color-text-primary);
+	}
+
+	.c-multiselect__chevron {
+		margin-left: 0.5rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-multiselect__dropdown {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: var(--z-index-docked, 100);
+		margin-top: 0.25rem;
+		width: 100%;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		background: var(--color-background-primary);
+		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+	}
+
+	.c-multiselect__search {
+		padding: 0.5rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+
+	.c-multiselect__search-input {
+		width: 100%;
+		padding: 0.375rem 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		outline: none;
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+	}
+
+	.c-multiselect__option {
+		padding: 0.5rem 0.75rem;
+		cursor: pointer;
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+		transition: background-color var(--duration-120, 120ms);
+	}
+
+	.c-multiselect__option:hover:not(.c-multiselect__option--disabled) {
+		background: var(--color-background-secondary);
+	}
+
+	.c-multiselect__option--selected {
+		background: var(--color-primary-50);
+		color: var(--color-primary-700);
+	}
+
+	.c-multiselect__option--disabled {
+		opacity: var(--opacity-50, 0.5);
+		cursor: not-allowed;
+	}
+
+	.c-multiselect__empty {
+		padding: 0.75rem;
+		text-align: center;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+</style>

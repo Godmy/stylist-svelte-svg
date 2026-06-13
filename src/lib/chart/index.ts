@@ -1,11 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AnalyticsChartStyleManager,
-	BarChartStyleManager,
-	CanvasChartStyleManager,
-	ChartStyleManager,
-	HeatmapStyleManager,
-	LineChartStyleManager,
 	ObjectManagerAnalyticsChart,
 	ObjectManagerBarChart,
 	ObjectManagerCanvasChart,
@@ -13,9 +7,7 @@ export {
 	ObjectManagerChartCanvas,
 	ObjectManagerHeatmap,
 	ObjectManagerLineChart,
-	ObjectManagerPieChart,
-	PieChartStyleManager,
-	ScatterPlotStyleManager
+	ObjectManagerPieChart
 } from './class';
 export {
 	AnalyticsChart,
@@ -73,11 +65,9 @@ export type {
 	AnalyticsChartDataPoint,
 	AnalyticsChartLineSeries,
 	AnalyticsChartPiePoint,
-	AnalyticsChartProps,
 	AnalyticsPieChartSegment,
 	CanvasChartDataPoint,
 	CanvasChartPadding,
-	CanvasChartProps,
 	ChartAxisYMetrics,
 	ChartBounds,
 	ChartFunctionPoint,
@@ -101,27 +91,24 @@ export type {
 	TokenChartIcon
 } from './type';
 export type {
-	AnalyticsChartRecipe,
-	BarChartRecipe,
 	BehaviorChartAxis,
 	BehaviorChartColorable,
 	BehaviorLegendable,
-	CanvasChartRecipe,
-	ChartAxisXRecipe,
-	ChartAxisYProps,
-	ChartAxisYRecipe,
-	ChartAxisZProps,
-	ChartAxisZRecipe,
-	ChartBackgroundProps,
-	ChartBackgroundRecipe,
-	ChartCanvasRecipe,
-	ChartNameRecipe,
-	ChartPolylineRecipe,
-	ChartProps,
-	ChartRecipe,
-	HeatmapRecipe,
-	LineChartRecipe,
 	PieChartProps,
-	PieChartRecipe,
-	ScatterPlotRecipe
+	RecipeAnalyticsChart,
+	RecipeBarChart,
+	RecipeCanvasChart,
+	RecipeChart,
+	RecipeChartAxisX,
+	RecipeChartAxisY,
+	RecipeChartAxisZ,
+	RecipeChartBackground,
+	RecipeChartCanvas,
+	RecipeChartName,
+	RecipeChartPolyline,
+	RecipeHeatmap,
+	RecipeLineChart,
+	RecipePieChart,
+	RecipeScatterPlot,
+	SlotChartAxis
 } from './interface';

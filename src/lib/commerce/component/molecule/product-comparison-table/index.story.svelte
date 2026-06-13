@@ -62,7 +62,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded-xl bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
 			<ProductComparisonTable
 				products={args.includeThirdProduct ? products : products.slice(0, 2)}
 				specifications={getSpecifications(args.showExtendedSpecs).map((spec) => ({
@@ -73,3 +73,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+</style>

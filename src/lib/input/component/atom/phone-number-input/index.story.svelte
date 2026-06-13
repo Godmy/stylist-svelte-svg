@@ -21,7 +21,7 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<div class="max-w-sm space-y-2">
+		<div class="_c1 max-w-sm">
 			<PhoneNumberInput
 				{value}
 				placeholder={values.placeholder}
@@ -31,7 +31,18 @@
 				error={values.error}
 				onValueChange={(next) => (value = next)}
 			/>
-			<p class="text-sm text-[--color-text-secondary]">Raw value: {value}</p>
+			<p class="_c2">Raw value: {value}</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 > * + * {
+		margin-top: 0.5rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

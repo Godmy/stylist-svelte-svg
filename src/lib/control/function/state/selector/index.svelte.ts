@@ -1,6 +1,6 @@
-import type { SelectorProps } from '$stylist/control/type/struct/selector-props';
+﻿import type { RecipeSelector } from '$stylist/control/interface/recipe/selector';
 
-export function createSelectorState(props: SelectorProps) {
+export function createSelectorState(props: RecipeSelector) {
 	const id = $derived(props.id);
 	const label = $derived(props.label);
 	const value = $derived(props.value ?? '');
@@ -20,17 +20,21 @@ export function createSelectorState(props: SelectorProps) {
 	const errorId = $derived(`${id}-error`);
 	const selectedOption = $derived(options.find((option) => option.value === value));
 
-	const containerClass = $derived(`mb-4 ${className}`);
-	const labelClass = 'block text-sm font-medium mb-1 text-[--color-text-primary]';
-	const fieldWrapperClass = 'relative';
+	const containerClass = $derived(['c-selector', className].filter(Boolean).join(' '));
+	const labelClass = 'c-selector__label';
+	const fieldWrapperClass = 'c-selector__field';
 	const selectButtonClass = $derived(
-		`w-full px-3 py-2 text-left bg-[--color-background-surface] border ${hasError ? 'border-[--color-danger-500]' : 'border-[--color-border-primary]'} rounded-md shadow-sm cursor-default focus:outline-none focus:ring-2 focus:ring-[--color-primary-500] focus:border-[--color-primary-500] ${disabled ? 'bg-[--color-background-disabled] cursor-not-allowed' : ''}`
+		[
+			'c-selector__trigger',
+			hasError ? 'c-selector__trigger--error' : '',
+			disabled ? 'c-selector__trigger--disabled' : ''
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
-	const chevronClass = 'ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none';
-	const errorClass = 'mt-1 text-sm text-[--color-danger-500]';
-	const valueClass = $derived(
-		selectedOption ? 'text-[--color-text-primary]' : 'text-[--color-text-secondary]'
-	);
+	const chevronClass = 'c-selector__chevron';
+	const errorClass = 'c-selector__error';
+	const valueClass = $derived(selectedOption ? 'c-selector__value' : 'c-selector__placeholder');
 
 	function handleClick() {
 		if (props.onToggle && !disabled) {
@@ -103,5 +107,3 @@ export function createSelectorState(props: SelectorProps) {
 		handleClick
 	};
 }
-
-export default createSelectorState;

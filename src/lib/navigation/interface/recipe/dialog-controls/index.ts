@@ -15,5 +15,5 @@ import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/beha
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
-export interface DialogControlsRecipe
+export interface RecipeDialogControls
 	extends StructIntersectAll<[ILabelSlot, ICaptionSlot, IClickable, IFocusable, ISizable]> {}

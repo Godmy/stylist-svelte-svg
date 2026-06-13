@@ -1,15 +1,17 @@
-﻿/**
- * ChartCanvas — canvas для графика..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * ChartCanvas вЂ” canvas РґР»СЏ РіСЂР°С„РёРєР°..
  *
- * LEGO-состав:
+ * LEGO-СЃРѕСЃС‚Р°РІ:
 
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 import type { ChartSeries } from '$stylist/chart/type/struct/chart-series';
 import type { ChartScale } from '$stylist/chart/type/struct/chart-scale';
 
-export interface ChartCanvasRecipe extends StructIntersectAll<[ThemeAttributes<HTMLDivElement>]> {
+export interface RecipeChartCanvas
+	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	width?: number;
 	height?: number;
 	padding?: number;

@@ -28,8 +28,14 @@
 	description="RecipeTimeline component to show events chronologically"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<RecipeTimeline items={defaultItems as any} orientation={controlValues.orientation} />
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

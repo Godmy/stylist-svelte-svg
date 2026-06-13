@@ -1,12 +1,11 @@
-import type { HTMLAttributes } from 'svelte/elements';
-import type { Preset } from '$stylist/interaction/type/struct/preset/preset';
-import type { AlertCardStateProps } from '$stylist/commerce/interface/recipe/alert-card-state-props';
+﻿import type { Preset } from '$stylist/interaction/type/struct/preset/preset';
+import type { RecipeAlertCard } from '$stylist/commerce/interface/recipe/alert-card';
 import { buildPresetClassNames } from '$stylist/interaction/function/script/build-preset-class-names';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
 
 export function createAlertCardState<V extends string, S extends string>(
 	preset: Preset<V, S>,
-	props: AlertCardStateProps & HTMLAttributes<HTMLDivElement>
+	props: RecipeAlertCard
 ) {
 	const variant = $derived((props.variant ?? preset.defaults.variant) as V);
 	const size = $derived((props.size ?? preset.defaults.size) as S);
@@ -35,7 +34,6 @@ export function createAlertCardState<V extends string, S extends string>(
 		disabled: typeof disabled === 'boolean' ? disabled : undefined
 	});
 
-	// Использовать геттеры для избежания захвата начальных значений вне реактивного контекста
 	return {
 		get variant() {
 			return variant;
@@ -57,5 +55,3 @@ export function createAlertCardState<V extends string, S extends string>(
 		}
 	};
 }
-
-export default createAlertCardState;

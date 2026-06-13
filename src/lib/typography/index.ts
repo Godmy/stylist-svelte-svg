@@ -55,18 +55,18 @@ export type {
 } from './type';
 export type {
 	BehaviorTypography,
-	BlockquoteRecipe,
-	HeadingRecipe,
-	RichTextRecipe,
+	RecipeBlockquote,
+	RecipeHeading,
+	RecipeRichText,
+	RecipeText,
+	RecipeTextAreaControl,
+	RecipeThemeInlineCode,
+	RecipeThemeKbd,
+	RecipeThemeLink,
 	SlotAbbr,
 	SlotCaption,
 	SlotInlineBase,
 	SlotInlineCode,
 	SlotLabel,
-	SlotLink,
-	TextAreaControlRecipe,
-	TextRecipe,
-	ThemeInlineCodeRecipe,
-	ThemeKbdRecipe,
-	ThemeLinkRecipe
+	SlotLink
 } from './interface';

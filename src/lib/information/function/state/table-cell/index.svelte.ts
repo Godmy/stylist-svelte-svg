@@ -1,14 +1,17 @@
-import type { TableCellRecipe as TableCellRecipe } from '$stylist/information/interface/recipe/table-cell';
+import type { RecipeTableCell as RecipeTableCell } from '$stylist/information/interface/recipe/table-cell';
 import { ObjectManagerTable } from '$stylist/information/class/object-manager/table';
-import { TableStyleManager } from '$stylist/information/class/style-manager/table';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import { TABLE_ALIGNMENT_CLASSES } from '$stylist/information/const/record/table-alignment-classes';
+import { TABLE_CLASSES } from '$stylist/information/const/record/table-classes';
 
-export function createTableCellState(props: TableCellRecipe) {
+export function createTableCellState(props: RecipeTableCell) {
 	const variant = $derived(props.variant ?? 'data');
 	const align = $derived((props.align ?? 'left') as 'left' | 'center' | 'right');
 	const classes = $derived(
-		TableStyleManager.getCellClasses(
-			variant,
-			align,
+		mergeClassNames(
+			...TABLE_CLASSES.cell.base,
+			...(variant === 'header' ? TABLE_CLASSES.cell.header : TABLE_CLASSES.cell.data),
+			...(TABLE_ALIGNMENT_CLASSES[align] ?? TABLE_ALIGNMENT_CLASSES.left),
 			typeof props.class === 'string' ? props.class : undefined
 		)
 	);

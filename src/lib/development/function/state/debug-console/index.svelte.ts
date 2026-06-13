@@ -1,9 +1,9 @@
-import type { DebugConsoleProps } from '$stylist/development/type/struct/debug-console-props';
+﻿import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
 import type { DebugConsoleLogLevel } from '$stylist/development/type/struct/debug-console-log-level';
 import type { DebugConsoleLogEntry } from '$stylist/development/type/struct/debug-console-log-entry';
-import { DebugConsoleStyleManager } from '$stylist/development/class/style-manager/debug-console';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
-export function createDebugConsoleState(props: DebugConsoleProps) {
+export function createDebugConsoleState(props: RecipeDebugConsole) {
 	const Terminal = 'terminal';
 	const Bug = 'bug';
 	const Play = 'play';
@@ -29,12 +29,17 @@ export function createDebugConsoleState(props: DebugConsoleProps) {
 	const entryClass = $derived(props.entryClass ?? '');
 	const footerClass = $derived(props.footerClass ?? '');
 
-	const containerClass = $derived(DebugConsoleStyleManager.getContainerClasses(className));
+	const containerClass = $derived(
+		mergeClassNames(
+			'fixed bottom-0 left-0 right-0 h-64 bg-[--color-background-primary] border-t border-[--color-border-primary] shadow-lg z-[var(--z-index-modal)]',
+			className
+		)
+	);
 	const headerComputedClass = $derived(
-		DebugConsoleStyleManager.getHeaderClasses() + ' ' + headerClass
+		`flex items-center justify-between px-4 py-2 border-b border-[--color-border-primary] bg-[--color-background-tertiary] ${headerClass}`
 	);
 	const footerComputedClass = $derived(
-		DebugConsoleStyleManager.getInputContainerClasses() + ' ' + footerClass
+		`border-t border-[--color-border-primary] p-2 ${footerClass}`
 	);
 
 	$effect(() => {
@@ -267,5 +272,3 @@ export function createDebugConsoleState(props: DebugConsoleProps) {
 		}
 	};
 }
-
-export default createDebugConsoleState;

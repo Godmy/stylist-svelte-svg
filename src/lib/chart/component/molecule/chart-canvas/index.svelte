@@ -1,5 +1,5 @@
-﻿<script lang="ts">
-	import type { ChartCanvasRecipe as InformationChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
+<script lang="ts">
+	import type { RecipeChartCanvas as InformationChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
 	import type { AnalyticsChartCanvasProps } from '$stylist/chart/type/struct/analytics-chart-canvas-props';
 	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 	import createChartCanvasState from '$stylist/chart/function/state/chart-canvas/index.svelte';
@@ -106,3 +106,20 @@
 		{/each}
 	</svg>
 </div>
+
+<style>
+	.c-chart-canvas {
+		position: relative;
+		display: inline-flex;
+		flex-direction: column;
+		padding: 0.75rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.75rem;
+		background: var(--color-background-primary);
+	}
+
+	.c-chart-canvas__svg {
+		display: block;
+		overflow: visible;
+	}
+</style>

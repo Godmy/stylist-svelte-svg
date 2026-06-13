@@ -53,7 +53,7 @@
 	description="Interactive form date picker with customizable options"
 >
 	{#snippet children(controlValues: any)}
-		<div class="p-4">
+		<div class="_c1">
 			<div class="max-w-xs">
 				<FormDatePicker
 					value={controlValues.value}
@@ -69,3 +69,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

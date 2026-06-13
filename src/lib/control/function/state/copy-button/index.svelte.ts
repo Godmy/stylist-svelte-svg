@@ -1,15 +1,13 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { SlotCopyButton as CopyButtonProps } from '$stylist/control/interface/slot/copy-button';
-import { InteractionStyleManager } from '$stylist/interaction/class/style-manager/interaction';
+﻿import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { RecipeCopyButton } from '$stylist/control/interface/recipe/copy-button';
+import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-classes';
 import { createBasePreset } from '$stylist/interaction/preset/base';
 import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
 import { copyTextToClipboard } from '$stylist/interaction/function/script/copy-text-to-clipboard';
 
-type CopyButtonStateProps = CopyButtonProps & HTMLButtonAttributes;
-
-export function createCopyButtonState(props: CopyButtonStateProps) {
-	const preset = createBasePreset(InteractionStyleManager.getInteractiveVariants(), TOKEN_SIZE, {
+export function createCopyButtonState(props: RecipeCopyButton & HTMLButtonAttributes) {
+	const preset = createBasePreset(Object.keys(VARIANT_CLASSES), TOKEN_SIZE, {
 		variant: 'outline',
 		size: 'sm'
 	});
@@ -19,20 +17,9 @@ export function createCopyButtonState(props: CopyButtonStateProps) {
 	const disabled = $derived(props.disabled ?? preset.defaults.disabled);
 	const loading = $derived(props.loading ?? false);
 
-	const classes = $derived(
-		[
-			preset.classes.variant[variant as keyof typeof preset.classes.variant],
-			preset.classes.size[size as keyof typeof preset.classes.size],
-			disabled && preset.classes.state['disabled'],
-			loading && preset.classes.state['loading'],
-			'copy-button',
-			props.class
-		]
-			.filter(Boolean)
-			.join(' ')
-	);
+	const classes = $derived('c-copy-button');
 
-	const loaderClasses = $derived('animate-spin w-4 h-4');
+	const loaderClasses = $derived('c-copy-button__loader');
 
 	const attrs = $derived({
 		'aria-busy': typeof loading === 'boolean' ? loading : undefined,
@@ -50,9 +37,7 @@ export function createCopyButtonState(props: CopyButtonStateProps) {
 	let copied = $state(false);
 
 	const iconClasses = $derived(
-		`copy-button-icon transition-colors duration-[var(--duration-150)] ${
-			copied ? 'text-[var(--color-success-600)]' : 'text-current'
-		}`.trim()
+		copied ? 'c-copy-button__icon c-copy-button__icon--copied' : 'c-copy-button__icon'
 	);
 
 	return {
@@ -104,5 +89,3 @@ export function createCopyButtonState(props: CopyButtonStateProps) {
 		}
 	};
 }
-
-export default createCopyButtonState;

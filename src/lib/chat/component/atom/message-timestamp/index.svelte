@@ -10,3 +10,6 @@
 <time class={state.classes} datetime={state.formattedDateTime}>
 	{state.formattedTime}
 </time>
+
+<style>
+</style>

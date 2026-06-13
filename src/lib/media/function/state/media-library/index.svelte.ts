@@ -1,11 +1,11 @@
-import type { MediaLibraryProps } from '$stylist/media/type/struct/media-library/medialibrary-props';
+﻿import type { RecipeMediaLibrary } from '$stylist/media/interface/recipe/media-library';
 import type { MediaType } from '$stylist/media/type/struct/media-library/mediatype';
 import type { MediaItem } from '$stylist/media/type/struct/media-library/media-item';
 import { formatMediaDate } from '$stylist/media/function/script/format-media-date';
 import { formatMediaFileSize } from '$stylist/media/function/script/media-library';
 import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
 
-export function createMediaLibraryState(props: MediaLibraryProps) {
+export function createMediaLibraryState(props: RecipeMediaLibrary) {
 	let searchQuery = $state('');
 	let selectedViewMode = $state(props.viewMode ?? 'grid');
 	let selectedItems = $state<string[]>([]);
@@ -174,5 +174,3 @@ export function createMediaLibraryState(props: MediaLibraryProps) {
 		toggleItemSelection
 	};
 }
-
-export default createMediaLibraryState;

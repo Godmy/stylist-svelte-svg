@@ -27,7 +27,7 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded-xl bg-[var(--color-background-secondary)] p-4">
+		<div class="_c1">
 			<AnalyticsChart
 				title="Monthly traffic"
 				subtitle="Last 4 months"
@@ -42,3 +42,11 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+</style>

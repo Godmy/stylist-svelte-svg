@@ -2,7 +2,7 @@ import type { StructIntersectAll } from '$stylist/architecture/type/struct/inter
 import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { ThemeIconItem } from '$stylist/media/interface/slot/icon-picker';
 
-export interface ThemeIconPickerRecipe
+export interface RecipeThemeIconPicker
 	extends StructIntersectAll<[Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'>]> {
 	icons: ThemeIconItem[];
 	title?: string;

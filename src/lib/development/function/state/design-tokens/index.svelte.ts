@@ -1,10 +1,9 @@
-import { THEME_MODE_DARK } from '$stylist/theme/const/record/theme-mode-dark';
+﻿import { THEME_MODE_DARK } from '$stylist/theme/const/record/theme-mode-dark';
 import { THEME_MODE_LIGHT } from '$stylist/theme/const/record/theme-mode-light';
-import type { DesignTokensProps } from '$stylist/development/type/struct/design-tokens-props';
+import type { RecipeDesignTokens } from '$stylist/development/interface/recipe/design-tokens';
 import type { DesignTokensTheme } from '$stylist/development/type/struct/design-tokens-theme';
-import { DesignTokensStyleManager } from '$stylist/development/class/style-manager/design-tokens';
 
-export function createDesignTokensState(props: DesignTokensProps) {
+export function createDesignTokensState(props: RecipeDesignTokens) {
 	let currentTheme = $state<DesignTokensTheme>(
 		props.theme === 'light' ? THEME_MODE_LIGHT : THEME_MODE_DARK
 	);
@@ -18,32 +17,44 @@ export function createDesignTokensState(props: DesignTokensProps) {
 	const showBorderRadius = $derived(props.showBorderRadius ?? true);
 	const showShadows = $derived(props.showShadows ?? true);
 
-	const containerClass = $derived(DesignTokensStyleManager.getContainerClasses());
-	const headerClass = $derived(DesignTokensStyleManager.getHeaderClasses());
-	const titleClass = $derived(DesignTokensStyleManager.getTitleClasses());
-	const descriptionClass = $derived(DesignTokensStyleManager.getDescriptionClasses());
-	const tokensGridClass = $derived(DesignTokensStyleManager.getTokensGridClasses());
-	const tokenCardClass = $derived(DesignTokensStyleManager.getTokenCardClasses());
+	const containerClass = $derived(
+		'bg-[--color-background-primary] rounded-lg border border-[--color-border-primary] p-6'
+	);
+	const headerClass = $derived('mb-6');
+	const titleClass = $derived('text-xl font-bold text-[--color-text-primary]');
+	const descriptionClass = $derived('mt-2 text-sm text-[--color-text-secondary]');
+	const tokensGridClass = $derived('grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4');
+	const tokenCardClass = $derived(
+		'border border-[--color-border-primary] rounded-lg p-4 hover:shadow-md transition-shadow'
+	);
 	const getTokenPreviewClass = (color: string) =>
-		DesignTokensStyleManager.getTokenPreviewClasses(color);
-	const tokenNameClass = $derived(DesignTokensStyleManager.getTokenNameClasses());
-	const tokenValueClass = $derived(DesignTokensStyleManager.getTokenValueClasses());
-	const tokenCategoryClass = $derived(DesignTokensStyleManager.getTokenCategoryClasses());
-	const sectionContainerClass = $derived(DesignTokensStyleManager.getSectionContainerClasses());
-	const sectionTitleClass = $derived(DesignTokensStyleManager.getSectionTitleClasses());
-	const tokensTableClass = $derived(DesignTokensStyleManager.getTokensTableClasses());
-	const tableRowClass = $derived(DesignTokensStyleManager.getTableRowClasses());
-	const tableCellClass = $derived(DesignTokensStyleManager.getTableCellClasses());
-	const previewCellClass = $derived(DesignTokensStyleManager.getPreviewCellClasses());
+		`${color} h-16 rounded-md mb-3 border border-[--color-border-primary]`;
+	const tokenNameClass = $derived('text-sm font-medium text-[--color-text-primary]');
+	const tokenValueClass = $derived('text-xs text-[--color-text-secondary] font-mono mt-1');
+	const tokenCategoryClass = $derived(
+		'inline-block px-2 py-1 rounded text-xs font-medium bg-[--color-primary-100] text-[--color-primary-800] mt-2'
+	);
+	const sectionContainerClass = $derived('mb-8');
+	const sectionTitleClass = $derived('text-lg font-semibold text-[--color-text-primary] mb-4');
+	const tokensTableClass = $derived('w-full border-collapse');
+	const tableRowClass = $derived(
+		'border-b border-[--color-border-divider] hover:bg-[--color-background-secondary]'
+	);
+	const tableCellClass = $derived('px-4 py-3 text-sm');
+	const previewCellClass = $derived('w-24');
 	const getColorPreviewClass = (color: string) =>
-		DesignTokensStyleManager.getColorPreviewClasses(color);
-	const nameCellClass = $derived(DesignTokensStyleManager.getNameCellClasses());
-	const valueCellClass = $derived(DesignTokensStyleManager.getValueCellClasses());
-	const copyButtonClass = $derived(DesignTokensStyleManager.getCopyButtonClasses());
-	const copyIconClass = $derived(DesignTokensStyleManager.getCopyIconClasses());
-	const filtersContainerClass = $derived(DesignTokensStyleManager.getFiltersContainerClasses());
+		`${color} w-12 h-8 rounded border border-[--color-border-primary]`;
+	const nameCellClass = $derived('font-medium text-[--color-text-primary]');
+	const valueCellClass = $derived('font-mono text-[--color-text-secondary]');
+	const copyButtonClass = $derived(
+		'p-1 rounded hover:bg-[--color-background-tertiary] transition-colors focus:outline-none focus:ring-2 focus:ring-[--color-primary-500]'
+	);
+	const copyIconClass = $derived('w-4 h-4 text-[--color-text-secondary]');
+	const filtersContainerClass = $derived('mb-6 flex flex-wrap gap-2');
 	const getFilterButtonClass = (isActive: boolean) =>
-		DesignTokensStyleManager.getFilterButtonClasses(isActive);
+		isActive
+			? 'px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[--color-primary-600] text-[--color-text-inverse]'
+			: 'px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[--color-background-secondary] text-[--color-text-secondary] hover:text-[--color-text-primary]';
 
 	$effect(() => {
 		currentTheme = theme === 'light' ? THEME_MODE_LIGHT : THEME_MODE_DARK;
@@ -166,5 +177,3 @@ export function createDesignTokensState(props: DesignTokensProps) {
 		isColorToken
 	};
 }
-
-export default createDesignTokensState;

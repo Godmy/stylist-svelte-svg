@@ -1,53 +1,46 @@
-<script lang="ts">
-	import type { PlaygroundAiPanelProps } from '$stylist/playground/type/struct/playground-ai-panel-props';
-	import createPlaygroundAiPanelState from '$stylist/playground/function/state/playground-ai-panel/index.svelte';
+﻿<script lang="ts">
+	import type { RecipePlaygroundAiPanel } from '$stylist/playground/interface/recipe/playground-ai-panel';
+	import { createPlaygroundAiPanelState } from '$stylist/playground/function/state/playground-ai-panel/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let { ...props }: PlaygroundAiPanelProps = $props();
+	let { ...props }: RecipePlaygroundAiPanel = $props();
 	const state = createPlaygroundAiPanelState(props);
 </script>
 
 <div class={state.containerClass}>
 	<div class={state.headerClass}>
-		<h2 class="text-lg font-bold text-gray-900 dark:text-white">AI Assistants</h2>
-		<p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Выберите AI-модель для работы</p>
+		<h2 class="pap-title">AI Assistants</h2>
+		<p class="pap-subtitle">Р’С‹Р±РµСЂРёС‚Рµ AI-РјРѕРґРµР»СЊ РґР»СЏ СЂР°Р±РѕС‚С‹</p>
 	</div>
 
-	<div class="p-2">
+	<div class="pap-body">
 		{#each state.aiProviders as provider}
-			<div class="mb-1">
-				<!-- Provider header -->
+			<div class="pap-provider">
 				<button
 					onclick={() => state.toggleProvider(provider.id)}
-					class={state.providerHeaderClass +
-						' flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left'}
+					class="${state.providerHeaderClass} pap-provider-btn"
 				>
-					<div class="flex items-center gap-2">
+					<div class="pap-provider-inner">
 						{#if state.isExpanded(provider.id)}
-							<BaseIcon name={state.ChevronDown} class="h-4 w-4 text-gray-500 dark:text-gray-400" />
+							<BaseIcon name={state.ChevronDown} style="width:1rem;height:1rem;color:#6b7280" />
 						{:else}
-							<BaseIcon
-								name={state.ChevronRight}
-								class="h-4 w-4 text-gray-500 dark:text-gray-400"
-							/>
+							<BaseIcon name={state.ChevronRight} style="width:1rem;height:1rem;color:#6b7280" />
 						{/if}
-						<span class="text-sm font-bold text-gray-900 dark:text-white">
-							{provider.name}
-						</span>
+						<span class="pap-provider-name">{provider.name}</span>
 					</div>
 				</button>
 
-				<!-- Provider options -->
 				{#if state.isExpanded(provider.id)}
-					<div class="mt-1 ml-6 space-y-0.5">
+					<div class="pap-options">
 						{#each provider.options as option}
 							<button
 								onclick={() => state.handleOptionClick(provider.id, option.id)}
-								class={state.optionItemClass +
-									' w-full rounded-md px-3 py-2 text-left text-sm text-gray-700 dark:text-gray-300' +
-									(state.isSelected(provider.id, option.id)
-										? ' ' + state.selectedOptionItemClass + ' font-medium'
-										: '')}
+								class="${state.optionItemClass} pap-option-btn ${state.isSelected(
+									provider.id,
+									option.id
+								)
+									? state.selectedOptionItemClass + ' pap-option-btn--selected'
+									: ''}"
 							>
 								{option.label}
 							</button>
@@ -58,3 +51,95 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	.pap-title {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pap-title {
+			color: white;
+		}
+	}
+	.pap-subtitle {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pap-subtitle {
+			color: #9ca3af;
+		}
+	}
+	.pap-body {
+		padding: 0.5rem;
+	}
+	.pap-provider {
+		margin-bottom: 0.25rem;
+	}
+	.pap-provider-btn {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.5rem;
+		padding: 0.625rem 0.75rem;
+		text-align: left;
+		border: none;
+		cursor: pointer;
+	}
+	.pap-provider-inner {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.pap-provider-name {
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: #111827;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pap-provider-name {
+			color: white;
+		}
+	}
+	.pap-options {
+		margin-top: 0.25rem;
+		margin-left: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.125rem;
+	}
+	.pap-option-btn {
+		width: 100%;
+		border-radius: 0.375rem;
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		font-size: 0.875rem;
+		color: #374151;
+		border: none;
+		cursor: pointer;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pap-option-btn {
+			color: #d1d5db;
+		}
+	}
+	.pap-option-btn--selected {
+		font-weight: 500;
+	}
+
+	.playground-ai-panel__header {
+		padding: 1rem;
+		border-bottom-width: 1px;
+		border-style: solid;
+		border-color: #e5e7eb;
+	}
+	@media (prefers-color-scheme: dark) {
+		.playground-ai-panel__header {
+			border-color: #374151;
+		}
+	}
+</style>

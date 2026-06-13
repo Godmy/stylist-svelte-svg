@@ -1,9 +1,9 @@
 <script lang="ts">
 	import createRichTextState from '$stylist/typography/function/state/rich-text/index.svelte';
-	import type { RichTextRecipe } from '$stylist/typography/interface/recipe/rich-text';
+	import type { RecipeRichText } from '$stylist/typography/interface/recipe/rich-text';
 	import type { StructRichTextSegment } from '$stylist/typography/type/struct/rich-text-segment';
 
-	let props: RichTextRecipe = $props();
+	let props: RecipeRichText = $props();
 	const state = createRichTextState(props);
 
 	function createSegmentStyle(

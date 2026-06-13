@@ -24,7 +24,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-scatter-plot p-4">
+		<div class="sb-organisms-scatter-plot _c1">
 			<ScatterPlot
 				{data}
 				showGrid={typedProps.showGrid}
@@ -34,3 +34,9 @@
 		</div>
 	{/snippet}</Story
 >
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

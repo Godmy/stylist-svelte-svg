@@ -1,8 +1,7 @@
-<script lang="ts">
-	import type { GraphCanvasProps } from '$stylist/science/type/struct/graph-canvas/graph-canvas-props';
-	import { GraphCanvasStyleManager } from '$stylist/science/class/style-manager/graph-canvas';
-	import createGraphCanvasState from '$stylist/science/function/state/graph-canvas/index.svelte';
-	let props: GraphCanvasProps = $props();
+﻿<script lang="ts">
+	import type { RecipeGraphCanvas } from '$stylist/science/interface/recipe/graph-canvas';
+	import { createGraphCanvasState } from '$stylist/science/function/state/graph-canvas/index.svelte';
+	let props: RecipeGraphCanvas = $props();
 	const state = createGraphCanvasState(props);
 
 	let canvasRef: HTMLDivElement;
@@ -36,20 +35,13 @@
 >
 	<!-- Grid layer -->
 	<div
-		class={GraphCanvasStyleManager.getGridClass(
-			(props.gridMode ?? 'none') as import('$stylist/architecture/type/enum/marker').TokenMarker,
-			props.gridClass
-		)}
-		style={`${GraphCanvasStyleManager.getGridStyles(state.gridSize, props.gridColor ?? '')} ${GraphCanvasStyleManager.getTransformStyles(state.offset.x, state.offset.y, state.zoom)}`}
+		class={state.gridClass}
+		style={`${state.gridStyles} ${state.transformStyle}`}
 		aria-hidden="true"
 	></div>
 
 	<!-- Content layer -->
-	<div
-		bind:this={contentRef}
-		class={GraphCanvasStyleManager.getContentClass(props.contentClass)}
-		style={GraphCanvasStyleManager.getTransformStyles(state.offset.x, state.offset.y, state.zoom)}
-	>
+	<div bind:this={contentRef} class={state.contentClass} style={state.transformStyle}>
 		{#if props.children}{#if props.children}{@render props.children()}{/if}{/if}
 	</div>
 </div>

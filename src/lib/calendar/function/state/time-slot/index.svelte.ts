@@ -1,4 +1,3 @@
-import { TimeSlotStyleManager } from '$stylist/input/class/style-manager/time-slot';
 import type { TimeSlotProps } from '$stylist/calendar/interface/recipe/time-slot';
 
 export function createTimeSlotState(props: TimeSlotProps) {
@@ -23,13 +22,19 @@ export function createTimeSlotState(props: TimeSlotProps) {
 		Number.isNaN(safeEnd.getTime()) ? 'unknown end time' : safeEnd.toLocaleTimeString()
 	);
 	const displayTimeLabel = $derived(props.timeLabel ?? `${startTimeText} - ${endTimeText}`);
+	const available = $derived(props.available ?? true);
+	const selected = $derived(props.selected ?? false);
+	const active = $derived(props.active ?? false);
 	const wrapperClasses = $derived(
-		TimeSlotStyleManager.getTimeSlotClasses(
-			props.available ?? true,
-			props.selected ?? false,
-			props.active ?? false,
+		[
+			'c-time-slot',
+			available ? 'c-time-slot--available' : 'c-time-slot--unavailable',
+			selected ? 'c-time-slot--selected' : '',
+			active ? 'c-time-slot--active' : '',
 			props.class ?? ''
-		)
+		]
+			.filter(Boolean)
+			.join(' ')
 	);
 	const ariaLabel = $derived(
 		`Time slot from ${startTimeText} to ${endTimeText}, ${(props.available ?? true) ? 'available' : 'not available'}`

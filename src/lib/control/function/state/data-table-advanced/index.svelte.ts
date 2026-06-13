@@ -1,4 +1,3 @@
-import { DataTableAdvancedStyleManager } from '$stylist/control/class/style-manager/data-table-advanced-style-manager';
 import type { SlotAdvancedColumnDefinition as AdvancedColumnDefinition } from '$stylist/control/interface/slot/advanced-column-definition';
 import type { SlotDataTableAdvanced as DataTableAdvancedProps } from '$stylist/control/interface/slot/data-table-advanced';
 
@@ -26,7 +25,7 @@ export function createDataTableAdvancedState(props: DataTableAdvancedProps<Table
 
 	const totalPages = $derived(Math.max(1, Math.ceil(filtered.length / pageSize)));
 	const pageData = $derived(filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize));
-	const rootClass = $derived(DataTableAdvancedStyleManager.root(props.class ?? ''));
+	const rootClass = $derived(['c-data-table-adv', props.class].filter(Boolean).join(' '));
 
 	const setSearchTerm = (value: string) => {
 		searchTerm = value;

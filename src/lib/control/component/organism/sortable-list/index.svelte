@@ -3,7 +3,6 @@
 	const GripVertical = 'grip-vertical';
 	const MoreHorizontal = 'more-horizontal';
 
-	import { SortableListStyleManager } from '$stylist/control/class/style-manager/sortable-list-style-manager';
 	import type { SlotSortableList as SortableListProps } from '$stylist/control/interface/slot/sortable-list';
 	import createSortableListState from '$stylist/control/function/state/sortable-list/index.svelte';
 
@@ -32,13 +31,15 @@
 	});
 </script>
 
-<div class={SortableListStyleManager.root(className)} {...restProps}>
-	<div class="space-y-2" role="list">
+<div class={state.rootClass} {...restProps}>
+	<div class="c-sortable-list__items" role="list">
 		{#each items as item, index}
 			<div
+				class="c-sortable-list__item"
+				data-variant={variant}
+				data-over={state.overIndex === index || undefined}
 				role="listitem"
 				draggable={!disabled}
-				class={`rounded-md border ${variant === 'compact' ? 'p-2' : 'p-3'} ${state.overIndex === index ? 'border-[var(--color-primary-500)]' : 'border-[var(--color-border-primary)]'}`}
 				ondragstart={() => state.start(item)}
 				ondragover={(e) => {
 					e.preventDefault();
@@ -47,29 +48,86 @@
 				ondrop={() => state.drop(index)}
 				ondragend={() => state.endDrag()}
 			>
-				<div class="flex items-center justify-between gap-2">
-					<div class="flex items-center gap-2">
-						{#if showHandle}<BaseIcon
-								name={GripVertical}
-								class="h-4 w-4 text-[var(--color-text-tertiary)]"
-							/>{/if}
-						<div>
-							<div class="text-sm font-medium">{item.title}</div>
-							{#if item.description}<div class="text-xs text-[var(--color-text-secondary)]">
-									{item.description}
-								</div>{/if}
+				<div class="c-sortable-list__item-inner">
+					<div class="c-sortable-list__item-left">
+						{#if showHandle}
+							<BaseIcon name={GripVertical} style="width:1rem;height:1rem;" />
+						{/if}
+						<div class="c-sortable-list__item-content">
+							<div class="c-sortable-list__item-title">{item.title}</div>
+							{#if item.description}
+								<div class="c-sortable-list__item-desc">{item.description}</div>
+							{/if}
 						</div>
 					</div>
 					{#if showActions}
-						<button type="button" onclick={() => onItemAction?.(item, 'menu')}
-							><BaseIcon
-								name={MoreHorizontal}
-								class="h-4 w-4 text-[var(--color-text-secondary)]"
-							/></button
+						<button
+							type="button"
+							class="c-sortable-list__item-action"
+							onclick={() => onItemAction?.(item, 'menu')}
 						>
+							<BaseIcon name={MoreHorizontal} style="width:1rem;height:1rem;" />
+						</button>
 					{/if}
 				</div>
 			</div>
 		{/each}
 	</div>
 </div>
+
+<style>
+	.c-sortable-list__items {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.c-sortable-list__item {
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		transition: border-color var(--duration-120, 120ms);
+		cursor: grab;
+	}
+	.c-sortable-list__item[data-over] {
+		border-color: var(--color-primary-500);
+	}
+	.c-sortable-list__item[data-variant='compact'] {
+		padding: 0.5rem;
+	}
+	.c-sortable-list__item:not([data-variant='compact']) {
+		padding: 0.75rem;
+	}
+	.c-sortable-list__item-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+	.c-sortable-list__item-left {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.c-sortable-list__item-content {
+		display: flex;
+		flex-direction: column;
+	}
+	.c-sortable-list__item-title {
+		font-size: 0.875rem;
+		font-weight: 500;
+	}
+	.c-sortable-list__item-desc {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	.c-sortable-list__item-action {
+		background: none;
+		border: none;
+		padding: 0.25rem;
+		cursor: pointer;
+		border-radius: 0.25rem;
+		color: var(--color-text-secondary);
+	}
+	.c-sortable-list__item-action:hover {
+		background: var(--color-background-secondary);
+	}
+</style>

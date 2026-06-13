@@ -64,18 +64,18 @@
 	description="Компонент для управления границами с поддержкой различных стилей и анимации"
 >
 	{#snippet children(values: any)}
-		<div class="w-full rounded-lg py-4">
-			<Border {...values} class="bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
+			<Border {...values} class="_c2">
 				{#snippet children()}
-					<div class="text-center">
-						<p class="font-medium">
+					<div class="_c3">
+						<p class="_c4">
 							Border style: <strong>{values.borderStyle || 'solid'}</strong>
 						</p>
 						{#if values.borderColor}
-							<p class="text-muted mt-1 text-sm">Color: {values.borderColor}</p>
+							<p class="text-muted _c5">Color: {values.borderColor}</p>
 						{/if}
 						{#if values.borderRadius && values.borderRadius !== 'none'}
-							<p class="text-muted mt-1 text-sm">Radius: {values.borderRadius}</p>
+							<p class="text-muted _c5">Radius: {values.borderRadius}</p>
 						{/if}
 					</div>
 				{/snippet}
@@ -83,3 +83,27 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		width: 100%;
+		border-radius: 0.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	._c2 {
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c3 {
+		text-align: center;
+	}
+	._c4 {
+		font-weight: 500;
+	}
+	._c5 {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

@@ -1,8 +1,10 @@
-<script lang="ts">
-	import type { ComboboxProps } from '$stylist/control/type/struct/combobox-props';
-	import createComboboxState from '$stylist/control/function/state/combobox/index.svelte';
+﻿<script lang="ts">
+	import { PresetCombobox } from '$stylist/control/const/preset/combobox';
+	import type { RecipeCombobox } from '$stylist/control/interface/recipe/combobox';
+	import { createComboboxState } from '$stylist/control/function/state/combobox/index.svelte';
+	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let props: ComboboxProps = $props();
+	let props: RecipeCombobox = $props();
 	const state = createComboboxState(props);
 
 	const restProps = $derived.by(() => {
@@ -24,24 +26,24 @@
 	});
 </script>
 
-<div class={`c-combobox space-y-2 ${state.className}`} data-combobox={state.id}>
+<div
+	class={['c-combobox', state.className].filter(Boolean).join(' ')}
+	data-combobox={state.id}
+	data-disabled={state.disabled || undefined}
+>
 	{#if state.label}
-		<label for={state.id} class="text-sm font-medium text-[var(--color-text-primary)]">
+		<label for={state.id} class="c-combobox__label">
 			{state.label}
 		</label>
 	{/if}
 
-	<div class="relative">
-		<div
-			class="flex items-center gap-2 rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-3 py-2 text-sm shadow-sm focus-within:border-[var(--color-primary-500)] focus-within:ring-2 focus-within:ring-indigo-500 ${state.disabled
-				? 'cursor-not-allowed bg-[var(--color-background-secondary)] opacity-[var(--opacity-70)]'
-				: ''}"
-		>
+	<div class="c-combobox__input-wrap">
+		<div class="c-combobox__input-row">
 			<input
 				id={state.id}
 				type="text"
 				bind:this={state.inputRef}
-				class="flex-1 bg-transparent outline-none placeholder:text-[var(--color-text-tertiary)]"
+				class="c-combobox__input"
 				placeholder={state.placeholder}
 				bind:value={state.query}
 				oninput={state.handleInput}
@@ -54,99 +56,247 @@
 			/>
 
 			{#if state.loading}
-				<svg
-					class="h-4 w-4 animate-spin text-[var(--color-text-tertiary)]"
-					viewBox="0 0 24 24"
-					fill="none"
-				>
-					<circle
-						class="opacity-[var(--opacity-25)]"
-						cx="12"
-						cy="12"
-						r="10"
-						stroke="currentColor"
-						stroke-width="4"
-					/>
-					<path
-						class="opacity-[var(--opacity-75)]"
-						fill="currentColor"
-						d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-					/>
-				</svg>
+				<BaseIcon name={PresetCombobox.Loader2} class="c-combobox__spinner" aria-hidden="true" />
 			{:else if state.clearable && state.query}
 				<button
 					type="button"
-					class="rounded text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+					class="c-combobox__clear-btn"
 					onclick={state.clearSelection}
-					aria-label="Очистить выбор"
+					aria-label="РћС‡РёСЃС‚РёС‚СЊ РІС‹Р±РѕСЂ"
 				>
-					<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-						<path
-							fill-rule="evenodd"
-							d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-							clip-rule="evenodd"
-						/>
-					</svg>
+					<BaseIcon name={PresetCombobox.X} class="c-combobox__icon" aria-hidden="true" />
 				</button>
 			{/if}
 
 			<button
 				type="button"
-				class="rounded text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-				aria-label="Переключить список вариантов"
+				class="c-combobox__toggle-btn"
+				aria-label="РџРµСЂРµРєР»СЋС‡РёС‚СЊ СЃРїРёСЃРѕРє РІР°СЂРёР°РЅС‚РѕРІ"
 				onclick={() => (state.isOpen ? state.closeList() : state.openList())}
 				disabled={state.disabled}
 			>
-				<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-					<path
-						fill-rule="evenodd"
-						d="M5.23 7.21a.75.75 0 011.06.02L10 11.105l3.71-3.874a.75.75 0 111.08 1.04l-4.24 4.431a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
-						clip-rule="evenodd"
-					/>
-				</svg>
+				<BaseIcon name={PresetCombobox.ChevronDown} class="c-combobox__icon" aria-hidden="true" />
 			</button>
 		</div>
 
 		{#if state.isOpen}
-			<div
-				id={`${state.id}-listbox`}
-				class="absolute z-[var(--z-index-docked)] mt-2 max-h-60 w-full overflow-auto rounded-md border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] shadow-lg"
-				role="listbox"
-			>
+			<div id={`${state.id}-listbox`} class="c-combobox__dropdown" role="listbox">
 				{#if !state.loading && state.hasResults}
 					{@const options = state.filteredItems}
 					{#each options as item, index (item.id)}
 						<button
 							type="button"
-							class={`flex w-full flex-col gap-1 px-3 py-2 text-left text-sm transition-colors ${item.disabled ? 'cursor-not-allowed text-[var(--color-text-tertiary)]' : 'hover:bg-[var(--color-primary-50)]'} ${state.selectedItem?.id === item.id ? 'bg-[var(--color-primary-100)] text-[var(--color-primary-700)]' : ''} ${state.highlighted === index ? 'bg-[var(--color-primary-50)]' : ''}`}
+							class="c-combobox__option"
+							data-selected={state.selectedItem?.id === item.id || undefined}
+							data-highlighted={state.highlighted === index || undefined}
+							data-disabled={item.disabled || undefined}
 							disabled={item.disabled}
 							onclick={() => state.selectItem(item)}
 							onmouseenter={() => (state.highlighted = index)}
 							onfocus={() => (state.highlighted = index)}
 						>
-							<span class="font-medium">{item.label}</span>
+							<span class="c-combobox__option-label">{item.label}</span>
 							{#if item.description}
-								<span class="text-xs text-[var(--color-text-secondary)]">{item.description}</span>
+								<span class="c-combobox__option-desc">{item.description}</span>
 							{/if}
 							{#if item.meta}
-								<span class="text-xs tracking-wide text-[var(--color-text-tertiary)] uppercase"
-									>{item.meta}</span
-								>
+								<span class="c-combobox__option-meta">{item.meta}</span>
 							{/if}
 						</button>
 					{/each}
 				{:else if state.loading}
-					<div class="flex justify-center py-4 text-sm text-[var(--color-text-secondary)]">
-						Загрузка...
-					</div>
+					<div class="c-combobox__loading">Р—Р°РіСЂСѓР·РєР°...</div>
 				{:else}
-					<div class="px-3 py-4 text-sm text-[var(--color-text-secondary)]">{state.emptyText}</div>
+					<div class="c-combobox__empty">{state.emptyText}</div>
 				{/if}
 			</div>
 		{/if}
 	</div>
 
 	{#if state.description}
-		<p class="text-sm text-[var(--color-text-secondary)]">{state.description}</p>
+		<p class="c-combobox__description">{state.description}</p>
 	{/if}
 </div>
+
+<style>
+	.c-combobox {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.c-combobox__label {
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.c-combobox__input-wrap {
+		position: relative;
+	}
+
+	.c-combobox__input-row {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		background: var(--color-background-primary);
+		padding: 0.5rem 0.75rem;
+		font-size: 0.875rem;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		transition: border-color var(--duration-120, 120ms);
+	}
+
+	.c-combobox__input-row:focus-within {
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary-500) 20%, transparent);
+	}
+
+	.c-combobox[data-disabled] .c-combobox__input-row {
+		cursor: not-allowed;
+		background: var(--color-background-secondary);
+		opacity: var(--opacity-70, 0.7);
+	}
+
+	.c-combobox__input {
+		flex: 1;
+		background: transparent;
+		border: none;
+		outline: none;
+		color: var(--color-text-primary);
+	}
+
+	.c-combobox__input::placeholder {
+		color: var(--color-text-tertiary);
+	}
+
+	.c-combobox__spinner {
+		width: 1rem;
+		height: 1rem;
+		animation: spin 1s linear infinite;
+		color: var(--color-text-tertiary);
+		flex-shrink: 0;
+	}
+
+	.c-combobox__spinner circle {
+		opacity: 0.25;
+	}
+
+	.c-combobox__spinner path {
+		opacity: 0.75;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.c-combobox__icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.c-combobox__clear-btn,
+	.c-combobox__toggle-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 0.25rem;
+		color: var(--color-text-tertiary);
+		flex-shrink: 0;
+	}
+
+	.c-combobox__clear-btn:hover,
+	.c-combobox__toggle-btn:hover {
+		color: var(--color-text-secondary);
+	}
+
+	.c-combobox__clear-btn:focus-visible,
+	.c-combobox__toggle-btn:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+	}
+
+	.c-combobox__dropdown {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: var(--z-index-docked, 100);
+		margin-top: 0.5rem;
+		max-height: 15rem;
+		width: 100%;
+		overflow-y: auto;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		background: var(--color-background-primary);
+		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	}
+
+	.c-combobox__option {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		width: 100%;
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		font-size: 0.875rem;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		color: var(--color-text-primary);
+		transition: background-color var(--duration-120, 120ms);
+	}
+
+	.c-combobox__option:hover:not([data-disabled]) {
+		background: var(--color-primary-50);
+	}
+
+	.c-combobox__option[data-highlighted] {
+		background: var(--color-primary-50);
+	}
+
+	.c-combobox__option[data-selected] {
+		background: var(--color-primary-100);
+		color: var(--color-primary-700);
+	}
+
+	.c-combobox__option[data-disabled] {
+		cursor: not-allowed;
+		color: var(--color-text-tertiary);
+	}
+
+	.c-combobox__option-label {
+		font-weight: 500;
+	}
+
+	.c-combobox__option-desc {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-combobox__option-meta {
+		font-size: 0.75rem;
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.c-combobox__loading,
+	.c-combobox__empty {
+		display: flex;
+		justify-content: center;
+		padding: 1rem;
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+
+	.c-combobox__description {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+</style>

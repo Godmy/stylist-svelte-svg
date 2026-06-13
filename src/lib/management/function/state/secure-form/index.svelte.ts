@@ -1,12 +1,12 @@
-import { InteractionFormsStyleManager } from '$stylist/form/class/style-manager/interaction-forms';
-import type { SecureFormStateProps } from '$stylist/management/interface/recipe/secure-form';
+﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeSecureForm } from '$stylist/management/interface/recipe/secure-form';
 
-export function createSecureFormState(props: SecureFormStateProps) {
+export function createSecureFormState(props: RecipeSecureForm) {
 	const token = $derived(props.token ?? 'SECURE_TOKEN');
 	const className = $derived(props.class ?? '');
 
 	const containerClasses = $derived(
-		InteractionFormsStyleManager.root('c-secure-form border rounded-lg p-4 space-y-2', className)
+		mergeClassNames('c-secure-form border rounded-lg p-4 space-y-2', className)
 	);
 
 	const restProps = $derived.by(() => {
@@ -26,5 +26,3 @@ export function createSecureFormState(props: SecureFormStateProps) {
 		}
 	};
 }
-
-export default createSecureFormState;

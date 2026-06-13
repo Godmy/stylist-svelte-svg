@@ -13,3 +13,6 @@
 		{state.message}
 	{/if}
 </div>
+
+<style>
+</style>

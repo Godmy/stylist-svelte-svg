@@ -34,7 +34,17 @@
 	title="ReactionPicker Component"
 	description="Interactive reaction picker with various emoji reactions"
 >
-	<div class="p-4">
-		<ReactionPicker {reactions} class="my-2" />
+	<div class="_c1">
+		<ReactionPicker {reactions} class="_c2" />
 	</div>
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+	._c2 {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+</style>

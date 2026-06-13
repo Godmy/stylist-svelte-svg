@@ -1,7 +1,19 @@
-import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import type { ClassValue } from '$stylist/information/type/script/merge-class-names';
 
+function toClassString(value: ClassValue): string {
+	if (!value && value !== 0) return '';
+	if (typeof value === 'string') return value;
+	if (typeof value === 'number') return String(value);
+	if (Array.isArray(value)) return value.map(toClassString).filter(Boolean).join(' ');
+	if (typeof value === 'object') {
+		return Object.entries(value)
+			.filter(([, v]) => Boolean(v))
+			.map(([k]) => k)
+			.join(' ');
+	}
+	return '';
+}
+
 export function mergeClassNames(...inputs: ClassValue[]): string {
-	return twMerge(clsx(inputs));
+	return inputs.map(toClassString).filter(Boolean).join(' ');
 }

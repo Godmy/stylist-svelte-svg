@@ -1,11 +1,6 @@
-import { StyleManagerThemeSurface } from '$stylist/layout/class/style-manager/theme-surface';
-import type { ThemeSurfaceRecipe } from '$stylist/layout/interface/recipe/theme-surface';
+import type { RecipeThemeSurface } from '$stylist/layout/interface/recipe/theme-surface';
 
-export function createThemeSurfaceState(props: ThemeSurfaceRecipe) {
-	const rootClass = $derived(StyleManagerThemeSurface.root(props.class));
-	const headerClass = $derived(StyleManagerThemeSurface.header(props.headerClass));
-	const contentClass = $derived(StyleManagerThemeSurface.content(props.contentClass));
-	const footerClass = $derived(StyleManagerThemeSurface.footer(props.footerClass));
+export function createThemeSurfaceState(props: RecipeThemeSurface) {
 	const restProps = $derived.by(() => {
 		const {
 			content: _content,
@@ -21,18 +16,6 @@ export function createThemeSurfaceState(props: ThemeSurfaceRecipe) {
 	});
 
 	return {
-		get rootClass() {
-			return rootClass;
-		},
-		get headerClass() {
-			return headerClass;
-		},
-		get contentClass() {
-			return contentClass;
-		},
-		get footerClass() {
-			return footerClass;
-		},
 		get restProps() {
 			return restProps;
 		}

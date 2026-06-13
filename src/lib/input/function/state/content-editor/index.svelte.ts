@@ -1,7 +1,8 @@
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
 type ContentType = string;
 type ContentElement = { [key: string]: any; id: string; type: ContentType; content: string };
 type ContentEditorStateProps = { [key: string]: any };
-import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export const createContentEditorState = (props: ContentEditorStateProps) => {
 	// SlotState
@@ -88,85 +89,59 @@ export const createContentEditorState = (props: ContentEditorStateProps) => {
 	}
 
 	// Computed classes
-	const rootClasses = $derived.by(() =>
-		mergeClassNames(
-			'c-content-editor border border-[var(--color-border-primary)] rounded-lg overflow-hidden',
-			props.class
-		)
-	);
+	const rootClasses = $derived.by(() => mergeClassNames('c-content-editor', props.class));
 
 	const toolbarClasses = $derived.by(() =>
-		mergeClassNames(
-			'flex items-center p-2 border-b border-[var(--color-border-primary)] bg-[var(--color-background-secondary)] space-x-1',
-			props.toolbarClass
-		)
+		mergeClassNames('c-content-editor__toolbar', props.toolbarClass)
 	);
 
-	const editorClasses = $derived.by(() => mergeClassNames('p-4', props.editorClass));
+	const editorClasses = $derived.by(() =>
+		mergeClassNames('c-content-editor__editor', props.editorClass)
+	);
 
 	const contentClasses = $derived.by(() =>
-		mergeClassNames('mb-4 p-2 border rounded', props.contentClass)
+		mergeClassNames('c-content-editor__content', props.contentClass)
 	);
 
-	const activeElementClasses = $derived.by(() => 'border-[var(--color-primary-500)]');
+	const activeElementClasses = $derived.by(() => 'c-content-editor__content--active');
 
-	const inactiveElementClasses = $derived.by(() => 'border-transparent');
+	const inactiveElementClasses = $derived.by(() => 'c-content-editor__content--inactive');
 
-	const buttonClasses = $derived.by(
-		() => 'p-2 rounded hover:bg-[var(--color-background-tertiary)]'
-	);
+	const buttonClasses = $derived.by(() => 'c-content-editor__btn');
 
-	const dividerClasses = $derived.by(() => 'w-px h-6 bg-[var(--color-background-tertiary)] mx-1');
+	const dividerClasses = $derived.by(() => 'c-content-editor__divider');
 
-	const iconButtonClasses = $derived.by(() => 'h-4 w-4');
+	const iconButtonClasses = $derived.by(() => 'c-content-editor__icon');
 
-	const moveButtonClasses = $derived.by(
-		() => 'text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] p-1'
-	);
+	const moveButtonClasses = $derived.by(() => 'c-content-editor__move-btn');
 
-	const deleteButtonClasses = $derived.by(
-		() => 'text-[var(--color-text-tertiary)] hover:text-[var(--color-danger-500)] p-1'
-	);
+	const deleteButtonClasses = $derived.by(() => 'c-content-editor__delete-btn');
 
-	const addButtonTextClasses = $derived.by(
-		() =>
-			'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] text-sm font-medium flex items-center'
-	);
+	const addButtonTextClasses = $derived.by(() => 'c-content-editor__add-btn');
 
-	const addIconClasses = $derived.by(() => 'h-4 w-4 mr-1');
+	const addIconClasses = $derived.by(() => 'c-content-editor__add-icon');
 
-	const previewClasses = $derived.by(() => 'prose max-w-none');
+	const previewClasses = $derived.by(() => 'c-content-editor__preview');
 
-	const headingClasses = $derived.by(() => 'text-2xl font-bold mb-4');
+	const headingClasses = $derived.by(() => 'c-content-editor__heading');
 
-	const quoteClasses = $derived.by(
-		() => 'border-l-4 border-[var(--color-border-primary)] pl-4 italic my-4'
-	);
+	const quoteClasses = $derived.by(() => 'c-content-editor__quote');
 
-	const listClasses = $derived.by(() => 'list-disc pl-5 my-4');
+	const listClasses = $derived.by(() => 'c-content-editor__list');
 
-	const textareaClasses = $derived.by(() => 'w-full focus:outline-none');
+	const textareaClasses = $derived.by(() => 'c-content-editor__textarea');
 
-	const headingInputClasses = $derived.by(() => 'w-full text-2xl font-bold focus:outline-none');
+	const headingInputClasses = $derived.by(() => 'c-content-editor__heading-input');
 
-	const quoteTextareaClasses = $derived.by(
-		() => 'w-full italic focus:outline-none border-l-4 border-[var(--color-border-primary)] pl-4'
-	);
+	const quoteTextareaClasses = $derived.by(() => 'c-content-editor__quote-textarea');
 
-	const imagePlaceholderClasses = $derived.by(
-		() =>
-			'border-2 border-dashed border-[var(--color-border-primary)] rounded flex flex-col items-center justify-center p-8'
-	);
+	const imagePlaceholderClasses = $derived.by(() => 'c-content-editor__image-placeholder');
 
-	const imagePlaceholderIconClasses = $derived.by(
-		() => 'h-10 w-10 text-[var(--color-text-tertiary)] mb-2'
-	);
+	const imagePlaceholderIconClasses = $derived.by(() => 'c-content-editor__image-icon');
 
-	const imagePlaceholderTextClasses = $derived.by(() => 'text-[var(--color-text-secondary)]');
+	const imagePlaceholderTextClasses = $derived.by(() => 'c-content-editor__image-text');
 
-	const imagePlaceholderHintClasses = $derived.by(
-		() => 'text-sm text-[var(--color-text-tertiary)] mt-1'
-	);
+	const imagePlaceholderHintClasses = $derived.by(() => 'c-content-editor__image-hint');
 
 	return {
 		// SlotState getters

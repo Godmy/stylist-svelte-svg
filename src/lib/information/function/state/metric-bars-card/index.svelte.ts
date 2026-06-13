@@ -1,7 +1,7 @@
-import { MetricBarsCardStyleManager } from '$stylist/information/class/style-manager/metric-bars-card';
-import type { MetricBarsCardRecipe } from '$stylist/information/interface/recipe/metric-bars-card';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+import type { RecipeMetricBarsCard } from '$stylist/information/interface/recipe/metric-bars-card';
 
-export function createMetricBarsCardState(props: MetricBarsCardRecipe) {
+export function createMetricBarsCardState(props: RecipeMetricBarsCard) {
 	const label = $derived(props.label ?? '');
 	const caption = $derived(props.caption);
 	const total = $derived(props.total);
@@ -9,13 +9,18 @@ export function createMetricBarsCardState(props: MetricBarsCardRecipe) {
 	const color = $derived(props.color ?? 'var(--color-primary-500)');
 	const trackColor = $derived(props.trackColor ?? 'var(--color-neutral-200)');
 	const containerClasses = $derived(
-		MetricBarsCardStyleManager.getContainerClasses(props.class == null ? '' : String(props.class))
+		mergeClassNames(
+			'flex flex-col gap-5 rounded-2xl border border-[var(--color-border-default)] bg-[var(--color-background-primary)] p-6 shadow-sm',
+			props.class == null ? '' : String(props.class)
+		)
 	);
-	const headerClasses = $derived(MetricBarsCardStyleManager.getHeaderClasses());
-	const titleClasses = $derived(MetricBarsCardStyleManager.getTitleClasses());
-	const captionClasses = $derived(MetricBarsCardStyleManager.getCaptionClasses());
-	const totalClasses = $derived(MetricBarsCardStyleManager.getTotalClasses());
-	const barsClasses = $derived(MetricBarsCardStyleManager.getBarsClasses());
+	const headerClasses = $derived('flex items-start justify-between gap-4');
+	const titleClasses = $derived('text-lg font-semibold text-[var(--color-text-primary)]');
+	const captionClasses = $derived('mt-1 text-sm text-[var(--color-text-secondary)]');
+	const totalClasses = $derived(
+		'text-lg font-semibold tabular-nums text-[var(--color-text-primary)]'
+	);
+	const barsClasses = $derived('flex flex-col gap-4');
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,

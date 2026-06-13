@@ -31,17 +31,32 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="rounded-xl bg-gray-50 p-4">
+		<div class="_c1">
 			<CodeWithCopy
 				language={args.language}
 				variant={args.variant}
 				showLineNumbers={args.showLineNumbers}
 			>
 				{#snippet children()}
-					<pre class="overflow-x-auto rounded bg-gray-100 p-4 text-sm"><code>{codeContent}</code
-						></pre>
+					<pre class="_c2"><code>{codeContent}</code></pre>
 				{/snippet}
 			</CodeWithCopy>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: #f9fafb;
+		padding: 1rem;
+	}
+	._c2 {
+		overflow-x: auto;
+		border-radius: 0.25rem;
+		background-color: #f3f4f6;
+		padding: 1rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+</style>

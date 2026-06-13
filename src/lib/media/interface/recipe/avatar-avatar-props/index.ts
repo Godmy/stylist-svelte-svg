@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { AvatarSize } from '$stylist/media/type/alias/avatar-size';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 

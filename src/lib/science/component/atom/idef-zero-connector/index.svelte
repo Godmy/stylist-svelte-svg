@@ -1,5 +1,5 @@
-﻿<script lang="ts">
-	import type { Idef0ConnectorRecipe as Idef0ConnectorProps } from '$stylist/science/interface/recipe/idef0-connector';
+<script lang="ts">
+	import type { RecipeIdef0Connector as Idef0ConnectorProps } from '$stylist/science/interface/recipe/idef0-connector';
 	import createIdef0ConnectorState from '$stylist/science/function/state/idef0-connector/index.svelte';
 	import Idef0PortLabel from '$stylist/science/component/atom/idef-zero-port-label/index.svelte';
 
@@ -42,3 +42,14 @@
 		class={state.labelClasses}
 	/>
 </g>
+
+<style>
+	:global(.idef0-connector__line) {
+		stroke: var(--color-text-secondary);
+	}
+
+	:global(.idef0-connector__label) {
+		fill: var(--color-text-secondary);
+		font-size: 0.75rem;
+	}
+</style>

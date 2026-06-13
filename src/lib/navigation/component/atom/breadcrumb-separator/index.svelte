@@ -13,3 +13,6 @@
 		&rarr;
 	{/if}
 </span>
+
+<style>
+</style>

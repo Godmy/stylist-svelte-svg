@@ -1,6 +1,6 @@
 import type { SlotChat as Chat } from '$stylist/chat/interface/slot/chat';
 import type { SlotUser as User } from '$stylist/chat/interface/slot/user';
-import { ChatStyleManager } from '$stylist/chat/class/style-manager/chat';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 export const createChatItemState = (props: {
 	chat: Chat;
@@ -28,18 +28,27 @@ export const createChatItemState = (props: {
 	});
 
 	const containerClasses = $derived(
-		ChatStyleManager.getItemContainerClasses(isActiveVal, props.class ?? '')
+		mergeClassNames(
+			'chat-item group relative flex items-center gap-3 border-b border-[var(--color-border-primary)] px-4 py-4 transition-all duration-200',
+			isActiveVal
+				? 'bg-[var(--color-primary-50)] shadow-[inset_3px_0_0_var(--color-primary-500)]'
+				: 'bg-transparent hover:bg-[var(--color-background-secondary)] hover:translate-x-[2px]',
+			props.class ?? ''
+		)
 	);
 
-	const chatInfoClasses = ChatStyleManager.getItemInfoClasses();
+	const chatInfoClasses = 'chat-info flex-1 min-w-0';
 
-	const chatNameClasses = ChatStyleManager.getItemNameClasses();
+	const chatNameClasses =
+		'chat-name mb-1 truncate text-sm font-semibold tracking-[0.01em] text-[var(--color-text-primary)]';
 
-	const lastMessageClasses = ChatStyleManager.getItemPreviewClasses();
+	const lastMessageClasses =
+		'last-message truncate text-[13px] leading-5 text-[var(--color-text-secondary)]';
 
-	const chatMetaClasses = ChatStyleManager.getItemMetaClasses();
+	const chatMetaClasses = 'chat-meta flex flex-col items-end gap-1 self-start';
 
-	const chatActionsClasses = ChatStyleManager.getItemActionsClasses();
+	const chatActionsClasses =
+		'chat-actions absolute right-3 top-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100';
 
 	function handleClick() {
 		// dispatch('select')

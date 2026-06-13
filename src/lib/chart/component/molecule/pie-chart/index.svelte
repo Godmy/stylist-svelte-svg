@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { PieChartRecipe } from '$stylist/chart/interface/recipe/pie-chart';
+	import type { RecipePieChart } from '$stylist/chart/interface/recipe/pie-chart';
 	import createPieChartState from '$stylist/chart/function/state/pie-chart/index.svelte';
 
-	let props: PieChartRecipe = $props();
+	let props: RecipePieChart = $props();
 	const state = createPieChartState(props);
 </script>
 
@@ -32,3 +32,37 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	.c-pie-chart {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.c-pie-chart__legend {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.5rem 1rem;
+		width: 100%;
+	}
+
+	.c-pie-chart__legend-item {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.c-pie-chart__legend-swatch {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 0.5rem;
+		border-radius: 0.25rem;
+		flex-shrink: 0;
+	}
+
+	.c-pie-chart__legend-text {
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+	}
+</style>

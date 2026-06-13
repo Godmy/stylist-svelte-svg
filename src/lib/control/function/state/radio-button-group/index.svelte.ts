@@ -1,9 +1,7 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { RecipeRadioButtonGroupProps as RecipeRadioButtonGroupProps } from '$stylist/control/interface/recipe/radio-button-group-props';
-import { TogglesStyleManager } from '$stylist/control/class/style-manager/toggles';
 
 export const createRadioButtonGroupState = (props: RecipeRadioButtonGroupProps) => {
-	const containerClass = $derived(TogglesStyleManager.getToggleContainerClasses(props.class));
+	const containerClass = $derived(['c-radio-group', props.class].filter(Boolean).join(' '));
 	const options = $derived(props.options ?? []);
 	const name = $derived(props.name ?? '');
 	const disabled = $derived(props.disabled ?? false);
@@ -14,25 +12,13 @@ export const createRadioButtonGroupState = (props: RecipeRadioButtonGroupProps) 
 		selectedValue = props.value ?? '';
 	});
 
-	const getOptionClass = (isDisabled: boolean) => {
-		return joinClassNames(
-			'flex items-center space-x-2 cursor-pointer',
-			isDisabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
-		);
+	const getOptionClass = (_isDisabled: boolean) => {
+		return 'c-radio-group__option';
 	};
 
-	const radioInputClass = $derived(
-		joinClassNames(
-			'h-4 w-4 border-[var(--color-border-primary)] text-[var(--color-primary-600)] focus:ring-blue-500'
-		)
-	);
+	const radioInputClass = 'c-radio-group__input';
 
-	const optionLabelClass = $derived(
-		joinClassNames(
-			'text-sm font-medium text-[var(--color-text-primary)]',
-			disabled ? 'opacity-[var(--opacity-50)]' : ''
-		)
-	);
+	const optionLabelClass = 'c-radio-group__label';
 
 	return {
 		get containerClass() {

@@ -43,11 +43,25 @@
 	{controls}
 >
 	{#snippet children(args: any)}
-		<div class="space-y-3 rounded-xl bg-[var(--color-background-secondary)] p-6">
+		<div class="_c1">
 			<OperationsHistory operations={buildOperations(args.count, args.includePending)} />
-			<p class="text-sm text-[var(--color-text-secondary)]">
-				Search/filter interactions are available in the component toolbar.
-			</p>
+			<p class="_c2">Search/filter interactions are available in the component toolbar.</p>
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		border-radius: 0.75rem;
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+	}
+	._c1 > * + * {
+		margin-top: 0.75rem;
+	}
+	._c2 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+</style>

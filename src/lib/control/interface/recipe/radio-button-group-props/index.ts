@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { HtmlAttributesWithChildren } from '$stylist/information/interface/slot/html-attributes-with-children';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
 

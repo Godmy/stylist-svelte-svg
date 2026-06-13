@@ -1,5 +1,5 @@
-import type { PlaygroundMarkdownRendererProps } from '$stylist/playground/type/struct/playground-markdown-renderer-props';
-export function createPlaygroundMarkdownRendererState(props: PlaygroundMarkdownRendererProps) {
+﻿import type { RecipePlaygroundMarkdownRenderer } from '$stylist/playground/interface/recipe/playground-markdown-renderer';
+export function createPlaygroundMarkdownRendererState(props: RecipePlaygroundMarkdownRenderer) {
 	const content = $derived(props.content);
 	const hostClass = $derived(props.class ?? '');
 
@@ -20,5 +20,3 @@ export function createPlaygroundMarkdownRendererState(props: PlaygroundMarkdownR
 		}
 	};
 }
-
-export default createPlaygroundMarkdownRendererState;

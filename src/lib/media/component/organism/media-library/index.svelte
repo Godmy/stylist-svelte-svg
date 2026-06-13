@@ -1,66 +1,64 @@
-<script lang="ts">
-	import createMediaLibraryState from '$stylist/media/function/state/media-library/index.svelte';
-	import type { MediaLibraryProps } from '$stylist/media/type/struct/media-library/medialibrary-props';
+﻿<script lang="ts">
+	import type { RecipeMediaLibrary } from '$stylist/media/interface/recipe/media-library';
+	import { createMediaLibraryState } from '$stylist/media/function/state/media-library/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 
-	let props: MediaLibraryProps = $props();
+	let props: RecipeMediaLibrary = $props();
 	const state = createMediaLibraryState(props);
 </script>
 
 <div class={state.hostClasses} {...state.restProps}>
 	<!-- Header with search and controls -->
-	<div class={`border-b bg-[var(--color-background-primary)] px-4 py-3 ${state.headerClass}`}>
-		<div class="flex items-center">
-			<div class="flex-1">
-				<div class="relative rounded-md shadow-sm">
-					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-						<BaseIcon name={state.icons.SEARCH} class="h-5 w-5 text-[var(--color-text-tertiary)]" />
+	<div class={`ml-header ${state.headerClass}`}>
+		<div class="ml-header-row">
+			<div class="ml-search-wrap">
+				<div class="ml-search-field">
+					<div class="ml-search-icon-wrap">
+						<BaseIcon
+							name={state.icons.SEARCH}
+							style="width:1.25rem;height:1.25rem;color:var(--color-text-tertiary)"
+						/>
 					</div>
 					<input
 						type="text"
-						class="block w-full rounded-md border border-[var(--color-border-primary)] py-2 pr-12 pl-10 text-sm focus:border-[var(--color-primary-500)] focus:ring-blue-500"
+						class="ml-search-input"
 						placeholder={state.searchPlaceholder}
 						bind:value={state.searchQuery}
 					/>
 				</div>
 			</div>
 
-			<div class="ml-4 flex items-center space-x-3">
+			<div class="ml-header-actions">
 				{#if state.allowUpload}
 					<button
 						type="button"
-						class="inline-flex items-center rounded-md border border-transparent bg-[var(--color-primary-600)] px-3 py-2 text-sm font-medium text-[var(--color-text-inverse)] shadow-sm hover:bg-[var(--color-primary-700)] focus:outline-none"
+						class="ml-btn ml-btn--primary"
 						onclick={() => state.triggerFileInput()}
 					>
-						<BaseIcon name={state.icons.UPLOAD} class="mr-1 h-4 w-4" />
+						<BaseIcon
+							name={state.icons.UPLOAD}
+							style="width:1rem;height:1rem;margin-right:0.25rem"
+						/>
 						Upload
 					</button>
 				{/if}
 
-				<div class="flex rounded-md border border-[var(--color-border-primary)]">
+				<div class="ml-view-toggle">
 					<button
 						type="button"
-						class={`rounded-l-md p-2 ${
-							state.selectedViewMode === 'grid'
-								? 'bg-[var(--color-primary-100)] text-[var(--color-primary-600)]'
-								: 'bg-[var(--color-background-primary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-background-secondary)]'
-						}`}
+						class={`ml-view-btn ml-view-btn--left ${state.selectedViewMode === 'grid' ? 'ml-view-btn--active' : ''}`}
 						onclick={() => (state.selectedViewMode = 'grid')}
 						title="Grid view"
 					>
-						<BaseIcon name={state.icons.GRID_3X3} class="h-4 w-4" />
+						<BaseIcon name={state.icons.GRID_3X3} style="width:1rem;height:1rem" />
 					</button>
 					<button
 						type="button"
-						class={`rounded-r-md p-2 ${
-							state.selectedViewMode === 'list'
-								? 'bg-[var(--color-primary-100)] text-[var(--color-primary-600)]'
-								: 'bg-[var(--color-background-primary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-background-secondary)]'
-						}`}
+						class={`ml-view-btn ml-view-btn--right ${state.selectedViewMode === 'list' ? 'ml-view-btn--active' : ''}`}
 						onclick={() => (state.selectedViewMode = 'list')}
 						title="List view"
 					>
-						<BaseIcon name={state.icons.LIST} class="h-4 w-4" />
+						<BaseIcon name={state.icons.LIST} style="width:1rem;height:1rem" />
 					</button>
 				</div>
 			</div>
@@ -70,7 +68,7 @@
 		<input
 			type="file"
 			bind:this={state.fileInputRef}
-			class="hidden"
+			class="ml-hidden"
 			onchange={(e) => state.handleFileUpload(e)}
 			multiple
 			accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.xls,.xlsx"
@@ -79,37 +77,35 @@
 
 	<!-- Toolbar with selection actions -->
 	{#if state.selectedItems.length > 0}
-		<div
-			class={`flex items-center justify-between border-b bg-[var(--color-primary-50)] px-4 py-2 ${state.toolbarClass}`}
-		>
-			<span class="text-sm font-medium text-[var(--color-primary-800)]">
+		<div class={`ml-toolbar ${state.toolbarClass}`}>
+			<span class="ml-toolbar-count">
 				{state.selectedItems.length} item{state.selectedItems.length !== 1 ? 's' : ''} selected
 			</span>
-			<div class="flex space-x-2">
+			<div class="ml-toolbar-actions">
 				{#if state.allowDownload}
-					<button
-						type="button"
-						class="inline-flex items-center rounded border border-transparent bg-[var(--color-primary-100)] px-3 py-1 text-xs font-medium text-[var(--color-primary-700)] hover:bg-[var(--color-primary-200)] focus:outline-none"
-					>
-						<BaseIcon name={state.icons.DOWNLOAD} class="mr-1 h-4 w-4" />
+					<button type="button" class="ml-btn ml-btn--secondary">
+						<BaseIcon
+							name={state.icons.DOWNLOAD}
+							style="width:1rem;height:1rem;margin-right:0.25rem"
+						/>
 						Download
 					</button>
 				{/if}
 				{#if state.allowDelete}
-					<button
-						type="button"
-						class="inline-flex items-center rounded border border-transparent bg-[var(--color-danger-100)] px-3 py-1 text-xs font-medium text-[var(--color-danger-700)] hover:bg-[var(--color-danger-200)] focus:outline-none"
-					>
-						<BaseIcon name={state.icons.TRASH_2} class="mr-1 h-4 w-4" />
+					<button type="button" class="ml-btn ml-btn--danger">
+						<BaseIcon
+							name={state.icons.TRASH_2}
+							style="width:1rem;height:1rem;margin-right:0.25rem"
+						/>
 						Delete
 					</button>
 				{/if}
 				<button
 					type="button"
-					class="inline-flex items-center rounded border border-[var(--color-border-primary)] bg-[var(--color-background-primary)] px-3 py-1 text-xs font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-background-secondary)] focus:outline-none"
+					class="ml-btn ml-btn--neutral"
 					onclick={() => (state.selectedItems = [])}
 				>
-					<BaseIcon name={state.icons.X} class="mr-1 h-4 w-4" />
+					<BaseIcon name={state.icons.X} style="width:1rem;height:1rem;margin-right:0.25rem" />
 					Clear
 				</button>
 			</div>
@@ -118,17 +114,13 @@
 
 	<!-- Media grid/list -->
 	<div
-		class={`p-4 ${state.selectedViewMode === 'grid' ? `grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ${state.gridClass}` : 'space-y-2'}`}
+		class={`ml-content ${state.selectedViewMode === 'grid' ? `ml-content--grid ${state.gridClass}` : 'ml-content--list'}`}
 	>
 		{#each state.filteredItems as item}
 			{#if state.selectedViewMode === 'grid'}
 				<!-- Grid view item -->
 				<div
-					class={`cursor-pointer overflow-hidden rounded-lg border transition-shadow hover:shadow-md ${
-						state.selectedItems.includes(item.id)
-							? 'ring-2 ring-blue-500'
-							: 'border-[var(--color-border-primary)]'
-					} ${state.itemClass}`}
+					class={`ml-grid-item ${state.selectedItems.includes(item.id) ? 'ml-grid-item--selected' : ''} ${state.itemClass}`}
 					role="button"
 					tabindex="0"
 					onclick={(e) => {
@@ -145,33 +137,29 @@
 						}
 					}}
 				>
-					<div
-						class="flex aspect-square items-center justify-center bg-[var(--color-background-secondary)]"
-					>
+					<div class="ml-item-thumb">
 						{#if item.thumbnail}
-							<img src={item.thumbnail} alt={item.name} class="h-full w-full object-cover" />
+							<img
+								src={item.thumbnail}
+								alt={item.name}
+								style="width:100%;height:100%;object-fit:cover"
+							/>
 						{:else}
 							<BaseIcon
 								name={state.getFileIcon(item.type)}
-								class="h-10 w-10 text-[var(--color-text-tertiary)]"
+								style="width:2.5rem;height:2.5rem;color:var(--color-text-tertiary)"
 							/>
 						{/if}
 					</div>
-					<div class="p-2">
-						<p class="truncate text-xs font-medium text-[var(--color-text-primary)]">{item.name}</p>
-						<p class="text-xs text-[var(--color-text-secondary)]">
-							{state.formatMediaFileSize(item.size)}
-						</p>
+					<div class="ml-item-info">
+						<p class="ml-item-name">{item.name}</p>
+						<p class="ml-item-size">{state.formatMediaFileSize(item.size)}</p>
 					</div>
 				</div>
 			{:else}
 				<!-- List view item -->
 				<div
-					class={`flex items-center rounded-lg border p-3 ${
-						state.selectedItems.includes(item.id)
-							? 'border-[var(--color-primary-500)] bg-[var(--color-primary-50)]'
-							: 'border-[var(--color-border-primary)]'
-					} ${state.itemClass}`}
+					class={`ml-list-item ${state.selectedItems.includes(item.id) ? 'ml-list-item--selected' : ''} ${state.itemClass}`}
 					role="button"
 					tabindex="0"
 					onclick={(e) => {
@@ -188,56 +176,54 @@
 						}
 					}}
 				>
-					<div
-						class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded bg-[var(--color-background-secondary)]"
-					>
+					<div class="ml-list-thumb">
 						<BaseIcon
 							name={state.getFileIcon(item.type)}
-							class="h-8 w-8 text-[var(--color-text-tertiary)]"
+							style="width:2rem;height:2rem;color:var(--color-text-tertiary)"
 						/>
 					</div>
-					<div class="ml-4 min-w-0 flex-1">
-						<p class="truncate text-sm font-medium text-[var(--color-text-primary)]">{item.name}</p>
-						<p class="text-sm text-[var(--color-text-secondary)]">
-							{state.formatMediaFileSize(item.size)} • {state.formatMediaDate(item.uploadDate)}
+					<div class="ml-list-info">
+						<p class="ml-list-name">{item.name}</p>
+						<p class="ml-list-meta">
+							{state.formatMediaFileSize(item.size)} вЂў {state.formatMediaDate(item.uploadDate)}
 						</p>
 					</div>
-					<div class="ml-4 flex space-x-2">
+					<div class="ml-list-actions">
 						{#if state.allowDownload}
 							<button
 								type="button"
-								class="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]"
+								class="ml-action-btn"
 								onclick={(e) => {
 									e.stopPropagation();
 									state.handleItemDownload(item.id);
 								}}
 								title="Download"
 							>
-								<BaseIcon name={state.icons.DOWNLOAD} class="h-5 w-5" />
+								<BaseIcon name={state.icons.DOWNLOAD} style="width:1.25rem;height:1.25rem" />
 							</button>
 						{/if}
 						<button
 							type="button"
-							class="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]"
+							class="ml-action-btn"
 							onclick={(e) => {
 								e.stopPropagation();
 								state.handleItemSelect(item);
 							}}
 							title="View"
 						>
-							<BaseIcon name={state.icons.EYE} class="h-5 w-5" />
+							<BaseIcon name={state.icons.EYE} style="width:1.25rem;height:1.25rem" />
 						</button>
 						{#if state.allowDelete}
 							<button
 								type="button"
-								class="text-[var(--color-text-tertiary)] hover:text-[var(--color-danger-500)]"
+								class="ml-action-btn ml-action-btn--danger"
 								onclick={(e) => {
 									e.stopPropagation();
 									state.handleItemDelete(item.id);
 								}}
 								title="Delete"
 							>
-								<BaseIcon name={state.icons.TRASH_2} class="h-5 w-5" />
+								<BaseIcon name={state.icons.TRASH_2} style="width:1.25rem;height:1.25rem" />
 							</button>
 						{/if}
 					</div>
@@ -248,25 +234,305 @@
 
 	<!-- Empty state -->
 	{#if state.filteredItems.length === 0}
-		<div class="py-12 text-center">
+		<div class="ml-empty">
 			<BaseIcon
 				name={state.icons.FOLDER}
-				class="mx-auto mb-2 h-12 w-12 text-[var(--color-text-tertiary)]"
+				style="width:3rem;height:3rem;color:var(--color-text-tertiary);display:block;margin:0 auto 0.5rem"
 			/>
-			<h3 class="mb-1 text-sm font-medium text-[var(--color-text-primary)]">No media files</h3>
-			<p class="text-sm text-[var(--color-text-secondary)]">
+			<h3 class="ml-empty-title">No media files</h3>
+			<p class="ml-empty-desc">
 				{state.searchQuery ? 'No files match your search' : 'Upload files to get started'}
 			</p>
 			{#if state.allowUpload && !state.searchQuery}
 				<button
 					type="button"
-					class="mt-4 inline-flex items-center rounded-md border border-transparent bg-[var(--color-primary-600)] px-4 py-2 text-sm font-medium text-[var(--color-text-inverse)] shadow-sm hover:bg-[var(--color-primary-700)] focus:outline-none"
+					class="ml-btn ml-btn--primary ml-btn--lg"
 					onclick={() => state.triggerFileInput()}
 				>
-					<BaseIcon name={state.icons.UPLOAD} class="mr-1 h-4 w-4" />
+					<BaseIcon name={state.icons.UPLOAD} style="width:1rem;height:1rem;margin-right:0.25rem" />
 					Upload files
 				</button>
 			{/if}
 		</div>
 	{/if}
 </div>
+
+<style>
+	.ml-header {
+		border-bottom: 1px solid var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 0.75rem 1rem;
+	}
+	.ml-header-row {
+		display: flex;
+		align-items: center;
+	}
+	.ml-search-wrap {
+		flex: 1;
+	}
+	.ml-search-field {
+		position: relative;
+		border-radius: 0.375rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.ml-search-icon-wrap {
+		pointer-events: none;
+		position: absolute;
+		inset-block: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		padding-left: 0.75rem;
+	}
+	.ml-search-input {
+		display: block;
+		width: 100%;
+		border-radius: 0.375rem;
+		border: 1px solid var(--color-border-primary);
+		padding: 0.5rem 3rem 0.5rem 2.5rem;
+		font-size: 0.875rem;
+		background-color: transparent;
+		color: var(--color-text-primary);
+	}
+	.ml-search-input:focus {
+		outline: none;
+		border-color: var(--color-primary-500);
+	}
+	.ml-header-actions {
+		margin-left: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.ml-hidden {
+		display: none;
+	}
+	.ml-view-toggle {
+		display: flex;
+		border-radius: 0.375rem;
+		border: 1px solid var(--color-border-primary);
+	}
+	.ml-view-btn {
+		padding: 0.5rem;
+		background-color: var(--color-background-primary);
+		color: var(--color-text-secondary);
+		border: none;
+		cursor: pointer;
+	}
+	.ml-view-btn:hover:not(.ml-view-btn--active) {
+		background-color: var(--color-background-secondary);
+	}
+	.ml-view-btn--left {
+		border-radius: 0.375rem 0 0 0.375rem;
+	}
+	.ml-view-btn--right {
+		border-radius: 0 0.375rem 0.375rem 0;
+	}
+	.ml-view-btn--active {
+		background-color: var(--color-primary-100);
+		color: var(--color-primary-600);
+	}
+	.ml-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid var(--color-border-primary);
+		background-color: var(--color-primary-50);
+		padding: 0.5rem 1rem;
+	}
+	.ml-toolbar-count {
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-primary-800);
+	}
+	.ml-toolbar-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.ml-btn {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 0.375rem;
+		border: 1px solid transparent;
+		font-weight: 500;
+		cursor: pointer;
+		outline: none;
+	}
+	.ml-btn--primary {
+		padding: 0.5rem 0.75rem;
+		font-size: 0.875rem;
+		background-color: var(--color-primary-600);
+		color: var(--color-text-inverse);
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.ml-btn--primary:hover {
+		background-color: var(--color-primary-700);
+	}
+	.ml-btn--lg {
+		padding: 0.5rem 1rem;
+		margin-top: 1rem;
+	}
+	.ml-btn--secondary {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.75rem;
+		background-color: var(--color-primary-100);
+		color: var(--color-primary-700);
+	}
+	.ml-btn--secondary:hover {
+		background-color: var(--color-primary-200);
+	}
+	.ml-btn--danger {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.75rem;
+		background-color: var(--color-danger-100);
+		color: var(--color-danger-700);
+	}
+	.ml-btn--danger:hover {
+		background-color: var(--color-danger-200);
+	}
+	.ml-btn--neutral {
+		padding: 0.25rem 0.75rem;
+		font-size: 0.75rem;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		color: var(--color-text-primary);
+	}
+	.ml-btn--neutral:hover {
+		background-color: var(--color-background-secondary);
+	}
+	.ml-content {
+		padding: 1rem;
+	}
+	.ml-content--grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+	@media (min-width: 640px) {
+		.ml-content--grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	@media (min-width: 768px) {
+		.ml-content--grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	@media (min-width: 1024px) {
+		.ml-content--grid {
+			grid-template-columns: repeat(5, 1fr);
+		}
+	}
+	.ml-content--list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.ml-grid-item {
+		cursor: pointer;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		transition: box-shadow 0.15s;
+	}
+	.ml-grid-item:hover {
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+	.ml-grid-item--selected {
+		outline: 2px solid #3b82f6;
+		outline-offset: -1px;
+	}
+	.ml-item-thumb {
+		display: flex;
+		aspect-ratio: 1;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--color-background-secondary);
+	}
+	.ml-item-info {
+		padding: 0.5rem;
+	}
+	.ml-item-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 0.75rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	.ml-item-size {
+		font-size: 0.75rem;
+		color: var(--color-text-secondary);
+	}
+	.ml-list-item {
+		display: flex;
+		align-items: center;
+		border-radius: 0.5rem;
+		border: 1px solid var(--color-border-primary);
+		padding: 0.75rem;
+		cursor: pointer;
+	}
+	.ml-list-item--selected {
+		border-color: var(--color-primary-500);
+		background-color: var(--color-primary-50);
+	}
+	.ml-list-thumb {
+		display: flex;
+		width: 4rem;
+		height: 4rem;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.25rem;
+		background-color: var(--color-background-secondary);
+	}
+	.ml-list-info {
+		margin-left: 1rem;
+		min-width: 0;
+		flex: 1;
+	}
+	.ml-list-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	.ml-list-meta {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+	.ml-list-actions {
+		margin-left: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+	.ml-action-btn {
+		color: var(--color-text-tertiary);
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+	.ml-action-btn:hover {
+		color: var(--color-text-secondary);
+	}
+	.ml-action-btn--danger:hover {
+		color: var(--color-danger-500);
+	}
+	.ml-empty {
+		padding: 3rem 1rem;
+		text-align: center;
+	}
+	.ml-empty-title {
+		margin-bottom: 0.25rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+	.ml-empty-desc {
+		font-size: 0.875rem;
+		color: var(--color-text-secondary);
+	}
+</style>

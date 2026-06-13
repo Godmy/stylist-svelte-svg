@@ -1,14 +1,14 @@
 import type { ChartLegendProps } from '$stylist/navigation/interface/recipe/chart-legend';
-import { ChartStyleManager } from '$stylist/chart/class/style-manager/chart';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
 export function createChartLegendState(props: ChartLegendProps) {
-	const classes = $derived(ChartStyleManager.getChartLegendClasses(resolveClassName(props.class)));
-	const itemClasses = $derived(ChartStyleManager.getChartLegendItemClasses());
-	const dotClasses = $derived(ChartStyleManager.getChartLegendDotClasses());
+	const classes = $derived(mergeClassNames('c-chart-legend', resolveClassName(props.class)));
+	const itemClasses = $derived('c-chart-legend__item');
+	const dotClasses = $derived('c-chart-legend__dot');
 
 	return {
 		get classes() {

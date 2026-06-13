@@ -25,7 +25,7 @@
 >
 	{#snippet children(values: any)}
 		{@const typedProps = values as Props}
-		<div class="sb-organisms-payment-selector p-4">
+		<div class="sb-organisms-payment-selector _c1">
 			<PaymentSelector
 				{methods}
 				showAddButton={typedProps.showAddButton}
@@ -34,3 +34,9 @@
 		</div>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		padding: 1rem;
+	}
+</style>

@@ -1,22 +1,23 @@
-﻿/**
- * CanvasImageEditor вЂ” СЂРµРґР°РєС‚РѕСЂ РёР·РѕР±СЂР°Р¶РµРЅРёР№..
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { HTMLAttributes } from 'svelte/elements';
+/**
+ * CanvasImageEditor РІР‚вЂќ РЎР‚Р ВµР Т‘Р В°Р С”РЎвЂљР С•РЎР‚ Р С‘Р В·Р С•Р В±РЎР‚Р В°Р В¶Р ВµР Р…Р С‘Р в„–..
  *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   IMediaSlot        (information) вЂ” media (Media)
+ * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
+ *   IMediaSlot        (information) РІР‚вЂќ media (Media)
  */
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotMedia as IMediaSlot } from '$stylist/media/interface/slot/media';
-import type { ThemeAttributes } from '$stylist/theme/type/struct/theme-attributes';
 
-export interface CanvasImageEditorRecipe
-	extends StructIntersectAll<[IMediaSlot, ThemeAttributes<HTMLCanvasElement>]> {
-	/** РЁРёСЂРёРЅР° С…РѕР»СЃС‚Р° */
+export interface RecipeCanvasImageEditor
+	extends StructIntersectAll<[SlotTheme, IMediaSlot, HTMLAttributes<HTMLCanvasElement>]> {
+	/** Р РЃР С‘РЎР‚Р С‘Р Р…Р В° РЎвЂ¦Р С•Р В»РЎРѓРЎвЂљР В° */
 	width?: number;
-	/** Р’С‹СЃРѕС‚Р° С…РѕР»СЃС‚Р° */
+	/** Р вЂ™РЎвЂ№РЎРѓР С•РЎвЂљР В° РЎвЂ¦Р С•Р В»РЎРѓРЎвЂљР В° */
 	height?: number;
-	/** Р’РєР»СЋС‡РµРЅ Р»Рё СЂРµР¶РёРј РѕР±СЂРµР·РєРё */
+	/** Р вЂ™Р С”Р В»РЎР‹РЎвЂЎР ВµР Р… Р В»Р С‘ РЎР‚Р ВµР В¶Р С‘Р С Р С•Р В±РЎР‚Р ВµР В·Р С”Р С‘ */
 	cropEnabled?: boolean;
-	/** РўРёРї С„РёР»СЊС‚СЂР° */
+	/** Р СћР С‘Р С— РЎвЂћР С‘Р В»РЎРЉРЎвЂљРЎР‚Р В° */
 	filter?:
 		| 'none'
 		| 'grayscale'
@@ -27,14 +28,14 @@ export interface CanvasImageEditorRecipe
 		| 'contrast'
 		| 'saturate'
 		| 'hue-rotate';
-	/** РћР±Р»Р°СЃС‚СЊ РѕР±СЂРµР·РєРё */
+	/** Р С›Р В±Р В»Р В°РЎРѓРЎвЂљРЎРЉ Р С•Р В±РЎР‚Р ВµР В·Р С”Р С‘ */
 	cropArea?: { x: number; y: number; width: number; height: number };
-	/** РЇСЂРєРѕСЃС‚СЊ (0-200) */
+	/** Р Р‡РЎР‚Р С”Р С•РЎРѓРЎвЂљРЎРЉ (0-200) */
 	brightness?: number;
-	/** РљРѕРЅС‚СЂР°СЃС‚ (0-200) */
+	/** Р С™Р С•Р Р…РЎвЂљРЎР‚Р В°РЎРѓРЎвЂљ (0-200) */
 	contrast?: number;
-	/** РќР°СЃС‹С‰РµРЅРЅРѕСЃС‚СЊ (0-200) */
+	/** Р СњР В°РЎРѓРЎвЂ№РЎвЂ°Р ВµР Р…Р Р…Р С•РЎРѓРЎвЂљРЎРЉ (0-200) */
 	saturation?: number;
-	/** РћС‚С‚РµРЅРѕРє (0-360) */
+	/** Р С›РЎвЂљРЎвЂљР ВµР Р…Р С•Р С” (0-360) */
 	hue?: number;
 }

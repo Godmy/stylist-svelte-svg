@@ -1,4 +1,3 @@
-import { joinClassNames } from '$stylist/layout/function/script/join-class-names';
 import type { SlotComplexAccordion as ComplexAccordionProps } from '$stylist/control/interface/slot/complex-accordion';
 
 /**
@@ -6,7 +5,7 @@ import type { SlotComplexAccordion as ComplexAccordionProps } from '$stylist/con
  */
 
 export function createComplexAccordionState(props: ComplexAccordionProps) {
-	const classes = $derived(joinClassNames('complex-accordion-root', props.class));
+	const classes = $derived(['c-accordion-complex', props.class].filter(Boolean).join(' '));
 	const accordionId = Math.random().toString(36).substring(2, 9);
 	let openPanels = $state(props.defaultValue ?? []);
 

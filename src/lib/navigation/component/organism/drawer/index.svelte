@@ -10,7 +10,7 @@
 
 {#if state.isOpen}
 	<div
-		class={state.backdropClasses}
+		class="drawer__backdrop"
 		bind:this={state.backdropEl}
 		onclick={(e) => state.handleBackdropClickFn(e)}
 		onkeydown={(e) => state.handleBackdropKeyDownFn(e)}
@@ -19,14 +19,14 @@
 		aria-label="Close drawer via backdrop"
 	>
 		<div
-			class={`${state.drawerClasses} ${state.drawerOpenClasses}`}
+			class="drawer__drawer drawer__drawer-open"
 			bind:this={state.drawerEl}
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="drawer-title"
 			style={`--size: ${state.size};`}
 		>
-			<div class={state.headerClasses}>
+			<div class="drawer__header">
 				{#if props.header}
 					{@render props.header()}
 				{:else}
@@ -34,18 +34,18 @@
 				{/if}
 				{#if state.closable}
 					<button
-						class={state.closeButtonClasses}
+						class="drawer__close-button"
 						onclick={() => state.closeFn()}
 						aria-label="Close drawer">x</button
 					>
 				{/if}
 			</div>
-			<div class={state.contentClasses}>
+			<div class="drawer__content">
 				{#if props.children}
 					{#if props.children}{@render props.children()}{/if}
 				{/if}
 			</div>
-			<div class={state.actionsClasses}>
+			<div class="drawer__actions">
 				{#if props.actions}
 					{@render props.actions()}
 				{/if}

@@ -1,6 +1,6 @@
-import type { SlotRangeInput as RangeInputProps } from '$stylist/input/interface/slot/range-input';
+﻿import type { SlotRangeInput as RecipeRangeInput } from '$stylist/input/interface/slot/range-input';
 
-export const createRangeInputState = (props: RangeInputProps) => {
+export const createRangeInputState = (props: RecipeRangeInput) => {
 	let minVal = $state(props.minValue ?? props.min ?? 0);
 	let maxVal = $state(props.maxValue ?? props.max ?? 100);
 
@@ -55,5 +55,3 @@ export const createRangeInputState = (props: RangeInputProps) => {
 		commit
 	};
 };
-
-export default createRangeInputState;

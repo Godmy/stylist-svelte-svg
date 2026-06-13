@@ -115,29 +115,19 @@
 	{controls}
 >
 	{#snippet children(values: any)}
-		<section class="sb-organisms-zip-viewer grid w-full gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-			<div
-				class="rounded-[2.5rem] border border-[--color-border-primary] bg-[--color-background-primary] p-6 shadow-sm"
-			>
-				<div class="flex items-center justify-between">
+		<section class="sb-organisms-zip-viewer _c1">
+			<div class="_c2">
+				<div class="_c3">
 					<div>
-						<p class="text-sm font-semibold tracking-wide text-[--color-text-secondary] uppercase">
-							Design system bundle
-						</p>
-						<p class="text-lg text-[--color-text-primary]">
-							Explore directories, view metadata, and preview text entries.
-						</p>
+						<p class="_c4">Design system bundle</p>
+						<p class="_c5">Explore directories, view metadata, and preview text entries.</p>
 					</div>
-					<div
-						class="rounded-full bg-[--color-background-secondary] px-3 py-1 text-xs font-semibold text-[--color-text-primary]"
-					>
+					<div class="_c6">
 						{primaryEntries.length} entries
 					</div>
 				</div>
 
-				<div
-					class="mt-6 rounded-2xl border border-[--color-border-primary] bg-[--color-background-secondary] p-4"
-				>
+				<div class="_c7">
 					<ZipViewer
 						entries={primaryEntries}
 						searchable={values.searchable}
@@ -148,27 +138,19 @@
 				</div>
 			</div>
 
-			<div
-				class="rounded-[2.5rem] border border-[--color-border-primary] bg-[--color-background-secondary] p-6 shadow-sm"
-			>
-				<h3 class="text-base font-semibold text-[--color-text-primary]">Common archive types</h3>
-				<p class="text-sm text-[--color-text-secondary]">
-					ZipViewer is reusable for QA drops, translation packs, or audit exports.
-				</p>
+			<div class="_c8">
+				<h3 class="_c9">Common archive types</h3>
+				<p class="_c10">ZipViewer is reusable for QA drops, translation packs, or audit exports.</p>
 
-				<div class="mt-5 space-y-4">
+				<div class="_c11">
 					{#each variantArchives as archive}
-						<article
-							class="rounded-2xl border border-dashed border-[--color-border-primary] bg-[--color-background-primary] p-4"
-						>
-							<div class="flex items-center justify-between">
+						<article class="_c12">
+							<div class="_c3">
 								<div>
-									<p class="text-sm font-semibold text-[--color-text-primary]">{archive.name}</p>
-									<p class="text-xs text-[--color-text-secondary]">{archive.description}</p>
+									<p class="_c13">{archive.name}</p>
+									<p class="_c14">{archive.description}</p>
 								</div>
-								<span
-									class="rounded-full bg-[--color-background-secondary] px-3 py-0.5 text-xs font-semibold text-[--color-text-primary]"
-								>
+								<span class="_c15">
 									{archive.files} files
 								</span>
 							</div>
@@ -179,3 +161,121 @@
 		</section>
 	{/snippet}
 </Story>
+
+<style>
+	._c1 {
+		display: grid;
+		width: 100%;
+		gap: 2rem;
+	}
+	@media (min-width: 1024px) {
+		._c1 {
+			grid-template-columns: 1.25fr 0.75fr;
+		}
+	}
+	._c10 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-text-secondary);
+	}
+	._c11 {
+		margin-top: 1.25rem;
+	}
+	._c11 > * + * {
+		margin-top: 1rem;
+	}
+	._c12 {
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: dashed;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1rem;
+	}
+	._c13 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c14 {
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--color-text-secondary);
+	}
+	._c15 {
+		border-radius: 9999px;
+		background-color: var(--color-background-secondary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.125rem;
+		padding-bottom: 0.125rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c2 {
+		border-radius: 2.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-primary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	._c4 {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		letter-spacing: 0.025em;
+		color: var(--color-text-secondary);
+		text-transform: uppercase;
+	}
+	._c5 {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		color: var(--color-text-primary);
+	}
+	._c6 {
+		border-radius: 9999px;
+		background-color: var(--color-background-secondary);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+		font-size: 0.75rem;
+		line-height: 1rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+	._c7 {
+		margin-top: 1.5rem;
+		border-radius: 1rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1rem;
+	}
+	._c8 {
+		border-radius: 2.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-border-primary);
+		background-color: var(--color-background-secondary);
+		padding: 1.5rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	._c9 {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+</style>
