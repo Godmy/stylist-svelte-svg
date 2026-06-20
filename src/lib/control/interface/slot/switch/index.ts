@@ -26,4 +26,6 @@ export interface SlotSwitch extends Omit<InteractionHTMLAttributes<HTMLInputElem
 	switchSize?: TokenSize;
 	/** Size variant */
 	size?: TokenSize;
+	/** Position of the label relative to the track */
+	labelPosition?: 'left' | 'right';
 }

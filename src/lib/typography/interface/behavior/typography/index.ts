@@ -1,6 +1,6 @@
 import type { TokenLineHeight } from '$stylist/typography/type/enum/line-height';
 import type { TokenLetterSpacing } from '$stylist/typography/type/enum/letter-spacing';
-import type { TokenFontFamily } from '$stylist/typography/type/map/font-family';
+import type { TokenFontFamily } from '$stylist/typography/type/enum/font-family';
 import type { TokenFontSize } from '$stylist/typography/type/enum/font-size';
 import type { TokenFontWeight } from '$stylist/typography/type/enum/font-weight';
 

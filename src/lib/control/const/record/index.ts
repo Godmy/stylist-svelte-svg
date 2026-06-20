@@ -1,9 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { ACCORDION_HEADER_CONTEXT } from './accordion-header-context';
-export { ACCORDION_HEADER_PADDING_CLASSES } from './accordion-header-padding-classes';
-export { ACCORDION_ITEM_CONTEXT } from './accordion-item-context';
-export { ACCORDION_PANEL_CONTEXT } from './accordion-panel-context';
-export { ACCORDION_PANEL_PADDING_CLASSES } from './accordion-panel-padding-classes';
+export { ACCORDION_CONTEXT_DEFAULT } from './accordion-context';
 export { BUTTON_SIZE_CLASSES } from './button-size-classes';
 export { BUTTON_VARIANT_CLASSES } from './button-variant-classes';
 export { CHECKBOX_SIZE_CLASSES } from './checkbox-size-classes';
@@ -36,3 +32,4 @@ export { TOKEN_TOGGLE_HANDLE_SIZE_CLASSES } from './token-toggle-handle-size-cla
 export { TOKEN_TOGGLE_SIZE_CLASSES } from './token-toggle-size-classes';
 export { TOOLTIP_POSITION_CLASSES } from './tooltip-position-classes';
 export { TOOLTIP_SIZE_CLASSES } from './tooltip-size-classes';
+export type { AccordionContext } from './accordion-context';

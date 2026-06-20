@@ -1,7 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { PresetAccessibilityToolbar } from './accessibility-toolbar';
-export { PresetAccordion } from './accordion';
-export { PresetAdvancedAccordion } from './advanced-accordion';
 export { PresetCloseButton } from './close-button';
 export { PresetCombobox } from './combobox';
 export { PresetCopyButton } from './copy-button';

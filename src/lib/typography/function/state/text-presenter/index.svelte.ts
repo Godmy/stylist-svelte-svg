@@ -1,6 +1,6 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
-import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/typography-inline-style';
+import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/inline-style';
 import type { RecipeText } from '$stylist/typography/interface/recipe/text';
 
 export function createTextPresenterState(

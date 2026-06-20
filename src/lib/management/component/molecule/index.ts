@@ -10,4 +10,7 @@ export { NotificationSettings } from './notification-settings/index';
 export { OperationsHistory } from './operations-history/index';
 export { PageHeader } from './page-header/index';
 export { PerformanceMonitor } from './performance-monitor/index';
+export { PortfolioHeader } from './portfolio-header/index';
+export { PortfolioState } from './portfolio-state/index';
+export { PortfolioSummary } from './portfolio-summary/index';
 export { ScrumBacklog } from './scrum-backlog/index';

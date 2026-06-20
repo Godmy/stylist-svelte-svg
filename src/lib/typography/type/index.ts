@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
+	TokenFontFamily,
 	TokenFontSize,
 	TokenFontWeight,
 	TokenLetterSpacing,
@@ -7,11 +8,9 @@ export type {
 	TokenTypographyIcon,
 	TokenTypographyTone
 } from './enum';
-export type { TokenFontFamily } from './map';
 export type {
 	FontIntent,
 	StructRichTextMark,
 	StructRichTextSegment,
-	StructThemeTypography,
-	TypographyTextProps
+	StructThemeTypography
 } from './struct';

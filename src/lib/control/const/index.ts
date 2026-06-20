@@ -14,8 +14,6 @@ export {
 } from './map';
 export {
 	PresetAccessibilityToolbar,
-	PresetAccordion,
-	PresetAdvancedAccordion,
 	PresetCloseButton,
 	PresetCombobox,
 	PresetCopyButton,
@@ -29,11 +27,7 @@ export {
 	PresetZoomToolbar
 } from './preset';
 export {
-	ACCORDION_HEADER_CONTEXT,
-	ACCORDION_HEADER_PADDING_CLASSES,
-	ACCORDION_ITEM_CONTEXT,
-	ACCORDION_PANEL_CONTEXT,
-	ACCORDION_PANEL_PADDING_CLASSES,
+	ACCORDION_CONTEXT_DEFAULT,
 	BUTTON_SIZE_CLASSES,
 	BUTTON_VARIANT_CLASSES,
 	CHECKBOX_SIZE_CLASSES,
@@ -68,3 +62,4 @@ export {
 	TOOLTIP_SIZE_CLASSES
 } from './record';
 export { BURGER_MENU_ARIA_LABEL } from './value';
+export type { AccordionContext } from './record';

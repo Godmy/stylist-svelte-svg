@@ -1,10 +1,8 @@
-import type { SlotAccordionDataItem } from '$stylist/control/interface/slot/accordion-data-item';
+import type { Snippet } from 'svelte';
+import type { HTMLAttributes } from 'svelte/elements';
 
-export interface SlotAccordion {
-	items: SlotAccordionDataItem[];
-	multiple?: boolean;
+export interface SlotAccordion extends HTMLAttributes<HTMLDivElement> {
+	children?: Snippet;
+	defaultValue?: string;
 	class?: string;
-	itemClass?: string;
-	headerClass?: string;
-	contentClass?: string;
 }

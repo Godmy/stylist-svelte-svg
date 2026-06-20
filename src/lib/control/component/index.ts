@@ -1,11 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AccordionHeader,
-	AccordionHeaderDouble,
-	AccordionItem,
-	AccordionPanel,
+	AccordionLayout,
 	ActionSegmentedControl,
-	AdvancedToggle,
 	BurgerMenu,
 	Button,
 	ButtonComposed,
@@ -22,7 +18,6 @@ export {
 	SortableTableHeader,
 	SplitButton,
 	Switch,
-	SwitchWithLabel,
 	Tab,
 	TabIndicator,
 	TabList,
@@ -30,10 +25,8 @@ export {
 	TabPanels,
 	Tag,
 	Tick,
-	Toggle,
 	ToggleGroupItem,
 	ToggleGroupRoot,
-	ToggleWithDescription,
 	TokenArrayControl,
 	TokenControlBase,
 	TokenControlComposer,
@@ -47,8 +40,7 @@ export {
 } from './atom';
 export {
 	Accordion,
-	AccordionComplex,
-	AdvancedAccordion,
+	AccordionGroup,
 	AvatarSelector,
 	CheckboxGroup,
 	ComparisonTable,

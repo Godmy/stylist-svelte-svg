@@ -17,10 +17,6 @@ export type {
 } from './record';
 export type { ToolbarExportFormat } from './script';
 export type {
-	AccordionHeaderDoubleProps,
-	AccordionHeaderProps,
-	AccordionItemProps,
-	AccordionPanelProps,
 	AdvancedVirtualTreeProps,
 	AtomicTabId,
 	ButtonMouseEvent,
@@ -62,7 +58,6 @@ export type {
 	RangeFilter,
 	RangeSliderProps,
 	RecipeActionSegmentedControlProps,
-	RecipeAdvancedToggleProps,
 	SearchResultItem,
 	SearchResultsProps,
 	SliderTickComponentProps,
@@ -78,7 +73,6 @@ export type {
 	ToggleFilter,
 	ToggleGroupContext,
 	ToggleProps,
-	ToggleWithDescriptionProps,
 	TokenArrayControlProps,
 	TokenControlBaseProps,
 	TokenControlComposerProps,

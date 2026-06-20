@@ -39,6 +39,7 @@
 	data-size={state.size}
 	data-checked={checked || undefined}
 	data-disabled={state.disabled || undefined}
+	data-label-position={state.labelPosition}
 >
 	<span class="c-switch__track">
 		<input
@@ -83,6 +84,10 @@
 		align-items: flex-start;
 		gap: 0.75rem;
 		cursor: pointer;
+	}
+
+	.c-switch[data-label-position='left'] {
+		flex-direction: row-reverse;
 	}
 
 	.c-switch[data-disabled] {

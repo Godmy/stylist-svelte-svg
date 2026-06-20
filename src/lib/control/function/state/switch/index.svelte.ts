@@ -9,6 +9,7 @@ export function createSwitchState(props: RecipeSwitch, checked: boolean) {
 	const required = $derived(props.required ?? false);
 	const name = $derived(props.name);
 	const ariaLabel = $derived(props.ariaLabel ?? props['aria-label'] ?? props.label);
+	const labelPosition = $derived(props.labelPosition ?? 'right');
 	const generatedId = $derived(id || `switch-${Math.random().toString(36).slice(2, 11)}`);
 	const descriptionId = $derived(description ? `${generatedId}-description` : undefined);
 	const restProps = $derived.by(() => {
@@ -23,6 +24,7 @@ export function createSwitchState(props: RecipeSwitch, checked: boolean) {
 			class: _class,
 			ariaLabel: _ariaLabel,
 			name: _name,
+			labelPosition: _labelPosition,
 			onchange: _onchange,
 			oninput: _oninput,
 			'aria-label': _ariaLabelAttr,
@@ -62,6 +64,9 @@ export function createSwitchState(props: RecipeSwitch, checked: boolean) {
 		},
 		get ariaLabel() {
 			return ariaLabel;
+		},
+		get labelPosition() {
+			return labelPosition;
 		},
 		get restProps() {
 			return restProps;

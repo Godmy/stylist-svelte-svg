@@ -1,10 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { AccordionHeaderDoubleProps } from './accordion-header-double-props';
-export type { AccordionHeaderProps } from './accordion-header-props';
-export type { AccordionItemProps } from './accordion-item-props';
-export type { AccordionPanelProps } from './accordion-panel-props';
 export type { RecipeActionSegmentedControlProps } from './action-segmented-control-props';
-export type { RecipeAdvancedToggleProps } from './advanced-toggle-props';
 export type { AdvancedVirtualTreeProps } from './advanced-virtual-tree-props';
 export type { ButtonMouseEvent } from './button-mouse-event';
 export type { ButtonPropsRecord } from './button-props-record';
@@ -67,7 +62,6 @@ export type { ToggleButtonGroupOption } from './toggle-button-group-option';
 export type { ToggleButtonGroupProps } from './toggle-button-group-props';
 export type { ToggleGroupContext } from './toggle-group-context';
 export type { ToggleProps } from './toggle-props';
-export type { ToggleWithDescriptionProps } from './toggle-with-description-props';
 export type { TokenArrayControlProps } from './token-array-control-props';
 export type { TokenControlData } from './token-control';
 export type { TokenControlBaseProps } from './token-control-base-props';

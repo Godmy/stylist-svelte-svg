@@ -2,7 +2,8 @@
 export {
 	TOKEN_FONT_SIZE,
 	TOKEN_FONT_WEIGHT,
-	TOKEN_TYPOGRAPHY_ICON
+	TOKEN_TYPOGRAPHY_ICON,
+	TOKEN_TYPOGRAPHY_TONE
 } from './enum';
 export {
 	RECORD_FONT_SIZE,
@@ -10,5 +11,5 @@ export {
 	TOKEN_FONT_FAMILY,
 	TOKEN_LETTER_SPACING,
 	TOKEN_LINE_HEIGHT
-} from './map';
+} from './object';
 export { THEME_TYPOGRAPHY } from './record';

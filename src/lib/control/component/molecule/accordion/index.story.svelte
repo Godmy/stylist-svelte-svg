@@ -1,57 +1,42 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
+	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import Accordion from './index.svelte';
-	import type { TokenControllerType } from '$stylist/interaction/type/record/controller-type';
+	import AccordionLayout from '$stylist/control/component/atom/accordion-layout/index.svelte';
 
-	const controls = [
-		{
-			name: 'disabled',
-			type: 'boolean' as TokenControllerType,
-			defaultValue: false,
-			description: 'Whether the accordion item is disabled'
-		}
-	];
-
-	const items = [
-		{
-			id: 'item1',
-			title: 'Accordion Title',
-			content: `<div class="py-4">
-          <p>
-            This is the accordion content. You can place any content inside the accordion,
-            such as text, images, or other components. The content will be shown when the
-            accordion is expanded.
-          </p>
-        </div>`
-		}
+	const controls: InterfaceControllerSettings[] = [
+		{ name: 'defaultValue', type: 'text', defaultValue: '' }
 	];
 </script>
 
 <Story
 	{controls}
-	title="Accordion Component"
-	description="A component that allows users to expand and collapse sections of content"
+	component={Accordion}
+	title="Accordion"
+	category="Molecules/Interaction/Controls/Accordion"
+	description="Открывает один AccordionLayout — при клике на другой закрывает предыдущий"
 >
-	{#snippet children(controlValues: any)}
-		<div class="_c1">
-			<Accordion
-				items={[
-					{
-						...items[0],
-						disabled: controlValues.disabled
-					}
-				]}
-				multiple={false}
-			/>
+	{#snippet children(values: any)}
+		<div style="max-width: 480px;">
+			<Accordion defaultValue={values.defaultValue as string || undefined}>
+				{#snippet children()}
+					<AccordionLayout value="section-1" title="What is Vibe?">
+						{#snippet children()}
+							<p>Vibe is a design system for building consistent UIs.</p>
+						{/snippet}
+					</AccordionLayout>
+					<AccordionLayout value="section-2" title="How does it work?">
+						{#snippet children()}
+							<p>It provides composable components with shared context.</p>
+						{/snippet}
+					</AccordionLayout>
+					<AccordionLayout value="section-3" title="Can I extend it?">
+						{#snippet children()}
+							<p>Yes — AccordionLayout works inside any context provider.</p>
+						{/snippet}
+					</AccordionLayout>
+				{/snippet}
+			</Accordion>
 		</div>
 	{/snippet}
 </Story>
-
-<style>
-	._c1 {
-		margin-left: auto;
-		margin-right: auto;
-		max-width: 28rem;
-		padding: 1.5rem;
-	}
-</style>

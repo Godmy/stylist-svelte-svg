@@ -1,8 +1,8 @@
-import { TOKEN_FONT_FAMILY } from '$stylist/typography/const/map/font-family';
-import { RECORD_FONT_SIZE } from '$stylist/typography/const/map/font-size';
-import { RECORD_FONT_WEIGHT } from '$stylist/typography/const/map/font-weight';
-import { TOKEN_LETTER_SPACING } from '$stylist/typography/const/map/letter-spacing';
-import { TOKEN_LINE_HEIGHT } from '$stylist/typography/const/map/line-height';
+import { TOKEN_FONT_FAMILY } from '$stylist/typography/const/object/font-family';
+import { RECORD_FONT_SIZE } from '$stylist/typography/const/object/font-size';
+import { RECORD_FONT_WEIGHT } from '$stylist/typography/const/object/font-weight';
+import { TOKEN_LETTER_SPACING } from '$stylist/typography/const/object/letter-spacing';
+import { TOKEN_LINE_HEIGHT } from '$stylist/typography/const/object/line-height';
 import type { StructThemeTypography } from '$stylist/typography/type/struct/theme-typography';
 
 export const THEME_TYPOGRAPHY: StructThemeTypography = {

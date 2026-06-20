@@ -19,7 +19,8 @@ export {
 	TOKEN_FONT_WEIGHT,
 	TOKEN_LETTER_SPACING,
 	TOKEN_LINE_HEIGHT,
-	TOKEN_TYPOGRAPHY_ICON
+	TOKEN_TYPOGRAPHY_ICON,
+	TOKEN_TYPOGRAPHY_TONE
 } from './const';
 export {
 	createAbbrState,
@@ -50,8 +51,7 @@ export type {
 	TokenLetterSpacing,
 	TokenLineHeight,
 	TokenTypographyIcon,
-	TokenTypographyTone,
-	TypographyTextProps
+	TokenTypographyTone
 } from './type';
 export type {
 	BehaviorTypography,

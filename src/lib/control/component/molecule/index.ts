@@ -1,7 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { AccordionComplex } from './accordion-complex/index';
+export { AccordionGroup } from './accordion-group/index';
 export { Accordion } from './accordion/index';
-export { AdvancedAccordion } from './advanced-accordion/index';
 export { AvatarSelector } from './avatar-selector/index';
 export { Button } from './button/index';
 export { CheckboxGroup } from './checkbox-group/index';

@@ -1,6 +1,6 @@
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import { createRichTextSegments } from '$stylist/typography/function/script/rich-text-segments';
-import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/typography-inline-style';
+import { resolveTypographyInlineStyle } from '$stylist/typography/function/script/inline-style';
 import type { RecipeRichText } from '$stylist/typography/interface/recipe/rich-text';
 
 export function createRichTextState(props: RecipeRichText) {

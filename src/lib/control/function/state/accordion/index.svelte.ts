@@ -1,26 +1,23 @@
-import type { RecipeAccordion } from '$stylist/control/interface/recipe/accordion';
+import type { SlotAccordion } from '$stylist/control/interface/slot/accordion';
 
-export function createAccordionState(props: RecipeAccordion) {
-	let activeIds = $state<string[]>([]);
+export function createAccordionState(props: SlotAccordion) {
+	let activeValue = $state<string | null>(props.defaultValue ?? null);
 
-	function toggleAccordion(id: string) {
-		if (activeIds.includes(id)) {
-			activeIds = activeIds.filter((activeId) => activeId !== id);
-			return;
-		}
-
-		activeIds = props.multiple ? [...activeIds, id] : [id];
+	function isPanelOpen(value: string): boolean {
+		return activeValue === value;
 	}
 
-	function isExpanded(id: string): boolean {
-		return activeIds.includes(id);
+	function handleValueChange(value: string) {
+		activeValue = activeValue === value ? null : value;
 	}
 
 	return {
-		get activeIds() {
-			return activeIds;
-		},
-		toggleAccordion,
-		isExpanded
+		isPanelOpen,
+		handleValueChange,
+		get activeValue() {
+			return activeValue;
+		}
 	};
 }
+
+export default createAccordionState;
