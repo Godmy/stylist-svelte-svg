@@ -1,8 +1,8 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { AvatarSize } from '$stylist/media/type/alias/avatar-size';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 
-export interface AvatarProps extends StructIntersectAll<[]> {
+export interface AvatarProps extends ComputeIntersectAll<[]> {
 	variant?: 'default';
 	size?: AvatarSize;
 	src?: string;

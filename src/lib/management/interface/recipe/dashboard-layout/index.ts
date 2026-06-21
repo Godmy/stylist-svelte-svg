@@ -1,10 +1,10 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenDensity as DashboardLayoutVariant } from '$stylist/layout/type/enum/density';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface DashboardLayoutProps
-	extends StructIntersectAll<[Omit<HTMLAttributes<HTMLDivElement>, 'class'>]> {
+	extends ComputeIntersectAll<[Omit<HTMLAttributes<HTMLDivElement>, 'class'>]> {
 	header?: Snippet;
 	sidebar?: Snippet;
 	sidebarOpen?: boolean;

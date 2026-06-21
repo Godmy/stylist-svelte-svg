@@ -1,12 +1,12 @@
 ﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotDiscountRule } from '$stylist/commerce/interface/slot/discount-rule';
 import type { SlotCartItem } from '$stylist/commerce/interface/slot/cart-item';
 import type { BehaviorDiscountApplierEvents } from '$stylist/commerce/interface/behavior/discount-applier-events';
 
 export interface RecipeDiscountApplier
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
 		BehaviorDiscountApplierEvents {
 	rules: SlotDiscountRule[];
 

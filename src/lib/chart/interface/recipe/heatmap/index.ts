@@ -1,6 +1,6 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorDimensionable as IDimensionable } from '$stylist/layout/interface/behavior/dimensionable';
 import type { BehaviorCellClickable as ICellClickable } from '$stylist/interaction/interface/behavior/cell-clickable';
 import type { BehaviorTooltipable as ITooltipable } from '$stylist/interaction/interface/behavior/tooltipable';
@@ -10,11 +10,8 @@ import type { BehaviorChartColorable as IChartColorable } from '$stylist/chart/i
 import type { BehaviorChartAxis as IChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { IHeatmapCell } from '$stylist/chart/type/struct/heatmap/cell';
 
-/**
- * Heatmap = label + frame + axis config + legend/tooltip toggles + heatmap cells.
- */
 export interface RecipeHeatmap
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			IDimensionable,

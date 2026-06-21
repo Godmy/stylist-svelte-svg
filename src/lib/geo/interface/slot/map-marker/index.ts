@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { Snippet } from 'svelte';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenPin } from '$stylist/geo/type/enum/pin';
@@ -6,7 +8,7 @@ import type { TokenShape } from '$stylist/layout/type/enum/shape';
 import type { SlotCoordinates } from '$stylist/geo/interface/slot/coordinates';
 import type { SlotContactInfo } from '$stylist/geo/interface/slot/contact-info';
 
-export interface SlotMapMarker extends InformationHTMLAttributes<HTMLDivElement> {
+export interface SlotMapMarker extends HTMLAttributes<HTMLDivElement>, BehaviorBorderToken, BehaviorTypography {
 	coordinates: SlotCoordinates;
 	title?: string;
 	description?: string;

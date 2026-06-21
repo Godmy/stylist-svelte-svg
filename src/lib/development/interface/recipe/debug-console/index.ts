@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotDebugConsole } from '$stylist/development/interface/slot/debug-console';
 
-export interface RecipeDebugConsole extends StructIntersectAll<[SlotDebugConsole]> {}
+export interface RecipeDebugConsole extends ComputeIntersectAll<[SlotDebugConsole]> {}

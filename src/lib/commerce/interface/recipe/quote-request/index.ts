@@ -1,10 +1,10 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { QuoteRequestValue } from '$stylist/input/type/struct/interaction-input/quote-request-value';
 
 export interface RecipeQuoteRequest
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	title?: string;
 	description?: string;
 	formClass?: string;

@@ -1,8 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { SlotStore } from '$stylist/geo/interface/slot/store';
 
-export interface SlotStoreLocator extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+export interface SlotStoreLocator extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	stores: SlotStore[];
 	showSearch?: boolean;
 	showFilters?: boolean;

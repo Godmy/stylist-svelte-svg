@@ -1,6 +1,6 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorAttachmentPreviewEvents } from '$stylist/file/interface/behavior/attachment-preview-events';
 import type { SlotAttachmentPreview } from '$stylist/file/interface/slot/attachment-preview';
 
 export interface RecipeAttachmentPreview
-	extends StructIntersectAll<[SlotAttachmentPreview, BehaviorAttachmentPreviewEvents]> {}
+	extends ComputeIntersectAll<[SlotAttachmentPreview, BehaviorAttachmentPreviewEvents]> {}

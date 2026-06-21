@@ -1,11 +1,13 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { PlaygroundDeviceFrameViewportSize } from '$stylist/playground/type/struct/playground-device-frame-viewport-size';
 
 export interface RecipePlaygroundDeviceFrame
-	extends StructIntersectAll<
-		[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>, SlotChildren]
+	extends ComputeIntersectAll<
+		[Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography, SlotChildren]
 	> {
 	device?: PlaygroundDeviceFrameViewportSize;
 	orientation?: 'portrait' | 'landscape';

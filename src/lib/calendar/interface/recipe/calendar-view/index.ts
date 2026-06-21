@@ -1,9 +1,9 @@
 ﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotCalendarViewEvent } from '$stylist/calendar/interface/slot/calendar-view-event';
 import type { CalendarViewMode } from '$stylist/calendar/type/struct/calendar-view-mode';
 
-export interface RecipeCalendarView extends StructIntersectAll<[SlotChildren]> {
+export interface RecipeCalendarView extends ComputeIntersectAll<[SlotChildren]> {
 	events?: SlotCalendarViewEvent[];
 	initialDate?: Date;
 	viewMode?: CalendarViewMode;

@@ -1,10 +1,10 @@
 ﻿import type { SlotContent } from '$stylist/architecture/interface/slot/content';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { KanbanBoardType } from '$stylist/management/type/struct/kanban-board/kanbanboardtype';
 import type { KanbanBoardAction } from '$stylist/management/type/struct/kanban-board/kanbanboardaction';
 import type { KanbanColumnType } from '$stylist/management/type/struct/kanban-column';
 import type { KanbanCardType } from '$stylist/management/type/struct/kanban-card/kanbancardtype';
-export interface RecipeKanbanBoard extends StructIntersectAll<[SlotContent]> {
+export interface RecipeKanbanBoard extends ComputeIntersectAll<[SlotContent]> {
 	board: KanbanBoardType;
 	controlled?: boolean;
 	allowReordering?: boolean;

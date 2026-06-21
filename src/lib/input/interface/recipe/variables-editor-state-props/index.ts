@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface VariablesEditorStateProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface VariablesEditorStateProps extends ComputeIntersectAll<[]> {
 	variables?: Record<string, any>;
 	height?: string;
 	class?: string;

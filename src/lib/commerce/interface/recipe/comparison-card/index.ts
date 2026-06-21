@@ -1,6 +1,6 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotBadge } from '$stylist/information/interface/slot/badge';
 import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel } from '$stylist/typography/interface/slot/label';
@@ -9,7 +9,7 @@ import type { SlotStatus } from '$stylist/information/interface/slot/status';
 import type { ComparisonCardColumn } from '$stylist/commerce/interface/slot/comparison-card-column';
 
 export interface RecipeComparisonCard
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			SlotLabel,

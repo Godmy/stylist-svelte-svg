@@ -1,6 +1,6 @@
 ﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotShippingOption } from '$stylist/commerce/interface/slot/shipping-option';
 import type { SlotCountry } from '$stylist/commerce/interface/slot/country';
 import type { SlotState } from '$stylist/commerce/interface/slot/state';
@@ -8,7 +8,7 @@ import type { SlotDimensions } from '$stylist/commerce/interface/slot/dimensions
 import type { BehaviorShippingCalculatorEvents } from '$stylist/commerce/interface/behavior/shipping-calculator-events';
 
 export interface RecipeShippingCalculator
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
 		BehaviorShippingCalculatorEvents {
 	shippingOptions: SlotShippingOption[];
 

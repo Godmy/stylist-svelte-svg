@@ -1,5 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { IconColor } from '$stylist/media/type/alias/icon-color';
 import type { IconDirection } from '$stylist/media/type/alias/icon-direction';
 import type { IconShape } from '$stylist/media/type/alias/icon-shape';
@@ -7,7 +8,7 @@ import type { IconSize } from '$stylist/media/type/alias/icon-size';
 import type { IconVariant } from '$stylist/media/type/alias/icon-variant';
 
 export interface IconProps
-	extends StructIntersectAll<[InformationHTMLAttributes<HTMLSpanElement>]> {
+	extends HTMLAttributes<HTMLSpanElement>, BehaviorBorderToken, BehaviorTypography {
 	name?: string;
 	svg?: string;
 	size?: IconSize;

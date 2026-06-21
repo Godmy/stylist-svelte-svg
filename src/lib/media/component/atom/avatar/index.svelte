@@ -1,9 +1,11 @@
 ﻿<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+	import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+	import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 	import type { RecipeAvatar } from '$stylist/media/interface/recipe/avatar';
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 	import { createAvatarState } from '$stylist/media/function/state/avatar/index.svelte';
 
-	let props: RecipeAvatar & InformationHTMLAttributes<HTMLDivElement> = $props();
+	let props: RecipeAvatar & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography = $props();
 	const state = createAvatarState(props);
 </script>
 

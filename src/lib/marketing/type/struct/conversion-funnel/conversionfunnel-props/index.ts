@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { FunnelStep } from '../funnelstep';
 
 export type ConversionFunnelProps = {
@@ -13,4 +15,4 @@ export type ConversionFunnelProps = {
 	class?: string;
 	headerClass?: string;
 	stepClass?: string;
-} & InformationHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography;

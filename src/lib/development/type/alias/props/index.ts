@@ -1,5 +1,7 @@
 type CodeWithCopyVariant = string;
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 
 export type Props = {
 	language?: string;
@@ -9,4 +11,4 @@ export type Props = {
 	copySuccessMessage?: string;
 	copyErrorMessage?: string;
 	children: import('svelte').Snippet;
-} & InformationHTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement> & BehaviorBorderToken & BehaviorTypography;

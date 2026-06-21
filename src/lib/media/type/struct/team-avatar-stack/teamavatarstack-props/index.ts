@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TeamMember } from '../teammember';
 
 export type TeamAvatarStackProps = {
@@ -11,4 +13,4 @@ export type TeamAvatarStackProps = {
 	class?: string;
 	avatarClass?: string;
 	tooltipClass?: string;
-} & InformationHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography;

@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeLegendItem extends StructIntersectAll<[]> {
+export interface RecipeLegendItem extends ComputeIntersectAll<[]> {
 	label: string;
 	type: string;
 	count?: number;

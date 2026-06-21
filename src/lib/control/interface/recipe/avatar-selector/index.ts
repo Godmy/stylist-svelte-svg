@@ -1,7 +1,7 @@
 ﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface AvatarSelectorProps extends StructIntersectAll<[SlotChildren]> {
+export interface AvatarSelectorProps extends ComputeIntersectAll<[SlotChildren]> {
 	src?: string;
 	alt?: string;
 	size?: string;

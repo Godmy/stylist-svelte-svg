@@ -1,8 +1,8 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { CartSummaryItem } from '$stylist/commerce/type/struct/cart-summary-item';
 import type { CartSummaryPromotion } from '$stylist/commerce/type/struct/cart-summary-promotion';
 
-export interface CartSummaryProps extends StructIntersectAll<[]> {
+export interface CartSummaryProps extends ComputeIntersectAll<[]> {
 	items?: CartSummaryItem[];
 	promotions?: CartSummaryPromotion[];
 	shippingCost?: number;

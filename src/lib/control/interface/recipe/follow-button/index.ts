@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotButtonAttributesBase } from '$stylist/control/interface/slot/button-attributes-base';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
@@ -7,7 +7,7 @@ import type { SlotBadge } from '$stylist/information/interface/slot/badge';
 import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeFollowButton
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotButtonAttributesBase,
 			SlotLabel,

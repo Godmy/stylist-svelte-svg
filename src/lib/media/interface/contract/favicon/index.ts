@@ -1,9 +1,11 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotContent } from '$stylist/architecture/interface/slot/content';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 export interface ContractFavicon
 	extends StructIntersectAll<
-		[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>, SlotContent]
+		[Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography, SlotContent]
 	> {
 	/** Size in pixels */
 	size?: number;

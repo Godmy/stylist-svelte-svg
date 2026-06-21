@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeOrderSort extends StructIntersectAll<[]> {
+export interface RecipeOrderSort extends ComputeIntersectAll<[]> {
 	field: 'date' | 'total' | 'status';
 	direction: 'asc' | 'desc';
 }

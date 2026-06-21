@@ -1,4 +1,6 @@
-﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { AvatarSize } from '$stylist/media/type/alias/avatar-size';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 import type { RecipeAvatar } from '$stylist/media/interface/recipe/avatar';
@@ -10,7 +12,7 @@ const SIZE_CLASSES: Record<AvatarSize, string> = {
 	xl: 'w-12 h-12 text-xl'
 };
 
-export function createAvatarState(props: RecipeAvatar & InformationHTMLAttributes<HTMLDivElement>) {
+export function createAvatarState(props: RecipeAvatar & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography) {
 	const name = $derived(props.name ?? '');
 	const status = $derived(props.status);
 	const showStatus = $derived(props.showStatus ?? false);

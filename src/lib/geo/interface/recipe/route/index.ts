@@ -1,10 +1,7 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/**
- * Рецепт маршрута — комбинация локаций для route-planner.
- */
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorLocationProto as ILocationProto } from '$stylist/geo/interface/behavior/location';
 
-export interface RecipeIRoute extends StructIntersectAll<[]> {
+export interface RecipeIRoute extends ComputeIntersectAll<[]> {
 	start: ILocationProto;
 	end: ILocationProto;
 	waypoints?: ILocationProto[];

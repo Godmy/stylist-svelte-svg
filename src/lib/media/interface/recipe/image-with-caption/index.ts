@@ -1,7 +1,6 @@
 ﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export interface RecipeImageWithCaption extends StructIntersectAll<[SlotChildren]> {
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface RecipeImageWithCaption extends ComputeIntersectAll<[SlotChildren]> {
 	width?: number;
 	height?: number;
 	src?: string;

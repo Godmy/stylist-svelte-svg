@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { ScheduledNotificationProps } from '$stylist/chat/type/struct/scheduled-notification-props';
 
 export interface RecipeScheduledNotification
-	extends StructIntersectAll<[ScheduledNotificationProps]> {}
+	extends ComputeIntersectAll<[ScheduledNotificationProps]> {}

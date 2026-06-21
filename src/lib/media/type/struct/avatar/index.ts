@@ -1,4 +1,6 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { ContractAvatar as AvatarContract } from '$stylist/media/interface/contract/avatar';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 
-export type AvatarProps = AvatarContract & InformationHTMLAttributes<HTMLDivElement>;
+export type AvatarProps = AvatarContract & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography;

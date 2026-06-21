@@ -1,7 +1,7 @@
 ﻿import type { HTMLVideoAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface VideoPlayerProps extends StructIntersectAll<[HTMLVideoAttributes]> {
+export interface VideoPlayerProps extends ComputeIntersectAll<[HTMLVideoAttributes]> {
 	src?: string;
 	poster?: string;
 	title?: string;

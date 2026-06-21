@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { ContentElement } from '$stylist/input/interface/slot/content-element';
 
-export interface ContentEditorStateProps extends StructIntersectAll<[]> {
+export interface ContentEditorStateProps extends ComputeIntersectAll<[]> {
 	initialContent?: ContentElement[];
 	onSave?: (content: ContentElement[]) => void;
 	onPreview?: () => void;

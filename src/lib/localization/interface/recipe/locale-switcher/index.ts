@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotLocaleSwitcher } from '$stylist/localization/interface/slot/locale-switcher';
 
-export interface LocaleSwitcherStateProps extends StructIntersectAll<[SlotLocaleSwitcher]> {
+export interface LocaleSwitcherStateProps extends ComputeIntersectAll<[SlotLocaleSwitcher]> {
 	class?: string;
 }

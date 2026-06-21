@@ -1,7 +1,6 @@
 ﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-// ==================== AiResultCard ====================
-export interface RecipeAiResultCard extends StructIntersectAll<[SlotChildren]> {
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface RecipeAiResultCard extends ComputeIntersectAll<[SlotChildren]> {
 	title?: string;
 	description?: string;
 	icon?: string;

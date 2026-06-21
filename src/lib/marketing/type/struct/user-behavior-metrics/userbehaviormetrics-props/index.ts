@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TimeRange } from '../timerange';
 import type { UserBehaviorMetric } from '../userbehaviormetric';
 
@@ -12,4 +14,4 @@ export type UserBehaviorMetricsProps = {
 	headerClass?: string;
 	metricsClass?: string;
 	metricCardClass?: string;
-} & InformationHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography;

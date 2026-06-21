@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { PaymentMethodSelectorProps } from '$stylist/commerce/type/struct/payment-method-selector-props';
 
-export interface PaymentInfoProps extends StructIntersectAll<[PaymentMethodSelectorProps]> {
+export interface PaymentInfoProps extends ComputeIntersectAll<[PaymentMethodSelectorProps]> {
 	acceptedCards?: string[];
 	showMethods?: boolean;
 	showSecurityInfo?: boolean;

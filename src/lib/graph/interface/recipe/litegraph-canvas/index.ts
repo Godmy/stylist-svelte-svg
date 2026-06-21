@@ -1,5 +1,5 @@
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { SlotGraphToolbarItem } from '$stylist/graph/interface/slot/graph-toolbar-item';
 import type { ContractLitegraphPort } from '$stylist/graph/interface/contract/litegraph-port';
@@ -8,7 +8,7 @@ import type { SlotLitegraphConnection } from '$stylist/graph/interface/slot/lite
 import type { GraphGridMode } from '$stylist/graph/type/struct/graph-grid-mode';
 import type { GraphPanMode } from '$stylist/graph/type/struct/graph-pan-mode';
 
-export interface RecipeLitegraphCanvas extends StructIntersectAll<[SlotChildren]> {
+export interface RecipeLitegraphCanvas extends ComputeIntersectAll<[SlotChildren]> {
 	nodes?: ContractLitegraphNode[];
 	connections?: SlotLitegraphConnection[];
 	selectedNodeIds?: string[];

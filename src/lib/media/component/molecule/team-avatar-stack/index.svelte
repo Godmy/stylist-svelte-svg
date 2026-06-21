@@ -1,12 +1,14 @@
 ﻿<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+	import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+	import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 	import type { RecipeTeamAvatarStack } from '$stylist/media/interface/recipe/team-avatar-stack';
-	import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 	import { createTeamAvatarStackState } from '$stylist/media/function/state/team-avatar-stack/index.svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	const Users = 'users';
 	const User = 'user';
 
-	let props: RecipeTeamAvatarStack & InformationHTMLAttributes<HTMLDivElement> = $props();
+	let props: RecipeTeamAvatarStack & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography = $props();
 	const state = createTeamAvatarStackState(props);
 </script>
 

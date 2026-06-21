@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface NodeDotProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface NodeDotProps extends ComputeIntersectAll<[]> {
 	accent?: string;
 	size?: number;
 	opacity?: number;

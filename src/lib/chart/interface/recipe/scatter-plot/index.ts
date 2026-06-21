@@ -1,6 +1,6 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorDimensionable as IDimensionable } from '$stylist/layout/interface/behavior/dimensionable';
 import type { BehaviorPointClickable as IPointClickable } from '$stylist/interaction/interface/behavior/point-clickable';
 import type { BehaviorLegendable as ILegendable } from '$stylist/chart/interface/behavior/legendable';
@@ -9,11 +9,8 @@ import type { BehaviorChartColorable as IChartColorable } from '$stylist/chart/i
 import type { BehaviorChartAxis as IChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { ScatterPlotDataPoint } from '$stylist/chart/type/struct/scatter-plot-point';
 
-/**
- * ScatterPlot = label + frame + axis config + legend toggle + scatter dataset.
- */
 export interface RecipeScatterPlot
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			IDimensionable,

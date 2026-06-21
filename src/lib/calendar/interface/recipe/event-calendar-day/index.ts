@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotEventCalendarEvent } from '$stylist/calendar/interface/slot/event-calendar-event';
 
-export interface RecipeEventCalendarDay extends StructIntersectAll<[]> {
+export interface RecipeEventCalendarDay extends ComputeIntersectAll<[]> {
 	date: Date;
 	isCurrentMonth: boolean;
 	isToday: boolean;

@@ -1,4 +1,6 @@
-﻿import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { RecipeTeamAvatarStack } from '$stylist/media/interface/recipe/team-avatar-stack';
 
 function getStatusColor(status?: string): string {
@@ -15,7 +17,7 @@ function getStatusColor(status?: string): string {
 }
 
 export function createTeamAvatarStackState(
-	props: RecipeTeamAvatarStack & InformationHTMLAttributes<HTMLDivElement>
+	props: RecipeTeamAvatarStack & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography
 ) {
 	const members = $derived(props.members ?? []);
 	const maxVisible = $derived(props.maxVisible ?? 5);

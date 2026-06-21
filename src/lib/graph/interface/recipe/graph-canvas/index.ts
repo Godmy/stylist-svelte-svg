@@ -1,11 +1,11 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { ChildrenProp } from '$stylist/information/type/struct/children-prop';
 import type { GraphPosition2D } from '$stylist/graph/type/struct/graph-position-2d';
 
 export interface RecipeGraphCanvas
-	extends StructIntersectAll<[SlotTheme, ChildrenProp, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, ChildrenProp, HTMLAttributes<HTMLDivElement>]> {
 	width?: number;
 	height?: number;
 	zoom?: number;

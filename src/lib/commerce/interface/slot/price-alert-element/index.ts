@@ -1,6 +1,8 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
 import type { Props } from '$stylist/information/type/struct/props';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
@@ -9,7 +11,9 @@ export interface SlotPriceAlertElement
 	extends StructIntersectAll<
 		[
 			Omit<Props, 'variant' | 'size' | 'onclick' | 'class'>,
-			Omit<InformationHTMLAttributes<HTMLDivElement>, 'variant' | 'size' | 'onclick'>,
+			Omit<HTMLAttributes<HTMLDivElement>, 'variant' | 'size' | 'onclick'>,
+			BehaviorBorderToken,
+			BehaviorTypography,
 			SlotChildren
 		]
 	> {

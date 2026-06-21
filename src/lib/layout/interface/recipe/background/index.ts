@@ -1,10 +1,11 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TokenBackground } from '$stylist/layout/type/enum/background';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
 export interface RecipeThemeBackground
-	extends StructIntersectAll<[InformationHTMLAttributes<HTMLDivElement>]> {
+	extends HTMLAttributes<HTMLDivElement>, BehaviorBorderToken, BehaviorTypography {
 	background?: TokenBackground;
 	backgroundColor?: string;
 	backgroundImage?: string;

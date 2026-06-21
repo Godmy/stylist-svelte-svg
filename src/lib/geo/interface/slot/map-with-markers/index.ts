@@ -1,5 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TokenMapType } from '$stylist/geo/type/enum/map-type/token-map-type';
 import type { SlotMapMarkerItem } from '$stylist/geo/interface/slot/map-marker-item';
 import type { SlotMapWithMarkersView } from '$stylist/geo/interface/slot/map-with-markers-view';
@@ -17,7 +19,7 @@ import type { SlotMapWithMarkersView } from '$stylist/geo/interface/slot/map-wit
  *   ThemeAttributes       (theme)       — mapType
  */
 export interface SlotMapWithMarkers
-	extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	markers?: SlotMapMarkerItem[];
 	class?: string;
 	mapClass?: string;

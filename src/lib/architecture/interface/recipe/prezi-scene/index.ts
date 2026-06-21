@@ -1,9 +1,9 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
 
 export interface RecipePreziScene
-	extends StructIntersectAll<[ArchitectureHTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[ArchitectureHTMLAttributes<HTMLDivElement>]> {
 	nodes?: readonly SceneNode[];
 	initialCamera?: {
 		x: number;

@@ -1,11 +1,13 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenGradient } from '$stylist/layout/type/enum/gradient-mode';
 import type { ThemeGradientBackgroundDirection } from '$stylist/layout/type/enum/gradient-background-direction';
 
 export interface RecipeThemeGradientBackground
-	extends StructIntersectAll<[InformationHTMLAttributes<HTMLDivElement>, SlotChildren]> {
+	extends ComputeIntersectAll<[HTMLAttributes<HTMLDivElement>, BehaviorBorderToken, BehaviorTypography, SlotChildren]> {
 	variant?: TokenGradient;
 	colors?: string[];
 	speed?: number;

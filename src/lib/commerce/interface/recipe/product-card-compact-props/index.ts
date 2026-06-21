@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface ProductCardCompactProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface ProductCardCompactProps extends ComputeIntersectAll<[]> {
 	title?: string;
 	price?: number;
 	currency?: string;

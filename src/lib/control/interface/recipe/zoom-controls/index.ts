@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotZoomControls } from '$stylist/control/interface/slot/zoom-controls';
 import type { ZoomSpecificProps } from '$stylist/control/interface/recipe/zoom-specific-props';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
@@ -12,7 +12,7 @@ import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
 export interface RecipeZoomControls
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 			[
 				SlotZoomControls,
 				SlotLabel,

@@ -1,4 +1,4 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { NotificationCenterProps } from '$stylist/chat/type/struct/notification-center-props';
 
-export interface RecipeNotificationCenter extends StructIntersectAll<[NotificationCenterProps]> {}
+export interface RecipeNotificationCenter extends ComputeIntersectAll<[NotificationCenterProps]> {}

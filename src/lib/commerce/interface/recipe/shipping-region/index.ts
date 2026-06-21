@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeShippingRegion extends StructIntersectAll<[]> {
+export interface RecipeShippingRegion extends ComputeIntersectAll<[]> {
 	id: string;
 	name: string;
 	countries: string[];

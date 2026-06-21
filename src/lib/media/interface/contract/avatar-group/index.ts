@@ -1,8 +1,10 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { ContractAvatar } from '$stylist/media/interface/contract/avatar';
 
 export interface ContractAvatarGroup
-	extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	/** List of avatars */
 	avatars: ContractAvatar[];
 	/** Maximum visible avatars */

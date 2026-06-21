@@ -1,6 +1,6 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
@@ -8,9 +8,8 @@ import type { TokenBackground } from '$stylist/layout/type/enum/background';
 import type { BehaviorMetricValue as IMetricValue } from '$stylist/information/interface/behavior/metric-value';
 import type { BehaviorTrendable } from '$stylist/management/interface/behavior/trendable';
 
-/** StatCard = shared information slots + metric value + trend. */
 export interface RecipeStatCard
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			ILabelSlot,

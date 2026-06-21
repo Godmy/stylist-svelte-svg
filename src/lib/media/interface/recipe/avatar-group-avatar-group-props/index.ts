@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface AvatarGroupProps extends StructIntersectAll<[]> {
+export interface AvatarGroupProps extends ComputeIntersectAll<[]> {
 	avatars: Record<string, unknown>[];
 	maxVisible?: number;
 	size?: 'sm' | 'md' | 'lg';

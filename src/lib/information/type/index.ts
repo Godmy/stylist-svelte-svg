@@ -12,7 +12,6 @@ export type {
 	ChildrenProp,
 	ClassProp,
 	ContentProp,
-	InformationHTMLAttributes,
 	MetricBarData,
 	Props,
 	StatsCardData,

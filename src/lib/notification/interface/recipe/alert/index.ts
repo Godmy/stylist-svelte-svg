@@ -2,7 +2,7 @@ import type { AlertProps as LegacyAlertProps1 } from '$stylist/notification/type
 import type { SlotAlert as Slot } from '$stylist/notification/interface/slot/alert';
 import type { SlotAlert as SlotAlert } from '$stylist/notification/interface/slot/alert';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
@@ -15,7 +15,7 @@ import type { BehaviorSized as ISized } from '$stylist/layout/interface/behavior
 import type { BehaviorSpaced as ISpaced } from '$stylist/layout/interface/behavior/spaced';
 
 export interface RecipeAlert
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			LegacyAlertProps1,
 			Slot,

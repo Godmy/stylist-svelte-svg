@@ -1,11 +1,11 @@
 ﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotShippingOptionInfo } from '$stylist/commerce/interface/slot/shipping-option-info';
 import type { RecipeShippingRegion } from '$stylist/commerce/interface/recipe/shipping-region';
 
 export interface RecipeShippingInfo
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	shippingOptions: SlotShippingOptionInfo[];
 
 	regions?: RecipeShippingRegion[];

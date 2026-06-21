@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotSelector } from '$stylist/control/interface/slot/selector';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable } from '$stylist/interaction/interface/behavior/selectable';
@@ -13,7 +13,7 @@ import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface RecipeSelector
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotSelector,
 			SlotLabel,

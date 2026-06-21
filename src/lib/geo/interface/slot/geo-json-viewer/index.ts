@@ -1,11 +1,13 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { SlotGeoJsonFeature } from '$stylist/geo/interface/slot/geo-json-feature';
 import type { SlotGeoJsonFeatureCollection } from '$stylist/geo/interface/slot/geo-json-feature-collection';
 import type { SlotGeoJsonLayer } from '$stylist/geo/interface/slot/geo-json-layer';
 import type { SlotMapView } from '$stylist/geo/interface/slot/map-view';
 
 export interface SlotGeoJSONViewer
-	extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	geojsonData?: SlotGeoJsonFeatureCollection;
 	layers?: SlotGeoJsonLayer[];
 	class?: string;

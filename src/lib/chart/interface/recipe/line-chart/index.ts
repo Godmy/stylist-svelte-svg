@@ -1,6 +1,6 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorDimensionable as IDimensionable } from '$stylist/layout/interface/behavior/dimensionable';
 import type { TokenLineType } from '$stylist/architecture/type/enum/line-type';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
@@ -13,11 +13,8 @@ import type { BehaviorChartAxis as IChartAxis } from '$stylist/chart/interface/b
 import type { LineChartData } from '$stylist/chart/type/struct/line-chart-data';
 import type { LineChartPoint } from '$stylist/chart/type/struct/line-chart';
 
-/**
- * LineChart = label + frame + axis config + legend/tooltip toggles + line dataset.
- */
 export interface RecipeLineChart
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			IDimensionable,

@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface PushNotificationProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface PushNotificationProps extends ComputeIntersectAll<[]> {
 	title?: string;
 	message?: string;
 	type?: 'info' | 'success' | 'warning' | 'error';

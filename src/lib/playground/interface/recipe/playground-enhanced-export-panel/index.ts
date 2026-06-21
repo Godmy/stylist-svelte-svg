@@ -1,14 +1,17 @@
-﻿import type { PlaygroundEnhancedExportPanelProps as LegacyPlaygroundEnhancedExportPanelProps1 } from '$stylist/playground/type/struct/playground-enhanced-export-panel-props';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
+import type { PlaygroundEnhancedExportPanelProps as LegacyPlaygroundEnhancedExportPanelProps1 } from '$stylist/playground/type/struct/playground-enhanced-export-panel-props';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipePlaygroundEnhancedExportPanel
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			LegacyPlaygroundEnhancedExportPanelProps1,
-			Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>
+			Omit<HTMLAttributes<HTMLDivElement>, 'class'>,
+			BehaviorBorderToken,
+			BehaviorTypography
 		]
 	> {
-	/** Additional CSS class */
 	class?: string;
 }

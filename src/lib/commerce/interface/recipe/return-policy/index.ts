@@ -1,13 +1,13 @@
 ﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotReturnCondition } from '$stylist/commerce/interface/slot/return-condition';
 import type { SlotReturnStep } from '$stylist/commerce/interface/slot/return-step';
 import type { SlotFaq } from '$stylist/commerce/interface/slot/faq';
 import type { BehaviorReturnPolicyEvents } from '$stylist/commerce/interface/behavior/return-policy-events';
 
 export interface RecipeReturnPolicy
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
 		BehaviorReturnPolicyEvents {
 	policyPeriod: number;
 

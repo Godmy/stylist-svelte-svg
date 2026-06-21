@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotMiniCalendarEvent } from '$stylist/calendar/interface/slot/mini-calendar-event';
 
-export interface RecipeMiniCalendar extends StructIntersectAll<[]> {
+export interface RecipeMiniCalendar extends ComputeIntersectAll<[]> {
 	selectedDate?: Date;
 	events?: SlotMiniCalendarEvent[];
 	initialDate?: Date;

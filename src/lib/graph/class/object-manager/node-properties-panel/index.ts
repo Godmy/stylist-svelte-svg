@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { LiteGraphNodeProperty } from '$stylist/graph/type/struct/lite-graph-node-property';
 import type { RecipeNodePropertiesPanel as NodePropertiesPanelProps } from '$stylist/graph/interface/recipe/node-properties-panel';
 
@@ -26,7 +28,7 @@ export class ObjectManagerNodePropertiesPanel {
 		} = props;
 
 		return rest as Omit<
-			InformationHTMLAttributes<HTMLElement>,
+			HTMLAttributes<HTMLElement> & BehaviorBorderToken & BehaviorTypography,
 			'class' | 'id' | 'oncopy' | 'oncut' | 'onpaste'
 		>;
 	}

@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface RecipeMessageStatusProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface RecipeMessageStatusProps extends ComputeIntersectAll<[]> {
 	status?: 'sent' | 'delivered' | 'read';
 	size?: 'sm' | 'md' | 'lg';
 	class?: string;

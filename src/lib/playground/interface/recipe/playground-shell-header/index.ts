@@ -1,23 +1,18 @@
-﻿import type { PlaygroundShellHeaderProps as LegacyPlaygroundShellHeaderProps1 } from '$stylist/playground/type/struct/playground-shell-header-props';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
+import type { PlaygroundShellHeaderProps as LegacyPlaygroundShellHeaderProps1 } from '$stylist/playground/type/struct/playground-shell-header-props';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipePlaygroundShellHeader
-	extends StructIntersectAll<
-		[LegacyPlaygroundShellHeaderProps1, Omit<InformationHTMLAttributes<HTMLElement>, 'class'>]
+	extends ComputeIntersectAll<
+		[LegacyPlaygroundShellHeaderProps1, Omit<HTMLAttributes<HTMLElement>, 'class'>, BehaviorBorderToken, BehaviorTypography]
 	> {
-	/** Header title */
 	title?: string;
-	/** Show navigation */
 	showNavigation?: boolean;
-	/** Show search */
 	showSearch?: boolean;
-	/** Show theme toggle */
 	showThemeToggle?: boolean;
-	/** Show user menu */
 	showUserMenu?: boolean;
-	/** Navigation items */
 	navItems?: Array<{ label: string; href: string; active?: boolean }>;
-	/** Additional CSS class */
 	class?: string;
 }

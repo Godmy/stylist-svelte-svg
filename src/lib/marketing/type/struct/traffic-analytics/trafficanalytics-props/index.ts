@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TimeRange } from '../timerange';
 import type { TrafficDataPoint } from '../trafficdatapoint';
 import type { TrafficSource } from '../trafficsource';
@@ -20,4 +22,4 @@ export type TrafficAnalyticsProps = {
 	summaryClass?: string;
 	chartClass?: string;
 	sourcesClass?: string;
-} & InformationHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & BehaviorBorderToken & BehaviorTypography;

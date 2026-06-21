@@ -1,4 +1,6 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TokenBackground } from '$stylist/layout/type/enum/background';
 import type { CtaBannerButton } from '../ctabannerbutton';
 
@@ -9,4 +11,4 @@ export type CtaBannerProps = {
 	backgroundVariant?: TokenBackground;
 	backgroundImage?: string;
 	class?: string;
-} & InformationHTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement> & BehaviorBorderToken & BehaviorTypography;

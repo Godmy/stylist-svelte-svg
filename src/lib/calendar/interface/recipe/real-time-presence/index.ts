@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotRealTimePresenceUser } from '$stylist/calendar/interface/slot/real-time-presence-user';
 
-export interface RecipeRealTimePresence extends StructIntersectAll<[]> {
+export interface RecipeRealTimePresence extends ComputeIntersectAll<[]> {
 	users: SlotRealTimePresenceUser[];
 	showAvatars?: boolean;
 	showStatus?: boolean;

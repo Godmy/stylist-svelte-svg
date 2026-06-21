@@ -1,6 +1,6 @@
 ﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { SlotSearchBar as BaseSearchBarProps } from '$stylist/control/interface/slot/search-bar';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeSearchBarProps
-	extends StructIntersectAll<[BaseSearchBarProps, InteractionHTMLAttributes<HTMLDivElement>]> {}
+	extends ComputeIntersectAll<[BaseSearchBarProps, InteractionHTMLAttributes<HTMLDivElement>]> {}

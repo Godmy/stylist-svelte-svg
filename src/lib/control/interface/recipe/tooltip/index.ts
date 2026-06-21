@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTooltip } from '$stylist/control/interface/slot/tooltip';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorMotionPreset } from '$stylist/animation/interface/behavior/motion-preset';
@@ -10,7 +10,7 @@ import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
 import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeTooltip
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTooltip,
 			SlotLabel,

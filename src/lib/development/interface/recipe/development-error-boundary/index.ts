@@ -1,5 +1,5 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotDevelopmentErrorBoundary } from '$stylist/development/interface/slot/development-error-boundary';
 
 export interface RecipeDevelopmentErrorBoundary
-	extends StructIntersectAll<[SlotDevelopmentErrorBoundary]> {}
+	extends ComputeIntersectAll<[SlotDevelopmentErrorBoundary]> {}

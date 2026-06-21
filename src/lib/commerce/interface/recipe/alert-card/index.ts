@@ -1,4 +1,4 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { SlotClass } from '$stylist/theme/interface/slot/class';
@@ -12,7 +12,7 @@ import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable
 import type { AlertCardAction } from '$stylist/commerce/interface/slot/alert-card-action';
 
 export interface RecipeAlertCard
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			SlotTheme,
 			SlotClass,

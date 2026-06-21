@@ -1,11 +1,11 @@
 ﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTrackingInfo } from '$stylist/commerce/interface/slot/tracking-info';
 import type { BehaviorOrderTrackingEvents } from '$stylist/commerce/interface/behavior/order-tracking-events';
 
 export interface RecipeOrderTracking
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]>,
 		BehaviorOrderTrackingEvents {
 	trackingInfo: SlotTrackingInfo;
 

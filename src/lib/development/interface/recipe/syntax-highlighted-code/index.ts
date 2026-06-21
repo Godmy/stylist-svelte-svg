@@ -1,10 +1,10 @@
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenCodeView } from '$stylist/development/type/enum/code-view';
 
 export interface RecipeThemeSyntaxHighlightedCode
-	extends StructIntersectAll<[HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[HTMLAttributes<HTMLDivElement>]> {
 	class?: string;
 	code?: string;
 	language?: string;

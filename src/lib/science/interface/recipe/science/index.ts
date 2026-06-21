@@ -1,6 +1,6 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeScience extends StructIntersectAll<[]> {
+export interface RecipeScience extends ComputeIntersectAll<[]> {
 	id: string;
 	type: 'button' | 'select' | 'input' | 'separator';
 	label?: string;

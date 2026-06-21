@@ -1,11 +1,10 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeActionSegmentedControlProps extends StructIntersectAll<[]> {
+export interface RecipeActionSegmentedControlProps extends ComputeIntersectAll<[]> {
 	items: string[];
 	selectedIndex?: number;
 	onValueInput?: (value: number) => void;
 	onValueChange?: (value: number) => void;
-	/** @deprecated use onValueChange */
 	onChange?: (value: number) => void;
 	class?: string;
 }

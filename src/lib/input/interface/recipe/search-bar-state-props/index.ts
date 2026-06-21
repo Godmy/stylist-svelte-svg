@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface SearchBarStateProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface SearchBarStateProps extends ComputeIntersectAll<[]> {
 	placeholder?: string;
 	value?: string;
 	disabled?: boolean;

@@ -1,13 +1,13 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { ChildrenProp } from '$stylist/information/type/struct/children-prop';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { NodeTitleVariant } from '$stylist/graph/type/enum/node-title-variant';
 
 export interface RecipeNodeTitle
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[SlotTheme, Omit<HTMLAttributes<HTMLHeadingElement>, 'title' | 'onchange'>, ChildrenProp]
 	> {
 	title?: string;

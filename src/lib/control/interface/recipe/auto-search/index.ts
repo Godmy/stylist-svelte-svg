@@ -1,16 +1,4 @@
-/**
- * Auto Search вЂ” РїРѕРёСЃРє СЃ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРј Р·Р°РІРµСЂС€РµРЅРёРµРј.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot                (information/label-slot)
- *   ICaptionSlot              (information/caption-slot)
- *   IIconSlot                 (information/icon-slot)
- *   ISelectable<string>       (interaction/selectable)
- *   IFocusable                (interaction/focusable)
- *   ISizable                  (architecture/sizable)
- *   IScrollable               (architecture/scrollable)
- */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable as ISelectable } from '$stylist/interaction/interface/behavior/selectable';
 import type { BehaviorScrollable as IScrollable } from '$stylist/layout/interface/behavior/scrollable';
@@ -20,6 +8,6 @@ import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeAutoSearch
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[ILabelSlot, ICaptionSlot, IIconSlot, ISelectable<string>, IFocusable, ISizable, IScrollable]
 	> {}

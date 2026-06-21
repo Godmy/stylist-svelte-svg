@@ -1,15 +1,12 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
-/**
- * RecipeGraphPort — порт узла графа.
- */
 export interface RecipeGraphPort
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	id?: string;
 	direction?: 'input' | 'output';
 	dataType?: TokenPropertyType | string;

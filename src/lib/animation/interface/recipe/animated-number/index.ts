@@ -1,11 +1,11 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slot/badge';
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 import type { SlotClass } from '$stylist/theme/interface/slot/class';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 
 export interface RecipeAnimatedNumber
-	extends StructIntersectAll<[ILabelSlot, IBadgeSlot, SlotClass, SlotTheme]> {
+	extends ComputeIntersectAll<[ILabelSlot, IBadgeSlot, SlotClass, SlotTheme]> {
 	value?: number;
 	format?: 'number' | 'currency' | 'percent';
 	prefix?: string;

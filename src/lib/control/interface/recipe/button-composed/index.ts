@@ -1,6 +1,6 @@
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
 import type { HTMLButtonAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorShapeable as IShapeable } from '$stylist/layout/interface/behavior/shapeable';
@@ -13,9 +13,9 @@ import type { SlotBadge as IBadgeSlot } from '$stylist/information/interface/slo
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeButtonComposed
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
-			StructIntersectAll<
+			ComputeIntersectAll<
 				[
 					ILabelSlot,
 					IIconSlot,

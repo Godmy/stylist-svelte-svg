@@ -1,9 +1,9 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { HtmlAttributesWithChildren } from '$stylist/information/interface/slot/html-attributes-with-children';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
 
 export interface RecipeRadioButtonGroupProps
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[Omit<HtmlAttributesWithChildren<HTMLDivElement>, 'size' | 'class' | 'onchange' | 'oninput'>]
 	> {
 	value?: string;

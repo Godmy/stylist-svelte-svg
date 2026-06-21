@@ -4,6 +4,9 @@ export {
 	Notification,
 	NotificationBadge,
 	PermissionGate,
+	PortfolioCell,
+	PortfolioDigit,
+	PortfolioProject,
 	ProcessStep,
 	PushNotification
 } from './atom';
@@ -19,6 +22,9 @@ export {
 	OperationsHistory,
 	PageHeader,
 	PerformanceMonitor,
+	PortfolioHeader,
+	PortfolioState,
+	PortfolioSummary,
 	ScrumBacklog
 } from './molecule';
 export {
@@ -30,6 +36,7 @@ export {
 	NotificationList,
 	NotificationPreferences,
 	PerformanceDashboard,
+	Portfolio,
 	ScheduledNotification,
 	SecureForm,
 	SecuritySettings,

@@ -1,6 +1,6 @@
 ﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface SkeletonSpecificProps extends StructIntersectAll<[SlotChildren]> {
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface SkeletonSpecificProps extends ComputeIntersectAll<[SlotChildren]> {
 	type?: 'skeleton' | 'circle' | 'rectangle' | 'text' | 'table';
 	width?: string | number;
 	height?: string | number;

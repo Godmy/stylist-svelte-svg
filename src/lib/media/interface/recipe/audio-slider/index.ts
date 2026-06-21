@@ -1,8 +1,9 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 
 export interface RecipeAudioSlider
-	extends StructIntersectAll<[Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>]> {
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	value?: number;
 	min?: number;
 	max?: number;

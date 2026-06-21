@@ -1,7 +1,7 @@
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeCanvasChart extends StructIntersectAll<[SlotChildren]> {
+export interface RecipeCanvasChart extends ComputeIntersectAll<[SlotChildren]> {
 	width?: number;
 	height?: number;
 	data?: Array<Record<string, unknown>>;

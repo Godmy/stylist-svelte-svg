@@ -5,7 +5,7 @@ import type { RecipeToastProps as LegacyToastProps1 } from '$stylist/notificatio
 import type { Toast as Slot } from '$stylist/notification/interface/slot/toast';
 import type { Toast as SlotToast } from '$stylist/notification/interface/slot/toast';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/slot/caption';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
@@ -18,7 +18,7 @@ import type { BehaviorSized as ISized } from '$stylist/layout/interface/behavior
 import type { BehaviorSpaced as ISpaced } from '$stylist/layout/interface/behavior/spaced';
 
 export interface RecipeToast
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			LegacyToastProps4,
 			LegacyToastProps3,

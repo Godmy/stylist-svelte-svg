@@ -1,16 +1,6 @@
 ﻿import type { SlotRangeInput as Slot } from '$stylist/input/interface/slot/range-input';
 import type { SlotRangeInput as SlotRangeInput } from '$stylist/input/interface/slot/range-input';
-/**
- * Range Input РІР‚вЂќ Р С—Р С•Р В»Р В·РЎС“Р Р…Р С”Р С•Р Р†РЎвЂ№Р в„– Р Р†Р Р†Р С•Р Т‘ Р Т‘Р С‘Р В°Р С—Р В°Р В·Р С•Р Р…Р В°.
- *
- * LEGO-РЎРѓР С•РЎРѓРЎвЂљР В°Р Р†:
- *   ILabelSlot                (information/label-slot)
- *   ICaptionSlot              (information/caption-slot)
- *   ISelectable<number>       (interaction/selectable)
- *   IFocusable                (interaction/focusable)
- *   ISizable                  (architecture/sizable)
- */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable as ISelectable } from '$stylist/interaction/interface/behavior/selectable';
 import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
@@ -18,6 +8,6 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeRangeInput
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[Slot, SlotRangeInput, ILabelSlot, ICaptionSlot, ISelectable<number>, IFocusable, ISizable]
 	> {}

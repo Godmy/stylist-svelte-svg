@@ -4,6 +4,7 @@ export {
 	ObjectManagerKPIIndicator,
 	ObjectManagerPerformanceDashboard,
 	ObjectManagerPerformanceMonitor,
+	ObjectManagerPortfolio,
 	ObjectManagerStatCard,
 	ObjectManagerStatusDashboard
 } from './class';
@@ -31,6 +32,13 @@ export {
 	PerformanceDashboard,
 	PerformanceMonitor,
 	PermissionGate,
+	Portfolio,
+	PortfolioCell,
+	PortfolioDigit,
+	PortfolioHeader,
+	PortfolioProject,
+	PortfolioState,
+	PortfolioSummary,
 	ProcessStep,
 	PushNotification,
 	ScheduledNotification,
@@ -151,6 +159,11 @@ export type {
 	UserData,
 	UserProfileCardElementProps
 } from './type';
+export type {
+	PortfolioData,
+	PortfolioEntry,
+	PortfolioSummaryData
+} from './class';
 export type {
 	AccountSettingsFormElementProps,
 	BehaviorOperationsHistoryEvents,

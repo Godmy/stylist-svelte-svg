@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { SlotButtonElement as ButtonElementProps } from '$stylist/control/interface/slot/button-element';
+	import type { SlotButtonElement } from '$stylist/control/interface/slot/button-element';
 	import createSplitButtonState from '$stylist/control/function/state/split-button/index.svelte';
 	import type { SplitButtonButtonAttributes } from '$stylist/control/type/struct/split-button-button-attributes';
 
@@ -12,7 +12,7 @@
 		disabled?: boolean;
 	}
 
-	export type ISplitButtonElementProps = ButtonElementProps &
+	export type ISplitButtonElementProps = SlotButtonElement &
 		SplitButtonButtonAttributes & {
 			items: ISplitButtonItem[];
 			primaryAction: () => void;

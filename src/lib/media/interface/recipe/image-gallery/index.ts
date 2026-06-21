@@ -1,9 +1,8 @@
 ﻿import type { ImageGalleryStateProps as LegacyImageGalleryProps1 } from '$stylist/media/interface/recipe/image-gallery-image-gallery-state-props';
 import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 export interface RecipeImageGallery
-	extends StructIntersectAll<[LegacyImageGalleryProps1, SlotChildren]> {
+	extends ComputeIntersectAll<[LegacyImageGalleryProps1, SlotChildren]> {
 	width?: number;
 	height?: number;
 	src?: string;

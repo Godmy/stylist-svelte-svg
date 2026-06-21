@@ -1,22 +1,21 @@
-﻿import type { PlaygroundComponentInfoCardProps as LegacyPlaygroundComponentInfoCardProps1 } from '$stylist/playground/type/struct/playground-component-info-card-props';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
+import type { PlaygroundComponentInfoCardProps as LegacyPlaygroundComponentInfoCardProps1 } from '$stylist/playground/type/struct/playground-component-info-card-props';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipePlaygroundComponentInfoCard
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[
 			LegacyPlaygroundComponentInfoCardProps1,
-			Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'>
+			Omit<HTMLAttributes<HTMLDivElement>, 'class'>,
+			BehaviorBorderToken,
+			BehaviorTypography
 		]
 	> {
-	/** Component name */
 	componentName?: string;
-	/** Component description */
 	description?: string;
-	/** Component category */
 	category?: string;
-	/** Component status */
 	status?: 'stable' | 'beta' | 'alpha' | 'deprecated';
-	/** Additional CSS class */
 	class?: string;
 }

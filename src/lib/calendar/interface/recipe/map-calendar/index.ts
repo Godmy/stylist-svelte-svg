@@ -1,4 +1,4 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { RecipeCalendarView as CalendarViewContract } from '$stylist/calendar/interface/recipe/calendar-view';
 import type { RecipeEventCalendar as EventCalendarContract } from '$stylist/calendar/interface/recipe/event-calendar';
 import type { RecipeScheduleCalendar as ScheduleCalendarContract } from '$stylist/calendar/interface/recipe/schedule-calendar';
@@ -8,8 +8,7 @@ import type { RecipeRealTimePresence as RealTimePresenceContract } from '$stylis
 import type { RecipeTimeline as TimelineContract } from '$stylist/calendar/interface/recipe/timeline';
 import type { ContractTimeSlot as TimeSlotContract } from '$stylist/calendar/interface/contract/time-slot';
 
-// ==================== Map Calendar Contract ====================
-export interface RecipeMapCalendar extends StructIntersectAll<[]> {
+export interface RecipeMapCalendar extends ComputeIntersectAll<[]> {
 	RecipeCalendarView: CalendarViewContract;
 	EventCalendar: EventCalendarContract;
 	ScheduleCalendar: ScheduleCalendarContract;

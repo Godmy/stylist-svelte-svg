@@ -1,14 +1,4 @@
-/**
- * Range Slider вЂ” СЃР»Р°Р№РґРµСЂ РґРёР°РїР°Р·РѕРЅР°.
- *
- * LEGO-СЃРѕСЃС‚Р°РІ:
- *   ILabelSlot                (information/label-slot)
- *   ICaptionSlot              (information/caption-slot)
- *   ISelectable<number[]>     (interaction/selectable)
- *   IFocusable                (interaction/focusable)
- *   ISizable                  (architecture/sizable)
- */
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { BehaviorFocusable as IFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable as ISelectable } from '$stylist/interaction/interface/behavior/selectable';
 import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
@@ -16,6 +6,6 @@ import type { SlotCaption as ICaptionSlot } from '$stylist/typography/interface/
 import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
 
 export interface RecipeRangeSlider
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 		[ILabelSlot, ICaptionSlot, ISelectable<number[]>, IFocusable, ISizable]
 	> {}

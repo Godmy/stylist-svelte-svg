@@ -1,6 +1,6 @@
 ﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { SlotCheckbox as BaseCheckboxProps } from '$stylist/control/interface/slot/checkbox-toggles';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeCheckboxProps
-	extends StructIntersectAll<[BaseCheckboxProps, InteractionHTMLAttributes<HTMLInputElement>]> {}
+	extends ComputeIntersectAll<[BaseCheckboxProps, InteractionHTMLAttributes<HTMLInputElement>]> {}

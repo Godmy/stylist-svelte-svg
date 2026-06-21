@@ -1,9 +1,9 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTimeSlotEvent as SlotTimeSlotEvent } from '$stylist/calendar/interface/slot/time-slot-event';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface TimeSlotProps
-	extends StructIntersectAll<[SlotTimeSlotEvent, Omit<HTMLAttributes<HTMLDivElement>, 'class'>]> {
+	extends ComputeIntersectAll<[SlotTimeSlotEvent, Omit<HTMLAttributes<HTMLDivElement>, 'class'>]> {
 	start: Date;
 	end: Date;
 	timeLabel?: string;

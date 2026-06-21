@@ -7,7 +7,7 @@ import type { RecipeSkeletonProps as LegacySkeletonProps1 } from '$stylist/notif
 import type { SlotSkeleton as Slot } from '$stylist/notification/interface/slot/skeleton';
 import type { SlotSkeleton as SlotSkeleton } from '$stylist/notification/interface/slot/skeleton';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { BehaviorScrollable as IScrollable } from '$stylist/layout/interface/behavior/scrollable';
 import type { BehaviorShapeable as IShapeable } from '$stylist/layout/interface/behavior/shapeable';
@@ -16,7 +16,7 @@ import type { BehaviorSpaced as ISpaced } from '$stylist/layout/interface/behavi
 import type { SkeletonSpecificProps } from '$stylist/notification/interface/recipe/skeleton-specific-props';
 
 export interface RecipeSkeleton
-	extends StructIntersectAll<
+	extends ComputeIntersectAll<
 			[
 				LegacySkeletonProps6,
 				LegacySkeletonProps5,

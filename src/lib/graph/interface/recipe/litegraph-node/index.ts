@@ -1,14 +1,14 @@
 import type { Snippet } from 'svelte';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { LiteGraphNodeProperty } from '$stylist/graph/type/struct/lite-graph-node-property';
 import type { LiteGraphPort } from '$stylist/graph/type/struct/lite-graph-port';
 import type { LiteGraphNodePresentation } from '$stylist/graph/type/struct/lite-graph-node-presentation';
 
 export interface RecipeLitegraphNode
-	extends StructIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, HTMLAttributes<HTMLDivElement>]> {
 	id?: string;
 	title?: string;
 	x: number;

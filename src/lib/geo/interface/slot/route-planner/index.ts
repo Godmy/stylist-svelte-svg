@@ -1,9 +1,11 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { SlotRoutePlannerLocation } from '$stylist/geo/interface/slot/route-planner-location';
 import type { SlotRouteOption } from '$stylist/geo/interface/slot/route-option';
 
-export interface SlotRoutePlanner extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+export interface SlotRoutePlanner extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	startLocation?: SlotRoutePlannerLocation;
 	endLocation?: SlotRoutePlannerLocation;
 	waypoints?: SlotRoutePlannerLocation[];

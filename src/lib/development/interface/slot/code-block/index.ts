@@ -1,9 +1,11 @@
-import type { InformationHTMLAttributes } from '$stylist/information/type/struct/information-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
+import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenCodeLanguage } from '$stylist/development/type/enum/code-language';
 import type { TokenCodeView } from '$stylist/development/type/enum/code-view';
 
-export interface SlotCodeBlock extends Omit<InformationHTMLAttributes<HTMLDivElement>, 'class'> {
+export interface SlotCodeBlock extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	code?: string;
 	language?: TokenCodeLanguage | 'text';
 	variant?: TokenCodeView;

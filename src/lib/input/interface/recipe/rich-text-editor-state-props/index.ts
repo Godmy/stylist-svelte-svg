@@ -1,5 +1,5 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
-export interface RichTextEditorStateProps extends StructIntersectAll<[]> {
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+export interface RichTextEditorStateProps extends ComputeIntersectAll<[]> {
 	value?: string;
 	placeholder?: string;
 	onValueInput?: (content: string) => void;

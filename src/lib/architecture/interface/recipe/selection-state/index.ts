@@ -1,7 +1,7 @@
-﻿import type { StructIntersectAll } from '$stylist/architecture/type/struct/intersect-all';
+﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SelectionMode } from '$stylist/architecture/type/struct/selection-mode/index';
 
-export interface SelectionState extends StructIntersectAll<[]> {
+export interface SelectionState extends ComputeIntersectAll<[]> {
 	selectedIds: Set<string>;
 	mode: SelectionMode;
 	isSelecting: boolean;
