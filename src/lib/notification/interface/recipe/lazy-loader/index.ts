@@ -1,7 +1,8 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotLazyLoader } from '$stylist/notification/interface/slot/lazy-loader';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeLazyLoader
-	extends ComputeIntersectAll<[SlotLazyLoader, InteractionHTMLAttributes<HTMLDivElement>, SlotChildren]> {}
+	extends ComputeIntersectAll<[SlotLazyLoader, HTMLAttributes<HTMLDivElement>, SlotInteraction, SlotChildren]> {}

@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 
 export type CubeControlProps = {
 	size?: number;
@@ -28,4 +29,4 @@ export type CubeControlProps = {
 		x?: number;
 		y?: number;
 	}) => void;
-} & InteractionHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & SlotInteraction;

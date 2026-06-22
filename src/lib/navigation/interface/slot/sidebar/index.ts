@@ -1,10 +1,11 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
 import type { TierContent } from '$stylist/architecture/type/enum/tier';
 import type { NavItem } from '$stylist/navigation/type/struct/sidebar';
 import type { Snippet } from 'svelte';
 
-export interface SlotSidebar extends ArchitectureHTMLAttributes<HTMLElement> {
+export interface SlotSidebar extends LayoutHTMLAttributes<HTMLElement> {
 	items: NavItem[];
 	title?: string;
 	logo?: Snippet;

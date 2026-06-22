@@ -1,5 +1,7 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	const Package = 'package';
 	const Plus = 'plus';
@@ -31,7 +33,7 @@
 		currency = 'USD',
 		locale = 'en-US',
 		...restProps
-	}: BulkOrderFormProps & Omit<InteractionHTMLAttributes<HTMLElement>, 'class'> = $props();
+	}: BulkOrderFormProps & Omit<HTMLAttributes<HTMLElement>, 'class'> & SlotInteraction = $props();
 
 	const state = BulkOrderFormModel({
 		products,

@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { Snippet } from 'svelte';
 import type { SlotGraphToolbarItem } from '$stylist/graph/interface/slot/graph-toolbar-item';

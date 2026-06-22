@@ -1,9 +1,10 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeBreadcrumbs } from '$stylist/navigation/interface/recipe/breadcrumbs';
 import type { BreadcrumbItem } from '../breadcrumb-item';
 
 export type BreadcrumbsProps = RecipeBreadcrumbs &
-	InteractionHTMLAttributes<HTMLElement> & {
+	HTMLAttributes<HTMLElement> & SlotInteraction & {
 		crumbs?: BreadcrumbItem[];
 		activeId?: string;
 		onNavigate?: (id: string) => void;

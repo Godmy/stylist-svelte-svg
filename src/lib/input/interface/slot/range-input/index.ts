@@ -1,6 +1,7 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 
-export interface SlotRangeInput extends InteractionHTMLAttributes<HTMLInputElement> {
+export interface SlotRangeInput extends HTMLAttributes<HTMLInputElement>, SlotInteraction {
 	min?: number;
 	max?: number;
 	minValue?: number;

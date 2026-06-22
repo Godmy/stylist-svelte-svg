@@ -1,6 +1,7 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 
 export type ExpandableTableRowRestProps = Omit<
-	ArchitectureHTMLAttributes<HTMLTableRowElement>,
+	LayoutHTMLAttributes<HTMLTableRowElement>,
 	'class'
 >;

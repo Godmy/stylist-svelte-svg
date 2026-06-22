@@ -1,5 +1,6 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 
-export type StageContract = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type StageContract = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 };

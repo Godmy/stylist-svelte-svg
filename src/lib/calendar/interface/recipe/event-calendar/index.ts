@@ -1,4 +1,4 @@
-﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TokenTimeMeasure } from '$stylist/calendar/type/enum/time-measure';
 import type { SlotEventCalendarEvent } from '$stylist/calendar/interface/slot/event-calendar-event';

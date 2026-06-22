@@ -8,16 +8,15 @@ import type { BehaviorSized } from '$stylist/layout/interface/behavior/sized';
 import type { BehaviorSpaced } from '$stylist/layout/interface/behavior/spaced';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface RecipeSelector
 	extends ComputeIntersectAll<
 		[
 			SlotSelector,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			SlotIcon,
 			BehaviorSelectable<string | string[]>,
 			BehaviorFocusable,

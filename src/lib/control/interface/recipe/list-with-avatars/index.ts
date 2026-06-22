@@ -1,22 +1,22 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotListWithAvatars } from '$stylist/control/interface/slot/list-with-avatars';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable } from '$stylist/interaction/interface/behavior/selectable';
 import type { BehaviorScrollable } from '$stylist/layout/interface/behavior/scrollable';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeListWithAvatars
 	extends ComputeIntersectAll<
 		[
 			SlotListWithAvatars,
-			InteractionHTMLAttributes<HTMLDivElement>,
+			HTMLAttributes<HTMLDivElement>, SlotInteraction,
 			SlotChildren,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			BehaviorSelectable<string>,
 			BehaviorFocusable,
 			BehaviorSizable,

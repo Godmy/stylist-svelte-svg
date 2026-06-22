@@ -1,11 +1,13 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeBreadcrumbLink } from '$stylist/navigation/interface/recipe/breadcrumb-link';
 	import createBreadcrumbLinkState from '$stylist/navigation/function/state/breadcrumb-link/index.svelte';
 
 	type BreadcrumbLinkProps = RecipeBreadcrumbLink &
-		InteractionHTMLAttributes<HTMLAnchorElement> & {
+		HTMLAttributes<HTMLAnchorElement> & SlotInteraction & {
 			current?: boolean;
 			href?: string;
 			children?: Snippet;

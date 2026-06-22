@@ -1,7 +1,8 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 
-export type Props = InteractionHTMLAttributes<HTMLDivElement> & {
+export type Props = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	accept?: string;
 	maxSize?: number;
 	multiple?: boolean;

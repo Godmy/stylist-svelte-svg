@@ -2482,7 +2482,6 @@ export type {
 } from './graph';
 export type {
 	BaseCardProps,
-	ChildrenProp,
 	ClassProp,
 	ClassValue,
 	ContentProp,
@@ -2535,7 +2534,6 @@ export type {
 	IDisableable,
 	InputPreset,
 	InteractionFeedback,
-	InteractionHTMLAttributes,
 	InteractionIntent,
 	InteractionMotion,
 	Preset,
@@ -2560,7 +2558,6 @@ export type {
 } from './interaction';
 export type {
 	AnimatedExpandableTableRowProps,
-	ArchitectureHTMLAttributes,
 	AspectRatioProps,
 	AttributeAspectRatio,
 	AttributeContainer,
@@ -2947,10 +2944,7 @@ export type {
 	RecipePreziScene,
 	RecipeSceneCameraControl,
 	SelectedItem,
-	SelectionState,
-	SlotChildren,
-	SlotComposite,
-	SlotContent
+	SelectionState
 } from './architecture';
 export type {
 	BehaviorTimeRangeFilter,
@@ -3545,8 +3539,6 @@ export type {
 	BadgeGroupItem,
 	BehaviorMetricValue,
 	HtmlAttributesBase,
-	HtmlAttributesWithChildren,
-	HtmlAttributesWithContent,
 	RecipeAccessibilityCheckbox,
 	RecipeAtomicPrinciples,
 	RecipeBadge,
@@ -3661,9 +3653,7 @@ export type {
 	RecipeFocusable,
 	RecipeHoverable,
 	SlotClickable,
-	SlotDraggable,
-	SlotFocusable,
-	SlotHoverable
+	SlotInteraction
 } from './interaction';
 export type {
 	BehaviorBorderToken,
@@ -3682,6 +3672,9 @@ export type {
 	RecipeThemeBackground,
 	RecipeThemeGradientBackground,
 	RecipeThemeSurface,
+	SlotChildren,
+	SlotComposite,
+	SlotContent,
 	StackedLayoutProps
 } from './layout';
 export type {
@@ -3977,9 +3970,6 @@ export type {
 	RecipeThemeKbd,
 	RecipeThemeLink,
 	SlotAbbr,
-	SlotCaption,
-	SlotInlineBase,
-	SlotInlineCode,
-	SlotLabel,
-	SlotLink
+	SlotLink,
+	SlotText
 } from './typography';

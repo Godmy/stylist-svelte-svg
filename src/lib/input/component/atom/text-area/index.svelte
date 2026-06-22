@@ -1,4 +1,4 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import type { HTMLTextareaAttributes } from 'svelte/elements';
 	import { onMount } from 'svelte';
 	import type { SlotTextarea as ITextareaProps } from '$stylist/input/interface/slot/textarea';
@@ -75,7 +75,7 @@
 			{state.currentLength} / {props.maxlength}
 			{#if state.remainingChars !== null && state.remainingChars <= 10}
 				<span class="text-area-counter__warning"
-					>РћСЃС‚Р°Р»РѕСЃСЊ СЃРёРјРІРѕР»РѕРІ: {state.remainingChars}</span
+					>Осталось символов: {state.remainingChars}</span
 				>
 			{/if}
 		</p>

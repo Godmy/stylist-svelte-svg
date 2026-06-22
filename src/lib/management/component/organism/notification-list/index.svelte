@@ -1,4 +1,4 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import type { RecipeNotificationList } from '$stylist/management/interface/recipe/notification-list';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { createNotificationListState } from '$stylist/management/function/state/notification-list/index.svelte';

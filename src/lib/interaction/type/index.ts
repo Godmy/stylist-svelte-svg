@@ -36,7 +36,6 @@ export type {
 	IDisableable,
 	InputPreset,
 	InteractionFeedback,
-	InteractionHTMLAttributes,
 	InteractionIntent,
 	InteractionMotion,
 	Preset

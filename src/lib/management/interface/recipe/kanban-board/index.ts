@@ -1,4 +1,4 @@
-﻿import type { SlotContent } from '$stylist/architecture/interface/slot/content';
+import type { SlotContent } from '$stylist/layout/interface/slot/content';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { KanbanBoardType } from '$stylist/management/type/struct/kanban-board/kanbanboardtype';
 import type { KanbanBoardAction } from '$stylist/management/type/struct/kanban-board/kanbanboardaction';

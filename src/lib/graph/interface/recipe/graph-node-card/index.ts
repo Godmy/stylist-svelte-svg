@@ -1,5 +1,5 @@
 import type { GraphNodeCardProps as LegacyGraphNodeCardProps1 } from '$stylist/graph/type/struct/graph-node-card-props';
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 export interface RecipeGraphNodeCard
 	extends ComputeIntersectAll<[LegacyGraphNodeCardProps1, SlotChildren]> {

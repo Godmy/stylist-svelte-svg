@@ -1,8 +1,9 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { ContainerQueryType } from '$stylist/layout/type/enum/container-query-type';
 
-export type ContainerQueryProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type ContainerQueryProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	children: Snippet;
 	/**

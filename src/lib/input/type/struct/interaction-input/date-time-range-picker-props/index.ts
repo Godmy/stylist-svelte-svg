@@ -1,9 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { DateTimeRangeValue } from '$stylist/input/type/struct/interaction-input/date-time-range-value';
 
-export type DateTimeRangePickerProps = Omit<
-	InteractionHTMLAttributes<HTMLDivElement>,
-	'oninput' | 'value'
+export type DateTimeRangePickerProps = Omit<HTMLAttributes<HTMLDivElement> & SlotInteraction, 'oninput' | 'value'
 > & {
 	value?: DateTimeRangeValue;
 	disabled?: boolean;

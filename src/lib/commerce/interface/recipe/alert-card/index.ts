@@ -1,11 +1,10 @@
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { SlotClass } from '$stylist/theme/interface/slot/class';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { SlotBadge } from '$stylist/information/interface/slot/badge';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
 import type { SlotMedia } from '$stylist/media/interface/slot/media';
 import type { SlotStatus } from '$stylist/information/interface/slot/status';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
@@ -17,8 +16,8 @@ export interface RecipeAlertCard
 			SlotTheme,
 			SlotClass,
 			SlotChildren,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			SlotIcon,
 			SlotStatus,
 			SlotBadge,

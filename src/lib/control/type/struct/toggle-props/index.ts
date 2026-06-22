@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export type ToggleProps = {
@@ -8,4 +9,4 @@ export type ToggleProps = {
 	class?: string;
 	ariaLabel?: string;
 	name?: string;
-} & Omit<InteractionHTMLAttributes<HTMLInputElement>, 'size' | 'checked'>;
+} & Omit<HTMLAttributes<HTMLInputElement>, 'size' | 'checked'> & SlotInteraction;

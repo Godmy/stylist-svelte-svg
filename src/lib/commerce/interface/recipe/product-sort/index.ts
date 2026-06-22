@@ -1,12 +1,12 @@
-﻿import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { ProductSortOption } from '$stylist/commerce/type/struct/product-sort-option';
 
 export interface RecipeProductSort
-	extends ComputeIntersectAll<[SlotTheme, SlotLabel, SlotIcon, HTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[SlotTheme, SlotText, SlotIcon, HTMLAttributes<HTMLDivElement>]> {
 	options?: ProductSortOption[];
 	selectedOption?: string;
 	onValueChange?: (option: string) => void;

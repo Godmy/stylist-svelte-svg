@@ -1,10 +1,12 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import type { SlotMessageInput as MessageInputContract } from '$stylist/chat/interface/slot/message-input';
 	import createMessageInputState from '$stylist/chat/function/state/message-input/index.svelte';
 
-	let props: MessageInputContract & InteractionHTMLAttributes<HTMLDivElement> = $props();
+	let props: MessageInputContract & HTMLAttributes<HTMLDivElement> & SlotInteraction = $props();
 	const state = createMessageInputState(props);
 </script>
 

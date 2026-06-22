@@ -1,4 +1,4 @@
-﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { HTMLAttributes } from 'svelte/elements';
 import { formatTime } from '$stylist/media/function/script/format-time';
 import { TOKEN_MEDIA_ICON } from '$stylist/media/const/record/media-icon';
 import type { RecipeAudioPlayer } from '$stylist/media/interface/recipe/audio-player';

@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotButtonDom } from '$stylist/control/interface/slot/button-dom';
 import type { SlotCopyButton } from '$stylist/control/interface/slot/copy-button';
 import type { Props } from '$stylist/information/type/struct/props';
@@ -7,7 +7,7 @@ import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeCopyButton
 	extends ComputeIntersectAll<
@@ -19,7 +19,7 @@ export interface RecipeCopyButton
 			>,
 			SlotButtonDom,
 			SlotChildren,
-			SlotLabel,
+			SlotText,
 			SlotIcon,
 			BehaviorClickable,
 			BehaviorFocusable,

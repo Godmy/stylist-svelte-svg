@@ -71,7 +71,6 @@ export {
 } from './function';
 export type {
 	BaseCardProps,
-	ChildrenProp,
 	ClassProp,
 	ClassValue,
 	ContentProp,
@@ -91,8 +90,6 @@ export type {
 	BadgeGroupItem,
 	BehaviorMetricValue,
 	HtmlAttributesBase,
-	HtmlAttributesWithChildren,
-	HtmlAttributesWithContent,
 	RecipeAccessibilityCheckbox,
 	RecipeAtomicPrinciples,
 	RecipeBadge,

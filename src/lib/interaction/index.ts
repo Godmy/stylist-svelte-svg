@@ -92,7 +92,6 @@ export type {
 	IDisableable,
 	InputPreset,
 	InteractionFeedback,
-	InteractionHTMLAttributes,
 	InteractionIntent,
 	InteractionMotion,
 	Preset,
@@ -138,7 +137,5 @@ export type {
 	RecipeHoverable,
 	SearchSuggestion,
 	SlotClickable,
-	SlotDraggable,
-	SlotFocusable,
-	SlotHoverable
+	SlotInteraction
 } from './interface';

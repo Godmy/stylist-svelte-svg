@@ -1,10 +1,11 @@
-﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { DateRangeValue } from '$stylist/input/type/struct/interaction-input/date-range-value';
 
 export interface DateRangePickerProps
 	extends ComputeIntersectAll<
-		[Omit<InteractionHTMLAttributes<HTMLDivElement>, 'oninput' | 'value'>]
+		[Omit<HTMLAttributes<HTMLDivElement>, 'oninput' | 'value'> & SlotInteraction]
 	> {
 	value?: DateRangeValue;
 	disabled?: boolean;

@@ -1,8 +1,9 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenSelectorKind } from '$stylist/control/type/record/selection-kind';
 
-export interface SlotQuantitySelector extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotQuantitySelector extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	value?: number;
 	min?: number;
 	max?: number;

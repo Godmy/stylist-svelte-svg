@@ -1,13 +1,13 @@
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { ChildrenProp } from '$stylist/information/type/struct/children-prop';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 
 export interface RecipeBlockquote
 	extends ComputeIntersectAll<
 		[
 			SlotTheme, 
-			ChildrenProp, 
+			SlotChildren, 
 			HTMLAttributes<HTMLQuoteElement>
 		]
 	> {

@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotPriceAlertElement } from '$stylist/commerce/interface/slot/price-alert-element';
 import type { Props } from '$stylist/information/type/struct/props';
 import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';

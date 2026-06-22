@@ -26,7 +26,6 @@ export type {
 	GridItemContent
 } from './grid-item';
 export type { LayoutHTMLAttributes } from './item';
-export type { ArchitectureHTMLAttributes } from './item-architecture-html-attributes';
 export type { LayoutGravity } from './item-layout-gravity';
 export type { LayoutLevel } from './item-layout-level';
 export type { LayoutShape } from './item-layout-shape';

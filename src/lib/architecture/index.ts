@@ -189,9 +189,6 @@ export type {
 	RecipePreziScene,
 	RecipeSceneCameraControl,
 	SelectedItem,
-	SelectionState,
-	SlotChildren,
-	SlotComposite,
-	SlotContent
+	SelectionState
 } from './interface';
 export type { FoundationDepthThreshold } from './type';

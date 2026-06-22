@@ -5,8 +5,8 @@ import type { TokenSize } from '$stylist/layout/type/enum/size';
  * SlotListWithAvatars — свойства списка с аватарами.
  *
  * LEGO-состав:
- *   SlotLabel            (information) — items (labels)
- *   SlotCaption          (information) — items (subtitles, descriptions)
+ *   SlotText            (information) — items (labels)
+ *   SlotText          (information) — items (subtitles, descriptions)
  *   SlotIcon             (information) — avatars
  *   BehaviorSelectable<string>   (interaction) — selected items
  *   BehaviorSizable              (architecture) — size

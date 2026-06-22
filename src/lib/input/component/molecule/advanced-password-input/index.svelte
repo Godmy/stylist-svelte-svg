@@ -1,5 +1,7 @@
-﻿<script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import { createAdvancedPasswordInputState } from '$stylist/input/function/state/advanced-password-input/index.svelte';
 	import type { SlotAdvancedPasswordInput as IAdvancedPasswordInputProps } from '$stylist/input/interface/slot/advanced-password-input';
@@ -7,7 +9,7 @@
 	const Eye = 'eye';
 	const EyeOff = 'eye-off';
 
-	let props: IAdvancedPasswordInputProps & InteractionHTMLAttributes<HTMLInputElement> = $props();
+	let props: IAdvancedPasswordInputProps & HTMLAttributes<HTMLInputElement> & SlotInteraction = $props();
 	const state = createAdvancedPasswordInputState(props);
 </script>
 

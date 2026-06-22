@@ -1,4 +1,4 @@
-﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotCalendarViewEvent } from '$stylist/calendar/interface/slot/calendar-view-event';
 import type { CalendarViewMode } from '$stylist/calendar/type/struct/calendar-view-mode';

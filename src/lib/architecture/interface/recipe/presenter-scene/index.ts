@@ -1,10 +1,11 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SceneCamera } from '$stylist/architecture/type/struct/scene-camera';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
 
 export interface RecipePresenterScene
-	extends ComputeIntersectAll<[ArchitectureHTMLAttributes<HTMLElement>]> {
+	extends ComputeIntersectAll<[LayoutHTMLAttributes<HTMLElement>]> {
 	title?: string;
 	camera?: Partial<SceneCamera>;
 	nodes?: SceneNode[];

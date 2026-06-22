@@ -1,9 +1,10 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { CanvasObject } from '$stylist/canvas/type/struct/canvas-object';
 import type { CanvasUser } from '$stylist/canvas/type/struct/canvas-user';
 
-export interface SlotSharedCanvas extends ArchitectureHTMLAttributes<HTMLDivElement> {
+export interface SlotSharedCanvas extends LayoutHTMLAttributes<HTMLDivElement> {
 	width?: number;
 	height?: number;
 	objects?: CanvasObject[];

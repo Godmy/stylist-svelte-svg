@@ -1,8 +1,9 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { TokenStackDirection } from '$stylist/layout/type/enum/stack-direction';
 
-export type StackProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type StackProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	children?: Snippet;
 	direction?: TokenStackDirection;

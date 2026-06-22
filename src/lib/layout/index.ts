@@ -119,7 +119,6 @@ export {
 } from './function';
 export type {
 	AnimatedExpandableTableRowProps,
-	ArchitectureHTMLAttributes,
 	AspectRatioProps,
 	AttributeAspectRatio,
 	AttributeContainer,
@@ -239,5 +238,8 @@ export type {
 	RecipeThemeBackground,
 	RecipeThemeGradientBackground,
 	RecipeThemeSurface,
+	SlotChildren,
+	SlotComposite,
+	SlotContent,
 	StackedLayoutProps
 } from './interface';

@@ -2,10 +2,9 @@ import type { SlotBillingSummary } from '$stylist/commerce/interface/slot/billin
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeBillingSummary
 	extends ComputeIntersectAll<
-		[SlotBillingSummary, SlotTheme, SlotLabel, SlotCaption, HTMLAttributes<HTMLDivElement>]
+		[SlotBillingSummary, SlotTheme, SlotText, SlotText, HTMLAttributes<HTMLDivElement>]
 	> {}

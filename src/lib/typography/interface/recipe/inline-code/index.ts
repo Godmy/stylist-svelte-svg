@@ -1,4 +1,6 @@
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotInlineCode } from '$stylist/typography/interface/slot/inline-code';
 
-export interface RecipeThemeInlineCode extends ComputeIntersectAll<[SlotInlineCode]> {}
+export interface RecipeThemeInlineCode
+	extends ComputeIntersectAll<[SlotChildren, Omit<HTMLAttributes<HTMLElement>, 'children'>]> {}

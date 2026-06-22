@@ -1,7 +1,8 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
 
-export type DividerProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type DividerProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	orientation?: TokenOrientation;
 	align?: string;

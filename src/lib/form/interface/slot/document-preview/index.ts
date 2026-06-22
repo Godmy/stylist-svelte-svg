@@ -1,6 +1,7 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 
-export interface SlotDocumentPreview extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotDocumentPreview extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	title?: string;
 	content?: string;
 	format?: 'text' | 'json' | 'markdown';

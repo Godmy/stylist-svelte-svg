@@ -5,7 +5,7 @@ import type { BehaviorDimensionable as IDimensionable } from '$stylist/layout/in
 import type { BehaviorBarClickable as IBarClickable } from '$stylist/interaction/interface/behavior/bar-clickable';
 import type { BehaviorTooltipable as ITooltipable } from '$stylist/interaction/interface/behavior/tooltipable';
 import type { BehaviorLegendable as ILegendable } from '$stylist/chart/interface/behavior/legendable';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
+import type { SlotText as ILabelSlot } from '$stylist/typography/interface/slot/text';
 import type { BehaviorChartColorable as IChartColorable } from '$stylist/chart/interface/behavior/chart-colorable';
 import type { BehaviorChartAxis as IChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { IChartDataPoint } from '$stylist/chart/type/struct/bar-chart';

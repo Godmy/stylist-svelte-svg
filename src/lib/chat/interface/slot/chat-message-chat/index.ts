@@ -1,8 +1,8 @@
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import type { HtmlAttributesWithChildren } from '$stylist/information/interface/slot/html-attributes-with-children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { TokenMessageStatus } from '$stylist/chat/type/enum/message-status';
 
-export interface SlotChatMessage extends HtmlAttributesWithChildren<HTMLDivElement> {
+export interface SlotChatMessage extends SlotChildren {
 	text?: string;
 	sender?: string;
 	senderAvatar?: string;

@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { PaymentMethod } from '../payment-method';
 
-export type PaymentMethodSelectorProps = InteractionHTMLAttributes<HTMLDivElement> & {
+export type PaymentMethodSelectorProps = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	methods: PaymentMethod[];
 	selectedMethod?: string;
 	class?: string;

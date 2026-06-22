@@ -1,9 +1,10 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
 
 export interface RecipePreziScene
-	extends ComputeIntersectAll<[ArchitectureHTMLAttributes<HTMLDivElement>]> {
+	extends ComputeIntersectAll<[LayoutHTMLAttributes<HTMLDivElement>]> {
 	nodes?: readonly SceneNode[];
 	initialCamera?: {
 		x: number;

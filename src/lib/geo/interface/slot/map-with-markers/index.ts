@@ -10,7 +10,7 @@ import type { SlotMapWithMarkersView } from '$stylist/geo/interface/slot/map-wit
  * SlotMapWithMarkers — свойства карты с маркерами.
  *
  * LEGO-состав:
- *   SlotLabel            (information) — markers (titles, descriptions)
+ *   SlotText            (information) — markers (titles, descriptions)
  *   SlotIcon             (information) — markers (icons)
  *   BehaviorPositionable         (architecture) — lat, lng, center
  *   IZoomable             (architecture) — zoom, minZoom, maxZoom

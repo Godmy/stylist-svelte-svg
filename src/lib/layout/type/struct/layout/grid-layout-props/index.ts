@@ -1,8 +1,9 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { GridLayoutItem } from '../grid-layout-item';
 
-export type GridLayoutProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type GridLayoutProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	children?: Snippet;
 	columns?: number;

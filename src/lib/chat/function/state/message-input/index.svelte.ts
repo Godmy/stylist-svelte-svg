@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotMessageInput as MessageInputContract } from '$stylist/chat/interface/slot/message-input';
 import { handleAttachFn } from '$stylist/chat/function/script/handle-attach-fn';
 import { handleEmojiFn } from '$stylist/chat/function/script/handle-emoji-fn';
@@ -6,7 +7,7 @@ import { handleKeydownFn } from '$stylist/chat/function/script/handle-keydown-fn
 import { handleInputFn } from '$stylist/chat/function/script/message-input-handlers';
 
 export const createMessageInputState = (
-	props: MessageInputContract & InteractionHTMLAttributes<HTMLDivElement>
+	props: MessageInputContract & HTMLAttributes<HTMLDivElement> & SlotInteraction
 ) => {
 	let messageContent = $state('');
 

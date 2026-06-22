@@ -64,9 +64,6 @@ export type {
 	RecipeThemeKbd,
 	RecipeThemeLink,
 	SlotAbbr,
-	SlotCaption,
-	SlotInlineBase,
-	SlotInlineCode,
-	SlotLabel,
-	SlotLink
+	SlotLink,
+	SlotText
 } from './interface';

@@ -1,6 +1,7 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 
-export interface SlotProcessStep extends ArchitectureHTMLAttributes<HTMLDivElement> {
+export interface SlotProcessStep extends LayoutHTMLAttributes<HTMLDivElement> {
 	number: number;
 	title: string;
 	description: string;

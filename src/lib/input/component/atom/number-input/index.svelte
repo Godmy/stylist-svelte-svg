@@ -1,5 +1,7 @@
-﻿<script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import type { SlotNumberInput as INumberInputProps } from '$stylist/input/interface/slot/number-input';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import { createNumberInputState } from '$stylist/input/function/state/number-input/index.svelte';
@@ -7,7 +9,7 @@
 	const Minus = 'minus';
 	const Plus = 'plus';
 
-	let props: INumberInputProps & InteractionHTMLAttributes<HTMLInputElement> = $props();
+	let props: INumberInputProps & HTMLAttributes<HTMLInputElement> & SlotInteraction = $props();
 	const state = createNumberInputState(props);
 </script>
 

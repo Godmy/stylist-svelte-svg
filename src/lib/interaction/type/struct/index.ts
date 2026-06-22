@@ -10,7 +10,6 @@ export type {
 export type { IDisableable } from './i-disableable';
 export type {
 	InteractionFeedback,
-	InteractionHTMLAttributes,
 	InteractionIntent
 } from './interaction';
 export type { InteractionMotion } from './interaction-motion';

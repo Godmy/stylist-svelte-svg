@@ -1,11 +1,12 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 
 /**
  * Контракт для PreziScene компонента
  * Интегрирует viewport, camera, semantic zoom и навигацию
  */
-export type PreziSceneContract = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type PreziSceneContract = LayoutHTMLAttributes<HTMLDivElement> & {
 	/** Узлы сцены (онтология) */
 	nodes?: readonly SceneNode[];
 

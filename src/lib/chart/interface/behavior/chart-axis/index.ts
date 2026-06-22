@@ -2,7 +2,7 @@
  * Параметры осей и шкал аналитического чарта.
  *
  * Примечание: xAxisLabel / yAxisLabel / zAxisLabel удалены — дублировали
- * SlotLabel.title. Для подписей осей используйте SlotLabel в рецепте.
+ * SlotText.title. Для подписей осей используйте SlotText в рецепте.
  */
 export interface BehaviorChartAxis {
 	xScale?: [number, number];

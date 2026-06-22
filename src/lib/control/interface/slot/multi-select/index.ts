@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotMultiSelectOption } from '$stylist/control/interface/slot/multi-select-option';
 
-export interface SlotMultiSelect extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotMultiSelect extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	options: SlotMultiSelectOption[];
 	value?: string[];
 	placeholder?: string;

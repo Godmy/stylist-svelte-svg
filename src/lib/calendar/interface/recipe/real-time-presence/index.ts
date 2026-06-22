@@ -1,5 +1,5 @@
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotRealTimePresence } from '$stylist/calendar/interface/slot/real-time-presence';
 import type { SlotRealTimePresenceUser } from '$stylist/calendar/interface/slot/real-time-presence-user';
 

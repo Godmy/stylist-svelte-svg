@@ -1,19 +1,18 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotFilterBar } from '$stylist/control/interface/slot/filter-bar';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable } from '$stylist/interaction/interface/behavior/selectable';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeFilterBar
 	extends ComputeIntersectAll<
 		[
 			SlotFilterBar,
 			SlotChildren,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			BehaviorSelectable<string[]>,
 			BehaviorFocusable,
 			BehaviorSizable

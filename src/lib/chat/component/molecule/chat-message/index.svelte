@@ -1,5 +1,7 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
 	import Avatar from '$stylist/media/component/atom/avatar/index.svelte';
@@ -20,7 +22,7 @@
 		headerClass?: string;
 		footerClass?: string;
 		variant?: 'default' | 'primary' | 'secondary';
-	} & InteractionHTMLAttributes<HTMLDivElement>;
+	} & HTMLAttributes<HTMLDivElement> & SlotInteraction;
 
 	let props: ChatMessageProps = $props();
 

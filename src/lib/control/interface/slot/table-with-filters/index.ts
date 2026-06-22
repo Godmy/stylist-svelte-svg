@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotTableRecord } from '$stylist/control/interface/slot/table-record';
 
-export interface SlotTableWithFilters extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotTableWithFilters extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	data: SlotTableRecord[];
 	columns: string[];
 	class?: string;

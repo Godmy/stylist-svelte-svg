@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SliderTickProps } from '../slider-tick-props';
 
-export type SliderTickComponentProps = SliderTickProps & InteractionHTMLAttributes<HTMLDivElement>;
+export type SliderTickComponentProps = SliderTickProps & HTMLAttributes<HTMLDivElement> & SlotInteraction;

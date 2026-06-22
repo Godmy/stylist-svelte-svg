@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ContractAnnouncementBanner } from '$stylist/media/interface/contract/announcement-banner';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';

@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 
-export type StepConnectorProps = InteractionHTMLAttributes<HTMLDivElement> & {
+export type StepConnectorProps = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	status?: 'pending' | 'active' | 'completed' | 'error';
 	class?: string;
 	children?: Snippet;

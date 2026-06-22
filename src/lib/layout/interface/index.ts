@@ -20,3 +20,8 @@ export type {
 	RecipeThemeSurface,
 	StackedLayoutProps
 } from './recipe';
+export type {
+	SlotChildren,
+	SlotComposite,
+	SlotContent
+} from './slot';

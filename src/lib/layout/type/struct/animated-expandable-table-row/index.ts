@@ -1,4 +1,5 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { Snippet } from 'svelte';
 
 export type AnimatedExpandableTableRowProps = {
@@ -9,4 +10,4 @@ export type AnimatedExpandableTableRowProps = {
 	colspan?: number;
 	children: Snippet;
 	details: Snippet;
-} & ArchitectureHTMLAttributes<HTMLTableRowElement>;
+} & LayoutHTMLAttributes<HTMLTableRowElement>;

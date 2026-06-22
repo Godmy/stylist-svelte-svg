@@ -1,6 +1,7 @@
-﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotToggle as BaseToggleProps } from '$stylist/control/interface/slot/toggle-toggles';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeToggle
-	extends ComputeIntersectAll<[BaseToggleProps, InteractionHTMLAttributes<HTMLInputElement>]> {}
+	extends ComputeIntersectAll<[BaseToggleProps, HTMLAttributes<HTMLInputElement>, SlotInteraction]> {}

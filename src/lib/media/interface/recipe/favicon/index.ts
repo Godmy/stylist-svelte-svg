@@ -1,4 +1,4 @@
-import type { SlotContent } from '$stylist/architecture/interface/slot/content';
+import type { SlotContent } from '$stylist/layout/interface/slot/content';
 import type { ContractFavicon } from '$stylist/media/interface/contract/favicon';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';

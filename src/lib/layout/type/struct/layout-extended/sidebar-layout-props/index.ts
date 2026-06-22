@@ -1,10 +1,11 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SidebarLayoutGap } from '$stylist/layout/type/enum/sidebar-layout-gap';
 import type { SidebarLayoutSide } from '$stylist/layout/type/enum/sidebar-layout-side';
 import type { SidebarLayoutWidth } from '$stylist/layout/type/enum/sidebar-layout-width';
 
-export type SidebarLayoutProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type SidebarLayoutProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	sidebar: Snippet;
 	children: Snippet;

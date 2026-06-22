@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotButtonAttributesBase } from '$stylist/control/interface/slot/button-attributes-base';
 import type { SlotButtonControl } from '$stylist/control/interface/slot/button-control';
@@ -12,7 +12,7 @@ import type { BehaviorSized } from '$stylist/layout/interface/behavior/sized';
 import type { ContainerProps } from '$stylist/layout/type/struct/container/container-props';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeButton
 	extends ComputeIntersectAll<
@@ -20,7 +20,7 @@ export interface RecipeButton
 			SlotButtonAttributesBase,
 			SlotButtonControl,
 			SlotChildren,
-			SlotLabel,
+			SlotText,
 			SlotIcon,
 			SlotBadge,
 			BehaviorClickable,

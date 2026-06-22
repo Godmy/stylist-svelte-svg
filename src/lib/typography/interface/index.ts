@@ -12,9 +12,6 @@ export type {
 } from './recipe';
 export type {
 	SlotAbbr,
-	SlotCaption,
-	SlotInlineBase,
-	SlotInlineCode,
-	SlotLabel,
-	SlotLink
+	SlotLink,
+	SlotText
 } from './slot';

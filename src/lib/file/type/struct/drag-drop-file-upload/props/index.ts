@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 
 export type Props = {
 	multiple?: boolean;
@@ -13,4 +14,4 @@ export type Props = {
 	preview?: boolean;
 	onFileSelect?: (files: FileList) => void;
 	onFileUpload?: (file: File) => void;
-} & InteractionHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & SlotInteraction;

@@ -9,7 +9,6 @@ export type {
 export type { ClassValue } from './script';
 export type {
 	BaseCardProps,
-	ChildrenProp,
 	ClassProp,
 	ContentProp,
 	MetricBarData,

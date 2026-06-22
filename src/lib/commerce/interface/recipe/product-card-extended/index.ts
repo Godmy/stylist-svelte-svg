@@ -3,12 +3,11 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotMedia } from '$stylist/media/interface/slot/media';
 import type { SlotBadge } from '$stylist/information/interface/slot/badge';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeProductCardExtended
 	extends ComputeIntersectAll<
-		[SlotTheme, SlotLabel, SlotCaption, SlotBadge, SlotMedia, HTMLAttributes<HTMLDivElement>]
+		[SlotTheme, SlotText, SlotText, SlotBadge, SlotMedia, HTMLAttributes<HTMLDivElement>]
 	> {
 	price?: number;
 	currency?: string;

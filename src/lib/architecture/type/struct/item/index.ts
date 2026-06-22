@@ -2,4 +2,4 @@
 
 /** AREA: STYLIST CODER MODEL -> AUTO-PROTECTED */
 
-export type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+export type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';

@@ -1,12 +1,14 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		children,
 		class: className,
 		...restProps
-	}: { children?: Snippet; class?: string } & InteractionHTMLAttributes<HTMLElement> = $props();
+	}: { children?: Snippet; class?: string } & HTMLAttributes<HTMLElement> & SlotInteraction = $props();
 </script>
 
 <nav aria-label="Breadcrumb" class={className ?? ''} {...restProps}>

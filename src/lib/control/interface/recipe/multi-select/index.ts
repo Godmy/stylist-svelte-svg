@@ -5,15 +5,14 @@ import type { BehaviorSelectable } from '$stylist/interaction/interface/behavior
 import type { BehaviorScrollable } from '$stylist/layout/interface/behavior/scrollable';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeMultiSelect
 	extends ComputeIntersectAll<
 		[
 			SlotMultiSelect,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			SlotIcon,
 			BehaviorSelectable<string[]>,
 			BehaviorFocusable,

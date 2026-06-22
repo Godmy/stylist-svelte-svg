@@ -1,5 +1,7 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 <script lang="ts">
-	import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	import type { SlotReactionPicker as IReactionPickerProps } from '$stylist/input/interface/slot/reaction-picker';
 
@@ -9,7 +11,7 @@
 
 	const Smile = 'smile';
 
-	let props: IReactionPickerProps & Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> =
+	let props: IReactionPickerProps & Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction =
 		$props();
 
 	const state = createReactionPickerState(props);

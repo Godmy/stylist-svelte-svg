@@ -1,6 +1,7 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 
-export interface SlotLoginForm extends InteractionHTMLAttributes<HTMLFormElement> {
+export interface SlotLoginForm extends HTMLAttributes<HTMLFormElement>, SlotInteraction {
 	email?: string;
 	rememberMe?: boolean;
 	class?: string;

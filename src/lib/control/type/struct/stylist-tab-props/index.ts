@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { StylistTabItem } from '../stylist-tab-item';
 
-export type StylistTabProps = Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> & {
+export type StylistTabProps = Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction & {
 	class?: string;
 	items?: StylistTabItem[];
 	selectedId?: string;

@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 
-export interface SlotClick extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotClick extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	/** Обработчик клика */
 	onClick?: (event: MouseEvent) => void;
 	/** Обработчик двойного клика */

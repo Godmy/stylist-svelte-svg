@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TreeNode } from '../tree-node';
 
-export type FolderTreeProps = InteractionHTMLAttributes<HTMLDivElement> & {
+export type FolderTreeProps = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	nodes: TreeNode[];
 	class?: string;
 };

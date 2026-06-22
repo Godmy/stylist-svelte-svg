@@ -1,9 +1,10 @@
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { LayoutShape } from '$stylist/layout/type/struct/item-layout-shape';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
-export type CardProps = ArchitectureHTMLAttributes<HTMLDivElement> & {
+export type CardProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	children?: Snippet;
 	/** Слот для медиа-контента (изображение, видео) */

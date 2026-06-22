@@ -1,10 +1,14 @@
-﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { HtmlAttributesWithChildren } from '$stylist/information/interface/slot/html-attributes-with-children';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeRadioButtonGroupProps
 	extends ComputeIntersectAll<
-		[Omit<HtmlAttributesWithChildren<HTMLDivElement>, 'size' | 'class' | 'onchange' | 'oninput'>]
+		[
+			Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'size' | 'class' | 'onchange' | 'oninput'>,
+			SlotChildren
+		]
 	> {
 	value?: string;
 	disabled?: boolean;

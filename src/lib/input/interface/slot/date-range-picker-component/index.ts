@@ -1,7 +1,8 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { DateRangeValue } from '$stylist/input/type/struct/interaction-input/date-range-value';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 
-export interface SlotDateRangePickerComponent extends InteractionHTMLAttributes<HTMLInputElement> {
+export interface SlotDateRangePickerComponent extends HTMLAttributes<HTMLInputElement>, SlotInteraction {
 	value?: DateRangeValue;
 	disabled?: boolean;
 	placeholder?: string;

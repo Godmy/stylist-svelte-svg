@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { RFQFormData } from '$stylist/commerce/type/struct/rfq-form-data';
 
-export type RFQFormProps = Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> & {
+export type RFQFormProps = Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction & {
 	title?: string;
 	description?: string;
 	onSubmit?: (rfq: RFQFormData) => void;

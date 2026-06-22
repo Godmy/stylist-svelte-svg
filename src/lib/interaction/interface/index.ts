@@ -24,7 +24,5 @@ export type {
 	NumberFormatOptions,
 	SearchSuggestion,
 	SlotClickable,
-	SlotDraggable,
-	SlotFocusable,
-	SlotHoverable
+	SlotInteraction
 } from './slot';

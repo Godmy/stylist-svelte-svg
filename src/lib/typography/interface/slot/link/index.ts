@@ -1,8 +1,8 @@
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import type { SlotInlineBase } from '$stylist/typography/interface/slot/inline-base';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 
-export interface SlotLink extends SlotInlineBase<HTMLAnchorElement> {
+export interface SlotLink extends SlotChildren {
 	variant?: TokenAppearance;
 	size?: TokenSize;
 	disabled?: boolean;

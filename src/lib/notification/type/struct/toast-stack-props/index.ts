@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Toast } from '$stylist/notification/interface/slot/toast';
 
-export type ToastStackProps = InteractionHTMLAttributes<HTMLDivElement> & {
+export type ToastStackProps = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	toasts: Toast[];
 	position?:
 		| 'top-right'

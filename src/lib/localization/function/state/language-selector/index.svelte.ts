@@ -1,9 +1,10 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 import type { RecipeLanguageSelector as ILanguageSelectorProps } from '$stylist/localization/interface/recipe/language-selector';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 
 function createLanguageSelectorState(
-	props: ILanguageSelectorProps & InteractionHTMLAttributes<HTMLDivElement>
+	props: ILanguageSelectorProps & HTMLAttributes<HTMLDivElement> & SlotInteraction
 ) {
 	let isOpen = $state(false);
 	let searchQuery = $state('');

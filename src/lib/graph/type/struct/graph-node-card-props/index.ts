@@ -1,4 +1,5 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { GraphNodeCardData } from '$stylist/graph/type/struct/graph-node-card-data';
 
 export type GraphNodeCardProps = {
@@ -10,4 +11,4 @@ export type GraphNodeCardProps = {
 	variant?: string;
 	size?: string;
 	class?: string;
-} & ArchitectureHTMLAttributes<HTMLDivElement>;
+} & LayoutHTMLAttributes<HTMLDivElement>;

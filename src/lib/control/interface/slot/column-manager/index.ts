@@ -1,7 +1,8 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotColumnConfig } from '$stylist/control/interface/slot/column-config';
 
-export interface SlotColumnManager extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotColumnManager extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	columns: SlotColumnConfig[];
 	onColumnsChange?: (columns: SlotColumnConfig[]) => void;
 	class?: string;

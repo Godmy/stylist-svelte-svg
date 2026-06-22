@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { BehaviorMotionPreset } from '$stylist/animation/interface/behavior/motion-preset';
 import type { SlotTooltip } from '$stylist/control/interface/slot/tooltip';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
@@ -6,8 +6,7 @@ import type { BehaviorShapeable } from '$stylist/layout/interface/behavior/shape
 import type { BehaviorSized } from '$stylist/layout/interface/behavior/sized';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface RecipeTooltip
@@ -16,8 +15,8 @@ export interface RecipeTooltip
 			SlotTooltip,
 			HTMLAttributes<HTMLElement>,
 			SlotChildren,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			BehaviorFocusable,
 			BehaviorSized,
 			BehaviorShapeable,

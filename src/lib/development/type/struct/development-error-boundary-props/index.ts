@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 import type { DevelopmentErrorBoundaryErrorInfo } from '$stylist/development/type/struct/development-error-boundary-error-info';
 
@@ -23,4 +24,4 @@ export type DevelopmentErrorBoundaryProps = {
 	message?: string;
 	/** Snippet content to wrap */
 	children?: Snippet;
-} & InteractionHTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLDivElement> & SlotInteraction;

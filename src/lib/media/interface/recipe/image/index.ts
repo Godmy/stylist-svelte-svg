@@ -1,4 +1,4 @@
-import type { SlotContent } from '$stylist/architecture/interface/slot/content';
+import type { SlotContent } from '$stylist/layout/interface/slot/content';
 import type { ContractImage } from '$stylist/media/interface/contract/image';
 import type { ImageSize } from '$stylist/media/type/struct/image-size';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';

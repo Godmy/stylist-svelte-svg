@@ -1,8 +1,9 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotAdvancedColumnDefinition } from '$stylist/control/interface/slot/advanced-column-definition';
 
 export interface SlotDataTableAdvanced<T extends Record<string, unknown>>
-	extends InteractionHTMLAttributes<HTMLDivElement> {
+	extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	data: T[];
 	columns: SlotAdvancedColumnDefinition<T>[];
 	title?: string;

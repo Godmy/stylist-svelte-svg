@@ -1,4 +1,4 @@
-﻿import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotSentimentAnalysisResult } from '$stylist/science/interface/slot/sentiment-analysis-result';
 import type { SentimentAnalysisStatus } from '$stylist/science/type/struct/sentiment-analysis-status';

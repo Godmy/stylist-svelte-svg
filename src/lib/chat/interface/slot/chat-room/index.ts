@@ -1,8 +1,9 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotUser } from '$stylist/chat/interface/slot/user';
 import type { SlotMessage } from '$stylist/chat/interface/slot/message';
 
-export interface SlotChatRoom extends Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> {
+export interface SlotChatRoom extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, SlotInteraction {
 	messages: SlotMessage[];
 	currentUser: SlotUser;
 	participants: SlotUser[];

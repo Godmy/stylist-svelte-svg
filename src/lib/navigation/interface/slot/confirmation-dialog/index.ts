@@ -1,4 +1,5 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 import type { TokenThemeTone } from '$stylist/theme/type/enum/theme-tone';
 
@@ -6,14 +7,14 @@ import type { TokenThemeTone } from '$stylist/theme/type/enum/theme-tone';
  * SlotConfirmationDialog — свойства диалога подтверждения.
  *
  * LEGO-состав:
- *   SlotLabel            (information) — title
- *   SlotCaption          (information) — message
+ *   SlotText            (information) — title
+ *   SlotText          (information) — message
  *   BehaviorClickable            (interaction) — onConfirm, onCancel, onClose
  *   BehaviorSizable              (architecture) — size
  *   ThemeAttributes       (theme)       — variant (tone)
  */
 export interface SlotConfirmationDialog
-	extends Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> {
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, SlotInteraction {
 	open?: boolean;
 	title?: string;
 	message?: string;

@@ -1,10 +1,11 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenPaymentStatus } from '$stylist/commerce/type/enum/payment-status';
 import type { PaymentSummaryItem } from '../payment-summary-item';
 import type { PaymentSummaryDiscount } from '../payment-summary-discount';
 import type { PaymentSummaryTax } from '../payment-summary-tax';
 
-export type PaymentSummaryProps = InteractionHTMLAttributes<HTMLDivElement> & {
+export type PaymentSummaryProps = HTMLAttributes<HTMLDivElement> & SlotInteraction & {
 	title?: string;
 	subtitle?: string;
 	items: PaymentSummaryItem[];

@@ -1,9 +1,10 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 import type { ChatHeaderChat } from '../chat-header-chat';
 import type { ChatHeaderUser } from '../chat-header-user';
 
-export type ChatHeaderProps = Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'> & {
+export type ChatHeaderProps = Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction & {
 	chat: ChatHeaderChat;
 	currentUser: ChatHeaderUser;
 	showActions?: boolean;

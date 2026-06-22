@@ -1,5 +1,8 @@
-import type { HtmlAttributesWithChildren } from '$stylist/information/interface/slot/html-attributes-with-children';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 
-export interface SlotTabContainer extends HtmlAttributesWithChildren<HTMLDivElement> {
+export interface SlotTabContainer
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'children'>,
+		SlotChildren {
 	disabled?: boolean;
 }

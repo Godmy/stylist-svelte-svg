@@ -4,13 +4,13 @@ import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeSortableTableHeader
 	extends ComputeIntersectAll<
 		[
 			SlotSortableTableHeader,
-			SlotLabel,
+			SlotText,
 			SlotIcon,
 			BehaviorClickable,
 			BehaviorFocusable,

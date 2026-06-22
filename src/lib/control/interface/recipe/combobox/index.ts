@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotCombobox } from '$stylist/control/interface/slot/combobox';
 import type { BehaviorFocusable } from '$stylist/interaction/interface/behavior/focusable';
 import type { BehaviorSelectable } from '$stylist/interaction/interface/behavior/selectable';
@@ -6,16 +6,15 @@ import type { BehaviorScrollable } from '$stylist/layout/interface/behavior/scro
 import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
 import type { SlotIcon } from '$stylist/media/interface/slot/icon';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotCaption } from '$stylist/typography/interface/slot/caption';
-import type { SlotLabel } from '$stylist/typography/interface/slot/label';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
 
 export interface RecipeCombobox
 	extends ComputeIntersectAll<
 		[
 			SlotCombobox,
 			SlotChildren,
-			SlotLabel,
-			SlotCaption,
+			SlotText,
+			SlotText,
 			SlotIcon,
 			BehaviorSelectable<string>,
 			BehaviorFocusable,

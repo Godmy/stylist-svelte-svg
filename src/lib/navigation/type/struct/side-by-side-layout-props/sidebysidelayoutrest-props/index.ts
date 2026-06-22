@@ -1,3 +1,4 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 
-export type SideBySideLayoutRestProps = Omit<ArchitectureHTMLAttributes<HTMLDivElement>, 'class'>;
+export type SideBySideLayoutRestProps = Omit<LayoutHTMLAttributes<HTMLDivElement>, 'class'>;

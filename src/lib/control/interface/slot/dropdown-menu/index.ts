@@ -1,13 +1,14 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 /**
  * DropdownMenu types and interfaces following SOLID principles
  */
 
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { Snippet } from 'svelte';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
 import type { SlotCloseDropdownFunc } from '$stylist/control/interface/slot/close-dropdown-func';
 
-export interface SlotDropdownMenu extends Omit<InteractionHTMLAttributes<HTMLElement>, 'children'> {
+export interface SlotDropdownMenu extends Omit<HTMLAttributes<HTMLElement>, 'children'>, SlotInteraction {
 	label: string;
 	position?: TokenAlignment;
 	disabled?: boolean;

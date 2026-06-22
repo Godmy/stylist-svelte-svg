@@ -1,9 +1,10 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { PrimaryMenuItem } from '../stylist-menu-primary-menu-item';
 import type { FunctionalTabId } from '../stylist-menu-functional-tab-id';
 import type { AtomicTabId } from '../stylist-menu-atomic-tab-id';
 
-export type StylistMenuProps = Omit<InteractionHTMLAttributes<HTMLElement>, 'class'> & {
+export type StylistMenuProps = Omit<HTMLAttributes<HTMLElement>, 'class'> & SlotInteraction & {
 	class?: string;
 	triggerIcon?: string;
 	currentItemId?: string;

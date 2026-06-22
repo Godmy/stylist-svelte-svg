@@ -11,7 +11,7 @@ import type { BehaviorScrollable as IScrollable } from '$stylist/layout/interfac
 import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
 import type { BehaviorTransformable as ITransformable } from '$stylist/animation/interface/behavior/transformable';
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
+import type { SlotText as ILabelSlot } from '$stylist/typography/interface/slot/text';
 import type { LayoutSpecificProps } from '$stylist/navigation/interface/recipe/layout-specific-props';
 
 export interface RecipeSidebar

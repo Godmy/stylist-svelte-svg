@@ -3,7 +3,7 @@ import type { ContractProductSearch } from '$stylist/commerce/interface/contract
 import type { SlotIcon as IIconSlot } from '$stylist/media/interface/slot/icon';
 import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotLabel as ILabelSlot } from '$stylist/typography/interface/slot/label';
+import type { SlotText as ILabelSlot } from '$stylist/typography/interface/slot/text';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export interface RecipeProductSearch

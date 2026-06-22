@@ -28,8 +28,6 @@ export type {
 export type {
 	BadgeGroupItem,
 	HtmlAttributesBase,
-	HtmlAttributesWithChildren,
-	HtmlAttributesWithContent,
 	SlotBadge,
 	SlotStatus
 } from './slot';

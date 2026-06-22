@@ -1,8 +1,9 @@
-import type { ArchitectureHTMLAttributes } from '$stylist/layout/type/struct/item-architecture-html-attributes';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SceneCamera } from '$stylist/architecture/type/struct/scene-camera';
 import type { SceneNode } from '$stylist/architecture/type/struct/scene-node/scene-node';
 
-export type PresenterSceneContract = ArchitectureHTMLAttributes<HTMLElement> & {
+export type PresenterSceneContract = LayoutHTMLAttributes<HTMLElement> & {
 	class?: string;
 	title?: string;
 	camera?: Partial<SceneCamera>;

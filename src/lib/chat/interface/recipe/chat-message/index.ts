@@ -1,9 +1,10 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotChatMessage } from '$stylist/chat/interface/slot/chat-message';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeChatMessage
 	extends ComputeIntersectAll<
-		[SlotChatMessage, Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'>, SlotChildren]
+		[SlotChatMessage, Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction, SlotChildren]
 	> {}

@@ -1,8 +1,9 @@
-﻿import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeToggleGroupRootProps as BaseToggleGroupProps } from '$stylist/control/interface/recipe/toggle-group-root-props';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
 export interface RecipeToggleGroupProps
 	extends ComputeIntersectAll<
-		[BaseToggleGroupProps, InteractionHTMLAttributes<HTMLButtonElement>]
+		[BaseToggleGroupProps, HTMLAttributes<HTMLButtonElement>, SlotInteraction]
 	> {}

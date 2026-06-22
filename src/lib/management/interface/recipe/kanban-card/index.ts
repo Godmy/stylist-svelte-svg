@@ -1,4 +1,4 @@
-import type { SlotChildren } from '$stylist/architecture/interface/slot/children';
+import type { SlotChildren } from '$stylist/layout/interface/slot/children';
 import type { SlotKanbanCard } from '$stylist/management/interface/slot/kanban-card';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 

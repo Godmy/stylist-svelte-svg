@@ -1,4 +1,4 @@
-﻿import type { SlotContent } from '$stylist/architecture/interface/slot/content';
+import type { SlotContent } from '$stylist/layout/interface/slot/content';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { KanbanColumnType } from '$stylist/management/type/struct/kanban-column';
 export interface RecipeKanbanColumn extends ComputeIntersectAll<[SlotContent]> {

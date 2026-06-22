@@ -1,5 +1,6 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeActionSegmentedControlProps as ActionSegmentedControlComponentProps } from '$stylist/control/interface/recipe/action-segmented-control-props';
 
 export type RecipeActionSegmentedControlProps = ActionSegmentedControlComponentProps &
-	InteractionHTMLAttributes<HTMLDivElement>;
+	HTMLAttributes<HTMLDivElement> & SlotInteraction;

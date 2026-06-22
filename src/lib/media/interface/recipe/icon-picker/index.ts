@@ -1,9 +1,10 @@
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
 import type { ThemeIconItem } from '$stylist/media/interface/slot/icon-picker';
 
 export interface RecipeThemeIconPicker
-	extends ComputeIntersectAll<[Omit<InteractionHTMLAttributes<HTMLDivElement>, 'class'>]> {
+	extends ComputeIntersectAll<[Omit<HTMLAttributes<HTMLDivElement>, 'class'> & SlotInteraction]> {
 	icons: ThemeIconItem[];
 	title?: string;
 	searchPlaceholder?: string;

@@ -1,8 +1,9 @@
-import type { InteractionHTMLAttributes } from '$stylist/interaction/type/struct/interaction/interaction-html-attributes';
+import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotLocaleSwitcherLocale } from '$stylist/localization/interface/slot/locale-switcher-locale';
 import type { SlotLocaleSwitcherTimezoneOption } from '$stylist/localization/interface/slot/locale-switcher-timezone-option';
 
-export interface SlotLocaleSwitcher extends InteractionHTMLAttributes<HTMLDivElement> {
+export interface SlotLocaleSwitcher extends HTMLAttributes<HTMLDivElement>, SlotInteraction {
 	locales: SlotLocaleSwitcherLocale[];
 	currentLocale: string;
 	onLocaleChange?: (localeCode: string) => void;

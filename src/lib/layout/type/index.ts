@@ -67,7 +67,6 @@ export type {
 export type { ClassValue } from './script';
 export type {
 	AnimatedExpandableTableRowProps,
-	ArchitectureHTMLAttributes,
 	AspectRatioProps,
 	AttributeAspectRatio,
 	AttributeContainer,
