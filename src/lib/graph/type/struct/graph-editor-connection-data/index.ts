@@ -1,3 +1,3 @@
-import type { RecipeConnectionLine } from '$stylist/canvas/interface/recipe/connection-line';
+import type { RecipeConnectionLine } from '$stylist/graph/interface/recipe/connection-line';
 
 export type GraphEditorConnectionData = RecipeConnectionLine;

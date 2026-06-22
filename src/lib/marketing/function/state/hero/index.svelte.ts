@@ -12,6 +12,9 @@ export function createHeroState(props: IHeroProps) {
 	const backgroundImage = $derived(props.backgroundImage);
 	const height = $derived(props.height ?? 'full');
 	const children = $derived(props.children);
+	const ctaContainerClasses = $derived('hero__cta-container');
+	const primaryCTAButtonClasses = $derived('hero__cta-button hero__cta-button--primary');
+	const secondaryCTAButtonClasses = $derived('hero__cta-button hero__cta-button--secondary');
 
 	function handlePrimaryClick(): void {
 		if (primaryCTA?.onClick) {

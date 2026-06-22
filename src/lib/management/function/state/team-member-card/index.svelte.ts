@@ -10,6 +10,7 @@ export function createTeamMemberCardState(props: TeamMemberCardStateProps) {
 	const description = $derived(props.description);
 	const achievements = $derived(props.achievements ?? []);
 	const variant = $derived(props.variant ?? 'default');
+	const classes = $derived(props.class == null ? undefined : String(props.class));
 
 	// Computed classes
 

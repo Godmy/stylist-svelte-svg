@@ -37,6 +37,12 @@ export function createPlaygroundAiAssistantState(props: RecipePlaygroundAiAssist
 
 	const aiClient = $derived(createAIClient(providerId));
 	const currentProviderName = $derived(providerNames[providerId]);
+	const containerClass = $derived(props.class == null ? undefined : String(props.class));
+	const headerClass = $derived('playground-ai-assistant__header');
+	const messagesContainerClass = $derived('playground-ai-assistant__messages');
+	const inputContainerClass = $derived('playground-ai-assistant__input');
+	const errorBannerClass = $derived('playground-ai-assistant__error');
+	const loadingIndicatorClass = $derived('playground-ai-assistant__loading');
 
 	const messageClass = (role: 'user' | 'assistant') =>
 		['playground-ai-assistant__message', role ? `playground-ai-assistant__message--selected` : '']

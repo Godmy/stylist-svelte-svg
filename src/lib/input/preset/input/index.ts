@@ -4,6 +4,7 @@ import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
 import { TOKEN_APPEARANCE } from '$stylist/interaction/const/enum/appearance';
 import { createBasePreset } from '$stylist/interaction/preset/base';
+import { RECORD_CLASS_SIZE } from '$stylist/layout/const/record/class-size';
 
 // ============================================================================
 // Input Field Preset
@@ -21,7 +22,7 @@ export const INPUT_FIELD_PRESET: InputPreset<TokenAppearance, TokenSize> = {
 		error:
 			'border-[var(--color-danger-500)] focus:ring-[var(--color-danger-500)] focus:border-[var(--color-danger-500)]',
 		size: Object.fromEntries(
-			TOKEN_SIZE.map((size) => [size, InputStyleManager.getInputSizeClass(size)])
+			TOKEN_SIZE.map((size) => [size, RECORD_CLASS_SIZE[size] ?? 'h-9 px-3 text-sm'])
 		) as Record<TokenSize, string>
 	}
 } as const;
@@ -42,7 +43,7 @@ export const TEXTAREA_PRESET: InputPreset<TokenAppearance, TokenSize> = {
 		error:
 			'border-[var(--color-danger-500)] focus:ring-[var(--color-danger-500)] focus:border-[var(--color-danger-500)]',
 		size: Object.fromEntries(
-			TOKEN_SIZE.map((size) => [size, InputStyleManager.getTextareaSizeClass(size)])
+			TOKEN_SIZE.map((size) => [size, RECORD_CLASS_SIZE[size] ?? 'min-h-24 px-3 py-2 text-sm'])
 		) as Record<TokenSize, string>
 	}
 } as const;
@@ -52,9 +53,9 @@ export const TEXTAREA_PRESET: InputPreset<TokenAppearance, TokenSize> = {
 // ============================================================================
 
 export const INPUT_GROUP_PRESET = {
-	containerClass: InputStyleManager.getInputGroupContainerClasses(),
-	inputClass: InputStyleManager.getInputGroupInputClasses(),
-	buttonClass: InputStyleManager.getInputGroupButtonClasses()
+	containerClass: 'input-group',
+	inputClass: 'input-group__input',
+	buttonClass: 'input-group__button'
 } as const;
 
 // ============================================================================
@@ -63,16 +64,16 @@ export const INPUT_GROUP_PRESET = {
 
 export const INPUT_PASSWORD_PRESET = {
 	...INPUT_FIELD_PRESET,
-	toggleClass: InputStyleManager.getPasswordToggleClass()
+	toggleClass: 'input-password__toggle'
 } as const;
 
 export const INPUT_LONG_PRESET = {
 	...INPUT_FIELD_PRESET,
-	resizeHandleClass: InputStyleManager.getInputLongResizeHandleClass()
+	resizeHandleClass: 'input-long__resize-handle'
 } as const;
 
 export const INPUT_DOUBLE_PRESET = {
-	containerClass: InputStyleManager.getInputDoubleContainerClass()
+	containerClass: 'input-double'
 } as const;
 
 // ============================================================================
@@ -80,8 +81,8 @@ export const INPUT_DOUBLE_PRESET = {
 // ============================================================================
 
 export const INPUT_CONTAINER_PRESET = {
-	containerClass: InputStyleManager.getInputFieldContainerClasses(),
-	helperTextClass: InputStyleManager.getInputFieldHelperTextClasses(),
-	errorTextClass: InputStyleManager.getErrorTextClass(),
-	labelClass: InputStyleManager.getLabelClass()
+	containerClass: 'input-field',
+	helperTextClass: 'input-field__helper-text',
+	errorTextClass: 'input-field__error-text',
+	labelClass: 'input-field__label'
 } as const;

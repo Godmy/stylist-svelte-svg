@@ -48,6 +48,11 @@ export function createPlaygroundAiPanelState(props: RecipePlaygroundAiPanel) {
 	const selectedProviderId = $derived(props.selectedProviderId ?? null);
 	const onOptionSelect = $derived(props.onOptionSelect);
 	const onStartChat = $derived(props.onStartChat);
+	const containerClass = $derived(props.class == null ? undefined : String(props.class));
+	const headerClass = $derived('playground-ai-panel__header');
+	const providerHeaderClass = $derived('playground-ai-panel__provider-header');
+	const optionItemClass = $derived('playground-ai-panel__option');
+	const selectedOptionItemClass = $derived('playground-ai-panel__option--selected');
 
 	function toggleProvider(providerId: string) {
 		const newExpanded = new Set(expandedProviders);

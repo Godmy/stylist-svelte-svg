@@ -23,6 +23,8 @@ export function createPerformanceDashboardState(props: PerformanceDashboardState
 	const metricCardClassStr = $derived(
 		metricCardClass == null ? undefined : String(metricCardClass)
 	);
+	const headerClassComputed = $derived(headerClassStr);
+	const metricCardClassComputed = $derived(metricCardClassStr);
 
 	let selectedTimeRange = $state(untrack(() => timeRange));
 	const timeRanges = ObjectManagerPerformanceDashboard.resolveTimeRanges();

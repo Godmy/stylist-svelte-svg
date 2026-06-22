@@ -20,15 +20,17 @@ export function createButtonState(input: ButtonFactoryInput | RecipeButton) {
 	const props = $derived.by(() => {
 		if ('contract' in input && 'html' in input) {
 			return {
+				...input.html.attrs,
+				...input.slots,
 				variant: input.contract.variant as TokenAppearance,
 				size: input.contract.size as TokenSize,
-				disabled: input.contract.disabled,
-				loading: input.contract.loading,
-				block: input.contract.block,
-				loadingLabel: input.contract.loadingLabel,
-				ariaLabel: input.contract.ariaLabel,
+				disabled: input.contract.disabled as boolean | undefined,
+				loading: input.contract.loading as boolean | undefined,
+				block: input.contract.block as boolean | undefined,
+				loadingLabel: input.contract.loadingLabel as string | undefined,
+				ariaLabel: input.contract.ariaLabel as string | undefined,
 				class: input.html.class
-			} satisfies RecipeButton;
+			} as RecipeButton;
 		}
 
 		return input;
@@ -95,7 +97,7 @@ export function createButtonState(input: ButtonFactoryInput | RecipeButton) {
 			borderLeft,
 			borderRight,
 			...rest
-		} = props;
+		} = props as RecipeButton & Record<string, unknown>;
 		return rest;
 	});
 

@@ -15,6 +15,21 @@ export function createSidebarState(props: RecipeSidebar) {
 	const width = $derived(props.width ?? '280px');
 	const mobileWidth = $derived(props.mobileWidth ?? '280px');
 	const disabled = $derived(props.disabled ?? false);
+	const hostClass = $derived(props.class == null ? undefined : String(props.class));
+	const mobileButtonClass = $derived('sidebar__mobile-button');
+	const overlayClass = $derived('sidebar__overlay');
+	const sidebarClass = $derived('sidebar');
+	const sidebarContainerClass = $derived('sidebar__container');
+	const headerClass = $derived('sidebar__header');
+	const logoWrapperClass = $derived(props.logoClass ?? 'sidebar__logo');
+	const titleClassComputed = $derived(props.titleClass ?? 'sidebar__title');
+	const navClassComputed = $derived(props.navClass ?? 'sidebar__nav');
+	const navListClass = $derived('sidebar__nav-list');
+	const footerClassComputed = $derived(props.footerClass ?? 'sidebar__footer');
+	const contentAreaClass = $derived('sidebar__content');
+	const navItemIconWrapperClass = $derived('sidebar__nav-item-icon');
+	const navItemLabelClass = $derived('sidebar__nav-item-label');
+	const navItemBadgeClass = $derived('sidebar__nav-item-badge');
 
 	// Handle window resize to detect mobile view
 	$effect(() => {

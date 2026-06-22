@@ -10,6 +10,7 @@ export function createImageGalleryState(props: RecipeImageGallery) {
 	const autoPlay = $derived(props.autoPlay ?? false);
 	const autoPlayInterval = $derived(props.autoPlayInterval ?? 3000);
 	const showCaptions = $derived(props.showCaptions ?? false);
+	const containerClass = $derived(props.class == null ? undefined : String(props.class));
 
 	// Auto-play functionality
 	$effect(() => {

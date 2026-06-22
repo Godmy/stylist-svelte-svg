@@ -14,6 +14,10 @@ export function createPlaygroundAiChatState(props: RecipePlaygroundAiChat) {
 	]);
 
 	const onClose = $derived(props.onClose);
+	const containerClass = $derived(props.class == null ? undefined : String(props.class));
+	const headerClass = $derived('playground-ai-chat__header');
+	const messagesContainerClass = $derived('playground-ai-chat__messages');
+	const inputContainerClass = $derived('playground-ai-chat__input');
 
 	const messageClass = (role: 'user' | 'assistant') =>
 		['playground-ai-chat__message', role ? `playground-ai-chat__message--selected` : '']

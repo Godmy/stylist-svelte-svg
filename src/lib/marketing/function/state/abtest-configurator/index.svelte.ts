@@ -26,6 +26,10 @@ export function createABTestConfiguratorState(
 	const formClassName = $derived(props.formClass ?? '');
 	const variantClassName = $derived(props.variantClass ?? '');
 	const footerClassName = $derived(props.footerClass ?? '');
+	const containerClasses = $derived(className == null ? undefined : String(className));
+	const headerClasses = $derived(headerClassName == null ? undefined : String(headerClassName));
+	const formClasses = $derived(formClassName == null ? undefined : String(formClassName));
+	const footerClasses = $derived(footerClassName == null ? undefined : String(footerClassName));
 
 	let test = $state<ABTest>(
 		untrack(() => ({

@@ -7,6 +7,7 @@ export function createFeatureToggleState(props: RecipeFeatureToggle) {
 	const checked = $derived(props.checked ?? false);
 	const disabled = $derived(props.disabled ?? false);
 	const className = $derived(props.class ?? '');
+	const containerClasses = $derived(className == null ? undefined : String(className));
 
 	let isChecked = $state(untrack(() => checked));
 

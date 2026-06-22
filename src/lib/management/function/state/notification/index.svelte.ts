@@ -11,6 +11,7 @@ export function createNotificationState(props: NotificationStateProps) {
 	const closable = $derived(props.closable ?? true);
 	const position = $derived(props.position ?? 'top-end');
 	const showIcon = $derived(props.showIcon ?? true);
+	const containerClasses = $derived(props.class == null ? undefined : String(props.class));
 
 	// SlotState
 	let isVisible = $state(props.show ?? false);

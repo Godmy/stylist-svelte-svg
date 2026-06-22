@@ -25,6 +25,8 @@ export function createConversionFunnelState(props: ConversionFunnelProps) {
 	const className = $derived(props.class ?? '');
 	const headerClassName = $derived(props.headerClass ?? '');
 	const maxValue = $derived(Math.max(...steps.map((s) => s.value), 100));
+	const containerClasses = $derived(className == null ? undefined : String(className));
+	const headerClasses = $derived(headerClassName == null ? undefined : String(headerClassName));
 
 	const restProps = $derived.by(() => {
 		const { class: _class, headerClass: _headerClass, ...rest } = props;

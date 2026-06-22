@@ -10,6 +10,7 @@ export function createProcessStepState(props: RecipeProcessStep) {
 	const className = $derived(props.class ?? '');
 
 	const hostClass = $derived(className == null ? undefined : String(className));
+	const classes = $derived(hostClass);
 
 	return {
 		get number() {

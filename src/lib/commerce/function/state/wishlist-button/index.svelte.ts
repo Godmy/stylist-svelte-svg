@@ -45,7 +45,7 @@ export function createWishlistButtonState(props: RecipeWishlistButton) {
 				props.onSuccess?.();
 				message = inWishlist ? 'Added to wishlist' : 'Removed from wishlist';
 			} catch (error) {
-				props.onError?.(error instanceof Error ? error : new Error(String(error)));
+				props.onError?.(error instanceof Error ? error.message : String(error));
 				message = 'Failed to update wishlist';
 			} finally {
 				isLoading = false;

@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createButtonMoleculeState } from './index.svelte';
+export { default as createButtonMoleculeState } from './index.svelte';

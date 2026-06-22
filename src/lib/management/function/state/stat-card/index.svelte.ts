@@ -12,6 +12,7 @@ export function createStatCardState(props: RecipeStatCard) {
 	const animated = $derived((props as any).animated ?? false);
 	const numericValue = $derived(ObjectManagerStatCard.resolveNumericValue(value));
 	const classNameStr = $derived(props.class == null ? undefined : String(props.class));
+	const classes = $derived(classNameStr);
 	const restProps = $derived.by(() => {
 		const {
 			class: _class,

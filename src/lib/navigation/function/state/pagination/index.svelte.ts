@@ -10,6 +10,17 @@ export function createPaginationState(props: RecipePagination) {
 	const maxVisible = $derived(props.maxVisible ?? 5);
 	const size = $derived(props.size ?? 'md');
 	const disabled = $derived(props.disabled ?? false);
+	const containerClass = $derived(props.class == null ? undefined : String(props.class));
+	const navClass = $derived('pagination__nav');
+	const buttonClassComputed = $derived(props.buttonClass ?? 'pagination__button');
+	const activeButtonClassComputed = $derived(
+		props.activeButtonClass ?? 'pagination__button--active'
+	);
+	const disabledButtonClassComputed = $derived(
+		props.disabledButtonClass ?? 'pagination__button--disabled'
+	);
+	const iconButtonClass = $derived('pagination__icon-button');
+	const dotsClass = $derived('pagination__dots');
 
 	// Computed classes
 

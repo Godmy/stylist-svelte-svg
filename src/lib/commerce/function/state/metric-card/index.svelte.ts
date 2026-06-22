@@ -11,7 +11,9 @@ export function createMetricCardState(props: RecipeMetricCard) {
 	const showProgressBar = props.showProgressBar ?? true;
 	const propClassName = props.class ?? '';
 
-	const progressBarWidth = $derived(ObjectManagerMetricCard.resolveProgressBarWidth(percentage));
+	const progressBarWidth = $derived(
+		ObjectManagerMetricCard.resolveProgressBarWidth(percentage ?? 0)
+	);
 
 	return {
 		get label() {

@@ -1,6 +1,7 @@
 export type ClassValue =
 	| string
 	| number
+	| bigint
 	| boolean
 	| null
 	| undefined

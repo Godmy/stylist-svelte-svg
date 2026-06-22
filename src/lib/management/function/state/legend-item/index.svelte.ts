@@ -6,6 +6,7 @@ export function createLegendItemState(props: RecipeLegendItem) {
 	const count = $derived(props.count ?? 0);
 	const variant = $derived(props.variant ?? 'default');
 	const active = $derived(props.active ?? false);
+	const itemClasses = $derived('legend-item');
 
 	function getIconName(type: string): string {
 		switch (type) {

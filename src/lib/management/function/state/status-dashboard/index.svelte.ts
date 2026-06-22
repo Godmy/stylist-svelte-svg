@@ -16,6 +16,7 @@ export function createStatusDashboardState(props: StatusDashboardStateProps) {
 	const classNameStr = $derived(className == null ? undefined : String(className));
 	const headerClassStr = $derived(headerClass == null ? undefined : String(headerClass));
 	const itemClassStr = $derived(itemClass == null ? undefined : String(itemClass));
+	const headerClassComputed = $derived(headerClassStr);
 
 	const titleClass = 'status-dashboard__title';
 	const subtitleClass = 'status-dashboard__subtitle';
