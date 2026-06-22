@@ -4,11 +4,9 @@ export type {
 	ErrorLogSource,
 	TokenCodeLanguage,
 	TokenCodeView,
-	TokenDevelopmentIcon,
 	TokenDiffType,
 	TokenPropertyType
 } from './enum';
-export type { ExtractConstEnumValue } from './script';
 export type {
 	AtomicPrinciplesShowcaseAtomicPrinciplesStats,
 	AtomicPrinciplesShowcaseProps,
@@ -51,7 +49,3 @@ export type {
 	StylistProps,
 	StylistSelection
 } from './struct';
-export type {
-	ExtractConstEnumDomainPayload,
-	ExtractConstEnumTokenPayload
-} from './script';

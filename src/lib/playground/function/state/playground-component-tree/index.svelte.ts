@@ -2,7 +2,6 @@
 import type { PlaygroundComponentTreeGroupedStories } from '$stylist/playground/type/struct/playground-component-tree-grouped-stories';
 import type { PlaygroundComponentTreeTreeNodeData } from '$stylist/playground/type/struct/playground-component-tree-tree-node-data';
 import type { PlaygroundComponentTreeStory } from '$stylist/playground/type/struct/playground-component-tree-story';
-import { TOKEN_DEVELOPMENT_ICON } from '$stylist/development/const/enum/icon';
 
 import { playgroundComponentTreeAnnotateAutoSelectable } from '$stylist/playground/function/script/playground-component-tree-annotate-auto-selectable';
 import { playgroundComponentTreeFindNodeByPath } from '$stylist/playground/function/script/playground-component-tree-find-node-by-path';
@@ -11,19 +10,19 @@ import { playgroundComponentTreeSortTreeNode } from '$stylist/playground/functio
 export function createPlaygroundComponentTreeState(props: RecipePlaygroundComponentTree) {
 	const categoryConfig: Record<string, { icon: any; color: string; bg: string; border: string }> = {
 		Atoms: {
-			icon: TOKEN_DEVELOPMENT_ICON.find((icon) => icon === 'code') ?? 'code',
+			icon: 'code',
 			color: 'text-blue-600 dark:text-blue-400',
 			bg: 'bg-blue-50 dark:bg-blue-900/10',
 			border: 'border-blue-200 dark:border-blue-700'
 		},
 		Molecules: {
-			icon: TOKEN_DEVELOPMENT_ICON.find((icon) => icon === 'layers') ?? 'layers',
+			icon: 'layers',
 			color: 'text-purple-600 dark:text-purple-400',
 			bg: 'bg-purple-50 dark:bg-purple-900/10',
 			border: 'border-purple-200 dark:border-purple-700'
 		},
 		Organisms: {
-			icon: TOKEN_DEVELOPMENT_ICON.find((icon) => icon === 'package') ?? 'package',
+			icon: 'package',
 			color: 'text-green-600 dark:text-green-400',
 			bg: 'bg-green-50 dark:bg-green-900/10',
 			border: 'border-green-200 dark:border-green-700'

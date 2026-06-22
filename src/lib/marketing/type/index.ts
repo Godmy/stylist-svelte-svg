@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { ABTestConfiguratorState } from './alias';
-export type { TokenMarketingIcon } from './enum';
 export type { IHeroCTA } from './hero-cta';
 export type {
 	ConversionFunnelContract,

@@ -3,10 +3,7 @@ export type {
 	SpinnerVariant,
 	StepIconContent
 } from './alias';
-export type {
-	ToastType,
-	TokenNotificationIcon
-} from './enum';
+export type { ToastType } from './enum';
 export type {
 	AccountProgressTrackerProps,
 	AlertProps,

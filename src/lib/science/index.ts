@@ -13,7 +13,6 @@ export {
 	PromptBuilder,
 	SentimentAnalysis
 } from './component';
-export { TOKEN_SCIENCE_ICON } from './const';
 export {
 	createAiResultCardState,
 	createIdef0BlackBoxState,
@@ -41,8 +40,7 @@ export type {
 	PromptVariableType,
 	ScienceHTMLAttributes,
 	SentimentAnalysisStatus,
-	ThemeSceneColors,
-	TokenScienceIcon
+	ThemeSceneColors
 } from './type';
 export type {
 	ChildrenHtmlAttributes,

@@ -10,8 +10,7 @@ export {
 } from './component';
 export {
 	SHARED_CANVAS_ACTION_ICONS,
-	SHARED_CANVAS_TOOL_DEFINITIONS,
-	TOKEN_CANVAS_ICON
+	SHARED_CANVAS_TOOL_DEFINITIONS
 } from './const';
 export {
 	cloneCanvasObjects,
@@ -59,7 +58,6 @@ export type {
 	ThemeGraphColors,
 	ThemeGraphPortDataTypeColors,
 	ThemeGraphPortStateColors,
-	TokenCanvasIcon,
 	ViewportContract,
 	ViewportProps
 } from './type';

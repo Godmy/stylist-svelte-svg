@@ -41,8 +41,7 @@ export {
 } from './component';
 export {
 	INPUT_VARIANT_CLASSES,
-	TIME_SLOT_DEFAULT_CONFIG,
-	TOKEN_INPUT_ICON
+	TIME_SLOT_DEFAULT_CONFIG
 } from './const';
 export {
 	createAdvancedInputState,
@@ -116,7 +115,6 @@ export type {
 	QuoteRequestValue,
 	TextAreaStateOptions,
 	TextInputBaseProps,
-	TokenInputIcon,
 	TranslatableText,
 	TranslationLocale
 } from './type';

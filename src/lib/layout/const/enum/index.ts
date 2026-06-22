@@ -8,7 +8,6 @@ export { TOKEN_COLUMN } from './column';
 export { TOKEN_CORNER } from './corner';
 export { TOKEN_DENSITY } from './density';
 export { TOKEN_GRADIENT } from './gradient-mode';
-export { TOKEN_LAYOUT_ICON } from './icon';
 export { TOKEN_IMAGE_FILTER } from './image-filter';
 export { TOKEN_JUSTIFICATION } from './justification';
 export { TOKEN_LAYOUT_SIZE } from './layout-size';

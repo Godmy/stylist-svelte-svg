@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { TokenNavigationIcon } from './enum';
 export type {
 	BreadcrumbDropdownItem,
 	BreadcrumbItem,

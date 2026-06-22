@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { TypeDomainScreen } from './alias';
-export type { TokenDomainIcon } from './enum';
 export type {
 	TypeDomainCluster,
 	TypeDomainComponentDescriptor,

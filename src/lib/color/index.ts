@@ -19,7 +19,6 @@ export {
 	COLORS_SCALES_SLATE,
 	COLORS_SCALES_TEAL,
 	TOKEN_COLOR,
-	TOKEN_COLOR_ICON,
 	TOKEN_COLOR_TONE
 } from './const';
 export {
@@ -29,7 +28,6 @@ export {
 } from './function';
 export type {
 	TokenColor,
-	TokenColorIcon,
 	TokenColorTone
 } from './type';
 export type {

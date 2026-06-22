@@ -23,13 +23,6 @@ export {
 	VideoPlayer
 } from './component';
 export {
-	ANNOUNCEMENT_BANNER_CLASSES,
-	IMAGE_WITH_CAPTION_CLASSES,
-	RECORD_ICON_SIZE,
-	TOKEN_ICON_REGISTRY,
-	TOKEN_MEDIA_ICON
-} from './const';
-export {
 	createAnnouncementBannerState,
 	createAudioPlayerState,
 	createAudioSliderState,
@@ -85,7 +78,6 @@ export type {
 	SvgProps,
 	TeamAvatarStackProps,
 	TeamMember,
-	TokenMediaIcon,
 	VideoPlayerProps
 } from './type';
 export type {

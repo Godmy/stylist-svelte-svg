@@ -32,8 +32,7 @@ export {
 	SKELETON_VARIANT_CLASSES,
 	SPINNER_COLOR_CLASSES,
 	SPINNER_SIZE_CLASSES,
-	SPINNER_VARIANT_CLASSES,
-	TOKEN_NOTIFICATION_ICON
+	SPINNER_VARIANT_CLASSES
 } from './const';
 export {
 	createAccessibilityCheckboxState,
@@ -91,8 +90,7 @@ export type {
 	ToastNotificationType,
 	ToastProps,
 	ToastStackProps,
-	ToastType,
-	TokenNotificationIcon
+	ToastType
 } from './type';
 export type {
 	RecipeAlert,

@@ -36,7 +36,6 @@ export type {
 	TokenGradient,
 	TokenImageFilter,
 	TokenJustification,
-	TokenLayoutIcon,
 	TokenLayoutSize,
 	TokenOrientation,
 	TokenShape,

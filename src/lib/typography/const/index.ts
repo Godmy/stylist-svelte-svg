@@ -2,7 +2,6 @@
 export {
 	TOKEN_FONT_SIZE,
 	TOKEN_FONT_WEIGHT,
-	TOKEN_TYPOGRAPHY_ICON,
 	TOKEN_TYPOGRAPHY_TONE
 } from './enum';
 export {

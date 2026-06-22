@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { TOKEN_CALENDAR_ICON } from './icon';
 export { TOKEN_PRIORITY } from './priority';
 export {
 	TOKEN_TIMESTAMP_FORMAT,

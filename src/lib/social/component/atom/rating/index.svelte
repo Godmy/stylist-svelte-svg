@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { SlotRating as IRatingProps } from '$stylist/social/interface/slot/rating';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import createRatingState from '$stylist/social/function/state/rating/index.svelte';
 
 	let {
@@ -44,7 +43,7 @@
 			aria-pressed={i < rating}
 		>
 			<BaseIcon
-				name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'star') ?? 'star'}
+				name="star"
 				class={state.starIconClasses(i)}
 			/>
 		</button>

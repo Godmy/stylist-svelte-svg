@@ -9,10 +9,7 @@ export {
 	SocialLogin,
 	SocialShare
 } from './component';
-export {
-	TOKEN_SOCIAL_ICON,
-	TOKEN_STAR
-} from './const';
+export { TOKEN_STAR } from './const';
 export {
 	commentSystemFormatDate,
 	commentSystemSubmitComment,
@@ -66,7 +63,6 @@ export type {
 	SocialLoginContract,
 	SocialPlatform,
 	SocialShareContract,
-	TokenSocialIcon,
 	User
 } from './type';
 export type {

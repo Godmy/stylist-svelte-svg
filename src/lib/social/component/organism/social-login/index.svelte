@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Props } from '$stylist/social/type/struct/social-login/-props';
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import { TOKEN_SOCIAL_ICON } from '$stylist/social/const/enum/icon';
 	import createSocialLoginState from '$stylist/social/function/state/social-login/index.svelte';
 
 	let props: Props = $props();
@@ -13,7 +12,7 @@
 		<div class="c-social-login__hero">
 			<div class="c-social-login__hero-icon-wrap">
 				<BaseIcon
-					name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'user-round-plus') ?? 'user-round-plus'}
+					name="user-round-plus"
 					class="c-social-login__hero-icon"
 				/>
 			</div>
@@ -70,7 +69,7 @@
 						<div class="c-social-login__input-wrap">
 							<div class="c-social-login__input-icon-wrap">
 								<BaseIcon
-									name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'mail') ?? 'mail'}
+									name="mail"
 									class="c-social-login__input-icon"
 								/>
 							</div>
@@ -94,7 +93,7 @@
 							<div class="c-social-login__input-wrap">
 								<div class="c-social-login__input-icon-wrap">
 									<BaseIcon
-										name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'lock') ?? 'lock'}
+										name="lock"
 										class="c-social-login__input-icon"
 									/>
 								</div>
@@ -145,7 +144,7 @@
 					>
 						{#if state.isLoading}
 							<BaseIcon
-								name={TOKEN_SOCIAL_ICON.find((icon) => icon === 'loader-2') ?? 'loader-2'}
+								name="loader-2"
 								class="c-social-login__loader-icon"
 							/>
 							Signing in...

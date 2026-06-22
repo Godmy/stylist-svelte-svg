@@ -11,7 +11,6 @@ export {
 } from './component';
 export {
 	TOKEN_CALENDAR,
-	TOKEN_CALENDAR_ICON,
 	TOKEN_PERFORMANCE_RANGES,
 	TOKEN_PRIORITY,
 	TOKEN_TIMESTAMP_FORMAT,
@@ -44,7 +43,6 @@ export type {
 	RealTimePresenceStatus,
 	RecipeExtendedTimeSlot,
 	TimelineStatus,
-	TokenCalendarIcon,
 	TokenPriority,
 	TokenTimeFormat,
 	TokenTimeMeasure,
@@ -52,7 +50,6 @@ export type {
 } from './type';
 export type {
 	BehaviorTimeRangeFilter,
-	ChildrenHtmlAttributes,
 	ContractScheduleEvent,
 	ContractTimeSlot,
 	RecipeCalendar,

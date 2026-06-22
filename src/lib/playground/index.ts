@@ -22,7 +22,6 @@ export {
 	PropsEditor,
 	Story
 } from './component';
-export { TOKEN_PLAYGROUND_ICON } from './const';
 export {
 	createPlaygroundAiAssistantState,
 	createPlaygroundAiChatState,
@@ -93,8 +92,7 @@ export type {
 	PlaygroundTreeNodeProps,
 	PlaygroundTreeNodeStory,
 	PlaygroundTreeNodeTreeNodeData,
-	PropDefinition,
-	TokenPlaygroundIcon
+	PropDefinition
 } from './type';
 export type {
 	RecipePlaygroundAiAssistant,

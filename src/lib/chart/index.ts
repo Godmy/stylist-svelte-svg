@@ -36,7 +36,6 @@ export {
 	PRESET_CANVAS_CHART,
 	TOKEN_CHART,
 	TOKEN_CHART_COLORS,
-	TOKEN_CHART_ICON,
 	TOKEN_COLOR_SCALE,
 	TOKEN_PIE_COLORS
 } from './const';
@@ -87,8 +86,7 @@ export type {
 	ScatterPlotDataPoint,
 	TokenAnalyticsChartType,
 	TokenCanvasChartType,
-	TokenChart,
-	TokenChartIcon
+	TokenChart
 } from './type';
 export type {
 	BehaviorChartAxis,

@@ -10,7 +10,6 @@ export type {
 	PictureToolbarTool,
 	PromoBannerVariant
 } from './alias';
-export type { TokenMediaIcon } from './enum';
 export type {
 	AudioPlayerProps,
 	AudioSliderProps,

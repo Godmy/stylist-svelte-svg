@@ -4,8 +4,7 @@ export type {
 	GraphNodeCategory,
 	GraphThemeId,
 	GraphToolMode,
-	NodeTitleVariant,
-	TokenGraphIcon
+	NodeTitleVariant
 } from './enum';
 export type {
 	ConnectionLinePoint,

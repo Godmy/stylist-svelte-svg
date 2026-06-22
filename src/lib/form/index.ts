@@ -14,8 +14,7 @@ export {
 } from './component';
 export {
 	RADIO_GROUP_LAYOUT_CLASS,
-	SEARCH_ICON_NAME,
-	TOKEN_FORM_ICON
+	SEARCH_ICON_NAME
 } from './const';
 export {
 	createAddressFormState,
@@ -47,7 +46,6 @@ export type {
 	RadioGroupProps,
 	RadioOption,
 	RadioOrientation,
-	TokenFormIcon,
 	ValidationErrors,
 	ValidationOrientation,
 	ValidationProps

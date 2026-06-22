@@ -28,8 +28,7 @@ export {
 } from './component';
 export {
 	DEFAULT_GRAPH_CANVAS,
-	LITEGRAPH_CANVAS_ICONS,
-	TOKEN_GRAPH_ICON
+	LITEGRAPH_CANVAS_ICONS
 } from './const';
 export {
 	createConnectionLineState,
@@ -95,8 +94,7 @@ export type {
 	OntologyNode,
 	OntologyNodeComponentProps,
 	PortGroupProps,
-	Position2D,
-	TokenGraphIcon
+	Position2D
 } from './type';
 export type {
 	ContractLitegraphNode,

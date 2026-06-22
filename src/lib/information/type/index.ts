@@ -1,7 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
 	ListItemMarkerType,
-	TokenInformationIcon,
 	TokenSoftwareBadge,
 	TokenStatus,
 	TokenTableCell

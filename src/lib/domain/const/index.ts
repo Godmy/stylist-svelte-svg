@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { TOKEN_DOMAIN_ICON } from './enum';
 export { DOMAIN_MENU_ICONS } from './map';
 export { DOMAIN_COMPONENT_DEBUG_ERROR } from './object';
 export { DOMAIN_SCREEN_VALUES } from './record';

@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { PlaygroundComponentTreeState } from './alias';
-export type { TokenPlaygroundIcon } from './enum';
 export type {
 	InterfaceControllerSettings,
 	PlaygroundAiAssistantAIClientLike,

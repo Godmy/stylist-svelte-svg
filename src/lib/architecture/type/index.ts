@@ -4,7 +4,6 @@ export type {
 	FoundationAxisDirection,
 	FoundationAxisOrientation,
 	TierContent,
-	TokenArchitectureIcon,
 	TokenArchitectureShaderFragment,
 	TokenArchitectureShaderVertex,
 	TokenComponentType,

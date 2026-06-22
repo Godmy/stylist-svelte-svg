@@ -4,7 +4,6 @@ export { TOKEN_APPEARANCE } from './appearance';
 export { TOKEN_AVAILABILITY } from './availability';
 export { TOKEN_INTERACTION_CONTRACT } from './contract';
 export { TOKEN_FLOW } from './flow';
-export { TOKEN_INTERACTION_ICON } from './icon';
 export { TOKEN_INTERACTION } from './interaction';
 export { TOKEN_LOADING } from './loading';
 export { TOKEN_PROCESS } from './process';

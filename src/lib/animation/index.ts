@@ -11,7 +11,6 @@ export {
 export {
 	BASE_EASING,
 	TOKEN_ANIMATION,
-	TOKEN_ANIMATION_ICON,
 	TOKEN_DURATION,
 	TOKEN_EASING,
 	TOKEN_TRANSITION
@@ -32,7 +31,6 @@ export {
 export type {
 	EasingFunction,
 	TokenAnimation,
-	TokenAnimationIcon,
 	TokenDuration,
 	TokenEasing,
 	TokenTransition

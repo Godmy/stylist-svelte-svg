@@ -7,7 +7,6 @@ export {
 export { TOKEN_COMPONENT_TYPE } from './component-type';
 export { TOKEN_CONNECTOR } from './connector';
 export { TOKEN_FUNCTIONAL_TAXONOMY } from './functional-taxonomy';
-export { TOKEN_ARCHITECTURE_ICON } from './icon';
 export { TOKEN_LINE_TYPE } from './line-type';
 export { TOKEN_MARKER } from './marker';
 export { TOKEN_NODE_TYPE } from './node-type';

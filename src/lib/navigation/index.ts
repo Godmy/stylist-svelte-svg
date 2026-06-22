@@ -38,8 +38,7 @@ export {
 	SIDE_BY_SIDE_JUSTIFY_CLASSES,
 	SIDE_BY_SIDE_SECTION_WIDTH_MOBILE,
 	SIDE_BY_SIDE_SECTION_WIDTH_RESPONSIVE,
-	SLASH_ICON,
-	TOKEN_NAVIGATION_ICON
+	SLASH_ICON
 } from './const';
 export {
 	close,
@@ -89,7 +88,6 @@ export type {
 	SideBySideSection,
 	Step,
 	StepperProps,
-	TokenNavigationIcon,
 	ToolbarItem
 } from './type';
 export type {

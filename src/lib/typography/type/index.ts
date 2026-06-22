@@ -5,7 +5,6 @@ export type {
 	TokenFontWeight,
 	TokenLetterSpacing,
 	TokenLineHeight,
-	TokenTypographyIcon,
 	TokenTypographyTone
 } from './enum';
 export type {

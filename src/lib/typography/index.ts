@@ -19,7 +19,6 @@ export {
 	TOKEN_FONT_WEIGHT,
 	TOKEN_LETTER_SPACING,
 	TOKEN_LINE_HEIGHT,
-	TOKEN_TYPOGRAPHY_ICON,
 	TOKEN_TYPOGRAPHY_TONE
 } from './const';
 export {
@@ -50,7 +49,6 @@ export type {
 	TokenFontWeight,
 	TokenLetterSpacing,
 	TokenLineHeight,
-	TokenTypographyIcon,
 	TokenTypographyTone
 } from './type';
 export type {

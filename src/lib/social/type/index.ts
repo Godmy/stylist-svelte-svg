@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { TokenSocialIcon } from './enum';
 export type {
 	Activity,
 	ActivityType,

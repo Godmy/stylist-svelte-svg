@@ -49,8 +49,7 @@ export {
 	DOMAIN_SCREEN_LANDING,
 	DOMAIN_SCREEN_VALUES,
 	JOINT_TOOLBAR_ITEMS,
-	STYLIST_GRAPH_WORKSPACE_SEED,
-	TOKEN_DOMAIN_ICON
+	STYLIST_GRAPH_WORKSPACE_SEED
 } from './const';
 export {
 	createDomainBacklogPreviewState,
@@ -59,7 +58,6 @@ export {
 	createDomainPageState
 } from './function';
 export type {
-	TokenDomainIcon,
 	TypeDomainCluster,
 	TypeDomainComponentDescriptor,
 	TypeDomainComponentProjection,

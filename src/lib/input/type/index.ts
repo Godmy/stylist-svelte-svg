@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { ContentType } from './alias';
-export type { TokenInputIcon } from './enum';
 export type { InputStateOptions } from './script';
 export type {
 	AutoCompleteOption,

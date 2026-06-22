@@ -5,8 +5,7 @@ export type {
 } from './alias';
 export type {
 	ExportFormat,
-	TokenDocumentFormat,
-	TokenFileIcon
+	TokenDocumentFormat
 } from './enum';
 export type {
 	Attachment,

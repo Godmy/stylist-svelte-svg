@@ -2,7 +2,6 @@
 export type {
 	TokenBillingItem,
 	TokenBillingSummary,
-	TokenCommerceIcon,
 	TokenOrderStatus,
 	TokenPaymentMethod,
 	TokenPaymentStatus,

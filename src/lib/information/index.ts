@@ -34,7 +34,6 @@ export {
 	STATS_CARD_VARIANT_CLASSES,
 	TABLE_ALIGNMENT_CLASSES,
 	TABLE_CLASSES,
-	TOKEN_INFORMATION_ICON,
 	TOKEN_SOFTWARE_BADGE,
 	TOKEN_STATUS,
 	TOKEN_TABLE_CELL
@@ -81,7 +80,6 @@ export type {
 	StatsCardTrend,
 	StatusSeverity,
 	StatusState,
-	TokenInformationIcon,
 	TokenSoftwareBadge,
 	TokenStatus,
 	TokenTableCell

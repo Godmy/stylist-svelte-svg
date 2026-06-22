@@ -2,7 +2,6 @@
 export {
 	TOKEN_CHART,
 	TOKEN_CHART_COLORS,
-	TOKEN_CHART_ICON,
 	TOKEN_PIE_COLORS
 } from './enum';
 export { DEFAULT_CANVAS_CHART_PADDING } from './map';

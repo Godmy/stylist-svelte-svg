@@ -31,7 +31,6 @@ export type {
 	TimeSlotProps
 } from './recipe';
 export type {
-	ChildrenHtmlAttributes,
 	SlotCalendarDay,
 	SlotCalendarEvent,
 	SlotCalendarViewEvent,

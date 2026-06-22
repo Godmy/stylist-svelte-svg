@@ -5,12 +5,6 @@ export {
 	TranslationEditor
 } from './component';
 export {
-	TOKEN_LOCALE_SWITCHER_ICON,
-	TOKEN_LOCALIZATION_ICON,
-	TOKEN_TRANSLATION,
-	TOKEN_TRANSLATION_EDITOR_ICON
-} from './const';
-export {
 	createLanguageSelectorState,
 	createLocaleSwitcherState,
 	createTranslationEditorState,
@@ -18,10 +12,7 @@ export {
 	formatDateTime,
 	formatTime
 } from './function';
-export type {
-	TokenLocalizationIcon,
-	TokenTranslation
-} from './type';
+export type { TokenTranslation } from './type';
 export type {
 	LocaleSwitcherStateProps,
 	RecipeLanguageSelector,

@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { TOKEN_NAVIGATION_ICON } from './enum';
 export { BREADCRUMB_TEMPLATE } from './preset';
 export {
 	BREADCRUMB_LINK_VARIANT_CLASSES,

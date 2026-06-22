@@ -7,7 +7,6 @@ export type {
 	ChatRoomProps
 } from './alias';
 export type {
-	TokenChatIcon,
 	TokenMessageState,
 	TokenMessageStatus,
 	TokenNotifictionChannel

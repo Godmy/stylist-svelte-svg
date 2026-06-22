@@ -10,7 +10,6 @@ export type {
 	TokenTextStateProps,
 	TreeNodeItemProps
 } from './alias';
-export type { TokenControlIcon } from './enum';
 export type {
 	TokenSelectionType,
 	TokenSelectorKind

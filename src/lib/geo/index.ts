@@ -42,7 +42,6 @@ export {
 	ICON_UPLOAD,
 	ICON_UTENSILS,
 	ICON_X,
-	TOKEN_GEO_ICON,
 	TOKEN_MAP_TYPE,
 	TOKEN_PIN
 } from './const';
@@ -81,7 +80,6 @@ export type {
 	StoreLocatorProps,
 	StoreLocatorRestProps,
 	StoreLocatorStore,
-	TokenGeoIcon,
 	TokenMapType,
 	TokenPin
 } from './type';

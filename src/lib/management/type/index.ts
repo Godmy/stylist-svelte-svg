@@ -13,7 +13,6 @@ export type {
 } from './alias';
 export type {
 	TokenKPI,
-	TokenManagementIcon,
 	TokenMonitoringType,
 	TokenTimeRange,
 	TokenTrend

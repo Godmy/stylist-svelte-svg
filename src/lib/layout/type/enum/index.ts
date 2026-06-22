@@ -14,7 +14,6 @@ export type { TokenGradient } from './gradient-mode';
 export type { GridMoleculeAlign } from './grid-molecule-align';
 export type { GridMoleculeGap } from './grid-molecule-gap';
 export type { GridMoleculeJustify } from './grid-molecule-justify';
-export type { TokenLayoutIcon } from './icon';
 export type { TokenImageFilter } from './image-filter';
 export type { InteractiveFocusColor } from './interactive-focus-color';
 export type { InteractiveHoverShadow } from './interactive-hover-shadow';

@@ -2,7 +2,6 @@
 export type { SlotCalendarDay } from './calendar-day';
 export type { SlotCalendarEvent } from './calendar-event';
 export type { SlotCalendarViewEvent } from './calendar-view-event';
-export type { ChildrenHtmlAttributes } from './children-html-attributes';
 export type { SlotDaySchedule } from './day-schedule';
 export type { SlotEventCalendar } from './event-calendar';
 export type { SlotEventCalendarEvent } from './event-calendar-event';

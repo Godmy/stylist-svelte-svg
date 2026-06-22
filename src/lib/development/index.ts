@@ -31,7 +31,6 @@ export {
 	PresetStylist,
 	TOKEN_CODE_LANGUAGE,
 	TOKEN_CODE_VIEW,
-	TOKEN_DEVELOPMENT_ICON,
 	TOKEN_DIFF_TYPE,
 	TOKEN_PROPERTY_TYPE,
 	categories,
@@ -92,7 +91,6 @@ export type {
 	ErrorLogEntry,
 	ErrorLogPayload,
 	ErrorLogSource,
-	ExtractConstEnumValue,
 	MockDataSelectorDataSelection,
 	MockDataSelectorMockDataSchema,
 	MockDataSelectorProps,
@@ -108,7 +106,6 @@ export type {
 	StylistSelection,
 	TokenCodeLanguage,
 	TokenCodeView,
-	TokenDevelopmentIcon,
 	TokenDiffType,
 	TokenPropertyType
 } from './type';
@@ -149,7 +146,3 @@ export type {
 	SlotResourceOptimizer,
 	SlotStylist
 } from './interface';
-export type {
-	ExtractConstEnumDomainPayload,
-	ExtractConstEnumTokenPayload
-} from './type';
