@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
 import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
-import type { AvatarUserStatus } from '$stylist/media/type/struct/avatar-user-status';
+import type { TOKEN_AVAILABILITY } from '$stylist/interaction/const/enum/availability';
 
 export interface ContractAvatar extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	/** Avatar variant */
@@ -18,7 +18,7 @@ export interface ContractAvatar extends Omit<HTMLAttributes<HTMLDivElement>, 'cl
 	/** SlotUser name */
 	name?: string;
 	/** SlotUser status */
-	status?: AvatarUserStatus;
+	status?: (typeof TOKEN_AVAILABILITY)[number];
 	/** Show status indicator */
 	showStatus?: boolean;
 	/** Additional CSS class */

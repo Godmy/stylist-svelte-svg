@@ -1,10 +1,10 @@
-import type { SplitLayoutDirection } from '$stylist/layout/type/enum/split-layout-direction';
+import type { TOKEN_ORIENTATION } from '$stylist/layout/const/enum/orientation';
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
 import type { SplitLayoutPanelSize } from '$stylist/layout/type/enum/split-layout-panel-size';
 import type { SplitLayoutProps } from '$stylist/layout/type/struct/layout-extended/split-layout-props';
 
 export function createSplitLayoutState(props: SplitLayoutProps) {
-	const direction = $derived<SplitLayoutDirection>(props.direction ?? 'horizontal');
+	const direction = $derived<(typeof TOKEN_ORIENTATION)[number]>(props.direction ?? 'horizontal');
 	const gap = $derived<SplitLayoutGap>(props.gap ?? 'md');
 	const primarySize = $derived<SplitLayoutPanelSize>(props.primarySize ?? '2/3');
 	const secondarySize = $derived<SplitLayoutPanelSize>(props.secondarySize ?? '1/3');

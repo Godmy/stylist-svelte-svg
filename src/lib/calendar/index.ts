@@ -11,11 +11,8 @@ export {
 } from './component';
 export {
 	TOKEN_CALENDAR,
-	TOKEN_PERFORMANCE_RANGES,
 	TOKEN_PRIORITY,
 	TOKEN_TIMESTAMP_FORMAT,
-	TOKEN_TIME_FORMAT,
-	TOKEN_TIME_MEASURE,
 	TOKEN_TIME_RANGE
 } from './const';
 export {
@@ -37,9 +34,7 @@ export type {
 	CalendarEventMini,
 	CalendarEventTimeGrid,
 	CalendarHTMLAttributes,
-	CalendarViewMode,
 	DayTimeGrid,
-	PresenceStatus,
 	RecipeExtendedTimeSlot,
 	TimelineStatus,
 	TokenPriority,

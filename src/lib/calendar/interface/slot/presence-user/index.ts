@@ -1,10 +1,10 @@
-import type { PresenceStatus } from '$stylist/calendar/type/struct/presence-status';
 
+import type { TOKEN_AVAILABILITY } from '$stylist/interaction/const/enum/availability';
 export interface SlotPresenceUser {
 	id: string;
 	name: string;
 	avatar?: string;
-	status: PresenceStatus;
+	status: (typeof TOKEN_AVAILABILITY)[number];
 	lastSeen?: Date;
 	cursorPosition?: { x: number; y: number };
 	activeArea?: string;

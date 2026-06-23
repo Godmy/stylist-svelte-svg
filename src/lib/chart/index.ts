@@ -36,8 +36,7 @@ export {
 	PRESET_CANVAS_CHART,
 	TOKEN_CHART,
 	TOKEN_CHART_COLORS,
-	TOKEN_COLOR_SCALE,
-	TOKEN_PIE_COLORS
+	TOKEN_COLOR_SCALE
 } from './const';
 export {
 	createAnalyticsChartState,

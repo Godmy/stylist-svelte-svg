@@ -74,7 +74,6 @@ export type {
 	GraphNodeCategory,
 	GraphPanMode,
 	GraphPortDimensions,
-	GraphThemeId,
 	GraphToolMode,
 	GraphToolbarItem,
 	GraphWorkspaceConnectionInput,

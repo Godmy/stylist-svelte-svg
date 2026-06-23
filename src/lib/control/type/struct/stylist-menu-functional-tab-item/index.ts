@@ -1,7 +1,7 @@
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 
 export type FunctionalTabItem = {
-	id: StylistCategoryId;
+	id: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number];
 	label: string;
 	icon: string;
 };

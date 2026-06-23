@@ -6,7 +6,7 @@
 	import NodeIcon from '$stylist/media/component/atom/node-icon/index.svelte';
 	import Viewport from '$stylist/canvas/component/atom/viewport/index.svelte';
 
-	import type { GraphThemeId } from '$stylist/graph/type/enum/graph-theme-id';
+	import type { TOKEN_THEME_MODE } from '$stylist/theme/const/enum/theme-mode';
 	import type { GraphToolMode } from '$stylist/graph/type/enum/graph-tool-mode';
 	import type { GraphNodeCategory } from '$stylist/graph/type/enum/graph-node-category';
 	import type { GraphWorkspaceNode } from '$stylist/graph/type/struct/graph-workspace-node';
@@ -16,7 +16,7 @@
 	import type { GraphNodeDraft } from '$stylist/graph/type/struct/graph-node-draft';
 	import type { RecipeStylistGraphWorkspace } from '$stylist/graph/interface/recipe/stylist-graph-workspace';
 
-	const THEME_OPTIONS: GraphThemeId[] = ['default', 'light', 'dark'];
+	const THEME_OPTIONS: (typeof TOKEN_THEME_MODE)[number][] = ['default', 'light', 'dark'];
 	const TOOL_OPTIONS: { mode: GraphToolMode; label: string }[] = [
 		{ mode: 'select', label: 'Select' },
 		{ mode: 'pan', label: 'Pan' },
@@ -74,7 +74,7 @@
 
 	let viewportWidth = $state(1180);
 	let viewportHeight = $state(760);
-	let selectedTheme = $state<GraphThemeId>('default');
+	let selectedTheme = $state<(typeof TOKEN_THEME_MODE)[number]>('default');
 	let activeTool = $state<GraphToolMode>('select');
 	let showDebug = $state(false);
 	let selectedNodeId = $state<string>(initialNodes[0]?.id ?? '');
@@ -790,7 +790,7 @@
 							<select
 								value={selectedTheme}
 								onchange={(event) => {
-									selectedTheme = (event.target as HTMLSelectElement).value as GraphThemeId;
+									selectedTheme = (event.target as HTMLSelectElement).value as (typeof TOKEN_THEME_MODE)[number];
 								}}
 							>
 								{#each THEME_OPTIONS as theme}

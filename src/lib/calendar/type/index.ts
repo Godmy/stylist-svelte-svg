@@ -10,9 +10,7 @@ export type {
 	CalendarEventMini,
 	CalendarEventTimeGrid,
 	CalendarHTMLAttributes,
-	CalendarViewMode,
 	DayTimeGrid,
-	PresenceStatus,
 	RecipeExtendedTimeSlot,
 	TimelineStatus
 } from './struct';

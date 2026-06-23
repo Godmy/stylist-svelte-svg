@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { CardData } from './card-data';
-export type { DashboardLayoutVariant } from './dashboard-layout-variant';
 export type { DraggableCardRestProps } from './draggable-card-rest-props';
 export type { DraggableCardStateProps } from './draggable-card-state-props';
 export type { KanbanCardPriority } from './kanban-card-priority';

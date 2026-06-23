@@ -1,8 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	TOKEN_CHART,
-	TOKEN_CHART_COLORS,
-	TOKEN_PIE_COLORS
+	TOKEN_CHART_COLORS
 } from './enum';
 export { DEFAULT_CANVAS_CHART_PADDING } from './map';
 export {

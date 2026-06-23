@@ -4,8 +4,7 @@ export type {
 	TokenBillingSummary,
 	TokenOrderStatus,
 	TokenPaymentMethod,
-	TokenPaymentStatus,
-	TokenUserCardSize
+	TokenPaymentStatus
 } from './enum';
 export type {
 	Address,

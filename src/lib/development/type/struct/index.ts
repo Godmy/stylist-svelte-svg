@@ -10,7 +10,6 @@ export type { CodeDiffProps } from './code-diff-props';
 export type { CodeDiffRestProps } from './code-diff-rest-props';
 export type { CodeEditorProps } from './code-editor-props';
 export type { CodeSectionProps } from './code-section-props';
-export type { CodeSectionVariant } from './code-section-variant';
 export type { CodeWithCopyProps } from './code-with-copy-props';
 export type { ComponentLibraryStatsComponentStats } from './component-library-stats-component-stats';
 export type { ComponentLibraryStatsProps } from './component-library-stats-props';
@@ -35,6 +34,5 @@ export type { ResourceOptimizerOptimizationSuggestion } from './resource-optimiz
 export type { ResourceOptimizerProps } from './resource-optimizer-props';
 export type { ResourceOptimizerResource } from './resource-optimizer-resource';
 export type { ResourceOptimizerResourceType } from './resource-optimizer-resource-type';
-export type { StylistCategoryId } from './stylist-category-id';
 export type { StylistProps } from './stylist-props';
 export type { StylistSelection } from './stylist-selection';

@@ -1,9 +1,9 @@
-import type { SplitLayoutDirection } from '$stylist/layout/type/enum/split-layout-direction';
+import type { TOKEN_ORIENTATION } from '$stylist/layout/const/enum/orientation';
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
 import type { StackedLayoutProps } from '$stylist/layout/interface/recipe/stacked-layout';
 
 export function createStackedLayoutState(props: StackedLayoutProps) {
-	const direction = $derived<SplitLayoutDirection>(props.direction ?? 'vertical');
+	const direction = $derived<(typeof TOKEN_ORIENTATION)[number]>(props.direction ?? 'vertical');
 	const gap = $derived<SplitLayoutGap>(props.gap ?? 'md');
 	const alignItems = $derived<'start' | 'center' | 'end' | 'stretch'>(
 		props.alignItems ?? 'stretch'

@@ -4,4 +4,3 @@ export type { TokenBillingSummary } from './billing-summary';
 export type { TokenOrderStatus } from './order-status';
 export type { TokenPaymentMethod } from './payment-method';
 export type { TokenPaymentStatus } from './payment-status';
-export type { TokenUserCardSize } from './user-card-size';

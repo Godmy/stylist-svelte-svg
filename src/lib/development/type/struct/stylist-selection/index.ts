@@ -1,7 +1,7 @@
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 
 export type StylistSelection = {
-	category: StylistCategoryId;
+	category: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number];
 	option: string;
-	selections: Record<StylistCategoryId, string>;
+	selections: Record<(typeof TOKEN_FUNCTIONAL_TAXONOMY)[number], string>;
 };

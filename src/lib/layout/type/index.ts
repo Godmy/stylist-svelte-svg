@@ -9,8 +9,6 @@ export type {
 	GridMoleculeJustify,
 	OverlayLayoutAlign,
 	PopoverPosition,
-	SidebarLayoutWidth,
-	SplitLayoutDirection,
 	SplitLayoutGap,
 	SplitLayoutPanelSize,
 	StackedLayoutJustifyContent,

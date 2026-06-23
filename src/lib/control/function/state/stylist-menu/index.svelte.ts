@@ -1,6 +1,6 @@
 import { tick } from 'svelte';
 import type { PrimaryMenuItem } from '../../../type/struct/stylist-menu-primary-menu-item';
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 import type { StylistMenuProps } from '../../../type/struct/stylist-menu-props';
 import { STYLIST_MENU_FUNCTIONAL_PRIMARY_SECTIONS } from '../../../const/record/stylist-menu-functional-primary-sections';
 
@@ -61,7 +61,7 @@ export function createStylistMenuState(props: StylistMenuProps) {
 
 	function handleFunctionalTabSelect(tab: { id: string }) {
 		if (tab.id === 'architecture' || tab.id === 'information' || tab.id === 'interaction') {
-			props.onFunctionalTabClick?.(tab.id as StylistCategoryId);
+			props.onFunctionalTabClick?.(tab.id as (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number]);
 		}
 	}
 

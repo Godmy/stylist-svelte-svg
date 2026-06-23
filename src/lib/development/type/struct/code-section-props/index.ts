@@ -1,13 +1,13 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
-import type { CodeSectionVariant } from '$stylist/development/type/struct/code-section-variant';
+import type { TOKEN_CODE_VIEW } from '$stylist/development/const/enum/code-view';
 
 export type CodeSectionProps = {
 	title?: string;
 	language?: string;
 	code: string;
-	variant?: CodeSectionVariant;
+	variant?: (typeof TOKEN_CODE_VIEW)[number];
 	showLineNumbers?: boolean;
 	startLineNumber?: number;
 	showCopyButton?: boolean;

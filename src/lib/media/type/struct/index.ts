@@ -8,7 +8,6 @@ export type {
 	AvatarGroupProps
 } from './avatar-group';
 export type { AvatarSize } from './avatar-size';
-export type { AvatarUserStatus } from './avatar-user-status';
 export type { CanvasImageEditorProps } from './canvas-image-editor';
 export type { CountryFlagProps } from './country-flag';
 export type { FaviconProps } from './favicon';

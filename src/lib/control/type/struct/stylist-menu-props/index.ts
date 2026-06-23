@@ -1,7 +1,7 @@
 import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { PrimaryMenuItem } from '../stylist-menu-primary-menu-item';
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 
 export type StylistMenuProps = Omit<HTMLAttributes<HTMLElement>, 'class'> & SlotInteraction & {
 	class?: string;
@@ -11,10 +11,10 @@ export type StylistMenuProps = Omit<HTMLAttributes<HTMLElement>, 'class'> & Slot
 	avatarName?: string;
 	avatarEmail?: string;
 	activeAvatarRoute?: 'profile' | 'settings' | '';
-	functionalTabId?: StylistCategoryId;
+	functionalTabId?: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number];
 	atomicTabId?: 'atoms' | 'molecules' | 'organisms';
 	onItemClick?: (item: PrimaryMenuItem) => void;
-	onFunctionalTabClick?: (tabId: StylistCategoryId) => void;
+	onFunctionalTabClick?: (tabId: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number]) => void;
 	onAtomicTabClick?: (tabId: 'atoms' | 'molecules' | 'organisms') => void;
 	onThemeButtonClick?: () => void;
 	onSettingsButtonClick?: () => void;

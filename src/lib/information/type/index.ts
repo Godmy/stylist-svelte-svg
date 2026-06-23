@@ -13,7 +13,6 @@ export type {
 	MetricBarData,
 	Props,
 	StatsCardData,
-	StatsCardTrend,
 	StatusSeverity,
 	StatusState
 } from './struct';

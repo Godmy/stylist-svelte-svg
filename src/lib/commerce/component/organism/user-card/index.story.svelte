@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TokenUserCardSize } from '$stylist/commerce/type/enum/user-card-size';
+	import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 	import type { User } from '$stylist/commerce/type/struct/user';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
@@ -45,7 +45,7 @@
 				user={primaryUser}
 				showEmail={values.showEmail as boolean}
 				showRole={values.showRole as boolean}
-				size={values.size as TokenUserCardSize}
+				size={values.size as AvatarSize}
 			/>
 			<div class="_c2">
 				{#each roster as member}

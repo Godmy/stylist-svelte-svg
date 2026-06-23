@@ -2,7 +2,6 @@
 export type { GraphWorkspaceConnectionInput } from './alias';
 export type {
 	GraphNodeCategory,
-	GraphThemeId,
 	GraphToolMode,
 	NodeTitleVariant
 } from './enum';

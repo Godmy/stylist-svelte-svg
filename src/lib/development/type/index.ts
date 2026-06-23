@@ -18,7 +18,6 @@ export type {
 	CodeDiffRestProps,
 	CodeEditorProps,
 	CodeSectionProps,
-	CodeSectionVariant,
 	CodeWithCopyProps,
 	ComponentLibraryStatsComponentStats,
 	ComponentLibraryStatsProps,
@@ -43,7 +42,6 @@ export type {
 	ResourceOptimizerProps,
 	ResourceOptimizerResource,
 	ResourceOptimizerResourceType,
-	StylistCategoryId,
 	StylistProps,
 	StylistSelection
 } from './struct';

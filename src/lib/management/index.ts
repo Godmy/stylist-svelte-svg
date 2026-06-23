@@ -70,7 +70,6 @@ export {
 	TOKEN_MONITORING_TYPE,
 	TOKEN_PERFORMANCE_BARS,
 	TOKEN_PERFORMANCE_RANGE,
-	TOKEN_TIME_RANGE,
 	TOKEN_TREND
 } from './const';
 export {
@@ -132,7 +131,6 @@ export {
 export type {
 	AccountSettings,
 	CardData,
-	DashboardLayoutVariant,
 	DragPayload,
 	DraggableCardRestProps,
 	DraggableCardStateProps,

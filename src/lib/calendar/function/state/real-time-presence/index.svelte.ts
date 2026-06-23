@@ -1,6 +1,6 @@
-import type { AvatarUserStatus } from '$stylist/media/type/struct/avatar-user-status';
 import type { RecipeRealTimePresence as RealTimePresenceContract } from '$stylist/calendar/interface/recipe/real-time-presence';
 
+import type { TOKEN_AVAILABILITY } from '$stylist/interaction/const/enum/availability';
 export function createRealTimePresenceState(props: RealTimePresenceContract) {
 	const users = $derived(props.users ?? []);
 	const showAvatars = $derived(props.showAvatars ?? true);
@@ -30,7 +30,7 @@ export function createRealTimePresenceState(props: RealTimePresenceContract) {
 		return rest;
 	});
 
-	function getStatusColor(status: AvatarUserStatus): string {
+	function getStatusColor(status: (typeof TOKEN_AVAILABILITY)[number]): string {
 		switch (status) {
 			case 'online':
 				return 'bg-[var(--color-success-500)]';
@@ -43,7 +43,7 @@ export function createRealTimePresenceState(props: RealTimePresenceContract) {
 		}
 	}
 
-	function getStatusText(status: AvatarUserStatus): string {
+	function getStatusText(status: (typeof TOKEN_AVAILABILITY)[number]): string {
 		switch (status) {
 			case 'online':
 				return 'Online';
@@ -56,7 +56,7 @@ export function createRealTimePresenceState(props: RealTimePresenceContract) {
 		}
 	}
 
-	function getStatusIconClass(status: AvatarUserStatus): string {
+	function getStatusIconClass(status: (typeof TOKEN_AVAILABILITY)[number]): string {
 		switch (status) {
 			case 'online':
 				return 'text-[var(--color-success-500)]';

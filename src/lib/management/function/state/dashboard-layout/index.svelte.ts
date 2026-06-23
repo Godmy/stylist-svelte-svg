@@ -1,4 +1,4 @@
-import type { DashboardLayoutVariant } from '$stylist/management/type/alias/dashboard-layout-variant';
+import type { TOKEN_DENSITY } from '$stylist/layout/const/enum/density';
 import type { DashboardLayoutProps } from '$stylist/management/interface/recipe/dashboard-layout';
 
 export function createDashboardLayoutState(props: DashboardLayoutProps) {
@@ -8,7 +8,7 @@ export function createDashboardLayoutState(props: DashboardLayoutProps) {
 	const onSidebarToggle = $derived(props.onSidebarToggle);
 	const mobileBreakpoint = $derived(props.mobileBreakpoint ?? 'lg');
 	const showSidebarToggle = $derived(props.showSidebarToggle ?? true);
-	const variant = $derived<DashboardLayoutVariant>(props.variant ?? 'default');
+	const variant = $derived<(typeof TOKEN_DENSITY)[number]>(props.variant ?? 'default');
 
 	// SlotState
 	let isSidebarOpen = $state(props.sidebarOpen ?? true);

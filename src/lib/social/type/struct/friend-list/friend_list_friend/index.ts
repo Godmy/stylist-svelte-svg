@@ -1,11 +1,11 @@
-import type { AvatarUserStatus } from '$stylist/media/type/struct/avatar-user-status';
+import type { TOKEN_AVAILABILITY } from '$stylist/interaction/const/enum/availability';
 
 export type FRIEND_LIST_FRIEND = {
 	id: string;
 	name: string;
 	username?: string;
 	avatar?: string;
-	status: AvatarUserStatus;
+	status: (typeof TOKEN_AVAILABILITY)[number];
 	lastSeen?: Date;
 	isOnline?: boolean;
 	isFavorite?: boolean;

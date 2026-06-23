@@ -1,7 +1,7 @@
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 export const categories = [
 	{
-		id: 'architecture' as StylistCategoryId,
+		id: 'architecture' as (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number],
 		label: 'Архитектурные',
 		description: 'Размер, компоновка и пространственная структура компонента.',
 		accent: 'var(--color-primary-600)',
@@ -42,7 +42,7 @@ export const categories = [
 		]
 	},
 	{
-		id: 'information' as StylistCategoryId,
+		id: 'information' as (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number],
 		label: 'Информационные',
 		description: 'Цвет, типографика и читаемость содержимого.',
 		accent: 'var(--color-warning-600)',
@@ -83,7 +83,7 @@ export const categories = [
 		]
 	},
 	{
-		id: 'interaction' as StylistCategoryId,
+		id: 'interaction' as (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number],
 		label: 'Интерактивные',
 		description: 'Поведение на клик, hover и ответ интерфейса на действия.',
 		accent: 'var(--color-success-600)',
@@ -124,7 +124,7 @@ export const categories = [
 		]
 	}
 ] satisfies Array<{
-	id: StylistCategoryId;
+	id: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number];
 	label: string;
 	description: string;
 	accent: string;

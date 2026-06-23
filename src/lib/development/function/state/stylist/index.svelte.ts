@@ -1,6 +1,6 @@
-﻿import { categories } from '$stylist/development/const/record/stylist-categories';
+import { categories } from '$stylist/development/const/record/stylist-categories';
 import type { RecipeStylist } from '$stylist/development/interface/recipe/stylist';
-import type { StylistCategoryId } from '$stylist/development/type/struct/stylist-category-id';
+import type { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/architecture/const/enum/functional-taxonomy';
 import { untrack } from 'svelte';
 export function createStylistState(props: RecipeStylist) {
 	const initialCategory = $derived(props.initialCategory ?? 'architecture');
@@ -8,8 +8,8 @@ export function createStylistState(props: RecipeStylist) {
 	const onSelectionChange = $derived(props.onSelectionChange);
 
 	let isOpen = $state(false);
-	let selectedCategoryId = $state<StylistCategoryId>(untrack(() => initialCategory));
-	let selections = $state<Record<StylistCategoryId, string>>({
+	let selectedCategoryId = $state<(typeof TOKEN_FUNCTIONAL_TAXONOMY)[number]>(untrack(() => initialCategory));
+	let selections = $state<Record<(typeof TOKEN_FUNCTIONAL_TAXONOMY)[number], string>>({
 		architecture: 'size',
 		information: 'color',
 		interaction: 'tooltips'
@@ -34,7 +34,7 @@ export function createStylistState(props: RecipeStylist) {
 		isOpen = false;
 	}
 
-	function handleCategorySelect(categoryId: StylistCategoryId) {
+	function handleCategorySelect(categoryId: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number]) {
 		selectedCategoryId = categoryId;
 	}
 
@@ -89,10 +89,10 @@ export function createStylistState(props: RecipeStylist) {
 		set isOpen(value: boolean) {
 			isOpen = value;
 		},
-		set selectedCategoryId(value: StylistCategoryId) {
+		set selectedCategoryId(value: (typeof TOKEN_FUNCTIONAL_TAXONOMY)[number]) {
 			selectedCategoryId = value;
 		},
-		set selections(value: Record<StylistCategoryId, string>) {
+		set selections(value: Record<(typeof TOKEN_FUNCTIONAL_TAXONOMY)[number], string>) {
 			selections = value;
 		},
 		toggleOpen,

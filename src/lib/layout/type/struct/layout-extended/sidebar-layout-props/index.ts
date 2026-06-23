@@ -3,7 +3,7 @@ import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
 import type { PopoverPosition } from '$stylist/layout/type/enum/popover-position';
-import type { SidebarLayoutWidth } from '$stylist/layout/type/enum/sidebar-layout-width';
+import type { ImageSize } from '$stylist/media/type/struct/image-size';
 
 export type SidebarLayoutProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
@@ -12,7 +12,7 @@ export type SidebarLayoutProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	/** На какой стороне размещается сайдбар */
 	side?: PopoverPosition;
 	/** Ширина сайдбара */
-	sidebarWidth?: SidebarLayoutWidth;
+	sidebarWidth?: ImageSize;
 	/** Промежуток между сайдбаром и основным контентом */
 	gap?: SplitLayoutGap;
 	/** Схлопнуть сайдбар */

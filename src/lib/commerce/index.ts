@@ -219,7 +219,6 @@ export type {
 	TokenOrderStatus,
 	TokenPaymentMethod,
 	TokenPaymentStatus,
-	TokenUserCardSize,
 	TrackingStatusType,
 	UpsellStoryProps,
 	User,
