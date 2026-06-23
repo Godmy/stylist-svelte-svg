@@ -19,8 +19,6 @@ export type {
 	ProductForQuote,
 	QuoteRequestValue,
 	TextAreaStateOptions,
-	TextInputBaseProps,
-	TranslatableText,
-	TranslationLocale
+	TextInputBaseProps
 } from './struct';
 export type { ITimeSlotStyleConfig } from './interface';

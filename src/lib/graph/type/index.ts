@@ -3,7 +3,8 @@ export type { GraphWorkspaceConnectionInput } from './alias';
 export type {
 	GraphNodeCategory,
 	GraphToolMode,
-	NodeTitleVariant
+	NodeTitleVariant,
+	TokenPropertyType
 } from './enum';
 export type {
 	ConnectionLinePoint,
@@ -34,7 +35,12 @@ export type {
 	OntologyNode,
 	OntologyNodeComponentProps,
 	PortGroupProps,
-	Position2D
+	Position2D,
+	StageCamera,
+	StageContract,
+	StageProps,
+	ViewportContract,
+	ViewportProps
 } from './struct';
 export type {
 	GraphBounds,

@@ -5,7 +5,9 @@ export {
 	GraphNode,
 	GraphPort,
 	NodeProperty,
-	NodeTitle
+	NodeTitle,
+	Stage,
+	Viewport
 } from './atom';
 export {
 	ConnectionLine,

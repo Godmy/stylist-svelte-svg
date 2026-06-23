@@ -8,6 +8,7 @@ export type { RecipeChartAxisY } from './chart-axis-y';
 export type { RecipeChartAxisZ } from './chart-axis-z';
 export type { RecipeChartBackground } from './chart-background';
 export type { RecipeChartCanvas } from './chart-canvas';
+export type { ChartLegendProps } from './chart-legend';
 export type { RecipeChartName } from './chart-name';
 export type { RecipeChartPolyline } from './chart-polyline';
 export type { RecipeHeatmap } from './heatmap';

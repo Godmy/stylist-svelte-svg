@@ -1,31 +1,23 @@
 import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
-type ScatterPlotStateProps = RecipeScatterPlot & {
-	width?: number;
-	height?: number;
-	class?: string;
-};
-export function createScatterPlotState(props: ScatterPlotStateProps) {
-	const data = $derived(props.data ?? []);
-	const maxX = $derived(data.length > 0 ? Math.max(...data.map((d) => d.x)) : 100);
-	const maxY = $derived(data.length > 0 ? Math.max(...data.map((d) => d.y)) : 100);
+import type { ScatterPlotDataPoint } from '$stylist/chart/type/struct/scatter-plot-point';
+import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
+
+export function createScatterPlotState(props: RecipeScatterPlot) {
+	const maxX = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.x), 100));
+	const maxY = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.y), 100));
+	const chartWidth = $derived((props.width ?? 700) - 70);
 	const chartHeight = $derived((props.height ?? 420) - 40);
-	function getPointX(x: number): number {
-		const width = (props.width ?? 700) - 70;
-		return 50 + (x / maxX) * width;
-	}
-	function getPointY(y: number): number {
-		return 10 + chartHeight - (y / maxY) * chartHeight;
-	}
-	const rootClass = $derived(`scatter-plot ${props.class ?? ''}`.trim());
+	const rootClass = $derived(mergeClassNames('c-scatter-plot', String(props.class ?? '')));
+
 	return {
-		get data() {
-			return data;
-		},
 		get maxX() {
 			return maxX;
 		},
 		get maxY() {
 			return maxY;
+		},
+		get chartWidth() {
+			return chartWidth;
 		},
 		get chartHeight() {
 			return chartHeight;
@@ -33,8 +25,13 @@ export function createScatterPlotState(props: ScatterPlotStateProps) {
 		get rootClass() {
 			return rootClass;
 		},
-		getPointX,
-		getPointY
+		getPointX(x: number): number {
+			return 50 + (x / (maxX || 1)) * chartWidth;
+		},
+		getPointY(y: number): number {
+			return 10 + chartHeight - (y / (maxY || 1)) * chartHeight;
+		}
 	};
 }
+
 export default createScatterPlotState;

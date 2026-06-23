@@ -32,7 +32,6 @@ export {
 	TOKEN_CODE_LANGUAGE,
 	TOKEN_CODE_VIEW,
 	TOKEN_DIFF_TYPE,
-	TOKEN_PROPERTY_TYPE,
 	categories,
 	panelId
 } from './const';
@@ -58,8 +57,7 @@ export {
 	createPrivacySettingsState,
 	createResourceOptimizerState,
 	createStylistState,
-	createSyntaxHighlightedCodeState,
-	serializeUnknownError
+	createSyntaxHighlightedCodeState
 } from './function';
 export type {
 	AtomicPrinciplesShowcaseAtomicPrinciplesStats,
@@ -85,8 +83,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	ErrorLogEntry,
-	ErrorLogPayload,
 	MockDataSelectorDataSelection,
 	MockDataSelectorMockDataSchema,
 	MockDataSelectorProps,
@@ -101,8 +97,7 @@ export type {
 	StylistSelection,
 	TokenCodeLanguage,
 	TokenCodeView,
-	TokenDiffType,
-	TokenPropertyType
+	TokenDiffType
 } from './type';
 export type {
 	ComponentPreviewCodeOptions,

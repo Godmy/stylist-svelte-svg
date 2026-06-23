@@ -1,5 +1,3 @@
-import createNotificationAccessibilityCheckboxState from '$stylist/notification/function/state/accessibility-checkbox/index.svelte';
-
 export const createInputAccessibilityCheckboxState = (
 	props: {
 		label?: string;
@@ -17,19 +15,29 @@ export const createInputAccessibilityCheckboxState = (
 		localChecked = props.checked ?? false;
 	});
 
-	const viewState = $derived(
-		createNotificationAccessibilityCheckboxState({
-			checked: localChecked,
-			disabled: props.disabled ?? false,
-			class: String(props.class ?? '')
-		})
+	const containerClasses = $derived(
+		['flex items-center', props.class ?? ''].filter(Boolean).join(' ')
+	);
+	const indicatorClasses = $derived(
+		[
+			'w-6 h-6 flex items-center justify-center rounded border',
+			localChecked
+				? 'bg-[var(--color-primary-500)] border-[var(--color-primary-500)]'
+				: 'bg-[var(--color-background-primary)] border-[var(--color-border-primary)]',
+			props.disabled ? 'opacity-[var(--opacity-50)] cursor-not-allowed' : ''
+		]
+			.filter(Boolean)
+			.join(' ')
+	);
+	const labelClasses = $derived(
+		[
+			'ml-2',
+			props.disabled ? 'text-[var(--color-text-tertiary)]' : 'text-[var(--color-text-primary)]'
+		].join(' ')
 	);
 
 	function handleChange() {
-		if (props.disabled) {
-			return;
-		}
-
+		if (props.disabled) return;
 		localChecked = !localChecked;
 		props.onValueInput?.(localChecked);
 		props.onValueChange?.(localChecked);
@@ -41,13 +49,13 @@ export const createInputAccessibilityCheckboxState = (
 			return localChecked;
 		},
 		get containerClasses() {
-			return viewState.containerClasses;
+			return containerClasses;
 		},
 		get indicatorClasses() {
-			return viewState.indicatorClasses;
+			return indicatorClasses;
 		},
 		get labelClasses() {
-			return viewState.labelClasses;
+			return labelClasses;
 		},
 		handleChange
 	};

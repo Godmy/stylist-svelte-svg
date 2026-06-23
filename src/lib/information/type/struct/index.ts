@@ -4,5 +4,4 @@ export type { ClassProp } from './class-prop';
 export type { ContentProp } from './content-prop';
 export type { MetricBarData } from './metric-bar-data';
 export type { Props } from './props';
-export type { StatsCardData } from './stats-card-data';
 export type { StatusState } from './status-state';

@@ -5,6 +5,7 @@ export {
 	AnimatedProgress,
 	CardSkeleton,
 	ErrorMessage,
+	NotificationBadge,
 	Overlay,
 	ProgressBar,
 	ProgressBarWithLabel,

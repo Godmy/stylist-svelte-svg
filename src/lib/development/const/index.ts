@@ -3,8 +3,7 @@ export { CODE_WITH_COPY_DISPATCH } from './code-with-copy';
 export {
 	TOKEN_CODE_LANGUAGE,
 	TOKEN_CODE_VIEW,
-	TOKEN_DIFF_TYPE,
-	TOKEN_PROPERTY_TYPE
+	TOKEN_DIFF_TYPE
 } from './enum';
 export {
 	PresetAtomicPrinciplesShowcase,

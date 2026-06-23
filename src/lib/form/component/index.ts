@@ -4,7 +4,6 @@ export {
 	FormHeader
 } from './atom';
 export {
-	FilterPanel,
 	FormSelection,
 	RadioGroup,
 	Validation

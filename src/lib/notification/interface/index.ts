@@ -6,6 +6,7 @@ export type {
 	RecipeErrorMessage,
 	RecipeLazyLoader,
 	RecipeLoadingBoundary,
+	RecipeNotificationBadge,
 	RecipeProgressBarProps,
 	RecipeSkeleton,
 	RecipeSkeletonCircle,

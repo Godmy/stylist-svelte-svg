@@ -1,11 +1,8 @@
 <script lang="ts">
-	export interface IconToolbarItem {
-		name: string;
-		svg: string;
-	}
+	import type { SlotSvgName } from '$stylist/media/interface/slot/svg-name';
 
 	interface IconToolbarProps {
-		items: readonly IconToolbarItem[];
+		items: readonly SlotSvgName[];
 		active?: string;
 		label?: string;
 		orientation?: 'horizontal' | 'vertical';

@@ -6,11 +6,9 @@ export {
 	handleAttachFn,
 	handleEmojiFn,
 	handleInputFn,
-	handleKeydownFn,
-	resolveAuthGuardState
+	handleKeydownFn
 } from './script';
 export {
-	createAuthGuardState,
 	createChatHeaderState,
 	createChatInterfaceState,
 	createChatItemState,

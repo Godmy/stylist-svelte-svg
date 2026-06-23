@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import type { ScheduledNotificationItem } from '$stylist/chat/type/struct/scheduled-notification-item';
+	import type { ScheduledNotificationItem } from '$stylist/management/type/struct/scheduled-notification-item';
 	import ScheduledNotification from './index.svelte';
 
 	type Props = {

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { LiteGraphPort as LitegraphPortRecipe } from '$stylist/graph/type/struct/lite-graph-port';
-	import type { RecipeLitegraphCanvas as LitegraphCanvasContract } from '$stylist/graph/interface/recipe/litegraph-canvas';
+	import type { LiteGraphPort } from '$stylist/graph/type/struct/lite-graph-port';
+	import type { RecipeLitegraphCanvas } from '$stylist/graph/interface/recipe/litegraph-canvas';
 	import ConnectionLine from '$stylist/graph/component/molecule/connection-line/index.svelte';
 	import GraphCanvas from '$stylist/graph/component/atom/graph-canvas/index.svelte';
 	import GraphToolbar from '$stylist/graph/component/molecule/graph-toolbar/index.svelte';
@@ -8,7 +8,7 @@
 	import LitegraphNodeComponent from '$stylist/graph/component/molecule/litegraph-node/index.svelte';
 	import createLitegraphCanvasState from '$stylist/graph/function/state/litegraph-canvas/index.svelte';
 
-	let props: LitegraphCanvasContract = $props();
+	let props: RecipeLitegraphCanvas = $props();
 	const state = createLitegraphCanvasState(props);
 </script>
 
@@ -88,8 +88,8 @@
 					y={node.y ?? 0}
 					color={node.color}
 					selected={(props.selectedNodeIds ?? []).includes(node.id)}
-					inputs={node.inputs ? ([...node.inputs] as LitegraphPortRecipe[]) : undefined}
-					outputs={node.outputs ? ([...node.outputs] as LitegraphPortRecipe[]) : undefined}
+					inputs={node.inputs ? ([...node.inputs] as LiteGraphPort[]) : undefined}
+					outputs={node.outputs ? ([...node.outputs] as LiteGraphPort[]) : undefined}
 					properties={node.properties ? ([...node.properties] as any) : undefined}
 					draggable={true}
 					selectable={true}

@@ -1,8 +1,7 @@
-﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { NotificationPreferencesProps } from '$stylist/chat/type/struct/notification-preferences-props';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+import type { NotificationItem } from '$stylist/management/type/struct/notification-item';
 
-export interface RecipeNotificationPreferences
-	extends ComputeIntersectAll<[NotificationPreferencesProps]> {
+export interface RecipeNotificationPreferences extends ComputeIntersectAll<[NotificationItem]> {
 	email?: boolean;
 	push?: boolean;
 	sms?: boolean;

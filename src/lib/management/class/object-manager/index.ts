@@ -5,6 +5,7 @@ export { ObjectManagerPerformanceDashboard } from './performance-dashboard';
 export { ObjectManagerPerformanceMonitor } from './performance-monitor';
 export { ObjectManagerPortfolio } from './portfolio';
 export { ObjectManagerStatCard } from './stat-card';
+export { ObjectManagerStatsCard } from './stats-card';
 export { ObjectManagerStatusDashboard } from './status-dashboard';
 export type {
 	PortfolioCell,

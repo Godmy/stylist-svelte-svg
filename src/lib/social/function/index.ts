@@ -27,6 +27,7 @@ export {
 	createCommentSystemState,
 	createCommentThreadState,
 	createFriendListState,
+	createPostCardState,
 	createRatingState,
 	createSocialActivityFeedState,
 	createSocialFeedState,

@@ -4,7 +4,6 @@ export type {
 	BreadcrumbItem,
 	BreadcrumbSeparatorProps,
 	BreadcrumbsProps,
-	ChartLegendItem,
 	DialogConfirmProps,
 	DrawerProps,
 	GeneralToolbarRecipe,

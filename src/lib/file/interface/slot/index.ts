@@ -1,6 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { SlotAttachment } from './attachment';
-export type { SlotAttachmentPreview } from './attachment-preview';
 export type { SlotDownloadCard } from './download-card';
 export type { SlotDragDropFile } from './drag-drop-file';
 export type { SlotDragDropFileUpload } from './drag-drop-file-upload';

@@ -21,7 +21,6 @@ export {
 	UserStatus
 } from './molecule';
 export {
-	AuthGuard,
 	ChatHeader,
 	ChatInterface,
 	ChatWorkbench

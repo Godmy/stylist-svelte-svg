@@ -2,7 +2,6 @@
 export {
 	Kpiindicator,
 	Notification,
-	NotificationBadge,
 	PermissionGate,
 	PortfolioCell,
 	PortfolioDigit,
@@ -25,10 +24,10 @@ export {
 	PortfolioHeader,
 	PortfolioState,
 	PortfolioSummary,
-	ScrumBacklog
+	ScrumBacklog,
+	StatsCard
 } from './molecule';
 export {
-	AccountSettingsForm,
 	DashboardLayout,
 	FeatureToggle,
 	KanbanBoard,
@@ -38,11 +37,7 @@ export {
 	PerformanceDashboard,
 	Portfolio,
 	ScheduledNotification,
-	SecureForm,
-	SecuritySettings,
-	SessionManager,
 	StatCard,
 	StatusDashboard,
-	TeamMemberCard,
-	UserProfileCard
+	TeamMemberCard
 } from './organism';

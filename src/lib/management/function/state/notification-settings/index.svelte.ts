@@ -1,5 +1,5 @@
-import type { INotificationSettingsProps } from '$stylist/chat/type/struct/notification-settings-props';
-import type { TokenNotifictionChannel } from '$stylist/chat/type/enum/notification-channel';
+import type { NotificationItem } from '$stylist/management/type/struct/notification-item';
+import type { TokenNotifictionChannel } from '$stylist/management/type/enum/notification-channel';
 import { updateNotificationPreference } from '$stylist/management/function/script/notification-settings';
 
 const Bell = 'bell';
@@ -8,7 +8,7 @@ const Smartphone = 'smartphone';
 const Monitor = 'monitor';
 const Settings = 'settings';
 
-export function createNotificationSettingsState(props: INotificationSettingsProps) {
+export function createNotificationSettingsState(props: NotificationItem) {
 	// Props with defaults
 	const preferences = $derived(props.preferences ?? []);
 	const onPreferenceChange = $derived(props.onPreferenceChange);

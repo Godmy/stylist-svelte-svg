@@ -6,6 +6,7 @@ export {
 	ObjectManagerPerformanceMonitor,
 	ObjectManagerPortfolio,
 	ObjectManagerStatCard,
+	ObjectManagerStatsCard,
 	ObjectManagerStatusDashboard
 } from './object-manager';
 export type {

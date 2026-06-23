@@ -1,5 +1,5 @@
 ﻿import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
-import type { TranslatableText } from '$stylist/input/type/struct/interaction-input/translatable-text';
+import type { TranslatableText } from '$stylist/localization/type/struct/translatable-text';
 import type { RecipeTranslationEditor } from '$stylist/localization/interface/recipe/translation-editor';
 
 export function createTranslationEditorState(props: RecipeTranslationEditor) {

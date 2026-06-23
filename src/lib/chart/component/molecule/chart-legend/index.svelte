@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ChartLegendProps } from '$stylist/navigation/interface/recipe/chart-legend';
+	import type { ChartLegendProps } from '$stylist/chart/interface/recipe/chart-legend';
 	import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 	import createChartLegendState from '$stylist/chart/function/state/chart-legend/index.svelte';
 

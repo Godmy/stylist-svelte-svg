@@ -9,6 +9,7 @@ export { ControlPanel } from './control-panel/index';
 export { DragAndDropList } from './drag-and-drop-list/index';
 export { DropdownMenu } from './dropdown-menu/index';
 export { ExpandableTableRow } from './expandable-table-row/index';
+export { FilterPanel } from './filter-panel/index';
 export { IconToolbar } from './icon-toolbar/index';
 export { QuantitySelector } from './quantity-selector/index';
 export { RadioButtonGroup } from './radio-button-group/index';

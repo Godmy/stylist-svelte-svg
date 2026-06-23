@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import Avatar from './index.svelte';
@@ -30,7 +29,7 @@
 		{
 			name: 'size',
 			type: 'select',
-			options: ['sm', 'md', 'lg', 'xl'],
+			options: ['sm', 'md', 'lg'],
 			defaultValue: 'md'
 		},
 		{
@@ -54,7 +53,7 @@
 			alt={values.alt as string}
 			name={values.name as string}
 			status={(values.status as AvatarUserStatus) || undefined}
-			size={values.size as (typeof TOKEN_SIZE)[number]}
+			size={values.size as 'sm' | 'md' | 'lg'}
 			showStatus={values.showStatus as boolean}
 		/>
 	{/snippet}

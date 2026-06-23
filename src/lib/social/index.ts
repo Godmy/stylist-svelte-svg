@@ -3,6 +3,7 @@ export {
 	CommentSystem,
 	CommentThread,
 	FriendList,
+	PostCard,
 	Rating,
 	SocialActivityFeed,
 	SocialFeed,
@@ -24,6 +25,7 @@ export {
 	createCommentSystemState,
 	createCommentThreadState,
 	createFriendListState,
+	createPostCardState,
 	createRatingState,
 	createSocialActivityFeedState,
 	createSocialFeedState,
@@ -65,7 +67,9 @@ export type {
 	User
 } from './type';
 export type {
+	BehaviorPostCard,
 	ContractSocial,
+	RecipePostCard,
 	RecipeRating,
 	SlotCommentItem,
 	SlotCommentSystem,

@@ -1,6 +1,6 @@
 import type { HandleServerError } from '@sveltejs/kit';
 import { appendErrorLog } from '$stylist/server/function/script/append-error-log';
-import { serializeUnknownError } from '$stylist/development/function/script/serialize-unknown-error';
+import { serializeUnknownError } from '$stylist/domain/function/serialize/unknown-error';
 
 export const handleError: HandleServerError = ({ error, event, status, message }) => {
 	const serializedError = serializeUnknownError(error);

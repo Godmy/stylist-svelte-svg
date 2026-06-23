@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import PostCard from './index.svelte';
+	import PostCard from '$stylist/social/component/molecule/post-card/index.svelte';
 
 	const controls: InterfaceControllerSettings[] = [
 		{ name: 'title', type: 'text', defaultValue: 'Release Notes v2.8' },

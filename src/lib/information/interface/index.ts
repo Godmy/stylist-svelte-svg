@@ -1,8 +1,12 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { BehaviorMetricValue } from './behavior';
+export type {
+	BehaviorAttachmentPreviewEvents,
+	BehaviorMetricValue
+} from './behavior';
 export type {
 	RecipeAccessibilityCheckbox,
 	RecipeAtomicPrinciples,
+	RecipeAttachmentPreview,
 	RecipeBadge,
 	RecipeBadgeGroup,
 	RecipeBaseCard,
@@ -17,17 +21,17 @@ export type {
 	RecipeSearchResults,
 	RecipeSort,
 	RecipeSortableGrid,
-	RecipeStatsCard,
 	RecipeStatusIndicator,
 	RecipeTable,
 	RecipeTableCell,
 	RecipeTableRow,
-	RecipeTableSection,
-	StatsCardStateProps
+	RecipeTableSection
 } from './recipe';
 export type {
 	BadgeGroupItem,
 	HtmlAttributesBase,
+	SlotAttachment,
+	SlotAttachmentPreview,
 	SlotBadge,
 	SlotStatus
 } from './slot';

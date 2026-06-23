@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	AuthGuardProps,
 	ChatHeaderChat,
 	ChatHeaderOrganismProps,
 	ChatRoomMessage,
@@ -8,13 +7,10 @@ export type {
 } from './alias';
 export type {
 	TokenMessageState,
-	TokenMessageStatus,
-	TokenNotifictionChannel
+	TokenMessageStatus
 } from './enum';
 export type {
 	AIProvider,
-	AuthGuardResolution,
-	AuthGuardResolutionInput,
 	Chat,
 	ChatHeaderProps,
 	ChatHeaderUser,
@@ -25,22 +21,6 @@ export type {
 	ChatPreviewItem,
 	ChatPreviewMessage,
 	ChatPreviewProps,
-	INotificationProps,
-	INotificationSettingsPreference,
-	INotificationSettingsProps,
 	Message,
-	NotificationCenterContract,
-	NotificationCenterProps,
-	NotificationData,
-	NotificationItem,
-	NotificationListContract,
-	NotificationListProps,
-	NotificationPreferencesContract,
-	NotificationPreferencesProps,
-	NotificationSettingsData,
-	NotificationType,
-	ScheduledNotificationContract,
-	ScheduledNotificationItem,
-	ScheduledNotificationProps,
 	User
 } from './struct';

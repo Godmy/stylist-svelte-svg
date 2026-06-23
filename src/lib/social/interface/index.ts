@@ -1,6 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export type { BehaviorPostCard } from './behavior';
 export type { ContractSocial } from './contract';
-export type { RecipeRating } from './recipe';
+export type {
+	RecipePostCard,
+	RecipeRating
+} from './recipe';
 export type {
 	SlotCommentItem,
 	SlotCommentSystem,

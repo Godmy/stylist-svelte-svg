@@ -1,7 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	AddressForm,
-	FilterPanel,
 	FormFooter,
 	FormHeader,
 	FormSelection,
@@ -18,7 +17,6 @@ export {
 } from './const';
 export {
 	createAddressFormState,
-	createFilterPanelState,
 	createFormErrorMessageState,
 	createFormFooterState,
 	createFormHeaderState,
@@ -30,16 +28,10 @@ export {
 	createScreenReaderState,
 	createSearchFormState,
 	createValidationState,
-	handleFilterChange,
-	handleLayoutChange,
-	handleReset,
 	toggleCollapsed
 } from './function';
 export type {
 	AddressData,
-	FilterChangePayload,
-	FilterPanelLayout,
-	FilterPanelProps,
 	FormData,
 	FormSelectionProps,
 	LoginCredentials,
@@ -53,11 +45,8 @@ export type {
 	RecipeFormFooter,
 	RecipeFormHeader,
 	RecipeInteractionForms,
-	SlotAccountSettingsForm,
 	SlotAddressForm,
 	SlotAddressFormState,
-	SlotDocumentPreview,
-	SlotFilterPanelState,
 	SlotFormFooter,
 	SlotFormHeader,
 	SlotFormSelectionState,
@@ -70,9 +59,5 @@ export type {
 	SlotScreenReaderState,
 	SlotSearchForm,
 	SlotSearchFormState,
-	SlotSecureForm,
-	SlotSecuritySettings,
-	SlotSessionManager,
-	SlotUserProfileCard,
 	SlotValidationState
 } from './interface';

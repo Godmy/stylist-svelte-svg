@@ -3,7 +3,7 @@ import { VARIANT_CLASSES } from '$stylist/interaction/const/record/variant-class
 import type { ButtonFactoryInput } from '$stylist/interaction/factory/button';
 import { createBasePreset } from '$stylist/interaction/preset/base';
 import type { TokenAppearance } from '$stylist/interaction/type/record/appearance';
-import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
+import { resolveAriaLabel } from '$stylist/information/function/resolve/aria-label';
 import { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 

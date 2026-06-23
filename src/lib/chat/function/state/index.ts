@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createAuthGuardState } from './auth-guard';
 export { createChatHeaderState } from './chat-header';
 export { createChatInterfaceState } from './chat-interface';
 export { createChatItemState } from './chat-item';

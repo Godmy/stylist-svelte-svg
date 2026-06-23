@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { NotificationItem } from '$stylist/chat/type/struct/notification-item';
+	import type { NotificationItem } from '$stylist/management/type/struct/notification-item';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 

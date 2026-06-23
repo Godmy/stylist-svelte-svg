@@ -48,6 +48,7 @@ export {
 	DragAndDropList,
 	DropdownMenu,
 	ExpandableTableRow,
+	FilterPanel,
 	IconToolbar,
 	QuantitySelector,
 	RadioButtonGroup,

@@ -2,6 +2,7 @@
 export { createCommentSystemState } from './comment-system';
 export { createCommentThreadState } from './comment-thread';
 export { createFriendListState } from './friend-list';
+export { createPostCardState } from './post-card';
 export { createRatingState } from './rating';
 export { createSocialActivityFeedState } from './social-activity-feed';
 export { createSocialFeedState } from './social-feed';

@@ -28,5 +28,7 @@ export {
 	createNodeTitleState,
 	createOntologyEdgeComponentState,
 	createOntologyNodeComponentState,
-	createPortGroupState
+	createPortGroupState,
+	createStageState,
+	createViewportState
 } from './state';

@@ -113,9 +113,7 @@ export type {
 	ProductForQuote,
 	QuoteRequestValue,
 	TextAreaStateOptions,
-	TextInputBaseProps,
-	TranslatableText,
-	TranslationLocale
+	TextInputBaseProps
 } from './type';
 export type {
 	ContentEditorStateProps,

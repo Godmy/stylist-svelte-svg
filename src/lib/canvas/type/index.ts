@@ -18,12 +18,7 @@ export type {
 	SharedCanvasPoint,
 	SharedCanvasTool,
 	SharedCanvasToolDefinition,
-	StageCamera,
-	StageContract,
-	StageProps,
 	ThemeGraphColors,
 	ThemeGraphPortDataTypeColors,
-	ThemeGraphPortStateColors,
-	ViewportContract,
-	ViewportProps
+	ThemeGraphPortStateColors
 } from './struct';

@@ -1,4 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export {
+	handleFilterChange,
+	handleLayoutChange,
+	handleReset
+} from './filter-panel';
 export { getTokenIconKind } from './get-token-icon-kind';
 export { normalizeTreeViewerNode } from './normalize-tree-viewer-node';
 export { pageBuilderGetDefaultContent } from './page-builder';

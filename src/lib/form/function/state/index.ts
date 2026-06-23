@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { createAddressFormState } from './address-form';
-export { createFilterPanelState } from './filter-panel';
 export { createFormErrorMessageState } from './form-error-message';
 export { createFormFooterState } from './form-footer';
 export { createFormHeaderState } from './form-header';

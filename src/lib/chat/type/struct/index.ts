@@ -1,6 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { AuthGuardResolution } from './auth-guard-resolution';
-export type { AuthGuardResolutionInput } from './auth-guard-resolution-input';
 export type {
 	Chat,
 	ChatHeaderChat,
@@ -19,19 +17,3 @@ export type { ChatPreviewProps } from './chat-preview';
 export type { ChatPreviewContract } from './chat-preview-contract';
 export type { ChatPreviewItem } from './chat-preview-item';
 export type { ChatPreviewMessage } from './chat-preview-message';
-export type { NotificationData } from './notification';
-export type { NotificationCenterContract } from './notification-center-contract';
-export type { NotificationCenterProps } from './notification-center-props';
-export type { NotificationItem } from './notification-item';
-export type { NotificationListContract } from './notification-list-contract';
-export type { NotificationListProps } from './notification-list-props';
-export type { NotificationPreferencesContract } from './notification-preferences-contract';
-export type { NotificationPreferencesProps } from './notification-preferences-props';
-export type { INotificationProps } from './notification-props';
-export type { NotificationSettingsData } from './notification-settings';
-export type { INotificationSettingsPreference } from './notification-settings-preference';
-export type { INotificationSettingsProps } from './notification-settings-props';
-export type { NotificationType } from './notification-type';
-export type { ScheduledNotificationContract } from './scheduled-notification-contract';
-export type { ScheduledNotificationItem } from './scheduled-notification-item';
-export type { ScheduledNotificationProps } from './scheduled-notification-props';

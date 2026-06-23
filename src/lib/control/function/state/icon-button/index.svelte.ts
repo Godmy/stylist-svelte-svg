@@ -1,6 +1,6 @@
 import type { HTMLButtonAttributes } from 'svelte/elements';
 import type { ButtonFactoryInput } from '$stylist/interaction/factory/button';
-import { resolveAriaLabel } from '$stylist/information/function/script/resolve-aria-label';
+import { resolveAriaLabel } from '$stylist/information/function/resolve/aria-label';
 
 export function createIconButtonState(input: ButtonFactoryInput) {
 	const variant = $derived((input.contract.variant ?? 'default') as string);

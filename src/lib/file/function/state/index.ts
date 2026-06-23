@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createAttachmentPreviewState } from './attachment-preview';
 export { createFileState } from './base';
 export { createDataExporterState } from './data-exporter';
 export { createDocumentPreviewState } from './document-preview';

@@ -5,6 +5,7 @@ export type {
 	BehaviorLegendable
 } from './behavior';
 export type {
+	ChartLegendProps,
 	PieChartProps,
 	RecipeAnalyticsChart,
 	RecipeBarChart,

@@ -4,9 +4,7 @@ export {
 	CanvasToolbar,
 	CollaborativeEditor,
 	DrawingSurface,
-	SharedCanvas,
-	Stage,
-	Viewport
+	SharedCanvas
 } from './component';
 export {
 	SHARED_CANVAS_ACTION_ICONS,
@@ -20,8 +18,6 @@ export {
 	createDraftCanvasObject,
 	createDrawingSurfaceState,
 	createSharedCanvasState,
-	createStageState,
-	createViewportState,
 	drawCanvasObject,
 	drawCanvasObjects,
 	exportCanvasImage,
@@ -51,14 +47,9 @@ export type {
 	SharedCanvasPoint,
 	SharedCanvasTool,
 	SharedCanvasToolDefinition,
-	StageCamera,
-	StageContract,
-	StageProps,
 	ThemeGraphColors,
 	ThemeGraphPortDataTypeColors,
-	ThemeGraphPortStateColors,
-	ViewportContract,
-	ViewportProps
+	ThemeGraphPortStateColors
 } from './type';
 export type {
 	CanvasToolbarDrawingOptions,

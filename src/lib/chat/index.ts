@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AuthGuard,
 	ChatHeader,
 	ChatInterface,
 	ChatItem,
@@ -42,11 +41,9 @@ export {
 	RESPONSE_VIEWER_STATUS_CLASSES,
 	TOKEN_MESSAGE_STATE,
 	TOKEN_MESSAGE_STATUS,
-	TOKEN_NOTIFICATION_CHANNEL,
 	USER_STATUS_TEXT
 } from './const';
 export {
-	createAuthGuardState,
 	createChatHeaderState,
 	createChatInterfaceState,
 	createChatItemState,
@@ -72,14 +69,10 @@ export {
 	handleAttachFn,
 	handleEmojiFn,
 	handleInputFn,
-	handleKeydownFn,
-	resolveAuthGuardState
+	handleKeydownFn
 } from './function';
 export type {
 	AIProvider,
-	AuthGuardProps,
-	AuthGuardResolution,
-	AuthGuardResolutionInput,
 	Chat,
 	ChatHeaderChat,
 	ChatHeaderOrganismProps,
@@ -94,26 +87,9 @@ export type {
 	ChatPreviewProps,
 	ChatRoomMessage,
 	ChatRoomProps,
-	INotificationProps,
-	INotificationSettingsPreference,
-	INotificationSettingsProps,
 	Message,
-	NotificationCenterContract,
-	NotificationCenterProps,
-	NotificationData,
-	NotificationItem,
-	NotificationListContract,
-	NotificationListProps,
-	NotificationPreferencesContract,
-	NotificationPreferencesProps,
-	NotificationSettingsData,
-	NotificationType,
-	ScheduledNotificationContract,
-	ScheduledNotificationItem,
-	ScheduledNotificationProps,
 	TokenMessageState,
 	TokenMessageStatus,
-	TokenNotifictionChannel,
 	User
 } from './type';
 export type {
@@ -132,6 +108,7 @@ export type {
 	SlotChatRoom,
 	SlotChatStatusIndicator,
 	SlotChatWindow,
+	SlotDocumentPreview,
 	SlotMessage,
 	SlotMessageAttachment,
 	SlotMessageBubble,

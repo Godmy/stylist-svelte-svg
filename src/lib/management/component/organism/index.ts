@@ -1,5 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { AccountSettingsForm } from './account-settings-form/index';
 export { DashboardLayout } from './dashboard-layout/index';
 export { FeatureToggle } from './feature-toggle/index';
 export { KanbanBoard } from './kanban-board/index';
@@ -9,10 +8,6 @@ export { NotificationPreferences } from './notification-preferences/index';
 export { PerformanceDashboard } from './performance-dashboard/index';
 export { Portfolio } from './portfolio/index';
 export { ScheduledNotification } from './scheduled-notification/index';
-export { SecureForm } from './secure-form/index';
-export { SecuritySettings } from './security-settings/index';
-export { SessionManager } from './session-manager/index';
 export { StatCard } from './stat-card/index';
 export { StatusDashboard } from './status-dashboard/index';
 export { TeamMemberCard } from './team-member-card/index';
-export { UserProfileCard } from './user-profile-card/index';

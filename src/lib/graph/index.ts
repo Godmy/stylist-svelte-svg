@@ -24,11 +24,14 @@ export {
 	OntologyEdgeComponent,
 	OntologyNodeComponent,
 	PortGroup,
-	StylistGraphWorkspace
+	Stage,
+	StylistGraphWorkspace,
+	Viewport
 } from './component';
 export {
 	DEFAULT_GRAPH_CANVAS,
-	LITEGRAPH_CANVAS_ICONS
+	LITEGRAPH_CANVAS_ICONS,
+	TOKEN_PROPERTY_TYPE
 } from './const';
 export {
 	createConnectionLineState,
@@ -51,6 +54,8 @@ export {
 	createOntologyEdgeComponentState,
 	createOntologyNodeComponentState,
 	createPortGroupState,
+	createStageState,
+	createViewportState,
 	resolveMinimapBounds,
 	resolveMinimapCanvasPoint,
 	resolveMinimapFitOffset,
@@ -92,7 +97,13 @@ export type {
 	OntologyNode,
 	OntologyNodeComponentProps,
 	PortGroupProps,
-	Position2D
+	Position2D,
+	StageCamera,
+	StageContract,
+	StageProps,
+	TokenPropertyType,
+	ViewportContract,
+	ViewportProps
 } from './type';
 export type {
 	ContractLitegraphNode,

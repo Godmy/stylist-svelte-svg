@@ -24,6 +24,11 @@ export type {
 	TagFilter,
 	ToggleFilter
 } from './filter-bar';
+export type {
+	FilterChangePayload,
+	FilterPanelLayout,
+	FilterPanelProps
+} from './filter-panel';
 export type { FlatTreeProps } from './flat-tree-props';
 export type { FolderTreeProps } from './folder-tree-props';
 export type { Language } from './language';

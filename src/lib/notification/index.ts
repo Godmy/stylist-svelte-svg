@@ -8,6 +8,7 @@ export {
 	ErrorMessage,
 	LazyLoader,
 	LoadingBoundary,
+	NotificationBadge,
 	Overlay,
 	ProgressBar,
 	ProgressBarWithLabel,
@@ -35,7 +36,6 @@ export {
 	SPINNER_VARIANT_CLASSES
 } from './const';
 export {
-	createAccessibilityCheckboxState,
 	createAccountProgressTrackerState,
 	createAlertState,
 	createAnimatedProgressState,
@@ -44,12 +44,12 @@ export {
 	createErrorMessageState,
 	createLazyLoaderState,
 	createLoadingBoundaryState,
+	createNotificationBadgeState,
 	createOverlayState,
 	createProgressBarState,
 	createProgressBarWithLabelState,
 	createProgressCircleState,
 	createResponseViewerState,
-	createScatterPlotState,
 	createSkeletonCircleState,
 	createSkeletonRectangleState,
 	createSkeletonState,
@@ -97,6 +97,7 @@ export type {
 	RecipeErrorMessage,
 	RecipeLazyLoader,
 	RecipeLoadingBoundary,
+	RecipeNotificationBadge,
 	RecipeProgressBarProps,
 	RecipeSkeleton,
 	RecipeSkeletonCircle,

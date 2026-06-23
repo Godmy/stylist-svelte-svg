@@ -4,7 +4,6 @@ export type { RecipeBreadcrumbDropdown } from './breadcrumb-dropdown';
 export type { RecipeBreadcrumbLink } from './breadcrumb-link';
 export type { RecipeBreadcrumbLinkProps } from './breadcrumb-link-props';
 export type { RecipeBreadcrumbs } from './breadcrumbs';
-export type { ChartLegendProps } from './chart-legend';
 export type { RecipeConfirmationDialog } from './confirmation-dialog';
 export type { RecipeDialogControls } from './dialog-controls';
 export type { LayoutSpecificProps } from './layout-specific-props';

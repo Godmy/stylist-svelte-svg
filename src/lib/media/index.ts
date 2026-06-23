@@ -134,5 +134,6 @@ export type {
 	SlotIcon,
 	SlotImageItem,
 	SlotMedia,
+	SlotSvgName,
 	ThemeIconItem
 } from './interface';

@@ -3,8 +3,7 @@ export type { Props } from './alias';
 export type {
 	TokenCodeLanguage,
 	TokenCodeView,
-	TokenDiffType,
-	TokenPropertyType
+	TokenDiffType
 } from './enum';
 export type {
 	AtomicPrinciplesShowcaseAtomicPrinciplesStats,
@@ -30,8 +29,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	ErrorLogEntry,
-	ErrorLogPayload,
 	MockDataSelectorDataSelection,
 	MockDataSelectorMockDataSchema,
 	MockDataSelectorProps,

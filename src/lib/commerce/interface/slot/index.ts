@@ -24,7 +24,6 @@ export type { SlotOrderConfirmation } from './order-confirmation';
 export type { SlotOrderConfirmationEvents } from './order-confirmation-events';
 export type { SlotOrderConfirmationPaymentInfo } from './order-confirmation-payment-info';
 export type { SlotOrderItem } from './order-item';
-export type { PostCardAction } from './post-card-action';
 export type { SlotPriceAlertElement } from './price-alert-element';
 export type { SlotPriceHistoryDataPoint } from './price-history-data-point';
 export type { SlotPricingPlan } from './pricing-plan';

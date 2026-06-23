@@ -30,6 +30,15 @@ export type {
 } from './ontology-edge-component';
 export type { OntologyNodeComponentProps } from './ontology-node-component';
 export type { PortGroupProps } from './port-group-props';
+export type {
+	StageCamera,
+	StageContract,
+	StageProps
+} from './stage';
+export type {
+	ViewportContract,
+	ViewportProps
+} from './viewport';
 export type { GraphBounds } from './graph-bounds';
 export type { GraphConnection } from './graph-connection';
 export type { GraphNode } from './graph-node';

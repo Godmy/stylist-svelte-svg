@@ -4,6 +4,7 @@ export { Alert } from './alert/index';
 export { AnimatedProgress } from './animated-progress/index';
 export { CardSkeleton } from './card-skeleton/index';
 export { ErrorMessage } from './error-message/index';
+export { NotificationBadge } from './notification-badge/index';
 export { Overlay } from './overlay/index';
 export { ProgressBarWithLabel } from './progress-bar-with-label/index';
 export { ProgressBar } from './progress-bar/index';

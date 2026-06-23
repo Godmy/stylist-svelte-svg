@@ -5,7 +5,6 @@ export type {
 	BreadcrumbItem,
 	BreadcrumbsProps
 } from './breadcrumbs-props';
-export type { ChartLegendItem } from './chart-legend-item';
 export type { DialogConfirmProps } from './dialog-confirm-props';
 export type { DrawerProps } from './drawer-props';
 export type {

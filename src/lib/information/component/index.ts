@@ -15,8 +15,8 @@ export {
 	TableRow
 } from './atom';
 export {
+	AttachmentPreview,
 	BadgeGroup,
 	BaseCard,
-	MetricBarsCard,
-	StatsCard
+	MetricBarsCard
 } from './molecule';

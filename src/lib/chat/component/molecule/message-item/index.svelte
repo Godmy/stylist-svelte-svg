@@ -4,7 +4,7 @@
 	import Avatar from '$stylist/media/component/atom/avatar/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
 	import MessageMeta from '$stylist/chat/component/atom/message-meta/index.svelte';
-	import RecipeAttachmentPreview from '$stylist/file/component/molecule/attachment-preview/index.svelte';
+	import RecipeAttachmentPreview from '$stylist/information/component/molecule/attachment-preview/index.svelte';
 	import createMessageItemState from '$stylist/chat/function/state/message-item/index.svelte';
 
 	export type MessageItemProps = {

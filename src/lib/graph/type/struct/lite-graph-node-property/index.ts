@@ -1,4 +1,4 @@
-import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
+import type { TokenPropertyType } from '$stylist/graph/type/enum/property-type';
 
 export type LiteGraphNodeProperty = {
 	id: string;

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/media/component/atom/icon/index.svelte';
-	import type { RecipeGraphPort as GraphPortProps } from '$stylist/graph/interface/recipe/graph-port';
-	import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
+	import type { RecipeGraphPort } from '$stylist/graph/interface/recipe/graph-port';
+	import type { TokenPropertyType } from '$stylist/graph/type/enum/property-type';
 	import createGraphPortState from '$stylist/graph/function/state/graph-port/index.svelte';
 
-	let props: GraphPortProps = $props();
+	let props: RecipeGraphPort = $props();
 
 	const state = createGraphPortState(props);
 	const label = $derived(props.label ?? '');

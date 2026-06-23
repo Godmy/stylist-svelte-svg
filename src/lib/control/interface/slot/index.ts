@@ -31,6 +31,7 @@ export type { SlotExportPanel } from './export-panel';
 export type { SlotExportPanelStyleClasses } from './export-panel-style-classes';
 export type { SlotFilterBar } from './filter-bar';
 export type { SlotFilterBarStyleClasses } from './filter-bar-style-classes';
+export type { SlotFilterPanelState } from './filter-panel-state';
 export type { SlotIconButton } from './icon-button';
 export type { SlotListWithAvatars } from './list-with-avatars';
 export type { SlotListWithAvatarsStyleClasses } from './list-with-avatars-style-classes';

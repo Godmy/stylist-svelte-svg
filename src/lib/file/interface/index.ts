@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	BehaviorAttachmentPreviewEvents,
 	BehaviorDragDropFileUploadEvents,
 	BehaviorDropZoneEvents,
 	BehaviorFileBrowserEvents,
@@ -11,7 +10,6 @@ export type {
 	BehaviorZipViewerEvents
 } from './behavior';
 export type {
-	ContractAttachment,
 	ContractDragDropFile,
 	ContractFile,
 	ContractFileItem,
@@ -20,7 +18,6 @@ export type {
 	ContractUploadProgress
 } from './contract';
 export type {
-	RecipeAttachmentPreview,
 	RecipeDownloadCard,
 	RecipeDragDropFileUpload,
 	RecipeDropZone,
@@ -33,8 +30,6 @@ export type {
 	RecipeZipViewer
 } from './recipe';
 export type {
-	SlotAttachment,
-	SlotAttachmentPreview,
 	SlotDownloadCard,
 	SlotDragDropFile,
 	SlotDragDropFileUpload,

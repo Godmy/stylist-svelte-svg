@@ -12,6 +12,5 @@ export type {
 	ContentProp,
 	MetricBarData,
 	Props,
-	StatsCardData,
 	StatusState
 } from './struct';

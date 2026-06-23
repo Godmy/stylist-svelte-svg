@@ -14,3 +14,4 @@ export { PortfolioHeader } from './portfolio-header/index';
 export { PortfolioState } from './portfolio-state/index';
 export { PortfolioSummary } from './portfolio-summary/index';
 export { ScrumBacklog } from './scrum-backlog/index';
+export { StatsCard } from './stats-card/index';

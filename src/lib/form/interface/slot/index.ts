@@ -1,9 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { SlotAccountSettingsForm } from './account-settings-form';
 export type { SlotAddressForm } from './address-form';
 export type { SlotAddressFormState } from './address-form-state';
-export type { SlotDocumentPreview } from './document-preview';
-export type { SlotFilterPanelState } from './filter-panel-state';
 export type { SlotFormFooter } from './form-footer';
 export type { SlotFormHeader } from './form-header';
 export type { SlotFormSelectionState } from './form-selection-state';
@@ -16,8 +13,4 @@ export type { SlotScreenReader } from './screen-reader';
 export type { SlotScreenReaderState } from './screen-reader-state';
 export type { SlotSearchForm } from './search-form';
 export type { SlotSearchFormState } from './search-form-state';
-export type { SlotSecureForm } from './secure-form';
-export type { SlotSecuritySettings } from './security-settings';
-export type { SlotSessionManager } from './session-manager';
-export type { SlotUserProfileCard } from './user-profile-card';
 export type { SlotValidationState } from './validation-state';

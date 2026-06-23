@@ -17,6 +17,7 @@ export type {
 	SlotChatRoom,
 	SlotChatStatusIndicator,
 	SlotChatWindow,
+	SlotDocumentPreview,
 	SlotMessage,
 	SlotMessageAttachment,
 	SlotMessageBubble,

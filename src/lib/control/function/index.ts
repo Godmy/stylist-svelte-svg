@@ -1,6 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	getTokenIconKind,
+	handleFilterChange,
+	handleLayoutChange,
+	handleReset,
 	normalizeTreeViewerNode,
 	pageBuilderGetDefaultAttributes,
 	pageBuilderGetDefaultContent,
@@ -44,6 +47,7 @@ export {
 	createExpandableTableRowState,
 	createExportPanelState,
 	createFilterBarState,
+	createFilterPanelState,
 	createFollowButtonState,
 	createIconButtonState,
 	createListWithAvatarsState,

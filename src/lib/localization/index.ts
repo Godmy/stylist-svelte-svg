@@ -17,7 +17,11 @@ export {
 	formatDateTime,
 	formatTime
 } from './function';
-export type { TokenTranslation } from './type';
+export type {
+	TokenTranslation,
+	TranslatableText,
+	TranslationLocale
+} from './type';
 export type {
 	LocaleSwitcherStateProps,
 	RecipeLanguageSelector,

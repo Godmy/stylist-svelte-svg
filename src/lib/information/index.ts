@@ -1,10 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	ObjectManagerMetricBar,
-	ObjectManagerStatsCard,
 	ObjectManagerTable
 } from './class';
 export {
+	AttachmentPreview,
 	Badge,
 	BadgeGroup,
 	BaseCard,
@@ -15,7 +15,6 @@ export {
 	MetricBar,
 	MetricBarsCard,
 	NpmBadge,
-	StatsCard,
 	StatusIndicator,
 	Table,
 	TableBody,
@@ -28,8 +27,6 @@ export {
 	DEFAULT_BADGE,
 	DEFAULT_BADGE_LABEL,
 	PROGRESS_VARIANT_CLASSES,
-	STATS_CARD_TREND_CLASS,
-	STATS_CARD_TREND_ICON,
 	STATS_CARD_TREND_TEXT_CLASSES,
 	STATS_CARD_VARIANT_CLASSES,
 	TABLE_ALIGNMENT_CLASSES,
@@ -39,8 +36,8 @@ export {
 	TOKEN_TABLE_CELL
 } from './const';
 export {
-	buildConditionalClassNames,
-	createAriaAttributes,
+	createAttachmentDispatch,
+	createAttachmentPreviewState,
 	createBadgeGroupState,
 	createBadgeState,
 	createBaseCardState,
@@ -55,17 +52,16 @@ export {
 	createMetricBarState,
 	createMetricBarsCardState,
 	createNpmBadgeState,
-	createStatsCardState,
 	createStatusIndicatorState,
 	createTableBodyState,
 	createTableCellState,
 	createTableHeaderState,
 	createTableRowState,
 	createTableState,
-	joinClassNames,
-	joinTailwindClassNames,
-	mergeClassNames,
-	mergeTailwindClassNames,
+	formatFileSize,
+	getIconName,
+	handleDownload,
+	handleRemove,
 	resolveAriaLabel
 } from './function';
 export type {
@@ -76,7 +72,6 @@ export type {
 	ListItemMarkerType,
 	MetricBarData,
 	Props,
-	StatsCardData,
 	StatusState,
 	TokenSoftwareBadge,
 	TokenStatus,
@@ -84,10 +79,12 @@ export type {
 } from './type';
 export type {
 	BadgeGroupItem,
+	BehaviorAttachmentPreviewEvents,
 	BehaviorMetricValue,
 	HtmlAttributesBase,
 	RecipeAccessibilityCheckbox,
 	RecipeAtomicPrinciples,
+	RecipeAttachmentPreview,
 	RecipeBadge,
 	RecipeBadgeGroup,
 	RecipeBaseCard,
@@ -102,13 +99,13 @@ export type {
 	RecipeSearchResults,
 	RecipeSort,
 	RecipeSortableGrid,
-	RecipeStatsCard,
 	RecipeStatusIndicator,
 	RecipeTable,
 	RecipeTableCell,
 	RecipeTableRow,
 	RecipeTableSection,
+	SlotAttachment,
+	SlotAttachmentPreview,
 	SlotBadge,
-	SlotStatus,
-	StatsCardStateProps
+	SlotStatus
 } from './interface';

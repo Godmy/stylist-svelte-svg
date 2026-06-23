@@ -19,3 +19,5 @@ export { createNodeTitleState } from './node-title';
 export { createOntologyEdgeComponentState } from './ontology-edge-component';
 export { createOntologyNodeComponentState } from './ontology-node-component';
 export { createPortGroupState } from './port-group';
+export { createStageState } from './stage';
+export { createViewportState } from './viewport';

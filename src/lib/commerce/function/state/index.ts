@@ -22,7 +22,6 @@ export { createPaymentInfoState } from './payment-info';
 export { createPaymentMethodSelectorState } from './payment-method-selector';
 export { createPaymentSelectorState } from './payment-selector';
 export { createPaymentSummaryState } from './payment-summary';
-export { createPostCardState } from './post-card';
 export { createPriceAlertState } from './price-alert';
 export { createPriceFilterState } from './price-filter';
 export { createPriceHistoryState } from './price-history';

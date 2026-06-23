@@ -1,10 +1,10 @@
 ﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { TokenOrientation } from '$stylist/layout/type/enum/orientation';
 import type { TokenSelectionType } from '$stylist/control/type/record/selection-type';
 
 export interface RecipeToggleGroupRootProps
-	extends ComputeIntersectAll<[Omit<HTMLButtonAttributes, 'size' | 'class' | 'type'>]> {
+	extends ComputeIntersectAll<[Omit<HTMLAttributes<HTMLDivElement>, 'class'>]> {
 	value?: string;
 	disabled?: boolean;
 	orientation?: TokenOrientation;

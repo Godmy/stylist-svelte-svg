@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AttachmentPreview,
 	DataExporter,
 	DocumentPreview,
 	DownloadCard,
@@ -19,8 +18,6 @@ export {
 	clearAll,
 	clearFile,
 	convertToCSV,
-	createAttachmentDispatch,
-	createAttachmentPreviewState,
 	createDataExporterState,
 	createDocumentPreviewState,
 	createDownloadCardState,
@@ -38,7 +35,6 @@ export {
 	formatFileSize,
 	getEntryIcon,
 	getFileIcon,
-	getIconName,
 	getItemCount,
 	handleAction,
 	handleCancel,
@@ -97,7 +93,6 @@ export type {
 	ViewMode
 } from './type';
 export type {
-	BehaviorAttachmentPreviewEvents,
 	BehaviorDragDropFileUploadEvents,
 	BehaviorDropZoneEvents,
 	BehaviorFileBrowserEvents,
@@ -106,14 +101,12 @@ export type {
 	BehaviorFileUploadEvents,
 	BehaviorUploadProgressEvents,
 	BehaviorZipViewerEvents,
-	ContractAttachment,
 	ContractDragDropFile,
 	ContractFile,
 	ContractFileItem,
 	ContractFileMetadata,
 	ContractUploadFile,
 	ContractUploadProgress,
-	RecipeAttachmentPreview,
 	RecipeDownloadCard,
 	RecipeDragDropFileUpload,
 	RecipeDropZone,
@@ -124,8 +117,6 @@ export type {
 	RecipeFileUpload,
 	RecipeUploadProgress,
 	RecipeZipViewer,
-	SlotAttachment,
-	SlotAttachmentPreview,
 	SlotDownloadCard,
 	SlotDragDropFile,
 	SlotDragDropFileUpload,

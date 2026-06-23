@@ -2,7 +2,7 @@ import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { TokenPropertyType } from '$stylist/development/type/enum/property-type';
+import type { TokenPropertyType } from '$stylist/graph/type/enum/property-type';
 import type { TokenSize } from '$stylist/layout/type/enum/size';
 
 export interface RecipeGraphPort

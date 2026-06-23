@@ -104,6 +104,7 @@ export type {
 	SlotExportPanelStyleClasses,
 	SlotFilterBar,
 	SlotFilterBarStyleClasses,
+	SlotFilterPanelState,
 	SlotIconButton,
 	SlotListWithAvatars,
 	SlotListWithAvatarsStyleClasses,

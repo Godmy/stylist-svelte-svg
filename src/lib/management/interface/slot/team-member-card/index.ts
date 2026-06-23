@@ -1,13 +1,6 @@
 import type { TierContent } from '$stylist/architecture/type/enum/tier';
 import type { SlotAchievement } from '$stylist/management/interface/slot/achievement';
 
-/**
- * Variant options for TeamMemberCard
- */
-/**
- * Props interface for TeamMemberCard component
- * Single Responsibility: Define the contract for TeamMemberCard component
- */
 export interface SlotTeamMemberCard {
 	/**
 	 * Name of the team member

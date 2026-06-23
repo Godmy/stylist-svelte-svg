@@ -1,6 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { RecipeAccessibilityCheckbox } from './accessibility-checkbox';
 export type { RecipeAtomicPrinciples } from './atomic-principles';
+export type { RecipeAttachmentPreview } from './attachment-preview';
 export type { RecipeBadge } from './badge';
 export type { RecipeBadgeGroup } from './badge-group';
 export type { RecipeBaseCard } from './base-card';
@@ -15,8 +16,6 @@ export type { RecipeNpmBadge } from './npm-badge';
 export type { RecipeSearchResults } from './search-results';
 export type { RecipeSort } from './sort';
 export type { RecipeSortableGrid } from './sortable-grid';
-export type { RecipeStatsCard } from './stats-card';
-export type { StatsCardStateProps } from './stats-card-stats-card-state-props';
 export type { RecipeStatusIndicator } from './status-indicator';
 export type { RecipeTable } from './table';
 export type { RecipeTableCell } from './table-cell';

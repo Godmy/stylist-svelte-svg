@@ -1,6 +1,6 @@
-import type { IconToolbarItem } from '$stylist/control/component/molecule/icon-toolbar/index.svelte';
+import type { SlotSvgName } from '$stylist/media/interface/slot/svg-name';
 
-export const DOMAIN_MENU_ICONS: readonly IconToolbarItem[] = [
+export const DOMAIN_MENU_ICONS: readonly SlotSvgName[] = [
 	{ name: 'dashboard', svg: 'layout-dashboard' },
 	{ name: 'builder', svg: 'hammer' },
 	{ name: 'backlog', svg: 'list-checks' },

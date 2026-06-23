@@ -8,15 +8,13 @@ export type {
 	ContractManagement
 } from './contract';
 export type {
-	AccountSettingsFormElementProps,
+	AccountSettings,
 	DashboardLayoutProps,
 	NotificationStateProps,
 	PageHeaderStateProps,
 	PerformanceDashboardStateProps,
 	PermissionGateProps,
 	PushNotificationProps,
-	RecipeAccountSettingsForm,
-	RecipeAuthGuard,
 	RecipeBurnDownChart,
 	RecipeFeatureToggle,
 	RecipeKPIIndicator,
@@ -24,7 +22,6 @@ export type {
 	RecipeKanbanCard,
 	RecipeKanbanColumn,
 	RecipeLegendItem,
-	RecipeNotificationBadge,
 	RecipeNotificationCenter,
 	RecipeNotificationList,
 	RecipeNotificationPreferences,
@@ -33,12 +30,9 @@ export type {
 	RecipeProcessStep,
 	RecipeScheduledNotification,
 	RecipeScrumBacklog,
-	RecipeSecureForm,
-	RecipeSecuritySettings,
-	RecipeSessionManager,
 	RecipeStatCard,
+	RecipeStatsCard,
 	RecipeStatusDashboard,
-	RecipeUserProfileCard,
 	StatusDashboardStateProps,
 	TeamMemberCardStateProps
 } from './recipe';

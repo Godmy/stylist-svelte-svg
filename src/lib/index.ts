@@ -169,8 +169,6 @@ export {
 	SHARED_CANVAS_ACTION_ICONS,
 	SHARED_CANVAS_TOOL_DEFINITIONS,
 	SharedCanvas,
-	Stage,
-	Viewport,
 	cloneCanvasObjects,
 	createCanvasObjectId,
 	createCanvasToolbarState,
@@ -178,8 +176,6 @@ export {
 	createDraftCanvasObject,
 	createDrawingSurfaceState,
 	createSharedCanvasState,
-	createStageState,
-	createViewportState,
 	drawCanvasObject,
 	drawCanvasObjects,
 	exportCanvasImage,
@@ -243,7 +239,6 @@ export {
 	resolveCanvasChartPreset
 } from './chart';
 export {
-	AuthGuard,
 	CHAT_PREVIEW_ICON_CHECK,
 	CHAT_PREVIEW_ICON_CHECK_CHECK,
 	CHAT_ROOM_VARIANT_CLASSES,
@@ -282,10 +277,8 @@ export {
 	RESPONSE_VIEWER_STATUS_CLASSES,
 	TOKEN_MESSAGE_STATE,
 	TOKEN_MESSAGE_STATUS,
-	TOKEN_NOTIFICATION_CHANNEL,
 	USER_STATUS_TEXT,
 	UserStatus,
-	createAuthGuardState,
 	createChatHeaderState,
 	createChatInterfaceState,
 	createChatItemState,
@@ -311,8 +304,7 @@ export {
 	handleAttachFn,
 	handleEmojiFn,
 	handleInputFn,
-	handleKeydownFn,
-	resolveAuthGuardState
+	handleKeydownFn
 } from './chat';
 export {
 	COLORS_SCALES_AMBER,
@@ -379,7 +371,6 @@ export {
 	PaymentMethodSelector,
 	PaymentSelector,
 	PaymentSummary,
-	PostCard,
 	PresetAlertCard,
 	PresetBillingSummary,
 	PresetOrderConfirmation,
@@ -446,7 +437,6 @@ export {
 	createPaymentMethodSelectorState,
 	createPaymentSelectorState,
 	createPaymentSummaryState,
-	createPostCardState,
 	createPriceAlertState,
 	createPriceFilterState,
 	createPriceHistoryState,
@@ -536,6 +526,7 @@ export {
 	ExportPanel,
 	FOLLOW_BUTTON_VARIANT_CLASSES,
 	FilterBar,
+	FilterPanel,
 	FlatTree,
 	FolderTree,
 	FollowButton,
@@ -663,6 +654,7 @@ export {
 	createExpandableTableRowState,
 	createExportPanelState,
 	createFilterBarState,
+	createFilterPanelState,
 	createFollowButtonState,
 	createIconButtonState,
 	createListWithAvatarsState,
@@ -716,6 +708,9 @@ export {
 	createZoomControlsState,
 	createZoomToolbarState,
 	getTokenIconKind,
+	handleFilterChange,
+	handleLayoutChange,
+	handleReset,
 	normalizeTreeViewerNode,
 	pageBuilderGetDefaultAttributes,
 	pageBuilderGetDefaultContent,
@@ -759,7 +754,6 @@ export {
 	TOKEN_CODE_LANGUAGE,
 	TOKEN_CODE_VIEW,
 	TOKEN_DIFF_TYPE,
-	TOKEN_PROPERTY_TYPE,
 	buildComponentPreviewCode,
 	categories,
 	copyToClipboard,
@@ -783,8 +777,7 @@ export {
 	createResourceOptimizerState,
 	createStylistState,
 	createSyntaxHighlightedCodeState,
-	panelId,
-	serializeUnknownError
+	panelId
 } from './development';
 export {
 	CLUSTER_TOOLBAR_ITEMS,
@@ -838,10 +831,10 @@ export {
 	createDomainBacklogPreviewState,
 	createDomainBacklogState,
 	createDomainLandingScreenState,
-	createDomainPageState
+	createDomainPageState,
+	serializeUnknownError
 } from './domain';
 export {
-	AttachmentPreview,
 	DataExporter,
 	DocumentPreview,
 	DownloadCard,
@@ -858,8 +851,6 @@ export {
 	clearAll,
 	clearFile,
 	convertToCSV,
-	createAttachmentDispatch,
-	createAttachmentPreviewState,
 	createDataExporterState,
 	createDocumentPreviewState,
 	createDownloadCardState,
@@ -877,7 +868,6 @@ export {
 	formatFileSize,
 	getEntryIcon,
 	getFileIcon,
-	getIconName,
 	getItemCount,
 	handleAction,
 	handleCancel,
@@ -915,7 +905,6 @@ export {
 } from './file';
 export {
 	AddressForm,
-	FilterPanel,
 	FormFooter,
 	FormHeader,
 	FormSelection,
@@ -928,7 +917,6 @@ export {
 	SearchForm,
 	Validation,
 	createAddressFormState,
-	createFilterPanelState,
 	createFormErrorMessageState,
 	createFormFooterState,
 	createFormHeaderState,
@@ -940,9 +928,6 @@ export {
 	createScreenReaderState,
 	createSearchFormState,
 	createValidationState,
-	handleFilterChange,
-	handleLayoutChange,
-	handleReset,
 	toggleCollapsed
 } from './form';
 export {
@@ -993,7 +978,10 @@ export {
 	OntologyEdgeComponent,
 	OntologyNodeComponent,
 	PortGroup,
+	Stage,
 	StylistGraphWorkspace,
+	TOKEN_PROPERTY_TYPE,
+	Viewport,
 	createConnectionLineState,
 	createGraphCanvasState,
 	createGraphEdgeState,
@@ -1014,6 +1002,8 @@ export {
 	createOntologyEdgeComponentState,
 	createOntologyNodeComponentState,
 	createPortGroupState,
+	createStageState,
+	createViewportState,
 	resolveMinimapBounds,
 	resolveMinimapCanvasPoint,
 	resolveMinimapFitOffset,
@@ -1023,6 +1013,7 @@ export {
 	resolveMinimapViewport
 } from './graph';
 export {
+	AttachmentPreview,
 	Badge,
 	BadgeGroup,
 	BaseCard,
@@ -1037,14 +1028,10 @@ export {
 	MetricBarsCard,
 	NpmBadge,
 	ObjectManagerMetricBar,
-	ObjectManagerStatsCard,
 	ObjectManagerTable,
 	PROGRESS_VARIANT_CLASSES,
-	STATS_CARD_TREND_CLASS,
-	STATS_CARD_TREND_ICON,
 	STATS_CARD_TREND_TEXT_CLASSES,
 	STATS_CARD_VARIANT_CLASSES,
-	StatsCard,
 	StatusIndicator,
 	TABLE_ALIGNMENT_CLASSES,
 	TABLE_CLASSES,
@@ -1056,8 +1043,8 @@ export {
 	TableCell,
 	TableHeader,
 	TableRow,
-	buildConditionalClassNames,
-	createAriaAttributes,
+	createAttachmentDispatch,
+	createAttachmentPreviewState,
 	createBadgeGroupState,
 	createBadgeState,
 	createBaseCardState,
@@ -1072,16 +1059,13 @@ export {
 	createMetricBarState,
 	createMetricBarsCardState,
 	createNpmBadgeState,
-	createStatsCardState,
 	createStatusIndicatorState,
 	createTableBodyState,
 	createTableCellState,
 	createTableHeaderState,
 	createTableRowState,
 	createTableState,
-	joinTailwindClassNames,
-	mergeClassNames,
-	mergeTailwindClassNames,
+	getIconName,
 	resolveAriaLabel
 } from './information';
 export {
@@ -1349,6 +1333,7 @@ export {
 	createThemeSurfaceState,
 	createVerticalLayoutState,
 	createWidgetContainerState,
+	mergeClassNames,
 	stateFn
 } from './layout';
 export {
@@ -1366,7 +1351,6 @@ export {
 	formatTime
 } from './localization';
 export {
-	AccountSettingsForm,
 	BURN_DOWN_CHART_DEFAULT_MARGINS,
 	BacklogViewTabs,
 	BurnDownChart,
@@ -1385,7 +1369,6 @@ export {
 	NOTIFICATION_BADGE_MARKER_CLASSES,
 	NOTIFICATION_BADGE_POSITION_CLASSES,
 	Notification,
-	NotificationBadge,
 	NotificationCenter,
 	NotificationList,
 	NotificationPreferences,
@@ -1396,6 +1379,7 @@ export {
 	ObjectManagerPerformanceMonitor,
 	ObjectManagerPortfolio,
 	ObjectManagerStatCard,
+	ObjectManagerStatsCard,
 	ObjectManagerStatusDashboard,
 	OperationsHistory,
 	PERFORMANCE_DASHBOARD_SIZE_CLASSES,
@@ -1415,30 +1399,29 @@ export {
 	PortfolioSummary,
 	ProcessStep,
 	PushNotification,
+	STATS_CARD_TREND_CLASS,
+	STATS_CARD_TREND_ICON,
 	STATUS_DASHBOARD_PRESENTATION,
 	STAT_CARD_TREND_TEXT_CLASSES,
 	STAT_CARD_VARIANT_CLASSES,
 	ScheduledNotification,
 	ScrumBacklog,
-	SecureForm,
-	SecuritySettings,
-	SessionManager,
 	StatCard,
+	StatsCard,
 	StatusDashboard,
 	TEAM_MEMBER_CARD_VARIANT_CLASSES,
 	TOKEN_KPI,
 	TOKEN_MONITORING_TYPE,
+	TOKEN_NOTIFICATION_CHANNEL,
 	TOKEN_PERFORMANCE_BARS,
 	TOKEN_PERFORMANCE_RANGE,
 	TOKEN_TREND,
 	TeamMemberCard,
-	UserProfileCard,
 	addKanbanCard,
 	addKanbanColumn,
 	applyKanbanColumnDrop,
 	archiveKanbanCard,
 	cloneKanbanBoard,
-	createAccountSettingsFormState,
 	createBacklogItem,
 	createBurnDownChartState,
 	createDashboardLayoutState,
@@ -1450,7 +1433,6 @@ export {
 	createKanbanCardState,
 	createKanbanColumnState,
 	createLegendItemState,
-	createNotificationBadgeState,
 	createNotificationCenterState,
 	createNotificationListState,
 	createNotificationPreferencesState,
@@ -1465,13 +1447,10 @@ export {
 	createPushNotificationState,
 	createScheduledNotificationState,
 	createScrumBacklogState,
-	createSecureFormState,
-	createSecuritySettingsState,
-	createSessionManagerState,
 	createStatCardState,
+	createStatsCardState,
 	createStatusDashboardState,
 	createTeamMemberCardState,
-	createUserProfileCardState,
 	deleteKanbanCard,
 	filterBacklogItems,
 	formatBacklogItemDate,
@@ -1641,6 +1620,7 @@ export {
 	ErrorMessage,
 	LazyLoader,
 	LoadingBoundary,
+	NotificationBadge,
 	Overlay,
 	PROGRESS_BAR_SIZE_CLASSES,
 	PROGRESS_BAR_VARIANT_CLASSES,
@@ -1664,7 +1644,6 @@ export {
 	StepIcon,
 	Toast,
 	ToastStack,
-	createAccessibilityCheckboxState,
 	createAccountProgressTrackerState,
 	createAlertState,
 	createAnimatedProgressState,
@@ -1673,6 +1652,7 @@ export {
 	createErrorMessageState,
 	createLazyLoaderState,
 	createLoadingBoundaryState,
+	createNotificationBadgeState,
 	createOverlayState,
 	createProgressBarState,
 	createProgressBarWithLabelState,
@@ -1766,6 +1746,7 @@ export {
 	CommentSystem,
 	CommentThread,
 	FriendList,
+	PostCard,
 	Rating,
 	SocialActivityFeed,
 	SocialFeed,
@@ -1785,6 +1766,7 @@ export {
 	createCommentSystemState,
 	createCommentThreadState,
 	createFriendListState,
+	createPostCardState,
 	createRatingState,
 	createSocialActivityFeedState,
 	createSocialFeedState,
@@ -1890,6 +1872,21 @@ export {
 	toNullableString,
 	truncateText
 } from './typography';
+export {
+	AccountSettingsForm,
+	AuthGuard,
+	SecureForm,
+	SecuritySettings,
+	SessionManager,
+	UserProfileCard,
+	createAccountSettingsFormState,
+	createAuthGuardState,
+	createSecureFormState,
+	createSecuritySettingsState,
+	createSessionManagerState,
+	createUserProfileCardState,
+	resolveAuthGuardState
+} from './user';
 export type {
 	EasingFunction,
 	TokenAnimation,
@@ -1985,14 +1982,9 @@ export type {
 	SharedCanvasPoint,
 	SharedCanvasTool,
 	SharedCanvasToolDefinition,
-	StageCamera,
-	StageContract,
-	StageProps,
 	ThemeGraphColors,
 	ThemeGraphPortDataTypeColors,
-	ThemeGraphPortStateColors,
-	ViewportContract,
-	ViewportProps
+	ThemeGraphPortStateColors
 } from './canvas';
 export type {
 	AnalyticsChartBarPoint,
@@ -2006,6 +1998,7 @@ export type {
 	ChartAxisYMetrics,
 	ChartBounds,
 	ChartFunctionPoint,
+	ChartLegendItem,
 	ChartScale,
 	ChartSeries,
 	HeatmapAxisValue,
@@ -2025,9 +2018,6 @@ export type {
 } from './chart';
 export type {
 	AIProvider,
-	AuthGuardProps,
-	AuthGuardResolution,
-	AuthGuardResolutionInput,
 	Chat,
 	ChatHeaderChat,
 	ChatHeaderOrganismProps,
@@ -2042,26 +2032,9 @@ export type {
 	ChatPreviewProps,
 	ChatRoomMessage,
 	ChatRoomProps,
-	INotificationProps,
-	INotificationSettingsPreference,
-	INotificationSettingsProps,
 	Message,
-	NotificationCenterContract,
-	NotificationCenterProps,
-	NotificationData,
-	NotificationItem,
-	NotificationListContract,
-	NotificationListProps,
-	NotificationPreferencesContract,
-	NotificationPreferencesProps,
-	NotificationSettingsData,
-	NotificationType,
-	ScheduledNotificationContract,
-	ScheduledNotificationItem,
-	ScheduledNotificationProps,
 	TokenMessageState,
 	TokenMessageStatus,
-	TokenNotifictionChannel,
 	User
 } from './chat';
 export type {
@@ -2146,6 +2119,9 @@ export type {
 	ExpandableTableRowProps,
 	ExpandableTableRowRestProps,
 	ExportFormat,
+	FilterChangePayload,
+	FilterPanelLayout,
+	FilterPanelProps,
 	FlatTreeProps,
 	FolderTreeProps,
 	FunctionalTabItem,
@@ -2238,8 +2214,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	ErrorLogEntry,
-	ErrorLogPayload,
 	MockDataSelectorDataSelection,
 	MockDataSelectorMockDataSchema,
 	MockDataSelectorProps,
@@ -2254,8 +2228,7 @@ export type {
 	StylistSelection,
 	TokenCodeLanguage,
 	TokenCodeView,
-	TokenDiffType,
-	TokenPropertyType
+	TokenDiffType
 } from './development';
 export type {
 	TypeDomainCluster,
@@ -2290,9 +2263,6 @@ export type {
 } from './file';
 export type {
 	AddressData,
-	FilterChangePayload,
-	FilterPanelLayout,
-	FilterPanelProps,
 	FormData,
 	FormSelectionProps,
 	LoginCredentials,
@@ -2358,7 +2328,13 @@ export type {
 	OntologyEdgeComponentProps,
 	OntologyNode,
 	OntologyNodeComponentProps,
-	PortGroupProps
+	PortGroupProps,
+	StageCamera,
+	StageContract,
+	StageProps,
+	TokenPropertyType,
+	ViewportContract,
+	ViewportProps
 } from './graph';
 export type {
 	BaseCardProps,
@@ -2367,7 +2343,6 @@ export type {
 	ContentProp,
 	ListItemMarkerType,
 	MetricBarData,
-	StatsCardData,
 	StatusState,
 	TokenSoftwareBadge,
 	TokenStatus,
@@ -2393,9 +2368,7 @@ export type {
 	ProductForQuote,
 	QuoteRequestValue,
 	TextAreaStateOptions,
-	TextInputBaseProps,
-	TranslatableText,
-	TranslationLocale
+	TextInputBaseProps
 } from './input';
 export type {
 	ClickContract,
@@ -2512,13 +2485,17 @@ export type {
 	TokenZIndex,
 	WidgetContainerProps
 } from './layout';
-export type { TokenTranslation } from './localization';
 export type {
-	AccountSettings,
+	TokenTranslation,
+	TranslatableText,
+	TranslationLocale
+} from './localization';
+export type {
 	CardData,
 	DragPayload,
 	DraggableCardRestProps,
 	DraggableCardStateProps,
+	INotificationSettingsPreference,
 	KanbanBoardAction,
 	KanbanBoardType,
 	KanbanCardStateProps,
@@ -2526,14 +2503,18 @@ export type {
 	KanbanCardUser,
 	KanbanColumnType,
 	Metric,
+	NotificationData,
+	NotificationItem,
+	NotificationSettingsData,
+	NotificationType,
 	PerformanceMonitorStatus,
-	Session,
+	ScheduledNotificationItem,
+	StatsCardData,
 	StatusItem,
 	TokenKPI,
 	TokenMonitoringType,
-	TokenTrend,
-	UserData,
-	UserProfileCardElementProps
+	TokenNotifictionChannel,
+	TokenTrend
 } from './management';
 export type {
 	ABTestConfiguratorState,
@@ -2593,7 +2574,6 @@ export type {
 	BreadcrumbItem,
 	BreadcrumbSeparatorProps,
 	BreadcrumbsProps,
-	ChartLegendItem,
 	DialogConfirmProps,
 	DrawerProps,
 	GeneralToolbarRecipe,
@@ -2738,6 +2718,14 @@ export type {
 	TokenTypographyTone
 } from './typography';
 export type {
+	AccountSettings,
+	AuthGuardProps,
+	AuthGuardResolution,
+	AuthGuardResolutionInput,
+	Session,
+	UserData
+} from './user';
+export type {
 	AnimateValueOptions,
 	BehaviorAnimate,
 	BehaviorMotion,
@@ -2827,6 +2815,7 @@ export type {
 	BehaviorChartAxis,
 	BehaviorChartColorable,
 	BehaviorLegendable,
+	ChartLegendProps,
 	PieChartProps,
 	RecipeAnalyticsChart,
 	RecipeBarChart,
@@ -2861,6 +2850,7 @@ export type {
 	SlotChatRoom,
 	SlotChatStatusIndicator,
 	SlotChatWindow,
+	SlotDocumentPreview,
 	SlotMessage,
 	SlotMessageAttachment,
 	SlotMessageBubble,
@@ -2917,7 +2907,6 @@ export type {
 	ContractShippingAddress,
 	ContractWishlistButton,
 	PaymentInfoProps,
-	PostCardAction,
 	ProductCardCompactProps,
 	ProductCardWithActionsProps,
 	RecipeAlertCard,
@@ -2940,7 +2929,6 @@ export type {
 	RecipeOrderItem,
 	RecipeOrderSort,
 	RecipeOrderTracking,
-	RecipePostCard,
 	RecipePriceAlert,
 	RecipePriceFilter,
 	RecipePriceHistory,
@@ -3124,6 +3112,7 @@ export type {
 	SlotExportPanelStyleClasses,
 	SlotFilterBar,
 	SlotFilterBarStyleClasses,
+	SlotFilterPanelState,
 	SlotIconButton,
 	SlotListWithAvatars,
 	SlotListWithAvatarsStyleClasses,
@@ -3203,7 +3192,6 @@ export type {
 	SlotStylist
 } from './development';
 export type {
-	BehaviorAttachmentPreviewEvents,
 	BehaviorDragDropFileUploadEvents,
 	BehaviorDropZoneEvents,
 	BehaviorFileBrowserEvents,
@@ -3212,14 +3200,12 @@ export type {
 	BehaviorFileUploadEvents,
 	BehaviorUploadProgressEvents,
 	BehaviorZipViewerEvents,
-	ContractAttachment,
 	ContractDragDropFile,
 	ContractFile,
 	ContractFileItem,
 	ContractFileMetadata,
 	ContractUploadFile,
 	ContractUploadProgress,
-	RecipeAttachmentPreview,
 	RecipeDownloadCard,
 	RecipeDragDropFileUpload,
 	RecipeDropZone,
@@ -3230,8 +3216,6 @@ export type {
 	RecipeFileUpload,
 	RecipeUploadProgress,
 	RecipeZipViewer,
-	SlotAttachment,
-	SlotAttachmentPreview,
 	SlotDownloadCard,
 	SlotDragDropFile,
 	SlotDragDropFileUpload,
@@ -3258,11 +3242,8 @@ export type {
 	RecipeFormFooter,
 	RecipeFormHeader,
 	RecipeInteractionForms,
-	SlotAccountSettingsForm,
 	SlotAddressForm,
 	SlotAddressFormState,
-	SlotDocumentPreview,
-	SlotFilterPanelState,
 	SlotFormFooter,
 	SlotFormHeader,
 	SlotFormSelectionState,
@@ -3275,10 +3256,6 @@ export type {
 	SlotScreenReaderState,
 	SlotSearchForm,
 	SlotSearchFormState,
-	SlotSecureForm,
-	SlotSecuritySettings,
-	SlotSessionManager,
-	SlotUserProfileCard,
 	SlotValidationState
 } from './form';
 export type {
@@ -3345,10 +3322,12 @@ export type {
 } from './graph';
 export type {
 	BadgeGroupItem,
+	BehaviorAttachmentPreviewEvents,
 	BehaviorMetricValue,
 	HtmlAttributesBase,
 	RecipeAccessibilityCheckbox,
 	RecipeAtomicPrinciples,
+	RecipeAttachmentPreview,
 	RecipeBadge,
 	RecipeBadgeGroup,
 	RecipeBaseCard,
@@ -3362,14 +3341,14 @@ export type {
 	RecipeSearchResults,
 	RecipeSort,
 	RecipeSortableGrid,
-	RecipeStatsCard,
 	RecipeStatusIndicator,
 	RecipeTableCell,
 	RecipeTableRow,
 	RecipeTableSection,
+	SlotAttachment,
+	SlotAttachmentPreview,
 	SlotBadge,
-	SlotStatus,
-	StatsCardStateProps
+	SlotStatus
 } from './information';
 export type {
 	ContentEditorStateProps,
@@ -3498,7 +3477,6 @@ export type {
 	SlotTranslationEditor
 } from './localization';
 export type {
-	AccountSettingsFormElementProps,
 	BehaviorOperationsHistoryEvents,
 	BehaviorTrendable,
 	BurnDownChartMargins,
@@ -3518,8 +3496,6 @@ export type {
 	PortfolioEntry,
 	PortfolioSummaryData,
 	PushNotificationProps,
-	RecipeAccountSettingsForm,
-	RecipeAuthGuard,
 	RecipeBurnDownChart,
 	RecipeFeatureToggle,
 	RecipeKPIIndicator,
@@ -3527,7 +3503,6 @@ export type {
 	RecipeKanbanCard,
 	RecipeKanbanColumn,
 	RecipeLegendItem,
-	RecipeNotificationBadge,
 	RecipeNotificationCenter,
 	RecipeNotificationList,
 	RecipeNotificationPreferences,
@@ -3536,12 +3511,9 @@ export type {
 	RecipeProcessStep,
 	RecipeScheduledNotification,
 	RecipeScrumBacklog,
-	RecipeSecureForm,
-	RecipeSecuritySettings,
-	RecipeSessionManager,
 	RecipeStatCard,
+	RecipeStatsCard,
 	RecipeStatusDashboard,
-	RecipeUserProfileCard,
 	SlotAchievement,
 	SlotBacklogData,
 	SlotBacklogItem,
@@ -3614,10 +3586,10 @@ export type {
 	SlotIcon,
 	SlotImageItem,
 	SlotMedia,
+	SlotSvgName,
 	ThemeIconItem
 } from './media';
 export type {
-	ChartLegendProps,
 	LayoutSpecificProps,
 	LinkSpecificProps,
 	PaginationStateProps,
@@ -3653,6 +3625,7 @@ export type {
 	RecipeErrorMessage,
 	RecipeLazyLoader,
 	RecipeLoadingBoundary,
+	RecipeNotificationBadge,
 	RecipeProgressBarProps,
 	RecipeSkeleton,
 	RecipeSkeletonCircle,
@@ -3742,7 +3715,9 @@ export type {
 	SlotSentimentResult
 } from './science';
 export type {
+	BehaviorPostCard,
 	ContractSocial,
+	RecipePostCard,
 	RecipeRating,
 	SlotCommentItem,
 	SlotCommentSystem,
@@ -3782,3 +3757,17 @@ export type {
 	SlotLink,
 	SlotText
 } from './typography';
+export type {
+	RecipeAccountSettingsForm,
+	RecipeAuthGuard,
+	RecipeSecureForm,
+	RecipeSecuritySettings,
+	RecipeSessionManager,
+	RecipeUserProfileCard,
+	SlotAccountSettingsForm,
+	SlotSecureForm,
+	SlotSecuritySettings,
+	SlotSessionManager,
+	SlotUserProfile,
+	SlotUserProfileCard
+} from './user';

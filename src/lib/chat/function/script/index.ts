@@ -6,4 +6,3 @@ export { handleAttachFn } from './handle-attach-fn';
 export { handleEmojiFn } from './handle-emoji-fn';
 export { handleKeydownFn } from './handle-keydown-fn';
 export { handleInputFn } from './message-input-handlers';
-export { resolveAuthGuardState } from './resolve-auth-guard-state';

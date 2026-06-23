@@ -17,7 +17,5 @@ export {
 	createCanvasToolbarState,
 	createCollaborativeEditorState,
 	createDrawingSurfaceState,
-	createSharedCanvasState,
-	createStageState,
-	createViewportState
+	createSharedCanvasState
 } from './state';

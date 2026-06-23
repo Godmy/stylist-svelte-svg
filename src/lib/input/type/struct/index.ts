@@ -17,9 +17,7 @@ export type {
 	DateTimeRangePickerProps,
 	DateTimeRangeValue,
 	ProductForQuote,
-	QuoteRequestValue,
-	TranslatableText,
-	TranslationLocale
+	QuoteRequestValue
 } from './interaction-input';
 export type { IReactionPickerStyleClasses } from './reaction-picker-style-classes';
 export type { TextAreaStateOptions } from './text-area-state-options';

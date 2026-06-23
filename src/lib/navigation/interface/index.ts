@@ -1,6 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
-	ChartLegendProps,
 	LayoutSpecificProps,
 	LinkSpecificProps,
 	PaginationStateProps,

@@ -7,7 +7,6 @@ export { DataDisplayCard } from './data-display-card/index';
 export { ExpandableCard } from './expandable-card/index';
 export { LinkCard } from './link-card/index';
 export { MetricCard } from './metric-card/index';
-export { PostCard } from './post-card/index';
 export { PriceAlert } from './price-alert/index';
 export { PriceFilter } from './price-filter/index';
 export { PriceHistory } from './price-history/index';

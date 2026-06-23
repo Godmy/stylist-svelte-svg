@@ -76,7 +76,6 @@ export type {
 	BreadcrumbItem,
 	BreadcrumbSeparatorProps,
 	BreadcrumbsProps,
-	ChartLegendItem,
 	DialogConfirmProps,
 	DrawerProps,
 	GeneralToolbarRecipe,
@@ -89,7 +88,6 @@ export type {
 	ToolbarItem
 } from './type';
 export type {
-	ChartLegendProps,
 	LayoutSpecificProps,
 	LinkSpecificProps,
 	PaginationStateProps,

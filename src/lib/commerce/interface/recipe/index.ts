@@ -22,7 +22,6 @@ export type { RecipeOrderItem } from './order-item-order-confirmation';
 export type { RecipeOrderSort } from './order-sort';
 export type { RecipeOrderTracking } from './order-tracking';
 export type { PaymentInfoProps } from './payment-info-props';
-export type { RecipePostCard } from './post-card';
 export type { RecipePriceAlert } from './price-alert';
 export type { RecipePriceFilter } from './price-filter';
 export type { RecipePriceHistory } from './price-history';

@@ -63,6 +63,7 @@ export type {
 	SlotIcon,
 	SlotImageItem,
 	SlotMedia,
+	SlotSvgName,
 	TeamMember,
 	ThemeIconItem
 } from './slot';

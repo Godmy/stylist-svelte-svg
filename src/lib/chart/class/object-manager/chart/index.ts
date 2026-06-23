@@ -4,7 +4,7 @@ import type { RecipeChartAxisY } from '$stylist/chart/interface/recipe/chart-axi
 import type { RecipeChartPolyline as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
 import type { PieChartProps } from '$stylist/chart/interface/recipe/pie-chart-props';
 import type { AnalyticsChartDataPoint } from '$stylist/chart/type/struct/analytics-chart-data-point';
-import type { ChartLegendItem } from '$stylist/navigation/type/struct/chart-legend-item';
+import type { ChartLegendItem } from '$stylist/chart/type/object/chart-legend-item';
 import type { ChartBounds } from '$stylist/chart/type/struct/chart-bounds';
 import type { ChartAxisYMetrics } from '$stylist/chart/type/struct/chart-axis-y-metrics';
 import type { InformationPieChartSegment } from '$stylist/chart/type/struct/information-pie-chart-segment';

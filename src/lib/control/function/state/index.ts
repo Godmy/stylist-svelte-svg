@@ -29,6 +29,7 @@ export { createDropdownMenuState } from './dropdown-menu';
 export { createExpandableTableRowState } from './expandable-table-row';
 export { createExportPanelState } from './export-panel';
 export { createFilterBarState } from './filter-bar';
+export { createFilterPanelState } from './filter-panel';
 export { createFollowButtonState } from './follow-button';
 export { createIconButtonState } from './icon-button';
 export { createListWithAvatarsState } from './list-with-avatars';

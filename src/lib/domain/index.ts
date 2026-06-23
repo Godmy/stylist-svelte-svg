@@ -55,7 +55,8 @@ export {
 	createDomainBacklogPreviewState,
 	createDomainBacklogState,
 	createDomainLandingScreenState,
-	createDomainPageState
+	createDomainPageState,
+	serializeUnknownError
 } from './function';
 export type {
 	TypeDomainCluster,

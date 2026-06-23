@@ -9,7 +9,6 @@ export {
 	ExpandableCard,
 	LinkCard,
 	MetricCard,
-	PostCard,
 	PriceAlert,
 	PriceFilter,
 	PriceHistory,

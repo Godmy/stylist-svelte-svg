@@ -5,3 +5,5 @@ export { GraphNode } from './graph-node/index';
 export { GraphPort } from './graph-port/index';
 export { NodeProperty } from './node-property/index';
 export { NodeTitle } from './node-title/index';
+export { Stage } from './stage/index';
+export { Viewport } from './viewport/index';

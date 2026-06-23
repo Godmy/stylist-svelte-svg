@@ -1,4 +1,4 @@
-import type { ChartLegendProps } from '$stylist/navigation/interface/recipe/chart-legend';
+import type { ChartLegendProps } from '$stylist/chart/interface/recipe/chart-legend';
 import { mergeClassNames } from '$stylist/layout/function/script/merge-class-names';
 
 function resolveClassName(className: unknown): string | undefined {

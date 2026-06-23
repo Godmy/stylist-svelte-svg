@@ -4,7 +4,7 @@
 	import type { SceneCamera } from '$stylist/architecture/type/struct/scene-camera';
 	import ConnectionLine from '$stylist/graph/component/molecule/connection-line/index.svelte';
 	import NodeIcon from '$stylist/media/component/atom/node-icon/index.svelte';
-	import Viewport from '$stylist/canvas/component/atom/viewport/index.svelte';
+	import Viewport from '$stylist/graph/component/atom/viewport/index.svelte';
 
 	import type { TOKEN_THEME_MODE } from '$stylist/theme/const/enum/theme-mode';
 	import type { GraphToolMode } from '$stylist/graph/type/enum/graph-tool-mode';

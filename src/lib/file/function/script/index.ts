@@ -1,13 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createAttachmentDispatch } from './attachment-preview';
-export { formatFileSize } from './attachment-preview-format-file-size';
-export { getIconName } from './attachment-preview-get-icon-name';
-export { handleDownload } from './attachment-preview-handle-download';
-export { handleRemove } from './attachment-preview-handle-remove';
 export { clearFile } from './clear-file';
 export { convertToCSV } from './convert-to-csv';
 export { exportData } from './data-exporter';
+export { handleDownload } from './download-card';
 export { handleFileSelect } from './drag-drop-file-upload';
+export { formatFileSize } from './drag-drop-file-upload-format-file-size';
 export { handleDrop } from './drag-drop-file-upload-handle-drop';
 export { processFiles } from './drag-drop-file-upload-process-files';
 export { removeFile } from './drag-drop-file-upload-remove-file';
@@ -37,6 +34,7 @@ export { resolveFileSelectionLabel } from './resolve-file-selection-label';
 export { toCsvValue } from './to-csv-value';
 export { handleRetry } from './upload-progress';
 export { handleCancel } from './upload-progress-handle-cancel';
+export { handleRemove } from './upload-progress-handle-remove';
 export { getEntryIcon } from './zip-viewer-get-entry-icon';
 export { handleEntryClick } from './zip-viewer-handle-entry-click';
 export { handleExtract } from './zip-viewer-handle-extract';

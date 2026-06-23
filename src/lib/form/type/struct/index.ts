@@ -1,9 +1,4 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type {
-	FilterChangePayload,
-	FilterPanelLayout,
-	FilterPanelProps
-} from './filter-panel';
 export type { FormSelectionProps } from './form-selection';
 export type {
 	AddressData,

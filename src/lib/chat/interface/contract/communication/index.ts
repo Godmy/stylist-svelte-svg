@@ -15,10 +15,7 @@ import type { SlotMessageList as MessageListContract } from '$stylist/chat/inter
 import type { SlotMessageMeta as MessageMetaContract } from '$stylist/chat/interface/slot/message-meta';
 import type { SlotMessageThread as MessageThreadContract } from '$stylist/chat/interface/slot/message-thread';
 import type { SlotMessageTimestamp as MessageTimestampContract } from '$stylist/chat/interface/slot/message-timestamp';
-import type { NotificationCenterContract } from '$stylist/chat/type/struct/notification-center-contract';
-import type { NotificationListContract } from '$stylist/chat/type/struct/notification-list-contract';
-import type { NotificationPreferencesContract } from '$stylist/chat/type/struct/notification-preferences-contract';
-import type { ScheduledNotificationContract } from '$stylist/chat/type/struct/scheduled-notification-contract';
+import type { NotificationItem } from '$stylist/management/type/struct/notification-item';
 import type { SlotUserStatus as UserStatusContract } from '$stylist/chat/interface/slot/user-status';
 
 export interface ContractCommunication {
@@ -39,9 +36,9 @@ export interface ContractCommunication {
 	MessageMeta: MessageMetaContract;
 	MessageThread: MessageThreadContract;
 	MessageTimestamp: MessageTimestampContract;
-	NotificationCenter: NotificationCenterContract;
-	NotificationList: NotificationListContract;
-	NotificationPreferences: NotificationPreferencesContract;
-	ScheduledNotification: ScheduledNotificationContract;
+	NotificationCenter: NotificationItem;
+	NotificationList: NotificationItem;
+	NotificationPreferences: NotificationItem;
+	ScheduledNotification: NotificationItem;
 	UserStatus: UserStatusContract;
 }

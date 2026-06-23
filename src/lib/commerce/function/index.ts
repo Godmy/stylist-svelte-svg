@@ -23,7 +23,6 @@ export {
 	createPaymentMethodSelectorState,
 	createPaymentSelectorState,
 	createPaymentSummaryState,
-	createPostCardState,
 	createPriceAlertState,
 	createPriceFilterState,
 	createPriceHistoryState,

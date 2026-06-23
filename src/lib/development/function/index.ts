@@ -1,8 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	buildComponentPreviewCode,
-	copyToClipboard,
-	serializeUnknownError
+	copyToClipboard
 } from './script';
 export {
 	createAtomicPrinciplesShowcaseState,

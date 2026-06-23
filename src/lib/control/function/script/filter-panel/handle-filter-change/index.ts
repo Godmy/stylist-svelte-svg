@@ -1,0 +1,17 @@
+import type { SlotFilterPanelState } from '$stylist/control/interface/slot/filter-panel-state';
+import type { FilterChangePayload } from '$stylist/control/type/struct/filter-panel/filterchangepayload';
+
+export function handleFilterChange(
+	state: SlotFilterPanelState,
+	onFilterChange?: (payload: FilterChangePayload) => void
+) {
+	onFilterChange?.({
+		showObjects: state.objectsVisible,
+		showInterfaces: state.interfacesVisible,
+		showUnions: state.unionsVisible,
+		showEnums: state.enumsVisible,
+		showScalars: state.scalarsVisible,
+		showInputs: state.inputsVisible,
+		layout: state.currentLayout as string
+	});
+}
