@@ -1,10 +1,10 @@
 import type { Snippet } from 'svelte';
-import type { TimelineStatus } from '$stylist/calendar/type/struct/timeline-status';
 
+import type { TOKEN_FLOW } from '$stylist/interaction/const/enum/flow';
 export interface SlotTimelineItem {
 	id: string;
 	title: string;
 	date?: string;
-	status?: TimelineStatus;
+	status?: (typeof TOKEN_FLOW)[number];
 	icon?: Snippet;
 }

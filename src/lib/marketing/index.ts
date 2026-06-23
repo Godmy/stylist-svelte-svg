@@ -14,13 +14,6 @@ export {
 	UserBehaviorMetrics
 } from './component';
 export {
-	ICON_ABTEST_CONFIGURATOR,
-	ICON_CONVERSION_FUNNEL,
-	ICON_TEST_RESULTS_VIEWER,
-	ICON_TRAFFIC_ANALYTICS,
-	ICON_USER_BEHAVIOR_METRICS
-} from './const';
-export {
 	addABTestVariant,
 	calculateABTestTotalWeight,
 	createABTestConfiguratorState,

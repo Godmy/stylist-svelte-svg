@@ -1,7 +1,7 @@
 import type { SlotInteraction } from '$stylist/interaction/interface/slot/interaction';
 import type { HTMLAttributes } from 'svelte/elements';
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-import type { SlotLocationPickerMarker } from '$stylist/geo/interface/slot/location-picker-marker';
+import type { MapMarker as SlotLocationPickerMarker } from '$stylist/geo/type/struct/location-picker/mapmarker';
 import type { SlotCoordinates } from '$stylist/geo/interface/slot/coordinates';
 
 export interface SlotLocationPicker

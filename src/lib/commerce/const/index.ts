@@ -1,10 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
-	AlertCardComponent,
-	alertCardControls,
-	commerceAlertCardStoryComponent
-} from './alert-card';
-export {
 	TOKEN_BILLING_ITEM,
 	TOKEN_BILLING_SUMMARY,
 	TOKEN_ORDER_STATUS,

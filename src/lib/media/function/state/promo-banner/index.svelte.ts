@@ -1,7 +1,7 @@
-﻿import type { PromoBannerVariant } from '$stylist/media/type/struct/promo-banner/promobannervariant';
 import type { RecipePromoBanner } from '$stylist/media/interface/recipe/promo-banner';
 
-const VARIANT_CLASSES: Record<PromoBannerVariant, string> = {
+import type { TOKEN_COLOR_TONE } from '$stylist/color/const/enum/tone';
+const VARIANT_CLASSES: Partial<Record<(typeof TOKEN_COLOR_TONE)[number], string>> = {
 	primary:
 		'bg-[var(--color-primary-50)] border-[var(--color-primary-200)] text-[var(--color-primary-800)]',
 	secondary:
@@ -22,7 +22,9 @@ export function createPromoBannerState(props: RecipePromoBanner) {
 	const variant = $derived(props.variant ?? 'primary');
 	const onCtaClick = $derived(props.onCtaClick ?? (() => {}));
 	const className = $derived(props.class ?? '');
-	const variantClasses = $derived(VARIANT_CLASSES[variant as PromoBannerVariant]);
+	const variantClasses = $derived(
+		VARIANT_CLASSES[variant as (typeof TOKEN_COLOR_TONE)[number]] ?? VARIANT_CLASSES.primary
+	);
 	const hostClasses = $derived(
 		`border rounded-lg p-6 flex flex-col md:flex-row items-center ${variantClasses} ${className}`
 	);

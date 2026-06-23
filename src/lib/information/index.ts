@@ -77,7 +77,6 @@ export type {
 	MetricBarData,
 	Props,
 	StatsCardData,
-	StatusSeverity,
 	StatusState,
 	TokenSoftwareBadge,
 	TokenStatus,

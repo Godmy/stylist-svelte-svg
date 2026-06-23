@@ -1,13 +1,13 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
-import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 import type { User } from '$stylist/commerce/type/struct/user';
 
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export interface UserCardProps
 	extends ComputeIntersectAll<[LayoutHTMLAttributes<HTMLDivElement>]> {
 	user?: User;
-	size?: AvatarSize;
+	size?: (typeof TOKEN_SIZE)[number];
 	showEmail?: boolean;
 	showRole?: boolean;
 }

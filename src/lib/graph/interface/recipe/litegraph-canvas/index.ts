@@ -6,8 +6,8 @@ import type { ContractLitegraphPort } from '$stylist/graph/interface/contract/li
 import type { ContractLitegraphNode } from '$stylist/graph/interface/contract/litegraph-node';
 import type { SlotLitegraphConnection } from '$stylist/graph/interface/slot/litegraph-connection';
 import type { GraphGridMode } from '$stylist/graph/type/struct/graph-grid-mode';
-import type { GraphPanMode } from '$stylist/graph/type/struct/graph-pan-mode';
 
+import type { TOKEN_PAN_MODES } from '$stylist/architecture/const/enum/pan-mode';
 export interface RecipeLitegraphCanvas extends ComputeIntersectAll<[SlotChildren]> {
 	nodes?: ContractLitegraphNode[];
 	connections?: SlotLitegraphConnection[];
@@ -16,7 +16,7 @@ export interface RecipeLitegraphCanvas extends ComputeIntersectAll<[SlotChildren
 	offset?: { x: number; y: number };
 	showGrid?: boolean;
 	gridMode?: GraphGridMode;
-	panMode?: GraphPanMode;
+	panMode?: (typeof TOKEN_PAN_MODES)[number];
 	showToolbar?: boolean;
 	showMiniMap?: boolean;
 	toolbarItems?: SlotGraphToolbarItem[];

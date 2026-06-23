@@ -1,1 +1,0 @@
-export type SplitLayoutPanelSize = '1/4' | '1/3' | '2/5' | '1/2' | '3/5' | '2/3' | '3/4';

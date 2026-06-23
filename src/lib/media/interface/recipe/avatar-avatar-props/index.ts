@@ -1,10 +1,10 @@
-﻿import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export interface AvatarProps extends ComputeIntersectAll<[]> {
 	variant?: 'default';
-	size?: AvatarSize;
+	size?: (typeof TOKEN_SIZE)[number];
 	src?: string;
 	alt?: string;
 	id?: string;

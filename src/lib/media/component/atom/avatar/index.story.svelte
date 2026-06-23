@@ -1,8 +1,8 @@
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 <script lang="ts">
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import Avatar from './index.svelte';
-	import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 	import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 
 	const controls: InterfaceControllerSettings[] = [
@@ -54,7 +54,7 @@
 			alt={values.alt as string}
 			name={values.name as string}
 			status={(values.status as AvatarUserStatus) || undefined}
-			size={values.size as AvatarSize}
+			size={values.size as (typeof TOKEN_SIZE)[number]}
 			showStatus={values.showStatus as boolean}
 		/>
 	{/snippet}

@@ -3,10 +3,8 @@ export type {
 	CardData,
 	DraggableCardRestProps,
 	DraggableCardStateProps,
-	KanbanCardPriority,
 	KanbanCardStateProps,
-	KanbanCardUser,
-	LegendItemVariant
+	KanbanCardUser
 } from './alias';
 export type {
 	TokenKPI,

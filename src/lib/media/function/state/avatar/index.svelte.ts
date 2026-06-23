@@ -1,11 +1,11 @@
-﻿import type { HTMLAttributes } from 'svelte/elements';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
-import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 import type { AvatarUserStatus } from '$stylist/media/type/alias/avatar-user-status';
 import type { RecipeAvatar } from '$stylist/media/interface/recipe/avatar';
 
-const SIZE_CLASSES: Record<AvatarSize, string> = {
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
+const SIZE_CLASSES: Partial<Record<(typeof TOKEN_SIZE)[number], string>> = {
 	sm: 'w-6 h-6 text-sm',
 	md: 'w-8 h-8 text-base',
 	lg: 'w-10 h-10 text-lg',
@@ -16,9 +16,9 @@ export function createAvatarState(props: RecipeAvatar & HTMLAttributes<HTMLDivEl
 	const name = $derived(props.name ?? '');
 	const status = $derived(props.status);
 	const showStatus = $derived(props.showStatus ?? false);
-	const size = $derived((props.size ?? 'md') as AvatarSize);
+	const size = $derived((props.size ?? 'md') as (typeof TOKEN_SIZE)[number]);
 	const initials = $derived(name ? name.charAt(0).toUpperCase() : '?');
-	const sizeClasses = $derived(SIZE_CLASSES[size]);
+	const sizeClasses = $derived(SIZE_CLASSES[size] ?? SIZE_CLASSES.md);
 	const avatarClasses = $derived(
 		`inline-flex items-center justify-center rounded-full bg-[var(--color-background-secondary)] text-[var(--color-text-primary)] overflow-hidden ${sizeClasses} ${props.class ?? ''}`
 	);
@@ -36,14 +36,14 @@ export function createAvatarState(props: RecipeAvatar & HTMLAttributes<HTMLDivEl
 		return statusClasses[status || 'offline'] || statusClasses.offline;
 	}
 
-	function getStatusSizeClasses(size: AvatarSize): string {
-		const statusSizeClasses: Record<AvatarSize, string> = {
+	function getStatusSizeClasses(size: (typeof TOKEN_SIZE)[number]): string {
+		const statusSizeClasses: Partial<Record<(typeof TOKEN_SIZE)[number], string>> = {
 			sm: 'w-2 h-2',
 			md: 'w-2.5 h-2.5',
 			lg: 'w-3 h-3',
 			xl: 'w-3.5 h-3.5'
 		};
-		return statusSizeClasses[size];
+		return statusSizeClasses[size] ?? statusSizeClasses.md ?? 'w-2.5 h-2.5';
 	}
 
 	const statusColor = $derived(getStatusClasses(status));

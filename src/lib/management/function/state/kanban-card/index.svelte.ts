@@ -1,12 +1,12 @@
 import { untrack } from 'svelte';
-import type { KanbanCardPriority } from '$stylist/management/type/alias/kanban-card-priority';
 import type { KanbanCardStateProps } from '$stylist/management/type/alias/kanban-card-state-props';
 
+import type { TOKEN_PRIORITY } from '$stylist/calendar/const/enum/priority';
 export function createKanbanCardState(props: KanbanCardStateProps) {
 	const card = $derived(
 		props.card as {
 			title: string;
-			priority?: KanbanCardPriority;
+			priority?: (typeof TOKEN_PRIORITY)[number];
 			description?: string;
 			tags?: string[];
 			updatedAt?: Date | string;
@@ -58,18 +58,24 @@ export function createKanbanCardState(props: KanbanCardStateProps) {
 		});
 	}
 
-	function getPriorityColor(priority: KanbanCardPriority | undefined): string {
+	function getPriorityColor(priority: (typeof TOKEN_PRIORITY)[number] | undefined): string {
 		if (!priority) return 'default';
-		return { low: 'success', medium: 'warning', high: 'danger' }[priority];
+		const priorityColors: Partial<Record<(typeof TOKEN_PRIORITY)[number], string>> = {
+			low: 'success',
+			medium: 'warning',
+			high: 'danger'
+		};
+		return priorityColors[priority] ?? 'danger';
 	}
 
-	function getPriorityAccentClass(priority: KanbanCardPriority | undefined): string {
+	function getPriorityAccentClass(priority: (typeof TOKEN_PRIORITY)[number] | undefined): string {
 		if (!priority) return 'before:bg-[var(--color-background-tertiary)]';
-		return {
+		const priorityAccentClasses: Partial<Record<(typeof TOKEN_PRIORITY)[number], string>> = {
 			low: 'before:bg-[var(--color-success-400)]',
 			medium: 'before:bg-[var(--color-warning-400)]',
 			high: 'before:bg-[var(--color-danger-400)]'
-		}[priority];
+		};
+		return priorityAccentClasses[priority] ?? 'before:bg-[var(--color-danger-400)]';
 	}
 
 	const containerClasses = $derived(

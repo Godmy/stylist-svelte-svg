@@ -1,10 +1,10 @@
-import type { ImageSize } from '$stylist/media/type/struct/image-size';
 
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export interface ContractImage {
 	/** Image variant */
 	variant?: 'default';
 	/** Image size */
-	size?: ImageSize;
+	size?: (typeof TOKEN_SIZE)[number];
 	/** Image source */
 	src: string;
 	/** Alt text */

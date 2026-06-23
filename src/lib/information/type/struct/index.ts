@@ -5,5 +5,4 @@ export type { ContentProp } from './content-prop';
 export type { MetricBarData } from './metric-bar-data';
 export type { Props } from './props';
 export type { StatsCardData } from './stats-card-data';
-export type { StatusSeverity } from './status-severity';
 export type { StatusState } from './status-state';

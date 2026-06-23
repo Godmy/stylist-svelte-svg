@@ -1,12 +1,12 @@
-import type { PopoverPosition } from '$stylist/layout/type/enum/popover-position';
 import type { PopoverProps } from '$stylist/layout/interface/recipe/popover';
 
+import type { TOKEN_ALIGNMENT } from '$stylist/layout/const/enum/alignment';
 export function createPopoverState(props: PopoverProps) {
 	let isVisible = $state(props.open ?? false);
 	let triggerElement: HTMLElement | null = $state(null);
 	let popoverElement: HTMLElement | null = $state(null);
 
-	const position = $derived<PopoverPosition>(props.position ?? 'bottom');
+	const position = $derived<(typeof TOKEN_ALIGNMENT)[number]>(props.position ?? 'bottom');
 	const popoverId = $derived(props.id ?? `popover-${Math.random().toString(36).slice(2, 9)}`);
 
 	$effect(() => {

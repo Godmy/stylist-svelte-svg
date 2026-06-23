@@ -4,7 +4,6 @@ export type { SpinnerVariant } from './enum';
 export type {
 	AccountProgressTrackerProps,
 	AlertProps,
-	AlertVariant,
 	AnimatedProgressProps,
 	ErrorBoundaryProps,
 	IToastProps,

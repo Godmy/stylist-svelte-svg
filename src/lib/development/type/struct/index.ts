@@ -22,7 +22,6 @@ export type { DesignTokensProps } from './design-tokens-props';
 export type { DesignTokensTheme } from './design-tokens-theme';
 export type { DevelopmentErrorBoundaryErrorInfo } from './development-error-boundary-error-info';
 export type { DevelopmentErrorBoundaryProps } from './development-error-boundary-props';
-export type { DocumentationBlockVariant } from './documentation-block-variant';
 export type { ErrorLogEntry } from './error-log-entry';
 export type { ErrorLogPayload } from './error-log-payload';
 export type { MockDataSelectorDataSelection } from './mock-data-selector-data-selection';

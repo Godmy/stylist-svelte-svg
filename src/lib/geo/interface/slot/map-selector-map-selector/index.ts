@@ -2,7 +2,7 @@ import type { SlotInteraction } from '$stylist/interaction/interface/slot/intera
 import type { HTMLAttributes } from 'svelte/elements';
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 import type { MapProvider } from '$stylist/geo/type/struct/map-selector/mapprovider';
-import type { SlotMapSelectorLocation as IMapSelectorLocation } from '$stylist/geo/interface/slot/map-selector-location';
+import type { MapSelectorLocation as IMapSelectorLocation } from '$stylist/geo/type/struct/map-selector/mapselectorlocation';
 
 export interface SlotMapSelector extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, SlotInteraction {
 	locations: IMapSelectorLocation[];

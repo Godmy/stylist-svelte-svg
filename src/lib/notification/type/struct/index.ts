@@ -1,9 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { AccountProgressTrackerProps } from './account-progress-tracker-props';
-export type {
-	AlertProps,
-	AlertVariant
-} from './alert-props';
+export type { AlertProps } from './alert-props';
 export type { AnimatedProgressProps } from './animated-progress-props';
 export type { ErrorBoundaryProps } from './error-boundary-props';
 export type { LazyLoaderProps } from './lazy-loader-props';

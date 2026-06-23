@@ -1,8 +1,8 @@
-import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 import type { AvatarSelectorProps } from '$stylist/control/interface/recipe/avatar-selector';
 
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export function createAvatarSelectorState(props: AvatarSelectorProps) {
-	const size = $derived((props.size ?? 'md') as AvatarSize);
+	const size = $derived((props.size ?? 'md') as (typeof TOKEN_SIZE)[number]);
 	const className = $derived(props.class ?? '');
 	const src = $derived(props.src ?? '');
 	const alt = $derived(props.alt ?? 'Avatar');

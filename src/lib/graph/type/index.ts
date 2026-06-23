@@ -17,7 +17,6 @@ export type {
 	GraphMinimapProps,
 	GraphNodeCardData,
 	GraphNodeCardProps,
-	GraphPanMode,
 	GraphPortDimensions,
 	GraphToolbarItem,
 	LiteGraphNodePresentation,

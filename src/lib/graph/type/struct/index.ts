@@ -10,7 +10,6 @@ export type { GraphMinimapContract } from './graph-minimap-contract';
 export type { GraphMinimapProps } from './graph-minimap-props';
 export type { GraphNodeCardData } from './graph-node-card-data';
 export type { GraphNodeCardProps } from './graph-node-card-props';
-export type { GraphPanMode } from './graph-pan-mode';
 export type { GraphPortDimensions } from './graph-port-dimensions';
 export type { GraphToolbarItem } from './graph-toolbar-item';
 export type { LiteGraphNodePresentation } from './lite-graph-node-presentation';

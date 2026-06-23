@@ -312,7 +312,7 @@ export function createLitegraphCanvasState(props: LitegraphCanvasContract) {
 	const allToolbarItems = $derived(
 		(props.toolbarItems ?? []).length > 0 ? (props.toolbarItems ?? []) : defaultToolbarItems
 	);
-	const effectivePanMode = $derived<'drag' | 'space'>(
+	const effectivePanMode = $derived<RecipeGraphCanvas['panMode']>(
 		activeTool === 'pan' ? 'drag' : (props.panMode ?? 'drag')
 	);
 	const effectiveGridMode = $derived<RecipeGraphCanvas['gridMode']>(

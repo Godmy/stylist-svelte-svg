@@ -1,12 +1,12 @@
-import type { PromoBannerVariant } from '../promobannervariant';
 
+import type { TOKEN_COLOR_TONE } from '$stylist/color/const/enum/tone';
 export type PromoBannerProps = {
 	title?: string;
 	description?: string;
 	cta?: string;
 	link?: string;
 	image?: string;
-	variant?: PromoBannerVariant;
+	variant?: (typeof TOKEN_COLOR_TONE)[number];
 	onCtaClick?: () => void;
 	class?: string;
 };

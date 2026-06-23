@@ -65,7 +65,6 @@ export {
 export type {
 	AccountProgressTrackerProps,
 	AlertProps,
-	AlertVariant,
 	AnimatedProgressProps,
 	ErrorBoundaryProps,
 	IToastProps,

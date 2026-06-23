@@ -63,8 +63,5 @@ export type {
 export type {
 	CanvasToolbarDrawingOptions,
 	RecipeCanvasImageEditor,
-	SlotSharedCanvas,
-	SlotViewportInput,
-	SlotViewportState,
-	ViewportBounds
+	SlotSharedCanvas
 } from './interface';

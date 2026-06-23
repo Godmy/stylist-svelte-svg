@@ -149,7 +149,6 @@ export {
 	createAvatarSelectorState,
 	createBurgerMenuState,
 	createButtonComposedState,
-	createButtonMoleculeState,
 	createButtonState,
 	createCheckboxGroupState,
 	createCheckboxState,

@@ -7,7 +7,6 @@ export type {
 	AvatarGroupAvatar,
 	AvatarGroupProps
 } from './avatar-group';
-export type { AvatarSize } from './avatar-size';
 export type { CanvasImageEditorProps } from './canvas-image-editor';
 export type { CountryFlagProps } from './country-flag';
 export type { FaviconProps } from './favicon';
@@ -19,17 +18,13 @@ export type { IconSize } from './icon-size';
 export type { IconVariant } from './icon-variant';
 export type { ImageProps } from './image';
 export type { ImageGalleryProps } from './image-gallery';
-export type { ImageSize } from './image-size';
 export type {
 	MediaItem,
 	MediaLibraryProps,
 	MediaType
 } from './media-library';
 export type { NodeIconProps } from './node-icon';
-export type {
-	PromoBannerProps,
-	PromoBannerVariant
-} from './promo-banner';
+export type { PromoBannerProps } from './promo-banner';
 export type { SvgProps } from './svg';
 export type {
 	TeamAvatarStackProps,

@@ -1,12 +1,12 @@
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
-import type { PopoverPosition } from '$stylist/layout/type/enum/popover-position';
-import type { ImageSize } from '$stylist/media/type/struct/image-size';
 import type { SidebarLayoutProps } from '$stylist/layout/type/struct/layout-extended/sidebar-layout-props';
 
+import type { TOKEN_ALIGNMENT } from '$stylist/layout/const/enum/alignment';
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export function createSidebarLayoutState(props: SidebarLayoutProps) {
-	const side = $derived<PopoverPosition>(props.side ?? 'left');
+	const side = $derived<(typeof TOKEN_ALIGNMENT)[number]>(props.side ?? 'left');
 	const sidebarLabel = $derived(props.sidebarLabel ?? 'Sidebar');
-	const sidebarWidth = $derived<ImageSize>(props.sidebarWidth ?? 'md');
+	const sidebarWidth = $derived<(typeof TOKEN_SIZE)[number]>(props.sidebarWidth ?? 'md');
 	const gap = $derived<SplitLayoutGap>(props.gap ?? 'md');
 	const collapsed = $derived(props.collapsed ?? false);
 	const fillHeight = $derived(props.fillHeight ?? false);

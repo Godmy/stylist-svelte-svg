@@ -1,6 +1,6 @@
-import type { TimelineStatus } from '$stylist/calendar/type/struct/timeline-status';
 import type { RecipeTimeline } from '$stylist/calendar/interface/recipe/timeline';
 
+import type { TOKEN_FLOW } from '$stylist/interaction/const/enum/flow';
 export function createTimelineState(props: RecipeTimeline) {
 	const items = $derived(props.items ?? []);
 	const orientation = $derived(props.orientation ?? 'vertical');
@@ -23,7 +23,7 @@ export function createTimelineState(props: RecipeTimeline) {
 		return rest;
 	});
 
-	function getStatusClasses(status: TimelineStatus) {
+	function getStatusClasses(status: (typeof TOKEN_FLOW)[number]) {
 		switch (status) {
 			case 'completed':
 				return 'bg-[var(--color-success-500)] text-[var(--color-text-inverse)]';
@@ -34,7 +34,7 @@ export function createTimelineState(props: RecipeTimeline) {
 		}
 	}
 
-	function getItemBackgroundClasses(status: TimelineStatus) {
+	function getItemBackgroundClasses(status: (typeof TOKEN_FLOW)[number]) {
 		switch (status) {
 			case 'completed':
 				return 'bg-[var(--color-success-50)]';

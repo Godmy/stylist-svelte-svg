@@ -30,7 +30,6 @@ export type {
 	DesignTokensTheme,
 	DevelopmentErrorBoundaryErrorInfo,
 	DevelopmentErrorBoundaryProps,
-	DocumentationBlockVariant,
 	ErrorLogEntry,
 	ErrorLogPayload,
 	MockDataSelectorDataSelection,

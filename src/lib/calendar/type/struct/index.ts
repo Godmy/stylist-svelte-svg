@@ -5,4 +5,3 @@ export type { CalendarEventTimeGrid } from './calendar-event-time-grid';
 export type { CalendarHTMLAttributes } from './calendar-html-attributes';
 export type { DayTimeGrid } from './day-time-grid';
 export type { RecipeExtendedTimeSlot } from './extended-time-slot';
-export type { TimelineStatus } from './timeline-status';

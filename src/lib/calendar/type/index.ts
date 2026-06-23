@@ -11,6 +11,5 @@ export type {
 	CalendarEventTimeGrid,
 	CalendarHTMLAttributes,
 	DayTimeGrid,
-	RecipeExtendedTimeSlot,
-	TimelineStatus
+	RecipeExtendedTimeSlot
 } from './struct';

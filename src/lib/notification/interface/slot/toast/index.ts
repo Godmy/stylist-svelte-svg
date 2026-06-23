@@ -1,11 +1,11 @@
-import type { StatusSeverity } from '$stylist/information/type/struct/status-severity';
 import type { ToastAction } from '../toast-action';
 
+import type { TOKEN_STATUS } from '$stylist/information/const/enum/status';
 export interface Toast {
 	id: string;
 	title?: string;
 	message: string;
-	type: StatusSeverity;
+	type: (typeof TOKEN_STATUS)[number];
 	duration?: number;
 	actions?: ToastAction[];
 	onDismiss?: () => void;

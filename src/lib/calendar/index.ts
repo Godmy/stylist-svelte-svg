@@ -36,7 +36,6 @@ export type {
 	CalendarHTMLAttributes,
 	DayTimeGrid,
 	RecipeExtendedTimeSlot,
-	TimelineStatus,
 	TokenPriority,
 	TokenTimeFormat,
 	TokenTimeMeasure,

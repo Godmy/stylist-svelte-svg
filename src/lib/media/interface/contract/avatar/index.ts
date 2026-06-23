@@ -1,14 +1,14 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { BehaviorBorderToken } from '$stylist/layout/interface/behavior/border-token';
 import type { BehaviorTypography } from '$stylist/typography/interface/behavior/typography';
-import type { AvatarSize } from '$stylist/media/type/struct/avatar-size';
 import type { TOKEN_AVAILABILITY } from '$stylist/interaction/const/enum/availability';
 
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export interface ContractAvatar extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>, BehaviorBorderToken, BehaviorTypography {
 	/** Avatar variant */
 	variant?: 'default';
 	/** Avatar size */
-	size?: AvatarSize;
+	size?: (typeof TOKEN_SIZE)[number];
 	/** Image source */
 	src?: string;
 	/** Alt text */

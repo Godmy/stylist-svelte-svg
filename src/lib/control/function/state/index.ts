@@ -9,7 +9,6 @@ export { createAvatarSelectorState } from './avatar-selector';
 export { createBurgerMenuState } from './burger-menu';
 export { createButtonState } from './button';
 export { createButtonComposedState } from './button-composed';
-export { createButtonMoleculeState } from './button-molecule';
 export { createCheckboxState } from './checkbox';
 export { createCheckboxGroupState } from './checkbox-group';
 export { createChipState } from './chip';

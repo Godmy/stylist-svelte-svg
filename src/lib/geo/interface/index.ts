@@ -24,21 +24,10 @@ export type {
 	SlotGeoJsonFeatureCollection,
 	SlotGeoJsonGeometry,
 	SlotGeoJsonLayer,
-	SlotLocation,
 	SlotLocationPicker,
-	SlotLocationPickerMarker,
 	SlotLocationSelector,
 	SlotMapMarker,
-	SlotMapMarkerItem,
 	SlotMapSelector,
-	SlotMapSelectorLocation,
 	SlotMapSelectorStyleClasses,
-	SlotMapView,
-	SlotMapWithMarkers,
-	SlotMapWithMarkersView,
-	SlotRouteOption,
-	SlotRoutePlanner,
-	SlotRoutePlannerLocation,
-	SlotStore,
-	SlotStoreLocator
+	SlotMapView
 } from './slot';

@@ -66,7 +66,6 @@ export {
 	WishlistButton
 } from './component';
 export {
-	AlertCardComponent,
 	DEFAULT_BULK_ORDER,
 	LINK_CARD_VARIANT_CLASSES,
 	ORDER_STATUS_CLASSES,
@@ -92,8 +91,6 @@ export {
 	TOKEN_ORDER_STATUS,
 	TOKEN_PAYMENT_METHOD,
 	TOKEN_PAYMENT_STATUS,
-	alertCardControls,
-	commerceAlertCardStoryComponent,
 	returnPolicyPolicyData,
 	shippingCalculatorCountries,
 	shippingCalculatorOptions,

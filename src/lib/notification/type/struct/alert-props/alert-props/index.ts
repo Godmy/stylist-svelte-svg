@@ -1,7 +1,7 @@
-import type { AlertVariant } from '../alertvariant';
 
+import type { TOKEN_COLOR_TONE } from '$stylist/color/const/enum/tone';
 export type AlertProps = {
-	variant?: AlertVariant;
+	variant?: (typeof TOKEN_COLOR_TONE)[number];
 	title?: string;
 	closable?: boolean;
 	icon?: boolean;

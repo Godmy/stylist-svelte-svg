@@ -2,17 +2,17 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
 import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { SplitLayoutGap } from '$stylist/layout/type/enum/split-layout-gap';
-import type { PopoverPosition } from '$stylist/layout/type/enum/popover-position';
-import type { ImageSize } from '$stylist/media/type/struct/image-size';
 
+import type { TOKEN_ALIGNMENT } from '$stylist/layout/const/enum/alignment';
+import type { TOKEN_SIZE } from '$stylist/layout/const/enum/size';
 export type SidebarLayoutProps = LayoutHTMLAttributes<HTMLDivElement> & {
 	class?: string;
 	sidebar: Snippet;
 	children: Snippet;
 	/** На какой стороне размещается сайдбар */
-	side?: PopoverPosition;
+	side?: (typeof TOKEN_ALIGNMENT)[number];
 	/** Ширина сайдбара */
-	sidebarWidth?: ImageSize;
+	sidebarWidth?: (typeof TOKEN_SIZE)[number];
 	/** Промежуток между сайдбаром и основным контентом */
 	gap?: SplitLayoutGap;
 	/** Схлопнуть сайдбар */

@@ -1,7 +1,7 @@
 import type { ToastStackProps } from '$stylist/notification/type/struct/toast-stack-props';
-import type { StatusSeverity } from '$stylist/information/type/struct/status-severity';
 
-const iconMap: Record<StatusSeverity, string> = {
+import type { TOKEN_STATUS } from '$stylist/information/const/enum/status';
+const iconMap: Partial<Record<(typeof TOKEN_STATUS)[number], string>> = {
 	success: 'check-circle',
 	warning: 'alert-triangle',
 	error: 'x-circle',
@@ -17,15 +17,15 @@ export function createToastStackState(props: ToastStackProps) {
 		`toast-stack toast-stack--${position} ${props.class ?? ''}`.trim()
 	);
 
-	function getToastColor(type: StatusSeverity) {
+	function getToastColor(type: (typeof TOKEN_STATUS)[number]) {
 		return `toast-item toast-item--${type}`;
 	}
 
-	function getToastIcon(type: StatusSeverity) {
+	function getToastIcon(type: (typeof TOKEN_STATUS)[number]) {
 		return iconMap[type] || 'info';
 	}
 
-	function getToastIconColor(type: StatusSeverity) {
+	function getToastIconColor(type: (typeof TOKEN_STATUS)[number]) {
 		return `toast-item__icon toast-item__icon--${type}`;
 	}
 

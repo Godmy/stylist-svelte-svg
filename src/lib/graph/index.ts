@@ -72,7 +72,6 @@ export type {
 	GraphNodeCardData,
 	GraphNodeCardProps,
 	GraphNodeCategory,
-	GraphPanMode,
 	GraphPortDimensions,
 	GraphToolMode,
 	GraphToolbarItem,
