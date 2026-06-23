@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'svelte/elements';
 import type { LayoutHTMLAttributes } from '$stylist/layout/type/struct/item';
 import type { TokenAlignment } from '$stylist/layout/type/enum/alignment';
 import type { TierContent } from '$stylist/architecture/type/enum/tier';

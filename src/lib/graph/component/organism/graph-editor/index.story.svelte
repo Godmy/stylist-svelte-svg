@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import GraphEditor from './index.svelte';
+	import GraphEditor from '$stylist/architecture/component/organism/graph-editor/index.svelte';
 	import type { RecipeLitegraphNode } from '$stylist/graph/interface/recipe/litegraph-node';
 	import type { LiteGraphPort } from '$stylist/graph/type/struct/lite-graph-port';
 	import type { RecipeConnectionLine } from '$stylist/graph/interface/recipe/connection-line';

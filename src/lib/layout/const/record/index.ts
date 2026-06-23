@@ -8,7 +8,6 @@ export { LAYOUT_ELEVATION_SEMANTIC } from './layout-elevation-semantic';
 export { LAYOUT_GRADIENTS } from './layout-gradients';
 export { LAYOUT_THEME } from './layout-theme';
 export { RECORD_MARGIN } from './margin';
-export { RECORD_OPACITY } from './opacity';
 export { RECORD_PADDING } from './padding';
 export { RECORD_SIZE_MAP } from './size-map';
 export { RECORD_SPACING } from './spacing';

@@ -14,7 +14,6 @@ export type {
 	RecipeGraphPort,
 	RecipeGraphToolbar,
 	RecipeGraphvizDirectedEdge,
-	RecipeLitegraphCanvas,
 	RecipeLitegraphNode,
 	RecipeNodeHeader,
 	RecipeNodePalette,

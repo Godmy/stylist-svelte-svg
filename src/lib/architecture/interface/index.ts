@@ -5,6 +5,7 @@ export type {
 	PresentationState,
 	PreziSceneState,
 	RecipeCss3dCube,
+	RecipeLitegraphCanvas,
 	RecipePresenterScene,
 	RecipePreziScene,
 	RecipeSceneCameraControl,

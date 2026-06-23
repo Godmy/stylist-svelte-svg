@@ -25,6 +25,7 @@ export type {
 	UserData
 } from './type';
 export type {
+	RecipeAccountSettings,
 	RecipeAccountSettingsForm,
 	RecipeAuthGuard,
 	RecipeSecureForm,

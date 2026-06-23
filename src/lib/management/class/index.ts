@@ -4,14 +4,7 @@ export {
 	ObjectManagerKPIIndicator,
 	ObjectManagerPerformanceDashboard,
 	ObjectManagerPerformanceMonitor,
-	ObjectManagerPortfolio,
 	ObjectManagerStatCard,
 	ObjectManagerStatsCard,
 	ObjectManagerStatusDashboard
-} from './object-manager';
-export type {
-	PortfolioCell,
-	PortfolioData,
-	PortfolioEntry,
-	PortfolioSummaryData
 } from './object-manager';

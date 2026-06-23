@@ -1,6 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { RecipeCss3dCube } from './css-3d-cube';
 export type { FocusState } from './focus-state';
+export type { RecipeLitegraphCanvas } from './litegraph-canvas';
 export type { PresentationState } from './presentation-state';
 export type { RecipePresenterScene } from './presenter-scene';
 export type { RecipePreziScene } from './prezi-scene';

@@ -1,5 +1,5 @@
-import type { TokenSize } from '$stylist/layout/type/enum/size';
-import type { TokenMonitoringType } from '$stylist/management/type/enum/monitoring-type';
+﻿import type { TokenSize } from '$stylist/layout/type/enum/size';
+import type { TokenMonitoringType } from '$stylist/commerce/type/enum/monitoring-type';
 
 export interface SlotPriceAlertElement {
 	class?: string;

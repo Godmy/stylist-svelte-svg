@@ -21,9 +21,7 @@ export {
 	PortGroup
 } from './molecule';
 export {
-	GraphEditor,
 	GraphNodeCard,
-	LitegraphCanvas,
 	Minimap,
 	NodePalette,
 	StylistGraphWorkspace

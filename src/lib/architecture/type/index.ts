@@ -27,6 +27,7 @@ export type {
 } from './script';
 export type {
 	ArchitectureScene,
+	GraphEditorProps,
 	Position2D,
 	PresentationMode,
 	PresenterNodeShellProps,

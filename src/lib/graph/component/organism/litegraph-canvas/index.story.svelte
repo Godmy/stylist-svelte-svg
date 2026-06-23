@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Story from '$stylist/playground/component/molecule/story/index.svelte';
 	import type { InterfaceControllerSettings } from '$stylist/playground/type/struct/interface-controller-settings';
-	import LitegraphCanvas from './index.svelte';
+	import LitegraphCanvas from '$stylist/architecture/component/organism/litegraph-canvas/index.svelte';
 	import type { SlotLitegraphConnection as LitegraphConnection } from '$stylist/graph/interface/slot/litegraph-connection';
 	import type { ContractLitegraphNode as LitegraphNode } from '$stylist/graph/interface/contract/litegraph-node';
 	import type { ContractLitegraphPort as LitegraphPort } from '$stylist/graph/interface/contract/litegraph-port';

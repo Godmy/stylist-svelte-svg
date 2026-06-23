@@ -1,11 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type { AccountSettings } from './account-settings';
-export type { RecipeBurnDownChart } from './burn-down-chart';
 export type { DashboardLayoutProps } from './dashboard-layout';
 export type { RecipeFeatureToggle } from './feature-toggle';
-export type { RecipeKanbanBoard } from './kanban-board';
-export type { RecipeKanbanCard } from './kanban-card';
-export type { RecipeKanbanColumn } from './kanban-column';
 export type { RecipeKPIIndicator } from './kpi-indicator';
 export type { RecipeLegendItem } from './legend-item';
 export type { NotificationStateProps } from './notification';
@@ -20,7 +15,6 @@ export type { PermissionGateProps } from './permission-gate';
 export type { RecipeProcessStep } from './process-step';
 export type { PushNotificationProps } from './push-notification';
 export type { RecipeScheduledNotification } from './scheduled-notification';
-export type { RecipeScrumBacklog } from './scrum-backlog';
 export type { RecipeStatCard } from './stat-card';
 export type { RecipeStatsCard } from './stats-card';
 export type { RecipeStatusDashboard } from './status-dashboard';

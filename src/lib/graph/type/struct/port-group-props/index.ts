@@ -1,4 +1,4 @@
-import type { RecipePortGroup } from '$stylist/media/interface/recipe/port-group';
+import type { RecipePortGroup } from '$stylist/graph/interface/recipe/port-group';
 import type { RecipeGraphPort } from '$stylist/graph/interface/recipe/graph-port';
 
 export type PortGroupProps = RecipePortGroup & {

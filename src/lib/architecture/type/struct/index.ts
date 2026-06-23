@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { SceneCameraInput } from './camera-input';
+export type { GraphEditorProps } from './graph-editor-props';
 export type { Position2D } from './position2d';
 export type { PresentationMode } from './presentation-mode';
 export type { PresenterNodeShellProps } from './presenter-node-shell';

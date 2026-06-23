@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { SlotSimpleModal as SimpleModalProps } from '$stylist/notification/interface/slot/simple-modal';
+	import type { SlotSimpleModal } from '$stylist/notification/interface/slot/simple-modal';
 	import createSimpleModalState from '$stylist/navigation/function/state/simple-modal/index.svelte';
 
-	let props: SimpleModalProps = $props();
+	let props: SlotSimpleModal = $props();
 	const state = createSimpleModalState(props);
 </script>
 

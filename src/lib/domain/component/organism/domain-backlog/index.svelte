@@ -1,17 +1,17 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import createDomainBacklogState from '$stylist/domain/function/state/domain-backlog/index.svelte';
 	import Icon from '$stylist/media/component/atom/icon/index.svelte';
-	import BacklogViewTabs from '$stylist/management/component/molecule/backlog-view-tabs/index.svelte';
-	import IssuesTable from '$stylist/management/component/molecule/issues-table/index.svelte';
-	import KanbanBoard from '$stylist/management/component/organism/kanban-board/index.svelte';
-	import ScrumBacklog from '$stylist/management/component/molecule/scrum-backlog/index.svelte';
-	import BurnDownChart from '$stylist/management/component/molecule/burn-down-chart/index.svelte';
-	import type { KanbanBoardAction } from '$stylist/management/type/struct/kanban-board/kanbanboardaction';
-	import type { KanbanBoardType } from '$stylist/management/type/struct/kanban-board/kanbanboardtype';
-	import type { SlotBacklogData as BacklogData } from '$stylist/management/interface/slot/backlog-data';
-	import type { SlotBacklogItem as BacklogItem } from '$stylist/management/interface/slot/backlog-item';
-	import type { SlotBurnDownData as BurnDownData } from '$stylist/management/interface/slot/burn-down-data';
-	import type { SlotIssueMessage as IssueMessage } from '$stylist/management/interface/slot/issue-message';
+	import BacklogViewTabs from '$stylist/portfolio/component/molecule/backlog-view-tabs/index.svelte';
+	import IssuesTable from '$stylist/portfolio/component/molecule/issues-table/index.svelte';
+	import KanbanBoard from '$stylist/portfolio/component/organism/kanban-board/index.svelte';
+	import ScrumBacklog from '$stylist/portfolio/component/molecule/scrum-backlog/index.svelte';
+	import BurnDownChart from '$stylist/portfolio/component/molecule/burn-down-chart/index.svelte';
+	import type { KanbanBoardAction } from '$stylist/portfolio/type/struct/kanban-board/kanbanboardaction';
+	import type { KanbanBoardType } from '$stylist/portfolio/type/struct/kanban-board/kanbanboardtype';
+	import type { SlotBacklogData as BacklogData } from '$stylist/portfolio/interface/slot/backlog-data';
+	import type { SlotBacklogItem as BacklogItem } from '$stylist/portfolio/interface/slot/backlog-item';
+	import type { SlotBurnDownData as BurnDownData } from '$stylist/portfolio/interface/slot/burn-down-data';
+	import type { SlotIssueMessage as IssueMessage } from '$stylist/portfolio/interface/slot/issue-message';
 
 	interface DomainBacklogProps {
 		title?: string;

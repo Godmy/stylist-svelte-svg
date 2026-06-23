@@ -2,9 +2,7 @@
 export type {
 	CardData,
 	DraggableCardRestProps,
-	DraggableCardStateProps,
-	KanbanCardStateProps,
-	KanbanCardUser
+	DraggableCardStateProps
 } from './alias';
 export type {
 	TokenKPI,
@@ -14,12 +12,7 @@ export type {
 	TokenTrend
 } from './enum';
 export type {
-	DragPayload,
 	INotificationSettingsPreference,
-	KanbanBoardAction,
-	KanbanBoardType,
-	KanbanCardType,
-	KanbanColumnType,
 	Metric,
 	NotificationData,
 	NotificationItem,

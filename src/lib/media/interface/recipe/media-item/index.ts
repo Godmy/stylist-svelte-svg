@@ -1,25 +1,23 @@
-import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { SlotMedia as IMediaSlot } from '$stylist/media/interface/slot/media';
-import type { SlotText as ILabelSlot } from '$stylist/typography/interface/slot/text';
-import type { SlotText as ICaptionSlot } from '$stylist/typography/interface/slot/text';
-import type { BehaviorClickable as IClickable } from '$stylist/interaction/interface/behavior/clickable';
-import type { BehaviorSizable as ISizable } from '$stylist/layout/interface/behavior/sizable';
-import type { BehaviorElevatable as IElevatable } from '$stylist/layout/interface/behavior/elevatable';
-import type { BehaviorMotionPreset as IMotionToken } from '$stylist/animation/interface/behavior/motion-preset';
+import type { SlotTheme } from '$stylist/theme/interface/slot/theme';
+import type { SlotMedia } from '$stylist/media/interface/slot/media';
+import type { SlotText } from '$stylist/typography/interface/slot/text';
+import type { BehaviorClickable } from '$stylist/interaction/interface/behavior/clickable';
+import type { BehaviorSizable } from '$stylist/layout/interface/behavior/sizable';
+import type { BehaviorElevatable } from '$stylist/layout/interface/behavior/elevatable';
+import type { BehaviorMotionPreset } from '$stylist/animation/interface/behavior/motion-preset';
 
 export interface RecipeMediaItem
 	extends ComputeIntersectAll<
 		[
 			SlotTheme,
-			IMediaSlot,
-			ILabelSlot,
-			ICaptionSlot,
-			IClickable,
-			ISizable,
-			IElevatable,
-			IMotionToken,
+			SlotMedia,
+			SlotText,
+			BehaviorClickable,
+			BehaviorSizable,
+			BehaviorElevatable,
+			BehaviorMotionPreset,
 			HTMLAttributes<HTMLDivElement>
 		]
 	> {}

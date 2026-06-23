@@ -4,7 +4,6 @@ export type { ConnectionPathResult } from './connection-path-result';
 export type { GraphEditorConnectionData } from './graph-editor-connection-data';
 export type { GraphEditorNodeData } from './graph-editor-node-data';
 export type { GraphEditorPaletteNode } from './graph-editor-palette-node';
-export type { GraphEditorProps } from './graph-editor-props';
 export type { GraphGridMode } from './graph-grid-mode';
 export type { GraphMinimapContract } from './graph-minimap-contract';
 export type { GraphMinimapProps } from './graph-minimap-props';

@@ -54,6 +54,8 @@ export {
 	createCss3dCubeState,
 	createFocusState,
 	createFocusTarget,
+	createGraphEditorState,
+	createLitegraphCanvasState,
 	createPresentationFrame,
 	createPresentationMode,
 	createPresentationState,

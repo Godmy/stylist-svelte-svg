@@ -44,7 +44,6 @@ export type {
 	RecordBreakpointScreen,
 	RecordElevation,
 	RecordMargin,
-	RecordOpacity,
 	RecordSizeMap,
 	RecordSpacing,
 	RecordZIndex

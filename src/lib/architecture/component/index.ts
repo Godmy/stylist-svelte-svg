@@ -5,6 +5,8 @@ export {
 	SceneCameraControl
 } from './molecule';
 export {
+	GraphEditor,
+	LitegraphCanvas,
 	PresentationWorkspace,
 	PresenterScene,
 	PreziScene,

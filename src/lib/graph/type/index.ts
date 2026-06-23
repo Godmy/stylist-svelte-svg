@@ -12,7 +12,6 @@ export type {
 	GraphEditorConnectionData,
 	GraphEditorNodeData,
 	GraphEditorPaletteNode,
-	GraphEditorProps,
 	GraphGridMode,
 	GraphMinimapContract,
 	GraphMinimapProps,
