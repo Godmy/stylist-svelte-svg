@@ -1,5 +1,0 @@
-/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	TOKEN_MAP_TYPE,
-	TOKEN_PIN
-} from './enum';

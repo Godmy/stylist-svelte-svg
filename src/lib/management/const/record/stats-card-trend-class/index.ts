@@ -1,7 +1,0 @@
-import type { TOKEN_TREND } from '$stylist/management/const/enum/trend';
-
-export const STATS_CARD_TREND_CLASS: Record<(typeof TOKEN_TREND)[number], string> = {
-	up: 'text-emerald-600',
-	down: 'text-rose-600',
-	neutral: 'text-[var(--color-text-secondary)]'
-} as const;
