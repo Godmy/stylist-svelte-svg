@@ -394,7 +394,6 @@ export { ICON_ORGANISM } from './organism';
 export { ICON_ORIENTATIONS } from './orientations';
 export { ICON_OVERLAY } from './overlay';
 export { ICON_OVERLAYS } from './overlays';
-export { ICON_PACKAGE } from './package';
 export { ICON_PADDING } from './padding';
 export { ICON_PAGE_BUILDER } from './page-builder';
 export { ICON_PAGE_HEADER } from './page-header';
