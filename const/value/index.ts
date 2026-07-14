@@ -277,6 +277,7 @@ export { ICON_HERO } from './hero';
 export { ICON_HORIZONTAL_LAYOUT } from './horizontal-layout';
 export { ICON_ICON } from './icon';
 export { ICON_ICONS } from './icons';
+export { ICON_IDEF_ZERO } from './idef-zero';
 export { ICON_IMAGE } from './image';
 export { ICON_IMAGE_GALLERY } from './image-gallery';
 export { ICON_IMAGE_WITH_CAPTION } from './image-with-caption';

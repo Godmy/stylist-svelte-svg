@@ -278,6 +278,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'horizontal-layout': (ICON_VALUE['ICON_HORIZONTAL_LAYOUT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'icon': (ICON_VALUE['ICON_ICON' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'icons': (ICON_VALUE['ICON_ICONS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
+	'idef-zero': (ICON_VALUE['ICON_IDEF_ZERO' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'image-gallery': (ICON_VALUE['ICON_IMAGE_GALLERY' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'image-with-caption': (ICON_VALUE['ICON_IMAGE_WITH_CAPTION' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'image': (ICON_VALUE['ICON_IMAGE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
