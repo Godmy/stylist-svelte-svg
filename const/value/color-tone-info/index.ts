@@ -1,8 +1,7 @@
-/** AUTO-GENERATED: svg icon value */
-export const ICON_INFO_STATUS = `
+export const ICON_COLOR_TONE_INFO = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="10" style="color: var(--color-primary-500)"/>
-  <path d="M12 16v-4"/>
+  <circle cx="12" cy="12" r="8"/>
+  <path d="M12 11v5"/>
   <path d="M12 8h.01"/>
 </svg>
 ` as const;
