@@ -525,6 +525,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'spacing': (ICON_VALUE['ICON_SPACING' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'spinner': (ICON_VALUE['ICON_SPINNER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'split-layout': (ICON_VALUE['ICON_SPLIT_LAYOUT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
+	'square': (ICON_VALUE['ICON_SQUARE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'stack': (ICON_VALUE['ICON_STACK' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'stacked-layout': (ICON_VALUE['ICON_STACKED_LAYOUT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'stage': (ICON_VALUE['ICON_STAGE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
