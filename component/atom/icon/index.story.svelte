@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Story from '$stylist/playground/component/molecule/story/index.svelte';
+	import Story from '$stylist/theme/component/molecule/story/index.svelte';
 	import Icon from './index.svelte';
 	import { TOKEN_ICON_REGISTRY } from '$stylist/svg/const/record/icon-registry';
 

@@ -1,4 +1,4 @@
-import * as ICON_VALUE from '$stylist/svg/const/value';
+import * as ICON_VALUE from '../../value';
 
 export const TOKEN_ICON_REGISTRY = {
 	'abbr': (ICON_VALUE['ICON_ABBR' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
@@ -312,7 +312,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'inventory-tracker': (ICON_VALUE['ICON_INVENTORY_TRACKER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'italic': (ICON_VALUE['ICON_ITALIC' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'joint': (ICON_VALUE['ICON_JOINT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
-	'json': (ICON_VALUE['ICON_JSON' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
+	'json': ICON_VALUE.ICON_FILE,
 	'justifications': (ICON_VALUE['ICON_JUSTIFICATIONS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'kanban-card': (ICON_VALUE['ICON_KANBAN_CARD' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'kanban': (ICON_VALUE['ICON_KANBAN' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
@@ -407,7 +407,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'orientations': (ICON_VALUE['ICON_ORIENTATIONS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'overlay': (ICON_VALUE['ICON_OVERLAY' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'overlays': (ICON_VALUE['ICON_OVERLAYS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
-	'package': (ICON_VALUE['ICON_PACKAGE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
+	'package': ICON_VALUE.ICON_FILE,
 	'padding': (ICON_VALUE['ICON_PADDING' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'page-builder': (ICON_VALUE['ICON_PAGE_BUILDER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
 	'page-header': (ICON_VALUE['ICON_PAGE_HEADER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE),
