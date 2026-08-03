@@ -1,6 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export {
-	Flag,
-	Icon,
-	Svg
-} from './atom';
+export { default as Flag } from './index.svelte';

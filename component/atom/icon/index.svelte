@@ -1,9 +1,10 @@
 ﻿<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
 	import createIconState from '$stylist/svg/function/state/icon/index.svelte';
 	import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
 
-	let props: RecipeIcon = $props();
+	let props: RecipeIcon & Omit<HTMLAttributes<HTMLSpanElement>, 'class'> = $props();
 	const state = createIconState(props);
 </script>
 

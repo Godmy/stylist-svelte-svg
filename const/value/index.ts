@@ -634,6 +634,7 @@ export { ICON_VIDEO_PLAYER } from './video-player';
 export { ICON_VIEWPORT } from './viewport';
 export { ICON_WARNING } from './warning';
 export { ICON_WARRANTY_INFO } from './warranty-info';
+export { ICON_WBD } from './wbd';
 export { ICON_WIDGET_CONTAINER } from './widget-container';
 export { ICON_WIDTH } from './width';
 export { ICON_WORKSPACE } from './workspace';
