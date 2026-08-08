@@ -2,9 +2,10 @@
 export const ICON_PRODUCT = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>product</title>
-  <rect x="4" y="4" width="6" height="6" rx="1.5"/>
-  <rect x="14" y="4" width="6" height="6" rx="1.5"/>
-  <rect x="4" y="14" width="6" height="6" rx="1.5"/>
-  <path d="M10 7h4M7 10v4M10 17h8a2 2 0 0 0 2-2V7"/>
+  <path d="M4 10h16v10H4z"/>
+  <path d="M12 10v10"/>
+  <path d="M4 14h16"/>
+  <path d="M12 10c-2.8-2.4-5.5-3-6.5-1.8C4.6 9.4 6.2 10 12 10z"/>
+  <path d="M12 10c2.8-2.4 5.5-3 6.5-1.8.9 1.2-.7 1.8-6.5 1.8z"/>
 </svg>
 ` as const;

@@ -1,14 +1,12 @@
 /** AUTO-GENERATED: svg icon value */
 export const ICON_MANAGEMENT = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="3"/>
-  <path d="M12 3v3"/>
-  <path d="M12 18v3"/>
-  <path d="M3 12h3"/>
-  <path d="M18 12h3"/>
-  <path d="m5.6 5.6 2.1 2.1"/>
-  <path d="m16.3 16.3 2.1 2.1"/>
-  <path d="m18.4 5.6-2.1 2.1"/>
-  <path d="m7.7 16.3-2.1 2.1"/>
+  <title>management</title>
+  <circle cx="12" cy="7" r="3"/>
+  <path d="M7 20a5 5 0 0 1 10 0"/>
+  <circle cx="5.5" cy="10" r="2.2"/>
+  <path d="M2.5 19a4 4 0 0 1 4.6-3.9"/>
+  <circle cx="18.5" cy="10" r="2.2"/>
+  <path d="M16.9 15.1A4 4 0 0 1 21.5 19"/>
 </svg>
 ` as const;

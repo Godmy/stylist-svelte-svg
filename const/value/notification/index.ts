@@ -2,10 +2,8 @@
 export const ICON_NOTIFICATION = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
   <title>notification</title>
-  <rect x="3" y="3" width="18" height="18" rx="2"/>
-  <path d="M17.0 3v18"/>
-  <rect x="3" y="5" width="18" height="11" rx="2"/>
-  <path d="M14 16 17 19v-3"/>
-  <path d="M7 9h10M7 13h7"/>
+  <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+  <path d="M10 21h4"/>
+  <path d="M12 3V2"/>
 </svg>
 ` as const;
