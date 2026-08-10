@@ -5,6 +5,5 @@ export type {
 } from './recipe';
 export type {
 	SlotIcon,
-	SlotSvg,
 	SlotSvgName
 } from './slot';

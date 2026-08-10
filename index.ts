@@ -681,6 +681,5 @@ export type {
 	RecipeIcon,
 	RecipeSvg,
 	SlotIcon,
-	SlotSvg,
 	SlotSvgName
 } from './interface';
