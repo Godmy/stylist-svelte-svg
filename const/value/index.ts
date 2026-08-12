@@ -476,7 +476,6 @@ export { ICON_RECIPE } from './recipe';
 export { ICON_RECORD } from './record';
 export { ICON_REDO } from './redo';
 export { ICON_REPLY } from './reply';
-export { ICON_RESOURCE_OPTIMIZER } from './resource-optimizer';
 export { ICON_RESPONSE_VIEWER } from './response-viewer';
 export { ICON_RESTORE } from './restore';
 export { ICON_RETURN_POLICY } from './return-policy';

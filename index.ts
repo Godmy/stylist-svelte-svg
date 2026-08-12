@@ -492,7 +492,6 @@ export {
 	ICON_RECORD,
 	ICON_REDO,
 	ICON_REPLY,
-	ICON_RESOURCE_OPTIMIZER,
 	ICON_RESPONSE_VIEWER,
 	ICON_RESTORE,
 	ICON_RETURN_POLICY,
@@ -670,8 +669,6 @@ export {
 } from './const';
 export {
 	buildSvgMarkup,
-	createIconState,
-	createSvgState,
 	escapeAttr,
 	joinClasses,
 	normalizeIconName,

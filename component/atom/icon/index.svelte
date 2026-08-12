@@ -1,6 +1,6 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	import createIconState from '$stylist/svg/function/state/icon/index.svelte';
+	import createIconState from './state.svelte';
 	import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
 

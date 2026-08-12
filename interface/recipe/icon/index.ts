@@ -6,7 +6,6 @@ import type { SlotSvgName } from '$stylist/svg/interface/slot/svg-name';
 import type { TokenDirection } from '$stylist/theme/type/alias/direction';
 import type { TokenColorTone } from '$stylist/theme/type/alias/color-tone';
 import type { TokenShape } from '$stylist/theme/type/alias/shape';
-
 export interface RecipeIcon extends ComputeIntersectAll<[Partial<SlotSvgName>, SlotThemeBorder, SlotTypography]> {
 	/** Icon size */
 	size?: Extract<(typeof TOKEN_SIZE)[number], 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | number;

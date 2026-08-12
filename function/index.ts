@@ -6,7 +6,3 @@ export {
 	normalizeIconName,
 	resolveSize
 } from './script';
-export {
-	createIconState,
-	createSvgState
-} from './state';
