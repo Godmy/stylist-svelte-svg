@@ -1,0 +1,4 @@
+/** AUTO-GENERATED: svg icon value */
+export const ICON_OBJECT = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4 4 8v8l4 4h8l4-4V8l-4-4Z"/><path d="M8 4v4H4"/><path d="M16 4v4h4"/><path d="M8 20v-4H4"/><path d="M16 20v-4h4"/></svg>
+` as const;

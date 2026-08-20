@@ -33,6 +33,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'align-left': ICON_VALUE['ICON_ALIGN_LEFT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'align-right': ICON_VALUE['ICON_ALIGN_RIGHT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	alignments: ICON_VALUE['ICON_ALIGNMENTS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	alias: ICON_VALUE['ICON_ALIAS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'analytics-chart':
 		ICON_VALUE['ICON_ANALYTICS_CHART' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'animated-background':
@@ -60,6 +61,8 @@ export const TOKEN_ICON_REGISTRY = {
 	'aspect-ratio':
 		ICON_VALUE['ICON_ASPECT_RATIO' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'at-sign': ICON_VALUE['ICON_AT_SIGN' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	array: ICON_VALUE['ICON_ARRAY' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	async: ICON_VALUE['ICON_ASYNC' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	atom: ICON_VALUE['ICON_ATOM' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'atomic-principles-showcase':
 		ICON_VALUE['ICON_ATOMIC_PRINCIPLES_SHOWCASE' as keyof typeof ICON_VALUE] ??
@@ -250,6 +253,7 @@ export const TOKEN_ICON_REGISTRY = {
 	contract: ICON_VALUE['ICON_CONTRACT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	contracts: ICON_VALUE['ICON_CONTRACTS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	control: ICON_VALUE['ICON_CONTROL' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	count: ICON_VALUE['ICON_COUNT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'controls-interaction':
 		ICON_VALUE['ICON_CONTROLS_INTERACTION' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'controls-organism':
@@ -410,6 +414,7 @@ export const TOKEN_ICON_REGISTRY = {
 	heatmap: ICON_VALUE['ICON_HEATMAP' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	height: ICON_VALUE['ICON_HEIGHT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	hero: ICON_VALUE['ICON_HERO' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	hook: ICON_VALUE['ICON_HOOK' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'horizontal-layout':
 		ICON_VALUE['ICON_HORIZONTAL_LAYOUT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	icon: ICON_VALUE['ICON_ICON' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
@@ -504,6 +509,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'media-library':
 		ICON_VALUE['ICON_MEDIA_LIBRARY' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	media: ICON_VALUE['ICON_MEDIA' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	merge: ICON_VALUE['ICON_MERGE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	menu: ICON_VALUE['ICON_MENU' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'menus-molecule':
 		ICON_VALUE['ICON_MENUS_MOLECULE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
@@ -560,6 +566,7 @@ export const TOKEN_ICON_REGISTRY = {
 		ICON_VALUE['ICON_NUMBER_INPUT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'object-manager':
 		ICON_VALUE['ICON_OBJECT_MANAGER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	object: ICON_VALUE['ICON_OBJECT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'ontology-edge-component':
 		ICON_VALUE['ICON_ONTOLOGY_EDGE_COMPONENT' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'ontology-node-component':
@@ -656,6 +663,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'post-card': ICON_VALUE['ICON_POST_CARD' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	preview: ICON_VALUE['ICON_PREVIEW' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'prezi-scene': ICON_VALUE['ICON_PREZI_SCENE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	preset: ICON_VALUE['ICON_PRESET' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	prices: ICON_VALUE['ICON_PRICES' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'privacy-settings':
 		ICON_VALUE['ICON_PRIVACY_SETTINGS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
@@ -719,9 +727,11 @@ export const TOKEN_ICON_REGISTRY = {
 	'selectors-molecule':
 		ICON_VALUE['ICON_SELECTORS_MOLECULE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	selectors: ICON_VALUE['ICON_SELECTORS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	set: ICON_VALUE['ICON_SET' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	send: ICON_VALUE['ICON_SEND' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	settings: ICON_VALUE['ICON_SETTINGS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	shadows: ICON_VALUE['ICON_SHADOWS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	shader: ICON_VALUE['ICON_SHADER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	shapes: ICON_VALUE['ICON_SHAPES' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'share-2': ICON_VALUE['ICON_SHARE_2' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	share: ICON_VALUE['ICON_SHARE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
@@ -809,6 +819,7 @@ export const TOKEN_ICON_REGISTRY = {
 	'team-member-card':
 		ICON_VALUE['ICON_TEAM_MEMBER_CARD' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	template: ICON_VALUE['ICON_TEMPLATE' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	test: ICON_VALUE['ICON_TEST' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'test-results-viewer':
 		ICON_VALUE['ICON_TEST_RESULTS_VIEWER' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'text-block': ICON_VALUE['ICON_TEXT_BLOCK' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
@@ -863,6 +874,7 @@ export const TOKEN_ICON_REGISTRY = {
 	tooltip: ICON_VALUE['ICON_TOOLTIP' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'traffic-analytics':
 		ICON_VALUE['ICON_TRAFFIC_ANALYTICS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
+	transform: ICON_VALUE['ICON_TRANSFORM' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	transitions: ICON_VALUE['ICON_TRANSITIONS' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	'trash-2': ICON_VALUE['ICON_TRASH_2' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,
 	trash: ICON_VALUE['ICON_TRASH' as keyof typeof ICON_VALUE] ?? ICON_VALUE.ICON_FILE,

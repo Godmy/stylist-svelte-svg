@@ -1,0 +1,4 @@
+/** AUTO-GENERATED: svg icon value */
+export const ICON_TRANSFORM = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/><path d="M14 5h3a2 2 0 0 1 2 2v3"/><path d="m16 8 3 3 3-3"/><path d="M10 19H7a2 2 0 0 1-2-2v-3"/><path d="m8 16-3-3-3 3"/></svg>
+` as const;
