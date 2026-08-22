@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>webgl</title>
+  <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5Z"/>
+  <path d="M4 7.5 12 12l8-4.5"/>
+  <path d="M12 12v9"/>
+  <path d="M8 9.8v4.4l4 2.3 4-2.3V9.8"/>
+  <path d="M8 14.2 12 12l4 2.2"/>
+</svg>

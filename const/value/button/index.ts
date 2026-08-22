@@ -1,8 +1,0 @@
-/** AUTO-GENERATED: svg icon value */
-export const ICON_BUTTON = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-  <title>button</title>
-  <rect x="4" y="8" width="16" height="8" rx="2"/>
-  <path d="M8 12h8"/>
-</svg>
-` as const;

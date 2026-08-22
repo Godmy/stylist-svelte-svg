@@ -1,1 +1,0 @@
-export const FLAG_RU = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill="#fff" d="M0 0h9v6H0z"/><path fill="#0039a6" d="M0 2h9v4H0z"/><path fill="#d52b1e" d="M0 4h9v2H0z"/></svg>`;
