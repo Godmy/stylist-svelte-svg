@@ -1,2 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { TOKEN_FLAG_REGISTRY, TOKEN_ICON_REGISTRY } from './record';
+export {
+	TOKEN_FLAG_REGISTRY,
+	TOKEN_ICON_REGISTRY
+} from './record';
