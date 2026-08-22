@@ -4,15 +4,17 @@
 
 	const layersSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 	const circleSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>`;
-	const arrowSvg  = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+	const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 	const strokeWidths = [1, 1.5, 2, 3] as const;
 	const sizes = [16, 24, 32, 48, 64] as const;
 </script>
 
-<Story title="Svg" description="Низкоуровневый компонент для рендеринга SVG-разметки через innerHTML">
+<Story
+	title="Svg"
+	description="Низкоуровневый компонент для рендеринга SVG-разметки через innerHTML"
+>
 	<div class="page">
-
 		<section class="section">
 			<h2 class="section-title">Базовые формы</h2>
 			<div class="row">
@@ -81,15 +83,33 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td><code>svg</code></td><td><code>string</code></td><td>—</td><td>SVG-разметка</td></tr>
-					<tr><td><code>size</code></td><td><code>number | string</code></td><td>—</td><td>Размер (число → px, строка → как есть)</td></tr>
-					<tr><td><code>strokeWidth</code></td><td><code>number</code></td><td>—</td><td>Толщина обводки</td></tr>
-					<tr><td><code>class</code></td><td><code>string</code></td><td>''</td><td>CSS-классы на корневом span</td></tr>
-					<tr><td><code>aria-label</code></td><td><code>string</code></td><td>—</td><td>Описание для скринридера</td></tr>
+					<tr
+						><td><code>svg</code></td><td><code>string</code></td><td>—</td><td>SVG-разметка</td
+						></tr
+					>
+					<tr
+						><td><code>size</code></td><td><code>number | string</code></td><td>—</td><td
+							>Размер (число → px, строка → как есть)</td
+						></tr
+					>
+					<tr
+						><td><code>strokeWidth</code></td><td><code>number</code></td><td>—</td><td
+							>Толщина обводки</td
+						></tr
+					>
+					<tr
+						><td><code>class</code></td><td><code>string</code></td><td>''</td><td
+							>CSS-классы на корневом span</td
+						></tr
+					>
+					<tr
+						><td><code>aria-label</code></td><td><code>string</code></td><td>—</td><td
+							>Описание для скринридера</td
+						></tr
+					>
 				</tbody>
 			</table>
 		</section>
-
 	</div>
 </Story>
 

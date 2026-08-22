@@ -28,7 +28,7 @@
 
 <span class={rootClass} {...restProps}>
 	{#if svg}
-		<Svg svg={svg} size={size} aria-label={fallback ? `${fallback} flag` : 'Flag'} />
+		<Svg {svg} {size} aria-label={fallback ? `${fallback} flag` : 'Flag'} />
 	{:else}
 		<span class="flag__fallback">{fallback}</span>
 	{/if}

@@ -14,18 +14,26 @@
 	);
 
 	const sizes = [12, 16, 20, 24, 32, 48] as const;
-	const demoIcons = ['search', 'user', 'settings', 'bell', 'chart', 'layout', 'file', 'atom'] as const;
+	const demoIcons = [
+		'search',
+		'user',
+		'settings',
+		'bell',
+		'chart',
+		'layout',
+		'file',
+		'atom'
+	] as const;
 </script>
 
 <Story title="Icon" description="Компонент иконки с поддержкой всех иконок из TOKEN_ICON_REGISTRY">
 	<div class="page">
-
 		<section class="section">
 			<h2 class="section-title">Размеры</h2>
 			<div class="row">
 				{#each sizes as size}
 					<div class="size-cell">
-						<Icon name="search" size={size} />
+						<Icon name="search" {size} />
 						<span class="label">{size}px</span>
 					</div>
 				{/each}
@@ -56,12 +64,7 @@
 
 		<section class="section">
 			<h2 class="section-title">Набор иконок — {filtered.length} / {allIconNames.length}</h2>
-			<input
-				class="search"
-				type="search"
-				placeholder="Поиск по имени..."
-				bind:value={search}
-			/>
+			<input class="search" type="search" placeholder="Поиск по имени..." bind:value={search} />
 			<div class="grid">
 				{#each filtered as name (name)}
 					<div class="icon-cell" title={name}>
@@ -71,7 +74,6 @@
 				{/each}
 			</div>
 		</section>
-
 	</div>
 </Story>
 
