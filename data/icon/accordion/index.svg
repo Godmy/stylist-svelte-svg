@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
   <title>accordion</title>
-  <path d="M5 7h14"/>
-  <path d="M7 7v12h10V7"/>
-  <path d="M9 11h6M9 15h4"/>
-  <path d="M10 4h4l1 3H9l1-3z"/>
+  <rect x="4" y="5" width="16" height="4" rx="1.4"/>
+  <rect x="4" y="10" width="16" height="9" rx="1.4" style="color: var(--color-success-600, #16a34a)"/>
+  <path d="M8 7h6"/>
+  <path d="m16 6.5 1 1 1-1"/>
+  <path d="M8 13h5"/>
+  <path d="M8 16h8"/>
+  <path d="m16 13.5 1-1 1 1" style="color: var(--color-success-600, #16a34a)"/>
 </svg>

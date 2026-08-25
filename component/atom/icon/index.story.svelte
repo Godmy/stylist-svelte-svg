@@ -68,7 +68,7 @@
 			<div class="grid">
 				{#each filtered as name (name)}
 					<div class="icon-cell" title={name}>
-						<Icon {name} size={20} />
+						<Icon {name} size={32} />
 						<span class="icon-label">{name}</span>
 					</div>
 				{/each}
@@ -140,7 +140,7 @@
 
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
 		gap: 0.5rem;
 	}
 
@@ -148,8 +148,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.35rem;
-		padding: 0.6rem 0.25rem;
+		gap: 0.45rem;
+		min-height: 76px;
+		padding: 0.7rem 0.35rem;
 		border: 1px solid var(--color-border-primary);
 		border-radius: 8px;
 		background: var(--color-background-primary);
