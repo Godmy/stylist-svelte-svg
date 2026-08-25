@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
 	import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
+	import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 
 	let {
 		flag,
@@ -9,12 +9,7 @@
 		class: className = '',
 		size = '1.5rem',
 		...restProps
-	}: {
-		flag?: string;
-		code?: string;
-		class?: string;
-		size?: number | string;
-	} & Omit<HTMLAttributes<HTMLSpanElement>, 'class'> = $props();
+	}: RecipeFlag = $props();
 
 	const normalizedFlag = $derived((flag ?? code ?? '').trim().toLowerCase());
 	const normalizedCode = $derived((code ?? '').split('-').pop()?.trim().toLowerCase() ?? '');

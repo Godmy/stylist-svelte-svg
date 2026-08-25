@@ -16,6 +16,7 @@ export {
 	resolveSize
 } from './function';
 export type {
+	RecipeFlag,
 	RecipeIcon,
 	RecipeSvg,
 	SlotIcon,
