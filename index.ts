@@ -2,7 +2,15 @@
 export {
 	Flag,
 	Icon,
-	Svg
+	Svg,
+	SvgCircle,
+	SvgGroup,
+	SvgLine,
+	SvgPath,
+	SvgPolygon,
+	SvgPolyline,
+	SvgRect,
+	SvgText
 } from './component';
 export {
 	TOKEN_FLAG_REGISTRY,
@@ -13,12 +21,22 @@ export {
 	escapeAttr,
 	joinClasses,
 	normalizeIconName,
+	resolveFlagSvg,
+	resolveIconSvg,
 	resolveSize
 } from './function';
 export type {
 	RecipeFlag,
 	RecipeIcon,
 	RecipeSvg,
+	RecipeSvgCircle,
+	RecipeSvgGroup,
+	RecipeSvgLine,
+	RecipeSvgPath,
+	RecipeSvgPolygon,
+	RecipeSvgPolyline,
+	RecipeSvgRect,
+	RecipeSvgText,
 	SlotIcon,
 	SlotSvgName
 } from './interface';

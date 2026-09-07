@@ -1,6 +1,6 @@
-import { TOKEN_ICON_REGISTRY } from '$stylist/svg/const/record/icon-registry';
 import { joinClasses } from '$stylist/svg/function/script/class-list';
 import { normalizeIconName } from '$stylist/svg/function/script/icon-name';
+import { resolveIconSvg } from '$stylist/svg/function/async/resolve-icon-svg';
 import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
 
 export function createIconState(props: RecipeIcon) {
@@ -63,14 +63,35 @@ export function createIconState(props: RecipeIcon) {
 		typeof props['aria-label'] === 'string' ? String(props['aria-label']) : undefined
 	);
 
-	const localSvg = $derived.by(() => {
-		if (svg) return svg;
-		return (
-			TOKEN_ICON_REGISTRY[effectiveName as keyof typeof TOKEN_ICON_REGISTRY] ??
-			TOKEN_ICON_REGISTRY.box ??
-			''
-		);
+	let loadedSvg = $state('');
+	let isLoading = $state(true);
+
+	$effect(() => {
+		const requestedName = effectiveName;
+		const providedSvg = svg;
+
+		if (providedSvg) {
+			loadedSvg = providedSvg;
+			isLoading = false;
+			return;
+		}
+
+		isLoading = true;
+		let cancelled = false;
+
+		resolveIconSvg(requestedName).then((resolved) => {
+			if (!cancelled) {
+				loadedSvg = resolved;
+				isLoading = false;
+			}
+		});
+
+		return () => {
+			cancelled = true;
+		};
 	});
+
+	const localSvg = $derived(loadedSvg);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -157,6 +178,9 @@ export function createIconState(props: RecipeIcon) {
 		},
 		get localSvg() {
 			return localSvg;
+		},
+		get isLoading() {
+			return isLoading;
 		},
 		get restProps() {
 			return restProps;

@@ -8,8 +8,15 @@
 	const state = createIconState(props);
 </script>
 
-{#if state.container === 'none'}
-	<span class="icon-wrap" {...state.restProps}>
+{#snippet glyph()}
+	{#if state.isLoading}
+		<span
+			class="icon__skeleton {state.iconClasses}"
+			style:width={state.numericSize ? `${state.numericSize}px` : undefined}
+			style:height={state.numericSize ? `${state.numericSize}px` : undefined}
+			aria-hidden="true"
+		></span>
+	{:else}
 		<Svg
 			svg={state.localSvg}
 			class={state.iconClasses}
@@ -17,17 +24,17 @@
 			strokeWidth={state.strokeWidth}
 			aria-label={state.ariaLabel}
 		/>
+	{/if}
+{/snippet}
+
+{#if state.container === 'none'}
+	<span class="icon-wrap" {...state.restProps}>
+		{@render glyph()}
 	</span>
 {:else}
 	<span class={state.containerClasses} {...state.restProps}>
 		<span class="icon-wrap">
-			<Svg
-				svg={state.localSvg}
-				class={state.iconClasses}
-				size={state.numericSize}
-				strokeWidth={state.strokeWidth}
-				aria-label={state.ariaLabel}
-			/>
+			{@render glyph()}
 		</span>
 	</span>
 {/if}
@@ -104,5 +111,29 @@
 
 	.icon__icon-circle--disabled {
 		opacity: 0.45;
+	}
+
+	.icon__skeleton {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		border-radius: 3px;
+		background: linear-gradient(
+			90deg,
+			var(--color-background-secondary, rgb(229 231 235)) 25%,
+			var(--color-background-tertiary, rgb(209 213 219)) 50%,
+			var(--color-background-secondary, rgb(229 231 235)) 75%
+		);
+		background-size: 200% 100%;
+		animation: icon-skeleton-shimmer 1.2s ease-in-out infinite;
+	}
+
+	@keyframes icon-skeleton-shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
 	}
 </style>

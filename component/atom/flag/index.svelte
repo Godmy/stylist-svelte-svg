@@ -1,31 +1,19 @@
 <script lang="ts">
-	import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';
+	import createFlagState from './state.svelte';
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
 	import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 
-	let {
-		flag,
-		code,
-		class: className = '',
-		size = '1.5rem',
-		...restProps
-	}: RecipeFlag = $props();
-
-	const normalizedFlag = $derived((flag ?? code ?? '').trim().toLowerCase());
-	const normalizedCode = $derived((code ?? '').split('-').pop()?.trim().toLowerCase() ?? '');
-	const svg = $derived(
-		TOKEN_FLAG_REGISTRY[normalizedFlag as keyof typeof TOKEN_FLAG_REGISTRY] ??
-			TOKEN_FLAG_REGISTRY[normalizedCode as keyof typeof TOKEN_FLAG_REGISTRY]
-	);
-	const fallback = $derived((flag ?? code ?? '').trim().toUpperCase());
-	const rootClass = $derived(['flag', className].filter(Boolean).join(' '));
+	let props: RecipeFlag = $props();
+	const state = createFlagState(props);
 </script>
 
-<span class={rootClass} {...restProps}>
-	{#if svg}
-		<Svg {svg} {size} aria-label={fallback ? `${fallback} flag` : 'Flag'} />
+<span class={state.rootClass} {...state.restProps}>
+	{#if state.isLoading}
+		<span class="flag__skeleton" aria-hidden="true"></span>
+	{:else if state.svg}
+		<Svg svg={state.svg} size={state.size} aria-label={state.fallback ? `${state.fallback} flag` : 'Flag'} />
 	{:else}
-		<span class="flag__fallback">{fallback}</span>
+		<span class="flag__fallback">{state.fallback}</span>
 	{/if}
 </span>
 
@@ -54,5 +42,29 @@
 		color: var(--color-text-primary);
 		font-size: 0.75rem;
 		font-weight: 600;
+	}
+
+	.flag__skeleton {
+		display: inline-block;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 0.125rem;
+		background: linear-gradient(
+			90deg,
+			var(--color-background-secondary, rgb(229 231 235)) 25%,
+			var(--color-background-tertiary, rgb(209 213 219)) 50%,
+			var(--color-background-secondary, rgb(229 231 235)) 75%
+		);
+		background-size: 200% 100%;
+		animation: flag-skeleton-shimmer 1.2s ease-in-out infinite;
+	}
+
+	@keyframes flag-skeleton-shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
 	}
 </style>

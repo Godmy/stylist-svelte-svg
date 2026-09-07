@@ -2,5 +2,13 @@
 export {
 	Flag,
 	Icon,
-	Svg
+	Svg,
+	SvgCircle,
+	SvgGroup,
+	SvgLine,
+	SvgPath,
+	SvgPolygon,
+	SvgPolyline,
+	SvgRect,
+	SvgText
 } from './atom';

@@ -2,7 +2,15 @@
 export type {
 	RecipeFlag,
 	RecipeIcon,
-	RecipeSvg
+	RecipeSvg,
+	RecipeSvgCircle,
+	RecipeSvgGroup,
+	RecipeSvgLine,
+	RecipeSvgPath,
+	RecipeSvgPolygon,
+	RecipeSvgPolyline,
+	RecipeSvgRect,
+	RecipeSvgText
 } from './recipe';
 export type {
 	SlotIcon,

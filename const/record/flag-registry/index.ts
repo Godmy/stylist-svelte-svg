@@ -1,22 +1,22 @@
-const rawFlagSvgModules = import.meta.glob('../../../data/flag/*/index.svg', {
+const rawFlagSvgLoaders = import.meta.glob('../../../data/flag/*/index.svg', {
 	query: '?raw',
 	import: 'default',
-	eager: true
-}) as Record<string, string>;
+	eager: false
+}) as Record<string, () => Promise<string>>;
 
 function extractFlagCodeFromPath(modulePath: string): string {
 	const match = modulePath.match(/\/data\/flag\/([^/]+)\/index\.svg$/);
 	return match ? match[1] : modulePath;
 }
 
-const flagsByCode: Record<string, string> = Object.fromEntries(
-	Object.entries(rawFlagSvgModules).map(([modulePath, svg]) => [
+const flagLoadersByCode: Record<string, () => Promise<string>> = Object.fromEntries(
+	Object.entries(rawFlagSvgLoaders).map(([modulePath, loadSvg]) => [
 		extractFlagCodeFromPath(modulePath),
-		svg
+		loadSvg
 	])
 );
 
-export const TOKEN_FLAG_REGISTRY: Record<string, string> = {
-	...flagsByCode,
-	uk: flagsByCode.gb
+export const TOKEN_FLAG_REGISTRY: Record<string, () => Promise<string>> = {
+	...flagLoadersByCode,
+	uk: flagLoadersByCode.gb
 };
