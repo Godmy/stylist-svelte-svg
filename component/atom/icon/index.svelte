@@ -5,7 +5,7 @@
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
 
 	let props: RecipeIcon & Omit<HTMLAttributes<HTMLSpanElement>, 'class'> = $props();
-	const state = createIconState(props);
+	const state = createIconState(() => props);
 </script>
 
 {#snippet glyph()}

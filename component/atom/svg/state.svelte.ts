@@ -3,7 +3,8 @@ import { resolveSize } from '$stylist/svg/function/script/size';
 import { buildSvgMarkup } from '$stylist/svg/function/script/svg-markup';
 import type { RecipeSvg } from '$stylist/svg/interface/recipe/svg';
 
-export function createSvgState(props: RecipeSvg) {
+export function createSvgState(getProps: () => RecipeSvg) {
+	const props = $derived.by(getProps);
 	const svg = $derived(props.svg);
 	const size = $derived(props.size);
 	const strokeWidth = $derived(props.strokeWidth);

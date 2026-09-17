@@ -3,7 +3,7 @@
 	import type { RecipeSvg } from '$stylist/svg/interface/recipe/svg';
 
 	let props: RecipeSvg = $props();
-	const state = createSvgState(props);
+	const state = createSvgState(() => props);
 </script>
 
 <span class="svg-wrap">
