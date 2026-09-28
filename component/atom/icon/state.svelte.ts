@@ -4,7 +4,7 @@ import { resolveIconSvg } from '$stylist/svg/function/async/resolve-icon-svg';
 import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
 
 export function createIconState(getProps: () => RecipeIcon) {
-	const props = $derived.by(getProps);
+	const props = $derived(getProps());
 	const name = $derived(props.name ?? 'box');
 	const svg = $derived(props.svg);
 	const size = $derived(props.size ?? 'md');
