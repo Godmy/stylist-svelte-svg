@@ -11,7 +11,11 @@
 	{#if state.isLoading}
 		<span class="flag__skeleton" aria-hidden="true"></span>
 	{:else if state.svg}
-		<Svg svg={state.svg} size={state.size} aria-label={state.fallback ? `${state.fallback} flag` : 'Flag'} />
+		<Svg
+			svg={state.svg}
+			size={state.size}
+			aria-label={state.fallback ? `${state.fallback} flag` : 'Flag'}
+		/>
 	{:else}
 		<span class="flag__fallback">{state.fallback}</span>
 	{/if}

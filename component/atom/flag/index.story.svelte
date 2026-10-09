@@ -100,7 +100,8 @@
 						></tr
 					>
 					<tr
-						><td><code>size</code></td><td><code>number | string</code></td><td><code>1.5rem</code></td
+						><td><code>size</code></td><td><code>number | string</code></td><td
+							><code>1.5rem</code></td
 						><td>Размер флага</td></tr
 					>
 					<tr
