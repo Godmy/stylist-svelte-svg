@@ -1,7 +1,8 @@
 import { resolveFlagSvg } from '$stylist/svg/function/async/resolve-flag-svg';
 import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 
-export function createFlagState(props: RecipeFlag) {
+export function createFlagState(getProps: () => RecipeFlag) {
+	const props = $derived(getProps());
 	const flag = $derived(props.flag);
 	const code = $derived(props.code);
 	const size = $derived(props.size ?? '1.5rem');

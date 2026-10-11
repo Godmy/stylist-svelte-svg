@@ -1,11 +1,11 @@
 import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
-import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
+import type { SlotTypography } from '$stylist/typography/interface/slot/typography';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { TOKEN_SIZE } from '$stylist/theme/const/array/size';
+import type { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
 import type { SlotSvgName } from '$stylist/svg/interface/slot/svg-name';
-import type { TokenDirection } from '$stylist/theme/type/alias/direction';
-import type { TokenColorTone } from '$stylist/theme/type/alias/color-tone';
-import type { TokenShape } from '$stylist/theme/type/alias/shape';
+import type { TokenDirection } from '$stylist/design-token/type/alias/direction';
+import type { TokenColorTone } from '$stylist/design-token/type/alias/color-tone';
+import type { TokenShape } from '$stylist/design-token/type/alias/shape';
 export interface RecipeIcon extends ComputeIntersectAll<
 	[Partial<SlotSvgName>, SlotThemeBorder, SlotTypography]
 > {

@@ -4,7 +4,7 @@
 	import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 
 	let props: RecipeFlag = $props();
-	const state = createFlagState(props);
+	const state = createFlagState(() => props);
 </script>
 
 <span class={state.rootClass} {...state.restProps}>
