@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>design-token</title>
+  <rect x="3" y="3" width="7" height="7" rx="2"/>
+  <circle cx="17.5" cy="6.5" r="3.5"/>
+  <path d="m6.5 14 4.5 4.5L6.5 23 2 18.5Z" transform="translate(0 -2)"/>
+  <path d="M14 15h7M14 19h4"/>
+</svg>
