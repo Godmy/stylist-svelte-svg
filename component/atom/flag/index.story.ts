@@ -1,4 +1,4 @@
-import Flag from './index.svelte';
+import Flag from '$stylist/svg/component/atom/flag/index.svelte';
 import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';

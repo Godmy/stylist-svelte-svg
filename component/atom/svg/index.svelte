@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createSvgState from './state.svelte';
+	import createSvgState from '$stylist/svg/component/atom/svg/state.svelte';
 	import type { RecipeSvg } from '$stylist/svg/interface/recipe/svg';
 
 	let props: RecipeSvg = $props();

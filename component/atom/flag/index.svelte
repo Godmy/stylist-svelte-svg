@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createFlagState from './state.svelte';
+	import createFlagState from '$stylist/svg/component/atom/flag/state.svelte';
 	import Svg from '$stylist/svg/component/atom/svg/index.svelte';
 	import type { RecipeFlag } from '$stylist/svg/interface/recipe/flag';
 

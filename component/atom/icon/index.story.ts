@@ -1,4 +1,4 @@
-import Icon from './index.svelte';
+import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ICON_REGISTRY } from '$stylist/svg/const/record/icon-registry';

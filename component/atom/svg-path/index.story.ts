@@ -1,4 +1,4 @@
-import SvgPath from './index.svelte';
+import SvgPath from '$stylist/svg/component/atom/svg-path/index.svelte';
 import type { RecipeSvgPath } from '$stylist/svg/interface/recipe/svg-path';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

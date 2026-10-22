@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SvgGroup from './index.svelte';
+	import SvgGroup from '$stylist/svg/component/atom/svg-group/index.svelte';
 	import SvgCircle from '$stylist/svg/component/atom/svg-circle/index.svelte';
 	import SvgLine from '$stylist/svg/component/atom/svg-line/index.svelte';
 	import type { RecipeSvgGroup } from '$stylist/svg/interface/recipe/svg-group';

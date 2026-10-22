@@ -1,4 +1,4 @@
-import SvgPolyline from './index.svelte';
+import SvgPolyline from '$stylist/svg/component/atom/svg-polyline/index.svelte';
 import type { RecipeSvgPolyline } from '$stylist/svg/interface/recipe/svg-polyline';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

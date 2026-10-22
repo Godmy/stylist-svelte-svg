@@ -1,4 +1,4 @@
-import SvgGroup from './index.svelte';
+import SvgGroup from '$stylist/svg/component/atom/svg-group/index.svelte';
 import type { RecipeSvgGroup } from '$stylist/svg/interface/recipe/svg-group';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import SvgText from './index.svelte';
+import SvgText from '$stylist/svg/component/atom/svg-text/index.svelte';
 import type { RecipeSvgText } from '$stylist/svg/interface/recipe/svg-text';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

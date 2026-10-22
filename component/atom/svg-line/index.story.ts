@@ -1,4 +1,4 @@
-import SvgLine from './index.svelte';
+import SvgLine from '$stylist/svg/component/atom/svg-line/index.svelte';
 import type { RecipeSvgLine } from '$stylist/svg/interface/recipe/svg-line';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

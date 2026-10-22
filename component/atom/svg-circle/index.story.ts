@@ -1,4 +1,4 @@
-import SvgCircle from './index.svelte';
+import SvgCircle from '$stylist/svg/component/atom/svg-circle/index.svelte';
 import type { RecipeSvgCircle } from '$stylist/svg/interface/recipe/svg-circle';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

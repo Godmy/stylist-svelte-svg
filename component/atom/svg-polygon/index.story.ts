@@ -1,4 +1,4 @@
-import SvgPolygon from './index.svelte';
+import SvgPolygon from '$stylist/svg/component/atom/svg-polygon/index.svelte';
 import type { RecipeSvgPolygon } from '$stylist/svg/interface/recipe/svg-polygon';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 
