@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>cabinet-transitions</title>
+  <rect x="2.5" y="3.5" width="6" height="6" rx="1.5"/><rect x="15.5" y="14.5" width="6" height="6" rx="1.5"/><path d="M8.5 6.5h5a2 2 0 0 1 2 2V12"/><path d="m13.5 10 2 2 2-2"/><path d="M15.5 17.5h-5a2 2 0 0 1-2-2V12"/><path d="m10.5 14-2-2-2 2"/>
+</svg>
