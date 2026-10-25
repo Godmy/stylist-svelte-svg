@@ -1,7 +1,9 @@
 import { joinClasses } from '$stylist/svg/function/script/class-list';
 import { normalizeIconName } from '$stylist/svg/function/script/icon-name';
+import { isIconName } from '$stylist/svg/function/check/icon-name';
 import { resolveIconSvg } from '$stylist/svg/function/async/resolve-icon-svg';
 import type { RecipeIcon } from '$stylist/svg/interface/recipe/icon';
+import { TOKEN_ICON_SIZE } from '$stylist/svg/const/record/icon-size';
 
 export function createIconState(getProps: () => RecipeIcon) {
 	const props = $derived(getProps());
@@ -10,7 +12,6 @@ export function createIconState(getProps: () => RecipeIcon) {
 	const size = $derived(props.size ?? 'md');
 	const strokeWidth = $derived(props.strokeWidth ?? 1.5);
 	const variant = $derived(props.variant ?? 'default');
-	const direction = $derived(props.direction);
 	const isOpen = $derived(props.isOpen);
 	const disabled = $derived(props.disabled ?? false);
 	const className = $derived(props.class ?? '');
@@ -30,7 +31,14 @@ export function createIconState(getProps: () => RecipeIcon) {
 		return isOpen ? 'chevron-up' : 'chevron-down';
 	});
 
-	const numericSize = $derived.by(() => (typeof size === 'number' ? size : undefined));
+	// Always a positive pixel size: an svg without width/height collapses to 0 in flex rows.
+	const pixelSize = $derived.by(() =>
+		typeof size === 'number'
+			? size > 0
+				? size
+				: TOKEN_ICON_SIZE.md
+			: (TOKEN_ICON_SIZE[size] ?? TOKEN_ICON_SIZE.md)
+	);
 
 	const iconClasses = $derived.by(() =>
 		effectiveName === 'chevron-up' ||
@@ -77,6 +85,10 @@ export function createIconState(getProps: () => RecipeIcon) {
 			return;
 		}
 
+		if (import.meta.env.DEV && !isIconName(requestedName)) {
+			console.warn(`[Icon] Unknown icon "${requestedName}", rendering "box" instead.`);
+		}
+
 		isLoading = true;
 		let cancelled = false;
 
@@ -103,7 +115,6 @@ export function createIconState(getProps: () => RecipeIcon) {
 			size: _size,
 			strokeWidth: _strokeWidth,
 			variant: _variant,
-			direction: _direction,
 			isOpen: _isOpen,
 			disabled: _disabled,
 			container: _container,
@@ -131,9 +142,6 @@ export function createIconState(getProps: () => RecipeIcon) {
 		},
 		get variant() {
 			return variant;
-		},
-		get direction() {
-			return direction;
 		},
 		get isOpen() {
 			return isOpen;
@@ -165,8 +173,8 @@ export function createIconState(getProps: () => RecipeIcon) {
 		get effectiveName() {
 			return effectiveName;
 		},
-		get numericSize() {
-			return numericSize;
+		get pixelSize() {
+			return pixelSize;
 		},
 		get iconClasses() {
 			return iconClasses;

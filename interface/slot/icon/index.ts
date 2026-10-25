@@ -1,7 +1,8 @@
-import type { TokenSize } from '$stylist/design-token/type/alias/size';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
+import type { TokenIconSize } from '$stylist/svg/type/alias/icon-size';
 export interface SlotIcon {
-	icon?: string;
-	iconLeft?: string;
-	iconRight?: string;
-	iconSize?: TokenSize;
+	icon?: TokenIconName;
+	iconLeft?: TokenIconName;
+	iconRight?: TokenIconName;
+	iconSize?: TokenIconSize;
 }

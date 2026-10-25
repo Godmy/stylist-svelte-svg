@@ -3,21 +3,19 @@ import type { SlotTypography } from '$stylist/typography/interface/slot/typograp
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
 import type { SlotSvgName } from '$stylist/svg/interface/slot/svg-name';
-import type { TokenDirection } from '$stylist/design-token/type/alias/direction';
+import type { TokenIconSize } from '$stylist/svg/type/alias/icon-size';
 import type { TokenColorTone } from '$stylist/design-token/type/alias/color-tone';
 import type { TokenShape } from '$stylist/design-token/type/alias/shape';
 export interface RecipeIcon extends ComputeIntersectAll<
 	[Partial<SlotSvgName>, SlotThemeBorder, SlotTypography]
 > {
-	/** Icon size */
-	size?: Extract<(typeof TOKEN_SIZE)[number], 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | number;
+	/** Icon size: a TOKEN_ICON_SIZE token or pixels; defaults to `md` (20px) */
+	size?: TokenIconSize;
 	/** Stroke width */
 	strokeWidth?: number;
 	/** Icon variant */
 	variant?: TokenColorTone;
-	/** Icon direction */
-	direction?: TokenDirection;
-	/** Is open state */
+	/** Turns chevron icons up (open) or down (closed) */
 	isOpen?: boolean;
 	/** Disabled state */
 	disabled?: boolean;

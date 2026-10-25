@@ -3,6 +3,7 @@ export {
 	resolveFlagSvg,
 	resolveIconSvg
 } from './async';
+export { isIconName } from './check';
 export {
 	buildSvgMarkup,
 	escapeAttr,

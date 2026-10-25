@@ -14,17 +14,23 @@ export {
 } from './component';
 export {
 	TOKEN_FLAG_REGISTRY,
-	TOKEN_ICON_REGISTRY
+	TOKEN_ICON_REGISTRY,
+	TOKEN_ICON_SIZE
 } from './const';
 export {
 	buildSvgMarkup,
 	escapeAttr,
+	isIconName,
 	joinClasses,
 	normalizeIconName,
 	resolveFlagSvg,
 	resolveIconSvg,
 	resolveSize
 } from './function';
+export type {
+	TokenIconName,
+	TokenIconSize
+} from './type';
 export type {
 	RecipeFlag,
 	RecipeIcon,

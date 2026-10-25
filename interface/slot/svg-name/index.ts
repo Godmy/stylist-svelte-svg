@@ -1,4 +1,5 @@
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 export interface SlotSvgName {
-	name: string;
+	name: TokenIconName;
 	svg: string;
 }

@@ -12,15 +12,15 @@
 	{#if state.isLoading}
 		<span
 			class="icon__skeleton {state.iconClasses}"
-			style:width={state.numericSize ? `${state.numericSize}px` : undefined}
-			style:height={state.numericSize ? `${state.numericSize}px` : undefined}
+			style:width="{state.pixelSize}px"
+			style:height="{state.pixelSize}px"
 			aria-hidden="true"
 		></span>
 	{:else}
 		<Svg
 			svg={state.localSvg}
 			class={state.iconClasses}
-			size={state.numericSize}
+			size={state.pixelSize}
 			strokeWidth={state.strokeWidth}
 			aria-label={state.ariaLabel}
 		/>
