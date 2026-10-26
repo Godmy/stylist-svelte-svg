@@ -14,20 +14,25 @@ export default {
 	controls: {
 		code: {
 			type: 'text',
+			label: 'Code',
 			description: 'Country code or a locale such as en-GB (the part after the hyphen is used)'
 		},
 		flag: {
 			type: 'select',
+			label: 'Flag',
 			options: Object.keys(TOKEN_FLAG_REGISTRY).sort(),
 			description: 'Flag code, takes priority over code'
 		},
 		// 1rem … 4rem: the rem sizes a flag is shown at.
 		size: {
 			type: 'select',
+			label: 'Size',
+			description: 'Width and height of the flag as a CSS length.',
 			options: TOKEN_SIZE_REM.filter((size) =>
 				['1rem', '1.5rem', '2rem', '3rem', '4rem'].includes(size)
 			)
-		}
+		},
+		class: { type: 'text', label: 'Class', description: 'Extra class on the root element.' }
 	},
 	presets: {
 		Locale: { code: 'en-GB' },

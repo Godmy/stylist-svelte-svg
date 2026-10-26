@@ -15,10 +15,25 @@ export default {
 		fill: 'none'
 	},
 	controls: {
-		d: { type: 'text' },
-		fill: { type: 'text' },
-		stroke: { type: 'text' },
-		'stroke-width': { type: 'number', min: 0, max: 8, step: 0.5 }
+		d: { type: 'text', label: 'Path Data', description: 'Path commands in SVG path syntax.' },
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		stroke: {
+			type: 'text',
+			label: 'Stroke',
+			description: 'Stroke paint; currentColor follows the text color.'
+		},
+		'stroke-width': {
+			type: 'number',
+			label: 'Stroke Width',
+			description: 'Stroke width in user units.',
+			min: 0,
+			max: 8,
+			step: 0.5
+		}
 	},
 	presets: {
 		Area: { d: 'M2 38 L2 30 L20 10 L40 25 L60 5 L80 20 L98 8 L98 38 Z', fill: 'currentColor' }

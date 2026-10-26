@@ -16,11 +16,37 @@ export default {
 		'stroke-width': 1
 	},
 	controls: {
-		points: { type: 'text' },
-		fill: { type: 'text' },
-		stroke: { type: 'text' },
-		'stroke-width': { type: 'number', min: 0, max: 8, step: 0.5 },
-		opacity: { type: 'range', min: 0, max: 1, step: 0.1 }
+		points: { type: 'text', label: 'Points', description: 'Vertex list as `x,y` pairs.' },
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		stroke: {
+			type: 'text',
+			label: 'Stroke',
+			description: 'Stroke paint; currentColor follows the text color.'
+		},
+		'stroke-width': {
+			type: 'number',
+			label: 'Stroke Width',
+			description: 'Stroke width in user units.',
+			min: 0,
+			max: 8,
+			step: 0.5
+		},
+		opacity: {
+			type: 'range',
+			label: 'Opacity',
+			description: 'Opacity from 0 to 1.',
+			min: 0,
+			max: 1,
+			step: 0.1
+		}
+	},
+	presets: {
+		Outline: { fill: 'none', opacity: 1, 'stroke-width': 2 },
+		Triangle: { points: '50,5 80,35 20,35' }
 	},
 	context: {
 		kind: 'element',

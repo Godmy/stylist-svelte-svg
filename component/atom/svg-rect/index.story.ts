@@ -10,13 +10,59 @@ export default {
 		'Типизированная тонкая обёртка над нативным <rect> — столбцы диаграмм, фон, области выделения',
 	args: { x: 30, y: 5, width: 15, height: 30, fill: 'currentColor' },
 	controls: {
-		x: { type: 'range', min: 0, max: 100, step: 1 },
-		y: { type: 'range', min: 0, max: 40, step: 1 },
-		width: { type: 'range', min: 1, max: 100, step: 1 },
-		height: { type: 'range', min: 1, max: 40, step: 1 },
-		rx: { type: 'range', min: 0, max: 10, step: 1 },
-		fill: { type: 'text' },
-		opacity: { type: 'range', min: 0, max: 1, step: 0.1 }
+		x: {
+			type: 'range',
+			label: 'X',
+			description: 'X position in user units.',
+			min: 0,
+			max: 100,
+			step: 1
+		},
+		y: {
+			type: 'range',
+			label: 'Y',
+			description: 'Y position in user units.',
+			min: 0,
+			max: 40,
+			step: 1
+		},
+		width: {
+			type: 'range',
+			label: 'Width',
+			description: 'Width as a CSS length.',
+			min: 1,
+			max: 100,
+			step: 1
+		},
+		height: {
+			type: 'range',
+			label: 'Height',
+			description: 'Height above the baseline as a CSS length.',
+			min: 1,
+			max: 40,
+			step: 1
+		},
+		rx: {
+			type: 'range',
+			label: 'Corner Radius',
+			description: 'Corner radius in user units.',
+			min: 0,
+			max: 10,
+			step: 1
+		},
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		opacity: {
+			type: 'range',
+			label: 'Opacity',
+			description: 'Opacity from 0 to 1.',
+			min: 0,
+			max: 1,
+			step: 0.1
+		}
 	},
 	presets: {
 		Rounded: { rx: 3, opacity: 0.6 },

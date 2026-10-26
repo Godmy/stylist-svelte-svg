@@ -63,10 +63,16 @@ export function createIconState(getProps: () => RecipeIcon) {
 				.join(' ');
 		}
 		if (container === 'wrapper') {
-			return 'icon__icon-wrapper';
+			return ['icon__icon-wrapper', containerClass].filter(Boolean).join(' ');
 		}
 		return containerClass;
 	});
+
+	// default keeps currentColor; an explicit color string wins over the tone.
+	const toneClass = $derived(variant === 'default' ? '' : `icon--tone-${variant}`);
+	const iconColor = $derived(color === 'default' ? undefined : color);
+	// Without an explicit shape the wrapper stays rounded and the circle stays round.
+	const shapeClass = $derived(props.shape ? `icon--shape-${props.shape}` : '');
 
 	const ariaLabel = $derived.by(() =>
 		typeof props['aria-label'] === 'string' ? String(props['aria-label']) : undefined
@@ -181,6 +187,15 @@ export function createIconState(getProps: () => RecipeIcon) {
 		},
 		get containerClasses() {
 			return containerClasses;
+		},
+		get toneClass() {
+			return toneClass;
+		},
+		get iconColor() {
+			return iconColor;
+		},
+		get shapeClass() {
+			return shapeClass;
 		},
 		get ariaLabel() {
 			return ariaLabel;

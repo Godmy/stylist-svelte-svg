@@ -11,6 +11,12 @@
 - `size`: `TokenIconSize` — число пикселей или токен из `TOKEN_ICON_SIZE` (`xs` 12, `sm` 16, `md` 20, `lg` 24, `xl` 32, `2xl` 40). Без значения берётся `md`. Svg всегда получает `width`/`height`, поэтому в flex-строке он не схлопнется в 0.
 - `name`: `TokenIconName`. Если имя приходит из данных (БД, конфиг, пресет), сначала сузьте его через `isIconName` (`function/check/icon-name`). Неизвестное имя рендерит `box`, а в dev-режиме ещё и выдаёт `console.warn`.
 - Направление задаётся только именем иконки: `chevron-left/right/up/down`, `arrow-up/down/right`. Для chevron-иконок `isOpen` переключает up/down.
+- Цвет: глиф рисуется `currentColor`. `variant` (тон из `TOKEN_COLOR_TONE`) окрашивает его через `--color-<тон>-600`, а явный `color` важнее тона. `default` оставляет цвет текста.
+- Контейнеры `wrapper` и `circle` берут размеры по шкале `--space-*` (`containerSize` xs … 2xl = `--space-5` … `--space-14`). `shape` (`circle`, `rounded`, `square`, `none`) меняет углы контейнера, без него у wrapper углы скруглены, а circle остаётся кругом. `class` ставится на обёртку глифа, `containerClass` — на контейнер.
+
+## Стили
+
+Svg-примитивы (`SvgRect`, `SvgPath` …) не стилизуются: их внешний вид задают атрибуты. `Icon`, `Flag` и `Svg` начинают стили с `HTML_LAYER_ORDER` и держат правила в `@layer svg` с селекторами `:where()`, только на токенах. Это проверяет `test/unit/style-layer`.
 
 ## Third-party
 

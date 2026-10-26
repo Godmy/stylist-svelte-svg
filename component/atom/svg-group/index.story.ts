@@ -10,9 +10,24 @@ export default {
 		'Типизированная тонкая обёртка над нативным <g> — группировка примитивов с общей transform/aria',
 	args: { transform: 'translate(0, 0)', 'aria-label': 'Точка данных', opacity: 1 },
 	controls: {
-		transform: { type: 'text' },
-		'aria-label': { type: 'text' },
-		opacity: { type: 'range', min: 0, max: 1, step: 0.1 }
+		transform: {
+			type: 'text',
+			label: 'Transform',
+			description: 'SVG transform list applied to the group.'
+		},
+		'aria-label': {
+			type: 'text',
+			label: 'Aria Label',
+			description: 'Accessible name; without it the graphic is decorative.'
+		},
+		opacity: {
+			type: 'range',
+			label: 'Opacity',
+			description: 'Opacity from 0 to 1.',
+			min: 0,
+			max: 1,
+			step: 0.1
+		}
 	},
 	presets: {
 		Shifted: { transform: 'translate(50, 0)', opacity: 0.5 }

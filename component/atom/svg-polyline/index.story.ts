@@ -15,10 +15,29 @@ export default {
 		fill: 'none'
 	},
 	controls: {
-		points: { type: 'text' },
-		fill: { type: 'text' },
-		stroke: { type: 'text' },
-		'stroke-width': { type: 'number', min: 0, max: 8, step: 0.5 }
+		points: { type: 'text', label: 'Points', description: 'Vertex list as `x,y` pairs.' },
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		stroke: {
+			type: 'text',
+			label: 'Stroke',
+			description: 'Stroke paint; currentColor follows the text color.'
+		},
+		'stroke-width': {
+			type: 'number',
+			label: 'Stroke Width',
+			description: 'Stroke width in user units.',
+			min: 0,
+			max: 8,
+			step: 0.5
+		}
+	},
+	presets: {
+		Thin: { 'stroke-width': 1 },
+		Steps: { points: '2,30 20,30 20,15 50,15 50,5 98,5' }
 	},
 	context: {
 		kind: 'element',

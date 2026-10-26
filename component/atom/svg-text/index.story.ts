@@ -10,12 +10,49 @@ export default {
 		'Типизированная тонкая обёртка над нативным <text> — подписи осей, значения, легенды на графиках',
 	args: { x: 10, y: 20, fill: 'currentColor', 'font-size': 8 },
 	controls: {
-		x: { type: 'range', min: 0, max: 100, step: 1 },
-		y: { type: 'range', min: 0, max: 40, step: 1 },
-		fill: { type: 'text' },
-		'font-size': { type: 'number', min: 2, max: 20, step: 1 },
-		'text-anchor': { type: 'select', options: ['start', 'middle', 'end'] },
-		opacity: { type: 'range', min: 0, max: 1, step: 0.1 }
+		x: {
+			type: 'range',
+			label: 'X',
+			description: 'X position in user units.',
+			min: 0,
+			max: 100,
+			step: 1
+		},
+		y: {
+			type: 'range',
+			label: 'Y',
+			description: 'Y position in user units.',
+			min: 0,
+			max: 40,
+			step: 1
+		},
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		'font-size': {
+			type: 'number',
+			label: 'Font Size',
+			description: 'Font size in user units.',
+			min: 2,
+			max: 20,
+			step: 1
+		},
+		'text-anchor': {
+			type: 'select',
+			label: 'Text Anchor',
+			description: 'Horizontal alignment of the text to x.',
+			options: ['start', 'middle', 'end']
+		},
+		opacity: {
+			type: 'range',
+			label: 'Opacity',
+			description: 'Opacity from 0 to 1.',
+			min: 0,
+			max: 1,
+			step: 0.1
+		}
 	},
 	presets: {
 		'Value at end': { x: 90, 'text-anchor': 'end' },

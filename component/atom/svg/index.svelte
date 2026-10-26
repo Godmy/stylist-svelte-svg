@@ -6,17 +6,25 @@
 	const state = createSvgState(() => props);
 </script>
 
-<span class="svg-wrap">
+<span class={['svg-wrap', props.disabled && 'svg-wrap--disabled']}>
 	{@html state.markup}
 </span>
 
 <style>
-	.svg-wrap {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.svg-wrap :global(svg) {
-		display: block;
+	@layer html, typography, svg, mathml, layout, theme, localization;
+	@layer svg {
+		:global {
+			:where(.svg-wrap) {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+			}
+			:where(.svg-wrap--disabled) {
+				opacity: var(--opacity-50, 0.5);
+			}
+			:where(.svg-wrap > svg) {
+				display: block;
+			}
+		}
 	}
 </style>

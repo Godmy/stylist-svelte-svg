@@ -10,13 +10,56 @@ export default {
 		'Типизированная тонкая обёртка над нативным <circle> — точки на графиках, легенды, маркеры',
 	args: { cx: 20, cy: 20, r: 8, fill: 'currentColor' },
 	controls: {
-		cx: { type: 'range', min: 0, max: 100, step: 1 },
-		cy: { type: 'range', min: 0, max: 40, step: 1 },
-		r: { type: 'range', min: 1, max: 20, step: 1 },
-		fill: { type: 'text' },
-		stroke: { type: 'text' },
-		'stroke-width': { type: 'number', min: 0, max: 8, step: 0.5 },
-		opacity: { type: 'range', min: 0, max: 1, step: 0.1 }
+		cx: {
+			type: 'range',
+			label: 'Center X',
+			description: 'Center X in user units.',
+			min: 0,
+			max: 100,
+			step: 1
+		},
+		cy: {
+			type: 'range',
+			label: 'Center Y',
+			description: 'Center Y in user units.',
+			min: 0,
+			max: 40,
+			step: 1
+		},
+		r: {
+			type: 'range',
+			label: 'Radius',
+			description: 'Radius in user units.',
+			min: 1,
+			max: 20,
+			step: 1
+		},
+		fill: {
+			type: 'text',
+			label: 'Fill',
+			description: 'Fill paint; currentColor follows the text color.'
+		},
+		stroke: {
+			type: 'text',
+			label: 'Stroke',
+			description: 'Stroke paint; currentColor follows the text color.'
+		},
+		'stroke-width': {
+			type: 'number',
+			label: 'Stroke Width',
+			description: 'Stroke width in user units.',
+			min: 0,
+			max: 8,
+			step: 0.5
+		},
+		opacity: {
+			type: 'range',
+			label: 'Opacity',
+			description: 'Opacity from 0 to 1.',
+			min: 0,
+			max: 1,
+			step: 0.1
+		}
 	},
 	presets: {
 		Outline: { fill: 'none', stroke: 'currentColor', 'stroke-width': 2 },

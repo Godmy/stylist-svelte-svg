@@ -13,14 +13,35 @@ export default {
 	description: 'Низкоуровневый компонент для рендеринга SVG-разметки через innerHTML',
 	args: { svg: layersSvg, size: 48, strokeWidth: 2 },
 	controls: {
-		svg: { type: 'text', description: 'SVG markup' },
-		size: { type: 'range', min: 16, max: 128, step: 4 },
-		strokeWidth: { type: 'range', min: 0.5, max: 4, step: 0.5 },
-		'aria-label': { type: 'text', description: 'Without a label the SVG is decorative' }
+		svg: { type: 'text', label: 'SVG Markup', description: 'SVG markup' },
+		size: {
+			type: 'range',
+			label: 'Size',
+			description: 'Width and height of the SVG in pixels.',
+			min: 16,
+			max: 128,
+			step: 4
+		},
+		strokeWidth: {
+			type: 'range',
+			label: 'Stroke Width',
+			description: 'Stroke width of the glyph.',
+			min: 0.5,
+			max: 4,
+			step: 0.5
+		},
+		'aria-label': {
+			type: 'text',
+			label: 'Aria Label',
+			description: 'Without a label the SVG is decorative'
+		},
+		disabled: { type: 'boolean', label: 'Disabled', description: 'Dims the graphic.' },
+		class: { type: 'text', label: 'Class', description: 'Extra class on the root element.' }
 	},
 	presets: {
 		Circle: { svg: circleSvg },
-		Arrow: { svg: arrowSvg, 'aria-label': 'Стрелка вправо' }
+		Arrow: { svg: arrowSvg, 'aria-label': 'Стрелка вправо' },
+		Disabled: { disabled: true }
 	},
 	layout: 'centered'
 } satisfies ContractStory<RecipeSvg>;

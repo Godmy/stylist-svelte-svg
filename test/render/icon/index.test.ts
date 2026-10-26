@@ -1,8 +1,14 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { cleanup, render, waitFor } from '@testing-library/svelte';
 import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 import type { ComponentProps } from 'svelte';
 import { TOKEN_ICON_SIZE } from '$stylist/svg/const/record/icon-size';
+import { resolveIconSvg } from '$stylist/svg/function/async/resolve-icon-svg';
+
+// The first lazy import of an svg can outlast waitFor's 1s default in a full run; load it once here.
+beforeAll(async () => {
+	await resolveIconSvg('search');
+});
 
 afterEach(() => {
 	cleanup();
@@ -11,7 +17,7 @@ afterEach(() => {
 
 async function renderSvg(props: ComponentProps<typeof Icon>) {
 	const view = render(Icon, { props });
-	await waitFor(() => expect(view.container.querySelector('svg')).toBeTruthy());
+	await waitFor(() => expect(view.container.querySelector('svg')).toBeTruthy(), { timeout: 3000 });
 	return view.container.querySelector('svg')!;
 }
 
