@@ -14,6 +14,29 @@
 
 ## Third-party
 
+Иконки joints и технологий ниже адаптированы из [Tabler Icons](https://github.com/tabler/tabler-icons) (MIT, Copyright (c) 2020-2026 Paweł Kuna). Сохранены контуры; размер приведён к общему формату без `width`/`height`, толщина линии — `1.7`, цвет — `currentColor`. Полный текст лицензии включён в каждый адаптированный SVG.
+
+| Имя в реестре | Исходная иконка Tabler |
+| ------------- | ---------------------- |
+| `capture`     | `camera`               |
+| `clone`       | `copy`                 |
+| `composite`   | `hierarchy-2`          |
+| `compute`     | `calculator`           |
+| `create`      | `square-plus`          |
+| `flag`        | `flag`                 |
+| `json`        | `braces`               |
+| `render`      | `device-desktop-code`  |
+| `resolve`     | `route`                |
+| `serialize`   | `list-numbers`         |
+| `unit`        | `test-pipe`            |
+| `rest`        | `api`                  |
+| `graphql`     | `brand-graphql`        |
+| `svelte`      | `brand-svelte`         |
+| `css`         | `brand-css3`           |
+| `html`        | `brand-html5`          |
+
+`component` использует существующий знак из четырёх блоков.
+
 Часть глифов в `data/icon` основана на контурах [Lucide](https://lucide.dev) (например, `chevron-*`, `eye`, `eye-off`, `external-link`, `file-text`, `package`, `rotate-ccw`, `volume-2`, `accessibility`, `keyboard`, `zap`). Lucide распространяется по лицензии ISC:
 
 ```
