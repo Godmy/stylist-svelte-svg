@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
   <title>accordion</title>
   <rect x="4" y="5" width="16" height="4" rx="1.4"/>
-  <rect x="4" y="10" width="16" height="9" rx="1.4" style="color: var(--color-success-600, #16a34a)"/>
+  <rect x="4" y="10" width="16" height="9" rx="1.4" style="color: var(--color-icon-secondary, currentColor)"/>
   <path d="M8 7h6"/>
   <path d="m16 6.5 1 1 1-1"/>
   <path d="M8 13h5"/>
   <path d="M8 16h8"/>
-  <path d="m16 13.5 1-1 1 1" style="color: var(--color-success-600, #16a34a)"/>
+  <path d="m16 13.5 1-1 1 1" style="color: var(--color-icon-secondary, currentColor)"/>
 </svg>

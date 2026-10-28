@@ -58,3 +58,20 @@ describe('Icon name', () => {
 		expect(warn).not.toHaveBeenCalled();
 	});
 });
+
+describe('Icon palette overrides', () => {
+	it('keeps an explicit color above the default palette and variant', async () => {
+		const svg = await renderSvg({ name: 'search', color: 'rebeccapurple', variant: 'success' });
+		const wrapper = svg.closest<HTMLElement>('.icon-wrap')!;
+		expect(wrapper.style.color).toBe('rebeccapurple');
+		expect(wrapper.classList.contains('icon--tone-success')).toBe(true);
+	});
+
+	it('keeps both color roles in a multicolor glyph', async () => {
+		const svg = await renderSvg({ name: 'accordion' });
+		expect(svg.getAttribute('stroke')).toBe('currentColor');
+		expect(svg.querySelector('rect[y="10"]')?.getAttribute('style')).toContain(
+			'var(--color-icon-secondary, currentColor)'
+		);
+	});
+});

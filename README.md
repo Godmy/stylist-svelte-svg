@@ -11,7 +11,7 @@
 - `size`: `TokenIconSize` — число пикселей или токен из `TOKEN_ICON_SIZE` (`xs` 12, `sm` 16, `md` 20, `lg` 24, `xl` 32, `2xl` 40). Без значения берётся `md`. Svg всегда получает `width`/`height`, поэтому в flex-строке он не схлопнется в 0.
 - `name`: `TokenIconName`. Если имя приходит из данных (БД, конфиг, пресет), сначала сузьте его через `isIconName` (`function/check/icon-name`). Неизвестное имя рендерит `box`, а в dev-режиме ещё и выдаёт `console.warn`.
 - Направление задаётся только именем иконки: `chevron-left/right/up/down`, `arrow-up/down/right`. Для chevron-иконок `isOpen` переключает up/down.
-- Цвет: глиф рисуется `currentColor`. `variant` (тон из `TOKEN_COLOR_TONE`) окрашивает его через `--color-<тон>-600`, а явный `color` важнее тона. `default` оставляет цвет текста.
+- Цвет: глиф рисуется `currentColor`. `variant` (тон из `TOKEN_COLOR_TONE`) окрашивает его через `--color-<тон>-600`, а явный `color` важнее тона. `default` использует основной цвет выбранной палитры (`--color-icon-primary`).
 - Контейнеры `wrapper` и `circle` берут размеры по шкале `--space-*` (`containerSize` xs … 2xl = `--space-5` … `--space-14`). `shape` (`circle`, `rounded`, `square`, `none`) меняет углы контейнера, без него у wrapper углы скруглены, а circle остаётся кругом. `class` ставится на обёртку глифа, `containerClass` — на контейнер.
 
 ## Стили
@@ -63,3 +63,7 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
+
+## Icon palette
+
+The default Icon color follows `--color-icon-primary`, emitted by the theme resolver for the selected scheme and mode. Secondary and tertiary details use `--color-icon-secondary` and `--color-icon-tertiary`; SVG masks keep their original black/white luminance. Minimal uses neutral shades. Dark mode uses lighter shades of the same scheme even when schemes share dark surfaces. Explicit `color` and `variant` override the main glyph color. Filled containers keep their inverse foreground. Flags retain their national colors.

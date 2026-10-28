@@ -55,6 +55,9 @@
 				color: currentColor;
 				line-height: 0;
 			}
+			:where(.icon-wrap) {
+				color: var(--icon-color, var(--color-icon-primary, currentColor));
+			}
 			:where(.icon__icon-wrapper, .icon__icon-circle) {
 				width: var(--space-8, 2rem);
 				height: var(--space-8, 2rem);
@@ -93,6 +96,7 @@
 				height: var(--space-14, 3.5rem);
 			}
 			:where(.icon__icon-circle--filled) {
+				--icon-color: var(--color-background-primary, rgb(255 255 255));
 				border-color: var(--color-text-primary, rgb(17 24 39));
 				background: var(--color-text-primary, rgb(17 24 39));
 				color: var(--color-background-primary, rgb(255 255 255));
