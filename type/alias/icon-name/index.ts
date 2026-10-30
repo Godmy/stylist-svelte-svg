@@ -127,6 +127,7 @@ export type TokenIconName =
 	| 'cabinet-reports'
 	| 'cabinet-requests'
 	| 'cabinet-reviews'
+	| 'cabinet-schedule'
 	| 'cabinet-service'
 	| 'cabinet-settings'
 	| 'cabinet-site'
