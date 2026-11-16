@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>city</title>
+  <path d="M3 21h18" />
+  <path d="M5 21V9h5v12" />
+  <path d="M10 21V4h5v17" />
+  <path d="M15 21v-9h4v9" />
+  <path d="M7 12h1M7 15h1M12 7h1M12 10h1M12 13h1M17 15h0" />
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>national-park</title>
+  <path d="M7 3 3 10h2.5L3 14h8l-2.5-4H11L7 3Z" />
+  <path d="M7 14v4" />
+  <path d="m16 6-4 6h2.5L12 16h8l-2.5-4H20l-4-6Z" />
+  <path d="M16 16v3" />
+  <path d="M2 21h20" />
+</svg>

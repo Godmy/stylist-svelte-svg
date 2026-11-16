@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>sun-cloud</title>
+  <circle cx="8" cy="8" r="3" />
+  <path d="M8 2v1.5M2 8h1.5M3.8 3.8l1 1M12.2 3.8l-1 1M3.8 12.2l1-1" />
+  <path d="M9.5 20h8a3.5 3.5 0 0 0 .3-7A5 5 0 0 0 8.4 14.5 2.8 2.8 0 0 0 9.5 20Z" />
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <title>temple</title>
+  <path d="M12 2v2.5" />
+  <path d="M7.5 8.5 12 4.5l4.5 4H7.5Z" />
+  <path d="M4.5 13 12 9l7.5 4h-15Z" />
+  <path d="M6.5 13v8M17.5 13v8M3 21h18" />
+  <path d="M10 21v-4h4v4" />
+</svg>
